@@ -1,0 +1,94 @@
+# -*- makefile-gmake -*-
+
+# @configure_input@
+all: initialize phase1
+include ../../include/config.Makefile
+VPATH = @srcdir@
+srcdir = $(shell cd @srcdir@; env pwd)
+
+USER ?= unknown-user
+
+all: initialize
+Makefile: Makefile.in ; cd ../.. && ./config.status Macaulay2/m2/Makefile
+##############################
+.SUFFIXES: .m2
+.PHONY: html initialize tags install-tmp
+DUMPEDM2FILES := Core.m2 exports.m2 startup.m2 version.m2 \
+	$(shell cat @srcdir@/loadsequence)
+DUMPEDM2SRCFILES := Core.m2 exports.m2 startup.m2.in version.m2.in
+DUMPEDM2DOCFILES := \
+		@srcdir@/../packages/Macaulay2Doc/*.m2 \
+		@srcdir@/../packages/Macaulay2Doc/functions/*.m2 \
+		@srcdir@/../packages/Macaulay2Doc/operators/*.m2 \
+		../packages/Macaulay2Doc.m2
+############################## version.m2
+all: version.m2
+version.m2: version.m2.in ; ./config.status Macaulay2/m2/version.m2
+############################## tvalues.m2
+STOP = --stop
+ARGS = -q --silent $(STOP) -e errorDepth=0
+TVFILES := $(wildcard @srcdir@/../d/*.d)
+all: @pre_packagesdir@/Core/tvalues.m2
+@pre_packagesdir@/Core/tvalues.m2: $(TVFILES) @pre_packagesdir@/Core
+	rm -f $@ && @pre_exec_prefix@/bin/M2 $(ARGS) --no-preload -e 'exit 0'
+clean::;rm -f @pre_packagesdir@/Core/tvalues.m2
+#################################
+all: tags
+tags: Makefile @srcdir@/TAGS @srcdir@/TAGS.doc
+clean::; rm -f TAGS @srcdir@/TAGS @srcdir@/TAGS.doc
+@srcdir@/TAGS: $(DUMPEDM2FILES) @pre_packagesdir@/Core/tvalues.m2
+	: making $@
+	@ETAGS@ -o $@ $^ || true
+
+@srcdir@/TAGS.doc: Makefile.in $(shell @FIND@ @srcdir@/../packages/Macaulay2Doc -not \( -name .svn -prune \) -type d)
+	: making $@ : $^
+	@ set -e ; \
+	  cd @srcdir@ && \
+	  @FIND@ ../packages/Macaulay2Doc -name '*.m2' | while read i ; do echo  ; echo $$i,0 ; done >TAGS.doc
+clean::; rm -f TAGS.doc
+
+# try to eliminate this intermediate file:
+phase1:: .Macaulay2-made
+.Macaulay2-made: $(DUMPEDM2FILES) $(DUMPEDM2DOCFILES) @pre_exec_prefix@/bin/M2@EXE@
+	touch $@
+clean::; rm -f .Macaulay2-made
+initialize: .gdb-directories .gdbinit .gdb-files
+gdb: .gdb-directories .gdbinit .gdb-files
+	LD_LIBRARY_PATH="$(BUILTLIBPATH)/lib:$(LD_LIBRARY_PATH)" gdb @pre_exec_prefix@/bin/M2@EXE@
+.gdbinit: .gdbinit.$(USER); cp $< $@
+clean::; rm -f .gdb-directories
+.gdb-directories: ../../libraries/* Makefile
+	echo '# -*- sh -*-' >$@
+	env echo 'echo -- loading .gdb-directories\n' >>$@
+	for i in \
+		../../libraries/*/build/*/. \
+		../../libraries/ntl/build/*/src/. \
+		../../libraries/libfac/build/*/factor/. \
+		../../libraries/libfac/build/*/charset/. \
+		;\
+	do if [ -d $$i ] ;\
+	   then echo directory $$i >>$@ ;\
+	   fi ;\
+	done
+	env echo 'echo -- loaded .gdb-directories\n' >>$@
+.gdbinit.$(USER):; touch $@
+clean::; rm -f .gdbinit
+.gdb-files: Makefile
+	echo '# -*- sh -*-' >$@
+	env echo 'echo -- loading .gdb-files\n' >>$@
+	echo 'set environment LD_LIBRARY_PATH $(BUILTLIBPATH)/lib:$(LD_LIBRARY_PATH)' >>$@
+	echo 'file @pre_exec_prefix@/bin/M2@EXE@' >>$@
+	env echo 'echo -- loaded .gdb-files\n' >>$@
+clean::; rm -f .gdb-files
+profile: gmon.out; LD_LIBRARY_PATH="$(BUILTLIBPATH)/lib:$(LD_LIBRARY_PATH)" gprof @pre_exec_prefix@/bin/M2@EXE@ >profile
+clean::; rm -f profile
+@pre_packagesdir@ :; @INSTALL@ -d $@
+@pre_packagesdir@/Core  : ; @INSTALL@ -d $@
+@pre_packagesdir@/Core/% : % ; @INSTALL_DATA@ $^ $@
+FILES_TO_COPY := $(DUMPEDM2FILES) loadsequence
+all:@pre_packagesdir@ @pre_packagesdir@/Core $(addprefix @pre_packagesdir@/Core/, $(FILES_TO_COPY))
+clean::; rm -rf cache *.obj *.exe runexample temp.data distfiles loads.m2 core gmon.out
+distclean: clean; rm -f Makefile version.m2
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/Macaulay2/m2 "
+# End:

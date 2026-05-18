@@ -1,0 +1,33 @@
+# @configure_input@
+# we want to ignore the --datarootdir setting, whatever that means, so here we we mention it: @datarootdir@
+VPATH = @srcdir@
+include ../include/config.Makefile
+all: @pre_docdir@/COPYING-GPL-2 @pre_docdir@/COPYING-GPL-3 @pre_docdir@/LAYOUT
+SUBDIRS = e c d system bin m2 man packages editors \
+	$(if $(filter html, @DOCUMENTATION@), html-check-links) tests
+
+all-in-d: all-in-c
+all-in-bin: all-in-e all-in-d all-in-system
+all-in-m2: all-in-bin
+all-in-packages all-in-editors all-in-tests: all-in-m2
+all-in-html-check-links: all-in-packages
+
+define do-in-subdirs
+$(foreach d,$(SUBDIRS),
+	$(eval .PHONY: $1-in-subdirs)
+	$(eval .PHONY $1 $1-in-subdirs:$1-in-$d)
+	$(eval $1-in-$d:; $$(MAKE) -C $d $1 $2))
+endef
+$(foreach t,all check,				\
+	$(eval $(call do-in-subdirs,$t)))
+$(foreach t,clean distclean,				\
+	$(eval $(call do-in-subdirs,$t,DEPENDS=no)))
+@pre_docdir@:; $(MKDIR_P) "$@"
+@pre_docdir@/% : % | @pre_docdir@ ; @INSTALL_DATA@ $< "$@"
+Makefile: Makefile.in; cd ..; ./config.status Macaulay2/Makefile
+unmark-packages:; $(MAKE) -C packages $@
+clean:; rm -f gmon.out
+distclean:; rm -f Makefile
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/Macaulay2 "
+# End:

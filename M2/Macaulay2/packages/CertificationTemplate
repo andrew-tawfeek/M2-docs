@@ -1,0 +1,17 @@
+-- -*- mode: M2 -*-
+
+,
+	   Certification => {
+		"journal name" => "Journal of Software for Algebra and Geometry",
+		"journal URI" => "https://msp.org/jsag/",
+		"article title" => "",
+		"acceptance date" => "",
+		"published article URI" => "",
+		"published article DOI" => "",
+		"published code URI" => "",
+		"legacy name" => "",             -- if renamed since published
+		"release at publication" => "",  -- git commit number in hex
+		"version at publication" => "",
+		"volume number" => "13",
+		"volume URI" => "https://msp.org/jsag/2023/13-1/"
+		}

@@ -1,0 +1,95 @@
+HOMEPAGE = http://www.hboehm.info/gc/
+SUBMODULE = true
+LIBNAME = bdwgc
+URL = https://github.com/ivmai/bdwgc.git
+GITURL = https://github.com/ivmai/bdwgc/
+VERSION = 8.2.12
+LICENSEFILES = README.QUICK
+# PATCHFILE = @abs_srcdir@/patch-$(VERSION)
+PRECONFIGURE = ./autogen.sh
+
+# We can also get the sources from the home page above or from
+#   https://github.com/ivmai/bdwgc/
+#   https://github.com/ivmai/libatomic_ops/
+# Run the appropriate autoconf tools and tar them up
+# In more detail, run these commands:
+#   git clone git://github.com/ivmai/bdwgc.git
+#   cd bdwgc
+#   git clone git://github.com/ivmai/libatomic_ops
+#   autoreconf -vif
+#   automake --add-missing
+#   ./configure
+#   make
+#   make check
+
+# History:
+
+# We made gc+libatomic_ops-7.4.0.tar.gz by untarring
+#    http://www.hboehm.info/gc/gc_source/libatomic_ops-7.4.0.tar.gz
+# and then untarring
+#    http://www.hboehm.info/gc/gc_source/gc-7.4.0.tar.gz
+# inside it, with the resulting directory libatomic_ops-7.4.0
+# renamed to libatomic_ops.
+# We don't use that technique any further, since it is simpler to make libatomic_ops separately.
+
+# Problems:
+
+# warning: we don't use libcord.so, but it gets compiled with an RPATH set like this:
+#   $ objdump -x libcord.so | grep RPA
+#     RPATH                /home/dan/src/M2/trunk/BUILD/Linux-x86_64/ubuntu/include/.././libraries/final/lib
+# That might happen to other sharable libraries we import
+# That's why it's better for sharable libraries to be distributed as separate packages.
+
+# For gc "make check" requires far too much memory
+VLIMIT := 2500000
+MLIMIT := $(VLIMIT)
+# oddly, unless the VLIMIT is bigger than 2GB, the test subthread_create fails with this message
+# under Ubuntu 12.10:
+# Thread #164 creation failed: Resource temporarily unavailable
+
+CONFIGOPTIONS += --enable-cplusplus
+
+#################################
+
+VPATH = @srcdir@
+
+CONFIGOPTIONS += --enable-threads=posix
+
+## always build for large memory configurations
+CPPFLAGS += -DMAX_HEAP_SECTS=81920 -DMAXHINCR=4096
+
+ifeq (@SHARED@,no)
+CONFIGOPTIONS += --disable-shared --enable-static
+endif
+
+ifeq (@DEBUG@,yes)
+CONFIGOPTIONS += --enable-gc-debug  --enable-static
+CPPFLAGS += -DDBG_HDRS_ALL=1 -DGC_ABORT_ON_LEAK=1
+
+#   "--enable-gc-assertions" causes all the tests to fail on 64 bit mac os x
+#   because addresses of roots are added that are not a multiple of 8.
+#   One such address is "start", the linker defined symbol, which can be a
+#   non-multiple of 8 under gcc 4.6.2
+CONFIGOPTIONS += --enable-gc-assertions
+
+# disable parallel mark when debugging, to ensure determinism:
+CONFIGOPTIONS += --disable-parallel-mark
+else
+CONFIGOPTIONS +=  --enable-parallel-mark
+# INSTALLTARGET = install-strip
+endif
+
+CONFIGOPTIONS += --disable-gcj-support --disable-java-finalization
+
+include ../Makefile.library
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/gc/Makefile
+clean uninstall::
+	if [ -d $(LIBRARIESDIR) ] ; \
+	then cd $(LIBRARIESDIR) && \
+		rm -rf lib/libgc.* lib/libcord.* include/gc share/gc lib/pkgconfig/bdw-gc.pc \
+			include/gc.h include/gc_cpp.h ; \
+	fi
+post-install:; rm -f $(LIBRARIESDIR)/lib/libcord*
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/libraries/gc "
+# End:

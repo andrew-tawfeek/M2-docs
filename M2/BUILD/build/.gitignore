@@ -1,0 +1,32 @@
+Makefile
+Macaulay2
+check-configure
+config.args
+config.log
+config.status
+distributions
+include
+libraries
+srcdir
+
+# CMake / Ninja
+CMakeCache.txt
+CMakeFiles/
+CMakeDoxyfile.in
+CMakeDoxygenDefaults.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+CTestTestfile.cmake
+DartConfiguration.tcl
+Testing/
+build.ninja
+cmake_install.cmake
+.ninja_deps
+.ninja_log
+compile_commands.json
+
+# CMake build outputs
+CHANGELOG
+M2
+usr-dist/
+usr-host/

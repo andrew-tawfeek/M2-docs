@@ -1,0 +1,39 @@
+SUBMODULE = true
+LICENSEFILES = COPYING
+# author: Bjarke Roune <bjarke@cs.au.dk>
+URL = https://github.com/Macaulay2/frobby
+VERSION = 0.9.8
+# PATCHFILE = @abs_srcdir@/patch-$(VERSION)
+
+VPATH = @srcdir@
+
+BUILDTARGET = library
+BUILDOPTIONS = \
+	CXXFLAGS="$(CXXFLAGS)"				\
+	CXX="$(CXX)"					\
+	LDFLAGS="$(LDFLAGS)"				\
+	CPPFLAGS="$(CPPFLAGS)"
+CHECKOPTIONS = $(BUILDOPTIONS)
+
+# this ought to prevent trouble with carriage returns
+PATCHOPTIONS = --ignore-whitespace
+
+CONFIGURECMD = true
+INSTALLOPTIONS = PREFIX=$(LIBRARIESDIR)
+CHECKTARGET = test
+
+# gcc 8.3 needs more memory
+MLIMIT = 500000
+VLIMIT = 500000
+
+include ../Makefile.library
+
+ifeq (@OS@-@ISSUE@,MicrosoftWindows-Cygwin)
+LDFLAGS += -Wl,--enable-auto-import
+endif
+CFLAGS += -Wno-deprecated
+# CFLAGS += -Wfatal-errors
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/frobby/Makefile
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/libraries/frobby "
+# End:

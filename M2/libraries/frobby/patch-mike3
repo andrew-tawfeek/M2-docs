@@ -1,0 +1,99 @@
+diff -ur --exclude=configure /home/dan/M2/BUILD/dan/builds/debian64/libraries/frobby/tmp/frobby_vmike3/Makefile frobby_vmike3/Makefile
+--- /home/dan/M2/BUILD/dan/builds/debian64/libraries/frobby/tmp/frobby_vmike3/Makefile	2008-12-10 21:04:17.000000000 -0500
++++ frobby_vmike3/Makefile	2009-02-15 16:18:52.000000000 -0500
+@@ -42,11 +42,14 @@
+ endif
+ 
+ ifndef ldflags
+-  ldflags = -lgmpxx -lgmp -L/sw/lib
++  ldflags = $(LDFLAGS) -lgmpxx -lgmp
+ endif
+ 
+-cflags = -Wall -ansi -pedantic -Wextra -Wno-uninitialized \
+-         -Wno-unused-parameter -isystem $(GMP_INC_DIR)
++ifndef CXX
++  CXX=g++
++endif
++cflags = $(CPPFLAGS) $(CFLAGS) -Wall -ansi -pedantic -Wno-uninitialized \
++         -Wno-unused-parameter -I $(GMP_INC_DIR)
+ program = frobby
+ library = libfrobby.a
+ 
+@@ -135,7 +138,7 @@
+ 	echo > $(outdir)$(program)
+ endif
+ ifneq ($(MODE), analysis)
+-	g++ $(objs) $(ldflags) -o $(outdir)$(program)
++	$(CXX) $(objs) $(ldflags) -o $(outdir)$(program)
+ 	if [ -f $(outdir)$(program).exe ]; then \
+ 	  mv -f $(outdir)$(program).exe $(outdir)$(program); \
+ 	fi
+@@ -149,23 +152,23 @@
+ bin/$(library): $(objs) | bin/
+ 	rm -f bin/$(library)
+ ifeq ($(MODE), shared)
+-	g++ -shared $(ldflags) -o bin/$(library) $(patsubst main.o,,$(objs))
++	$(CXX) -shared $(ldflags) -o bin/$(library) $(patsubst $(outdir)main.o,,$(objs))
+ else
+-	ar crs bin/$(library) $(patsubst main.o,,$(objs))
++	ar crs bin/$(library) $(patsubst $(outdir)main.o,,$(objs))
+ endif
+ 
+ # Compile and output object files.
+ # In analysis mode no file is created, so create one
+ # to allow dependency analysis to work.
+ $(outdir)%.o: src/%.cpp
+-	  g++ ${cflags} -c $< -o $(outdir)$(subst src/,,$(<:.cpp=.o))
++	  $(CXX) ${cflags} -c $< -o $(outdir)$(subst src/,,$(<:.cpp=.o))
+ ifeq ($(MODE), analysis)
+ 	  echo > $(outdir)$(subst src/,,$(<:.cpp=.o))
+ endif
+ 
+ # ***** Dependency management
+ depend:
+-	g++ ${cflags} -MM $(sources) | sed 's/^[^\ ]/$$(outdir)&/' > .depend
++	$(CXX) ${cflags} -MM $(sources) | sed 's/^[^\ ]/$$(outdir)&/' > .depend
+ -include .depend
+ 
+ clean: tidy
+diff -ur --exclude=configure /home/dan/M2/BUILD/dan/builds/debian64/libraries/frobby/tmp/frobby_vmike3/src/NullCoefTermConsumer.h frobby_vmike3/src/NullCoefTermConsumer.h
+--- /home/dan/M2/BUILD/dan/builds/debian64/libraries/frobby/tmp/frobby_vmike3/src/NullCoefTermConsumer.h	2008-12-10 21:04:17.000000000 -0500
++++ frobby_vmike3/src/NullCoefTermConsumer.h	2009-02-15 16:18:52.000000000 -0500
+@@ -19,7 +19,7 @@
+ 
+ #include "CoefTermConsumer.h"
+ 
+-class NullCoefTermConsumer : public CoefTermConsumer {
++struct NullCoefTermConsumer : public CoefTermConsumer {
+   virtual ~NullCoefTermConsumer();
+ 
+   virtual void consume(const mpz_class& coef, const Term& term);
+diff -ur --exclude=configure /home/dan/M2/BUILD/dan/builds/debian64/libraries/frobby/tmp/frobby_vmike3/src/hash_map/hash_map frobby_vmike3/src/hash_map/hash_map
+--- /home/dan/M2/BUILD/dan/builds/debian64/libraries/frobby/tmp/frobby_vmike3/src/hash_map/hash_map	2008-12-10 21:04:17.000000000 -0500
++++ frobby_vmike3/src/hash_map/hash_map	2009-02-15 16:18:52.000000000 -0500
+@@ -292,10 +292,10 @@
+     class hash_multimap
+     {
+       // concept requirements
+-      __glibcxx_class_requires(_Key, _SGIAssignableConcept)
+-      __glibcxx_class_requires(_Tp, _SGIAssignableConcept)
+-      __glibcxx_class_requires3(_HashFn, size_t, _Key, _UnaryFunctionConcept)
+-      __glibcxx_class_requires3(_EqualKey, _Key, _Key, _BinaryPredicateConcept)
++      //__glibcxx_class_requires(_Key, _SGIAssignableConcept)
++      //__glibcxx_class_requires(_Tp, _SGIAssignableConcept)
++      //__glibcxx_class_requires3(_HashFn, size_t, _Key, _UnaryFunctionConcept)
++      //__glibcxx_class_requires3(_EqualKey, _Key, _Key, _BinaryPredicateConcept)
+ 	
+     private:
+       typedef hashtable<pair<const _Key, _Tp>, _Key, _HashFn,
+diff -ur --exclude=configure /home/dan/M2/BUILD/dan/builds/debian64/libraries/frobby/tmp/frobby_vmike3/src/stdinc.h frobby_vmike3/src/stdinc.h
+--- /home/dan/M2/BUILD/dan/builds/debian64/libraries/frobby/tmp/frobby_vmike3/src/stdinc.h	2008-12-10 21:04:17.000000000 -0500
++++ frobby_vmike3/src/stdinc.h	2009-02-15 16:30:12.000000000 -0500
+@@ -14,6 +14,7 @@
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see http://www.gnu.org/licenses/.
+ */
++#include <stdio.h> /* to get FILE defined for gmp.h */
+ #include <gmp.h>
+ #include <gmpxx.h>
+ #include <memory>

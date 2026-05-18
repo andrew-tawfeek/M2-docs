@@ -1,0 +1,54 @@
+LICENSEFILES = COPYING
+
+VERSION = 8.3
+SHA256SUM = fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc
+
+URL = ftp://ftp.gnu.org/gnu/readline
+
+BUILDTARGET = all -o install-examples
+INSTALLTARGET = install -o install-examples
+
+ifeq (@SHARED@,no)
+CONFIGOPTIONS += --disable-shared
+else
+BUILDTARGET += shared
+INSTALLTARGET += install-shared
+endif
+
+# some apps (e.g., awk) may break if we don't add this
+CONFIGOPTIONS += --with-curses
+BUILDOPTIONS = SHLIB_LIBS=-lcurses
+
+# warning: we have to set PATCHFILE first, so the dependencies work out, but $(TARFILE_DIR) isn't defined yet, so we use its value here:
+PATCHFILE = $(addprefix @abs_top_srcdir@/BUILD/tarfiles/readline$(shell echo $(VERSION) | sed 's/\.//g')-,$(PATCHES))
+
+ifeq ($(VERSION) @host@,6.2 x86_64-w64-mingw32)
+PATCHFILE += @abs_srcdir@/patch-6.2-mingw64
+endif
+
+include ../Makefile.library
+
+CFLAGS += -Wfatal-errors
+
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/readline/Makefile
+
+PATCHCMD = cd $(BUILDDIR) && for i in $(PATCHFILE) ; do echo patching with $$i ; patch -p0 < $$i ; done
+
+ifeq (@DOWNLOAD@,yes)
+$(PATCHFILE) :
+	rm -f $@
+ifneq (@WGET@,false)
+	cd $(TARFILE_DIR) && @WGET@ $(PATCHURL)/$(notdir $@)
+else
+	cd $(TARFILE_DIR) && @CURL@ --location -o $(notdir $@) $(PATCHURL)/$(notdir $@)
+endif
+else
+$(PATCHFILE) :; echo "patch file not available, and downloading not enabled: $@" >&2 ; false
+endif
+
+clean::
+	rm -rf $(LIBRARIESDIR)/lib/libhistory.* $(LIBRARIESDIR)/lib/libreadline.* \
+		$(LIBRARIESDIR)/include/readline $(LIBRARIESDIR)/info/readline.*
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/libraries/readline "
+# End:

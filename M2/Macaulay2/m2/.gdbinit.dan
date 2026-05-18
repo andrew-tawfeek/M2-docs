@@ -1,0 +1,31 @@
+# -*- sh -*-
+echo -- loading .gdbinit\n
+set print thread-events off
+set auto-load safe-path /
+source .gdb-directories
+source .gdb-files
+b fatalarrayindex
+# b GC_default_warn_proc
+# can only do this after the program starts:
+# b __gmp_set_memory_functions
+# b main
+b fatal
+b ERROR
+b outofmem
+b abort
+b __assert_fail
+catch signal SIGABRT
+set args -q --no-randomize --no-time --no-threads
+handle SIGPWR nostop noprint
+handle SIGXCPU nostop noprint
+set unwindonsignal on
+set env GC_NPROCS 1
+set env GC_MARKERS 1
+
+# fix "During startup program terminated with signal ?, Unknown signal." under Mac OS X:
+set startup-with-shell off
+
+# source .gdb-run-it
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/Macaulay2/m2 "
+# End:

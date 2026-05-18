@@ -1,0 +1,93 @@
+# a library for doing number theory
+LICENSEFILES = doc/copying.txt
+# @configure_input@
+# PATCHFILE = @abs_srcdir@/patch-$(VERSION)
+VERSION = 11.6.0
+SHA256SUM = bc0ef9aceb075a6a0673ac8d8f47d5f8458c72fe806e4468fbd5d3daff056182
+TARDIR = ntl-$(VERSION)
+BUILDDIR = $(UNTARDIR)/$(TARDIR)/src
+TARFILE = ntl-$(VERSION).tar.gz
+URL = https://libntl.org
+CONFIGURECMD = ./configure $(CONFIGUREOPTIONS)
+
+ifeq (@DEBUG@,yes)
+DEB_CPPFLAGS = -DDEBUG
+DEB_CFLAGS = -g -O0
+DEB_CXXFLAGS = -g -O0
+DEB_LDFLAGS = -g
+else
+DEB_CPPFLAGS = -DNDEBUG
+DEB_CFLAGS = -O2
+DEB_CXXFLAGS = -O2
+DEB_LDFLAGS =
+endif
+
+CONFIGUREOPTIONS =							\
+	TUNE=generic							\
+	NATIVE=off							\
+	PREFIX=@pre_libm2dir@						\
+	LIBDIR=@pre_librariesdir@					\
+	INCLUDEDIR=@pre_libm2dir@/include				\
+	DOCDIR=@pre_libm2dir@/share/doc					\
+	NTL_GMP_LIP=on							\
+	NTL_NO_INIT_TRANS=on						\
+	RANLIB="@RANLIB@"						\
+	CXX="@CXX@"							\
+	CXXFLAGS="$(CXXFLAGS) $(DEB_CXXFLAGS)"				\
+	CPPFLAGS="$(CPPFLAGS) $(DEB_CPPFLAGS)"				\
+	LDFLAGS="$(LDFLAGS) $(DEB_LDFLAGS)"			
+
+BUILDOPTIONS =					\
+	MakeDescCFLAGS=-O0			\
+	CPPFLAGS="$(CPPFLAGS) $(DEB_CPPFLAGS)"	\
+	CFLAGS="$(CFLAGS) $(DEB_CFLAGS)"	\
+	CXXFLAGS="$(CXXFLAGS) $(DEB_CXXFLAGS)"	\
+	LDFLAGS="$(LDFLAGS) $(DEB_LDFLAGS)"	\
+	LDFLAGS_CXX="$(LDFLAGS) $(DEB_LDFLAGS)"
+
+# ntl's makefiles give too many warning messages about "jobserver unavailable: using -j1.  Add `+' to parent make rule."
+BUILDOPTIONS += -j1
+
+ifeq (@NTL_WIZARD@,yes)
+CONFIGUREOPTIONS += TUNE=auto
+else
+CONFIGUREOPTIONS += TUNE=generic
+endif
+
+CHECKOPTIONS =					\
+	CFLAGS="$(CFLAGS) $(DEB_CFLAGS)"	\
+	CXXFLAGS="$(CXXFLAGS) $(DEB_CXXFLAGS)"	\
+	LDFLAGS="$(LDFLAGS) $(DEB_LDFLAGS)"	\
+	LDFLAGS_CXX="$(LDFLAGS) $(DEB_LDFLAGS)"
+
+INSTALLOPTIONS =				\
+	CFLAGS="$(CFLAGS) $(DEB_CFLAGS)"	\
+	CXXFLAGS="$(CXXFLAGS) $(DEB_CXXFLAGS)"	\
+	LDFLAGS="$(LDFLAGS) $(DEB_LDFLAGS)"	\
+	LDFLAGS_CXX="$(LDFLAGS) $(DEB_LDFLAGS)"	\
+	PREFIX=$(LIBRARIESDIR)			\
+	LIBDIR=$(LIBRARIESDIR)/lib		\
+	INCLUDEDIR=$(LIBRARIESDIR)/include	\
+	DOCDIR=$(LIBRARIESDIR)/share/doc
+
+INSTALLCMD = $(MAKE) $(INSTALLOPTIONS) install
+
+include ../Makefile.library
+
+uncompile-extra:; @ cd $(BUILDDIR) && $(MAKE) clobber
+check: check-once
+check-once: .installed-$(VERSION)
+	$(MAKE) -C $(BUILDDIR) check
+	touch $@
+clean ::; rm -f check-once
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/ntl/Makefile
+clean uninstall ::
+	if [ -d $(LIBRARIESDIR) ] ;\
+	then cd $(LIBRARIESDIR) && rm -rf include/NTL lib/libntl.* share/doc/NTL  ;\
+	fi
+
+foo:;: LDFLAGS = $(LDFLAGS)
+
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/libraries/ntl "
+# End:

@@ -1,0 +1,48 @@
+SHARED_UNITTEST_CCFILES := \
+  testMain \
+    M2-cpp-replacement \
+    basics-test \
+    fromStream \
+    util-polyring-creation
+
+UNITTEST_CCFILES := \
+    $(SHARED_UNITTEST_CCFILES) \
+    NCGroebnerTest \
+    PointArray \
+    ARingZZTest \
+    ARingQQFlintTest \
+    ARingQQGmpTest \
+    ARingRRTest \
+    ARingCCTest \
+    ARingRRRTest \
+    ARingRRiTest \
+    ARingCCCTest \
+    ARingZZpTest \
+    RingZZTest \
+    RingZZpTest \
+    RingQQTest \
+    RingTowerTest \
+    DMatZZpTest \
+    ResTest \
+    SubsetTest \
+    PolyRingTest \
+    NewF4Test \
+    MonoidTest \
+    MatrixIOTest \
+    RingRRRTest \
+    RingCCCTest
+
+#    WeylAlgebraTest \ # TODO: add in this file
+
+#    ARingGFTest
+
+UNITTEST_TARGET := testMain
+
+GTEST_DIR := $(BUILTLIBPATH)/include/gtest
+
+UNITTEST_OBJECT_FILES :=  $(addsuffix .o, $(UNITTEST_CCFILES))
+UNITTEST_SHARED_OBJECT_FILES :=  $(addsuffix .o, $(SHARED_UNITTEST_CCFILES))
+
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/Macaulay2/e/unit-tests check"
+# End:

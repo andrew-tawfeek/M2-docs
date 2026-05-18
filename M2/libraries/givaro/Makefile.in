@@ -1,0 +1,27 @@
+# http://givaro.forge.imag.fr/
+# svn://scm.forge.imag.fr/var/lib/gforge/chroot/scmrepos/svn/givaro/trunk
+# see also (for older releases) https://forge.imag.fr/projects/givaro for source code
+# see also (for newer releases) https://github.com/linbox-team/givaro/releases
+# compilation of givaro needs a little extra memory
+SUBMODULE = true
+VLIMIT = 900000
+MLIMIT = 900000
+
+URL = https://github.com/linbox-team/givaro
+VERSION = 4.2.1
+# PATCHFILE = @abs_srcdir@/patch-$(VERSION)
+# the patch modifies test/Makefile.am, so we must remake test/Makefile.in
+PRECONFIGURE = autoreconf -vif
+
+LICENSEFILES = COPYRIGHT Licence_CeCILL-B_V1-en.txt Licence_CeCILL-B_V1-fr.txt
+
+# linking givaro as a shared library is bad, because then under Mac OS X its static constructors
+# get run before ours do, and it calls our "operator new", which calls GC_malloc, before we've
+# had a chance to initialize it.
+CONFIGOPTIONS += --disable-shared MAKE="$(MAKE)"
+
+include ../Makefile.library
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/givaro/Makefile
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/libraries/givaro "
+# End:

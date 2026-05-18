@@ -1,0 +1,34 @@
+# http://www.netlib.org/lapack/
+# documentation: http://www.netlib.org/lapack/lug/
+URL = https://github.com/Reference-LAPACK/lapack/archive/refs/tags/
+
+VERSION = 3.12.1
+SHA256SUM = 2ca6407a001a474d4d4d35f3a61550156050c48016d949f0da0529c0aa052422
+
+TARFILE = v$(VERSION).tar.gz
+CONFIGURECMD = cp make.inc.example make.inc
+# see lapack-$(VERSION)/make.inc for the build option combinations:
+BUILDOPTIONS = FC="@FC@" RANLIB=@RANLIB@
+CHECKOPTIONS = $(BUILDOPTIONS)
+ifeq (@FC@,gfortran)
+BUILDOPTIONS += TIMER=INT_ETIME 
+endif
+ifeq (@FC@,f95)
+BUILDOPTIONS += TIMER=INT_ETIME 
+endif
+BUILDTARGET = blaslib lapack_install lib
+LICENSEFILES = LICENSE
+INSTALLCMD = \
+	   install -d $(LIBRARIESDIR)/lib \
+	&& install liblapack.a $(LIBRARIESDIR)/lib \
+	&& install librefblas.a $(LIBRARIESDIR)/lib \
+	&& install libtmglib.a $(LIBRARIESDIR)/lib
+CHECKTARGET = lapack_testing blas_testing
+ifeq (@FC@,)
+prereq:;: $(error no fortran compiler provided)
+endif
+include ../Makefile.library
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/lapack/Makefile
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/libraries/lapack "
+# End:

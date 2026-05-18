@@ -1,0 +1,86 @@
+# -*- Makefile -*-
+
+# these are from include/config.Makefile
+CPPFLAGS := $(M2_CPPFLAGS) $(CPPFLAGS)
+CFLAGS   := $(M2_CFLAGS)   $(CFLAGS)
+CXXFLAGS := $(M2_CXXFLAGS) $(CXXFLAGS) -Wno-unused-local-typedefs
+
+ifeq "$(SHARED)" "yes"
+CXXFLAGS += -fPIC
+endif
+
+ifeq (@AUTOINST@,yes)
+COMPILE.cc += -frepo -fno-rtti
+endif
+
+ifeq (@IMPLINST@,no)
+COMPILE.cc += -fno-implicit-templates
+endif
+
+COMPILE.cpp = $(COMPILE.cc)
+
+%-hpp.o : %.hpp
+	$(SHOW) "CXX $*.hpp"
+	$(HIDE)$(COMPILE.cpp) $(OUTPUT_OPTION) $<
+
+%-h.o : %.h
+	$(SHOW) "CC $*.h"
+	$(HIDE)$(COMPILE.c) $(OUTPUT_OPTION) $<
+
+%.o : %.cpp
+#	$(WHY)
+	$(SHOW)"CXX $*.cpp"
+	$(HIDE)$(COMPILE.cpp) $< $(OUTPUT_OPTION)
+
+%.o : %.cc
+#	$(WHY)
+	$(SHOW)"CXX $*.cc"
+	$(HIDE)$(COMPILE.cc) $< $(OUTPUT_OPTION)
+
+%.s : %.cpp
+	$(SHOW)" ** making $@ from $*.cpp"
+	$(HIDE)$(COMPILE.cpp) -S $< $(OUTPUT_OPTION)
+
+%.E : %.cpp
+	$(SHOW)" ** making $@ from $*.cpp"
+	$(HIDE)$(COMPILE.cpp) -E $< $(OUTPUT_OPTION)
+
+%.s : %.cc
+	$(SHOW)" ** making $@ from $*.cc"
+	$(HIDE)$(COMPILE.cc) -S $< $(OUTPUT_OPTION)
+
+%-E.cpp : %.cc
+	$(SHOW)" ** preprocessing $<, making $@"
+	$(HIDE)$(COMPILE.cc) -E -dD $< $(OUTPUT_OPTION)
+
+%.o : %.c
+#	$(WHY)
+	$(SHOW)"CC $*.c"
+	$(HIDE)$(COMPILE.c) $< $(OUTPUT_OPTION)
+
+% : %.o
+	$(SHOW)"LINKING $@"
+	$(HIDE)$(LINK.cc) $^ $(LOADLIBES) $(LDLIBS) $(OUTPUT_OPTION)
+
+%.dep: %.cpp
+#	$(WHY)
+	$(SHOW)"MKDEP $*.cpp"
+	$(HIDE)$(MKDIR_P) `dirname "$@"`
+	$(HIDE)@CXX@ -MT $@ -MT $*.o -MM -MP $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) $(MORE_OPTIONS) $< >$*.dep
+
+%.dep: %.c
+#	$(WHY)
+	$(SHOW)"MKDEP $*.c"
+	$(HIDE)@CC@  -MT $@ -MT $*.o -MM -MP $(CFLAGS)   $(CPPFLAGS) $(TARGET_ARCH) $(MORE_OPTIONS) $< >$*.dep
+
+@pre_librariesdir@/libengine.so: $(LOFILES)
+	$(HIDE)$(MKDIR_P) $(@D)
+	@CC@ -shared $^ $(OUTPUT_OPTION)
+
+@pre_librariesdir@/libengine.a: $(ENGINE_OFILES)
+	$(HIDE)$(MKDIR_P) $(@D)
+	@AR@ rcs $@ $^
+
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/Macaulay2/e DEPENDS=no initialize && make -C $M2BUILDDIR/Macaulay2/e Makefile.common "
+# End:

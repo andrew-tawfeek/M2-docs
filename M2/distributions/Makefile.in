@@ -1,0 +1,35 @@
+# @configure_input@
+include ../include/config.Makefile
+VPATH = @srcdir@
+all:
+.PHONY: all
+$(foreach d,top tar freebsd dmg,		\
+	$(eval .PHONY: all-in-$d)		\
+	$(eval all-in-$d:; + $(MAKE) -C $d all))
+ifeq "@M2TARFILE@" "yes"
+all: all-in-tar
+endif
+ifeq "@FREEBSD@" "yes"
+all: all-in-freebsd
+endif
+ifeq "@DMG@" "yes"
+all: all-in-dmg
+endif
+$(foreach t,clean distclean,						\
+   $(foreach d,dmg freebsd tar top install, $(eval			\
+      .PHONY: $t $t-in-$d						\
+						          )$(eval	\
+      $t: $t-in-$d							\
+						          )$(eval	\
+      $t-in-$d:; + $(MAKE) -C $d $t					\
+						)))
+$(foreach t,install,					\
+	$(foreach d,top install,			\
+		$(eval .PHONY: $t $t-in-$d)		\
+		$(eval $t: $t-in-$d)			\
+		$(eval $t-in-$d:; + $(MAKE) -C $d $t)))
+Makefile: Makefile.in; cd ..; ./config.status distributions/Makefile
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/distributions "
+# End:
+.NOTPARALLEL:

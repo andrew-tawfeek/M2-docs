@@ -1,0 +1,27 @@
+#############################################################################
+
+VERSION = 4.2.2
+SHA256SUM = 826cbb24610bd193f36fde172233fb8c009f3f5c2ad99f644d0dea2e16a20e42
+LICENSEFILES = README COPYING.LESSER
+TARFILE = $(LIBNAME)-$(VERSION).tar.gz
+
+URL = https://www.mpfr.org/mpfr-$(VERSION)
+
+ifeq (@DEBUG@,yes)
+CONFIGOPTIONS += --enable-assert
+endif
+
+ifeq (@SHARED@,no)
+CONFIGOPTIONS += --disable-shared
+endif
+
+# PRECONFIGURE = autoreconf -i
+include ../Makefile.library
+
+BUILDOPTIONS += CPPFLAGS="$(CPPFLAGS)"
+CHECKOPTIONS += CPPFLAGS="$(CPPFLAGS)"
+
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/mpfr/Makefile
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/libraries/mpfr "
+# End:

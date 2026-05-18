@@ -1,0 +1,32 @@
+SUBMODULE = true
+# LIBNAME = flint2
+HOMEPAGE = http://flintlib.org
+URL = https://github.com/flintlib/flint
+VERSION = 3.5.0
+# PATCHFILE = @abs_srcdir@/patch-$(VERSION)
+PARALLEL = yes
+
+# Many other tests keep failing, so disable them all:
+CHECKTARGET = .
+
+LICENSEFILES = COPYING
+ifeq (@DEBUG@,yes)
+CONFIGOPTIONS += --enable-assert
+CFLAGS += -O0 -fno-unroll-loops 
+endif
+CFLAGS += -std=c90 -pedantic-errors
+
+PRECONFIGURE = ./bootstrap.sh
+CONFIGOPTIONS += --disable-shared
+
+ifneq ($(VERBOSE),)
+BUILDOPTIONS += AT= QUIET_CC= QUIET_CXX= QUIET_AR=
+endif
+
+include ../Makefile.library
+
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/flint/Makefile
+# Local Variables:
+# mode: makefile-gmake
+# compile-command: "make -C $M2BUILDDIR/libraries/flint "
+# End:

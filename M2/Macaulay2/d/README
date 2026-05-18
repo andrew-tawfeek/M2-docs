@@ -1,0 +1,8 @@
+To do:
+
+   Instead of putting a mutex field in each hash table, use the address of the
+   of the hash table as a hash code to index into an array of 31, say,  mutexes.
+   Do the same for other types of tasks.
+
+   Instead of using pthread_join, which cannot be interrupted by the user, we should
+   have the terminating thread deposit its answer in the ThreadCell and go away.

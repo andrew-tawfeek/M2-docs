@@ -1,0 +1,35 @@
+VPATH = @srcdir@
+HOMEPAGE = https://numpi.dm.unipi.it/software/mpsolve 
+VERSION = 3.2.3
+SHA256SUM = 1f2e239c698c783b63a5e6903e76316c0335a01d71c466a8551e8a3f790b3971
+TARFILE = $(LIBNAME)-$(VERSION).tar.bz2
+TAROPTIONS = --bzip2
+URL = https://numpi.dm.unipi.it/wp-content/uploads/2025/08
+
+# PATCHFILE = @abs_srcdir@/patch-$(VERSION)
+
+LICENSEFILES = README
+
+# their use of libtool prevents this from working -- somehow "make install" rebuilds mpsolve during the installation, after we strip it
+# STRIPFILES = src/mpsolve/mpsolve
+
+# yacc-generated files shipped in 3.2.3 tarball result in errors when using
+# newer compilers, so we remove them so bison can regenerate them
+PRECONFIGURE = autoreconf -fvi && \
+	rm src/libmps/monomial/yacc-parser.c && \
+	rm src/libmps/monomial/yacc-parser.h
+
+INSTALLTARGET = install-strip
+CONFIGOPTIONS += --disable-shared		\
+		 --disable-dependency-tracking	\
+                 --disable-examples		\
+		 --disable-debug		\
+		 --disable-silent-rules		\
+                 --disable-ui			\
+		 --disable-graphical-debugger	\
+                 --disable-documentation
+include ../Makefile.library
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/mpsolve/Makefile
+# Local Variables:
+# compile-command: "make -w -C $M2BUILDDIR/libraries/mpsolve "
+# End:

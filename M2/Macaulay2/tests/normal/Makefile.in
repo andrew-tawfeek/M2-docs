@@ -1,0 +1,23 @@
+# @configure_input@
+# DOTS is the path to M2/Macaulay2 from this directory
+DOTS = ../..
+include $(DOTS)/../include/config.Makefile
+VPATH = @srcdir@
+
+SRCDIR = @srcdir@
+include ../Makefile.test
+
+# often takes longer than 90s in GitHub builds
+release-checklist.out: TLIMIT = 180
+
+Makefile: Makefile.in; cd $(DOTS)/..; ./config.status Macaulay2/tests/normal/Makefile
+
+@pre_packagesdir@/Core/tests: @pre_packagesdir@/Core; $(MKDIR_P) $@
+@pre_packagesdir@/Core/tests/%: % | @pre_packagesdir@/Core/tests
+	@INSTALL_DATA@ $< $@
+
+all: $(patsubst $(SRCDIR)/%.m2, @pre_packagesdir@/Core/tests/%.m2, $(wildcard $(SRCDIR)/*.m2))
+
+# Local Variables:
+# compile-command: "make -k -C $M2BUILDDIR/Macaulay2/tests/normal check "
+# End:

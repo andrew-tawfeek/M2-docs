@@ -1,0 +1,25 @@
+HOMEPAGE = https://www.normaliz.uni-osnabrueck.de/
+# get releases from https://github.com/Normaliz/Normaliz/releases
+VERSION = 3.11.1
+SHA256SUM = 9a00d590f0fdcad847e2189696d2842d97ed896ed36c22421874a364047f76e8
+#PATCHFILE = @abs_srcdir@/patch-$(VERSION)
+
+URL = https://github.com/Normaliz/Normaliz/releases/download/v$(VERSION)
+FIXTARCMD = :
+
+PRECONFIGURE = autoreconf -vif
+CONFIGOPTIONS += --disable-shared \
+	--without-cocoalib        \
+	--without-flint           \
+	--without-nauty           \
+	--without-e-antic
+
+PROGRAMS = source/normaliz
+STRIPFILES = source/normaliz
+LICENSEFILES = COPYING
+CHECKTARGET = .
+include ../Makefile.library
+Makefile: @srcdir@/Makefile.in ; cd ../.. && ./config.status libraries/normaliz/Makefile
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/libraries/normaliz "
+# End:

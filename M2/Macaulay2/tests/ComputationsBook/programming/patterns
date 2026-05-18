@@ -1,0 +1,2 @@
+# the order of elements in a set can vary
+s/^o76 = set .*/o76 = set {...}/

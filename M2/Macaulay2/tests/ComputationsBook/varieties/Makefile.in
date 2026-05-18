@@ -1,0 +1,10 @@
+# @configure_input@
+chapter_srcdir = @srcdir@
+
+include ../Makefile.chapter
+
+Makefile: Makefile.in; cd ../../../..; ./config.status Macaulay2/tests/ComputationsBook/varieties/Makefile
+
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/Macaulay2/tests/ComputationsBook/varieties "
+# End:

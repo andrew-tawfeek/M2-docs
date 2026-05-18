@@ -1,0 +1,45 @@
+# @configure_input@
+include ../../../include/config.Makefile
+VPATH = @srcdir@
+SRCDIR = @srcdir@
+DEPENDS = yes
+include ../Makefile.common
+include ../Makefile.files
+include @srcdir@/Makefile.files
+export LD_LIBRARY_PATH := $(BUILTLIBPATH)/lib:$(LD_LIBRARY_PATH)
+
+CPPFLAGS := -I. -I@srcdir@  -I@srcdir@/..  $(CPPFLAGS) \
+     -isystem $(GTEST_DIR) -isystem $(GTEST_DIR)/include
+CXXFLAGS += -std=gnu++17 -Wno-sign-conversion
+
+LOADLIBES += @BUILTLIBS@ @LINALGLIBS@ @LIBS@ @FCLIBS@ -lgtest -pthread
+
+.PHONY: runtests
+
+all: $(UNITTEST_OBJECT_FILES) $(LIBENGINE)
+
+check: runtests
+
+fullCheck: $(UNITTEST_TARGET)
+	valgrind --track-origins=yes ./$(UNITTEST_TARGET)
+
+$(UNITTEST_TARGET) : $(UNITTEST_OBJECT_FILES) $(LIBENGINE)
+	@CXX@ $(LDFLAGS) $^ $(LOADLIBES) -o $@
+
+runtests: $(UNITTEST_TARGET)
+	time ./$(UNITTEST_TARGET)
+
+MORE_OPTIONS = -Wno-cast-qual
+COMPILE.cc += $(MORE_OPTIONS)
+
+Makefile: Makefile.in; cd ../../..; ./config.status Macaulay2/e/unit-tests/Makefile
+clean::; rm -f *.o *.rpo *.dep dep-*.tmp LOGFILE testMain
+distclean: clean; rm -f Makefile
+
+ifeq "$(DEPENDS)" "yes"
+include $(UNITTEST_CCFILES:=.dep)
+endif
+
+# Local Variables:
+# compile-command: "make -C $M2BUILDDIR/Macaulay2/e/unit-tests check"
+# End:

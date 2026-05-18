@@ -1,0 +1,211 @@
+--		Copyright 1994,2010 by Daniel R. Grayson
+use common;
+
+setupconst("Type",Expr(typeClass));
+setupconst("Thing",Expr(thingClass));
+setupconst("HashTable",Expr(hashTableClass));
+setupconst("Dictionary",Expr(dictionaryClass));
+setupconst("LocalDictionary",Expr(localDictionaryClass));
+setupconst("GlobalDictionary",Expr(globalDictionaryClass));
+setupconst("Pseudocode",Expr(pseudocodeClass));
+setupconst("PseudocodeClosure",Expr(pseudocodeClosureClass));
+setupconst("FunctionBody",Expr(functionBodyClass));
+setupconst("SymbolBody",Expr(symbolBodyClass));
+setupconst("CompiledFunctionBody",Expr(compiledFunctionBodyClass));
+setupconst("MutableHashTable",Expr(mutableHashTableClass));
+setupconst("CacheTable",Expr(cacheTableClass));
+setupconst("BasicList",Expr(basicListClass));
+setupconst("List",Expr(listClass));
+setupconst("MutableList",Expr(mutableListClass));
+setupconst("ZZ",Expr(ZZClass));
+setupconst("QQ",Expr(QQClass));
+setupconst("RingFamily",Expr(ringFamilyClass));
+setupconst("InexactFieldFamily",Expr(inexactNumberTypeClass));
+setupconst("RRi",Expr(RRiClass));
+setupconst("RR",Expr(RRClass));
+setupconst("CC",Expr(CCClass));
+setupconst("CCi",Expr(CCiClass));
+setupconst("RingElement",Expr(ringElementClass));
+setupconst("Number",Expr(numberClass));
+setupconst("InexactNumber",Expr(inexactNumberClass));
+setupconst("RawObject",Expr(rawObjectClass));
+setupconst("RawMonomial",Expr(rawMonomialClass));
+setupconst("RawMonomialOrdering",Expr(rawMonomialOrderingClass));
+setupconst("RawMonoid",Expr(rawMonoidClass));
+setupconst("RawRing",Expr(rawRingClass));
+setupconst("RawFreeModule",Expr(rawFreeModuleClass));
+setupconst("RawMatrix",Expr(rawMatrixClass));
+setupconst("RawMutableMatrix",Expr(rawMutableMatrixClass));
+setupconst("RawMutableComplex",Expr(rawMutableComplexClass));
+-- NAG begin
+setupconst("RawHomotopy",Expr(rawHomotopyClass));
+setupconst("RawSLEvaluator",Expr(rawSLEvaluatorClass));
+setupconst("RawSLProgram",Expr(rawSLProgramClass));
+setupconst("RawStraightLineProgram",Expr(rawStraightLineProgramClass));
+setupconst("RawPathTracker",Expr(rawPathTrackerClass));
+setupconst("RawPointArray",Expr(rawPointArrayClass));
+-- NAG end
+setupconst("RawComputation",Expr(rawComputationClass));
+setupconst("RawRingElement",Expr(rawRingElementClass));
+setupconst("RawRingMap",Expr(rawRingMapClass));
+setupconst("RawMonomialIdeal",Expr(rawMonomialIdealClass));
+setupconst("MysqlConnection",Expr(mysqlConnectionClass));
+setupconst("PythonObject",Expr(pythonObjectClass));
+setupconst("LibxmlNode",Expr(xmlNodeClass));
+setupconst("LibxmlAttribute",Expr(xmlAttrClass));
+setupconst("MysqlField",Expr(mysqlFieldClass));
+setupconst("MysqlResult",Expr(mysqlResultClass));
+setupconst("File",Expr(fileClass));
+setupconst("String",Expr(stringClass));
+setupconst("Function",Expr(functionClass));
+setupconst("FunctionClosure",Expr(functionClosureClass));
+setupconst("CompiledFunction",Expr(compiledFunctionClass));
+setupconst("CompiledFunctionClosure",Expr(compiledFunctionClosureClass));
+setupconst("Symbol",Expr(symbolClass));
+setupconst("Keyword",Expr(keywordClass));
+setupconst("Time",Expr(timeClass));
+setupconst("Option",Expr(optionClass));
+setupconst("OptionTable",Expr(optionTableClass));
+setupconst("Net",Expr(netClass));
+setupconst("NetFile",Expr(netFileClass));
+setupconst("true",True);
+setupconst("false",False);
+setupconst("null",nullE);
+setupconst("Boolean",Expr(booleanClass));
+setupconst("Database",Expr(dbClass));
+setupconst("Sequence",Expr(sequenceClass));
+setupconst("VisibleList",Expr(visibleListClass));
+setupconst("Array",Expr(arrayClass));
+setupconst("AngleBarList",Expr(angleBarListClass));
+setupconst("Ring",Expr(ringClass));
+setupconst("Nothing",Expr(nothingClass));
+setupconst("Task",Expr(taskClass));
+setupconst("FileOutputSyncState",Expr(fileOutputSyncStateClass));
+setupconst("Pointer",Expr(pointerClass));
+setupconst("AtomicInt",Expr(atomicIntClass));
+setupconst("Error",Expr(errorClass));
+setupconst("Mutex",Expr(mutexClass));
+
+export ancestor(o:HashTable,p:HashTable):bool := (
+     while true do (
+	  if o == p then return true;
+	  if o == thingClass then return false;
+	  o = o.parent;
+	  ));
+
+ancestorfun(e:Expr):Expr := (
+     when e
+     is args:Sequence do (
+	  x := args.1;					    -- args reversed
+	  y := args.0;
+	  if x==y then return True;
+	  when x
+	  is xx:HashTable do (
+	       when y 
+	       is yy:HashTable do if ancestor(xx,yy) then True else False
+	       else WrongArgHashTable(1))
+	  else WrongArgHashTable(2))
+     else WrongNumArgs(2));
+-- # typical value: ancestor, Type, Type, Boolean
+setupfun("ancestor",ancestorfun);
+
+export Parent(e:Expr):HashTable := (
+     when e
+     -- # typical value: parent, HashTable, HashTable
+     is obj:HashTable do obj.parent
+     -- # typical value: parent, Thing, Type
+     is s:SpecialExpr do Parent(s.e)
+     else nothingClass);
+export parentfun(e:Expr):Expr := Expr(Parent(e));
+setupfun("parent",parentfun);
+
+export Class(err:Error):HashTable := (
+    when err.value
+    is x:HashTable do (
+	if ancestor(x, errorClass) then x
+	else errorClass)
+    else errorClass);
+
+export Class(e:Expr):HashTable := (
+     when e
+     is obj:HashTable do obj.Class
+     is x:List do x.Class
+     is ZZcell do ZZClass
+     is PseudocodeClosure do pseudocodeClosureClass
+     is Pseudocode do pseudocodeClass
+     is pythonObjectCell do pythonObjectClass
+     is xmlNodeCell do xmlNodeClass
+     is TaskCell do taskClass
+     is xmlAttrCell do xmlAttrClass
+     is MysqlConnectionWrapper do mysqlConnectionClass
+     is MysqlResultWrapper do mysqlResultClass
+     is MysqlFieldWrapper do mysqlFieldClass
+     is functionCode do functionBodyClass
+     is CompiledFunctionBody do compiledFunctionBodyClass
+     is QQcell do QQClass
+     is file do fileClass
+     is dc:DictionaryClosure do if isglobaldict(dc.dictionary) then globalDictionaryClass else localDictionaryClass
+     is stringCell do stringClass
+     is FunctionClosure do functionClosureClass
+     is Net do netClass
+     is NetFile do netFileClass
+     is err:Error do Class(err)
+     is Sequence do sequenceClass
+     is CompiledFunction do compiledFunctionClass
+     is CompiledFunctionClosure do compiledFunctionClosureClass
+     is s:SymbolClosure do if s.symbol.word.parse == parseWORD then symbolClass else keywordClass
+     is SymbolBody do symbolBodyClass
+     is RRicell do RRiClass
+     is RRcell do RRClass
+     is CCcell do CCClass
+     is CCicell do CCiClass
+     is RawComputationCell do rawComputationClass
+     is Nothing do nothingClass
+     is Database do dbClass
+     is e:SpecialExpr do e.Class
+     is Boolean do booleanClass
+     is RawMonomialCell do rawMonomialClass
+     is RawMonomialOrderingCell do rawMonomialOrderingClass
+     is RawMonoidCell do rawMonoidClass
+     is RawMonomialIdealCell do rawMonomialIdealClass
+     is RawRingCell do rawRingClass
+     is RawRingElementCell do rawRingElementClass
+     is RawRingMapCell do rawRingMapClass
+     is RawFreeModuleCell do rawFreeModuleClass
+     is RawMatrixCell do rawMatrixClass
+     is RawMutableMatrixCell do rawMutableMatrixClass
+     is RawMutableComplexCell do rawMutableComplexClass
+     -- NAG begin
+     is RawHomotopyCell do rawHomotopyClass
+     is RawSLEvaluatorCell do rawSLEvaluatorClass
+     is RawSLProgramCell do rawSLProgramClass
+     is RawStraightLineProgramCell do rawStraightLineProgramClass
+     is RawPathTrackerCell do rawPathTrackerClass
+     is RawPointArrayCell do rawPointArrayClass
+     -- NAG end
+     is fileOutputSyncState do fileOutputSyncStateClass
+     is pointerCell do pointerClass
+     is atomicIntCell do atomicIntClass
+     is mutexCell do mutexClass
+     );
+classfun(e:Expr):Expr := Expr(Class(e));
+-- # typical value: class, Thing, Type
+setupfun("class",classfun);
+
+instanceof(e:Expr):Expr := (
+    when e   is s:Sequence  do
+    when s.1 is T:HashTable do
+    -- # typical value: instance, Thing, Type, Boolean
+    if ancestor(Class(s.0), T) then True else False
+    else WrongArgHashTable(2)
+    else WrongNumArgs(2));
+setupfun("instance", instanceof);
+
+export commonAncestor(x:HashTable,y:HashTable):HashTable :=
+     if ancestor(x,y) then y
+     else if y == thingClass then y	-- shouldn't occur
+     else commonAncestor(x,y.parent)
+
+-- Local Variables:
+-- compile-command: "echo \"make: Entering directory \\`$M2BUILDDIR/Macaulay2/d'\" && make -C $M2BUILDDIR/Macaulay2/d classes.o "
+-- End:

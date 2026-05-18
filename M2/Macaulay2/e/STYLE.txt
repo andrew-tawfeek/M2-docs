@@ -1,0 +1,21 @@
+Coding standards to follow when writing code in the Macaulay2 engine
+
+1. Run your c++ code through clang-format as in:
+
+   find Macaulay2/e -name \*.cpp -o -name \*.hpp | xargs clang-format-3.8 -i -style=file
+
+   or, more simply, in the e directory (or subdirectories), run, on e.g. foo.hpp, foo.cpp:
+
+   clang-format-3.8 -i -style=file foo.hpp
+   clang-format-3.8 -i -style=file foo.cpp
+
+   The .clang-format file is in the top level M2 directory.
+
+   In particular, no tabs in these files.
+   
+2. Header file placement.
+
+   See
+
+       https://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes
+
