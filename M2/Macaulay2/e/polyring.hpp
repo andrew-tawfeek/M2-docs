@@ -3,6 +3,38 @@
 #ifndef _polyring_hpp_
 #define _polyring_hpp_
 
+/**
+ * @file polyring.hpp
+ * @brief `PolynomialRing` --- abstract polynomial-ring base, the engine's most-reused class.
+ *
+ * Declares the abstract `PolynomialRing` (`R[x_1, ..., x_n]`)
+ * along with its forward-declared subclasses: `PolyRingFlat`
+ * (intermediate that asserts the coefficient ring is not itself
+ * polynomial), the commutative `PolyRing`, the
+ * skew-commutative / exterior `PolyRingSkew`, the
+ * `PolyRingWeyl` for Weyl algebras, the non-commutative
+ * `PolyRingNC`, and `PolyQuotient` for `R / I`. Per-flavour
+ * dispatch happens through the `is_skew_`, `is_weyl_`,
+ * `is_solvable_` flags on the base (cheap branch in hot paths)
+ * and through virtuals where the divergence is broader.
+ *
+ * The base carries the monoid (`Monoid*`, see `monoid.hpp`) and
+ * the coefficient ring (`Ring*`, typically an aring wrapper), a
+ * graded-ring flag, and the `SkewMultiplication` configuration
+ * used when same-variable multiplications collapse to zero in
+ * exterior-like rings. A small friend graph (`GBRing`,
+ * `GBRingSkew`, `GBComputation`) reaches into the encoded
+ * monomial layout without going through virtual calls --- the
+ * tight-loop performance lever. Construction happens through
+ * factories in `polyring.cpp` and the M2-side `enginering.m2`;
+ * direct construction is rare.
+ *
+ * @see poly.hpp
+ * @see polyquotient.hpp
+ * @see monoid.hpp
+ * @see gbring.hpp
+ */
+
 #include "ringelem.hpp"
 
 #include <vector>
