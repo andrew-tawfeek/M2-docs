@@ -1,3 +1,29 @@
+/**
+ * @file matrix-kbasis.cpp
+ * @brief `KBasis` --- k-vector-space basis of a graded module restricted to chosen degrees.
+ *
+ * Implements the engine code behind M2's `basis(d, M)`: given a
+ * graded module `M` and a degree vector (or `(lo, hi)` range),
+ * return a single-row `Matrix` whose columns are the standard
+ * monomials of `M` in the requested degrees. The algorithm
+ * computes the leading-term monomial ideal of `M`'s presentation
+ * (via a GB if not already available) and enumerates standard
+ * monomials by complement, walking the monomial-ideal tree once
+ * rather than the naive variable-exponentiation that would blow
+ * up exponentially. The same file produces the leading-term
+ * basis variant and extends generator-by-generator over free
+ * modules of arbitrary rank.
+ *
+ * The Hilbert-function counts in `hilb.hpp` are derived from
+ * exactly these basis sizes; the non-commutative analogue lives
+ * in `matrix-ncbasis.cpp` because the NC monomial structure is
+ * different.
+ *
+ * @see matrix-con.hpp
+ * @see monideal.hpp
+ * @see hilb.hpp
+ */
+
 #include <stddef.h>  // for NULL
 #include <vector>    // for vector
 
