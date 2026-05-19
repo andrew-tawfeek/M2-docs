@@ -3,6 +3,34 @@
 #ifndef _aring_gf_m2_hpp_
 #define _aring_gf_m2_hpp_
 
+/**
+ * @file aring-m2-gf.hpp
+ * @brief `M2::ARingGFM2` --- native engine Galois field, no FLINT/Givaro dependency.
+ *
+ * `ARingGFM2` implements `GF(p^k)` entirely in engine code as a
+ * `SimpleARing<ARingGFM2>` with `elem = GFElement` (an `int` log
+ * index of a chosen primitive root, `0` reserved for the field zero
+ * --- the same convention as `aring-zzp.hpp`, generalised to extension
+ * fields). Construction picks a base `Z/p`, a primitive polynomial
+ * `f(t)` of degree `k`, builds `GF(p^k) = (Z/p)[t] / f(t)`, locates a
+ * primitive element of the multiplicative group, and precomputes
+ * log / exp / Zech tables of size `p^k`. With those in place every
+ * operation reduces to one or two integer lookups; the table-based
+ * approach is fast up to roughly `p^k = 32000`.
+ *
+ * The class is kept around for three reasons: it works without any
+ * external GF library (so minimal builds still have a GF), it serves
+ * as the reference implementation that the FLINT and Givaro variants
+ * are validated against, and it integrates with the engine's
+ * `polyring.hpp` so a user-supplied primitive polynomial in M2's
+ * natural form can drive construction.
+ *
+ * @see aring-gf-flint.hpp
+ * @see aring-gf-flint-big.hpp
+ * @see GF.hpp
+ * @see aring-zzp.hpp
+ */
+
 #include "interface/random.h"
 #include "aring.hpp"
 #include "buffer.hpp"
