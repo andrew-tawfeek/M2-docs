@@ -2,6 +2,35 @@
 #ifndef _aring_tower_hpp_
 #define _aring_tower_hpp_
 
+/**
+ * @file aring-tower.hpp
+ * @brief `M2::ARingTower` --- iterated finite-field extension tower for very large `GF(p^k)`.
+ *
+ * Builds a finite field as a chain `L_0 = Z/p`,
+ * `L_i = L_{i-1}[t_i] / f_i(t_i)`. A field element at level `k` is a
+ * polynomial in `t_k` of degree less than `deg(f_k)` whose
+ * coefficients themselves live in `L_{k-1}`, so values are
+ * represented recursively as `ARingPolynomial` structs (degree,
+ * length, coefficient array) bottoming out at `Z/p` arithmetic from
+ * `aring-zzp-ffpack.hpp`. Multiplication at each level is polynomial
+ * multiplication followed by reduction modulo the level's minimal
+ * polynomial.
+ *
+ * The tower path is what makes `GF(2^60)` and similar giants
+ * practical: storage drops from `O(p^k)` (impossible to tabulate at
+ * scale) to the sum of subfield sizes. The trade-off is per-operation
+ * cost: each multiply walks the tower of polynomial reductions
+ * instead of dispatching a single FLINT call as
+ * `aring-gf-flint-big.hpp` does, so the dispatcher prefers the FLINT
+ * path for standard `GF(p^k)` and uses `ARingTower` whenever the user
+ * has specified an explicit tower structure.
+ *
+ * @see aring-zzp-ffpack.hpp
+ * @see aring-gf-flint.hpp
+ * @see aring-gf-flint-big.hpp
+ * @see ExponentVector.hpp
+ */
+
 #include <vector>
 #include <string>
 
