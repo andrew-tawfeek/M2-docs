@@ -3,6 +3,32 @@
 #ifndef _F4types_h_
 #define _F4types_h_
 
+/**
+ * @file f4/f4-types.hpp
+ * @brief Shared type vocabulary used across the F4 engine: `spair`, `gbelem_type`, `sizeofspair`.
+ *
+ * Declares the inner-loop record types the F4 algorithm
+ * shares: the `spair` struct (with a flexible `lcm` array at
+ * the end and the matching `sizeofspair(s, len)` macro that
+ * computes the right byte size for a given lcm length, the
+ * standard C trick for inline variable-length data also seen
+ * in `gbring.hpp`'s `gbvector`), the `gbelem_type` enum
+ * (`ELEM_IN_RING`, `ELEM_POSSIBLE_MINGEN`, `ELEM_MIN_GB`,
+ * `ELEM_NON_MIN_GB`) tagging each basis element so the
+ * algorithm can return the right subset to the user, and the
+ * basis-array typedefs the rest of the F4 vocabulary consumes.
+ *
+ * Pulls together the encoded-monomial layer (`moninfo.hpp`,
+ * `varpower-monomial.hpp`), the lookup-table type
+ * (`f4-monlookup.hpp`), and the templated coefficient
+ * arithmetic (`VectorArithmetic.hpp`). Counterpart to the new
+ * F4 engine's `gb-f4/MonomialTypes.hpp`.
+ *
+ * @see f4.hpp
+ * @see f4-spairs.hpp
+ * @see moninfo.hpp
+ */
+
 
 #include <climits>                   // for INT_MIN
 #include "VectorArithmetic.hpp"      // for ElementArray
