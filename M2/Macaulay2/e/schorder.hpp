@@ -19,17 +19,21 @@
  * `schreyer_compare_encoded` use these to compare
  * `(m, m_comp)` against `(n, n_comp)` by applying the ambient
  * monomial order to `base * m` vs `base * n` and tiebreaking
- * by `compare_num`; the helpers `schreyer_up` and
- * `schreyer_down` multiply / divide a monomial by the
- * inducing base monomial in place.
+ * by `compare_num`; the helpers `schreyer_up(m, comp, result)`
+ * and `schreyer_down(m, comp, result)` multiply / divide `m` by
+ * the inducing base monomial and write into `result` (which is
+ * allowed to alias `m`).
  *
- * A free module starts without a Schreyer order;
- * `Eschreyer.cpp` and the modern `schreyer-resolution/`
- * install one (via `create(Matrix*)` / `create(GBMatrix*)`)
- * when the module is the target of a Schreyer syzygy step.
- * The standard transformations `sub_space`, `direct_sum`,
- * `tensor`, `exterior`, `symm`, and `append_order` return a
- * fresh `SchreyerOrder` matching the corresponding `FreeModule`
+ * The destructor `~SchreyerOrder()` is `abort()` --- the class
+ * is not meant to be `delete`d. Use `remove()` to release the
+ * `_order` storage when a holder is finished with it. A free
+ * module starts without a Schreyer order; `Eschreyer.cpp` and
+ * the modern `schreyer-resolution/` install one (via
+ * `create(Matrix*)` / `create(GBMatrix*)`) when the module is
+ * the target of a Schreyer syzygy step. The standard
+ * transformations `sub_space`, `direct_sum`, `tensor`,
+ * `exterior`, `symm`, and `append_order` return a fresh
+ * `SchreyerOrder` matching the corresponding `FreeModule`
  * operations.
  *
  * @see freemod.hpp
