@@ -13,14 +13,15 @@
  * and convert the basis to the target ordering by recomputing
  * along each face of the Groebner fan. The header comment notes
  * the implementation is not yet known to be working --- the
- * file is in the tree for completeness alongside the other
- * `Strategy =>` variants but should not be relied on without
- * verification.
+ * file is in the tree alongside the other GB variants but
+ * should not be relied on without verification.
  *
- * `GBWalker` plugs into the same dispatch entry as
- * `gb-default.hpp` (the default Buchberger `gbA`) and the other
- * specialisations (`gb-homog2.hpp`, `gb-sugarless.hpp`,
- * `gb-toric.hpp`); the user reaches it via `Strategy =>` only.
+ * `GBWalker` is reached through its own `extern "C"` entry point
+ * `rawGroebnerWalk` in `interface/groebner.cpp` rather than
+ * through the `algorithm`-keyed switch in `comp-gb.cpp` that
+ * picks between `gbA` (`gb-default.hpp`), the homogeneous
+ * `GB_comp` / `GBinhom_comp`, the toric `binomialGB_comp`
+ * (`gb-toric.hpp`), the legacy F4 and the new-F4 (`gb-f4/`).
  * It carries the same `GBRing` / `gbvector` / `MarkedGB`
  * vocabulary as the rest of the GB family.
  *
