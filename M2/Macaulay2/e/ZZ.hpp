@@ -3,6 +3,32 @@
 #ifndef _ZZ_hh_
 #define _ZZ_hh_
 
+/**
+ * @file ZZ.hpp
+ * @brief Legacy `Ring`-based integer ring (GMP `mpz_t` values).
+ *
+ * `ZZ` is the engine's original integer-ring class, pre-dating the
+ * `aring` framework. It inherits from `Ring` directly and uses GMP
+ * `mpz_t` as the value type. It still appears along the oldest
+ * `rawZZ()` interpreter paths and in code that intentionally opts
+ * into the legacy `Ring`-only API for compatibility testing; modern
+ * engine code prefers the FLINT-backed `aring` variant exposed
+ * through `interface/aring.h`.
+ *
+ * Three integer rings coexist today: `ZZ` (this file, GMP),
+ * `M2::ARingZZGMP` (GMP via the aring framework), and `M2::ARingZZ`
+ * (FLINT via the aring framework). The legacy class is essentially
+ * `ARingZZGMP` minus the `SimpleARing` CRTP scaffolding. The
+ * old-style-cast wrapper functions at the top (`mask_mpz_cmp_si`,
+ * `mask_mpq_cmp_si`) are vestigial bookkeeping from when M2 had to
+ * tolerate very old GMP versions.
+ *
+ * @see aring-zz-flint.hpp
+ * @see aring-zz-gmp.hpp
+ * @see aring.hpp
+ * @see aring-glue.hpp
+ */
+
 #include "error.h"
 #include "ring.hpp"
 #include <cstddef>
