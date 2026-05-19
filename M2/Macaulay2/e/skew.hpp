@@ -3,6 +3,29 @@
 #ifndef _skew_hpp_
 #define _skew_hpp_
 
+/**
+ * @file skew.hpp
+ * @brief `SkewMultiplication` --- configuration object naming the skew-commuting variables of a ring.
+ *
+ * Declares `SkewMultiplication`, the pure-data record a
+ * `PolyRing` (and the F4 `MonomialInfo`) attaches when the user
+ * declares a subset of the variables to skew-commute. The
+ * record carries the total variable count, the skew-variable
+ * count, an ordered `_skew_list` of skew-variable indices for
+ * iteration, and a `_skew_exp` boolean bitmap indexed by
+ * variable for O(1) lookup --- the two representations exist
+ * for the different hot-loop patterns engine code walks. The
+ * helper `skew_degree(exp)` counts how many variables of an
+ * exponent vector are skew.
+ *
+ * `SkewMultiplication` does not perform multiplication itself.
+ * It is consulted by the surrounding ring code (`skewpoly.cpp`
+ * and the F4 monomial machinery) to compute the sign that
+ * arises when the skew product permutes two skew generators.
+ *
+ * @see polyring.hpp
+ */
+
 class SkewMultiplication
 {
  public:
