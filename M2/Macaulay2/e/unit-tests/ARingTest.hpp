@@ -3,27 +3,24 @@
 
 /**
  * @file unit-tests/ARingTest.hpp
- * @brief Shared gtest fixture for every `ARing*Test.cpp` --- generator templates, `ntrials` knob, and `testSomeMore`.
+ * @brief Shared gtest harness for the `ARing*Test.cpp` suite.
  *
- * Declares the per-ring testing harness the `aring` unit tests
- * share: the primary `getElement<RingType>(R, index, result)`
- * function template (every `ARing*Test.cpp` provides the
- * specialisation that knows how to build elements of its ring),
- * the `ARingElementGenerator<RingType>` wrapper that hands out
- * one element per `nextElement` call, the `fromStream` parser
- * specialisation, and the `testSomeMore<T>(R)` driver that runs
- * the standard mixed arithmetic / equality / inverse / negation
- * checks over the generator's output. The `ntrials = 1000`
- * constant fixes how many random elements each test exercises
- * --- the commented `1000000` line records the prior experiment
- * that swamped the CI box's memory.
+ * Declares the per-ring testing surface: the primary
+ * `getElement<RingType>(R, index, result)` function template
+ * (each `ARing*Test.cpp` provides its ring's specialisation),
+ * the `ARingElementGenerator<RingType>` wrapper handing out one
+ * element per `nextElement` call, the `fromStream` parser, and
+ * the `testSomeMore<T>(R)` driver that runs the standard
+ * arithmetic / equality / inverse / negation checks over the
+ * generator's output. `ntrials = 1000` fixes how many random
+ * elements each test exercises; the commented `1000000` line
+ * records the prior experiment that swamped the CI box.
  *
  * Element indices `< 50` get a deterministic prefix
- * (`set_from_long(result, index - 25)` and friends) so the
- * standard edge cases --- zero, plus / minus one, small
- * positives and negatives --- are always exercised before the
- * random fuzz kicks in. Companion to `RingTest.hpp` for the
- * legacy `Ring`-hierarchy tests.
+ * (`set_from_long(result, index - 25)` and friends) so zero,
+ * plus / minus one, and small integers are always exercised
+ * before the random fuzz kicks in. Companion to `RingTest.hpp`
+ * for the legacy `Ring`-hierarchy tests.
  *
  * @see RingTest.hpp
  * @see interface/random.h
