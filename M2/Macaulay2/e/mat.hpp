@@ -3,6 +3,36 @@
 #ifndef _mat_hpp_
 #define _mat_hpp_
 
+/**
+ * @file mat.hpp
+ * @brief `MutableMatrix` --- abstract base of every mutable matrix the engine hands across the boundary.
+ *
+ * Declares the pure-virtual `MutableMatrix` class. The
+ * interpreter and most interface code only see this base type:
+ * `n_rows`, `n_cols`, `get_ring`, `resize`, `get_entry` /
+ * `set_entry`, the row / column primitives (`swap_rows`,
+ * `scale_row`, `add_row`, `delete_rows`, ...), and the heavy
+ * linear-algebra entry points (`rank`, `determinant`,
+ * `LU_decomposition`, `solve_LU`, `null_space`, `inverse`,
+ * `transpose`, `mult`, `add`). Concrete storage lives one level
+ * down in the templated `MutableMat<MatT>` wrapper, which is
+ * specialised over the dense `DMat<R>` and sparse `SMat<R>`
+ * back ends.
+ *
+ * The two-layer split keeps the per-ring fast paths fully
+ * templated (no virtual dispatch inside the inner loop) while
+ * presenting a single uniform `MutableMatrix*` interface across
+ * the engine / interpreter boundary. The companion `mat.cpp`
+ * runs the ring-tag dispatcher that picks the right concrete
+ * `DMat<R>` specialisation (FFLAS-FFPACK for small Z/p, FLINT
+ * for medium primes and ZZ / QQ, LAPACK for RR / CC, fraction-
+ * free routines for general ZZ-coefficient matrices).
+ *
+ * @see dmat.hpp
+ * @see smat.hpp
+ * @see mutablemat.hpp
+ */
+
 #include "exceptions.hpp"
 #include "hash.hpp"
 #include "relem.hpp"
