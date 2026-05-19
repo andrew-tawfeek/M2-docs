@@ -7,21 +7,27 @@
  * @file aring-RRi.hpp
  * @brief `M2::ARingRRi` --- certified real intervals `[a, b]` with MPFR endpoints, MPFI arithmetic.
  *
- * `ARingRRi` represents a real value as a closed interval `[a, b]`
- * whose endpoints are MPFR floats and whose enclosure is guaranteed
- * to contain the mathematical result. The class is a
- * `SimpleARing<ARingRRi>` layered on top of `ARingRRR` for the
- * endpoint format, with all arithmetic routed through MPFI
- * (`mpfi_add`, `mpfi_mul`, ...) so outward rounding is handled
- * automatically: `[a,b] + [c,d] -> [a+c, b+d]` with the result
+ * `ARingRRi` represents a real value as a closed interval
+ * `[a, b]` whose endpoints are MPFR floats and whose enclosure
+ * is guaranteed to contain the mathematical result. The class
+ * is a `SimpleARing<ARingRRi>` whose element type is
+ * `__mpfi_struct`; the only stored state on the class is
+ * `mPrecision`, the per-endpoint mantissa bit width. Arithmetic
+ * routes through MPFI (`mpfi_add`, `mpfi_sub`, `mpfi_mul`,
+ * `mpfi_div`, `mpfi_abs`, `mpfi_mul_si`, ...), so outward
+ * rounding is handled automatically: `[a,b] + [c,d] -> [a+c, b+d]`
  * widened to the next representable bounds, and analogous
  * sign-cased formulas for multiplication and division.
  *
- * Each instance carries a per-endpoint precision; distinct
- * precisions form distinct rings. The certification comes at the
- * cost of wider error bars than point MPFR arithmetic --- the right
- * trade for root isolation, certified NAG bounds, and validation of
- * approximate solutions. The complex counterpart is `ARingCCi`.
+ * Distinct precisions form distinct rings. The class pulls in
+ * `aring-RRR.hpp` so its interop helpers can exchange data with
+ * MPFR-precision reals: `is_member`, `midpoint`, `diameter`,
+ * `left`, and `right` accept or produce `ARingRRR::ElementType`
+ * values. The M2-side factory `IM2_Ring_RRi(prec)` in
+ * `interface/ring.cpp` always returns
+ * `ConcreteRing<ARingRRi>(prec)` --- there is no hardware-precision
+ * shortcut for the interval variant. The complex counterpart is
+ * `ARingCCi`.
  *
  * @see aring-RRR.hpp
  * @see aring-RR.hpp
