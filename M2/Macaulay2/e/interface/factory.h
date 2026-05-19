@@ -1,6 +1,35 @@
 #ifndef _factory_h_
 #  define _factory_h_
 
+/**
+ * @file interface/factory.h
+ * @brief Engine-boundary C API for polynomial GCD, factorisation, and root finding.
+ *
+ * Declares the `extern "C"` entry points the M2 interpreter
+ * routes to Singular's Factory library (and MPSolve for
+ * numerical complex roots): `rawGCDRingElement` and
+ * `rawExtendedGCDRingElement` for univariate / multivariate GCD
+ * with optional algebraic-extension minimal polynomial,
+ * `rawPseudoRemainder` for division with leading-coefficient
+ * scaling, `rawFactor` / `rawFactor2` for factorisation of
+ * `RingElement`s (the latter accepting a minimal polynomial so
+ * factorisation can run over an algebraic extension),
+ * `rawIdealReorder` / `rawCharSeries` for characteristic-set
+ * preprocessing of polynomial ideals, and `rawRoots` for
+ * arbitrary-precision numerical roots of univariate polynomials
+ * via MPSolve.
+ *
+ * The dual `class` / `typedef struct` declarations of `Matrix`
+ * and `RingElement` keep the header usable from both C++ and
+ * the generated-C side of the `.dd` pipeline. If Factory or
+ * MPSolve is absent at build time, the corresponding entries
+ * return null and the M2 layer reports "feature not available."
+ *
+ * @see factory.cpp
+ * @see flint.h
+ * @see engine-includes.hpp
+ */
+
 #  include "engine-includes.hpp"
 
 // TODO: fix this
