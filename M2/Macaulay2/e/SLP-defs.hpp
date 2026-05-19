@@ -5,6 +5,30 @@
 #ifndef _slp_defs_hpp_
 #define _slp_defs_hpp_
 
+/**
+ * @file SLP-defs.hpp
+ * @brief Type declarations for the SLP DAG and its M2-facing wrapper.
+ *
+ * Declares `SLProgram` --- the straight-line program itself, a DAG
+ * of arithmetic gates (`Copy`, `MCopy`, `Sum`, `Product`, `MSum`,
+ * `MProduct`, `Det`, `Divide`) over a fixed set of inputs and
+ * constants with tagged output positions --- and `M2SLProgram`, the
+ * `MutableEngineObject` subclass that owns the program via
+ * `std::unique_ptr` and is what NAG hands across the engine/M2
+ * boundary. `M2SLProgram::value()` is the back-door accessor for
+ * engine code that needs to talk to the underlying program directly.
+ *
+ * The wrapper exists so the templated SLP machinery
+ * (`SLEvaluatorConcrete<RT>` in `SLP-imp.hpp`) does not have to leak
+ * through M2-visible names: the interpreter handles `M2SLProgram*`
+ * as an opaque pointer while the numerical specialisation does the
+ * actual work behind it.
+ *
+ * @see SLP.hpp
+ * @see SLP-imp.hpp
+ * @see NAG.hpp
+ */
+
 // SLP
 class SLProgram;
 
