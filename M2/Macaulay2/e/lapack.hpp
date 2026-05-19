@@ -1,6 +1,33 @@
 #ifndef __lapack_h_
 #define __lapack_h_
 
+/**
+ * @file lapack.hpp
+ * @brief Engine bridge into LAPACK for `RR` / `CC` dense linear algebra.
+ *
+ * Defines the four `DMat<R>` aliases the LAPACK path uses
+ * (`DMatRR`, `DMatCC`, `DMatRRR`, `DMatCCC`) and declares the
+ * external entry points (`dgesv_`, `zgesv_`, `dgesvd_`, ...) the
+ * engine forwards into for linear solve, LU, QR, SVD, and
+ * eigenvalue work. The hardware-precision aliases are what
+ * LAPACK actually operates on; calls supplying an MPFR-precision
+ * matrix fall through per-entry casts as a fallback, with the
+ * understanding that the result is no longer numerically
+ * certified.
+ *
+ * The library is detected at configure time via
+ * `m4/ax_lapack.m4` / `cmake/Find*.cmake` and resolves to system
+ * LAPACK, Apple Accelerate (on macOS), or OpenBLAS depending on
+ * what's available. The neighbouring `eigen.hpp` is the
+ * Eigen3-backed counterpart used for MPFR-precision matrices and
+ * for routines LAPACK does not provide.
+ *
+ * @see dmat.hpp
+ * @see eigen.hpp
+ * @see aring-RR.hpp
+ * @see aring-CC.hpp
+ */
+
 #include "aring-RR.hpp"
 #include "aring-CC.hpp"
 #include "aring-RRR.hpp"
