@@ -4,21 +4,21 @@
  * @file geopoly.hpp
  * @brief `polyheap` --- polynomial-specialised geometric heap for reduction accumulators.
  *
- * Declares `polyheap`, the size-doubling-bucket structure for
+ * Declares `polyheap`, the size-quadrupling bucket structure for
  * adding many small polynomials together as the GB reduction loop
  * does. `GEOHEAP_SIZE` (15) slots each hold a sub-polynomial of
- * bounded length (`4, 16, 64, ..., 67108864` --- the quadrupling
- * `heap_size[]` array from `engine.cpp`); `add(p)` drops `p` into
- * the smallest slot that can absorb it and cascades on overflow,
- * which is the standard base-4 carry pattern. `remove_lead_term`
- * scans the non-empty slots, sums coefficients of any sharing the
- * leading monomial, and advances those contributors past the
- * term --- lazy merging that pays only to compare leading
- * monomials. `value()` flattens the whole tower into a single
- * canonical polynomial and resets the heap. The amortised
- * complexity is logarithmic per insertion instead of linear, the
- * difference between O(N^2) and O(N log N) for a typical
- * reduction.
+ * bounded length (`4, 16, 64, ..., 1073741824` --- the
+ * `heap_size[]` array from `engine.cpp`, each level four times
+ * the previous); `add(p)` drops `p` into the smallest slot that
+ * can absorb it and cascades on overflow, which is the standard
+ * base-4 carry pattern. `remove_lead_term` scans the non-empty
+ * slots, sums coefficients of any sharing the leading monomial,
+ * and advances those contributors past the term --- lazy merging
+ * that pays only to compare leading monomials. `value()`
+ * flattens the whole tower into a single canonical polynomial
+ * and resets the heap. The amortised complexity is logarithmic
+ * per insertion instead of linear, the difference between O(N^2)
+ * and O(N log N) for a typical reduction.
  *
  * Polynomial-side counterpart of `geobucket.hpp` (which is
  * templated over the freemodule / vector type); the
