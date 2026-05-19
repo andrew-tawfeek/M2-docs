@@ -10,6 +10,37 @@
 #ifndef BIBASIS_MONOM_HPP
 #define BIBASIS_MONOM_HPP
 
+/**
+ * @file bibasis/monom.hpp
+ * @brief `BIBasis::Monom` --- abstract squarefree-monomial base for the three Janet orderings.
+ *
+ * Declares the polymorphic root of the BIBasis monomial
+ * hierarchy: a singly-linked list of `VarsListNode` records
+ * (variable index plus `Next`) carrying a cached `TotalDegree`,
+ * with the variable count `DimIndepend` shared across the
+ * subsystem as a static. Each `VarsListNode` allocates from a
+ * static `FastAllocator` slab so the millions of nodes the
+ * prolongation loop creates stay cache-resident. Exponents are
+ * stored as `short int`s --- in `F_2[x]/(x_i^2 - x_i)` every
+ * exponent is 0 or 1, so the only thing the list needs to record
+ * is the *set* of variables that appear.
+ *
+ * The pure virtuals `MultiplyBy`, `SetOne`, `operator[]`,
+ * `FirstMultiVar`, and `GetVariablesSet` are filled in by the
+ * three concrete subclasses --- `MonomLex`, `MonomDL`, `MonomDRL`
+ * --- each implementing one monomial ordering. The bibasis
+ * algorithm templates on the concrete type rather than dispatching
+ * through `Monom*`, so the abstract surface here is mostly a
+ * shared layout and a documentation anchor for the ordering
+ * variants.
+ *
+ * @see allocator.hpp
+ * @see monomLex.hpp
+ * @see monomDL.hpp
+ * @see monomDRL.hpp
+ * @see polynom.hpp
+ */
+
 #include <set>
 #include <iostream>
 #include "allocator.hpp"
