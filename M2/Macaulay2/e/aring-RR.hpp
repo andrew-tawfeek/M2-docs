@@ -8,25 +8,30 @@
  * @brief `M2::ARingRR` --- machine-precision real numbers (IEEE 754 `double`).
  *
  * `ARingRR` is the simplest real ring in the aring family: a
- * `SimpleARing<ARingRR>` whose `elem` is just `double`. All
- * arithmetic is hardware floating-point --- no library calls, no
- * allocation. The interpreter binds this ring whenever M2 code asks
- * for `RR_53` or the default `RR`; arbitrary precision drops through
- * to `ARingRRR` (MPFR) instead. Divide-by-zero and similar conditions
- * raise engine exceptions rather than letting `Inf` propagate, so M2
- * users see a clear error.
+ * `SimpleARing<ARingRR>` whose `elem` is plain `double` and whose
+ * `get_precision()` returns `53` (the IEEE 754 mantissa width).
+ * `add` / `subtract` / `mult` / `divide` / `invert` are hardware
+ * floating-point operations with no zero check --- `divide` by
+ * zero silently produces an IEEE `inf`, matching the source's
+ * "we silently assume that a != 0" comment on `invert`. The
+ * non-trivial pieces lean on libm (`pow` for `power`, `fabs` for
+ * `abs` / `increase_norm`) and on MPFR for the `zeroize_tiny`,
+ * `set_from_BigReal`, and `increase_norm` bridges into
+ * higher-precision values. Arbitrary precision drops through to
+ * `ARingRRR` (MPFR); interval certification lives in
+ * `aring-RRi.hpp`.
  *
- * The trade-off is fixed precision in exchange for ~1-cycle-per-op
- * speed and FFLAS/BLAS dispatch in numerical linear algebra; arbitrary
- * precision and interval certification live in the siblings
- * `aring-RRR.hpp` and `aring-RRi.hpp`. Primary consumers are the
- * NAG path-tracker, SLP evaluation, and `DMat<double>` matrix code.
+ * Engine consumers are `SLEvaluatorConcrete<ARingRR>` in
+ * `SLP-defs.hpp` / `SLP-imp.hpp`, the `DMat<ARingRR>` (`DMatRR`)
+ * dense matrices in `mat-linalg.hpp` and `dmat-lu-inplace.hpp`,
+ * the cross-ring coercion routines in `aring-translate.hpp`,
+ * and the `MutableMat` machinery that registers RR in
+ * `mutablemat-defs.hpp`.
  *
  * @see aring-RRR.hpp
  * @see aring-RRi.hpp
  * @see aring-CC.hpp
  * @see aring.hpp
- * @see NAG.hpp
  */
 
 #include "interface/random.h"
