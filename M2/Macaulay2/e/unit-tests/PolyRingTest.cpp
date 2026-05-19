@@ -5,8 +5,9 @@
  * @file unit-tests/PolyRingTest.cpp
  * @brief gtest coverage for `MonomialOrdering`, `Monoid`, and `PolynomialRing` construction.
  *
- * Hosts the `TEST(PolyRing, *)` battery that walks the
- * polynomial-ring stack from the bottom up: build a degree
+ * Hosts the `TEST(PolyRing, *)` battery (`createDegreesRing`,
+ * `createDegreesRing2`, `create1`, `createSimple`) that walks
+ * the polynomial-ring stack from the bottom up: build a degree
  * monoid via `degreeRing(n)` or `degreeRing({"t1", "t2"})` from
  * `util-polyring-creation.hpp`, assemble a `MonomialOrdering`
  * out of the engine's `raw*MonomialOrdering` factories, hand it
@@ -16,13 +17,12 @@
  * with the user-facing engine error message rather than a
  * cryptic null pointer.
  *
- * The opening developer recipe (`--gtest_filter="*F4*"` --- the
- * tests double as the polynomial-ring side of the F4 smoke
- * suite) keeps the entire ring-construction path under
- * regression coverage. Sibling files `DMatZZpTest.cpp` and
- * `MatrixIOTest.cpp` (covered by the same
- * `file-dmat-matrix-tests` markdown) exercise the dense-matrix
- * and I/O surfaces that ride on top of these rings.
+ * Sibling files `DMatZZpTest.cpp` and `MatrixIOTest.cpp`
+ * (covered by the same `file-dmat-matrix-tests` markdown)
+ * exercise the dense-matrix and I/O surfaces that ride on top
+ * of these rings. The stale `--gtest_filter="*F4*"` recipe at
+ * the top of the file is copy-pasted from `NewF4Test.cpp`; it
+ * does not match the `PolyRing` suite names here.
  *
  * @see util-polyring-creation.hpp
  * @see polyring.hpp
