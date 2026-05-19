@@ -2,26 +2,25 @@
 
 /**
  * @file unit-tests/ARingGFTest.cpp
- * @brief gtest coverage for the FLINT-backed Galois-field aring (`ARingGFFlintBig`).
+ * @brief gtest coverage for the FLINT-backed Galois-field aring `M2::ARingGFFlint`.
  *
- * Drives the `ARingTest.hpp` element generator against
- * `M2::ARingGFFlintBig` (and adjacent FLINT-GF flavours)
- * through the shared `testSomeMore` battery: arithmetic,
- * equality, inverses, negation, and stream round-trips. A
- * 200-entry hardcoded `randomVals` array supplies the test
- * inputs deterministically, so a flaky RNG can never cause a
- * spurious CI failure --- the exact values don't matter so long
- * as they span the field, and pre-baking them at file-write
- * time also avoids depending on the M2 random subsystem inside
- * a test of the M2 ring stack.
+ * Plugs `M2::ARingGFFlint` into the `ARingTest.hpp` harness and
+ * runs the `TEST(ARingGFFlint, create / random / arithmetic)`
+ * battery over fields `GF(5^3)` and `GF(7^2)`. A 200-entry
+ * hardcoded `randomVals` array supplies test inputs
+ * deterministically, so a flaky RNG can never cause a spurious
+ * CI failure --- the exact values don't matter so long as they
+ * span the field, and pre-baking them also avoids depending on
+ * the M2 random subsystem inside a test of the M2 ring stack.
+ * The file also carries a `getElement<M2::ARingGFGivaro>`
+ * specialisation for the conditional Givaro-backed path.
  *
  * The companion `GivaroTest.cpp` (covered by the same
  * `file-aring-gf-tests` markdown) smoke-tests the upstream
- * Givaro library when it is linked in, so this file focuses on
- * the FLINT-backed path. The engine ships several GF
- * implementations side by side (FLINT-Big / FLINT / M2 native /
- * Givaro / table) for different size regimes; each gets its own
- * `ARing*GFTest` to isolate backend bugs.
+ * Givaro library directly. The engine ships several GF
+ * implementations side by side (FLINT, FLINT-Big, M2 native,
+ * Givaro, table-based) for different size regimes; each gets
+ * its own `ARing*GFTest` to isolate backend bugs.
  *
  * @see ARingTest.hpp
  * @see aring-gf-flint.hpp
