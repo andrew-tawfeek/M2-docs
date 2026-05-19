@@ -7,22 +7,28 @@
 
 /**
  * @file mutablemat-imp.hpp
- * @brief Template implementations of `MutableMat<Mat>` --- including the SLP-evaluator bridge.
+ * @brief Template implementations of `MutableMat<Mat>` --- linear-algebra methods plus the SLP-evaluator bridge.
  *
- * Carries the inline template bodies for `MutableMat<Mat>` ---
- * the same wrapper declared in `mutablemat-defs.hpp`. The split
- * keeps the heavy includes (SLP machinery, NAG bridges) out of
- * every translation unit that only needs the declarations; this
- * file is pulled in where a specific `MutableMat<DMat<R>>` or
- * `MutableMat<SMat<R>>` is actually instantiated. Beyond
- * forwarding shapes, it provides `createSLEvaluator` and
- * `createCompiledSLEvaluator`, which build the
- * `SLEvaluatorConcrete<R>` instance NAG uses to walk a compiled
- * straight-line program against a one-row mutable matrix of
- * constants.
+ * Carries the inline template bodies for `MutableMat<Mat>`
+ * declared in `mutablemat-defs.hpp`. The linear-algebra
+ * surface --- `rank`, `determinant`, `invert`,
+ * `rowReducedEchelonForm`, `solveLinear`, `solveInvertible`,
+ * `nullSpace`, `mult` --- forwards into `MatrixOps::*`, which
+ * the `mat-linalg.hpp` family specialises per ring. Two SLP-
+ * bridge methods stand apart: `createSLEvaluator(P, constsPos,
+ * varsPos)` wraps an `SLEvaluatorConcrete<CoeffRing>` around a
+ * one-row mutable matrix of constants (the
+ * `n_rows() != 1 || n_cols() != constsPos->len` check errors
+ * out otherwise), and `createCompiledSLEvaluator(libName,
+ * nInputs, nOutputs)` reaches the JIT-compiled-SLP path
+ * instead.
  *
- * Pair with `mutablemat-defs.hpp` for the class declarations and
- * `SLP-imp.hpp` for the straight-line-program evaluator itself.
+ * The split from `mutablemat-defs.hpp` keeps the heavy includes
+ * (SLP machinery, NAG bridges) out of every translation unit
+ * that only needs the declarations; this file is pulled in
+ * where a specific `MutableMat<DMat<R>>` or `MutableMat<SMat<R>>`
+ * is actually instantiated. `SLP-imp.hpp` carries the
+ * straight-line-program evaluator itself.
  *
  * @see mutablemat.hpp
  * @see mutablemat-defs.hpp
