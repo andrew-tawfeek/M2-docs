@@ -10,20 +10,26 @@
  * Declares the `ring_elem` union plus the GMP/MPFR/MPFI const
  * and mutable pointer aliases (`ZZ`, `ZZmutable`, `QQ`,
  * `QQmutable`, `RRRelement`, `RRRmutable`, `RRielement`,
- * `RRimutable`) and the inline `cc_struct` / `cc_doubles_struct`
- * complex-number record types. The aliases exist so engine
- * function signatures can make const-ness explicit (`void
- * foo(ZZ a, ZZmutable result)` reads more clearly than its
- * `mpz_srcptr` / `mpz_ptr` expansion) and so a single
+ * `RRimutable`) and the inline `cc_struct` (MPFR pair),
+ * `cc_doubles_struct` (`double` pair), and `cci_struct` (MPFI
+ * pair) complex-number record types. The aliases exist so
+ * engine function signatures can make const-ness explicit
+ * (`void foo(ZZ a, ZZmutable result)` reads more clearly than
+ * its `mpz_srcptr` / `mpz_ptr` expansion) and so a single
  * search-and-replace can flip the underlying GMP / MPFR / MPFI
  * type if that surface ever changes.
  *
  * `ring_elem` is the value the `Ring`-virtual API trafficks in
  * everywhere; each `Ring` subclass knows how to interpret the
- * union (small integer inline, `mpz_ptr` for big values,
- * polynomial pointer for `PolyRing`, ...). This header is
- * pulled in by essentially every translation unit that touches
- * algebra; keep new additions narrow.
+ * union. The fields available are `int_val` / `long_val` /
+ * `double_val` (primitives), `mpz_val` / `mpq_val` / `mpfr_val`
+ * / `mpfi_val` (arbitrary-precision pointers),
+ * `cc_doubles_val` / `cc_val` / `cci_val` (complex variants),
+ * `poly_val` (`Nterm*` for `PolyRing` lists), `mPolyVal`
+ * (opaque `void*` for non-commutative polynomials),
+ * `schur_poly_val`, and `local_val`. Constructors and `get_*`
+ * accessors pair up so each ring writes its values in and
+ * reads them back out through the matching tag.
  *
  * @see ring.hpp
  * @see relem.hpp
