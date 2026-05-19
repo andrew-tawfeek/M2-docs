@@ -4,25 +4,28 @@
 
 /**
  * @file mem.hpp
- * @brief `stash` --- size-class slab allocator for fixed-size objects in engine hot paths.
+ * @brief `stash` and `doubling_stash` --- legacy size-class allocator interfaces, now stubbed to plain GC allocation.
  *
- * Declares the engine's `stash`, a per-size-class free-list
- * allocator: `new_elem()` pops from the free list (and carves a
- * fresh slab if it is empty) and `delete_elem(ptr)` pushes the
- * pointer back without releasing it. Both operations are O(1).
- * The configuration constants pin the largest size handled at
- * `2 * 2^25` (`NDOUBLES = 25`) and the slab granularity at 2032
- * bytes so each slab fits comfortably in L1; allocations above
- * the size cap fall through to the GC heap. The `bad_pattern`
- * byte and the `word_size` constant support the slab's debug-
- * fill and pointer-arithmetic paths.
+ * Declares the engine's `stash` (fixed-size) and
+ * `doubling_stash` (dispatches by size to one of `NDOUBLES = 25`
+ * power-of-two `stash`es, capping at `2 * 2^25`) classes. The
+ * design retains a slab list, a free list, a `chop_slab`
+ * splitter, a `bad_pattern` debug-fill byte, the `word_size`
+ * pointer-step constant, and a `spinLock` for concurrent access
+ * --- but the live bodies of `new_elem` and `delete_elem` short
+ * circuit to `newarray_clear(char, element_size)` and
+ * `freemem(p)` respectively (see the early `return` near the
+ * top of each inline definition); the slab / free-list path,
+ * statistics counters, and `chop_slab` are all unreachable in
+ * the current build.
  *
- * Used everywhere the engine allocates the same small struct
+ * Used by engine code that allocates the same small struct
  * (S-pair records, GB vectors, monomial cells, ...) in tight
- * loops, where `bdwgc`'s `GC_malloc` per-call cost would
- * dominate. `engine_allocated` / `engine_highwater` track the
- * cumulative and peak usage for benchmarks and leak detection;
- * `reset_stash` purges everything.
+ * loops via the per-class `mystash` idiom sketched in the
+ * `#if 0` example at the top of the header. The
+ * `engine_allocated` / `engine_highwater` externs and the
+ * inline `engine_alloc` / `engine_dealloc` helpers are
+ * available for any caller that wants to manually track usage.
  *
  * @see newdelete.hpp
  */
