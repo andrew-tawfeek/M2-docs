@@ -2,6 +2,31 @@
 #ifndef _mem_hh_
 #define _mem_hh_
 
+/**
+ * @file mem.hpp
+ * @brief `stash` --- size-class slab allocator for fixed-size objects in engine hot paths.
+ *
+ * Declares the engine's `stash`, a per-size-class free-list
+ * allocator: `new_elem()` pops from the free list (and carves a
+ * fresh slab if it is empty) and `delete_elem(ptr)` pushes the
+ * pointer back without releasing it. Both operations are O(1).
+ * The configuration constants pin the largest size handled at
+ * `2 * 2^25` (`NDOUBLES = 25`) and the slab granularity at 2032
+ * bytes so each slab fits comfortably in L1; allocations above
+ * the size cap fall through to the GC heap. The `bad_pattern`
+ * byte and the `word_size` constant support the slab's debug-
+ * fill and pointer-arithmetic paths.
+ *
+ * Used everywhere the engine allocates the same small struct
+ * (S-pair records, GB vectors, monomial cells, ...) in tight
+ * loops, where `bdwgc`'s `GC_malloc` per-call cost would
+ * dominate. `engine_allocated` / `engine_highwater` track the
+ * cumulative and peak usage for benchmarks and leak detection;
+ * `reset_stash` purges everything.
+ *
+ * @see newdelete.hpp
+ */
+
 #include <cassert>
 #include "newdelete.hpp"
 // for spinLock:
