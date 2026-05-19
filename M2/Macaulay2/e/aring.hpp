@@ -29,16 +29,16 @@
  * `Ring` API: existing engine code reads `Ring*`,
  * performance-critical paths take a `ARing<R>` template
  * parameter so the per-element arithmetic inlines instead of
- * going through a virtual, and the bridges in `aring-glue.hpp`,
- * `aring-translate.hpp`, and `aring-wrap.hpp` move values
- * between them. The file also carries the `HAVE_FLINT_RAND_INIT`
- * compatibility shim that aring users touch when bumping the
- * FLINT submodule version (`flint_rand_init` vs.
- * `flint_randinit`).
+ * going through a virtual, and the bridges in `aring-glue.hpp`
+ * (vertical wrapper `ConcreteRing<R>` to `Ring*`) and
+ * `aring-translate.hpp` (horizontal cross-ring `mypromote` /
+ * `mylift`) move values between the two worlds. The file also
+ * carries the `HAVE_FLINT_RAND_INIT` compatibility shim that
+ * aring users touch when bumping the FLINT submodule version
+ * (`flint_rand_init` vs. `flint_randinit`).
  *
  * @see aring-glue.hpp
  * @see aring-translate.hpp
- * @see aring-wrap.hpp
  * @see coeffrings.hpp
  * @see ring.hpp
  */
