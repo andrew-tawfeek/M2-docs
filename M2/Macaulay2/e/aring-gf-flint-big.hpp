@@ -7,21 +7,32 @@
  * @file aring-gf-flint-big.hpp
  * @brief `M2::ARingGFFlintBig` --- arbitrary-degree `GF(p^k)` via FLINT `fq_nmod`.
  *
- * `ARingGFFlintBig` represents a Galois-field element as a
- * degree-less-than-`k` polynomial over `Z/p`, stored in FLINT's
- * `fq_nmod_t` (a wrapper around `nmod_poly_t`). Addition is
- * coefficient-wise in `Z/p` (O(k)); multiplication is polynomial
- * multiply followed by reduction modulo the primitive polynomial
- * (O(k^2) schoolbook or O(k log k) with FFT for large k); inversion
- * is extended Euclidean over `Z/p[t]`. No Zech tables --- every
- * operation runs the underlying polynomial arithmetic, so per-op
- * cost grows with `k`, but `q = p^k` carries no storage limit.
+ * `ARingGFFlintBig` (registered as `ringID = ring_GFFlintBig`)
+ * represents a Galois-field element as a degree-less-than-`k`
+ * polynomial over `Z/p`, stored in FLINT's `fq_nmod_struct` ---
+ * which the in-source comment expands as
+ * `{mp_ptr coeffs; slong alloc; slong length; nmod_t mod;}`,
+ * i.e. an `nmod_poly_struct` under another name. Addition is
+ * coefficient-wise in `Z/p`; multiplication is polynomial
+ * multiply followed by reduction modulo the primitive
+ * polynomial (FLINT picks between schoolbook and Kronecker /
+ * FFT variants internally based on degree); inversion is the
+ * extended Euclidean algorithm over `Z/p[t]`. No Zech tables ---
+ * every operation runs the underlying polynomial arithmetic, so
+ * per-op cost grows with `k`, but `q = p^k` carries no storage
+ * limit. The class inherits from `RingInterface` directly so
+ * its nested `Element` can hold an `fq_nmod_ctx_struct*` for the
+ * destructor.
  *
- * The dispatcher in `aring.hpp` picks this implementation whenever
- * Zech tables for `GF(q)` would be impractical (roughly `q > 2^16`),
- * falling back to the small-`q` sibling `aring-gf-flint.hpp` when
- * tables fit. The native, FLINT-free alternative is `aring-m2-gf.hpp`,
- * and `aring-tower.hpp` handles iterated extensions.
+ * The M2-side entry point is `rawARingGaloisFieldFlintBig` in
+ * `interface/aring.cpp`. There is no in-engine auto-fallback to
+ * the small-`q` `aring-gf-flint.hpp`; selecting between the
+ * Zech-table and polynomial-quotient implementations happens at
+ * the user / top-level M2 call site via the separate
+ * `rawARingGaloisFieldFlintZech` and
+ * `rawARingGaloisFieldFlintBig` entry points. The native,
+ * FLINT-free alternative is `aring-m2-gf.hpp`, and
+ * `aring-tower.hpp` handles iterated extensions.
  *
  * @see aring-gf-flint.hpp
  * @see aring-m2-gf.hpp
