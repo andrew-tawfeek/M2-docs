@@ -9,21 +9,23 @@
  *
  * Provides the building-block operations every linear-algebra
  * algorithm composes: row and column swaps, row / column
- * scaling, row addition (`row_i += c * row_j`), and the
- * corresponding column variant. The template has separate full
- * specialisations on `DMat<RT>` and `SMat<RT>` so each storage
- * shape gets a dense-walk or sparse-pivot implementation
- * appropriate to its data layout; consumers can write a generic
- * algorithm against `MatElementaryOps<MT>` and let the right
- * specialisation be picked at instantiation time.
+ * scaling, row addition (`row_i += c * row_j`), the
+ * corresponding column variant, and the pivot-search helper
+ * `lead_row(mat, col[, result])` that returns the
+ * largest-index non-zero row of a given column. The template
+ * has separate full specialisations on `DMat<RT>` and
+ * `SMat<RT>` so each storage shape gets a dense-walk or
+ * sparse-pivot implementation appropriate to its data layout;
+ * consumers write a generic algorithm against
+ * `MatElementaryOps<MT>` and let the right specialisation be
+ * picked at instantiation time.
  *
- * Used directly by every elimination-style routine in the
- * engine --- LU and fraction-free LU
- * (`dmat-lu*.hpp`, `fractionfreeLU.hpp`), Hermite normal form
- * (`hermite.hpp`), Gaussian elimination over a field
- * (`gauss.hpp`), and the higher-level dispatchers in
- * `mat-linalg.hpp`. The arithmetic-only sibling header is
- * `mat-arith.hpp`.
+ * Engine consumers are the LU machinery (`dmat-lu.hpp` /
+ * `dmat-lu-inplace.hpp`) and the higher-level dispatchers in
+ * `mat-linalg.hpp`. `fractionfreeLU.hpp`, `hermite.hpp`, and
+ * `gauss.hpp` carry their own elementary row/column code
+ * rather than going through this template. The arithmetic-only
+ * sibling header is `mat-arith.hpp`.
  *
  * @see mat-arith.hpp
  * @see mat-linalg.hpp
