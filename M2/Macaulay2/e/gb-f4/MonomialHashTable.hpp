@@ -7,28 +7,38 @@
  * @brief `newf4::MonomialHashFunction` and the new-F4 monomial-to-index hash table.
  *
  * Declares the self-contained monomial-canonicalisation surface
- * for the refactored F4. `MonomialHashFunction` keeps a vector
- * of precomputed random 64-bit constants `c_i` (one slot per
- * variable, indexed `i.var() % 64` to fit a fixed table; a TODO
- * in the source notes that out-of-range variables should grow
- * the table) and folds a `MonomialView` into a single `HashInt`
- * by summing `c_i * e_i` over the sparse `(var, power)` pairs.
- * The constants are baked in so identical inputs across runs
- * produce identical hash sequences --- this is the determinism
- * the engine relies on to reproduce floating-point-sensitive
- * output.
+ * for the refactored F4. `MonomialHashFunction` ships a
+ * compiled-in table of 64 precomputed random 64-bit constants
+ * and folds a `MonomialView` into a single `HashInt` as
+ * `sum_i mHashValues[i.var() % 64] * i.power()` over the
+ * sparse `(var, power)` pairs --- so variables that share the
+ * same residue mod 64 collide on the same constant; an
+ * in-source TODO flags that the table should grow when an
+ * out-of-range variable arrives. The constants are baked in so
+ * identical inputs across runs produce identical hash
+ * sequences (determinism of GB output, not floating-point
+ * sensitivity --- F4 here runs over exact rings).
  *
  * The accompanying `MonomialHashTable` class stores monomial
- * data in a `MemoryBlock` and keeps an open-addressed
- * `mBuckets` vector whose slots hold either `0` (empty) or a
- * `MonomialIndex >= 1` into the block. Every monomial the
- * algorithm encounters --- basis leading terms, S-pair LCMs,
- * Macaulay-matrix column heads --- gets a single canonical
- * `MonomialIndex` here, so the rest of the engine works on
- * integer indices and only reads monomial data when actually
- * printing or comparing. Modern successor to the
- * `f4/monhashtable.hpp` trait classes that wrapped the external
- * mathic table.
+ * bytes in a `MemoryBlock mMonomialSpace`, with two parallel
+ * indexed arrays --- `std::vector<MonomialView> mMonomialPointers`
+ * and `std::vector<HashInt> mHashValues` (slot `0` reserved as
+ * "empty") --- and an open-addressed `std::vector<MonomialIndex>
+ * mBuckets` of size `2^mLog2Size` masked by `mHashMask` whose
+ * slots hold either `0` (empty) or a `MonomialIndex >= 1` into
+ * the parallel arrays. `find(view)` hashes, probes, and
+ * returns the existing index or inserts a fresh copy of the
+ * view's bytes; the table grows when `size() >= mThreshold`.
+ * A `HashTableStats` substruct counts `n_calls_find`,
+ * `n_clashes`, `max_run_length`, `monequal_count`, and
+ * `monequal_fails` for the `dump()` diagnostic. Every monomial
+ * the algorithm encounters --- basis leading terms, S-pair
+ * LCMs, Macaulay-matrix column heads --- gets a single
+ * canonical `MonomialIndex` here, so the rest of the engine
+ * works on integer indices. Modern successor to
+ * `f4/monhashtable.hpp` (which is itself an in-house
+ * open-addressing `MonomialHashTable<ValueType>` over packed
+ * monomials, not a mathic wrapper).
  *
  * @see MonomialView.hpp
  * @see MonomialTypes.hpp
