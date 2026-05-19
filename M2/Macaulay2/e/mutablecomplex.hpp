@@ -4,6 +4,34 @@
 #ifndef _mutablecomplex_hpp_
 #define _mutablecomplex_hpp_
 
+/**
+ * @file mutablecomplex.hpp
+ * @brief `MutableComplex` --- in-place chain complex of `MutableMatrix` differentials.
+ *
+ * Declares `MutableComplex`, an `EngineObject` carrying a
+ * sequence of `MutableMatrix*` differentials chained together
+ * with their source / target `FreeModule`s and a working degree
+ * map. The class wraps the bookkeeping that keeps the
+ * composition-equals-zero invariant true under row and column
+ * operations: editing one differential automatically propagates
+ * the matching column or row update to its neighbour, and
+ * degree propagation through composition is handled centrally
+ * instead of by each caller. The constructor accepts a
+ * `VECTOR(MutableMatrix*)` and infers ring, local-ring, and
+ * polynomial-ring context from the first matrix.
+ *
+ * Typical workflows construct a `MutableComplex` from an
+ * existing resolution (`comp-res.hpp`) and reduce it to a
+ * minimal form by sequential row/column eliminations, or compute
+ * a Smith-normal-form-like canonicalisation across the whole
+ * complex. The TODO at the top of the header flags the open
+ * question of templating over sparse vs. dense `MutableMatrix`.
+ *
+ * @see mat.hpp
+ * @see comp-res.hpp
+ * @see localring.hpp
+ */
+
 #include "localring.hpp"
 #include "style.hpp"
 #include "hash.hpp"
