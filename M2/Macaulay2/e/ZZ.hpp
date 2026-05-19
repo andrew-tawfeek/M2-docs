@@ -5,23 +5,26 @@
 
 /**
  * @file ZZ.hpp
- * @brief Legacy `Ring`-based integer ring (GMP `mpz_t` values).
+ * @brief Legacy `RingZZ` --- a `Ring`-derived integer ring backed by GMP `mpz_t`.
  *
- * `ZZ` is the engine's original integer-ring class, pre-dating the
- * `aring` framework. It inherits from `Ring` directly and uses GMP
- * `mpz_t` as the value type. It still appears along the oldest
- * `rawZZ()` interpreter paths and in code that intentionally opts
- * into the legacy `Ring`-only API for compatibility testing; modern
- * engine code prefers the FLINT-backed `aring` variant exposed
- * through `interface/aring.h`.
+ * `RingZZ` is the engine's original integer-ring class,
+ * pre-dating the `aring` framework. It inherits from `Ring`
+ * directly, uses `mpz_ptr` as its `element_type`, and is the
+ * type of the global `globalZZ` instance created by
+ * `PolyRing::make_trivial_ZZ_poly_ring()` (per the in-source
+ * comment near the constructors). The class also `friend`s
+ * `M2::ARingZZGMP` and carries an `ARingZZGMP* coeffR` exposed
+ * by `get_ARing()`, so callers on the legacy side can hand the
+ * aring view to code that prefers it.
  *
- * Three integer rings coexist today: `ZZ` (this file, GMP),
- * `M2::ARingZZGMP` (GMP via the aring framework), and `M2::ARingZZ`
- * (FLINT via the aring framework). The legacy class is essentially
- * `ARingZZGMP` minus the `SimpleARing` CRTP scaffolding. The
- * old-style-cast wrapper functions at the top (`mask_mpz_cmp_si`,
- * `mask_mpq_cmp_si`) are vestigial bookkeeping from when M2 had to
- * tolerate very old GMP versions.
+ * Three integer rings coexist today: `RingZZ` (this file, GMP),
+ * `M2::ARingZZGMP` (GMP via the aring framework, `aring-zz-gmp.hpp`),
+ * and `M2::ARingZZ` (FLINT via the aring framework,
+ * `aring-zz-flint.hpp` --- this is what `ring.cpp::makeIntegerRing`
+ * actually instantiates). The two `mask_mpz_cmp_si` /
+ * `mask_mpq_cmp_si` wrapper functions at the top of the header
+ * exist purely to silence GMP's old-style-cast warnings, as the
+ * adjacent in-source comment notes.
  *
  * @see aring-zz-flint.hpp
  * @see aring-zz-gmp.hpp
