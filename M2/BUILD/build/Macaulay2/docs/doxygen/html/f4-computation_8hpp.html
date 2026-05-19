@@ -91,6 +91,9 @@ $(function(){initNavTree('f4-computation_8hpp.html','',''); });
   <div class="headertitle"><div class="title">f4-computation.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_f4_computation.html">F4Computation</a></span> &mdash; <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> adapter around the F4 inner-loop engine.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="comp-gb_8hpp_source.html">comp-gb.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="m2-types_8h_source.html">interface/m2-types.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="f4_8hpp_source.html">f4/f4.hpp</a>&quot;</code><br />
@@ -107,7 +110,18 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ace48e412e5278417f6684766fd9193f8" id="r_ace48e412e5278417f6684766fd9193f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_g_b_computation.html">GBComputation</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="f4-computation_8hpp_ace48e412e5278417f6684766fd9193f8.html#ace48e412e5278417f6684766fd9193f8">createF4GB</a> (const <a class="el" href="class_matrix.html">Matrix</a> *m, <a class="el" href="m2-types_8h_a7070aa7b07cda16d387ba6be4bd917fa.html#a7070aa7b07cda16d387ba6be4bd917fa">M2_bool</a> collect_syz, <a class="el" href="classint.html">int</a> n_rows_to_keep, <a class="el" href="class_m2__arrayint.html">M2_arrayint</a> gb_weights, <a class="el" href="classint.html">int</a> strategy, <a class="el" href="m2-types_8h_a7070aa7b07cda16d387ba6be4bd917fa.html#a7070aa7b07cda16d387ba6be4bd917fa">M2_bool</a> use_max_degree, <a class="el" href="classint.html">int</a> max_degree, <a class="el" href="classint.html">int</a> numThreads)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_f4_computation.html">F4Computation</a></span> &mdash; <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> adapter around the F4 inner-loop engine. </p>
+<p>Declares <span class="tt"><a class="el" href="class_f4_computation.html">F4Computation</a></span>, the <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> subclass the interpreter sees when F4 is selected. The class owns the <span class="tt"><a class="el" href="class_polynomial_ring.html">PolynomialRing</a></span> the user requested, an <span class="tt"><a class="el" href="class_f4_g_b.html">F4GB</a></span> instance that runs the actual algorithm, a <span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a></span> describing the F4-specific packed monomial layout, and a <span class="tt"><a class="el" href="class_vector_arithmetic.html">VectorArithmetic</a></span> carrying the per-coefficient-ring fast path (<span class="tt"><a class="el" href="aring-zzp-ffpack_8hpp.html" title="M2::ARingZZpFFPACK — Z/p via FFLAS-FFPACK&#39;s Modular&lt;double&gt; field.">aring-zzp-ffpack.hpp</a></span>, <span class="tt"><a class="el" href="aring-zzp-flint_8hpp.html" title="M2::ARingZZpFlint — Z/p via FLINT&#39;s nmod_t (Barrett-style fast reduction).">aring-zzp-flint.hpp</a></span>, the generic variant, ...). At construction time it picks the right <span class="tt"><a class="el" href="class_f4_g_b.html">F4GB</a></span> template instantiation and pins it for the lifetime of the computation.</p>
+<p>Standard <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> virtuals (<span class="tt">start_computation</span>, <span class="tt">get_gb</span>, <span class="tt">get_mingens</span>, <span class="tt">get_change</span>, <span class="tt">get_syzygies</span>, <span class="tt">get_initial</span>, <span class="tt">complete_thru_degree</span>) read state out of the running <span class="tt"><a class="el" href="class_f4_g_b.html">F4GB</a></span> and re-wrap it as engine <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> values. The translation between the engine's <span class="tt">vec</span>-shaped polynomials and F4's packed <span class="tt"><a class="el" href="struct_g_b_f4_polynomial.html">GBF4Polynomial</a></span> lives in <span class="tt"><a class="el" href="f4-m2-interface_8hpp.html" title="F4toM2Interface — static translators between engine vec / Matrix and F4&#39;s GBF4Polynomial.">f4-m2-interface.hpp</a></span>, which this class delegates to.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="f4_8hpp.html" title="F4GB — the inner-loop Faugère F4 Groebner-basis algorithm.">f4.hpp</a> </dd>
+<dd>
+<a class="el" href="f4-m2-interface_8hpp.html" title="F4toM2Interface — static translators between engine vec / Matrix and F4&#39;s GBF4Polynomial.">f4-m2-interface.hpp</a> </dd>
+<dd>
+<a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="f4-computation_8hpp_source.html">f4-computation.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

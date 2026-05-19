@@ -91,6 +91,9 @@ $(function(){initNavTree('ring-vecs_8cpp.html','',''); });
   <div class="headertitle"><div class="title">ring-vecs.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>'s <span class="tt">vec</span>-shaped operations &mdash; construction, traversal, arithmetic on sparse columns.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ring_8hpp_source.html">ring.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="text-io_8hpp_source.html">text-io.hpp</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -105,7 +108,18 @@ $(function(){initNavTree('ring-vecs_8cpp.html','',''); });
 Functions</h2></td></tr>
 <tr class="memitem:ae807ccf8c6b59e940896bb8b24e78ba3" id="r_ae807ccf8c6b59e940896bb8b24e78ba3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ring-vecs_8cpp_ae807ccf8c6b59e940896bb8b24e78ba3.html#ae807ccf8c6b59e940896bb8b24e78ba3">check_nterm_multiples</a> (const <a class="el" href="class_poly_ring.html">PolyRing</a> *R, <a class="el" href="unionring__elem.html">ring_elem</a> f1, <a class="el" href="unionring__elem.html">ring_elem</a> g1, <a class="el" href="unionring__elem.html">ring_elem</a> c, <a class="el" href="unionring__elem.html">ring_elem</a> d)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>'s <span class="tt">vec</span>-shaped operations &mdash; construction, traversal, arithmetic on sparse columns. </p>
+<p>Implements the <span class="tt">vec</span> (sparse <span class="tt">(component, <a class="el" href="unionring__elem.html">ring_elem</a>)</span> linked list) methods declared on <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>: <span class="tt">new_vec</span> and <span class="tt">remove_vec_node</span>, <span class="tt">make_vec</span> / <span class="tt">make_vec_from_array</span> for construction; <span class="tt">vec_n_terms</span>, <span class="tt">vec_lead_term</span>, <span class="tt">vec_lead_coeff</span>, <span class="tt">vec_lead_component</span> for traversal; <span class="tt">vec_add</span>, <span class="tt">vec_subtract</span>, <span class="tt">vec_negate</span>, <span class="tt">vec_scalar_mult</span>, <span class="tt">vec_mult_by_term</span> for arithmetic; plus comparison and conversion through <span class="tt">vec_to_matrix</span> and <span class="tt">vec_to_string</span>. Each operation is virtual on <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> so subclasses (<span class="tt"><a class="el" href="class_poly_ring.html">PolyRing</a></span>, <span class="tt">PolyQuotient</span>, <span class="tt"><a class="el" href="class_fraction_field.html">FractionField</a></span>, ...) can override; the generic implementations live here.</p>
+<p><span class="tt">vec</span> is the value shape that backs every <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> column and every <span class="tt"><a class="el" href="class_free_module.html">FreeModule</a></span> element. The header note codifies an invariant the rest of the engine relies on: <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> values are immutable, so vec terms can share references freely without defensive copies &mdash; arithmetic always produces new values rather than mutating in place.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="ring_8hpp.html" title="Ring — the legacy abstract base class for every coefficient and polynomial ring.">ring.hpp</a> </dd>
+<dd>
+<a class="el" href="matrix_8hpp.html" title="Matrix — the engine&#39;s immutable homomorphism F -&gt; G between free modules.">matrix.hpp</a> </dd>
+<dd>
+<a class="el" href="freemod_8hpp.html" title="FreeModule — finite-rank free module R^n, the type-level anchor for every Matrix.">freemod.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

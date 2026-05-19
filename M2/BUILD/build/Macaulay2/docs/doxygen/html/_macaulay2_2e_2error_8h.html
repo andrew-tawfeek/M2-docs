@@ -110,7 +110,7 @@ Functions</h2></td></tr>
 <p>The engine avoids C++ exceptions across the boundary in favour of this protocol: a <span class="tt">.cpp</span> routine calls <span class="tt"><a class="el" href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR(...)</a></span> on a detected problem and returns; every caller checks the flag and propagates an early exit; the interpreter loop ultimately surfaces the message to the <a class="el" href="namespace_m2.html">M2</a> user. C linkage is deliberate so the routines remain callable from the <span class="tt">.d</span>-generated glue, the C++ engine code, and external library callbacks alike. The thread-local state matters for the <span class="tt"><a class="el" href="class_computation.html">Computation</a></span> workers run under the system supervisor &mdash; each worker has its own error slot.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="buffer_8hpp.html" title="Append-only GC-backed byte buffer used throughout the engine for text output.">buffer.hpp</a> </dd>
 <dd>
-<a class="el" href="overflow_8hpp.html">overflow.hpp</a> </dd></dl>
+<a class="el" href="overflow_8hpp.html" title="Overflow-checked integer arithmetic for monomial exponents and degree sums.">overflow.hpp</a> </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="_macaulay2_2e_2error_8h_source.html">error.h</a>.</p>
 </div></div><!-- contents -->

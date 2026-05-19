@@ -92,13 +92,25 @@ $(function(){initNavTree('points_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_points_computation.html">PointsComputation</a>&lt;CoeffRing&gt;::points</span> &mdash; ideal and standard-monomial basis of a finite point set.  
+<a href="#details">More...</a></p>
+
 <p><a href="points_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:PointsComputation_3C_20CoeffRing_20_3E" id="r_PointsComputation_3C_20CoeffRing_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_points_computation.html">PointsComputation&lt; CoeffRing &gt;</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_points_computation.html">PointsComputation</a>&lt;CoeffRing&gt;::points</span> &mdash; ideal and standard-monomial basis of a finite point set. </p>
+<p>Templated entry point that takes a polynomial ring <span class="tt">R</span>, its coefficient ring <span class="tt">K</span>, and a <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;CoeffRing&gt;</span> whose columns are points in <span class="tt">K^n</span>, and returns generators of the vanishing ideal <span class="tt">I(Pts) subset R</span> plus a one-row matrix of standard monomials forming a <span class="tt">K</span>-basis of the quotient <span class="tt">R / I(Pts)</span>. The generators are produced under the engine's graded-reverse-lex order; the standard-monomial output is the natural Hilbert- function complement.</p>
+<p>The <span class="tt">#warning</span> at the very top of the file flags it as a branch leftover marked for removal once the host work merges. Engine callers reach this code through the <a class="el" href="namespace_m2.html">M2</a> ideal-of-points interfaces in <span class="tt">Points</span>-family packages; nothing inside the engine consumes it directly yet.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="matrix_8hpp.html" title="Matrix — the engine&#39;s immutable homomorphism F -&gt; G between free modules.">matrix.hpp</a> </dd>
+<dd>
+<a class="el" href="dmat_8hpp.html" title="DMat&lt;ACoeffRing&gt; — dense-matrix template plus the umbrella that wires in every per-ring specialisatio...">dmat.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="points_8hpp_source.html">points.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

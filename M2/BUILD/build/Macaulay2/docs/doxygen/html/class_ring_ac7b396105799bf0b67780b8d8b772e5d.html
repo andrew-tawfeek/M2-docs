@@ -107,24 +107,24 @@ $(function(){initNavTree('class_ring_ac7b396105799bf0b67780b8d8b772e5d.html','',
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00096">96</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>{</div>
-<div class="line"><span class="lineno">   98</span>  <span class="keywordflow">for</span> (;; v = v-&gt;next, w = w-&gt;next)</div>
-<div class="line"><span class="lineno">   99</span>    {</div>
-<div class="line"><span class="lineno">  100</span>      <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  101</span>        {</div>
-<div class="line"><span class="lineno">  102</span>          <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  103</span>          <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">  104</span>        }</div>
-<div class="line"><span class="lineno">  105</span>      <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  106</span>      <span class="keywordtype">int</span> cmp = v-&gt;comp - w-&gt;comp;</div>
-<div class="line"><span class="lineno">  107</span>      <span class="keywordflow">if</span> (cmp &gt; 0) <span class="keywordflow">return</span> cmp;</div>
-<div class="line"><span class="lineno">  108</span>      <span class="keywordflow">if</span> (cmp &lt; 0) <span class="keywordflow">return</span> cmp;</div>
-<div class="line"><span class="lineno">  109</span>      cmp = this-&gt;<a class="code hl_function" href="class_ring_ac7003d0bc8d7d274777ccfb0bd3ec229.html#ac7003d0bc8d7d274777ccfb0bd3ec229">compare_elems</a>(v-&gt;coeff, w-&gt;coeff);</div>
-<div class="line"><span class="lineno">  110</span>      <span class="keywordflow">if</span> (cmp &gt; 0) <span class="keywordflow">return</span> cmp;</div>
-<div class="line"><span class="lineno">  111</span>      <span class="keywordflow">if</span> (cmp &lt; 0) <span class="keywordflow">return</span> cmp;</div>
-<div class="line"><span class="lineno">  112</span>    }</div>
-<div class="line"><span class="lineno">  113</span>}</div>
+<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00124">124</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  125</span>{</div>
+<div class="line"><span class="lineno">  126</span>  <span class="keywordflow">for</span> (;; v = v-&gt;next, w = w-&gt;next)</div>
+<div class="line"><span class="lineno">  127</span>    {</div>
+<div class="line"><span class="lineno">  128</span>      <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  129</span>        {</div>
+<div class="line"><span class="lineno">  130</span>          <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  131</span>          <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  132</span>        }</div>
+<div class="line"><span class="lineno">  133</span>      <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  134</span>      <span class="keywordtype">int</span> cmp = v-&gt;comp - w-&gt;comp;</div>
+<div class="line"><span class="lineno">  135</span>      <span class="keywordflow">if</span> (cmp &gt; 0) <span class="keywordflow">return</span> cmp;</div>
+<div class="line"><span class="lineno">  136</span>      <span class="keywordflow">if</span> (cmp &lt; 0) <span class="keywordflow">return</span> cmp;</div>
+<div class="line"><span class="lineno">  137</span>      cmp = this-&gt;<a class="code hl_function" href="class_ring_ac7003d0bc8d7d274777ccfb0bd3ec229.html#ac7003d0bc8d7d274777ccfb0bd3ec229">compare_elems</a>(v-&gt;coeff, w-&gt;coeff);</div>
+<div class="line"><span class="lineno">  138</span>      <span class="keywordflow">if</span> (cmp &gt; 0) <span class="keywordflow">return</span> cmp;</div>
+<div class="line"><span class="lineno">  139</span>      <span class="keywordflow">if</span> (cmp &lt; 0) <span class="keywordflow">return</span> cmp;</div>
+<div class="line"><span class="lineno">  140</span>    }</div>
+<div class="line"><span class="lineno">  141</span>}</div>
 <div class="ttc" id="aclass_ring_ac7003d0bc8d7d274777ccfb0bd3ec229_html_ac7003d0bc8d7d274777ccfb0bd3ec229"><div class="ttname"><a href="class_ring_ac7003d0bc8d7d274777ccfb0bd3ec229.html#ac7003d0bc8d7d274777ccfb0bd3ec229">Ring::compare_elems</a></div><div class="ttdeci">virtual int compare_elems(const ring_elem f, const ring_elem g) const =0</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_ring_ac7003d0bc8d7d274777ccfb0bd3ec229.html#ac7003d0bc8d7d274777ccfb0bd3ec229">compare_elems()</a>.</p>

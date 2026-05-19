@@ -92,6 +92,9 @@ $(function(){initNavTree('allocator_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_b_i_basis_1_1_fast_allocator.html">BIBasis::FastAllocator</a></span> &mdash; per-size-class slab allocator for <a class="el" href="namespace_b_i_basis.html">BIBasis</a>'s small objects.  
+<a href="#details">More...</a></p>
+
 <p><a href="allocator_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -102,7 +105,18 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:BIBasis" id="r_BIBasis"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_b_i_basis.html">BIBasis</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_b_i_basis_1_1_fast_allocator.html">BIBasis::FastAllocator</a></span> &mdash; per-size-class slab allocator for <a class="el" href="namespace_b_i_basis.html">BIBasis</a>'s small objects. </p>
+<p>Declares the slab pool that supplies storage for the millions of tiny <span class="tt"><a class="el" href="struct_monom.html">Monom</a></span>, <span class="tt">Polynom</span>, and <span class="tt">Triple</span> records the involutive- basis algorithm churns through. Each <span class="tt">FastAllocator</span> instance is bound to a single fixed <span class="tt">blockSize</span> at construction and maintains a free-list of that-sized chunks carved out of large memory pages; <span class="tt">Allocate()</span> pops the head of the free-list (and calls <span class="tt">ExpandMemory()</span> to slab in a new page if the list is empty), <span class="tt">Free()</span> pushes back, both inlined for the inner loop.</p>
+<p>Memory is never returned to the OS &mdash; the slabs persist for the life of the allocator and are reclaimed only on process exit. The subsystem deliberately bypasses <a class="el" href="namespace_m2.html">M2</a>'s Boehm GC and the engine's <span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span> pattern; <a class="el" href="namespace_b_i_basis.html">BIBasis</a> classes opt in by overloading <span class="tt">operator new</span> / <span class="tt">operator delete</span> to route through a static <span class="tt">FastAllocator</span> for their size class.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="bibasis_8hpp.html">bibasis.hpp</a> </dd>
+<dd>
+<a class="el" href="polynom_8hpp.html" title="BIBasis::Polynom&lt;MonomType&gt; — linked-list F_2[x] polynomial with symmetric-difference arithmetic.">polynom.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_8hpp.html" title="BIBasis::Monom — abstract squarefree-monomial base for the three Janet orderings.">monom.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="allocator_8hpp_source.html">allocator.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

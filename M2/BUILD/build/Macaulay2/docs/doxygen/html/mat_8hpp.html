@@ -111,7 +111,7 @@ Classes</h2></td></tr>
 <p>The two-layer split keeps the per-ring fast paths fully templated (no virtual dispatch inside the inner loop) while presenting a single uniform <span class="tt">MutableMatrix*</span> interface across the engine / interpreter boundary. The companion <span class="tt"><a class="el" href="mat_8cpp.html">mat.cpp</a></span> runs the ring-tag dispatcher that picks the right concrete <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;R&gt;</span> specialisation (FFLAS-FFPACK for small Z/p, FLINT for medium primes and <a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a> / <a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a>, LAPACK for RR / CC, fraction- free routines for general ZZ-coefficient matrices).</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="dmat_8hpp.html" title="DMat&lt;ACoeffRing&gt; — dense-matrix template plus the umbrella that wires in every per-ring specialisatio...">dmat.hpp</a> </dd>
 <dd>
-<a class="el" href="smat_8hpp.html">smat.hpp</a> </dd>
+<a class="el" href="smat_8hpp.html" title="SMat&lt;ACoeffRing&gt; — column-oriented sparse matrix template, dual of DMat&lt;R&gt;.">smat.hpp</a> </dd>
 <dd>
 <a class="el" href="mutablemat_8hpp.html" title="Umbrella header that ties together MutableMat declarations, implementations, and the SLP variant.">mutablemat.hpp</a> </dd></dl>
 

@@ -122,30 +122,30 @@ template&lt;typename <a class="el" href="class_s_mat_a2c4e45ce7e0f4624ab61ca1a9b
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="smat_8hpp_source.html#l00770">770</a> of file <a class="el" href="smat_8hpp_source.html">smat.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  771</span>{</div>
-<div class="line"><span class="lineno">  772</span>  <span class="keywordtype">size_t</span> <a class="code hl_class" href="class_s_mat.html">n_to_delete</a> = <a class="code hl_class" href="class_s_mat.html">j</a> - <a class="code hl_class" href="class_s_mat.html">i</a> + 1;</div>
-<div class="line"><span class="lineno">  773</span>  <a class="code hl_struct" href="struct_s_mat_1_1sparsevec.html">sparsevec</a> <a class="code hl_class" href="class_s_mat.html">head</a>;</div>
-<div class="line"><span class="lineno">  774</span>  <a class="code hl_struct" href="struct_s_mat_1_1sparsevec.html">sparsevec</a> *<a class="code hl_class" href="class_s_mat.html">w</a> = &amp;<a class="code hl_class" href="class_s_mat.html">head</a>;</div>
-<div class="line"><span class="lineno">  775</span>  <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next = <a class="code hl_class" href="class_s_mat.html">v</a>;</div>
-<div class="line"><span class="lineno">  776</span>  <span class="keywordflow">while</span> (<a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next != 0 &amp;&amp; <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next-&gt;row &gt;= <a class="code hl_class" href="class_s_mat.html">i</a>)</div>
-<div class="line"><span class="lineno">  777</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next-&gt;row &lt;= <a class="code hl_class" href="class_s_mat.html">j</a>)</div>
-<div class="line"><span class="lineno">  778</span>      {</div>
-<div class="line"><span class="lineno">  779</span>        <span class="comment">// this row is up for the chopping block</span></div>
-<div class="line"><span class="lineno">  780</span>        <a class="code hl_struct" href="struct_s_mat_1_1sparsevec.html">sparsevec</a> *<a class="code hl_class" href="class_s_mat.html">tmp</a> = <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  781</span>        <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next = <a class="code hl_class" href="class_s_mat.html">tmp</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  782</span>        <a class="code hl_function" href="class_s_mat_a6b4a8d084c80cd0736d8aaa9129fe8c4.html#a6b4a8d084c80cd0736d8aaa9129fe8c4">vec_remove_node</a>(<a class="code hl_class" href="class_s_mat.html">tmp</a>);</div>
-<div class="line"><span class="lineno">  783</span>      }</div>
-<div class="line"><span class="lineno">  784</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  785</span>      {</div>
-<div class="line"><span class="lineno">  786</span>        <a class="code hl_class" href="class_s_mat.html">w</a> = <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  787</span>        <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;row -= <a class="code hl_class" href="class_s_mat.html">n_to_delete</a>;</div>
-<div class="line"><span class="lineno">  788</span>      }</div>
-<div class="line"><span class="lineno">  789</span>  <a class="code hl_class" href="class_s_mat.html">v</a> = <a class="code hl_class" href="class_s_mat.html">head</a>.next;</div>
-<div class="line"><span class="lineno">  790</span>}</div>
-<div class="ttc" id="aclass_s_mat_a6b4a8d084c80cd0736d8aaa9129fe8c4_html_a6b4a8d084c80cd0736d8aaa9129fe8c4"><div class="ttname"><a href="class_s_mat_a6b4a8d084c80cd0736d8aaa9129fe8c4.html#a6b4a8d084c80cd0736d8aaa9129fe8c4">SMat::vec_remove_node</a></div><div class="ttdeci">void vec_remove_node(sparsevec *&amp;v) const</div><div class="ttdef"><b>Definition</b> <a href="smat_8hpp_source.html#l00260">smat.hpp:260</a></div></div>
-<div class="ttc" id="aclass_s_mat_html"><div class="ttname"><a href="class_s_mat.html">SMat</a></div><div class="ttdef"><b>Definition</b> <a href="smat_8hpp_source.html#l00015">smat.hpp:16</a></div></div>
-<div class="ttc" id="astruct_s_mat_1_1sparsevec_html"><div class="ttname"><a href="struct_s_mat_1_1sparsevec.html">SMat::sparsevec</a></div><div class="ttdef"><b>Definition</b> <a href="smat_8hpp_source.html#l00029">smat.hpp:30</a></div></div>
+<p class="definition">Definition at line <a class="el" href="smat_8hpp_source.html#l00795">795</a> of file <a class="el" href="smat_8hpp_source.html">smat.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  796</span>{</div>
+<div class="line"><span class="lineno">  797</span>  <span class="keywordtype">size_t</span> <a class="code hl_class" href="class_s_mat.html">n_to_delete</a> = <a class="code hl_class" href="class_s_mat.html">j</a> - <a class="code hl_class" href="class_s_mat.html">i</a> + 1;</div>
+<div class="line"><span class="lineno">  798</span>  <a class="code hl_struct" href="struct_s_mat_1_1sparsevec.html">sparsevec</a> <a class="code hl_class" href="class_s_mat.html">head</a>;</div>
+<div class="line"><span class="lineno">  799</span>  <a class="code hl_struct" href="struct_s_mat_1_1sparsevec.html">sparsevec</a> *<a class="code hl_class" href="class_s_mat.html">w</a> = &amp;<a class="code hl_class" href="class_s_mat.html">head</a>;</div>
+<div class="line"><span class="lineno">  800</span>  <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next = <a class="code hl_class" href="class_s_mat.html">v</a>;</div>
+<div class="line"><span class="lineno">  801</span>  <span class="keywordflow">while</span> (<a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next != 0 &amp;&amp; <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next-&gt;row &gt;= <a class="code hl_class" href="class_s_mat.html">i</a>)</div>
+<div class="line"><span class="lineno">  802</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next-&gt;row &lt;= <a class="code hl_class" href="class_s_mat.html">j</a>)</div>
+<div class="line"><span class="lineno">  803</span>      {</div>
+<div class="line"><span class="lineno">  804</span>        <span class="comment">// this row is up for the chopping block</span></div>
+<div class="line"><span class="lineno">  805</span>        <a class="code hl_struct" href="struct_s_mat_1_1sparsevec.html">sparsevec</a> *<a class="code hl_class" href="class_s_mat.html">tmp</a> = <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  806</span>        <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next = <a class="code hl_class" href="class_s_mat.html">tmp</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  807</span>        <a class="code hl_function" href="class_s_mat_a6b4a8d084c80cd0736d8aaa9129fe8c4.html#a6b4a8d084c80cd0736d8aaa9129fe8c4">vec_remove_node</a>(<a class="code hl_class" href="class_s_mat.html">tmp</a>);</div>
+<div class="line"><span class="lineno">  808</span>      }</div>
+<div class="line"><span class="lineno">  809</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  810</span>      {</div>
+<div class="line"><span class="lineno">  811</span>        <a class="code hl_class" href="class_s_mat.html">w</a> = <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  812</span>        <a class="code hl_class" href="class_s_mat.html">w</a>-&gt;row -= <a class="code hl_class" href="class_s_mat.html">n_to_delete</a>;</div>
+<div class="line"><span class="lineno">  813</span>      }</div>
+<div class="line"><span class="lineno">  814</span>  <a class="code hl_class" href="class_s_mat.html">v</a> = <a class="code hl_class" href="class_s_mat.html">head</a>.next;</div>
+<div class="line"><span class="lineno">  815</span>}</div>
+<div class="ttc" id="aclass_s_mat_a6b4a8d084c80cd0736d8aaa9129fe8c4_html_a6b4a8d084c80cd0736d8aaa9129fe8c4"><div class="ttname"><a href="class_s_mat_a6b4a8d084c80cd0736d8aaa9129fe8c4.html#a6b4a8d084c80cd0736d8aaa9129fe8c4">SMat::vec_remove_node</a></div><div class="ttdeci">void vec_remove_node(sparsevec *&amp;v) const</div><div class="ttdef"><b>Definition</b> <a href="smat_8hpp_source.html#l00285">smat.hpp:285</a></div></div>
+<div class="ttc" id="aclass_s_mat_html"><div class="ttname"><a href="class_s_mat.html">SMat</a></div><div class="ttdef"><b>Definition</b> <a href="smat_8hpp_source.html#l00040">smat.hpp:41</a></div></div>
+<div class="ttc" id="astruct_s_mat_1_1sparsevec_html"><div class="ttname"><a href="struct_s_mat_1_1sparsevec.html">SMat::sparsevec</a></div><div class="ttdef"><b>Definition</b> <a href="smat_8hpp_source.html#l00054">smat.hpp:55</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="struct_s_mat_1_1sparsevec_acac0a783b79012d9494ac246de0051ee.html#acac0a783b79012d9494ac246de0051ee">SMat&lt; ACoeffRing &gt;::sparsevec::next</a>, <a class="el" href="struct_s_mat_1_1sparsevec_a9683b6166dfb084629d8ad6e68af09d5.html#a9683b6166dfb084629d8ad6e68af09d5">SMat&lt; ACoeffRing &gt;::sparsevec::row</a>, and <a class="el" href="class_s_mat_a6b4a8d084c80cd0736d8aaa9129fe8c4.html#a6b4a8d084c80cd0736d8aaa9129fe8c4">vec_remove_node()</a>.</p>
 

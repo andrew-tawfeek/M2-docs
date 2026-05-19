@@ -105,52 +105,52 @@ template&lt;typename MonomType&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="janettree_8hpp_source.html#l00344">344</a> of file <a class="el" href="janettree_8hpp_source.html">janettree.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  345</span>    {</div>
-<div class="line"><span class="lineno">  346</span>        <span class="keywordflow">if</span> (!<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>)</div>
-<div class="line"><span class="lineno">  347</span>        {</div>
-<div class="line"><span class="lineno">  348</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  349</span>        }</div>
-<div class="line"><span class="lineno">  350</span> </div>
-<div class="line"><span class="lineno">  351</span>        <span class="keyword">typename</span> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">MonomType::Integer</a> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a> = <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm().Degree();</div>
-<div class="line"><span class="lineno">  352</span>        <span class="keyword">typename</span> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">JanetTree&lt;MonomType&gt;::Iterator</a> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>(<a class="code hl_variable" href="class_b_i_basis_1_1_janet_tree_a279133ee4142558f68012dd7dcaf46f7.html#a279133ee4142558f68012dd7dcaf46f7">Root</a>);</div>
-<div class="line"><span class="lineno">  353</span> </div>
-<div class="line"><span class="lineno">  354</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_b_i_basis_1_1_janet_tree_a279133ee4142558f68012dd7dcaf46f7.html#a279133ee4142558f68012dd7dcaf46f7">Root</a>)</div>
-<div class="line"><span class="lineno">  355</span>        {</div>
-<div class="line"><span class="lineno">  356</span>            <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.Build(<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a>, 0, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>);</div>
-<div class="line"><span class="lineno">  357</span>        }</div>
-<div class="line"><span class="lineno">  358</span>        <span class="keywordflow">else</span> </div>
-<div class="line"><span class="lineno">  359</span>        {</div>
-<div class="line"><span class="lineno">  360</span>            <span class="keyword">typename</span> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">MonomType::Integer</a> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a> = 0;</div>
-<div class="line"><span class="lineno">  361</span>            <span class="keywordflow">do</span> </div>
-<div class="line"><span class="lineno">  362</span>            {</div>
-<div class="line"><span class="lineno">  363</span>                <span class="keywordflow">while</span>(<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.GetDegree() &lt; <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm()[<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>] &amp;&amp; <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.HasNextDegree())</div>
-<div class="line"><span class="lineno">  364</span>                {</div>
-<div class="line"><span class="lineno">  365</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.StepNextDegree();</div>
-<div class="line"><span class="lineno">  366</span>                }</div>
-<div class="line"><span class="lineno">  367</span> </div>
-<div class="line"><span class="lineno">  368</span>                <span class="keywordflow">if</span> (<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.GetDegree() &gt; <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm()[<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>]) </div>
-<div class="line"><span class="lineno">  369</span>                {</div>
-<div class="line"><span class="lineno">  370</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.Build(<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a>, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>);</div>
-<div class="line"><span class="lineno">  371</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  372</span>                }</div>
-<div class="line"><span class="lineno">  373</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.GetDegree() == <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm()[<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>]) </div>
-<div class="line"><span class="lineno">  374</span>                {</div>
-<div class="line"><span class="lineno">  375</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a> -= <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm()[<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>];</div>
-<div class="line"><span class="lineno">  376</span>                    ++<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>;</div>
-<div class="line"><span class="lineno">  377</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.StepNextVariable();</div>
-<div class="line"><span class="lineno">  378</span>                }</div>
-<div class="line"><span class="lineno">  379</span>                <span class="keywordflow">else</span> </div>
-<div class="line"><span class="lineno">  380</span>                {</div>
-<div class="line"><span class="lineno">  381</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.StepNextDegree();</div>
-<div class="line"><span class="lineno">  382</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.Build(<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a>, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>);</div>
-<div class="line"><span class="lineno">  383</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  384</span>                }</div>
-<div class="line"><span class="lineno">  385</span>            } <span class="keywordflow">while</span>(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  386</span>        }</div>
-<div class="line"><span class="lineno">  387</span>    }</div>
-<div class="ttc" id="aclass_b_i_basis_1_1_janet_tree_a279133ee4142558f68012dd7dcaf46f7_html_a279133ee4142558f68012dd7dcaf46f7"><div class="ttname"><a href="class_b_i_basis_1_1_janet_tree_a279133ee4142558f68012dd7dcaf46f7.html#a279133ee4142558f68012dd7dcaf46f7">BIBasis::JanetTree::Root</a></div><div class="ttdeci">Node * Root</div><div class="ttdef"><b>Definition</b> <a href="janettree_8hpp_source.html#l00077">janettree.hpp:77</a></div></div>
-<div class="ttc" id="aclass_b_i_basis_1_1_janet_tree_html"><div class="ttname"><a href="class_b_i_basis_1_1_janet_tree.html">BIBasis::JanetTree</a></div><div class="ttdef"><b>Definition</b> <a href="janettree_8hpp_source.html#l00018">janettree.hpp:19</a></div></div>
+<p class="definition">Definition at line <a class="el" href="janettree_8hpp_source.html#l00372">372</a> of file <a class="el" href="janettree_8hpp_source.html">janettree.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  373</span>    {</div>
+<div class="line"><span class="lineno">  374</span>        <span class="keywordflow">if</span> (!<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>)</div>
+<div class="line"><span class="lineno">  375</span>        {</div>
+<div class="line"><span class="lineno">  376</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  377</span>        }</div>
+<div class="line"><span class="lineno">  378</span> </div>
+<div class="line"><span class="lineno">  379</span>        <span class="keyword">typename</span> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">MonomType::Integer</a> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a> = <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm().Degree();</div>
+<div class="line"><span class="lineno">  380</span>        <span class="keyword">typename</span> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">JanetTree&lt;MonomType&gt;::Iterator</a> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>(<a class="code hl_variable" href="class_b_i_basis_1_1_janet_tree_a279133ee4142558f68012dd7dcaf46f7.html#a279133ee4142558f68012dd7dcaf46f7">Root</a>);</div>
+<div class="line"><span class="lineno">  381</span> </div>
+<div class="line"><span class="lineno">  382</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_b_i_basis_1_1_janet_tree_a279133ee4142558f68012dd7dcaf46f7.html#a279133ee4142558f68012dd7dcaf46f7">Root</a>)</div>
+<div class="line"><span class="lineno">  383</span>        {</div>
+<div class="line"><span class="lineno">  384</span>            <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.Build(<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a>, 0, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>);</div>
+<div class="line"><span class="lineno">  385</span>        }</div>
+<div class="line"><span class="lineno">  386</span>        <span class="keywordflow">else</span> </div>
+<div class="line"><span class="lineno">  387</span>        {</div>
+<div class="line"><span class="lineno">  388</span>            <span class="keyword">typename</span> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">MonomType::Integer</a> <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a> = 0;</div>
+<div class="line"><span class="lineno">  389</span>            <span class="keywordflow">do</span> </div>
+<div class="line"><span class="lineno">  390</span>            {</div>
+<div class="line"><span class="lineno">  391</span>                <span class="keywordflow">while</span>(<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.GetDegree() &lt; <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm()[<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>] &amp;&amp; <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.HasNextDegree())</div>
+<div class="line"><span class="lineno">  392</span>                {</div>
+<div class="line"><span class="lineno">  393</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.StepNextDegree();</div>
+<div class="line"><span class="lineno">  394</span>                }</div>
+<div class="line"><span class="lineno">  395</span> </div>
+<div class="line"><span class="lineno">  396</span>                <span class="keywordflow">if</span> (<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.GetDegree() &gt; <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm()[<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>]) </div>
+<div class="line"><span class="lineno">  397</span>                {</div>
+<div class="line"><span class="lineno">  398</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.Build(<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a>, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>);</div>
+<div class="line"><span class="lineno">  399</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  400</span>                }</div>
+<div class="line"><span class="lineno">  401</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.GetDegree() == <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm()[<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>]) </div>
+<div class="line"><span class="lineno">  402</span>                {</div>
+<div class="line"><span class="lineno">  403</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a> -= <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>-&gt;GetPolynomLm()[<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>];</div>
+<div class="line"><span class="lineno">  404</span>                    ++<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>;</div>
+<div class="line"><span class="lineno">  405</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.StepNextVariable();</div>
+<div class="line"><span class="lineno">  406</span>                }</div>
+<div class="line"><span class="lineno">  407</span>                <span class="keywordflow">else</span> </div>
+<div class="line"><span class="lineno">  408</span>                {</div>
+<div class="line"><span class="lineno">  409</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.StepNextDegree();</div>
+<div class="line"><span class="lineno">  410</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">nodeIterator</a>.Build(<a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">degree</a>, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">var</a>, <a class="code hl_class" href="class_b_i_basis_1_1_janet_tree.html">triple</a>);</div>
+<div class="line"><span class="lineno">  411</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  412</span>                }</div>
+<div class="line"><span class="lineno">  413</span>            } <span class="keywordflow">while</span>(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  414</span>        }</div>
+<div class="line"><span class="lineno">  415</span>    }</div>
+<div class="ttc" id="aclass_b_i_basis_1_1_janet_tree_a279133ee4142558f68012dd7dcaf46f7_html_a279133ee4142558f68012dd7dcaf46f7"><div class="ttname"><a href="class_b_i_basis_1_1_janet_tree_a279133ee4142558f68012dd7dcaf46f7.html#a279133ee4142558f68012dd7dcaf46f7">BIBasis::JanetTree::Root</a></div><div class="ttdeci">Node * Root</div><div class="ttdef"><b>Definition</b> <a href="janettree_8hpp_source.html#l00105">janettree.hpp:105</a></div></div>
+<div class="ttc" id="aclass_b_i_basis_1_1_janet_tree_html"><div class="ttname"><a href="class_b_i_basis_1_1_janet_tree.html">BIBasis::JanetTree</a></div><div class="ttdef"><b>Definition</b> <a href="janettree_8hpp_source.html#l00046">janettree.hpp:47</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_b_i_basis_1_1_janet_tree_1_1_iterator_a90124afd2787a8f635ed68a9a4450503.html#a90124afd2787a8f635ed68a9a4450503">BIBasis::JanetTree&lt; MonomType &gt;::Iterator::Build()</a>, <a class="el" href="class_b_i_basis_1_1_janet_tree_1_1_iterator_abbaf262aad0177f13f24f23aaf4ee055.html#abbaf262aad0177f13f24f23aaf4ee055">BIBasis::JanetTree&lt; MonomType &gt;::Iterator::GetDegree()</a>, <a class="el" href="class_b_i_basis_1_1_triple_af48b57c12a175c35d6d1bde3d88c4325.html#af48b57c12a175c35d6d1bde3d88c4325">BIBasis::Triple&lt; MonomType &gt;::GetPolynomLm()</a>, <a class="el" href="class_b_i_basis_1_1_janet_tree_1_1_iterator_ad0b071dc1c1539e4760ce92f921613f1.html#ad0b071dc1c1539e4760ce92f921613f1">BIBasis::JanetTree&lt; MonomType &gt;::Iterator::HasNextDegree()</a>, <a class="el" href="class_b_i_basis_1_1_janet_tree_a279133ee4142558f68012dd7dcaf46f7.html#a279133ee4142558f68012dd7dcaf46f7">Root</a>, <a class="el" href="class_b_i_basis_1_1_janet_tree_1_1_iterator_a3beb7640ffa1e3bc33a43b48ab13a1d3.html#a3beb7640ffa1e3bc33a43b48ab13a1d3">BIBasis::JanetTree&lt; MonomType &gt;::Iterator::StepNextDegree()</a>, and <a class="el" href="class_b_i_basis_1_1_janet_tree_1_1_iterator_aa4e021645b2f11a34672c38fd1119e63.html#aa4e021645b2f11a34672c38fd1119e63">BIBasis::JanetTree&lt; MonomType &gt;::Iterator::StepNextVariable()</a>.</p>
 

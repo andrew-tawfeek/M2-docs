@@ -91,6 +91,9 @@ $(function(){initNavTree('solvable_8hpp.html','',''); });
   <div class="headertitle"><div class="title">solvable.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_solvable_algebra.html">SolvableAlgebra</a></span> &mdash; PBW algebra where <span class="tt">x_j x_i = x_i x_j + q_{ij}</span> for fixed commutators.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_macaulay2_2e_2poly_8hpp_source.html">poly.hpp</a>&quot;</code><br />
 </div>
 <p><a href="solvable_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -99,7 +102,19 @@ $(function(){initNavTree('solvable_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:SolvableAlgebra" id="r_SolvableAlgebra"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_solvable_algebra.html">SolvableAlgebra</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_solvable_algebra.html">SolvableAlgebra</a></span> &mdash; PBW algebra where <span class="tt">x_j x_i = x_i x_j + q_{ij}</span> for fixed commutators. </p>
+<p>Declares <span class="tt"><a class="el" href="class_solvable_algebra.html">SolvableAlgebra</a></span>, the <span class="tt"><a class="el" href="class_poly_ring.html">PolyRing</a></span> subclass for polynomial-shaped algebras whose generators do not commute but satisfy a PBW-style straightening relation <span class="tt">x_j x_i = x_i x_j + q_{ij}</span> for <span class="tt">i &lt; j</span>, with each commutator polynomial <span class="tt">q_{ij}</span> supplied as the <span class="tt">(i, j)</span> entry of a constructor-provided <span class="tt"><a class="el" href="class_matrix.html">Matrix</a> Q_</span>. The framework covers Weyl algebras, quantum planes, universal enveloping algebras <span class="tt">U(g)</span>, and the trivial zero-<span class="tt">Q</span> case where the algebra degenerates to an ordinary polynomial ring. Multiplication walks both factors and substitutes <span class="tt">x_j x_i -&gt; x_i x_j +
+q_{ij}</span> whenever it encounters an out-of-order product, recursing on <span class="tt">q_{ij}</span>.</p>
+<p>Termination requires every <span class="tt">q_{ij}</span> to lie strictly below <span class="tt">x_i x_j</span> in some well-founded ordering &mdash; the PBW condition. The constructor checks this lazily and trusts the caller to supply a <span class="tt">Q</span> that defines an associative algebra.</p>
+<dl class="section see"><dt>See also</dt><dd>poly.hpp </dd>
+<dd>
+<a class="el" href="weylalg_8hpp.html" title="WeylAlgebra — ring of polynomial differential operators with [d_i, x_i] = 1.">weylalg.hpp</a> </dd>
+<dd>
+<a class="el" href="skewpoly_8hpp.html" title="SkewPolynomialRing — polynomial ring with a designated set of anticommuting variables.">skewpoly.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="solvable_8hpp_source.html">solvable.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

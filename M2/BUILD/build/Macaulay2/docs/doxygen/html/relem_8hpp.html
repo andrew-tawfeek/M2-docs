@@ -91,6 +91,9 @@ $(function(){initNavTree('relem_8hpp.html','',''); });
   <div class="headertitle"><div class="title">relem.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> &mdash; tagged <span class="tt">(Ring*, <a class="el" href="unionring__elem.html">ring_elem</a>)</span> pair, the engine's universal element type.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ring_8hpp_source.html">ring.hpp</a>&quot;</code><br />
 </div>
 <p><a href="relem_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -99,7 +102,16 @@ $(function(){initNavTree('relem_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:RingElement" id="r_RingElement"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_element.html">RingElement</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> &mdash; tagged <span class="tt">(Ring*, <a class="el" href="unionring__elem.html">ring_elem</a>)</span> pair, the engine's universal element type. </p>
+<p>Declares <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span>, the <span class="tt"><a class="el" href="class_engine_object.html">EngineObject</a></span> subclass that stores one element of a ring as a pair <span class="tt">(R, val)</span>: the <span class="tt">Ring*</span> pointer tags the value and the opaque <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> carries it. Every arithmetic op (<span class="tt">add</span>, <span class="tt">mult</span>, <span class="tt">negate</span>, ...) delegates to the ring's virtuals, so the same <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> shape represents integers, rationals, polynomials, quotient-ring elements, Weyl operators, and any other algebraic object the engine knows about. The <span class="tt">make_raw(R, f)</span> factory wraps a freshly-built <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> with its ring; direct construction is rare.</p>
+<p>The <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> union itself lives in <span class="tt"><a class="el" href="ringelem_8hpp.html" title="ring_elem — the universal value type carried by every Ring* in the engine.">ringelem.hpp</a></span>. Small values (Z/p element, <span class="tt"><a class="el" href="classint.html">int</a></span>) stay inline in the union, while large values (<span class="tt">mpz_ptr</span>, polynomial pointer) reference heap-allocated storage &mdash; the encapsulation is why each ring is the only thing that knows what its <span class="tt">val</span> means.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="ring_8hpp.html" title="Ring — the legacy abstract base class for every coefficient and polynomial ring.">ring.hpp</a> </dd>
+<dd>
+<a class="el" href="ringelem_8hpp.html" title="ring_elem — the universal value type carried by every Ring* in the engine.">ringelem.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="relem_8hpp_source.html">relem.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

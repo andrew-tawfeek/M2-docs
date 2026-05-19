@@ -91,6 +91,9 @@ $(function(){initNavTree('settings-manager_8hpp.html','',''); });
   <div class="headertitle"><div class="title">settings-manager.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_b_i_basis_1_1_settings_manager.html">BIBasis::SettingsManager</a></span> &mdash; singleton holding the per-run monomial order and variable count.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="monom_8hpp_source.html">monom.hpp</a>&quot;</code><br />
 </div>
 <p><a href="settings-manager_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -107,7 +110,16 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a83c38bea9fdc24752e5b0abcbe7d1b05" id="r_a83c38bea9fdc24752e5b0abcbe7d1b05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_b_i_basis_1_1_settings_manager.html">SettingsManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_b_i_basis_a83c38bea9fdc24752e5b0abcbe7d1b05.html#a83c38bea9fdc24752e5b0abcbe7d1b05">BIBasis::GetSettingsManager</a> ()</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_b_i_basis_1_1_settings_manager.html">BIBasis::SettingsManager</a></span> &mdash; singleton holding the per-run monomial order and variable count. </p>
+<p>Declares the lazy singleton (accessed via the free function <span class="tt">GetSettingsManager()</span>) that carries the subsystem-wide parameters every <a class="el" href="namespace_b_i_basis.html">BIBasis</a> class needs to consult: the active monomial order (<span class="tt">Monom::Lex</span> / <span class="tt">Monom::DegLex</span> / <span class="tt">Monom::DegRevLex</span>) and, via <span class="tt">SetNumberOfVariables</span>, the static <span class="tt">Monom::DimIndepend</span> that fixes the size of every monomial's variable list. <span class="tt">Launcher</span> populates these once at the start of a run; the algorithm code reads them through the singleton instead of threading them through every constructor.</p>
+<p>Constructors, copy-constructor, and assignment are private and <span class="tt">GetSettingsManager</span> is the only friend, enforcing the single- instance contract &mdash; <a class="el" href="namespace_b_i_basis.html">BIBasis</a> runs are single-threaded per <span class="tt"><a class="el" href="bibasis_8cpp_a1bc82a7a7aeca4bf5670eec2d9c608fa.html#a1bc82a7a7aeca4bf5670eec2d9c608fa">rawBIBasis</a></span> call, so the shared mutable state is safe.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="monom_8hpp.html" title="BIBasis::Monom — abstract squarefree-monomial base for the three Janet orderings.">monom.hpp</a> </dd>
+<dd>
+<a class="el" href="launcher_8hpp.html" title="BIBasis::Launcher — monomial-order dispatcher between the engine boundary and BooleanInvolutiveBasis.">launcher.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="settings-manager_8hpp_source.html">settings-manager.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

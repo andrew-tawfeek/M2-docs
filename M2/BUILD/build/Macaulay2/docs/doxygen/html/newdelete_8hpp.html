@@ -91,6 +91,9 @@ $(function(){initNavTree('newdelete_8hpp.html','',''); });
   <div class="headertitle"><div class="title">newdelete.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span> &mdash; per-class opt-in routing of <span class="tt">new</span> / <span class="tt">delete</span> through bdwgc.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="m2-mem_8h_source.html">interface/m2-mem.h</a>&quot;</code><br />
 <code>#include &quot;M2/gc-include.h&quot;</code><br />
 <code>#include &lt;gc/gc_allocator.h&gt;</code><br />
@@ -128,7 +131,17 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ad38fe33a33b16397111c18ee7e216f81" id="r_ad38fe33a33b16397111c18ee7e216f81"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="newdelete_8hpp_ad38fe33a33b16397111c18ee7e216f81.html#ad38fe33a33b16397111c18ee7e216f81">cleanup</a> (void *obj, void *displ)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span> &mdash; per-class opt-in routing of <span class="tt">new</span> / <span class="tt">delete</span> through bdwgc. </p>
+<p>Declares the <span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span> base class (plus the <span class="tt">our_new_gc</span> variant) and the <span class="tt"><a class="el" href="newdelete_8hpp_a372d8395e2d40d72e37f3f32375dd58a.html#a372d8395e2d40d72e37f3f32375dd58a" title="a version of the STL vector, which allocates its backing memory with gc.">gc_vector</a>&lt;<a class="el" href="struct_t.html">T</a>&gt;</span> typedef. A class inheriting from <span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span> overrides <span class="tt">operator new</span> to call <span class="tt">GC_malloc</span> and <span class="tt">operator delete</span> to be a no-op (Boehm GC reclaims when the object becomes unreferenced), so every <span class="tt">new Foo(...)</span> of a participating class lands on the GC heap without any per-allocation glue at the call site. The companion <span class="tt"><a class="el" href="newdelete_8hpp_a372d8395e2d40d72e37f3f32375dd58a.html#a372d8395e2d40d72e37f3f32375dd58a" title="a version of the STL vector, which allocates its backing memory with gc.">gc_vector</a>&lt;<a class="el" href="struct_t.html">T</a>&gt;</span> is <span class="tt">std::vector</span> parameterised by a GC-aware allocator; it is the right choice whenever <span class="tt"><a class="el" href="struct_t.html">T</a></span> holds GC pointers and the vector itself either lives in a <span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span>-derived object or stays on the stack.</p>
+<p>The engine deliberately avoids globally overriding <span class="tt">operator
+new</span> because mixed memory regimes are in play (FLINT, MPFR, GMP, and <span class="tt">std::vector</span> buffers all bring their own allocators); subclassing is the opt-in mechanism that lets each class choose. Production engine code uses <span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span> as the standard base, with <span class="tt"><a class="el" href="classstash.html">stash</a></span> from <span class="tt"><a class="el" href="mem_8hpp.html" title="stash — size-class slab allocator for fixed-size objects in engine hot paths.">mem.hpp</a></span> for size-class-uniform hot paths.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="hash_8hpp.html" title="EngineObject / MutableEngineObject — shared base for every long-lived engine class.">hash.hpp</a> </dd>
+<dd>
+<a class="el" href="mem_8hpp.html" title="stash — size-class slab allocator for fixed-size objects in engine hot paths.">mem.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

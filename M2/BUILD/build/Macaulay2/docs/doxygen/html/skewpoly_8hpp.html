@@ -91,6 +91,9 @@ $(function(){initNavTree('skewpoly_8hpp.html','',''); });
   <div class="headertitle"><div class="title">skewpoly.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_skew_polynomial_ring.html">SkewPolynomialRing</a></span> &mdash; polynomial ring with a designated set of anticommuting variables.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_macaulay2_2e_2poly_8hpp_source.html">poly.hpp</a>&quot;</code><br />
 </div>
 <p><a href="skewpoly_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -99,7 +102,18 @@ $(function(){initNavTree('skewpoly_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:SkewPolynomialRing" id="r_SkewPolynomialRing"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_skew_polynomial_ring.html">SkewPolynomialRing</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_skew_polynomial_ring.html">SkewPolynomialRing</a></span> &mdash; polynomial ring with a designated set of anticommuting variables. </p>
+<p>Declares <span class="tt"><a class="el" href="class_skew_polynomial_ring.html">SkewPolynomialRing</a></span>, the <span class="tt"><a class="el" href="class_poly_ring.html">PolyRing</a></span> subclass for the super-commutative case: a set of variables passed at construction in <span class="tt">skewvars</span> anticommutes pairwise and squares to zero (<span class="tt">x_i x_j = -x_j x_i</span>, <span class="tt">x_i^2 = 0</span>), while every other variable commutes with everything. Construction delegates the bookkeeping to the inherited <span class="tt"><a class="el" href="class_skew_multiplication.html">SkewMultiplication</a> skew_</span> field (declared in <span class="tt"><a class="el" href="skew_8hpp.html" title="SkewMultiplication — configuration object naming the skew-commuting variables of a ring.">skew.hpp</a></span>); arithmetic enters the skew code path through the <span class="tt">is_skew_</span> flag tested on the base. Multiplication walks both factors term-by-term and produces the sign by counting transpositions needed to move skew variables of the second factor past skew variables of the first.</p>
+<p>Overrides <span class="tt">has_gcd()</span> to <span class="tt">false</span> because the ring is not a domain, and reports <span class="tt">is_skew_commutative_ring()</span> <span class="tt">true</span> to the dispatcher in <span class="tt">polyring.hpp</span>. Exterior algebras are the familiar special case (every variable skew); the broader setup with a strict subset is what makes the class more general than a pure exterior algebra.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="skew_8hpp.html" title="SkewMultiplication — configuration object naming the skew-commuting variables of a ring.">skew.hpp</a> </dd>
+<dd>
+poly.hpp </dd>
+<dd>
+polyring.hpp </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="skewpoly_8hpp_source.html">skewpoly.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

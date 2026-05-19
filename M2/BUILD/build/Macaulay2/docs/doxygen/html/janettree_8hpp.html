@@ -91,6 +91,9 @@ $(function(){initNavTree('janettree_8hpp.html','',''); });
   <div class="headertitle"><div class="title">janettree.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_b_i_basis_1_1_janet_tree.html">BIBasis::JanetTree</a>&lt;MonomType&gt;</span> &mdash; the involutive-division index for boolean Gröbner bases.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="triple_8hpp_source.html">triple.hpp</a>&quot;</code><br />
 </div>
 <p><a href="janettree_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -106,7 +109,18 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:BIBasis" id="r_BIBasis"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_b_i_basis.html">BIBasis</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_b_i_basis_1_1_janet_tree.html">BIBasis::JanetTree</a>&lt;MonomType&gt;</span> &mdash; the involutive-division index for boolean Gröbner bases. </p>
+<p>Declares and defines the trie that drives the inner loop of <span class="tt">BooleanInvolutiveBasis</span>. Each <span class="tt"><a class="el" href="res-tasking-example_8cpp_a385e7536b2426e1d8ae70ca51cf2fca0.html#a385e7536b2426e1d8ae70ca51cf2fca0">Node</a></span> carries a variable degree, an optional <span class="tt">Triple</span>, and <span class="tt">NextDegree</span> / <span class="tt">NextVariable</span> sibling pointers; a monomial of degree <span class="tt">d</span> traces a path of length <span class="tt">O(d)</span> through the tree, branching first by the chosen variable's exponent and then by the next variable in the leading-term encoding. <span class="tt">Find</span> walks the path to locate an involutive divisor (returning the <span class="tt">Triple</span> whose monomial Janet- divides the query), <span class="tt">Insert</span> lazily allocates fresh nodes along the path and attaches the triple at the leaf, and <span class="tt">Delete</span> bookkeeps "bifurcation" counts to know when removing a subtree disconnects an interior branch.</p>
+<p>Templated on <span class="tt">MonomType</span> (<span class="tt">MonomLex</span>, <span class="tt">MonomDL</span>, <span class="tt">MonomDRL</span>) so the per-variable indexing inlines per ordering, and exposes a <span class="tt">NonMulti(triple)</span> traversal that returns the non- multiplicative variable set the involutive algorithm needs in order to schedule prolongations.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="triple_8hpp.html" title="BIBasis::Triple&lt;MonomType&gt; — (polynomial, ancestors, non-multiplicative variables) record driving Jan...">triple.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_8hpp.html" title="BIBasis::Monom — abstract squarefree-monomial base for the three Janet orderings.">monom.hpp</a> </dd>
+<dd>
+<a class="el" href="involutive_8hpp.html" title="BIBasis::BooleanInvolutiveBasis&lt;MonomType&gt; — Janet-involutive Gröbner driver for F_2[x]/(x_i^2-x_i).">involutive.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="janettree_8hpp_source.html">janettree.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

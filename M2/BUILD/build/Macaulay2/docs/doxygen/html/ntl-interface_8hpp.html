@@ -91,6 +91,9 @@ $(function(){initNavTree('ntl-interface_8hpp.html','',''); });
   <div class="headertitle"><div class="title">ntl-interface.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine bridge into NTL &mdash; conversions and entry points for the operations the engine still prefers it for.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;M2/math-include.h&gt;</code><br />
 <code>#include &lt;NTL/ZZ.h&gt;</code><br />
@@ -111,7 +114,16 @@ Functions</h2></td></tr>
 <tr class="memitem:a8cf4015c4ef79683ed1dc5764f6c86e3" id="r_a8cf4015c4ef79683ed1dc5764f6c86e3"><td class="memItemLeft" align="right" valign="top">NTL::mat_ZZ *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ntl-interface_8hpp_a8cf4015c4ef79683ed1dc5764f6c86e3.html#a8cf4015c4ef79683ed1dc5764f6c86e3">mutableMatrix_to_NTL_mat_ZZ</a> (const <a class="el" href="class_mutable_matrix.html">MutableMatrix</a> *M)</td></tr>
 <tr class="memitem:aee43e93b3aed00020434f95c3e36b140" id="r_aee43e93b3aed00020434f95c3e36b140"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ntl-interface_8hpp_aee43e93b3aed00020434f95c3e36b140.html#aee43e93b3aed00020434f95c3e36b140">ntl_LLL</a> (<a class="el" href="class_mutable_matrix.html">MutableMatrix</a> *M, <a class="el" href="class_mutable_matrix.html">MutableMatrix</a> *U, long a, long b, <a class="el" href="classint.html">int</a> strategy)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine bridge into NTL &mdash; conversions and entry points for the operations the engine still prefers it for. </p>
+<p>Pulls in <span class="tt">&lt;NTL/ZZ.h&gt;</span>, <span class="tt">&lt;NTL/mat_ZZ.h&gt;</span>, and <span class="tt">&lt;NTL/LLL.h&gt;</span> (with diagnostic pragmas around the include to silence NTL's internal narrowing warnings) and declares the engine-side conversion helpers: <span class="tt"><a class="el" href="ntl-interface_8hpp_a8f6dfc3055f6d450a58c99df88b3e52e.html#a8f6dfc3055f6d450a58c99df88b3e52e">ntl_ZZ_to_mpz</a></span> / <span class="tt"><a class="el" href="ntl-interface_8hpp_a34f25246a6e1a521e1eac2ed332aaf5a.html#a34f25246a6e1a521e1eac2ed332aaf5a">ntl_ZZ_from_mpz</a></span> marshal between NTL's <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span> and GMP <span class="tt">mpz_t</span>, while <span class="tt"><a class="el" href="ntl-interface_8hpp_a6fec0c38ab3e8374adcdd728ca5ea708.html#a6fec0c38ab3e8374adcdd728ca5ea708">makeNTLMatrixZZ</a></span> / <span class="tt"><a class="el" href="ntl-interface_8hpp_a673be6dbba09d5266ac083e06879a26c.html#a673be6dbba09d5266ac083e06879a26c">mat_ZZ_set_entry</a></span> / <span class="tt"><a class="el" href="ntl-interface_8hpp_a3ac092ab05a7db07c6fd9ad39f695c01.html#a3ac092ab05a7db07c6fd9ad39f695c01">mat_ZZ_get_entry</a></span> provide the entry-by-entry plumbing to convert an engine <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> to and from an NTL <span class="tt">mat_ZZ</span>. The <span class="tt">dntl_*</span> debugger printers from <span class="tt"><a class="el" href="ntl-debugio_8cpp.html" title="Debugger-callable dntl_* printers for NTL mat_ZZ and ZZ values.">ntl-debugio.cpp</a></span> are forward-declared here.</p>
+<p>NTL is linked alongside FLINT and selected per-operation: LLL with options FLINT lacks (e.g. floating-point variants with stricter error tracking) routes through here, as do a few legacy paths that pre-date the FLINT migration. The companion <span class="tt"><a class="el" href="ntl-internal_8cpp.html">ntl-internal.cpp</a></span> carries <span class="tt">using namespace NTL;</span> conversions that would otherwise clash with engine names (<span class="tt">gcd</span>, <span class="tt">random</span>, <span class="tt">mul</span>, ...).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_l_l_l_8hpp.html" title="Lenstra-Lenstra-Lovász integer lattice basis reduction, in place on a MutableMatrix.">LLL.hpp</a> </dd>
+<dd>
+<a class="el" href="ntl-debugio_8cpp.html" title="Debugger-callable dntl_* printers for NTL mat_ZZ and ZZ values.">ntl-debugio.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="ntl-interface_8hpp_source.html">ntl-interface.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

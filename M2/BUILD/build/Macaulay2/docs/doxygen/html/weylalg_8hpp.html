@@ -91,6 +91,9 @@ $(function(){initNavTree('weylalg_8hpp.html','',''); });
   <div class="headertitle"><div class="title">weylalg.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_weyl_algebra.html">WeylAlgebra</a></span> &mdash; ring of polynomial differential operators with <span class="tt">[d_i, x_i] = 1</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_macaulay2_2e_2poly_8hpp_source.html">poly.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>&quot;</code><br />
 </div>
@@ -100,7 +103,16 @@ $(function(){initNavTree('weylalg_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:WeylAlgebra" id="r_WeylAlgebra"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_weyl_algebra.html">WeylAlgebra</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_weyl_algebra.html">WeylAlgebra</a></span> &mdash; ring of polynomial differential operators with <span class="tt">[d_i, x_i] = 1</span>. </p>
+<p>Declares the <span class="tt"><a class="el" href="class_poly_ring.html">PolyRing</a></span> subclass for the Weyl algebra: each pair <span class="tt">(x_i, d_i)</span> of coordinate and derivative satisfies <span class="tt">d_i x_i = x_i d_i + 1</span>, while every other generator commutes normally. The user supplies the assignment via the <span class="tt">_derivative</span> / <span class="tt">_commutative</span> arrays (<span class="tt">_derivative[i] = j</span> means generator <span class="tt">i</span> is <span class="tt">d_j</span>; <span class="tt">_derivative[i] = -1</span> marks a plain commuting variable), so the multiplication routine can recognise out-of-order <span class="tt">d_i x_i</span> products and unfold them via the Leibniz expansion <span class="tt">d^a x^b = sum_k C(a, k) C(b, k) k! x^{b - k} d^{a - k}</span>. Two static caches <span class="tt">binomtable</span> and <span class="tt">diffcoeffstable</span> (sized up to <span class="tt">binomtop</span> / <span class="tt">diffcoeffstop</span>) memoise the binomial and Leibniz coefficients so the inner loop avoids recomputation.</p>
+<p>Setting <span class="tt">_homogeneous_weyl_algebra</span> and <span class="tt">_homog_var</span> selects the homogenised variant in which <span class="tt">d_i</span> shares its degree with <span class="tt">x_i</span> (via the extra homogeneity variable absorbing the difference); the result is graded and lets ordinary GB machinery run unchanged on characteristic-variety and D-module intersection problems. The TODO at the top of the header flags a planned migration from raw <span class="tt"><a class="el" href="classint.html">int</a> *</span> arrays to <span class="tt"><a class="el" href="class_exponent_vector.html">ExponentVector</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd>poly.hpp </dd>
+<dd>
+<a class="el" href="solvable_8hpp.html" title="SolvableAlgebra — PBW algebra where x_j x_i = x_i x_j + q_{ij} for fixed commutators.">solvable.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="weylalg_8hpp_source.html">weylalg.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

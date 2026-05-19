@@ -91,6 +91,9 @@ $(function(){initNavTree('ringelem_8hpp.html','',''); });
   <div class="headertitle"><div class="title">ringelem.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> &mdash; the universal value type carried by every <span class="tt">Ring*</span> in the engine.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;M2/math-include.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="monoid_8hpp_source.html">monoid.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
@@ -140,7 +143,17 @@ Functions</h2></td></tr>
 <tr class="memitem:ab1b1cb64daaf1f901dd95f1380506fb9" id="r_ab1b1cb64daaf1f901dd95f1380506fb9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_term_iterator.html">TermIterator</a>&lt; <a class="el" href="structvecterm.html">vecterm</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ringelem_8hpp_ab1b1cb64daaf1f901dd95f1380506fb9.html#ab1b1cb64daaf1f901dd95f1380506fb9">begin</a> (<a class="el" href="structvecterm.html">vecterm</a> *ptr)</td></tr>
 <tr class="memitem:a5ae7f4516603af6d63b5b6f55036a5a6" id="r_a5ae7f4516603af6d63b5b6f55036a5a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_term_iterator.html">TermIterator</a>&lt; <a class="el" href="structvecterm.html">vecterm</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ringelem_8hpp_a5ae7f4516603af6d63b5b6f55036a5a6.html#a5ae7f4516603af6d63b5b6f55036a5a6">end</a> (<a class="el" href="structvecterm.html">vecterm</a> *)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> &mdash; the universal value type carried by every <span class="tt">Ring*</span> in the engine. </p>
+<p>Declares the <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> union plus the GMP/MPFR/MPFI const and mutable pointer aliases (<span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span>, <span class="tt"><a class="el" href="ringelem_8hpp_a487debf371b09c706e237215cab277af.html#a487debf371b09c706e237215cab277af">ZZmutable</a></span>, <span class="tt"><a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a></span>, <span class="tt"><a class="el" href="ringelem_8hpp_aa5d5500afd1f71d6375b54e272c03748.html#aa5d5500afd1f71d6375b54e272c03748">QQmutable</a></span>, <span class="tt"><a class="el" href="ringelem_8hpp_a5e9cb9214c045fe4d410b3823042f3ea.html#a5e9cb9214c045fe4d410b3823042f3ea">RRRelement</a></span>, <span class="tt"><a class="el" href="ringelem_8hpp_a059c72b6789888407f38bf1e472c6b0b.html#a059c72b6789888407f38bf1e472c6b0b">RRRmutable</a></span>, <span class="tt"><a class="el" href="ringelem_8hpp_ae8a8b1a5e976663d49e3f3b5a3f77ce3.html#ae8a8b1a5e976663d49e3f3b5a3f77ce3">RRielement</a></span>, <span class="tt"><a class="el" href="ringelem_8hpp_a1de7e1c108cab3f167b1824f0650ec74.html#a1de7e1c108cab3f167b1824f0650ec74">RRimutable</a></span>) and the inline <span class="tt"><a class="el" href="structcc__struct.html">cc_struct</a></span> / <span class="tt"><a class="el" href="structcc__doubles__struct.html">cc_doubles_struct</a></span> complex-number record types. The aliases exist so engine function signatures can make const-ness explicit (<span class="tt">void
+foo(ZZ a, ZZmutable result)</span> reads more clearly than its <span class="tt">mpz_srcptr</span> / <span class="tt">mpz_ptr</span> expansion) and so a single search-and-replace can flip the underlying GMP / MPFR / MPFI type if that surface ever changes.</p>
+<p><span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> is the value the <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>-virtual API trafficks in everywhere; each <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass knows how to interpret the union (small integer inline, <span class="tt">mpz_ptr</span> for big values, polynomial pointer for <span class="tt"><a class="el" href="class_poly_ring.html">PolyRing</a></span>, ...). This header is pulled in by essentially every translation unit that touches algebra; keep new additions narrow.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="ring_8hpp.html" title="Ring — the legacy abstract base class for every coefficient and polynomial ring.">ring.hpp</a> </dd>
+<dd>
+<a class="el" href="relem_8hpp.html" title="RingElement — tagged (Ring*, ring_elem) pair, the engine&#39;s universal element type.">relem.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

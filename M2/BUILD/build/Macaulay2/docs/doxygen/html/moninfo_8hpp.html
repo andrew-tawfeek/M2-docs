@@ -91,6 +91,9 @@ $(function(){initNavTree('moninfo_8hpp.html','',''); });
   <div class="headertitle"><div class="title">moninfo.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a></span> &mdash; F4's specialised monoid descriptor over packed monomials.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="m2-types_8h_source.html">interface/m2-types.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ntuple-monomial_8hpp_source.html">f4/ntuple-monomial.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="varpower-monomial_8hpp_source.html">f4/varpower-monomial.hpp</a>&quot;</code><br />
@@ -111,7 +114,18 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a75641a782b0ba6d753ef03651b07b5c2" id="r_a75641a782b0ba6d753ef03651b07b5c2"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="moninfo_8hpp_afe2d8fe59c70630e71d82733c3f8ddcb.html#afe2d8fe59c70630e71d82733c3f8ddcb">monomial_word</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moninfo_8hpp_a75641a782b0ba6d753ef03651b07b5c2.html#a75641a782b0ba6d753ef03651b07b5c2">packed_monomial</a></td></tr>
 <tr class="memitem:a8ebc6aeb2b5443bc5d07ed5cc64b10b6" id="r_a8ebc6aeb2b5443bc5d07ed5cc64b10b6"><td class="memItemLeft" align="right" valign="top">typedef const <a class="el" href="moninfo_8hpp_afe2d8fe59c70630e71d82733c3f8ddcb.html#afe2d8fe59c70630e71d82733c3f8ddcb">monomial_word</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="moninfo_8hpp_a8ebc6aeb2b5443bc5d07ed5cc64b10b6.html#a8ebc6aeb2b5443bc5d07ed5cc64b10b6">const_packed_monomial</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a></span> &mdash; F4's specialised monoid descriptor over packed monomials. </p>
+<p>Declares <span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a></span>, the F4-side compiled form of a <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span>. The class exposes the operations the F4 inner loop needs: <span class="tt">monomial_size</span> (the int count of one encoded monomial), <span class="tt">compare(a, b)</span>, <span class="tt">multiply(a, b, out)</span>, <span class="tt">divide(a, b, out)</span>, <span class="tt">is_divisible(a, b)</span>, and the <span class="tt"><a class="el" href="schur2_8cpp_a5cd45c5883270ca0c1ea0f8aa7dac8e3.html#a5cd45c5883270ca0c1ea0f8aa7dac8e3">to_varpower</a></span> / <span class="tt">from_varpower</span> converters between the dense <span class="tt"><a class="el" href="ntuple-monomial_8hpp_ac762fe7fe918aec66d8175fac1620d24.html#ac762fe7fe918aec66d8175fac1620d24">ntuple_monomial</a></span> and sparse <span class="tt"><a class="el" href="varpower-monomial_8hpp_a157ac534e5ec3ea071fa7e5928ad2db5.html#a157ac534e5ec3ea071fa7e5928ad2db5">varpower_monomial</a></span> encodings. A <span class="tt"><a class="el" href="class_skew_multiplication.html">SkewMultiplication</a></span> field carries the skew-variable configuration when the ambient ring is exterior-flavoured.</p>
+<p><span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a></span> strips out everything F4 does not need from the general-purpose <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span> (multi-degrees beyond a single scalar, generic-ordering walkers) and adds the F4-specific accelerators (packed layout, preferred encoding choice). The engine builds one per <span class="tt"><a class="el" href="class_polynomial_ring.html">PolynomialRing</a></span> at F4 startup and shares it across all F4 operations on that ring; the <span class="tt">#if 0</span> block at the top is stale configuration scaffolding kept alongside the live code.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="ntuple-monomial_8hpp.html" title="F4&#39;s dense int64_t exponent-vector specialisation of ExponentVector (legacy).">ntuple-monomial.hpp</a> </dd>
+<dd>
+<a class="el" href="varpower-monomial_8hpp.html" title="F4&#39;s (variable, exponent) sparse-monomial ExponentList specialisation (legacy).">varpower-monomial.hpp</a> </dd>
+<dd>
+<a class="el" href="f4_8hpp.html" title="F4GB — the inner-loop Faugère F4 Groebner-basis algorithm.">f4.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

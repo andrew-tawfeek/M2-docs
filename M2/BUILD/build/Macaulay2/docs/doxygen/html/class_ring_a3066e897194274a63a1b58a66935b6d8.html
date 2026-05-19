@@ -117,19 +117,19 @@ $(function(){initNavTree('class_ring_a3066e897194274a63a1b58a66935b6d8.html','',
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00281">281</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  282</span>{</div>
-<div class="line"><span class="lineno">  283</span>  vecHeap H(F);</div>
-<div class="line"><span class="lineno">  284</span>  <span class="keywordflow">for</span> (; v != <span class="keyword">nullptr</span>; v = v-&gt;next)</div>
-<div class="line"><span class="lineno">  285</span>    {</div>
-<div class="line"><span class="lineno">  286</span>      vec w1 = <a class="code hl_function" href="class_ring_a03119f391a83b5d4aa09b61c2153c6ab.html#a03119f391a83b5d4aa09b61c2153c6ab">component_shift</a>(v-&gt;comp * <a class="code hl_variable" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a>-&gt;rank(), w);</div>
-<div class="line"><span class="lineno">  287</span>      <a class="code hl_function" href="class_ring_a7e69dd9e350769debce345a1467001fe.html#a7e69dd9e350769debce345a1467001fe">mult_vec_to</a>(w1, v-&gt;coeff, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  288</span>      H.add(w1);</div>
-<div class="line"><span class="lineno">  289</span>    }</div>
-<div class="line"><span class="lineno">  290</span>  <span class="keywordflow">return</span> H.value();</div>
-<div class="line"><span class="lineno">  291</span>}</div>
-<div class="ttc" id="aclass_ring_a03119f391a83b5d4aa09b61c2153c6ab_html_a03119f391a83b5d4aa09b61c2153c6ab"><div class="ttname"><a href="class_ring_a03119f391a83b5d4aa09b61c2153c6ab.html#a03119f391a83b5d4aa09b61c2153c6ab">Ring::component_shift</a></div><div class="ttdeci">vec component_shift(int n, vec v) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00248">ring-vecs.cpp:248</a></div></div>
-<div class="ttc" id="aclass_ring_a7e69dd9e350769debce345a1467001fe_html_a7e69dd9e350769debce345a1467001fe"><div class="ttname"><a href="class_ring_a7e69dd9e350769debce345a1467001fe.html#a7e69dd9e350769debce345a1467001fe">Ring::mult_vec_to</a></div><div class="ttdeci">void mult_vec_to(vec &amp;v, const ring_elem r, bool opposite_mult) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00368">ring-vecs.cpp:368</a></div></div>
+<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00309">309</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  310</span>{</div>
+<div class="line"><span class="lineno">  311</span>  vecHeap H(F);</div>
+<div class="line"><span class="lineno">  312</span>  <span class="keywordflow">for</span> (; v != <span class="keyword">nullptr</span>; v = v-&gt;next)</div>
+<div class="line"><span class="lineno">  313</span>    {</div>
+<div class="line"><span class="lineno">  314</span>      vec w1 = <a class="code hl_function" href="class_ring_a03119f391a83b5d4aa09b61c2153c6ab.html#a03119f391a83b5d4aa09b61c2153c6ab">component_shift</a>(v-&gt;comp * <a class="code hl_variable" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a>-&gt;rank(), w);</div>
+<div class="line"><span class="lineno">  315</span>      <a class="code hl_function" href="class_ring_a7e69dd9e350769debce345a1467001fe.html#a7e69dd9e350769debce345a1467001fe">mult_vec_to</a>(w1, v-&gt;coeff, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  316</span>      H.add(w1);</div>
+<div class="line"><span class="lineno">  317</span>    }</div>
+<div class="line"><span class="lineno">  318</span>  <span class="keywordflow">return</span> H.value();</div>
+<div class="line"><span class="lineno">  319</span>}</div>
+<div class="ttc" id="aclass_ring_a03119f391a83b5d4aa09b61c2153c6ab_html_a03119f391a83b5d4aa09b61c2153c6ab"><div class="ttname"><a href="class_ring_a03119f391a83b5d4aa09b61c2153c6ab.html#a03119f391a83b5d4aa09b61c2153c6ab">Ring::component_shift</a></div><div class="ttdeci">vec component_shift(int n, vec v) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00276">ring-vecs.cpp:276</a></div></div>
+<div class="ttc" id="aclass_ring_a7e69dd9e350769debce345a1467001fe_html_a7e69dd9e350769debce345a1467001fe"><div class="ttname"><a href="class_ring_a7e69dd9e350769debce345a1467001fe.html#a7e69dd9e350769debce345a1467001fe">Ring::mult_vec_to</a></div><div class="ttdeci">void mult_vec_to(vec &amp;v, const ring_elem r, bool opposite_mult) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00396">ring-vecs.cpp:396</a></div></div>
 <div class="ttc" id="ares-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903_html_acc0eea0b8cd2df09e6f3c2bade95a903"><div class="ttname"><a href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a></div><div class="ttdeci">tbb::flow::graph G</div><div class="ttdef"><b>Definition</b> <a href="res-tasking-example_8cpp_source.html#l00017">res-tasking-example.cpp:17</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classvec_heap_aee39d6db6094683f5687bb3b7b575c9c.html#aee39d6db6094683f5687bb3b7b575c9c">vecHeap::add()</a>, <a class="el" href="class_ring_a03119f391a83b5d4aa09b61c2153c6ab.html#a03119f391a83b5d4aa09b61c2153c6ab">component_shift()</a>, <a class="el" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a>, <a class="el" href="class_ring_a7e69dd9e350769debce345a1467001fe.html#a7e69dd9e350769debce345a1467001fe">mult_vec_to()</a>, and <a class="el" href="classvec_heap_a33fb553adf26e9a4040e45a7a62ca842.html#a33fb553adf26e9a4040e45a7a62ca842">vecHeap::value()</a>.</p>

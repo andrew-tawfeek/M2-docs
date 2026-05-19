@@ -91,6 +91,9 @@ $(function(){initNavTree('f4-m2-interface_8hpp.html','',''); });
   <div class="headertitle"><div class="title">f4-m2-interface.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_f4to_m2_interface.html">F4toM2Interface</a></span> &mdash; static translators between engine <span class="tt">vec</span> / <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> and F4's <span class="tt"><a class="el" href="struct_g_b_f4_polynomial.html">GBF4Polynomial</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="m2-types_8h_source.html">interface/m2-types.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="f4-types_8hpp_source.html">f4/f4-types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
@@ -101,7 +104,18 @@ $(function(){initNavTree('f4-m2-interface_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:F4toM2Interface" id="r_F4toM2Interface"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_f4to_m2_interface.html">F4toM2Interface</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_f4to_m2_interface.html">F4toM2Interface</a></span> &mdash; static translators between engine <span class="tt">vec</span> / <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> and F4's <span class="tt"><a class="el" href="struct_g_b_f4_polynomial.html">GBF4Polynomial</a></span>. </p>
+<p>Declares the static-only <span class="tt"><a class="el" href="class_f4to_m2_interface.html">F4toM2Interface</a></span> namespace-class that converts each direction across the F4 boundary: <span class="tt">from_M2_vec</span> (and the matrix variant) packs an engine <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> column into a <span class="tt"><a class="el" href="struct_g_b_f4_polynomial.html">GBF4Polynomial</a></span> for the F4 inner loop; the inverse <span class="tt">to_M2_vec</span> unpacks F4 output back into the engine's <span class="tt">vec</span> shape, and <span class="tt">poly_set_degrees</span> reads the weight-system degree of an F4 polynomial for sugar tracking and <span class="tt">DegreeLimit =&gt;</span> accounting. Every method threads through a <span class="tt"><a class="el" href="class_vector_arithmetic.html">VectorArithmetic</a> *</span> (the per-coefficient-ring fast path) and a <span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a> *</span> (the F4 packed-monomial layout) so the helpers stay stateless.</p>
+<p><span class="tt"><a class="el" href="f4-computation_8hpp.html" title="F4Computation — GBComputation adapter around the F4 inner-loop engine.">f4-computation.hpp</a></span> reaches into these routines on every call across the boundary, both when feeding the F4 engine and when extracting its results.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="f4-computation_8hpp.html" title="F4Computation — GBComputation adapter around the F4 inner-loop engine.">f4-computation.hpp</a> </dd>
+<dd>
+<a class="el" href="f4-types_8hpp.html" title="Shared type vocabulary used across the F4 engine: spair, gbelem_type, sizeofspair.">f4-types.hpp</a> </dd>
+<dd>
+<a class="el" href="moninfo_8hpp.html" title="MonomialInfo — F4&#39;s specialised monoid descriptor over packed monomials.">moninfo.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="f4-m2-interface_8hpp_source.html">f4-m2-interface.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

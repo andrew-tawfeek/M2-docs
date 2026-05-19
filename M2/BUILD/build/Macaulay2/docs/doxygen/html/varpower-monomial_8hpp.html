@@ -91,6 +91,9 @@ $(function(){initNavTree('varpower-monomial_8hpp.html','',''); });
   <div class="headertitle"><div class="title">varpower-monomial.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>F4's <span class="tt">(variable, <a class="el" href="exptable_8h_acbad03742bc161b060402329a67aa889.html#acbad03742bc161b060402329a67aa889">exponent</a>)</span> sparse-monomial <span class="tt"><a class="el" href="class_exponent_list.html">ExponentList</a></span> specialisation (legacy).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_exponent_list_8hpp_source.html">ExponentList.hpp</a>&quot;</code><br />
 </div>
 <p><a href="varpower-monomial_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -103,7 +106,19 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a157ac534e5ec3ea071fa7e5928ad2db5" id="r_a157ac534e5ec3ea071fa7e5928ad2db5"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="varpower-monomial_8hpp_ac06516f99c07ceb08dbb3d05a8aed2ec.html#ac06516f99c07ceb08dbb3d05a8aed2ec">varpower_word</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="varpower-monomial_8hpp_a157ac534e5ec3ea071fa7e5928ad2db5.html#a157ac534e5ec3ea071fa7e5928ad2db5">varpower_monomial</a></td></tr>
 <tr class="memitem:aafe85fd808bd13fc2516f834d2b6de46" id="r_aafe85fd808bd13fc2516f834d2b6de46"><td class="memItemLeft" align="right" valign="top">typedef const <a class="el" href="varpower-monomial_8hpp_ac06516f99c07ceb08dbb3d05a8aed2ec.html#ac06516f99c07ceb08dbb3d05a8aed2ec">varpower_word</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="varpower-monomial_8hpp_aafe85fd808bd13fc2516f834d2b6de46.html#aafe85fd808bd13fc2516f834d2b6de46">const_varpower_monomial</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>F4's <span class="tt">(variable, <a class="el" href="exptable_8h_acbad03742bc161b060402329a67aa889.html#acbad03742bc161b060402329a67aa889">exponent</a>)</span> sparse-monomial <span class="tt"><a class="el" href="class_exponent_list.html">ExponentList</a></span> specialisation (legacy). </p>
+<p>Aliases <span class="tt"><a class="el" href="varpower-monomial_8hpp_a80c9578f9706c63d2c27a27ba4d6b8f8.html#a80c9578f9706c63d2c27a27ba4d6b8f8">varpower_monomials</a> = <a class="el" href="class_exponent_list.html">ExponentList</a>&lt;long, false&gt;</span> and the matching <span class="tt"><a class="el" href="varpower-monomial_8hpp_ac571c8c8b56dfc31cf35f3bf703b74fa.html#ac571c8c8b56dfc31cf35f3bf703b74fa">index_varpower_monomial</a></span> iterator, then exposes the F4-side <span class="tt"><a class="el" href="varpower-monomial_8hpp_ac06516f99c07ceb08dbb3d05a8aed2ec.html#ac06516f99c07ceb08dbb3d05a8aed2ec">varpower_word</a></span> / <span class="tt"><a class="el" href="varpower-monomial_8hpp_a157ac534e5ec3ea071fa7e5928ad2db5.html#a157ac534e5ec3ea071fa7e5928ad2db5">varpower_monomial</a></span> / <span class="tt"><a class="el" href="varpower-monomial_8hpp_aafe85fd808bd13fc2516f834d2b6de46.html#aafe85fd808bd13fc2516f834d2b6de46">const_varpower_monomial</a></span> vocabulary so F4 source files do not have to spell out the template instantiation. The underlying encoding is the standard <span class="tt">[length, v_1, e_1, ...,
+v_r, e_r]</span> varpower layout inherited from <span class="tt"><a class="el" href="_exponent_list_8hpp.html" title="Variable-length sparse (variable, exponent) encoding of monomials.">ExponentList.hpp</a></span>; the <span class="tt">false</span> template flag disables overflow checking in favour of inner-loop speed.</p>
+<p>The newer <span class="tt">gb-f4/</span> engine prefers its own <span class="tt">MonomialTypes</span> and <span class="tt">MonomialView</span>; this header survives so the older <span class="tt">f4/</span> subdirectory keeps building. Consumers include <span class="tt"><a class="el" href="f4_8hpp.html" title="F4GB — the inner-loop Faugère F4 Groebner-basis algorithm.">f4.hpp</a></span>, <span class="tt"><a class="el" href="f4-spairs_8hpp.html" title="F4SPairSet — priority-queue + pruning logic for F4 S-pairs.">f4-spairs.hpp</a></span> (S-pair LCM monomials), and <span class="tt"><a class="el" href="moninfo_8hpp.html" title="MonomialInfo — F4&#39;s specialised monoid descriptor over packed monomials.">moninfo.hpp</a></span> (the packed <span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a></span> layout shares the same encoding).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_exponent_list_8hpp.html" title="Variable-length sparse (variable, exponent) encoding of monomials.">ExponentList.hpp</a> </dd>
+<dd>
+<a class="el" href="ntuple-monomial_8hpp.html" title="F4&#39;s dense int64_t exponent-vector specialisation of ExponentVector (legacy).">ntuple-monomial.hpp</a> </dd>
+<dd>
+<a class="el" href="moninfo_8hpp.html" title="MonomialInfo — F4&#39;s specialised monoid descriptor over packed monomials.">moninfo.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="varpower-monomial_8hpp_source.html">varpower-monomial.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

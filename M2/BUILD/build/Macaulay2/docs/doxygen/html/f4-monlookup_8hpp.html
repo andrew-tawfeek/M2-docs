@@ -91,6 +91,9 @@ $(function(){initNavTree('f4-monlookup_8hpp.html','',''); });
   <div class="headertitle"><div class="title">f4-monlookup.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_f4_monomial_lookup_table_t.html">F4MonomialLookupTableT</a>&lt;Key&gt;</span> &mdash; trie-structured leading-monomial divisor index.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="moninfo_8hpp_source.html">f4/moninfo.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ntuple-monomial_8hpp_source.html">f4/ntuple-monomial.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="varpower-monomial_8hpp_source.html">f4/varpower-monomial.hpp</a>&quot;</code><br />
@@ -106,7 +109,19 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a8f11b8c4f84feae00a2a3413de6260fa" id="r_a8f11b8c4f84feae00a2a3413de6260fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="f4-monlookup_8hpp_a8f11b8c4f84feae00a2a3413de6260fa.html#a8f11b8c4f84feae00a2a3413de6260fa">minimalize_varpower_monomials</a> (const std::vector&lt; <a class="el" href="varpower-monomial_8hpp_a157ac534e5ec3ea071fa7e5928ad2db5.html#a157ac534e5ec3ea071fa7e5928ad2db5">varpower_monomial</a> &gt; &amp;elems, std::vector&lt; <a class="el" href="classint.html">int</a> &gt; &amp;result_minimals)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_f4_monomial_lookup_table_t.html">F4MonomialLookupTableT</a>&lt;Key&gt;</span> &mdash; trie-structured leading-monomial divisor index. </p>
+<p>Declares the templated <span class="tt"><a class="el" href="class_f4_monomial_lookup_table_t.html">F4MonomialLookupTableT</a>&lt;Key&gt;</span> &mdash; an explicit monomial-ideal trie used by F4 to answer "does any
+leading monomial divide this target?" in time proportional to the path through the tree rather than the basis size. Each <span class="tt">mi_node</span> performs a <span class="tt">(var, exp)</span> test with <span class="tt">left</span> / <span class="tt">right</span> children for the match / no-match branches and a <span class="tt">header</span> back-pointer for fast traversal; leaves carry the user <span class="tt">Key</span> (typically a basis index) in a tagged union with the downward link <span class="tt">down</span> used by internal nodes. Inserting a leading monomial extends the tree along its varpower path; looking up a target walks the tree picking the "matches" branch whenever the target's exponent dominates the node's.</p>
+<p>Specialised for the F4 inner loop's encoded monomial vocabulary (<span class="tt"><a class="el" href="moninfo_8hpp.html" title="MonomialInfo — F4&#39;s specialised monoid descriptor over packed monomials.">moninfo.hpp</a></span>, <span class="tt"><a class="el" href="varpower-monomial_8hpp.html" title="F4&#39;s (variable, exponent) sparse-monomial ExponentList specialisation (legacy).">varpower-monomial.hpp</a></span>, <span class="tt"><a class="el" href="ntuple-monomial_8hpp.html" title="F4&#39;s dense int64_t exponent-vector specialisation of ExponentVector (legacy).">ntuple-monomial.hpp</a></span>); the equivalent top-of-engine path is <span class="tt"><a class="el" href="montable_8hpp.html" title="MonomialTable — leading-monomial divisor index used by the GB reducer.">montable.hpp</a></span>'s lex-sorted leading-monomial list.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="moninfo_8hpp.html" title="MonomialInfo — F4&#39;s specialised monoid descriptor over packed monomials.">moninfo.hpp</a> </dd>
+<dd>
+<a class="el" href="varpower-monomial_8hpp.html" title="F4&#39;s (variable, exponent) sparse-monomial ExponentList specialisation (legacy).">varpower-monomial.hpp</a> </dd>
+<dd>
+<a class="el" href="ntuple-monomial_8hpp.html" title="F4&#39;s dense int64_t exponent-vector specialisation of ExponentVector (legacy).">ntuple-monomial.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="f4-monlookup_8hpp_source.html">f4-monlookup.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

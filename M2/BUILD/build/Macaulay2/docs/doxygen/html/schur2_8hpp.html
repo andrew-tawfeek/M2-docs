@@ -91,6 +91,9 @@ $(function(){initNavTree('schur2_8hpp.html','',''); });
   <div class="headertitle"><div class="title">schur2.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_schur_ring2.html">SchurRing2</a></span> &mdash; refactored Schur ring with length-prefixed partitions and broader operation set.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2poly_8hpp_source.html">poly.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="schur-poly-heap_8hpp_source.html">schur-poly-heap.hpp</a>&quot;</code><br />
@@ -115,7 +118,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a97a6f7d6609b89a90b22b38e5ab96610" id="r_a97a6f7d6609b89a90b22b38e5ab96610"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="schur2_8hpp_a97a6f7d6609b89a90b22b38e5ab96610.html#a97a6f7d6609b89a90b22b38e5ab96610">operator==</a> (const <a class="el" href="classschur__poly_a0a5a404ebe46acc5ece6871809e27790.html#a0a5a404ebe46acc5ece6871809e27790">schur_poly::iterator</a> &amp;a, const <a class="el" href="classschur__poly_a0a5a404ebe46acc5ece6871809e27790.html#a0a5a404ebe46acc5ece6871809e27790">schur_poly::iterator</a> &amp;b)</td></tr>
 <tr class="memitem:ad7292bd219ab2049c7d1699f7aa279cb" id="r_ad7292bd219ab2049c7d1699f7aa279cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="schur2_8hpp_ad7292bd219ab2049c7d1699f7aa279cb.html#ad7292bd219ab2049c7d1699f7aa279cb">operator!=</a> (const <a class="el" href="classschur__poly_a0a5a404ebe46acc5ece6871809e27790.html#a0a5a404ebe46acc5ece6871809e27790">schur_poly::iterator</a> &amp;a, const <a class="el" href="classschur__poly_a0a5a404ebe46acc5ece6871809e27790.html#a0a5a404ebe46acc5ece6871809e27790">schur_poly::iterator</a> &amp;b)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_schur_ring2.html">SchurRing2</a></span> &mdash; refactored Schur ring with length-prefixed partitions and broader operation set. </p>
+<p>Declares <span class="tt"><a class="el" href="class_schur_ring2.html">SchurRing2</a></span>, the second-generation Schur-function ring that supersedes <span class="tt"><a class="el" href="schur_8hpp.html" title="SchurRing — symmetric-function ring with Schur-basis multiplication via Littlewood-Richardson.">schur.hpp</a></span>'s <span class="tt"><a class="el" href="class_schur_ring.html">SchurRing</a></span>. Partitions carry an explicit length prefix in the <span class="tt">[n + 1, a_1, ..., a_n]</span> <span class="tt"><a class="el" href="schur2_8hpp_a66f928e09ecd7530d68046cba201cba0.html#a66f928e09ecd7530d68046cba201cba0">schur_partition</a></span> layout (with parts non-increasing but possibly negative, enabling computation over the virtual Schur ring of formal partitions), and the companion <span class="tt"><a class="el" href="classtableau2.html">tableau2</a></span> is the matching Young-tableau scratch record. Multiplication still goes through Littlewood- Richardson enumeration; the broader operation set covers plethysm and Frobenius characteristic alongside the standard product.</p>
+<p>The original <span class="tt"><a class="el" href="class_schur_ring.html">SchurRing</a></span> remains in tree because some combinatorial packages still target it. New Schur work should target <span class="tt"><a class="el" href="class_schur_ring2.html">SchurRing2</a></span>; the geometric accumulator used by its multiplication is <span class="tt"><a class="el" href="schur-poly-heap_8hpp.html" title="schur_poly_heap — geometric-bucket accumulator specialised for SchurRing2 polynomials.">schur-poly-heap.hpp</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="schur_8hpp.html" title="SchurRing — symmetric-function ring with Schur-basis multiplication via Littlewood-Richardson.">schur.hpp</a> </dd>
+<dd>
+<a class="el" href="schur-poly-heap_8hpp.html" title="schur_poly_heap — geometric-bucket accumulator specialised for SchurRing2 polynomials.">schur-poly-heap.hpp</a> </dd>
+<dd>
+poly.hpp </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="schur2_8hpp_source.html">schur2.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

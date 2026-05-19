@@ -113,54 +113,54 @@ template&lt;typename MonomType&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="involutive_8hpp_source.html#l00202">202</a> of file <a class="el" href="involutive_8hpp_source.html">involutive.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  203</span>    {</div>
-<div class="line"><span class="lineno">  204</span>        <span class="comment">/* As far as currentTriple can&#39;t be 0 (checked in QSET and TSET),</span></div>
-<div class="line"><span class="lineno">  205</span><span class="comment">         * no need to check for NULL pointer. </span></div>
-<div class="line"><span class="lineno">  206</span><span class="comment">         */</span></div>
-<div class="line"><span class="lineno">  207</span> </div>
-<div class="line"><span class="lineno">  208</span>        <span class="keyword">const</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Triple&lt;MonomType&gt;</a>* <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a> = 0;</div>
-<div class="line"><span class="lineno">  209</span>        <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>* <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a> = 0;</div>
-<div class="line"><span class="lineno">  210</span>        <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>* <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">normalForm</a> = <span class="keyword">new</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>();</div>
-<div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">triple</a>-&gt;GetVariable() == -1)</div>
-<div class="line"><span class="lineno">  213</span>        {</div>
-<div class="line"><span class="lineno">  214</span>            <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a> = <span class="keyword">new</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>(*<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">triple</a>-&gt;GetPolynom());</div>
-<div class="line"><span class="lineno">  215</span>        }</div>
-<div class="line"><span class="lineno">  216</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  217</span>        {</div>
-<div class="line"><span class="lineno">  218</span>            <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a> = <span class="keyword">new</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>(*<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">triple</a>-&gt;GetWeakAncestor()-&gt;GetPolynom());</div>
-<div class="line"><span class="lineno">  219</span>            (*originalForm) *= <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">triple</a>-&gt;GetVariable();</div>
-<div class="line"><span class="lineno">  220</span>        }</div>
-<div class="line"><span class="lineno">  221</span> </div>
-<div class="line"><span class="lineno">  222</span>        <span class="keywordflow">while</span> (!<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;IsZero())</div>
-<div class="line"><span class="lineno">  223</span>        {</div>
-<div class="line"><span class="lineno">  224</span>            <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a> = <a class="code hl_variable" href="class_b_i_basis_1_1_boolean_involutive_basis_a293abdd8b8233275e5ee33ecb52641fb.html#a293abdd8b8233275e5ee33ecb52641fb">IntermediateBasis</a>.Find(<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;Lm());</div>
-<div class="line"><span class="lineno">  225</span>            <span class="keywordflow">while</span> (<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a>)</div>
-<div class="line"><span class="lineno">  226</span>            {</div>
-<div class="line"><span class="lineno">  227</span>                <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;HeadReduction(*<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a>-&gt;GetPolynom());</div>
-<div class="line"><span class="lineno">  228</span>                <span class="keywordflow">if</span> (!<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;IsZero())</div>
-<div class="line"><span class="lineno">  229</span>                {</div>
-<div class="line"><span class="lineno">  230</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a> = <a class="code hl_variable" href="class_b_i_basis_1_1_boolean_involutive_basis_a293abdd8b8233275e5ee33ecb52641fb.html#a293abdd8b8233275e5ee33ecb52641fb">IntermediateBasis</a>.Find(<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;Lm());</div>
-<div class="line"><span class="lineno">  231</span>                }</div>
-<div class="line"><span class="lineno">  232</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  233</span>                {</div>
-<div class="line"><span class="lineno">  234</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a> = 0;</div>
-<div class="line"><span class="lineno">  235</span>                }</div>
-<div class="line"><span class="lineno">  236</span>            }</div>
-<div class="line"><span class="lineno">  237</span> </div>
-<div class="line"><span class="lineno">  238</span>            <span class="keywordflow">if</span> (!<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;IsZero())</div>
-<div class="line"><span class="lineno">  239</span>            {</div>
-<div class="line"><span class="lineno">  240</span>                (*normalForm) += <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;Lm();</div>
-<div class="line"><span class="lineno">  241</span>                <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;RidOfLm();</div>
-<div class="line"><span class="lineno">  242</span>            }</div>
-<div class="line"><span class="lineno">  243</span>        }</div>
-<div class="line"><span class="lineno">  244</span> </div>
-<div class="line"><span class="lineno">  245</span>        <span class="keyword">delete</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>;</div>
-<div class="line"><span class="lineno">  246</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">normalForm</a>;</div>
-<div class="line"><span class="lineno">  247</span>    }</div>
-<div class="ttc" id="aclass_b_i_basis_1_1_boolean_involutive_basis_a293abdd8b8233275e5ee33ecb52641fb_html_a293abdd8b8233275e5ee33ecb52641fb"><div class="ttname"><a href="class_b_i_basis_1_1_boolean_involutive_basis_a293abdd8b8233275e5ee33ecb52641fb.html#a293abdd8b8233275e5ee33ecb52641fb">BIBasis::BooleanInvolutiveBasis::IntermediateBasis</a></div><div class="ttdeci">TSet&lt; MonomType &gt; IntermediateBasis</div><div class="ttdef"><b>Definition</b> <a href="involutive_8hpp_source.html#l00028">involutive.hpp:28</a></div></div>
-<div class="ttc" id="aclass_b_i_basis_1_1_boolean_involutive_basis_html"><div class="ttname"><a href="class_b_i_basis_1_1_boolean_involutive_basis.html">BIBasis::BooleanInvolutiveBasis</a></div><div class="ttdef"><b>Definition</b> <a href="involutive_8hpp_source.html#l00024">involutive.hpp:25</a></div></div>
+<p class="definition">Definition at line <a class="el" href="involutive_8hpp_source.html#l00234">234</a> of file <a class="el" href="involutive_8hpp_source.html">involutive.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>    {</div>
+<div class="line"><span class="lineno">  236</span>        <span class="comment">/* As far as currentTriple can&#39;t be 0 (checked in QSET and TSET),</span></div>
+<div class="line"><span class="lineno">  237</span><span class="comment">         * no need to check for NULL pointer. </span></div>
+<div class="line"><span class="lineno">  238</span><span class="comment">         */</span></div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>        <span class="keyword">const</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Triple&lt;MonomType&gt;</a>* <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a> = 0;</div>
+<div class="line"><span class="lineno">  241</span>        <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>* <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a> = 0;</div>
+<div class="line"><span class="lineno">  242</span>        <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>* <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">normalForm</a> = <span class="keyword">new</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>();</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">triple</a>-&gt;GetVariable() == -1)</div>
+<div class="line"><span class="lineno">  245</span>        {</div>
+<div class="line"><span class="lineno">  246</span>            <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a> = <span class="keyword">new</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>(*<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">triple</a>-&gt;GetPolynom());</div>
+<div class="line"><span class="lineno">  247</span>        }</div>
+<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  249</span>        {</div>
+<div class="line"><span class="lineno">  250</span>            <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a> = <span class="keyword">new</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">Polynom&lt;MonomType&gt;</a>(*<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">triple</a>-&gt;GetWeakAncestor()-&gt;GetPolynom());</div>
+<div class="line"><span class="lineno">  251</span>            (*originalForm) *= <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">triple</a>-&gt;GetVariable();</div>
+<div class="line"><span class="lineno">  252</span>        }</div>
+<div class="line"><span class="lineno">  253</span> </div>
+<div class="line"><span class="lineno">  254</span>        <span class="keywordflow">while</span> (!<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;IsZero())</div>
+<div class="line"><span class="lineno">  255</span>        {</div>
+<div class="line"><span class="lineno">  256</span>            <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a> = <a class="code hl_variable" href="class_b_i_basis_1_1_boolean_involutive_basis_a293abdd8b8233275e5ee33ecb52641fb.html#a293abdd8b8233275e5ee33ecb52641fb">IntermediateBasis</a>.Find(<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;Lm());</div>
+<div class="line"><span class="lineno">  257</span>            <span class="keywordflow">while</span> (<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a>)</div>
+<div class="line"><span class="lineno">  258</span>            {</div>
+<div class="line"><span class="lineno">  259</span>                <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;HeadReduction(*<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a>-&gt;GetPolynom());</div>
+<div class="line"><span class="lineno">  260</span>                <span class="keywordflow">if</span> (!<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;IsZero())</div>
+<div class="line"><span class="lineno">  261</span>                {</div>
+<div class="line"><span class="lineno">  262</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a> = <a class="code hl_variable" href="class_b_i_basis_1_1_boolean_involutive_basis_a293abdd8b8233275e5ee33ecb52641fb.html#a293abdd8b8233275e5ee33ecb52641fb">IntermediateBasis</a>.Find(<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;Lm());</div>
+<div class="line"><span class="lineno">  263</span>                }</div>
+<div class="line"><span class="lineno">  264</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  265</span>                {</div>
+<div class="line"><span class="lineno">  266</span>                    <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">involutiveDivisor</a> = 0;</div>
+<div class="line"><span class="lineno">  267</span>                }</div>
+<div class="line"><span class="lineno">  268</span>            }</div>
+<div class="line"><span class="lineno">  269</span> </div>
+<div class="line"><span class="lineno">  270</span>            <span class="keywordflow">if</span> (!<a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;IsZero())</div>
+<div class="line"><span class="lineno">  271</span>            {</div>
+<div class="line"><span class="lineno">  272</span>                (*normalForm) += <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;Lm();</div>
+<div class="line"><span class="lineno">  273</span>                <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>-&gt;RidOfLm();</div>
+<div class="line"><span class="lineno">  274</span>            }</div>
+<div class="line"><span class="lineno">  275</span>        }</div>
+<div class="line"><span class="lineno">  276</span> </div>
+<div class="line"><span class="lineno">  277</span>        <span class="keyword">delete</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">originalForm</a>;</div>
+<div class="line"><span class="lineno">  278</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="class_b_i_basis_1_1_boolean_involutive_basis.html">normalForm</a>;</div>
+<div class="line"><span class="lineno">  279</span>    }</div>
+<div class="ttc" id="aclass_b_i_basis_1_1_boolean_involutive_basis_a293abdd8b8233275e5ee33ecb52641fb_html_a293abdd8b8233275e5ee33ecb52641fb"><div class="ttname"><a href="class_b_i_basis_1_1_boolean_involutive_basis_a293abdd8b8233275e5ee33ecb52641fb.html#a293abdd8b8233275e5ee33ecb52641fb">BIBasis::BooleanInvolutiveBasis::IntermediateBasis</a></div><div class="ttdeci">TSet&lt; MonomType &gt; IntermediateBasis</div><div class="ttdef"><b>Definition</b> <a href="involutive_8hpp_source.html#l00060">involutive.hpp:60</a></div></div>
+<div class="ttc" id="aclass_b_i_basis_1_1_boolean_involutive_basis_html"><div class="ttname"><a href="class_b_i_basis_1_1_boolean_involutive_basis.html">BIBasis::BooleanInvolutiveBasis</a></div><div class="ttdef"><b>Definition</b> <a href="involutive_8hpp_source.html#l00056">involutive.hpp:57</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_b_i_basis_1_1_triple_a182d4f2d6c02147dfcd882b57f4b8301.html#a182d4f2d6c02147dfcd882b57f4b8301">BIBasis::Triple&lt; MonomType &gt;::GetPolynom()</a>, <a class="el" href="class_b_i_basis_1_1_triple_a8be17d60f7413dcf79a85a1e3999fa31.html#a8be17d60f7413dcf79a85a1e3999fa31">BIBasis::Triple&lt; MonomType &gt;::GetVariable()</a>, <a class="el" href="class_b_i_basis_1_1_triple_a13b57ddc86c7a10457440058fffb5679.html#a13b57ddc86c7a10457440058fffb5679">BIBasis::Triple&lt; MonomType &gt;::GetWeakAncestor()</a>, <a class="el" href="class_b_i_basis_1_1_polynom_afc4e27c24e98adb4a0c336c65498e655.html#afc4e27c24e98adb4a0c336c65498e655">BIBasis::Polynom&lt; MonomType &gt;::HeadReduction()</a>, <a class="el" href="class_b_i_basis_1_1_boolean_involutive_basis_a293abdd8b8233275e5ee33ecb52641fb.html#a293abdd8b8233275e5ee33ecb52641fb">IntermediateBasis</a>, <a class="el" href="class_b_i_basis_1_1_polynom_a851f427e4c35d4c0a1ca848132908523.html#a851f427e4c35d4c0a1ca848132908523">BIBasis::Polynom&lt; MonomType &gt;::IsZero()</a>, <a class="el" href="class_b_i_basis_1_1_polynom_a9f8b68ca0728a15c615fc9187ed764e6.html#a9f8b68ca0728a15c615fc9187ed764e6">BIBasis::Polynom&lt; MonomType &gt;::Lm()</a>, and <a class="el" href="class_b_i_basis_1_1_polynom_a1fccfd8f64b21694ec5f03c544f230cb.html#a1fccfd8f64b21694ec5f03c544f230cb">BIBasis::Polynom&lt; MonomType &gt;::RidOfLm()</a>.</p>
 

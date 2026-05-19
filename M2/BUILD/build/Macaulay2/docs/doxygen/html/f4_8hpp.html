@@ -91,6 +91,9 @@ $(function(){initNavTree('f4_8hpp.html','',''); });
   <div class="headertitle"><div class="title">f4.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_f4_g_b.html">F4GB</a></span> &mdash; the inner-loop Faugère F4 Groebner-basis algorithm.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="m2-types_8h_source.html">interface/m2-types.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="moninfo_8hpp_source.html">f4/moninfo.hpp</a>&quot;</code><br />
@@ -110,7 +113,18 @@ Classes</h2></td></tr>
 <tr class="memitem:F4GB" id="r_F4GB"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_f4_g_b.html">F4GB</a></td></tr>
 <tr class="memitem:F4GB_3A_3AMacaulayMatrixStats" id="r_F4GB_3A_3AMacaulayMatrixStats"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f4_g_b_1_1_macaulay_matrix_stats.html">F4GB::MacaulayMatrixStats</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_f4_g_b.html">F4GB</a></span> &mdash; the inner-loop Faugère F4 Groebner-basis algorithm. </p>
+<p>Declares <span class="tt"><a class="el" href="class_f4_g_b.html">F4GB</a></span>, the core class implementing Faugere's linear-algebra GB algorithm. Each outer iteration selects a batch of S-pairs from <span class="tt"><a class="el" href="class_f4_s_pair_set.html">F4SPairSet</a></span>, computes their S-polynomials, collects every monomial appearing in those polynomials and the tail reducers, builds a Macaulay matrix whose rows are the S-polynomials plus reducers and whose columns are the collected monomials in the chosen order, reduces it to row-echelon form, and extracts as new basis elements any echelon rows whose leading column was previously unrepresented. Members carry the current basis (<span class="tt"><a class="el" href="f4-types_8hpp_a2e9f3698c99ce95a0e99361e755bce3c.html#a2e9f3698c99ce95a0e99361e755bce3c">gb_array</a></span>), the S-pair queue, the <span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a></span> table, and the lookup structures used to find a divisor or insert a monomial.</p>
+<p>The template parameterisation is looser than the refactored <span class="tt">gb-f4/</span> engine because this F4 pre-dates the engine's templated-arithmetic infrastructure; the header comment lists the required policy types (<a class="el" href="moninfo_8hpp_a75641a782b0ba6d753ef03651b07b5c2.html#a75641a782b0ba6d753ef03651b07b5c2">packed_monomial</a>, exponents, <a class="el" href="varpower-monomial_8hpp_a157ac534e5ec3ea071fa7e5928ad2db5.html#a157ac534e5ec3ea071fa7e5928ad2db5">varpower_monomial</a>, <a class="el" href="f4-types_8hpp_a26f8bf3ae452faf485404829038ffe26.html#a26f8bf3ae452faf485404829038ffe26">MonomialLookupTable</a>). The top-level dispatcher <span class="tt"><a class="el" href="f4-computation_8hpp.html" title="F4Computation — GBComputation adapter around the F4 inner-loop engine.">f4-computation.hpp</a></span> is what <a class="el" href="namespace_m2.html">M2</a> user calls land on before delegating here.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="f4-computation_8hpp.html" title="F4Computation — GBComputation adapter around the F4 inner-loop engine.">f4-computation.hpp</a> </dd>
+<dd>
+<a class="el" href="f4-spairs_8hpp.html" title="F4SPairSet — priority-queue + pruning logic for F4 S-pairs.">f4-spairs.hpp</a> </dd>
+<dd>
+<a class="el" href="moninfo_8hpp.html" title="MonomialInfo — F4&#39;s specialised monoid descriptor over packed monomials.">moninfo.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="f4_8hpp_source.html">f4.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

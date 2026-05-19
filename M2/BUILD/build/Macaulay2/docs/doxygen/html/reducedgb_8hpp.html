@@ -91,6 +91,9 @@ $(function(){initNavTree('reducedgb_8hpp.html','',''); });
   <div class="headertitle"><div class="title">reducedgb.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_reduced_g_b.html" title="Base class for reduced Groebner basis computation.">ReducedGB</a></span> &mdash; abstract base for the canonicalising reduction pass that follows GB computation.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="comp-gb_8hpp_source.html">comp-gb.hpp</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>&quot;</code><br />
@@ -106,7 +109,20 @@ Classes</h2></td></tr>
 <tr class="memitem:ReducedGB" id="r_ReducedGB"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_reduced_g_b.html">ReducedGB</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for reduced Groebner basis computation.  <a href="class_reduced_g_b.html#details">More...</a><br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_reduced_g_b.html" title="Base class for reduced Groebner basis computation.">ReducedGB</a></span> &mdash; abstract base for the canonicalising reduction pass that follows GB computation. </p>
+<p>Declares <span class="tt"><a class="el" href="class_reduced_g_b.html" title="Base class for reduced Groebner basis computation.">ReducedGB</a></span>, a <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> subclass that takes an already-computed Groebner basis and canonicalises it: leading monomials become distinct, no tail term is divisible by another element's leading monomial, and (over a field) leading coefficients are normalised to 1. The base owns the <span class="tt">GBRing*</span>, the per-element <span class="tt">gbvector*</span> storage, and a <span class="tt"><a class="el" href="class_monomial_table.html">MonomialTable</a></span> / <span class="tt"><a class="el" href="class_monomial_table_z_z.html">MonomialTableZZ</a></span> index of leading monomials; the static <span class="tt"><a class="el" href="class_reduced_g_b_a7b66fb4c7fbefbd3c42c4356dfc8ba78.html#a7b66fb4c7fbefbd3c42c4356dfc8ba78">ReducedGB::create</a></span> factory picks the right concrete subclass from the coefficient ring and the call shape.</p>
+<p>Concrete subclasses cover the cases that diverge in subtle ways: <span class="tt"><a class="el" href="class_reduced_g_b___field.html" title="Computation of a reduced GB w.r.t. a term order, over a field.">ReducedGB_Field</a></span> enforces the field convention, <span class="tt">ReducedGB_FieldLocal</span> adds the unit-of-the-maximal-ideal check required over local rings, <span class="tt"><a class="el" href="class_reduced_g_b___z_z.html" title="Computation of a reduced GB w.r.t. a term order, over ZZ.">ReducedGB_ZZ</a></span> handles the coefficient-aware reduction (multiple basis elements with the same monomial support are allowed if they differ in coefficient), and <span class="tt"><a class="el" href="class_marked_g_b.html" title="Computation of a reduced GB w.r.t. a marked ordering.">MarkedGB</a></span> simply wraps a user-supplied (basis, lead-term) pair without doing any reduction.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd>
+<dd>
+<a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd>
+<dd>
+<a class="el" href="montable_8hpp.html" title="MonomialTable — leading-monomial divisor index used by the GB reducer.">montable.hpp</a> </dd>
+<dd>
+<a class="el" href="montable_z_z_8hpp.html" title="MonomialTableZZ — coefficient-aware leading-monomial index for ZZ-coefficient Groebner bases.">montableZZ.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="reducedgb_8hpp_source.html">reducedgb.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

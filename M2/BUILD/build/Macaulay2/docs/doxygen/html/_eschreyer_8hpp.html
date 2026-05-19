@@ -114,7 +114,7 @@ Classes</h2></td></tr>
 <p>Also declares the lightweight <span class="tt"><a class="el" href="struct_g_b_matrix.html">GBMatrix</a></span> &mdash; a matrix whose columns are owned <span class="tt">gbvector*</span> rather than opaque <span class="tt">vec</span> values, so the inner loop sidesteps a <span class="tt"><a class="el" href="class_matrix.html">Matrix</a> -&gt; <a class="el" href="structgbvector.html">gbvector</a></span> conversion every iteration. The newer <span class="tt">schreyer-resolution/</span> implementation reduces a whole degree at once via F4 and is faster on most inputs; this older single-row reduction is retained for regression testing and the rare small-example case where it still wins.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd>
 <dd>
-<a class="el" href="schorder_8hpp.html">schorder.hpp</a> </dd>
+<a class="el" href="schorder_8hpp.html" title="SchreyerOrder — per-basis-element data backing the Schreyer order on a free module.">schorder.hpp</a> </dd>
 <dd>
 <a class="el" href="comp_8hpp.html" title="Abstract Computation base class — stop-condition machinery for incremental engine work.">comp.hpp</a> </dd></dl>
 

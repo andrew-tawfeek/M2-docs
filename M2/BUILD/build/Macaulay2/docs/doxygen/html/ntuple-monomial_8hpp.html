@@ -91,6 +91,9 @@ $(function(){initNavTree('ntuple-monomial_8hpp.html','',''); });
   <div class="headertitle"><div class="title">ntuple-monomial.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>F4's dense <span class="tt">int64_t</span> exponent-vector specialisation of <span class="tt"><a class="el" href="class_exponent_vector.html">ExponentVector</a></span> (legacy).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_exponent_vector_8hpp_source.html">ExponentVector.hpp</a>&quot;</code><br />
 </div>
 <p><a href="ntuple-monomial_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -102,7 +105,18 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ac762fe7fe918aec66d8175fac1620d24" id="r_ac762fe7fe918aec66d8175fac1620d24"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="ntuple-monomial_8hpp_a899ee54d7bdf8ba15d04dd7da7ee1758.html#a899ee54d7bdf8ba15d04dd7da7ee1758">ntuple_word</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ntuple-monomial_8hpp_ac762fe7fe918aec66d8175fac1620d24.html#ac762fe7fe918aec66d8175fac1620d24">ntuple_monomial</a></td></tr>
 <tr class="memitem:ae8541b176c9487d01296a0dcea69e280" id="r_ae8541b176c9487d01296a0dcea69e280"><td class="memItemLeft" align="right" valign="top">typedef const <a class="el" href="ntuple-monomial_8hpp_a899ee54d7bdf8ba15d04dd7da7ee1758.html#a899ee54d7bdf8ba15d04dd7da7ee1758">ntuple_word</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ntuple-monomial_8hpp_ae8541b176c9487d01296a0dcea69e280.html#ae8541b176c9487d01296a0dcea69e280">const_ntuple_monomial</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>F4's dense <span class="tt">int64_t</span> exponent-vector specialisation of <span class="tt"><a class="el" href="class_exponent_vector.html">ExponentVector</a></span> (legacy). </p>
+<p>Aliases <span class="tt"><a class="el" href="ntuple-monomial_8hpp_aaa0a19abd7f19a3e5f543501f108967a.html#aaa0a19abd7f19a3e5f543501f108967a">ntuple_monomials</a> = <a class="el" href="class_exponent_vector.html">ExponentVector</a>&lt;int64_t, false&gt;</span> for the F4 inner loop's dense monomial encoding: 64-bit signed exponents indexed by variable, with overflow checking disabled. The custom <span class="tt">mask</span> specialisation defined below derives the F4-side bit-mask used to short-circuit divisibility tests. Per the header's <span class="tt">CAVEAT</span>, no overflow protection happens at this layer &mdash; F4 trades the safe-add branch for inner-loop speed and relies on sugar tracking, <span class="tt"><a class="el" href="class_g_b_weight.html">GBWeight</a></span>, and degree checks higher up to reject unreasonable inputs before they reach monomial arithmetic.</p>
+<p>Counterpart to the sparse <span class="tt"><a class="el" href="varpower-monomial_8hpp_a157ac534e5ec3ea071fa7e5928ad2db5.html#a157ac534e5ec3ea071fa7e5928ad2db5">varpower_monomial</a></span>; the TODO at the top of the file marks this as a planned eventual deletion once F4 migrates fully to the templated <span class="tt"><a class="el" href="class_exponent_vector.html">ExponentVector</a></span> surface.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_exponent_vector_8hpp.html" title="Dense exponent-vector template [e_0, ..., e_{nvars-1}] for monomial operations.">ExponentVector.hpp</a> </dd>
+<dd>
+<a class="el" href="varpower-monomial_8hpp.html" title="F4&#39;s (variable, exponent) sparse-monomial ExponentList specialisation (legacy).">varpower-monomial.hpp</a> </dd>
+<dd>
+<a class="el" href="overflow_8hpp.html" title="Overflow-checked integer arithmetic for monomial exponents and degree sums.">overflow.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="ntuple-monomial_8hpp_source.html">ntuple-monomial.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

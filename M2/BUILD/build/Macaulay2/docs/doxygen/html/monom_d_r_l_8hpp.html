@@ -91,6 +91,9 @@ $(function(){initNavTree('monom_d_r_l_8hpp.html','',''); });
   <div class="headertitle"><div class="title">monomDRL.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_b_i_basis_1_1_monom_d_r_l.html">BIBasis::MonomDRL</a></span> &mdash; degree-reverse-lex specialisation of the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> monomial type.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;set&gt;</code><br />
 <code>#include &quot;<a class="el" href="allocator_8hpp_source.html">allocator.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="monom_8hpp_source.html">monom.hpp</a>&quot;</code><br />
@@ -105,7 +108,22 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:BIBasis" id="r_BIBasis"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_b_i_basis.html">BIBasis</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_b_i_basis_1_1_monom_d_r_l.html">BIBasis::MonomDRL</a></span> &mdash; degree-reverse-lex specialisation of the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> monomial type. </p>
+<p>Concrete <span class="tt"><a class="el" href="struct_monom.html">Monom</a></span> subclass whose <span class="tt">Compare</span>, <span class="tt">operator&lt;</span>, and <span class="tt">operator&gt;</span> compare by cached <span class="tt">TotalDegree</span> first and break ties with reverse-lex on the variable list &mdash; the default ordering for most Gröbner-basis work, since on typical inputs it produces the smallest output bases. The variable list is stored ascending and the order-specific traversal direction is baked into the comparison, while multiplication, division, and divisibility share the same linear-walk structure as the other orderings. Storage routes through a per-class static <span class="tt">FastAllocator</span> so prolongation churn stays slab-resident.</p>
+<p>Selected at runtime by <span class="tt">Launcher</span> when the user requests <span class="tt">DegRevLex</span>; instantiated as <span class="tt">BooleanInvolutiveBasis&lt;MonomDRL&gt;</span> so the comparison kernel inlines into the reduction inner loop. Also implements <span class="tt">IsPommaretDivisibleBy</span> for the Janet driver.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="monom_8hpp.html" title="BIBasis::Monom — abstract squarefree-monomial base for the three Janet orderings.">monom.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_lex_8hpp.html" title="BIBasis::MonomLex — pure lexicographic specialisation of the BIBasis monomial type.">monomLex.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_d_l_8hpp.html" title="BIBasis::MonomDL — degree-lex specialisation of the BIBasis monomial type.">monomDL.hpp</a> </dd>
+<dd>
+<a class="el" href="launcher_8hpp.html" title="BIBasis::Launcher — monomial-order dispatcher between the engine boundary and BooleanInvolutiveBasis.">launcher.hpp</a> </dd>
+<dd>
+<a class="el" href="involutive_8hpp.html" title="BIBasis::BooleanInvolutiveBasis&lt;MonomType&gt; — Janet-involutive Gröbner driver for F_2[x]/(x_i^2-x_i).">involutive.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="monom_d_r_l_8hpp_source.html">monomDRL.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

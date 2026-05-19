@@ -91,6 +91,9 @@ $(function(){initNavTree('timing_8hpp.html','',''); });
   <div class="headertitle"><div class="title">timing.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Inline <span class="tt">std::chrono::steady_clock</span> wrappers and elapsed-time conversion helpers.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;chrono&gt;</code><br />
 </div>
 <p><a href="timing_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -110,7 +113,16 @@ Functions</h2></td></tr>
 <tr class="memitem:add027aa52d21445f5476ec1376730c32" id="r_add027aa52d21445f5476ec1376730c32"><td class="memTemplParams" colspan="2">template&lt;typename DurationType&gt; </td></tr>
 <tr class="memitem:add027aa52d21445f5476ec1376730c32 template"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="timing_8hpp_add027aa52d21445f5476ec1376730c32.html#add027aa52d21445f5476ec1376730c32">seconds</a> (DurationType time_diff)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Inline <span class="tt">std::chrono::steady_clock</span> wrappers and elapsed-time conversion helpers. </p>
+<p>Provides <span class="tt"><a class="el" href="timing_8hpp_a6673ca4a7a00d76b3d84231eff1826a3.html#a6673ca4a7a00d76b3d84231eff1826a3">timer()</a></span> / <span class="tt"><a class="el" href="timing_8hpp_a562b4baa36dcf267f35a4ba4e0aef329.html#a562b4baa36dcf267f35a4ba4e0aef329">now()</a></span> (both returning a <span class="tt">std::chrono::steady_clock::time_point</span>) for capturing high-resolution timestamps, plus templated <span class="tt">nanoseconds(duration)</span> / <span class="tt">microseconds(duration)</span> / <span class="tt">seconds(duration)</span> helpers that pull the count out of any duration type via <span class="tt">duration_cast</span>. Centralising the clock choice in one header lets the engine swap clocks (mock during tests, per-platform alternatives where the steady clock is slow) without touching call sites and gives a single hook for future per-thread CPU-time accounting.</p>
+<p>Heavy callers are <span class="tt"><a class="el" href="_s_l_p-imp_8hpp.html" title="Templated SLEvaluatorConcrete&lt;RT&gt; — the per-ring SLP evaluator implementation.">SLP-imp.hpp</a></span>'s NAG evaluator (per-step timestamps that drive continuation-step heuristics), the F4 GB engines (per-reduction trace timings), and the time-limit branch of the stop-condition machinery in <span class="tt"><a class="el" href="comp_8hpp.html" title="Abstract Computation base class — stop-condition machinery for incremental engine work.">comp.hpp</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_s_l_p-imp_8hpp.html" title="Templated SLEvaluatorConcrete&lt;RT&gt; — the per-ring SLP evaluator implementation.">SLP-imp.hpp</a> </dd>
+<dd>
+<a class="el" href="comp_8hpp.html" title="Abstract Computation base class — stop-condition machinery for incremental engine work.">comp.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="timing_8hpp_source.html">timing.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('ring_8hpp.html','',''); });
   <div class="headertitle"><div class="title">ring.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> &mdash; the legacy abstract base class for every coefficient and polynomial ring.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;utility&gt;</code><br />
 <code>#include &quot;<a class="el" href="aring_8hpp_source.html">aring.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2error_8h_source.html">error.h</a>&quot;</code><br />
@@ -121,7 +124,18 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a5ad190417a478c3f15fa01ef9ee9bac9" id="r_a5ad190417a478c3f15fa01ef9ee9bac9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ring_z_z.html">RingZZ</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ring_8hpp_a5ad190417a478c3f15fa01ef9ee9bac9.html#a5ad190417a478c3f15fa01ef9ee9bac9">globalZZ</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> &mdash; the legacy abstract base class for every coefficient and polynomial ring. </p>
+<p>Declares <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>, the enormous virtual base from which every ring in <a class="el" href="namespace_m2.html">M2</a>'s legacy interface descends: <span class="tt"><a class="el" href="class_ring_z_z.html">RingZZ</a></span>, <span class="tt"><a class="el" href="class_z__mod.html">Z_mod</a></span>, <span class="tt"><a class="el" href="aring-glue_8hpp_a5e26cd6518e668e854b796e39831d07f.html#a5e26cd6518e668e854b796e39831d07f">RingQQ</a></span>, the <span class="tt">RR</span> / <span class="tt">CC</span> family, <span class="tt"><a class="el" href="class_poly_ring.html">PolyRing</a></span> and its flavoured subclasses, <span class="tt">PolyQuotient</span>, <span class="tt"><a class="el" href="class_fraction_field.html">FractionField</a></span>, <span class="tt"><a class="el" href="class_local_ring.html">LocalRing</a></span>, <span class="tt"><a class="el" href="class_g_f.html">GF</a></span>, and the <span class="tt">ConcreteRing&lt;R&gt;</span> bridge wrapping any <span class="tt">aring</span>-templated ring. Every operation a ring supports &mdash; <span class="tt">add</span>, <span class="tt">mult</span>, <span class="tt">is_zero</span>, <span class="tt">is_unit</span>, <span class="tt">from_long</span>, <span class="tt">eval</span>, <span class="tt">text_out</span>, ... &mdash; is a virtual method on this class, and callers dispatch through <span class="tt">Ring*</span> uniformly. The header forward-declares the friend ring types so the giant interface surface can keep its mutual references without dragging in every subsystem.</p>
+<p>Marked "legacy" because the 2012-onward <span class="tt"><a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a></span> framework replaces virtual dispatch with templates for hot paths; new rings should target <span class="tt">aring</span>. The legacy API persists everywhere existing code already speaks <span class="tt">Ring*</span>, and <span class="tt"><a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a></span>'s <span class="tt">ConcreteRing&lt;R&gt;</span> is what lets the frameworks coexist.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a> </dd>
+<dd>
+<a class="el" href="relem_8hpp.html" title="RingElement — tagged (Ring*, ring_elem) pair, the engine&#39;s universal element type.">relem.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="ring_8hpp_source.html">ring.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

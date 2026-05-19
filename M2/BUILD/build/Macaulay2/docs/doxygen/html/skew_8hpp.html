@@ -92,13 +92,23 @@ $(function(){initNavTree('skew_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_skew_multiplication.html">SkewMultiplication</a></span> &mdash; configuration object naming the skew-commuting variables of a ring.  
+<a href="#details">More...</a></p>
+
 <p><a href="skew_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:SkewMultiplication" id="r_SkewMultiplication"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_skew_multiplication.html">SkewMultiplication</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_skew_multiplication.html">SkewMultiplication</a></span> &mdash; configuration object naming the skew-commuting variables of a ring. </p>
+<p>Declares <span class="tt"><a class="el" href="class_skew_multiplication.html">SkewMultiplication</a></span>, the pure-data record a <span class="tt"><a class="el" href="class_poly_ring.html">PolyRing</a></span> (and the F4 <span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a></span>) attaches when the user declares a subset of the variables to skew-commute. The record carries the total variable count, the skew-variable count, an ordered <span class="tt">_skew_list</span> of skew-variable indices for iteration, and a <span class="tt">_skew_exp</span> boolean bitmap indexed by variable for O(1) lookup &mdash; the two representations exist for the different hot-loop patterns engine code walks. The helper <span class="tt">skew_degree(exp)</span> counts how many variables of an exponent vector are skew.</p>
+<p><span class="tt"><a class="el" href="class_skew_multiplication.html">SkewMultiplication</a></span> does not perform multiplication itself. It is consulted by the surrounding ring code (<span class="tt"><a class="el" href="skewpoly_8cpp.html">skewpoly.cpp</a></span> and the F4 monomial machinery) to compute the sign that arises when the skew product permutes two skew generators.</p>
+<dl class="section see"><dt>See also</dt><dd>polyring.hpp </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="skew_8hpp_source.html">skew.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

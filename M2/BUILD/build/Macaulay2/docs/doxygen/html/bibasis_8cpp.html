@@ -91,6 +91,9 @@ $(function(){initNavTree('bibasis_8cpp.html','',''); });
   <div class="headertitle"><div class="title">bibasis.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="bibasis_8cpp_a1bc82a7a7aeca4bf5670eec2d9c608fa.html#a1bc82a7a7aeca4bf5670eec2d9c608fa">rawBIBasis</a></span> &mdash; C entry point bridging <a class="el" href="namespace_m2.html">M2</a> to <a class="el" href="namespace_b_i_basis.html">BIBasis</a>'s involutive-basis engine.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="launcher_8hpp_source.html">launcher.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&quot;</code><br />
 </div>
@@ -100,7 +103,18 @@ $(function(){initNavTree('bibasis_8cpp.html','',''); });
 Functions</h2></td></tr>
 <tr class="memitem:a1bc82a7a7aeca4bf5670eec2d9c608fa" id="r_a1bc82a7a7aeca4bf5670eec2d9c608fa"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_matrix.html">Matrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bibasis_8cpp_a1bc82a7a7aeca4bf5670eec2d9c608fa.html#a1bc82a7a7aeca4bf5670eec2d9c608fa">rawBIBasis</a> (const <a class="el" href="class_matrix.html">Matrix</a> *matrix, <a class="el" href="classint.html">int</a> toGroebner)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="bibasis_8cpp_a1bc82a7a7aeca4bf5670eec2d9c608fa.html#a1bc82a7a7aeca4bf5670eec2d9c608fa">rawBIBasis</a></span> &mdash; C entry point bridging <a class="el" href="namespace_m2.html">M2</a> to <a class="el" href="namespace_b_i_basis.html">BIBasis</a>'s involutive-basis engine. </p>
+<p>Defines the single <span class="tt">extern "C"</span> symbol <span class="tt">rawBIBasis(Matrix*, int)</span> that the <a class="el" href="namespace_m2.html">M2</a> interpreter (via the <span class="tt"><a class="el" href="namespace_b_i_basis.html">BIBasis</a></span> package) calls to compute a Boolean involutive basis. The function constructs a <span class="tt"><a class="el" href="class_b_i_basis_1_1_launcher.html">BIBasis::Launcher</a></span>, forwards the input matrix and the <span class="tt">toGroebner</span> flag, and returns the resulting matrix &mdash; so this file is the thinnest possible glue layer between the engine's <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> API and the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> subsystem.</p>
+<p>The actual algorithm &mdash; reducing inputs mod <span class="tt">x_i^2 - x_i</span>, inserting into a <span class="tt">JanetTree</span>, walking prolongations until no new polynomials appear &mdash; lives behind <span class="tt">Launcher</span> and the <span class="tt">Polynom</span>/<span class="tt"><a class="el" href="struct_monom.html">Monom</a></span> types. The <span class="tt">toGroebner</span> flag controls whether the involutive output is reduced down to a Gröbner basis before being returned.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="launcher_8hpp.html" title="BIBasis::Launcher — monomial-order dispatcher between the engine boundary and BooleanInvolutiveBasis.">launcher.hpp</a> </dd>
+<dd>
+<a class="el" href="janettree_8hpp.html" title="BIBasis::JanetTree&lt;MonomType&gt; — the involutive-division index for boolean Gröbner bases.">janettree.hpp</a> </dd>
+<dd>
+<a class="el" href="polynom_8hpp.html" title="BIBasis::Polynom&lt;MonomType&gt; — linked-list F_2[x] polynomial with symmetric-difference arithmetic.">polynom.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="bibasis_8cpp_source.html">bibasis.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

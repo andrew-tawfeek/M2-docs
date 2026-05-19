@@ -91,6 +91,9 @@ $(function(){initNavTree('monom_8hpp.html','',''); });
   <div class="headertitle"><div class="title">monom.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_b_i_basis_1_1_monom.html">BIBasis::Monom</a></span> &mdash; abstract squarefree-monomial base for the three Janet orderings.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;set&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &quot;<a class="el" href="allocator_8hpp_source.html">allocator.hpp</a>&quot;</code><br />
@@ -106,7 +109,22 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:BIBasis" id="r_BIBasis"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_b_i_basis.html">BIBasis</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_b_i_basis_1_1_monom.html">BIBasis::Monom</a></span> &mdash; abstract squarefree-monomial base for the three Janet orderings. </p>
+<p>Declares the polymorphic root of the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> monomial hierarchy: a singly-linked list of <span class="tt">VarsListNode</span> records (variable index plus <span class="tt">Next</span>) carrying a cached <span class="tt">TotalDegree</span>, with the variable count <span class="tt">DimIndepend</span> shared across the subsystem as a static. Each <span class="tt">VarsListNode</span> allocates from a static <span class="tt">FastAllocator</span> slab so the millions of nodes the prolongation loop creates stay cache-resident. Exponents are stored as <span class="tt">short <a class="el" href="classint.html">int</a></span>s &mdash; in <span class="tt">F_2[<a class="el" href="overflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2.html#aa07f992d22249e2bef61db62f71671b2">x</a>]/(x_i^2 - x_i)</span> every exponent is 0 or 1, so the only thing the list needs to record is the <em>set</em> of variables that appear.</p>
+<p>The pure virtuals <span class="tt">MultiplyBy</span>, <span class="tt">SetOne</span>, <span class="tt">operator[]</span>, <span class="tt">FirstMultiVar</span>, and <span class="tt">GetVariablesSet</span> are filled in by the three concrete subclasses &mdash; <span class="tt">MonomLex</span>, <span class="tt">MonomDL</span>, <span class="tt">MonomDRL</span> &mdash; each implementing one monomial ordering. The bibasis algorithm templates on the concrete type rather than dispatching through <span class="tt">Monom*</span>, so the abstract surface here is mostly a shared layout and a documentation anchor for the ordering variants.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="allocator_8hpp.html" title="BIBasis::FastAllocator — per-size-class slab allocator for BIBasis&#39;s small objects.">allocator.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_lex_8hpp.html" title="BIBasis::MonomLex — pure lexicographic specialisation of the BIBasis monomial type.">monomLex.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_d_l_8hpp.html" title="BIBasis::MonomDL — degree-lex specialisation of the BIBasis monomial type.">monomDL.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_d_r_l_8hpp.html" title="BIBasis::MonomDRL — degree-reverse-lex specialisation of the BIBasis monomial type.">monomDRL.hpp</a> </dd>
+<dd>
+<a class="el" href="polynom_8hpp.html" title="BIBasis::Polynom&lt;MonomType&gt; — linked-list F_2[x] polynomial with symmetric-difference arithmetic.">polynom.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="monom_8hpp_source.html">monom.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

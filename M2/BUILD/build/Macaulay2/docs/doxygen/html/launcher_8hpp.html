@@ -91,6 +91,9 @@ $(function(){initNavTree('launcher_8hpp.html','',''); });
   <div class="headertitle"><div class="title">launcher.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_b_i_basis_1_1_launcher.html">BIBasis::Launcher</a></span> &mdash; monomial-order dispatcher between the engine boundary and <span class="tt">BooleanInvolutiveBasis</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="involutive_8hpp_source.html">involutive.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&quot;</code><br />
 </div>
@@ -104,7 +107,23 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:BIBasis" id="r_BIBasis"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_b_i_basis.html">BIBasis</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_b_i_basis_1_1_launcher.html">BIBasis::Launcher</a></span> &mdash; monomial-order dispatcher between the engine boundary and <span class="tt">BooleanInvolutiveBasis</span>. </p>
+<p>Declares the single <span class="tt">Launcher</span> class that the engine's <span class="tt"><a class="el" href="bibasis_8cpp_a1bc82a7a7aeca4bf5670eec2d9c608fa.html#a1bc82a7a7aeca4bf5670eec2d9c608fa">rawBIBasis</a></span> entry calls into. <span class="tt">GetBIBasisMatrix(matrix,
+toGroebner)</span> validates the input via <span class="tt">CheckMatrix</span>, reads the polynomial ring's monomial ordering off the <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span>, and instantiates <span class="tt">BooleanInvolutiveBasis&lt;MonomLex&gt;</span>, <span class="tt">&lt;MonomDL&gt;</span>, or <span class="tt">&lt;MonomDRL&gt;</span> accordingly &mdash; one specialisation per supported ordering, so the inner-loop comparators inline without virtual dispatch.</p>
+<p>Centralising the template instantiations here keeps the engine boundary free of BIBasis-specific template noise: every other translation unit only sees <span class="tt">Launcher::GetBIBasisMatrix</span>, and the heavy templated machinery is compiled exactly once per order inside <span class="tt"><a class="el" href="launcher_8cpp.html">launcher.cpp</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="involutive_8hpp.html" title="BIBasis::BooleanInvolutiveBasis&lt;MonomType&gt; — Janet-involutive Gröbner driver for F_2[x]/(x_i^2-x_i).">involutive.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_8hpp.html" title="BIBasis::Monom — abstract squarefree-monomial base for the three Janet orderings.">monom.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_lex_8hpp.html" title="BIBasis::MonomLex — pure lexicographic specialisation of the BIBasis monomial type.">monomLex.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_d_l_8hpp.html" title="BIBasis::MonomDL — degree-lex specialisation of the BIBasis monomial type.">monomDL.hpp</a> </dd>
+<dd>
+<a class="el" href="monom_d_r_l_8hpp.html" title="BIBasis::MonomDRL — degree-reverse-lex specialisation of the BIBasis monomial type.">monomDRL.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="launcher_8hpp_source.html">launcher.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -112,17 +112,17 @@ $(function(){initNavTree('timing_8hpp_a40ee0070225dce08ec51411d10accc20.html',''
 <div class="line">    <span class="keyword">auto</span> __now2 = <a class="code hl_function" href="timing_8hpp_a562b4baa36dcf267f35a4ba4e0aef329.html#a562b4baa36dcf267f35a4ba4e0aef329">now</a>();               \</div>
 <div class="line">    t += <a class="code hl_function" href="timing_8hpp_a10bb04e5bd83db4f4670ce27b1f1dd1e.html#a10bb04e5bd83db4f4670ce27b1f1dd1e">nanoseconds</a>(__now2 - __now1); \</div>
 <div class="line">  }</div>
-<div class="ttc" id="atiming_8hpp_a10bb04e5bd83db4f4670ce27b1f1dd1e_html_a10bb04e5bd83db4f4670ce27b1f1dd1e"><div class="ttname"><a href="timing_8hpp_a10bb04e5bd83db4f4670ce27b1f1dd1e.html#a10bb04e5bd83db4f4670ce27b1f1dd1e">nanoseconds</a></div><div class="ttdeci">long nanoseconds(DurationType time_diff)</div><div class="ttdef"><b>Definition</b> <a href="timing_8hpp_source.html#l00015">timing.hpp:15</a></div></div>
-<div class="ttc" id="atiming_8hpp_a562b4baa36dcf267f35a4ba4e0aef329_html_a562b4baa36dcf267f35a4ba4e0aef329"><div class="ttname"><a href="timing_8hpp_a562b4baa36dcf267f35a4ba4e0aef329.html#a562b4baa36dcf267f35a4ba4e0aef329">now</a></div><div class="ttdeci">std::chrono::steady_clock::time_point now()</div><div class="ttdef"><b>Definition</b> <a href="timing_8hpp_source.html#l00009">timing.hpp:9</a></div></div>
+<div class="ttc" id="atiming_8hpp_a10bb04e5bd83db4f4670ce27b1f1dd1e_html_a10bb04e5bd83db4f4670ce27b1f1dd1e"><div class="ttname"><a href="timing_8hpp_a10bb04e5bd83db4f4670ce27b1f1dd1e.html#a10bb04e5bd83db4f4670ce27b1f1dd1e">nanoseconds</a></div><div class="ttdeci">long nanoseconds(DurationType time_diff)</div><div class="ttdef"><b>Definition</b> <a href="timing_8hpp_source.html#l00040">timing.hpp:40</a></div></div>
+<div class="ttc" id="atiming_8hpp_a562b4baa36dcf267f35a4ba4e0aef329_html_a562b4baa36dcf267f35a4ba4e0aef329"><div class="ttname"><a href="timing_8hpp_a562b4baa36dcf267f35a4ba4e0aef329.html#a562b4baa36dcf267f35a4ba4e0aef329">now</a></div><div class="ttdeci">std::chrono::steady_clock::time_point now()</div><div class="ttdef"><b>Definition</b> <a href="timing_8hpp_source.html#l00034">timing.hpp:34</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="timing_8hpp_source.html#l00037">37</a> of file <a class="el" href="timing_8hpp_source.html">timing.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span><span class="preprocessor">#define TIME(t, call)                  \</span></div>
-<div class="line"><span class="lineno">   38</span><span class="preprocessor">  {                                    \</span></div>
-<div class="line"><span class="lineno">   39</span><span class="preprocessor">    auto __now1 = now();               \</span></div>
-<div class="line"><span class="lineno">   40</span><span class="preprocessor">    call;                              \</span></div>
-<div class="line"><span class="lineno">   41</span><span class="preprocessor">    auto __now2 = now();               \</span></div>
-<div class="line"><span class="lineno">   42</span><span class="preprocessor">    t += nanoseconds(__now2 - __now1); \</span></div>
-<div class="line"><span class="lineno">   43</span><span class="preprocessor">  }</span></div>
+<p class="definition">Definition at line <a class="el" href="timing_8hpp_source.html#l00062">62</a> of file <a class="el" href="timing_8hpp_source.html">timing.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span><span class="preprocessor">#define TIME(t, call)                  \</span></div>
+<div class="line"><span class="lineno">   63</span><span class="preprocessor">  {                                    \</span></div>
+<div class="line"><span class="lineno">   64</span><span class="preprocessor">    auto __now1 = now();               \</span></div>
+<div class="line"><span class="lineno">   65</span><span class="preprocessor">    call;                              \</span></div>
+<div class="line"><span class="lineno">   66</span><span class="preprocessor">    auto __now2 = now();               \</span></div>
+<div class="line"><span class="lineno">   67</span><span class="preprocessor">    t += nanoseconds(__now2 - __now1); \</span></div>
+<div class="line"><span class="lineno">   68</span><span class="preprocessor">  }</span></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_homotopy_concrete_3_01_r_t_00_01_fixed_precision_homotopy_algorithm_01_4_a3b9bca2865f35bb84a20d66e13f64880.html#a3b9bca2865f35bb84a20d66e13f64880">HomotopyConcrete&lt; RT, FixedPrecisionHomotopyAlgorithm &gt;::track()</a>.</p>
 

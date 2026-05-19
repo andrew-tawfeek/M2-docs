@@ -91,6 +91,9 @@ $(function(){initNavTree('polyroots_8cpp.html','',''); });
   <div class="headertitle"><div class="title">polyroots.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt">rawRoots(...)</span> &mdash; univariate polynomial root finder over <span class="tt">RR</span> / <span class="tt">CC</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="factory_8h_source.html">interface/factory.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ring_8h_source.html">interface/ring.h</a>&quot;</code><br />
 <code>#include &lt;mps/mps.h&gt;</code><br />
@@ -116,7 +119,18 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a43e4e741c05ac07852ef1a85ecaa643b" id="r_a43e4e741c05ac07852ef1a85ecaa643b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="m2-types_8h_a2299a0572f6610cd2fa210d9d51a7fcf.html#a2299a0572f6610cd2fa210d9d51a7fcf">engine_RawRingElementArrayOrNull</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="polyroots_8cpp_a43e4e741c05ac07852ef1a85ecaa643b.html#a43e4e741c05ac07852ef1a85ecaa643b">rawRoots</a> (const <a class="el" href="class_ring_element.html">RingElement</a> *<a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, long prec, <a class="el" href="classint.html">int</a> unique)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt">rawRoots(...)</span> &mdash; univariate polynomial root finder over <span class="tt">RR</span> / <span class="tt">CC</span>. </p>
+<p>Implementation behind <span class="tt"><a class="el" href="factory_8h.html">interface/factory.h</a></span>'s <span class="tt"><a class="el" href="polyroots_8cpp_a43e4e741c05ac07852ef1a85ecaa643b.html#a43e4e741c05ac07852ef1a85ecaa643b">rawRoots</a></span>, the engine entry point reachable from <a class="el" href="namespace_m2.html">M2</a> as <span class="tt">roots(f)</span> and <span class="tt">roots(f, Precision =&gt; ...)</span>. Given a univariate polynomial over <span class="tt">RR_n</span> or <span class="tt">CC_n</span>, returns a one-row <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> of all complex roots (counted with multiplicity); requesting real roots only is a flag that drops conjugate pairs back at the <a class="el" href="namespace_m2.html">M2</a> level. Low-degree polynomials use closed-form formulas (degrees 1-4); higher degrees dispatch to MPSolve for arbitrary precision, FLINT's <span class="tt">arb</span> complex-roots routine for MPFR precision, or LAPACK eigenvalues of the companion matrix for hardware precision on small inputs.</p>
+<p>The MPSolve include neutralises the obsolete C++ <span class="tt"><a class="el" href="polyroots_8cpp_a24ac627a7839caecddfc66f1d46033f0.html#a24ac627a7839caecddfc66f1d46033f0">register</a></span> keyword first (<span class="tt">#define <a class="el" href="polyroots_8cpp_a24ac627a7839caecddfc66f1d46033f0.html#a24ac627a7839caecddfc66f1d46033f0">register</a></span> then <span class="tt">#undef</span>) so the vendored header compiles under C++17. The function is bundled under <span class="tt"><a class="el" href="factory_8h.html">interface/factory.h</a></span> for historical reasons &mdash; root finding once travelled with the Factory factorisation library, even though the heavy lifting has since moved to MPSolve and FLINT.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="factory_8h.html">interface/factory.h</a> </dd>
+<dd>
+<a class="el" href="_n_a_g_8hpp.html" title="Numerical Algebraic Geometry entry point: homotopy continuation, witness sets, monodromy.">NAG.hpp</a> </dd>
+<dd>
+<a class="el" href="eigen_8hpp.html" title="EigenM2 namespace — SVD / eigenvalues / eigenvectors over DMat&lt;R&gt; for RR, CC, RRR,...">eigen.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="polyroots_8cpp_source.html">polyroots.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

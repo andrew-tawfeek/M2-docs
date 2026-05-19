@@ -91,6 +91,9 @@ $(function(){initNavTree('schur_sn_8hpp.html','',''); });
   <div class="headertitle"><div class="title">schurSn.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_schur_sn_ring.html">SchurSnRing</a></span> &mdash; symmetric-group representation ring built on <span class="tt"><a class="el" href="class_schur_ring2.html">SchurRing2</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="schur2_8hpp_source.html">schur2.hpp</a>&quot;</code><br />
 </div>
 <p><a href="schur_sn_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -99,7 +102,16 @@ $(function(){initNavTree('schur_sn_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:SchurSnRing" id="r_SchurSnRing"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_schur_sn_ring.html">SchurSnRing</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_schur_sn_ring.html">SchurSnRing</a></span> &mdash; symmetric-group representation ring built on <span class="tt"><a class="el" href="class_schur_ring2.html">SchurRing2</a></span>. </p>
+<p>Declares <span class="tt"><a class="el" href="class_schur_sn_ring.html">SchurSnRing</a></span>, a <span class="tt"><a class="el" href="class_schur_ring2.html">SchurRing2</a></span> subclass whose elements are characters of irreducible <span class="tt">S_n</span> representations (indexed by partitions of <span class="tt">n</span>). The default constructor argument <span class="tt">n = -1</span> selects the graded direct sum <span class="tt">oplus_{n} R(S_n)</span> of all symmetric-group representation rings; <span class="tt">n &gt; 0</span> restricts to a single <span class="tt">R(S_n)</span>. The <span class="tt">cast_to_SchurSnRing</span> overrides let engine code distinguish this specialisation from a generic Schur ring without resorting to <span class="tt">dynamic_cast</span>.</p>
+<p>Two products coexist: the inherited <span class="tt"><a class="el" href="class_schur_ring2_ac7a95d6e8429f5bd0b3e1ac4521d0b45.html#ac7a95d6e8429f5bd0b3e1ac4521d0b45">SchurRing2::mult</a></span> is the ordinary Schur-function product (used for symmetric-function identities), while the added <span class="tt">tensor_mult</span> is the Kronecker tensor product of characters &mdash; the operation the representation theorist actually calls "multiplication" in <span class="tt">R(S_n)</span>. They agree under some interpretations but diverge in general; both are exposed so callers can pick.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="schur2_8hpp.html" title="SchurRing2 — refactored Schur ring with length-prefixed partitions and broader operation set.">schur2.hpp</a> </dd>
+<dd>
+<a class="el" href="schur-poly-heap_8hpp.html" title="schur_poly_heap — geometric-bucket accumulator specialised for SchurRing2 polynomials.">schur-poly-heap.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="schur_sn_8hpp_source.html">schurSn.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

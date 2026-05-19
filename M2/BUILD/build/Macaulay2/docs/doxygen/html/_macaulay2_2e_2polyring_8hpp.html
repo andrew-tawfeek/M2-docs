@@ -91,6 +91,9 @@ $(function(){initNavTree('_macaulay2_2e_2polyring_8hpp.html','',''); });
   <div class="headertitle"><div class="title">polyring.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_polynomial_ring.html">PolynomialRing</a></span> &mdash; abstract polynomial-ring base, the engine's most-reused class.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="computation_8h_source.html">interface/computation.h</a>&quot;</code><br />
@@ -105,7 +108,20 @@ Classes</h2></td></tr>
 <tr class="memitem:PolynomialRing" id="r_PolynomialRing"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_polynomial_ring.html">PolynomialRing</a></td></tr>
 <tr class="memitem:PolyRingFlat" id="r_PolyRingFlat"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_poly_ring_flat.html">PolyRingFlat</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_polynomial_ring.html">PolynomialRing</a></span> &mdash; abstract polynomial-ring base, the engine's most-reused class. </p>
+<p>Declares the abstract <span class="tt"><a class="el" href="class_polynomial_ring.html">PolynomialRing</a></span> (<span class="tt">R[x_1, ..., x_n]</span>) along with its forward-declared subclasses: <span class="tt"><a class="el" href="class_poly_ring_flat.html">PolyRingFlat</a></span> (intermediate that asserts the coefficient ring is not itself polynomial), the commutative <span class="tt"><a class="el" href="class_poly_ring.html">PolyRing</a></span>, the skew-commutative / exterior <span class="tt">PolyRingSkew</span>, the <span class="tt">PolyRingWeyl</span> for Weyl algebras, the non-commutative <span class="tt">PolyRingNC</span>, and <span class="tt">PolyQuotient</span> for <span class="tt">R / I</span>. Per-flavour dispatch happens through the <span class="tt">is_skew_</span>, <span class="tt">is_weyl_</span>, <span class="tt">is_solvable_</span> flags on the base (cheap branch in hot paths) and through virtuals where the divergence is broader.</p>
+<p>The base carries the monoid (<span class="tt">Monoid*</span>, see <span class="tt"><a class="el" href="monoid_8hpp.html" title="Monoid — variable count, naming, grading, and monomial order of a polynomial ring.">monoid.hpp</a></span>) and the coefficient ring (<span class="tt">Ring*</span>, typically an aring wrapper), a graded-ring flag, and the <span class="tt"><a class="el" href="class_skew_multiplication.html">SkewMultiplication</a></span> configuration used when same-variable multiplications collapse to zero in exterior-like rings. A small friend graph (<span class="tt"><a class="el" href="class_g_b_ring.html">GBRing</a></span>, <span class="tt"><a class="el" href="class_g_b_ring_skew.html">GBRingSkew</a></span>, <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span>) reaches into the encoded monomial layout without going through virtual calls &mdash; the tight-loop performance lever. Construction happens through factories in <span class="tt">polyring.cpp</span> and the M2-side <span class="tt">enginering.m2</span>; direct construction is rare.</p>
+<dl class="section see"><dt>See also</dt><dd>poly.hpp </dd>
+<dd>
+<a class="el" href="polyquotient_8hpp.html" title="PolyRingQuotient — polynomial ring modulo an ideal whose Groebner basis is known.">polyquotient.hpp</a> </dd>
+<dd>
+<a class="el" href="monoid_8hpp.html" title="Monoid — variable count, naming, grading, and monomial order of a polynomial ring.">monoid.hpp</a> </dd>
+<dd>
+<a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

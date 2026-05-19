@@ -91,6 +91,9 @@ $(function(){initNavTree('hilb-fcn_8hpp.html','',''); });
   <div class="headertitle"><div class="title">hilb-fcn.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_hilbert_controller.html">HilbertController</a></span> &mdash; early-exit driver for F4 given a known Hilbert series.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
 </div>
@@ -100,7 +103,16 @@ $(function(){initNavTree('hilb-fcn_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:HilbertController" id="r_HilbertController"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hilbert_controller.html">HilbertController</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_hilbert_controller.html">HilbertController</a></span> &mdash; early-exit driver for F4 given a known Hilbert series. </p>
+<p>Declares <span class="tt"><a class="el" href="class_hilbert_controller.html">HilbertController</a></span>, the helper F4 consults when the user supplies the expected Hilbert series of the input ideal. <span class="tt">setDegree(d)</span> reads the expected number of new generators in degree <span class="tt">d</span> off the supplied Hilbert series and stores it in <span class="tt">hilb_n_in_degree</span>; <span class="tt">addMonomial(...)</span> decrements the counter each time F4 commits a new leading monomial of that degree; <span class="tt">nRemainingExpected()</span> lets F4 abandon any remaining degree-<span class="tt">d</span> S-pairs once the counter hits zero. Skipping the unproductive pairs avoids the matrix builds they would have triggered and the cascading work at later degrees.</p>
+<p>Constructed from a target <span class="tt">FreeModule*</span> (so the Hilbert function is interpreted in the right multi-grading) and a <span class="tt">RingElement* hf</span> carrying the user-supplied series. <span class="tt"><a class="el" href="hilb_8hpp.html" title="Hilbert series / function / polynomial via the Bigatti-Caboara-Robbiano recursion.">hilb.hpp</a></span> is what produces the series in the first place.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="f4_8hpp.html" title="F4GB — the inner-loop Faugère F4 Groebner-basis algorithm.">f4.hpp</a> </dd>
+<dd>
+<a class="el" href="hilb_8hpp.html" title="Hilbert series / function / polynomial via the Bigatti-Caboara-Robbiano recursion.">hilb.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="hilb-fcn_8hpp_source.html">hilb-fcn.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

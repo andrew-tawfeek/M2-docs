@@ -91,6 +91,9 @@ $(function(){initNavTree('tset_8hpp.html','',''); });
   <div class="headertitle"><div class="title">tset.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_b_i_basis_1_1_t_set.html">BIBasis::TSet</a>&lt;MonomType&gt;</span> &mdash; the running intermediate involutive basis (T-set).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;list&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &quot;<a class="el" href="janettree_8hpp_source.html">janettree.hpp</a>&quot;</code><br />
@@ -105,7 +108,20 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:BIBasis" id="r_BIBasis"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_b_i_basis.html">BIBasis</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_b_i_basis_1_1_t_set.html">BIBasis::TSet</a>&lt;MonomType&gt;</span> &mdash; the running intermediate involutive basis (T-set). </p>
+<p>Declares and defines the container that holds the "intermediate basis" the involutive driver builds incrementally before producing its final answer. Internally a <span class="tt">std::list</span> of <span class="tt">Triple&lt;MonomType&gt;*</span> paired with a <span class="tt">JanetTree</span> over the same triples: the list preserves insertion order so the algorithm can walk it deterministically, and the tree gives constant-time Janet-divisor lookup via <span class="tt">Find(monom)</span>. <span class="tt">PushBack</span> keeps both structures in sync, <span class="tt">Erase</span> removes from both, and <span class="tt">Clear</span> destroys every triple it owns.</p>
+<p>The key operation <span class="tt">CollectNonMultiProlongations</span> consults the Janet tree to harvest every non-multiplicative prolongation a newly inserted triple generates, then hands them to the <span class="tt">QSet</span> for scheduling. Templated on <span class="tt">MonomType</span> so the underlying tree and triple types stay specialised per ordering.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="janettree_8hpp.html" title="BIBasis::JanetTree&lt;MonomType&gt; — the involutive-division index for boolean Gröbner bases.">janettree.hpp</a> </dd>
+<dd>
+<a class="el" href="triple_8hpp.html" title="BIBasis::Triple&lt;MonomType&gt; — (polynomial, ancestors, non-multiplicative variables) record driving Jan...">triple.hpp</a> </dd>
+<dd>
+<a class="el" href="qset_8hpp.html" title="BIBasis::QSet&lt;MonomType&gt; — prolongation work-queue sorted by leading monomial.">qset.hpp</a> </dd>
+<dd>
+<a class="el" href="involutive_8hpp.html" title="BIBasis::BooleanInvolutiveBasis&lt;MonomType&gt; — Janet-involutive Gröbner driver for F_2[x]/(x_i^2-x_i).">involutive.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="tset_8hpp_source.html">tset.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('schur_8hpp.html','',''); });
   <div class="headertitle"><div class="title">schur.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_schur_ring.html">SchurRing</a></span> &mdash; symmetric-function ring with Schur-basis multiplication via Littlewood-Richardson.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2poly_8hpp_source.html">poly.hpp</a>&quot;</code><br />
 </div>
@@ -106,7 +109,16 @@ Variables</h2></td></tr>
 <tr class="memitem:a06d8c6285a003f55bbe9e9c3fd17a7b0" id="r_a06d8c6285a003f55bbe9e9c3fd17a7b0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="schur_8hpp_a06d8c6285a003f55bbe9e9c3fd17a7b0.html#a06d8c6285a003f55bbe9e9c3fd17a7b0">SCHUR_MAX_WT</a> = 100</td></tr>
 <tr class="memitem:a2453cd5cb3cd98b1f8d9e6d7d0cfbc42" id="r_a2453cd5cb3cd98b1f8d9e6d7d0cfbc42"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="schur_8hpp_a2453cd5cb3cd98b1f8d9e6d7d0cfbc42.html#a2453cd5cb3cd98b1f8d9e6d7d0cfbc42">LARGE_NUMBER</a> = 32000</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_schur_ring.html">SchurRing</a></span> &mdash; symmetric-function ring with Schur-basis multiplication via Littlewood-Richardson. </p>
+<p>Declares <span class="tt"><a class="el" href="class_schur_ring.html">SchurRing</a></span>, the <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass whose elements are Z-linear combinations of Schur functions <span class="tt">s_lambda</span> indexed by partitions, plus the supporting <span class="tt"><a class="el" href="classtableau.html">tableau</a></span> scratch struct (partition vector <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>, contained partition <span class="tt">lambda</span>, and the <span class="tt">(xloc, yloc)</span> coordinate arrays describing the cells of a skew shape). Multiplication computes the structure constants <span class="tt">s_lambda * s_mu = sum_nu c_{lambda mu}^nu s_nu</span> &mdash; the Littlewood-Richardson coefficients &mdash; by enumerating LR skew tableaux of shape <span class="tt">nu / lambda</span> and content <span class="tt">mu</span>, which is the structural reason a <span class="tt"><a class="el" href="classtableau.html">tableau</a></span> instance is the inner-loop datum.</p>
+<p><span class="tt"><a class="el" href="schur_8hpp_a06d8c6285a003f55bbe9e9c3fd17a7b0.html#a06d8c6285a003f55bbe9e9c3fd17a7b0">SCHUR_MAX_WT</a> = 100</span> caps the partition weight the engine will multiply (a tractability bound, raisable in principle); <span class="tt"><a class="el" href="schur_8hpp_a2453cd5cb3cd98b1f8d9e6d7d0cfbc42.html#a2453cd5cb3cd98b1f8d9e6d7d0cfbc42">LARGE_NUMBER</a> = 32000</span> is the sentinel marking empty slots in tableau scratch space. The ring is consumed by combinatorial Schubert-calculus and symmetric-function packages.</p>
+<dl class="section see"><dt>See also</dt><dd>poly.hpp </dd>
+<dd>
+<a class="el" href="ring_8hpp.html" title="Ring — the legacy abstract base class for every coefficient and polynomial ring.">ring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="schur_8hpp_source.html">schur.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

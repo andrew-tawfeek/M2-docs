@@ -91,6 +91,9 @@ $(function(){initNavTree('qring_8hpp.html','',''); });
   <div class="headertitle"><div class="title">qring.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_q_ring_info.html">QRingInfo</a></span> &mdash; bookkeeping struct attached to a <span class="tt">PolyQuotient</span> for <span class="tt">R / I</span> reductions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="style_8hpp_source.html">style.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -105,7 +108,18 @@ Classes</h2></td></tr>
 <tr class="memitem:QRingInfo_5Ffield_5FQQ" id="r_QRingInfo_5Ffield_5FQQ"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_ring_info__field___q_q.html">QRingInfo_field_QQ</a></td></tr>
 <tr class="memitem:QRingInfo_5FZZ" id="r_QRingInfo_5FZZ"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_ring_info___z_z.html">QRingInfo_ZZ</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_q_ring_info.html">QRingInfo</a></span> &mdash; bookkeeping struct attached to a <span class="tt">PolyQuotient</span> for <span class="tt">R / I</span> reductions. </p>
+<p>Declares <span class="tt"><a class="el" href="class_q_ring_info.html">QRingInfo</a></span>, the helper that holds the defining ideal of a polynomial-ring quotient in two redundant forms: <span class="tt"><a class="el" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR(Nterm*)</a> quotient_ideal</span> for <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span>-side reduction, and <span class="tt"><a class="el" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR(gbvector*)</a> quotient_gbvectors</span> for the GB-tuned reduction path through <span class="tt"><a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a></span>. Keeping both representations skips per-reduction conversion, and the construction code in <span class="tt"><a class="el" href="qring_8cpp.html">qring.cpp</a></span> is what keeps them in sync. <span class="tt"><a class="el" href="class_q_ring_info.html">QRingInfo</a></span> is not itself a <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass &mdash; it is the data hung off <span class="tt">PolyQuotient</span> (declared in <span class="tt"><a class="el" href="polyquotient_8hpp.html" title="PolyRingQuotient — polynomial ring modulo an ideal whose Groebner basis is known.">polyquotient.hpp</a></span>), which is the <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> the rest of the engine sees.</p>
+<p>Multiplication inside a quotient runs the ambient polynomial-ring product and then reduces against <span class="tt">quotient_gbvectors</span>; the M2-side <span class="tt">R / I</span> factory computes a GB of <span class="tt">I</span> once and stores it here.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="polyquotient_8hpp.html" title="PolyRingQuotient — polynomial ring modulo an ideal whose Groebner basis is known.">polyquotient.hpp</a> </dd>
+<dd>
+<a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd>
+<dd>
+polyring.hpp </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="qring_8hpp_source.html">qring.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('polyquotient_8hpp.html','',''); });
   <div class="headertitle"><div class="title">polyquotient.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_poly_ring_quotient.html">PolyRingQuotient</a></span> &mdash; polynomial ring modulo an ideal whose Groebner basis is known.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2poly_8hpp_source.html">poly.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a>&quot;</code><br />
@@ -103,7 +106,18 @@ $(function(){initNavTree('polyquotient_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:PolyRingQuotient" id="r_PolyRingQuotient"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_poly_ring_quotient.html">PolyRingQuotient</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_poly_ring_quotient.html">PolyRingQuotient</a></span> &mdash; polynomial ring modulo an ideal whose Groebner basis is known. </p>
+<p>Declares the concrete <span class="tt"><a class="el" href="class_poly_ring.html">PolyRing</a></span> subclass for <span class="tt">R / I</span>, where <span class="tt">R</span> is a <span class="tt"><a class="el" href="class_poly_ring_flat.html">PolyRingFlat</a></span> (the ambient ring) and <span class="tt">I</span> is a polynomial ideal carried in a <span class="tt"><a class="el" href="class_q_ring_info.html">QRingInfo</a></span> bookkeeping struct (declared in <span class="tt"><a class="el" href="qring_8hpp.html" title="QRingInfo — bookkeeping struct attached to a PolyQuotient for R / I reductions.">qring.hpp</a></span>). <span class="tt"><a class="el" href="class_q_ring_info.html">QRingInfo</a></span> keeps the defining ideal's generators twice &mdash; as <span class="tt">Nterm*</span> for ring-element arithmetic and as <span class="tt">gbvector*</span> for GB-internal reduction &mdash; so multiplication, inversion, and every other operation in the quotient finishes with a reduction against the stored GB without having to convert representations on each call.</p>
+<p>Built from <a class="el" href="namespace_m2.html">M2</a> by <span class="tt">R = k[xs]; I = ideal(...); Q = R/I</span>; the factory rejects trivial ideals (returns the ambient <span class="tt">R</span> unchanged) and routes through <span class="tt"><a class="el" href="class_polynomial_ring.html">PolynomialRing</a></span> to wire up the resulting <span class="tt"><a class="el" href="class_poly_ring_quotient.html">PolyRingQuotient</a></span> into the engine's ring hierarchy.</p>
+<dl class="section see"><dt>See also</dt><dd>poly.hpp </dd>
+<dd>
+<a class="el" href="qring_8hpp.html" title="QRingInfo — bookkeeping struct attached to a PolyQuotient for R / I reductions.">qring.hpp</a> </dd>
+<dd>
+polyring.hpp </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="polyquotient_8hpp_source.html">polyquotient.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('res-a0_8hpp.html','',''); });
   <div class="headertitle"><div class="title">res-a0.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="classres2__comp.html" title="One of the Resolution computations, based on Schreyer and Lascala.">res2_comp</a></span> &mdash; original (1996) free-resolution engine using explicit pair processing.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="style_8hpp_source.html">style.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="monideal_8hpp_source.html">monideal.hpp</a>&quot;</code><br />
@@ -145,7 +148,18 @@ Variables</h2></td></tr>
 <tr class="memitem:a5ee89dc0d12ad9092a75e23c8b8bf0f0" id="r_a5ee89dc0d12ad9092a75e23c8b8bf0f0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="res-a0_8hpp_a5ee89dc0d12ad9092a75e23c8b8bf0f0.html#a5ee89dc0d12ad9092a75e23c8b8bf0f0">COMPUTE_MONOMIAL_RES</a> = 2</td></tr>
 <tr class="memitem:a32391d5c77032e04bbb993f914c45be4" id="r_a32391d5c77032e04bbb993f914c45be4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="res-a0_8hpp_a32391d5c77032e04bbb993f914c45be4.html#a32391d5c77032e04bbb993f914c45be4">COMPUTE_RES</a> = 3</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="classres2__comp.html" title="One of the Resolution computations, based on Schreyer and Lascala.">res2_comp</a></span> &mdash; original (1996) free-resolution engine using explicit pair processing. </p>
+<p>Declares <span class="tt"><a class="el" href="classres2__comp.html" title="One of the Resolution computations, based on Schreyer and Lascala.">res2_comp</a></span>, the engine's first-generation resolution computation. The class drives a traditional Schreyer-style algorithm with its own polynomial type (<span class="tt"><a class="el" href="classres2__poly.html">res2_poly</a></span> from <span class="tt"><a class="el" href="res-a0-poly_8hpp.html">res-a0-poly.hpp</a></span>) and intrusive pair records (<span class="tt"><a class="el" href="structres2__pair.html">res2_pair</a></span>), stepping through the <span class="tt"><a class="el" href="res-a0_8hpp_aab8369f43990d256c15a7b8b8364b73f.html#aab8369f43990d256c15a7b8b8364b73fa7c5a47da1c2c53ec6f289d6f286ef1ce">RES_SKELETON</a></span> / <span class="tt"><a class="el" href="res-a0_8hpp_aab8369f43990d256c15a7b8b8364b73f.html#aab8369f43990d256c15a7b8b8364b73fa71d9cce096dc02cf0272acb2566dc8d3">RES_MONORDER</a></span> / <span class="tt"><a class="el" href="res-a0_8hpp_aab8369f43990d256c15a7b8b8364b73f.html#aab8369f43990d256c15a7b8b8364b73fa943c4a30dabf9366a74361d5a9e2e86e">RES_MONIDEAL</a></span> / ... states declared at the top of the header. The <span class="tt">_2</span> suffix in the type names is a historical naming quirk &mdash; this is actually the oldest of the three legacy engines, but its class names ended up with the suffix because <span class="tt"><a class="el" href="classres__comp.html" title="One of the Resolution computations, based on Schreyer and Lascala.">res_comp</a></span> (in <span class="tt"><a class="el" href="res-a1_8hpp.html">res-a1.hpp</a></span>) was the first to be touched in a later rework.</p>
+<p>Selected by <a class="el" href="namespace_m2.html">M2</a> strategies 0 and 1 via the dispatcher in <span class="tt"><a class="el" href="comp-res_8hpp.html" title="ResolutionComputation — abstract base for every free-resolution algorithm in the engine.">comp-res.hpp</a></span>. Kept alongside <span class="tt"><a class="el" href="res-a1_8hpp.html">res-a1.hpp</a></span>, <span class="tt"><a class="el" href="res-a2_8hpp.html">res-a2.hpp</a></span>, and the modern Schreyer-frame F4 engine in <span class="tt">schreyer-resolution/</span> so each strategy covers the cases the others do not.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp-res_8hpp.html" title="ResolutionComputation — abstract base for every free-resolution algorithm in the engine.">comp-res.hpp</a> </dd>
+<dd>
+<a class="el" href="res-a1_8hpp.html">res-a1.hpp</a> </dd>
+<dd>
+<a class="el" href="res-a2_8hpp.html">res-a2.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="res-a0_8hpp_source.html">res-a0.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

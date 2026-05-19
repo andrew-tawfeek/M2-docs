@@ -91,6 +91,9 @@ $(function(){initNavTree('sagbi_8hpp.html','',''); });
   <div class="headertitle"><div class="title">sagbi.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="classsagbi.html" title="Helper routines for computing Sagbi bases. Not currently functional?">sagbi</a></span> &mdash; subduction helpers for canonical-subalgebra (SAGBI) bases.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="comp-gb_8hpp_source.html">comp-gb.hpp</a>&quot;</code><br />
 </div>
@@ -101,7 +104,16 @@ Classes</h2></td></tr>
 <tr class="memitem:sagbi" id="r_sagbi"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsagbi.html">sagbi</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper routines for computing Sagbi bases. Not currently functional?  <a href="classsagbi.html#details">More...</a><br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="classsagbi.html" title="Helper routines for computing Sagbi bases. Not currently functional?">sagbi</a></span> &mdash; subduction helpers for canonical-subalgebra (SAGBI) bases. </p>
+<p>Declares the static-only <span class="tt"><a class="el" href="classsagbi.html" title="Helper routines for computing Sagbi bases. Not currently functional?">sagbi</a></span> namespace-class holding the subduction primitives that would drive a native SAGBI engine: given a polynomial <span class="tt">f</span> in <span class="tt">R</span> and a candidate subalgebra basis (delivered through a <span class="tt"><a class="el" href="class_ring_map.html">RingMap</a> phi</span> plus a <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a> J</span> for the ambient ideal), <span class="tt">subduct</span> returns an element of the subalgebra whose leading term cancels <span class="tt">f</span>'s, or zero when no such reduction exists. A second overload performs the same reduction column-wise on a <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span>.</p>
+<p>The header flags itself as "not currently functional" &mdash; the in-engine helpers stop short of a complete SAGBI driver, and the production SAGBI work today happens in the M2-side <span class="tt">SubalgebraBases</span> package, which builds on top of the standard GB infrastructure rather than these primitives. The file remains as a starting point for a future native implementation.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd>
+<dd>
+<a class="el" href="ringmap_8hpp.html" title="RingMap — engine representation of a ring homomorphism R -&gt; S.">ringmap.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="sagbi_8hpp_source.html">sagbi.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
