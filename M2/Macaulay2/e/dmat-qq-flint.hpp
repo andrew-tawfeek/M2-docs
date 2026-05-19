@@ -3,6 +3,36 @@
 #ifndef _dmat_qq_flint_hpp_
 #define _dmat_qq_flint_hpp_
 
+/**
+ * @file dmat-qq-flint.hpp
+ * @brief `DMat<M2::ARingQQFlint>` --- dense rational matrices stored in FLINT `fmpq_mat_t`.
+ *
+ * Specialises the dense-matrix template for the FLINT rational
+ * aring. Each entry is an `fmpq_t` (a pair of `fmpz`s sharing the
+ * small-value-inlined representation of `ARingZZ`), so the typical
+ * "small numerator over small denominator" rationals stay in
+ * registers and only blow up to a heap-allocated `mpq_t` when the
+ * values grow. Arithmetic routes to FLINT's `fmpq_mat_*` family ---
+ * `fmpq_mat_add`, `fmpq_mat_mul`, `fmpq_mat_neg`, `fmpq_mat_rank`,
+ * `fmpq_mat_solve`, `fmpq_mat_inv`, `fmpq_mat_det` --- giving
+ * cache-aware blocked algorithms over the whole matrix instead of
+ * the generic per-element loop the unspecialised template would
+ * walk.
+ *
+ * The header is part of the `dmat.hpp` umbrella include and is
+ * never delivered to the front-end directly (the legacy file
+ * comment flags this). Conversion helpers between this
+ * representation, the engine's `Matrix` type, and the older
+ * `ARingQQGMP` path live in the companion
+ * `dmat-qq-interface-flint.hpp`. As always for FLINT-backed files,
+ * `M2/gc-include.h` precedes the FLINT include so allocations
+ * route through bdwgc.
+ *
+ * @see dmat.hpp
+ * @see dmat-qq-interface-flint.hpp
+ * @see aring-qq-flint.hpp
+ */
+
 #include <assert.h>            // for assert
 #include <utility>             // for swap
 #include "aring-qq-flint.hpp"  // for ARingQQFlint
