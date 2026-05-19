@@ -3,6 +3,32 @@
 #ifndef _dmat_gf_flint_big_hpp_
 #define _dmat_gf_flint_big_hpp_
 
+/**
+ * @file dmat-gf-flint-big.hpp
+ * @brief `DMat<M2::ARingGFFlintBig>` --- dense GF matrices stored in FLINT `fq_nmod_mat_t`.
+ *
+ * Specialises the dense-matrix template for the large-`q` Galois
+ * field aring `ARingGFFlintBig`: each entry is a polynomial of
+ * degree less than `k` over `Z/p`, stored in FLINT's
+ * `fq_nmod_mat_t`. Matrix operations dispatch to `fq_nmod_mat_*`
+ * routines so a `rank` or `mul` call becomes a single FLINT
+ * invocation over the whole matrix, hitting FLINT's cache-aware
+ * blocked algorithms instead of the generic per-entry path the
+ * unspecialised `DMat<R>` would walk.
+ *
+ * The companion `dmat-gf-flint.hpp` covers the small-`q` Zech-table
+ * representation (`fq_zech_mat_t`); the dispatcher in
+ * `aring-gf-flint*.hpp` selects between the two at ring
+ * construction. The `#pragma GCC diagnostic push/pop` block around
+ * the FLINT include is file-local and silences a benign FLINT-
+ * header warning on modern GCC; `M2/gc-include.h` must precede
+ * FLINT so the allocator routes through bdwgc.
+ *
+ * @see dmat.hpp
+ * @see dmat-gf-flint.hpp
+ * @see aring-gf-flint-big.hpp
+ */
+
 #include <utility>                 // for swap
 #include "aring-gf-flint-big.hpp"  // for ARingGFFlintBig
 
