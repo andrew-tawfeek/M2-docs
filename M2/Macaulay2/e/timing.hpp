@@ -6,23 +6,26 @@
  * @brief Inline `std::chrono::steady_clock` wrappers and elapsed-time conversion helpers.
  *
  * Provides `timer()` / `now()` (both returning a
- * `std::chrono::steady_clock::time_point`) for capturing
- * high-resolution timestamps, plus templated
- * `nanoseconds(duration)` / `microseconds(duration)` /
- * `seconds(duration)` helpers that pull the count out of any
- * duration type via `duration_cast`. Centralising the clock
- * choice in one header lets the engine swap clocks (mock during
- * tests, per-platform alternatives where the steady clock is
- * slow) without touching call sites and gives a single hook for
- * future per-thread CPU-time accounting.
+ * `std::chrono::steady_clock::time_point`, hard-coded to the
+ * steady clock) for capturing high-resolution timestamps, plus
+ * templated `nanoseconds(duration)` / `microseconds(duration)`
+ * / `seconds(duration)` helpers that pull the count out of any
+ * `std::chrono::duration`-shaped type via `duration_cast`
+ * (`seconds` returns a `double` by scaling the nanosecond
+ * count). The `TIME(t, call)` macro at the bottom wraps a
+ * `call` with `now()` brackets and accumulates the nanosecond
+ * delta into `t`, which is how the GB and resolution drivers
+ * collect their `clock_*` timing fields.
  *
- * Heavy callers are `SLP-imp.hpp`'s NAG evaluator (per-step
- * timestamps that drive continuation-step heuristics), the F4
- * GB engines (per-reduction trace timings), and the time-limit
- * branch of the stop-condition machinery in `comp.hpp`.
+ * Used by `SLP-imp.hpp`'s NAG evaluator (per-step timestamps
+ * that drive continuation-step heuristics) and by the F4 GB
+ * engines for the per-reduction trace timings dumped on
+ * `M2_gbTrace` runs. The `StopConditions` machinery in
+ * `comp.hpp` does **not** have a time-limit field --- its
+ * stop conditions are degree / basis-element / syzygy / pair /
+ * codim / subring / length limits only.
  *
  * @see SLP-imp.hpp
- * @see comp.hpp
  */
 
 #include <chrono>
