@@ -9,14 +9,14 @@
  *
  * Centralises the explicit-instantiation definitions of the
  * `fromStream<T>(istream, R, result)` family declared in
- * `RingTest.hpp`. Each specialisation reads one element off an
- * input stream and stores it into a caller-provided
- * pre-`init`ed slot --- e.g. `fromStream<M2::ARingZZp>` reads an
- * `int` and calls `R.set_from_long`, while
- * `fromStream<Z_mod>` skips whitespace, accepts the optional
- * sign, and then parses the digits before handing back a
- * `ring_elem`. The unified file keeps the parser quirks in one
- * place so individual test files stay focused on test logic.
+ * `RingTest.hpp`. `fromStream<M2::ARingZZp>` reads an `int` and
+ * calls `R.set_from_long`; `fromStream<Z_mod>` skips whitespace,
+ * accepts the optional sign, parses digits, and hands back a
+ * `ring_elem`; `fromStream<RingZZ>` follows the same shape for
+ * arbitrary-precision integers (work in progress --- the
+ * digit-collection loop is marked `// NOT DONE BEING WRITTEN`).
+ * The unified file keeps the parser quirks in one place so
+ * individual test files stay focused on test logic.
  *
  * Companion to `RingTest.hpp` (which declares the templates),
  * `M2-cpp-replacement.cpp` (stub for `system_interrupted`), and
@@ -26,6 +26,7 @@
  * @see RingTest.hpp
  * @see aring-zzp.hpp
  * @see ZZp.hpp
+ * @see ZZ.hpp
  * @see RingZZpTest.cpp
  */
 
