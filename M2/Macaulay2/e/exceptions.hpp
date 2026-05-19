@@ -8,23 +8,25 @@
  * Declares a small hierarchy rooted at `std::runtime_error`:
  * `engine_error` (the base catch-all), `overflow_exception`
  * (arithmetic overflow, thrown by `overflow.hpp`),
- * `division_by_zero_error` (carries a fixed default message), and
- * `internal_error` (invariant violation that should not be
- * reachable). These exist so templated engine code can unwind
- * cleanly through arbitrary call depth without checking an error
- * return after every operation. The companion `TRY` / `CATCH`
- * macros at the bottom of the header standardise the boundary
- * translation: a `catch (engine_error&)` block routes the
- * exception's `what()` into `ERROR(...)` so the message reaches
- * the interpreter through the thread-local error string in
- * `error.h`.
+ * `division_by_zero_error` (with both a `(const std::string&)`
+ * constructor and a zero-arg fallback that fills in the fixed
+ * message `"division by zero"`), and `internal_error`
+ * (invariant violation that should not be reachable). These
+ * exist so templated engine code can unwind cleanly through
+ * arbitrary call depth without checking an error return after
+ * every operation. The companion `TRY` / `CATCH` macros at the
+ * bottom standardise the boundary translation: the `CATCH`
+ * block catches `const exc::engine_error&`, routes its
+ * `what()` into `ERROR(...)` from `error.h`, and `return NULL`s
+ * --- so the message reaches the interpreter via the file-
+ * static error slot in `error.c`.
  *
  * C++ exceptions must not propagate to the interpreter (the
- * `.d`-generated C glue cannot unwind C++ stacks), so every entry
- * point from the interpreter side either runs inside `TRY/CATCH`
- * or is responsible for translating manually. Concrete arings,
- * overflow checks, and engine invariant assertions are the main
- * sources of throws.
+ * `.d`-generated C glue cannot unwind C++ stacks), so every
+ * entry point from the interpreter side either runs inside
+ * `TRY/CATCH` or is responsible for translating manually.
+ * Concrete arings, overflow checks, and engine invariant
+ * assertions are the main sources of throws.
  *
  * @see error.h
  * @see overflow.hpp
