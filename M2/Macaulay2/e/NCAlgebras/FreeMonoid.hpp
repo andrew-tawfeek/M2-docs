@@ -1,6 +1,35 @@
 #ifndef _free_monoid_hpp_
 #define _free_monoid_hpp_
 
+/**
+ * @file NCAlgebras/FreeMonoid.hpp
+ * @brief `FreeMonoid` --- monoid of length-prefixed non-commutative words with weight-vector prefix.
+ *
+ * Declares the word-side counterpart of the commutative
+ * `Monoid`: a non-commutative monomial is a sequence of
+ * variable indices `[v_1, v_2, ..., v_s]`, and `FreeMonoid`
+ * stores it in the packed form `[total length] wt_0 ... wt_{r-1}
+ * w_0 ... w_s` --- a leading length so the word can be
+ * `memcpy`ed, `r` weight values used to short-circuit
+ * comparison, and the indices themselves. Multiplication is
+ * plain concatenation: no reordering, no normalisation, since
+ * the algebra is free. The intended comparison is weight-first
+ * then lexicographic, matching the "leading word" convention of
+ * the non-commutative Gröbner literature; the in-file TODOs
+ * track wiring the weight values through the front end so
+ * compare can use them consistently.
+ *
+ * The companion `FreeMonoidLogger` at the top of the header is
+ * a debug helper that counts monomial compares; it is normally
+ * compiled out and exists so the developers of `NCGroebner` /
+ * `NCF4` can profile the cost of the word-ordering kernel.
+ *
+ * @see Word.hpp
+ * @see FreeAlgebra.hpp
+ * @see NCGroebner.hpp
+ * @see Polynomial.hpp
+ */
+
 #include "Polynomial.hpp"      // for Monom
 #include "newdelete.hpp"       // for our_new_delete
 #include "polyring.hpp"        // for PolynomialRing
