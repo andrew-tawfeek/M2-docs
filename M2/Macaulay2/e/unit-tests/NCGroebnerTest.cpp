@@ -1,3 +1,33 @@
+/**
+ * @file unit-tests/NCGroebnerTest.cpp
+ * @brief gtest smoke tests covering the non-commutative GB pipeline end-to-end.
+ *
+ * Exercises every layer of `NCAlgebras/` together: builds
+ * `FreeAlgebra` and `FreeAlgebraQuotient` rings via
+ * `util-polyring-creation`, inserts and queries `WordTable` and
+ * `SuffixTree` against hand-rolled word inputs, fills
+ * `OverlapTable` with critical pairs, runs `NCReduction` and
+ * `NCGroebner::compute` to a degree cap, and asserts the
+ * resulting GB matches the expected size or shape. Also covers
+ * `MemoryBlock` directly: a thousand-allocation loop with
+ * pseudo-random sizes that catches arena bugs before the GB
+ * tests would exhibit them.
+ *
+ * The suffix-tree coverage is the load-bearing part: missed
+ * overlaps would silently truncate a GB, so the test file is
+ * heavy on construction and factor-search assertions
+ * (`SuffixTree.constructionMatches` and friends). Real test
+ * names include `OverlapTable.insert`, `NCGroebner.commutator`,
+ * and the per-stage smoke tests --- they constitute the
+ * regression net the `AssociativeAlgebras` package depends on.
+ *
+ * @see NCAlgebras/NCGroebner.hpp
+ * @see NCAlgebras/SuffixTree.hpp
+ * @see NCAlgebras/OverlapTable.hpp
+ * @see NCAlgebras/NCReduction.hpp
+ * @see util-polyring-creation.hpp
+ */
+
 #include <iostream>
 #include <memory>
 #include <gtest/gtest.h>
