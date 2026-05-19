@@ -8,25 +8,32 @@
  * @brief `MatrixStream` --- term-by-term streaming construction of a `Matrix`.
  *
  * Declares the engine's streaming matrix-builder API. A caller
- * drives a hand-rolled state machine:
- * `idealBegin(n)` or `matrixBegin(nrows, ncols)` ->
+ * constructs `MatrixStream(target_FreeModule)` and drives a
+ * hand-rolled state machine:
+ * `idealBegin(polyCount)` ->
  * `appendPolynomialBegin(nTerms)` ->
  * `appendTermBegin(component)` ->
  * `appendExponent(var, exp)` (zero or more) ->
  * `appendTermDone(coefficient)` ->
  * `appendPolynomialDone()` ->
- * `idealDone()` / `matrixDone()` ->
- * `value()` returns the finished `Matrix*`. Strict `Begin` /
- * `Done` nesting must be respected. Coefficients land in the
- * target's coefficient ring; `s.modulus()` returns the prime when
- * the target is `Z/p`.
+ * `idealDone()`. `value()` then returns the finished `Matrix*`
+ * (and is `nullptr` until `idealDone`). The class also exposes
+ * `modulus()` / `varCount()` / `comCount()` so the same protocol
+ * the `mathicgb` stream interface uses can interrogate the
+ * target ring. Coefficients are accepted as `mpz_class` and land
+ * in the target's coefficient ring; `modulus()` returns the
+ * characteristic (the prime when the ring is `Z/p`, `0` for
+ * characteristic-zero rings).
  *
- * The streaming shape is the right choice when a parser emits
- * one int at a time and the full polynomial does not fit in
- * memory ahead of time --- for example, reading an msolve or
- * `BasicPolyList` text format, or feeding F4-style streaming
- * input from disk. `matrix-con.hpp` is the by-construction
- * sibling that wants whole columns up front.
+ * The companion template `matrixToStream<T>(M, stream)` is the
+ * reverse direction --- it walks an existing `Matrix` column by
+ * column and emits the same event sequence into any `T` that
+ * implements the protocol. The streaming shape is the right
+ * choice when a parser emits one int at a time and the full
+ * polynomial does not fit in memory ahead of time (msolve and
+ * `BasicPolyList` text formats, F4-style streaming input from
+ * disk). `matrix-con.hpp` is the by-construction sibling that
+ * wants whole columns up front.
  *
  * @see matrix.hpp
  * @see matrix-con.hpp
