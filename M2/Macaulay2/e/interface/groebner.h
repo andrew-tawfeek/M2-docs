@@ -8,6 +8,38 @@
 #ifndef _groebner_h_
 #  define _groebner_h_
 
+/**
+ * @file interface/groebner.h
+ * @brief Engine-boundary C API for Gröbner basis, resolution, and Hilbert-series computations.
+ *
+ * Declares the `extern "C"` factories the M2 interpreter calls
+ * to start, drive, and inspect every long-running ideal-theory
+ * computation in the engine. `IM2_GB_make` builds a
+ * `GBComputation*` --- the `Computation` typedef hides the C++
+ * class --- and the `IM2_res_make*` family builds a
+ * `ResolutionComputation*`; subsequent calls plumb stop
+ * conditions, resume iteration, and pull results out
+ * (`rawGBGetMatrix`, `rawGBChangeOfBasis`, `rawGBSyzygies`,
+ * `rawGBLeadTerms`, `rawGBBetti`, `rawMinimalBetti`).
+ * `IM2_Matrix_Hilbert` and `rawKernelOfGB` carry the
+ * GB-adjacent operations (Hilbert numerator on a `coker
+ * leadterms`, Schreyer-induced kernel) that have no Computation
+ * surface of their own.
+ *
+ * The header explicitly notes that it is the source of truth for
+ * what `groebner.cpp` actually exports --- the historic flat
+ * `engine.h` may still carry stale prototypes. Implementation
+ * dispatches through `GBComputation::choose_gb` and
+ * `ResolutionComputation::choose_res` so the interpreter never
+ * sees algorithm selection logic; it just gets back an opaque
+ * pointer it polls via the shared `computation.h` enums.
+ *
+ * @see groebner.cpp
+ * @see computation.h
+ * @see comp-gb.hpp
+ * @see comp-res.hpp
+ */
+
 #  include "engine-includes.hpp"
 #  include "interface/computation.h"
 
