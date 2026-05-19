@@ -5,25 +5,27 @@
 
 /**
  * @file f4/monhashtable.hpp
- * @brief `MonomialsWithComponent` / `MonomialsIgnoringComponent` --- traits for the F4 monomial hash table.
+ * @brief Trait classes for the F4 / resolution monomial hash table.
  *
- * Declares the two trait classes that parameterise the mathic
- * `HashTable<Traits>` for F4's packed monomials.
- * `MonomialsWithComponent` keeps free-module component slots
- * distinct, treating `e_i * m` and `e_j * m` as different
- * keys, so the table can map column indices in a Macaulay
- * matrix. `MonomialsIgnoringComponent` strips the component
- * for equality and is used when only the underlying monomial
- * matters. Both share the same cheap hash --- the sum of the
- * first two ints of the packed monomial (which the encoding
- * sets to length/degree plus the first variable's exponent),
- * giving a well-spread value for the typical input mix.
+ * Declares the four trait classes that parameterise the mathic
+ * `HashTable<Traits>` for F4 and the Schreyer resolution. On
+ * the F4 side, `MonomialsWithComponent` keeps free-module
+ * component slots distinct (treating `e_i * m` and `e_j * m`
+ * as different keys, so the table can map column indices in a
+ * Macaulay matrix) and uses `m[0] + m[1]` as its hash value;
+ * `MonomialsIgnoringComponent` strips the component for
+ * equality and uses just `m[0]` --- both pick out the cheap
+ * length/degree-plus-first-slot mixing the encoding leaves at
+ * the front of the packed monomial. `ResMonomialsWithComponent`
+ * and `ResMonomialsIgnoringComponent` are the
+ * `res_packed_monomial` analogues, with the With-Component hash
+ * folding in `34141 * mMonoid.get_component(m)` so distinct
+ * free-module slots stay distinguishable.
  *
- * The same traits are consumed by the resolution code in
- * `schreyer-resolution/`, which is why this header pulls in
- * `res-moninfo.hpp` and `res-monomial-types.hpp` alongside F4's
- * `MonomialInfo` --- both subsystems share the underlying hash
- * table to keep their per-monomial cost identical.
+ * The resolution side reuses the same hash-table infrastructure
+ * to keep its per-monomial cost identical to F4's; this header
+ * therefore pulls in both `f4/moninfo.hpp` and
+ * `schreyer-resolution/res-moninfo.hpp`.
  *
  * @see moninfo.hpp
  * @see schreyer-resolution/res-moninfo.hpp
