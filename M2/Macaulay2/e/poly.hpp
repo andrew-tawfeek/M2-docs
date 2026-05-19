@@ -3,6 +3,28 @@
 #ifndef _poly_hpp_
 #define _poly_hpp_
 
+/**
+ * @file poly.hpp
+ * @brief Concrete commutative `PolyRing` --- standard polynomial ring inheriting from `PolyRingFlat`.
+ *
+ * Declares the concrete `PolyRing` that engine code instantiates
+ * whenever it talks about "a polynomial ring." The class
+ * descends from the abstract layer in `polyring.hpp` through
+ * `PolyRingFlat` (the intermediate that asserts coefficients are
+ * non-polynomial) and is the immediate parent of every flavoured
+ * polynomial ring the engine ships: `PolyRingSkew` from
+ * `skewpoly.cpp`, `PolyRingWeyl` from `weylalg.cpp`, the
+ * non-commutative `M2FreeAlgebra`, and `PolyQuotient` from
+ * `polyquotient.cpp`. `TermIdeal`, `Matrix`, `GBRing` /
+ * `GBRingSkew`, `GBComputation`, and `ChineseRemainder` are
+ * forward-declared so the header stays light.
+ *
+ * @see polyring.hpp
+ * @see skewpoly.cpp
+ * @see weylalg.cpp
+ * @see polyquotient.hpp
+ */
+
 #include "ring.hpp"
 #include "ringelem.hpp"
 #include "skew.hpp"
