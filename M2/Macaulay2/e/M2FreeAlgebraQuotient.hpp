@@ -16,13 +16,12 @@
  *
  * Multiplication first runs the ambient free-algebra product (word
  * concatenation lifted to polynomials) and then reduces modulo the
- * stored GB via `NCAlgebras/NCGroebner.hpp` --- this normal-form step
- * is what distinguishes quotient arithmetic from the ambient free
- * algebra and is what makes the quotient finite over many fields
- * where the ambient algebra is not. Because non-commutative two-sided
- * GBs need not be finite, the quotient is in general only computed
- * up to a chosen degree limit; operations on longer words may not
- * fully simplify.
+ * stored GB via `NCAlgebras/NCGroebner.hpp` --- this normal-form
+ * step is what distinguishes quotient arithmetic from the ambient
+ * free algebra and gives every quotient element a canonical
+ * representative. Because non-commutative two-sided GBs need not
+ * be finite, the GB is in general only computed up to a chosen
+ * degree limit; operations on longer words may not fully simplify.
  *
  * @see M2FreeAlgebra.hpp
  * @see NCAlgebras/FreeAlgebraQuotient.hpp
