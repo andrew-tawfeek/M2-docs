@@ -3,6 +3,36 @@
 #ifndef __matrix_stream_hhp__
 #define __matrix_stream_hhp__
 
+/**
+ * @file matrix-stream.hpp
+ * @brief `MatrixStream` --- term-by-term streaming construction of a `Matrix`.
+ *
+ * Declares the engine's streaming matrix-builder API. A caller
+ * drives a hand-rolled state machine:
+ * `idealBegin(n)` or `matrixBegin(nrows, ncols)` ->
+ * `appendPolynomialBegin(nTerms)` ->
+ * `appendTermBegin(component)` ->
+ * `appendExponent(var, exp)` (zero or more) ->
+ * `appendTermDone(coefficient)` ->
+ * `appendPolynomialDone()` ->
+ * `idealDone()` / `matrixDone()` ->
+ * `value()` returns the finished `Matrix*`. Strict `Begin` /
+ * `Done` nesting must be respected. Coefficients land in the
+ * target's coefficient ring; `s.modulus()` returns the prime when
+ * the target is `Z/p`.
+ *
+ * The streaming shape is the right choice when a parser emits
+ * one int at a time and the full polynomial does not fit in
+ * memory ahead of time --- for example, reading an msolve or
+ * `BasicPolyList` text format, or feeding F4-style streaming
+ * input from disk. `matrix-con.hpp` is the by-construction
+ * sibling that wants whole columns up front.
+ *
+ * @see matrix.hpp
+ * @see matrix-con.hpp
+ * @see BasicPolyListParser.hpp
+ */
+
 #include "poly.hpp"
 #include "matrix.hpp"
 #include "matrix-con.hpp"
