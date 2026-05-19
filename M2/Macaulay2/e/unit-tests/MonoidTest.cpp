@@ -1,3 +1,31 @@
+/**
+ * @file unit-tests/MonoidTest.cpp
+ * @brief gtest coverage for `Monoid` construction and the `ExponentVector` exponent-array primitives.
+ *
+ * Hosts the `TEST(ExponentVector, All)` battery that exercises
+ * the raw `exponents_t` (`int*`) primitives every polynomial
+ * multiplication in the engine sits on top of: `copy`,
+ * `equal`, `simple_degree`, `one` / `is_one`, `mult`, `power`,
+ * `divides`, `divide`, `gcd`, `lcm`, and the `hash` used by
+ * `MonomialHashTable`. The companion `Monoid` tests build
+ * monoids under Lex, GRevLex, and weight-vector orderings,
+ * sanity-check `compare`, and validate heft-vector / term-degree
+ * computation against hand-rolled expectations.
+ *
+ * Subtle bugs in these primitives surface several layers up as
+ * "F4 returns the wrong GB" or "Hilbert function is off by
+ * one"; catching them here keeps the failure local. Exponents
+ * are stored as raw `int*` rather than `std::vector<int>` so
+ * the F4 inner loop can read entries with a single load, which
+ * is why the tests use the pre-allocated `int[3]` stack arrays
+ * and pass them through `static_cast<exponents_t>`.
+ *
+ * @see ExponentVector.hpp
+ * @see monoid.hpp
+ * @see ARingTest.hpp
+ * @see f4/f4.hpp
+ */
+
 #include <gtest/gtest.h>
 
 #include <iostream>
