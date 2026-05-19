@@ -3,6 +3,36 @@
 #ifndef _comp_gb_hpp_
 #define _comp_gb_hpp_
 
+/**
+ * @file comp-gb.hpp
+ * @brief `GBComputation` --- abstract base of every Groebner-basis algorithm in the engine.
+ *
+ * `GBComputation` extends `Computation` with the GB-specific
+ * vocabulary the interpreter requests once a basis has been
+ * (partially) built: `get_gb`, `get_mingens`, `get_change` (the
+ * change-of-basis matrix), `get_syzygies`, `get_initial` (leading
+ * terms), and `complete_thru_degree`. Each accessor is virtual
+ * because the concrete subclasses keep different internal
+ * representations --- the classical default keeps a Buchberger-style
+ * list of marked polynomials, F4 keeps a `Basis`, mathicgb returns
+ * a `MonoMonoid`-encoded basis, and `NCGroebnerComputation` works
+ * over the non-commutative `Poly` type.
+ *
+ * The factory `GBComputation::choose_gb(...)` reads the user's
+ * `Strategy =>`, the ring flavour, and the input shape and
+ * instantiates the right subclass --- most user code never constructs
+ * one directly. The header also exposes the `SPAIR_*` return codes
+ * that the s-pair step routine returns inside the classical
+ * algorithm. Companion variants `comp-gb-declared.cpp` (basis
+ * supplied by the user via `forceGB`, no computation) and
+ * `comp-gb-proxy.cpp` (forwards calls to a worker thread) reuse the
+ * same interface.
+ *
+ * @see comp.hpp
+ * @see comp-res.hpp
+ * @see gbring.hpp
+ */
+
 #include "comp.hpp"
 class buffer;
 
