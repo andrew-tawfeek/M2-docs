@@ -20,9 +20,7 @@
  * Heavily used by the modular-F4 path and by rational
  * resolutions / Hilbert-function computations that run the same
  * algorithm modulo many primes in parallel and reconstruct
- * afterwards. The dual `class` / `typedef struct` declarations
- * of `Matrix`, `Ring`, and `RingElement` keep the header usable
- * from both C++ and the generated-C side of the `.dd` pipeline.
+ * afterwards.
  *
  * @see cra.cpp
  * @see engine-includes.hpp
