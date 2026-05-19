@@ -3,6 +3,36 @@
 #ifndef _aring_zzp_hpp_
 #define _aring_zzp_hpp_
 
+/**
+ * @file aring-zzp.hpp
+ * @brief `M2::ARingZZp` --- portable `Z/p` for small primes via log/exp/Zech tables.
+ *
+ * `ARingZZp` is the dependency-free `Z/p` aring: a
+ * `SimpleARing<ARingZZp>` whose elements are interpreted as log
+ * indices of a chosen primitive root, with `0` reserved for the
+ * field zero and each `1 <= n <= p - 1` representing `alpha^n mod p`.
+ * Multiplication reduces to `(a + b) mod (p - 1)`, inversion to
+ * negation, exponentiation to multiplication, and addition to a
+ * single Zech-table lookup `alpha^a + alpha^b = alpha^{a + Zech(b - a)}`
+ * --- every operation becomes O(1) integer arithmetic plus a cache-
+ * resident array access. The `log_table` and `exp_table` are built
+ * at construction; storage is O(p) words, which keeps everything in
+ * L2 cache for `p` up to roughly 32000.
+ *
+ * This is the only `Z/p` path with no external dependency, so it is
+ * what stripped-down or diagnostic M2 builds fall back to. It is
+ * also the reference implementation against which the FLINT-
+ * (`aring-zzp-flint.hpp`) and FFLAS-FFPACK-backed
+ * (`aring-zzp-ffpack.hpp`) variants are validated; the older
+ * non-aring counterpart with the same table encoding is the legacy
+ * `Z_mod` in `ZZp.hpp`.
+ *
+ * @see ZZp.hpp
+ * @see aring-zzp-flint.hpp
+ * @see aring-zzp-ffpack.hpp
+ * @see aring.hpp
+ */
+
 #include "interface/random.h"
 #include "aring.hpp"
 #include "buffer.hpp"
