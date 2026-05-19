@@ -8,18 +8,40 @@
  * @brief Shared type vocabulary used across the F4 engine.
  *
  * Declares the inner-loop record types the F4 algorithm
- * shares: the `spair` struct (with a flexible `lcm` array at
- * the end and the matching `sizeofspair(s, len)` macro that
- * computes the right byte size for a given lcm length --- the
- * standard C trick for inline variable-length data also seen
- * in `gbring.hpp`'s `gbvector`), the `pre_spair` proto-pair
- * staged before full `spair` materialisation, the `gbelem`
- * basis-element record together with the `gbelem_type` enum
- * (`ELEM_IN_RING`, `ELEM_POSSIBLE_MINGEN`, `ELEM_MIN_GB`,
- * `ELEM_NON_MIN_GB`) tagging each entry, and the
- * `gb_array = std::vector<gbelem*>` basis-list typedef plus
- * the `MonomialLookupTable = F4MonomialLookupTableT<int32_t>`
- * instantiation the rest of the F4 vocabulary consumes.
+ * shares. Polynomial form: `GBF4Polynomial` (length + opaque
+ * `ElementArray coeffs` + flat `monomial_word* monoms` buffer)
+ * is what each basis element stores. Basis side: `gbelem`
+ * wraps a `GBF4Polynomial` with `deg`, `alpha` (homogenising
+ * degree), and a `gbelem_type` tag --- `ELEM_IN_RING` /
+ * `ELEM_POSSIBLE_MINGEN` / `ELEM_MIN_GB` / `ELEM_NON_MIN_GB`
+ * --- and `gb_array = std::vector<gbelem*>` is the basis list.
+ * Pair side: `pre_spair` is the proto-pair staged before full
+ * materialisation; `spair` carries `(type, deg, i, j,
+ * monomial_word* lcm)` where the lcm is a pointer to an
+ * externally-allocated `MemoryBlock` slot (the file also
+ * defines a vestigial `sizeofspair(s, len)` macro from an
+ * older design where `lcm` was a flexible array member --- the
+ * only call site is now commented out in `f4-spairs.cpp`). Two
+ * pair-type enums coexist: the legacy `spair_type` (with
+ * `F4_SPAIR_GCD_ZZ`, `F4_SPAIR_RING`, `F4_SPAIR_SKEW`,
+ * `F4_SPAIR_GEN`, `F4_SPAIR_ELEM`, `F4_SPAIR_SPAIR`) and the
+ * modern `enum class SPairType { SPair, Generator, Retired }`
+ * with a TODO to absorb the remaining cases.
+ *
+ * Macaulay matrix: `coefficient_matrix` is a `(row_array,
+ * column_array)` pair; each `row_elem` holds an opaque
+ * `ElementArray coeffs` plus a `comps[len]` index array (`new[]`-
+ * allocated, no longer arena-backed), and each `column_elem`
+ * tracks the pivoting `head` row. The transient
+ * `sparse_row` mirrors `row_elem` with the `comps` allocated
+ * from a memory block. The sorters --- `ColumnsSorter` (sorts
+ * column indices by `MonomialInfo::compare` on the column
+ * monomials), `GBSorter` (sorts basis indices by leading
+ * monomial), `PreSPairSorter` (sorts pre-pairs by varpower
+ * quotient) and `SPairCompare` (degree first, `i` tiebreak,
+ * driving `f4-spairs.hpp`'s priority queue) --- all carry
+ * static comparison counters. `MonomialLookupTable` is the
+ * `F4MonomialLookupTableT<int32_t>` instantiation.
  *
  * Pulls together the encoded-monomial layer (`moninfo.hpp`,
  * `varpower-monomial.hpp`), the lookup-table type
