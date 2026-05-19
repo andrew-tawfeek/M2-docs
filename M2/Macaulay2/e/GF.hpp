@@ -5,6 +5,33 @@
 #include "relem.hpp"
 
 /**
+ * @file GF.hpp
+ * @brief Legacy `Ring`-based Galois field with explicit log/exp tables.
+ *
+ * `GF` is the engine's original Galois-field implementation, pre-dating
+ * the `aring` refactor. It inherits from `Ring` directly (so arithmetic
+ * goes through virtual dispatch) and stores tabulated `log` / `exp` /
+ * Zech entries indexed by powers of a chosen primitive element of
+ * `K^*`. Alongside the tables it keeps a pointer to the presenting
+ * polynomial ring `(Z/p)[t]/f(t)` and the primitive `RingElement`, so
+ * M2 code that needs to introspect the defining polynomial or
+ * round-trip through it can still do so --- this is the main reason
+ * the legacy class is retained.
+ *
+ * Three modern siblings cover the same algebra with different backing
+ * stores: `ARingGFM2` (native, CRTP-inlined via `SimpleARing`),
+ * `ARingGFFlint` (FLINT Zech tables, small `q`), and `ARingGFFlintBig`
+ * (FLINT `fq_nmod`, large `q`). New engine code prefers those; this
+ * file is constructed only along the legacy paths still wired into
+ * `m2/galois.m2`.
+ *
+ * @see aring-m2-gf.hpp
+ * @see aring-gf-flint.hpp
+ * @see aring-gf-flint-big.hpp
+ * @see ZZp.hpp
+ */
+
+/**
     @ingroup rings
 */
 class GF : public Ring
