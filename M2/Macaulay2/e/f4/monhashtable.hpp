@@ -5,27 +5,34 @@
 
 /**
  * @file f4/monhashtable.hpp
- * @brief Trait classes for the F4 / resolution monomial hash table.
+ * @brief `MonomialHashTable<ValueType>` --- open-addressing intern table for F4 and resolution monomials.
  *
- * Declares the four trait classes that parameterise the mathic
- * `HashTable<Traits>` for F4 and the Schreyer resolution. On
- * the F4 side, `MonomialsWithComponent` keeps free-module
- * component slots distinct (treating `e_i * m` and `e_j * m`
- * as different keys, so the table can map column indices in a
- * Macaulay matrix) and uses `m[0] + m[1]` as its hash value;
- * `MonomialsIgnoringComponent` strips the component for
- * equality and uses just `m[0]` --- both pick out the cheap
- * length/degree-plus-first-slot mixing the encoding leaves at
- * the front of the packed monomial. `ResMonomialsWithComponent`
- * and `ResMonomialsIgnoringComponent` are the
- * `res_packed_monomial` analogues, with the With-Component hash
- * folding in `34141 * mMonoid.get_component(m)` so distinct
- * free-module slots stay distinguishable.
+ * Declares the template class `MonomialHashTable<ValueType>`,
+ * a power-of-2 open-addressing hash table whose only public
+ * operations are `find_or_insert`, `reset`, `dump`, and `show`
+ * --- it interns `value` pointers (each `ValueType::value`
+ * carries its own precomputed hash in the encoding) and grows
+ * itself by doubling `logsize` and rehashing. Storage is a flat
+ * `std::unique_ptr<value[]> hashtab` of `2^logsize` slots
+ * (initial `logsize = 24`) plus a `hashmask` and a
+ * `threshold`; the table also records `nclashes`,
+ * `max_run_length`, `monequal_count`, `monequal_fails` for
+ * dump/diagnostic output.
  *
- * The resolution side reuses the same hash-table infrastructure
- * to keep its per-monomial cost identical to F4's; this header
- * therefore pulls in both `f4/moninfo.hpp` and
- * `schreyer-resolution/res-moninfo.hpp`.
+ * `ValueType` must supply `typename value`, `hash_value(value)`,
+ * `is_equal(value, value)`, and `show(value)`. Four such
+ * traits ship in this header: `MonomialsWithComponent` (hashes
+ * `m[0] + m[1]`, keeps free-module slots distinct so the table
+ * can map Macaulay-matrix columns) and `MonomialsIgnoringComponent`
+ * (hashes `m[0]`, strips the component for equality) for the
+ * F4 `packed_monomial` encoding, and the
+ * `ResMonomialsWithComponent` / `ResMonomialsIgnoringComponent`
+ * `res_packed_monomial` analogues. The With-Component variant
+ * on the resolution side folds in `34141 * get_component(m)`
+ * so distinct free-module slots stay distinguishable. The
+ * companion `monhashtable.cpp` also instantiates
+ * `MonomialHashTable<MonomialInfo>` (with `MonomialInfo` as
+ * its own trait), giving five live instantiations.
  *
  * @see moninfo.hpp
  * @see schreyer-resolution/res-moninfo.hpp
