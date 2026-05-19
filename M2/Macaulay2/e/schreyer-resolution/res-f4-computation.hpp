@@ -5,28 +5,36 @@
 
 /**
  * @file schreyer-resolution/res-f4-computation.hpp
- * @brief Top-level Schreyer-frame F4 free-resolution driver.
+ * @brief `F4ResComputation` --- top-level Schreyer-frame F4 free-resolution driver.
  *
  * Declares the `ResolutionComputation` subclass that owns a
- * `SchreyerFrame`, walks it homological-level by level, and
+ * `SchreyerFrame`, walks it homological level by level, and
  * reports Betti tables / free modules / differential matrices
  * back to the M2 interpreter. The constructor is private; the
- * friend factory `createF4Res(gbmatrix, max_level, strategy,
- * numThreads, parallelizeByDegree)` is the only entry point
- * and requires the input matrix to already be a Gröbner basis
- * with respect to the chosen monomial order. `minimal_betti`
- * and the `get_mutable_matrix` accessors expose the per-degree
- * Macaulay-matrix data without forcing the full resolution to
- * complete first.
+ * friend factory `createF4Res(groebnerBasisMatrix, max_level,
+ * strategy, numThreads, parallelizeByDegree)` is the only entry
+ * point and requires the input matrix to already be a Gröbner
+ * basis with respect to the chosen monomial order.
+ * `minimal_betti(slanted_degree_limit, length_limit)` returns
+ * the minimal Betti numbers within those caps, and the two
+ * `get_mutable_matrix` overloads (whole-level and
+ * `(slanted_degree, level)`-cell) expose Macaulay-matrix data
+ * without forcing the full resolution to complete.
  *
  * Two `Ring`-flavoured pointers thread through the
- * implementation: the user-facing `PolynomialRing` and the
- * resolution-tuned `ResPolyRing` from `res-poly-ring.hpp`. The
+ * implementation: a `const PolynomialRing& mOriginalRing` (the
+ * user-facing ring) and a `std::unique_ptr<ResPolyRing> mRing`
+ * (the resolution-tuned ring from `res-poly-ring.hpp`); the
  * split mirrors the legacy `PolynomialRing` / `GBRing`
  * separation on the GB side. Only `length_limit` and
  * `degree_limit` from `Computation`'s stop conditions are
- * honoured. `parallelizeByDegree` selects between the two
- * scheduling strategies `DependencyGraph` supports.
+ * honoured (`stop_conditions_ok()` returns `true`
+ * unconditionally with a comment explaining why).
+ * `parallelizeByDegree` is plumbed through to the
+ * `SchreyerFrame` constructor as a single on/off flag --- when
+ * true, `minimalBettiNumbers` builds and runs the
+ * `DependencyGraph`; when false, it falls back to the serial
+ * `computeRanks` path.
  *
  * @see comp-res.hpp
  * @see res-poly-ring.hpp
