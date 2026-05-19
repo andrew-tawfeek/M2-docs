@@ -28,9 +28,11 @@
  * rings, `ReducedGB_ZZ` (`reducedgb-ZZ.hpp`) handles
  * coefficient-aware reduction (multiple basis elements with the
  * same monomial support are allowed if they differ in
- * coefficient), and `MarkedGB` (`reducedgb-marked.hpp`) simply
- * wraps a user-supplied `(basis, lead-term)` pair without doing
- * any reduction.
+ * coefficient), and `MarkedGB` (`reducedgb-marked.hpp`) takes a
+ * user-supplied `(leadterms, basis)` pair, accepts the marked
+ * leading terms as-is, and runs `auto_reduce()` over the tails
+ * (so no Buchberger loop runs but the polynomials themselves
+ * are still reduced against each other's marked leads).
  *
  * @see comp-gb.hpp
  * @see gbring.hpp
