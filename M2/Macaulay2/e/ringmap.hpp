@@ -4,26 +4,31 @@
 
 /**
  * @file ringmap.hpp
- * @brief `RingMap` --- engine representation of a ring homomorphism `R -> S`.
+ * @brief `RingMap` --- engine representation of a ring homomorphism.
  *
  * Declares `RingMap`, an `EngineObject` that stores a
- * homomorphism by holding the source ring `R`, the target ring
- * `S`, and one image per generator of `R`. Each image lives as a
- * pre-factored `var` record split into `coeff * monom * bigelem`
- * with cheap `is_one` flags so the inner-loop evaluator can skip
- * trivial multiplications, plus a top-level `is_monomial_` flag
- * that unlocks a much faster evaluation path when every image is
- * a single monomial of `S`. Application of a `RingMap` to a
- * polynomial walks each term, substitutes the image of every
- * variable, and accumulates the result in `S`, threading
- * coefficient maps through the appropriate target where source
- * and target differ in coefficient ring.
+ * homomorphism via the target ring `R` (with `P` set to its
+ * polynomial side and `K` to its coefficient ring) and an
+ * array `_elem` of `nvars` image records, one per generator of
+ * the (matrix-supplied) source. Each `var` record carries the
+ * pre-factored image `coeff * monom * bigelem` together with
+ * `is_zero`, `coeff_is_one`, `monom_is_one`, and
+ * `bigelem_is_one` flags so the inner-loop evaluator can skip
+ * trivial multiplications. A top-level `is_monomial` flag
+ * unlocks a much faster evaluation path when every image is a
+ * single monomial of the target. Application of a `RingMap` to
+ * a polynomial walks each term, substitutes the image of every
+ * variable, and accumulates the result in the target, threading
+ * coefficient maps through where source and target differ in
+ * coefficient ring (the `eval_term` entry point).
  *
- * `RingMap`s are typically built ad hoc (quotient projection in
- * `qring.cpp`, M2's `map(S, R, ...)`, coercion-style maps, ring-
- * extension morphisms) and short-lived. Composition is not a
- * first-class operation: callers evaluate one map on the image
- * list of another to produce a new image list.
+ * `RingMap`s are typically built ad hoc by `RingMap::make(m)`
+ * from a matrix giving the images of the source variables
+ * (quotient projection in `qring.cpp`, M2's `map(S, R, ...)`,
+ * coercion-style maps, ring-extension morphisms) and
+ * short-lived. Composition is not a first-class operation:
+ * callers evaluate one map on the image list of another to
+ * produce a new image list.
  *
  * @see ring.hpp
  * @see qring.hpp
