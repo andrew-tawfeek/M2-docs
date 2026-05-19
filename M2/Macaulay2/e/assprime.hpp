@@ -13,27 +13,32 @@
  * @brief `AssociatedPrimes` --- codimension and minimal-codimension associated primes of a monomial ideal.
  *
  * Declares `AssociatedPrimes`, a class that operates on a
- * (caller-supplied radical) `MonomialIdeal`. Its `state` enum
- * has two values, `do_codim` (cheap, computes the codimension)
- * and `do_primes` (expensive, enumerates the associated primes
- * of minimal codimension), so a caller can pay only for the
- * codimension and step the same instance through to the primes
- * later without restarting. The public entry points are
- * `codimension()`, `associated_primes(count)`,
- * `min_primes(maxcodim, count)`, and `max_indep_sets(count)`;
- * `count = -1` means "no limit". Results come back as a
+ * `MonomialIdeal` (the constructor calls `I->radical()` so the
+ * input need not be pre-radicalised). Its `state` enum has two
+ * values, `do_codim` (cheap, just tracks `min_codim`) and
+ * `do_primes` (expensive, enumerates the associated primes of
+ * minimal codimension), and `codimension()` flips the state to
+ * `do_primes` on the way out so the same instance can be stepped
+ * through to `associated_primes(count)` without restarting (where
+ * `count = -1` means "no limit"). Results come back as a
  * `MonomialIdeal` whose generators are squarefree monomials,
- * each encoding one prime by the variables it contains (the
- * `max_indep_sets` output is the complementary squarefree
- * monomial for each min prime).
+ * each encoding one prime by the variables that occur in it.
  *
- * Monomial associated-prime calculation avoids Groebner bases
- * and coefficient arithmetic entirely: it is the combinatorial
- * recursion `ass(I) = ass(I, x_i) U {(x_i) + ass(I : x_i^inf)}`
- * walking the `Nmi_node` tree of the input. Callers are
- * expected to have already radicalised the input.
+ * The header also declares `min_primes(maxcodim, count)` and
+ * `max_indep_sets(count)`, but these are vestigial: no
+ * definition exists in `assprime.cpp` and no caller invokes them
+ * --- the live implementations live on `MinimalPrimes` in
+ * [[monideal-minprimes]]. The actual computation
+ * (`ass_prime_generator`) walks the `Nmi_node` tree of the input
+ * ideal: for each leading monomial `m` not yet covered, it picks
+ * each variable `x_i` in `m` not already committed, adds it to
+ * the prime under construction (codim+1), recurses, then marks
+ * `x_i = -1` ("excluded from any further prime"). This is the
+ * combinatorial split `ass(I) = ass(I + (x_i)) U ass(I, x_i = 1)`
+ * with no Groebner bases or coefficient arithmetic.
  *
  * @see monideal.hpp
+ * @see monideal-minprimes.hpp
  */
 
 #include "monideal.hpp"
