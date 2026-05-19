@@ -21,17 +21,25 @@
 
 /**
  * @file monomial-collection.hpp
- * @brief `IntsSet<MonomType>` --- set of monomials with insert / lookup / ordered iteration.
+ * @brief `IntsSet<Configuration>` --- set of monomials with insert / lookup / insertion-ordered iteration.
  *
- * Declares the templated `IntsSet`, the engine's in-transition
- * "set of monomials" helper used by `M2FreeAlgebra` and the
- * non-commutative arithmetic paths to track which `Monom` /
- * `ModuleMonom` values have appeared during a multiplication
- * or product. Insertion returns the existing index when the
- * monomial is already present, otherwise it appends. Iteration
- * walks the set in insertion order. Storage is an arena from
- * `<memtailor/Arena.h>` plus a hash index, so per-monomial work
- * stays bump-pointer cheap.
+ * Declares the templated `IntsSet<Configuration>`, the engine's
+ * in-transition "set of monomials" helper used by `M2FreeAlgebra`
+ * and the non-commutative arithmetic paths to track which
+ * `Monom` / `ModuleMonom` values have appeared during a
+ * multiplication or product. The `Configuration` template
+ * parameter supplies the hash function, equality check, and
+ * `copyToModuleElement` projection. The API splits insert from
+ * lookup: `insert(m, comp)` allocates the encoded
+ * `ModuleMonom` in the arena and pushes it onto the
+ * insertion-ordered `mElements` vector if new (returning `true`)
+ * or rolls the allocation back if already present (returning
+ * `false`); `find(m, comp)` is the separate read path, returning
+ * `(index, true)` on a hit and `(-1, false)` otherwise.
+ * Iteration via `uniqueMonoms()` walks `mElements` in insertion
+ * order. Storage is an arena from `<memtailor/Arena.h>` plus a
+ * `std::unordered_set` hash index, so per-monomial work stays
+ * bump-pointer cheap.
  *
  * The header's TODO block flags a planned rename of `IntsSet`
  * to a non-templated `ModuleMonomSet`, a new `VarPowerMonom`
