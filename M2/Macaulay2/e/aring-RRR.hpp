@@ -13,11 +13,16 @@
  * `__mpfr_struct` of that precision; instances of different
  * precisions are treated as distinct rings, so 53-bit and
  * 100-bit values cannot silently mix. Every arithmetic
- * operation routes through MPFR (`mpfr_add`, `mpfr_sub`,
- * `mpfr_mul`, `mpfr_div`, `mpfr_fma`, `mpfr_neg`, `mpfr_pow_si`
- * / `_z`, plus the transcendental `mpfr_sin` and `mpfr_log`)
- * under round-to-nearest-ties-even (`MPFR_RNDN`); alternative
- * rounding modes are not exposed.
+ * operation routes through MPFR --- the actively-used surface
+ * is `mpfr_add` / `_sub` / `_mul` / `_div` / `_neg` / `_fma` /
+ * `_pow_si` / `_pow_z` / `_si_div` plus the comparisons
+ * `mpfr_cmp` / `_cmp_si` / `_cmpabs`, the setters
+ * `mpfr_set` / `_set_d` / `_set_q` / `_set_si` / `_set_z` /
+ * `_get_d`, and the lifecycle pair `mpfr_clear` / `_swap`
+ * --- all under round-to-nearest-ties-even (`MPFR_RNDN`).
+ * Transcendentals (`mpfr_sin`, `mpfr_log`, etc.) are **not**
+ * called from this class; alternative rounding modes are not
+ * exposed either.
  *
  * The header pulls in `interface/gmp-util.h` for
  * `moveTo_gmpRR`, which migrates the MPFR mantissa onto the GC
