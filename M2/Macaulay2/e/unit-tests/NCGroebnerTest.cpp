@@ -4,22 +4,21 @@
  *
  * Exercises every layer of `NCAlgebras/` together: builds
  * `FreeAlgebra` and `FreeAlgebraQuotient` rings via
- * `util-polyring-creation`, inserts and queries `WordTable` and
- * `SuffixTree` against hand-rolled word inputs, fills
- * `OverlapTable` with critical pairs, runs `NCReduction` and
- * `NCGroebner::compute` to a degree cap, and asserts the
- * resulting GB matches the expected size or shape. Also covers
- * `MemoryBlock` directly: a thousand-allocation loop with
- * pseudo-random sizes that catches arena bugs before the GB
- * tests would exhibit them.
+ * `util-polyring-creation`, walks `WordTable` and `SuffixTree`
+ * insert / `subwords` / `prefix_suffix` queries against
+ * hand-rolled word inputs, runs `NCReduction`'s
+ * `PolynomialHeap` variants (`Trivial`, `Naive`,
+ * `NaiveDedup`), and exercises `OverlapTable` insertion plus
+ * `NCGroebner` sorting under various inputs (including the
+ * `skylanin` stress case). Also covers `MemoryBlock` directly
+ * via the `MemoryBlock.tryit` allocation loop that catches
+ * arena bugs before they reach the GB tests.
  *
- * The suffix-tree coverage is the load-bearing part: missed
- * overlaps would silently truncate a GB, so the test file is
- * heavy on construction and factor-search assertions
- * (`SuffixTree.constructionMatches` and friends). Real test
- * names include `OverlapTable.insert`, `NCGroebner.commutator`,
- * and the per-stage smoke tests --- they constitute the
- * regression net the `AssociativeAlgebras` package depends on.
+ * The `WordTable` and `SuffixTree` coverage is load-bearing:
+ * missed overlaps would silently truncate a GB, so the test
+ * file emphasises construction and factor-search assertions.
+ * These tests form the regression net the `AssociativeAlgebras`
+ * package depends on.
  *
  * @see NCAlgebras/NCGroebner.hpp
  * @see NCAlgebras/SuffixTree.hpp
