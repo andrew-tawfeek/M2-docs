@@ -3,6 +3,34 @@
 #ifndef _mat_arith_hpp_
 #define _mat_arith_hpp_
 
+/**
+ * @file mat-arith.hpp
+ * @brief Templated matrix arithmetic for `DMat<R>` / `SMat<R>` plus the `MatrixWindow` sub-region view.
+ *
+ * Declares the basic arithmetic primitives (`add`, `subtract`,
+ * `multiply`, `mult_by_element`, `negateInPlace`,
+ * `transposeInPlace`) over `DMat<RT>` and `SMat<RT>` and forward-
+ * declares `MatElementaryOps<MT>` whose definition lives in
+ * `mat-elem-ops.hpp`. The companion `MatrixWindow` struct is a
+ * `(begin_row, begin_column, end_row, end_column)` half-open
+ * view over an existing matrix --- it owns no storage but lets
+ * the same arithmetic routines operate on submatrices in place,
+ * which is how LU decomposition walks the trailing sub-matrix
+ * and how block-Strassen and similar paths describe their inner
+ * regions.
+ *
+ * Concrete implementations dispatch through the templated
+ * specialisations in `mat-linalg.hpp` so each `(operation,
+ * RingType)` pair lands on the best back end --- FLINT /
+ * FFLAS-FFPACK / BLAS where they help, generic per-element
+ * loops otherwise.
+ *
+ * @see mat-linalg.hpp
+ * @see mat-elem-ops.hpp
+ * @see dmat.hpp
+ * @see smat.hpp
+ */
+
 template <typename MT>
 class MatElementaryOps;
 // template <typename MT> class MatArithmetic;
