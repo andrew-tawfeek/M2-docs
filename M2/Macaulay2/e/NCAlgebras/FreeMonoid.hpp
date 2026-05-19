@@ -20,9 +20,11 @@
  * compare can use them consistently.
  *
  * The companion `FreeMonoidLogger` at the top of the header is
- * a debug helper that counts monomial compares; it is normally
- * compiled out and exists so the developers of `NCGroebner` /
- * `NCF4` can profile the cost of the word-ordering kernel.
+ * a debug helper that counts monomial compares for profiling.
+ * `NCGroebner.cpp` resets the counter and prints it after each
+ * reduction, but the `logCompare()` call inside `FreeMonoid.cpp`
+ * is currently commented out, so the counter only ticks if a
+ * developer re-enables it.
  *
  * @see Word.hpp
  * @see FreeAlgebra.hpp
