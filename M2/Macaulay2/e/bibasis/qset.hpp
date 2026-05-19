@@ -16,17 +16,21 @@
  *
  * Declares and defines the pending-work container that drives
  * the involutive engine's outer loop. Holds an owned
- * `std::list<Triple*>` kept sorted by leading monomial via
- * `Triple::Compare`, with `Get()` popping the back of the list
- * to return the lightest-LCM pending prolongation --- the
- * standard normal-strategy choice that keeps the working basis
- * small. `Insert(...)` accepts either a list of polynomials
- * (wrapping each in a fresh `Triple`) or pre-built triples and
- * merges them into the sort via `std::list::merge`.
- * `DeleteDescendants(ancestor)` walks the queue and discards
- * every triple whose recorded `Ancestor` matches; the driver
- * calls this whenever a new basis element makes a chunk of
- * scheduled work obsolete.
+ * `std::list<Triple*>` kept sorted under `Triple::Compare`
+ * (which returns `*a->Lm > *b->Lm`, so STL sort lays the list
+ * out in descending leading-monomial order); `Get()` pops
+ * `back()`, returning the triple with the smallest leading
+ * monomial --- the standard normal-strategy choice that keeps
+ * the working basis small. Two `Insert` overloads cover the
+ * two flavours of incoming work: one takes a polynomial list,
+ * wraps each entry in a fresh `Triple`, and re-sorts the
+ * whole queue (`std::list::sort`); the other takes a
+ * pre-built triple list, sorts it, and `std::list::merge`s it
+ * into the queue. `DeleteDescendants(ancestor)` walks the
+ * queue and discards every triple whose recorded `Ancestor`
+ * **or** `WeakAncestor` matches; the driver calls this
+ * whenever a new basis element makes a chunk of scheduled work
+ * obsolete.
  *
  * `Empty()` is the algorithm's termination test: when no
  * prolongations remain, the intermediate basis stored in `TSet`
