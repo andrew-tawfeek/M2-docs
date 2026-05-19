@@ -9,28 +9,31 @@
  * @file SLP-imp.hpp
  * @brief Templated `SLEvaluatorConcrete<RT>` --- the per-ring SLP evaluator implementation.
  *
- * `SLEvaluatorConcrete<RT>` is the templated implementation that
- * evaluates an `SLProgram` at concrete inputs. The constructor takes
- * the program, the integer arrays of constant and variable positions,
- * and a `MutableMat<SMat<RT>>` of pre-evaluated constants; the ring
- * is captured from that matrix. Calling `evaluate(x_1, ..., x_n)`
- * initialises a working array, walks the SLP's nodes in topological
- * order applying each gate's operation through `RT`'s aring methods,
- * and reads off the values at the output positions. Compile-time
- * specialisation on `RT` inlines the inner loop per ring.
+ * Provides the out-of-line template implementations of the
+ * `SLEvaluatorConcrete<RT>` constructors and methods declared
+ * in `SLP-defs.hpp`. There are four constructors: two take a
+ * `MutableMat<DMat<RT>>` of pre-evaluated constants (one for
+ * interpreted evaluation, one for the compiled path), and two
+ * mirror them for `MutableMat<SMat<RT>>` --- the sparse-matrix
+ * constructors are stubs that print to `std::cerr` and `abort`.
+ * `evaluate(const MutableMatrix* inputs, MutableMatrix* outputs)`
+ * initialises a working `std::vector<ElementType>`, walks the
+ * `SLProgram` nodes through `computeNextNode` applying each
+ * gate via `mRing`'s aring methods, and reads off the values at
+ * the recorded output positions; `specialize(parameters)` builds
+ * a partially-evaluated copy for parameter-homotopy use.
  *
- * The header pulls in `<dlfcn.h>` for an experimental JIT path:
- * compile an SLP to a shared library at runtime, `dlopen` it, and
- * call into the compiled code for substantially faster path-tracking.
- * That path is gated and not always enabled; the default evaluation
- * walks nodes interpretively. `timing.hpp` is included so the
- * evaluator can report aggregate time across continuation steps,
- * which NAG uses to tune step sizes.
+ * The header pulls in `<dlfcn.h>` for an optional JIT path:
+ * when the `libName` constructor is called, `dlopen` loads a
+ * pre-compiled SLP shared library and `dlsym` resolves either
+ * the `RR` or `CC` entry symbol into the `compiled_fn` function
+ * pointer; `evaluate` then bypasses the interpreter and dispatches
+ * to the loaded routine. The default evaluation walks nodes
+ * interpretively when `isCompiled` is false.
  *
  * @see SLP.hpp
  * @see SLP-defs.hpp
  * @see NAG.hpp
- * @see VectorArithmetic.hpp
  */
 
 #include <cstdlib>
