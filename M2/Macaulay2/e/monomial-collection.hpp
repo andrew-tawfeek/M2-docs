@@ -19,6 +19,30 @@
 #ifndef _monomial_collection_hpp_
 #define _monomial_collection_hpp_
 
+/**
+ * @file monomial-collection.hpp
+ * @brief `IntsSet<MonomType>` --- set of monomials with insert / lookup / ordered iteration.
+ *
+ * Declares the templated `IntsSet`, the engine's in-transition
+ * "set of monomials" helper used by `M2FreeAlgebra` and the
+ * non-commutative arithmetic paths to track which `Monom` /
+ * `ModuleMonom` values have appeared during a multiplication
+ * or product. Insertion returns the existing index when the
+ * monomial is already present, otherwise it appends. Iteration
+ * walks the set in insertion order. Storage is an arena from
+ * `<memtailor/Arena.h>` plus a hash index, so per-monomial work
+ * stays bump-pointer cheap.
+ *
+ * The header's TODO block flags a planned rename of `IntsSet`
+ * to a non-templated `ModuleMonomSet`, a new `VarPowerMonom`
+ * companion, hash-function improvements, and migration of the
+ * commutative `gb-f4/` `MonomialHashTable` toward the same
+ * pattern --- the file is mid-refactor.
+ *
+ * @see Polynomial.hpp
+ * @see M2FreeAlgebra.hpp
+ */
+
 #include "Polynomial.hpp"     // for ModuleMonom, monomToModuleMonom, Monom
 #include "style.hpp"          // for EQ
 
