@@ -2,6 +2,35 @@
 
 #pragma once
 
+/**
+ * @file f4/f4-spairs.hpp
+ * @brief `F4SPairSet` --- priority-queue + pruning logic for F4 S-pairs.
+ *
+ * Declares `F4SPairSet`, the structure that manages the S-pair
+ * worklist for the F4 inner loop: a `std::priority_queue` of
+ * `spair*` ordered degree-first (with lcm as tiebreaker)
+ * combined with chain-criterion pruning. `make_spair(type, deg,
+ * i, j)` allocates a new pair from an internal
+ * `F4MemoryBlock` bump arena --- the lcm field is allocated
+ * but not initialised, leaving that to the caller. After a new
+ * basis element joins, `pair_not_needed(p, m)` tests one pair
+ * against the chain criterion and `remove_unneeded_pairs()`
+ * sweeps the queue for every pair the new element subsumes.
+ * Without these prunes the queue would grow quadratically in
+ * basis size for any Buchberger-style workload.
+ *
+ * The bump-arena allocation means transient pairs and their
+ * lcm monomials can be discarded en masse at the end of each
+ * generation without per-allocation overhead. The `spair`
+ * struct itself lives in `f4-types.hpp`; the classical
+ * `spair.hpp` counterpart powers `gbA` and friends rather than
+ * F4.
+ *
+ * @see f4.hpp
+ * @see f4-types.hpp
+ * @see memblock.hpp
+ */
+
 #include <queue>                     // for std::priority_queue
 #include "MemoryBlock.hpp"           // for MemoryBlock
 #include "f4/f4-types.hpp"           // for spair (ptr only), gb_array, pre_...
