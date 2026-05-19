@@ -7,12 +7,17 @@
  * return a single-row `Matrix` whose columns are the standard
  * monomials of `M` in the requested degrees. The algorithm
  * computes the leading-term monomial ideal of `M`'s presentation
- * (via a GB if not already available) and enumerates standard
- * monomials by complement, walking the monomial-ideal tree once
- * rather than the naive variable-exponentiation that would blow
- * up exponentially. The same file produces the leading-term
- * basis variant and extends generator-by-generator over free
- * modules of arbitrary rank.
+ * and enumerates standard monomials by complement, walking the
+ * monomial-ideal tree once rather than the naive variable-
+ * exponentiation that would blow up exponentially. The `KBasis`
+ * class tags its three modes via a private
+ * `enum { KB_FULL, KB_SINGLE, KB_MULTI } computation_type` ---
+ * full (finite-basis) collection, a single requested degree, or
+ * a `(lo_degree, hi_degree)` range --- and `do_truncation`
+ * switches between returning the basis vs the truncation. The
+ * single public entry `Matrix::basis(lo, hi, heft, vars,
+ * do_truncation, limit)` (defined at the bottom) hands its
+ * arguments off to `KBasis::k_basis`.
  *
  * The Hilbert-function counts in `hilb.hpp` are derived from
  * exactly these basis sizes; the non-commutative analogue lives
