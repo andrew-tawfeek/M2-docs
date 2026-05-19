@@ -3,6 +3,31 @@
 #ifndef _sagbi_hh_
 #define _sagbi_hh_
 
+/**
+ * @file sagbi.hpp
+ * @brief `sagbi` --- subduction helpers for canonical-subalgebra (SAGBI) bases.
+ *
+ * Declares the static-only `sagbi` namespace-class holding the
+ * subduction primitives that would drive a native SAGBI engine:
+ * given a polynomial `f` in `R` and a candidate subalgebra basis
+ * (delivered through a `RingMap phi` plus a `GBComputation J`
+ * for the ambient ideal), `subduct` returns an element of the
+ * subalgebra whose leading term cancels `f`'s, or zero when no
+ * such reduction exists. A second overload performs the same
+ * reduction column-wise on a `Matrix`.
+ *
+ * The header flags itself as "not currently functional" --- the
+ * in-engine helpers stop short of a complete SAGBI driver, and
+ * the production SAGBI work today happens in the M2-side
+ * `SubalgebraBases` package, which builds on top of the
+ * standard GB infrastructure rather than these primitives. The
+ * file remains as a starting point for a future native
+ * implementation.
+ *
+ * @see comp-gb.hpp
+ * @see ringmap.hpp
+ */
+
 #include "matrix.hpp"
 #include "comp-gb.hpp"
 
