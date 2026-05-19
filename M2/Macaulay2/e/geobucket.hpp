@@ -9,8 +9,8 @@
  * accumulator --- the reduction inner loop of every classical
  * Groebner-basis algorithm and most resolution engines. Naive
  * "add a small `s` into a big `B`" is O(|B|) per call; with
- * geobuckets each level `i` holds at most `heap_size[i]`
- * non-overlapping terms (`4, 16, 64, ..., 67108864` from
+ * geobuckets each level `i` holds at most `heap_size[i]` terms
+ * (`4, 16, 64, ..., 1073741824` --- 15 entries, defined in
  * `engine.cpp`), so adding a polynomial of size `s` lands at the
  * smallest level that can absorb it and cascades upward only on
  * overflow. The amortised cost becomes O(log N) per addition
