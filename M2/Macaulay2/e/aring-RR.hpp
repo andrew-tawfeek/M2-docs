@@ -3,6 +3,32 @@
 #ifndef _aring_RR_hpp_
 #define _aring_RR_hpp_
 
+/**
+ * @file aring-RR.hpp
+ * @brief `M2::ARingRR` --- machine-precision real numbers (IEEE 754 `double`).
+ *
+ * `ARingRR` is the simplest real ring in the aring family: a
+ * `SimpleARing<ARingRR>` whose `elem` is just `double`. All
+ * arithmetic is hardware floating-point --- no library calls, no
+ * allocation. The interpreter binds this ring whenever M2 code asks
+ * for `RR_53` or the default `RR`; arbitrary precision drops through
+ * to `ARingRRR` (MPFR) instead. Divide-by-zero and similar conditions
+ * raise engine exceptions rather than letting `Inf` propagate, so M2
+ * users see a clear error.
+ *
+ * The trade-off is fixed precision in exchange for ~1-cycle-per-op
+ * speed and FFLAS/BLAS dispatch in numerical linear algebra; arbitrary
+ * precision and interval certification live in the siblings
+ * `aring-RRR.hpp` and `aring-RRi.hpp`. Primary consumers are the
+ * NAG path-tracker, SLP evaluation, and `DMat<double>` matrix code.
+ *
+ * @see aring-RRR.hpp
+ * @see aring-RRi.hpp
+ * @see aring-CC.hpp
+ * @see aring.hpp
+ * @see NAG.hpp
+ */
+
 #include "interface/random.h"
 #include "exceptions.hpp"
 #include "aring.hpp"
