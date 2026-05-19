@@ -2,6 +2,26 @@
 #ifndef _comb_hh_
 #define _comb_hh_
 
+/**
+ * @file comb.hpp
+ * @brief `Subsets` --- combinatorial-number-system encoding of `p`-subsets of `{0,...,n-1}`.
+ *
+ * `Subsets` enumerates and encodes `p`-element subsets of
+ * `{0, 1, ..., n - 1}` as a single integer index via the standard
+ * combinatorial number system: subsets are listed in the canonical
+ * order shown in the header comment, and `encode(p, exp)` /
+ * `decode(p, n, idx, exp)` / `next(p, n, exp)` move between an index
+ * and the sorted element list. The encoding is stable under
+ * extension of the ambient set --- adding new elements appends new
+ * subset indices without renumbering existing ones --- which makes
+ * it suitable as a long-term identifier.
+ *
+ * Engine consumers are exterior-algebra arithmetic (basis elements
+ * `e_{i_1} ∧ ... ∧ e_{i_p}` indexed by their subset code),
+ * minor-computation routines on matrices, and Schubert-calculus
+ * partition machinery driven from `m2/schubert.m2`.
+ */
+
 #include <cassert>
 #include <vector>
 #include <iosfwd>
