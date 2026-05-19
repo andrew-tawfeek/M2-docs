@@ -3,6 +3,33 @@
 #ifndef _schorder_hpp_
 #define _schorder_hpp_
 
+/**
+ * @file schorder.hpp
+ * @brief `SchreyerOrder` --- per-basis-element data backing the Schreyer order on a free module.
+ *
+ * Declares `SchreyerOrder`, the lightweight side-table that
+ * lives on a `FreeModule` and supplies the data the engine
+ * needs to compare two basis elements under a Schreyer order.
+ * For each of the `_rank` basis elements the structure stores
+ * one `(compare_num, encoded monomial)` entry, packed flatly in
+ * `_order` (`_nslots = monomial_size + 1`) for cache-friendly
+ * iteration. Comparing `e_i * m` against `e_j * m'` applies the
+ * ambient monomial order to `m_i * m` vs `m_j * m'` and
+ * tiebreaks by `compare_num`; the engine's encoded-monomial
+ * arithmetic never has to unpack to do it.
+ *
+ * A free module starts without a Schreyer order. `Eschreyer.cpp`
+ * and the modern `schreyer-resolution/` install one when the
+ * module is the target of a Schreyer syzygy step; classical GB
+ * algorithms install one when the user opts in via
+ * `Strategy =>`. Once installed, the order persists for the
+ * lifetime of the free module.
+ *
+ * @see freemod.hpp
+ * @see monoid.hpp
+ * @see Eschreyer.hpp
+ */
+
 #include "buffer.hpp"
 #include "monoid.hpp"
 
