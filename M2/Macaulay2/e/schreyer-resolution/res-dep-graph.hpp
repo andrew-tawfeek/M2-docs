@@ -17,19 +17,26 @@
  * `mMinimalBettiNode`, all `tbb::flow::continue_node<continue_msg>`
  * so a node fires once all its predecessors have. `addVertex`
  * / `addFillMatrixEdge` / `addMinimalBettiEdge` wire the
- * graph, `startComputation` triggers the root, and
- * `waitForCompletion` blocks on the whole frontier. The free
- * function `makeDependencyGraph(G, nlevels, nslanted_degrees,
+ * graph, `startComputation` triggers the root (`mVertices[0]`'s
+ * fill-and-reduce node, which is assumed to be the top of the
+ * dependency tree), and `waitForCompletion` blocks on the whole
+ * frontier. The free function
+ * `makeDependencyGraph(G, nlevels, nslanted_degrees,
  * doMinimalBetti)` constructs the standard layout.
  *
  * The 2-D grid is linearised via `getIndex(lev, sldeg, nlevels,
  * nslanted_degrees) = lev + sldeg * nlevels`, with the matching
  * inverse `getPair`. The whole header is `#ifdef WITH_TBB`-
  * gated; on builds without TBB the parallel layer compiles to
- * nothing and `F4ResComputation` falls back to the serial path.
- * The `parallelizeByDegree` flag on `F4ResComputation`
- * determines whether the scheduler walks the grid degree-major
- * or level-major.
+ * nothing and `SchreyerFrame::minimalBettiNumbers` falls back to
+ * its serial `computeRanks` path. The `parallelizeByDegree`
+ * flag plumbed through `F4ResComputation` is a single on/off
+ * switch --- when true, `SchreyerFrame::minimalBettiNumbers`
+ * builds and triggers this graph; when false, it skips the dep
+ * graph entirely and runs the serial path. The graph also
+ * carries a `topologicalSort` walker (used for debug printing
+ * via `print()`) and a `std::mutex mMutex` for the
+ * single-vertex edits done off the TBB thread pool.
  *
  * @see res-f4-computation.hpp
  * @see res-schreyer-frame.hpp
