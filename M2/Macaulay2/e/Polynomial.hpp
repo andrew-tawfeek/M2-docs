@@ -9,8 +9,9 @@
  * with a degree prefix: `[length, degree, var_1, ..., var_n]`
  * where `length = n + 2`. The length-field-first layout lets a
  * single pointer walk past a monomial without external context.
- * `ModuleMonom` extends the layout with three prefix slots
- * `[len, index, hashval, comp, deg, vars...]` for the
+ * `ModuleMonom` adds three slots --- `index`, `hashval`, `comp`
+ * --- in front of the `Monom` payload, giving the full format
+ * `[len, index, hashval, comp, deg, vars...]` consumed by the
  * resolution and module-side paths. `Polynomial<CoefficientRingType>`
  * (aliased `Poly`) stores its terms as parallel `gc_vector`s ---
  * an `mCoefficients` vector of `ElementType` and a flat
