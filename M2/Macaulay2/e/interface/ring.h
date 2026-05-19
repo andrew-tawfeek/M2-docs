@@ -7,22 +7,23 @@
  *
  * Declares the `extern "C"` factories the M2 interpreter calls
  * to build every `Ring` flavour: coefficient rings
- * (`IM2_Ring_ZZ`, `IM2_Ring_QQ`, `rawZZp`, `rawGaloisField`,
- * `IM2_Ring_RR_precision` / `CC_precision`), polynomial-ring
- * constructions (`IM2_Ring_polyring`, plus the skew-commutative,
- * Weyl-algebra, and solvable-algebra variants), composite builds
- * (`IM2_Ring_quotient` over a `GBComputation*`,
- * `IM2_Ring_fraction_ring`, `IM2_Ring_localization`,
- * `IM2_Ring_RR_RR_polyring`), and the per-ring inspection
- * (`rawRingHash`, `IM2_Ring_to_string`, `rawRingCharacteristic`,
- * `rawIsField`, `rawIsCommutative`, `rawCoefficientRing`,
- * `rawAmbientRing`).
+ * (`IM2_Ring_ZZ`, `IM2_Ring_QQ`, `IM2_Ring_ZZp` aliased as
+ * `rawZZp`, `rawGaloisField`, `IM2_Ring_RRR` / `IM2_Ring_CCC`
+ * for arbitrary-precision real and complex, and the
+ * `IM2_Ring_RRi` / `IM2_Ring_CCi` interval variants),
+ * polynomial-ring constructions (`IM2_Ring_polyring`, plus the
+ * skew-commutative, Weyl-algebra, and solvable-algebra
+ * variants), and composite builds (`IM2_Ring_quotient` over a
+ * `GBComputation*`, `IM2_Ring_frac`, `IM2_Ring_localization`).
+ * Per-ring inspection goes through `IM2_Ring_to_string` /
+ * `rawRingCharacteristic` / `rawIsField` / `rawIsCommutative` /
+ * `rawCoefficientRing` / `rawAmbientRing`.
  *
- * Some coefficient rings exist twice: a legacy table-based
- * variant declared here (`rawZZp`, `rawGaloisField`) and an
- * `aring`-backed one in `interface/aring.h`. Both build a
- * `Ring*` the interpreter handles uniformly, but the newer code
- * prefers `aring` for its templated arithmetic. The
+ * Some coefficient rings exist twice: a legacy variant
+ * declared here (`IM2_Ring_ZZp`, `rawGaloisField`) and an
+ * `aring`-backed counterpart in `interface/aring.h`. Both
+ * build a `Ring*` the interpreter handles uniformly, but new
+ * code prefers `aring` for its templated arithmetic. The
  * `Computation` forward declaration is here only because
  * quotient-ring construction takes a `GBComputation*` for the
  * defining ideal's Gröbner basis.
