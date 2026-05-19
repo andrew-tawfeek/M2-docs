@@ -9,14 +9,26 @@
  *
  * Declares the dense linear-algebra surface as free function
  * templates over `RT` (the aring coefficient type) so a single
- * generic body covers every supported ring. Specialisations route
- * to the fastest available back end at compile time: FFLAS-FFPACK
- * for small Z/p, FLINT `nmod_mat` / `fmpz_mat` / `fmpq_mat` for
- * medium Z/p, ZZ, and QQ work, LAPACK for `RR` / `CC`, and a
- * generic Bareiss / fraction-free fallback otherwise. The header
- * pulls in every aring it specialises on, plus convenience type
- * aliases (`DMatZZp`, `DMatGFM2`, `DMatZZpFFPACK`, ...) for
- * downstream consumers.
+ * generic body covers every supported ring; specialisations route
+ * to the fastest available back end at compile time. FFLAS-FFPACK
+ * handles small Z/p (`DMatZZpFFPACK`); FLINT covers everything
+ * else over finite, integer, and rational coefficients ---
+ * `nmod_mat` for `DMatZZpFlint`, `fmpz_mat` for `DMatZZ` /
+ * `DMatZZGMP`, `fmpq_mat` for `DMatQQFlint`, and
+ * `fq_zech_mat` / `fq_nmod_mat` for `DMatGFFlint` /
+ * `DMatGFFlintBig`. LAPACK is the default path for hardware-
+ * precision `RR` / `CC` (`DMatRR` / `DMatCC` via `lapack.hpp`),
+ * with the Eigen3-backed `EigenM2` namespace in `eigen.hpp` as
+ * the `#ifdef NO_LAPACK` fallback. Arbitrary-precision
+ * `RR` / `CC` (`DMatRRR` / `DMatCCC`) always go through Eigen3
+ * with `<unsupported/Eigen/MPRealSupport>`. Z/p with small `p`
+ * (`DMatZZp`) and the M2-native GF (`DMatGFM2`) ride the
+ * generic templates. The header pulls in every aring it
+ * specialises on and defines the full `DMat*` alias inventory
+ * (`DMatZZp`, `DMatZZpFFPACK`, `DMatZZpFlint`, `DMatGFM2`,
+ * `DMatGFFlint`, `DMatGFFlintBig`, `DMatZZGMP`, `DMatZZ`,
+ * `DMatQQ`, `DMatQQFlint`, `DMatRR`, `DMatCC`, `DMatRRR`,
+ * `DMatCCC`).
  *
  * This file is what `MutableMatrix` (`mat.hpp`) forwards into for
  * the heavy operations and is the natural complement to the
@@ -27,6 +39,7 @@
  * @see mat-arith.hpp
  * @see mat-elem-ops.hpp
  * @see lapack.hpp
+ * @see eigen.hpp
  */
 
 
