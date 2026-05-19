@@ -3,6 +3,32 @@
 #ifndef _dmat_gf_flint__hpp_
 #define _dmat_gf_flint__hpp_
 
+/**
+ * @file dmat-gf-flint.hpp
+ * @brief `DMat<M2::ARingGFFlint>` --- dense GF matrices stored in FLINT `fq_zech_mat_t`.
+ *
+ * Specialises the dense-matrix template for the small-`q` Galois
+ * field aring `ARingGFFlint`: each entry is a Zech log index in
+ * `[0, q - 1)` and the storage is FLINT's `fq_zech_mat_t`, so
+ * matrix arithmetic dispatches through `fq_zech_mat_*` routines that
+ * are O(1) per element --- multiplication is a table-driven log
+ * addition, addition is a Zech-table lookup. For `q = p^k` up to
+ * roughly `2^15` this is the fastest dense GF matrix path the
+ * engine ships.
+ *
+ * The companion `dmat-gf-flint-big.hpp` covers the polynomial-
+ * quotient representation (`fq_nmod_mat_t`) used when `q` grows
+ * past what the Zech tables can hold; dispatch between the two is
+ * automatic and follows the choice made at ring construction by
+ * `aring-gf-flint.hpp` / `aring-gf-flint-big.hpp`. The required
+ * `M2/gc-include.h` shim must precede the FLINT headers so FLINT's
+ * allocator routes through bdwgc.
+ *
+ * @see dmat.hpp
+ * @see dmat-gf-flint-big.hpp
+ * @see aring-gf-flint.hpp
+ */
+
 #include <utility>                // for swap
 #include "aring-gf-flint.hpp"     // for ARingGFFlint
 
