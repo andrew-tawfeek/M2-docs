@@ -5,22 +5,28 @@
  * @file matrix-con.hpp
  * @brief `MatrixConstructor` --- the mutable builder that produces an immutable `Matrix`.
  *
- * Declares `MatrixConstructor`, the only `friend` of the
- * private-constructor `Matrix` class. It holds the ring, target
- * and source `FreeModule*`s, and a working `VECTOR(vec)` of
- * columns, accumulating state with `set_column` and / or
- * `append_column` before handing back a finished immutable
- * `Matrix*` via `to_matrix()`. The `cols_frozen` flag tracks the
- * two construction modes: when the caller supplies the source
- * free module up front, modifications that would change the
- * column count are forbidden; when the source starts unset, the
- * builder grows it column-by-column and freezes it on completion.
+ * Declares `MatrixConstructor`, the builder side of the matrix
+ * API (one of `Matrix`'s two `friend` declarations, alongside
+ * `FreeModule`). It holds the ring, the target and (optionally)
+ * source `FreeModule*`s, and a working `VECTOR(vec)` of columns,
+ * accumulating state with `set_entry` / `set_column` / `append`
+ * before handing back a finished immutable `Matrix*` via
+ * `to_matrix()`. The three constructors mirror the two
+ * construction modes: `MatrixConstructor(target, ncols)` fixes
+ * the column count up front, `MatrixConstructor(target, source,
+ * deg)` fixes the source free module too, and the default
+ * constructor leaves both unset. The `cols_frozen` flag enforces
+ * the distinction --- once `cols` is supplied or the builder
+ * commits, no further modifications that would change the
+ * column count are allowed.
  *
- * The split exists because `Matrix` is intentionally immutable
- * --- shared safely across threads and used as a memoisation key
- * --- but the engine still needs a place to accumulate column
- * data before degree-compatibility checks. `matrix-con.hpp`
- * provides exactly that scratch surface and nothing else.
+ * Degree bookkeeping rides along: `set_column_degree`,
+ * `set_matrix_degree`, and `compute_column_degrees` set the
+ * per-column and overall matrix degrees so the produced
+ * `Matrix` carries the same degree data a hand-built one would.
+ * `matrix-con.hpp` exists because `Matrix`'s constructors are
+ * private and intentionally immutable; this scratch surface is
+ * the only sanctioned way to assemble one.
  *
  * @see matrix.hpp
  * @see freemod.hpp
