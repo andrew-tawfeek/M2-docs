@@ -6,28 +6,41 @@
  * @brief Engine-boundary C API for constructing, querying, and operating on `RingElement` values.
  *
  * Declares the `extern "C"` entry points that cover the full
- * life cycle of a `RingElement`. Construction goes through the
- * scalar coercions (`IM2_RingElement_from_Integer`,
- * `_from_rational`, `_from_BigReal`, `_from_BigComplex`) plus
- * the generator-and-power factory `IM2_RingElement_from_var` /
- * `rawTerm`; arithmetic flows mostly through the underlying
- * `Ring*` with `IM2_RingElement_plus` and a small set of named
- * helpers (`rawDiff`, `rawConvolve`, `rawHomogenize`,
- * `rawPowerMod`, `rawRingElementAntipode`); projection and
- * decomposition cover `rawLeadCoefficient`, `rawLeadMonomial`,
- * `rawGetTerms`, `rawCoefficient`, `rawTermCount`, and the
- * homogeneous / degree introspection (`rawIsHomogeneous`,
- * `rawMultiDegree`, `rawWeightRange`); and `rawPromote` /
- * `rawLift` move an element between compatible super- and
- * sub-rings while preserving its mathematical value.
+ * life cycle of a `RingElement`. Construction: scalar coercions
+ * (`IM2_RingElement_from_Integer` / `_from_rational` /
+ * `_from_BigReal` / `_from_BigComplex` / `_from_Interval` /
+ * `_from_ComplexInterval`) plus the single-variable factory
+ * `IM2_RingElement_make_var(R, v)` and the
+ * `(coeff, monomial)` term factory
+ * `IM2_RingElement_term(R, ...)` bound as `rawTerm`. Built-in
+ * polymorphic arithmetic operators (`+`, `-`, `*`, `/`, etc.)
+ * are dispatched through the M2 interpreter directly off the
+ * element's `Ring*`; this header carries only the *named*
+ * helpers `IM2_RingElement_divmod`, `rawDiff`, `rawConvolve`,
+ * `rawHomogenize`, `rawPowerMod`, and `rawRingElementAntipode`
+ * --- there is no `IM2_RingElement_plus` entry. Projection and
+ * decomposition: `IM2_RingElement_lead_coeff` /
+ * `_lead_monomial` / `_get_terms` / `_get_coeff` / `_n_terms`
+ * / `_list_form` (bound as `rawLeadCoefficient` /
+ * `rawLeadMonomial` / `rawGetTerms` / `rawCoefficient` /
+ * `rawTermCount` / `rawListForm`). Homogeneity / degree
+ * introspection: `IM2_RingElement_is_graded`,
+ * `IM2_RingElement_multidegree`, `rawWeightRange`,
+ * `IM2_RingElement_homogenize` / `_homogenize_to_degree`.
+ * Coefficient-ring boundary: `IM2_RingElement_promote` /
+ * `_lift` (`rawPromote` / `rawLift`). Fraction-field access:
+ * `IM2_RingElement_numerator` / `_denominator` / `_fraction`.
+ * Number-theoretic helpers `rawDiscreteLog` and
+ * `rawMultiplicativeGenerator` live here too (the latter
+ * shared with the GF surface in `interface/aring.h`).
  *
  * Most entry points read the `Ring*` off the input and forward
  * through it --- `RingElement` carries no algorithmic logic of
  * its own. The opaque `EngineMonomial` type passed to
- * `rawCoefficient` is the single-monomial handle the
- * interpreter uses elsewhere in `interface/`, so the same
- * vocabulary covers polynomials, monomial ideals, and ring
- * elements.
+ * `IM2_RingElement_get_coeff` / `_lead_monomial` is the
+ * single-monomial handle the interpreter uses elsewhere in
+ * `interface/`, so the same vocabulary covers polynomials,
+ * monomial ideals, and ring elements.
  *
  * @see ringelement.cpp
  * @see ring.h
