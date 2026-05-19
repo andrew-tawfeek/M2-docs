@@ -5,23 +5,31 @@
  * @brief `Ring`'s `vec`-shaped operations --- construction, traversal, arithmetic on sparse columns.
  *
  * Implements the `vec` (sparse `(component, ring_elem)` linked
- * list) methods declared on `Ring`: `new_vec` and
- * `remove_vec_node`, `make_vec` / `make_vec_from_array` for
- * construction; `vec_n_terms`, `vec_lead_term`,
- * `vec_lead_coeff`, `vec_lead_component` for traversal;
- * `vec_add`, `vec_subtract`, `vec_negate`, `vec_scalar_mult`,
- * `vec_mult_by_term` for arithmetic; plus comparison and
- * conversion through `vec_to_matrix` and `vec_to_string`. Each
- * operation is virtual on `Ring` so subclasses (`PolyRing`,
- * `PolyQuotient`, `FractionField`, ...) can override; the
+ * list of `vecterm` nodes) methods declared on `Ring`.
+ * Construction / lifecycle: `new_vec`, `remove_vec_node`,
+ * `make_vec`, `make_vec_from_array`, `e_sub_i`, `copy_vec`,
+ * `remove_vec`. Inspection / traversal: `is_equal`,
+ * `compare_vecs`, `n_nonzero_terms`, the two `get_entry`
+ * overloads, and `vec_lead_term(nparts, F, v)`. Arithmetic:
+ * `negate_vec`, `add_vec`, `subtract_vec`, the two `mult_vec`
+ * overloads (by `int` scalar and by `ring_elem`),
+ * `rightmult_vec`, the in-place
+ * `mult_vec_to` / `mult_row` / `divide_vec_to`, and
+ * `mult_vec_matrix`. Shape transforms:
+ * `sub_vector`, `component_shift`, `tensor_shift`, `tensor`.
+ * Floating-point hygiene for RR/CC vectors:
+ * `vec_zeroize_tiny`, `vec_increase_maxnorm`. Display / mapping:
+ * `vec_text_out`, `vec_eval`. Each operation is `virtual` on
+ * `Ring` so polynomial-ring subclasses (`PolyRing`,
+ * `PolyRingQuotient`, `FractionField`, ...) can override --- the
  * generic implementations live here.
  *
  * `vec` is the value shape that backs every `Matrix` column and
- * every `FreeModule` element. The header note codifies an
- * invariant the rest of the engine relies on: `ring_elem`
- * values are immutable, so vec terms can share references
- * freely without defensive copies --- arithmetic always
- * produces new values rather than mutating in place.
+ * every `FreeModule` element. The in-file header note codifies
+ * an invariant the rest of the engine relies on: `ring_elem`
+ * values are treated as **immutable**, so vec terms can share
+ * references freely without defensive copies --- arithmetic
+ * always produces new values rather than mutating in place.
  *
  * @see ring.hpp
  * @see matrix.hpp
