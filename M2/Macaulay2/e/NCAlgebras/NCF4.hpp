@@ -1,6 +1,41 @@
 #ifndef __nc_f4_hpp__
 #define __nc_f4_hpp__
 
+/**
+ * @file NCAlgebras/NCF4.hpp
+ * @brief `NCF4` --- non-commutative F4 Gröbner-basis driver building a per-degree Macaulay matrix.
+ *
+ * Declares the F4-style alternative to the one-overlap-at-a-time
+ * `NCGroebner` reduction loop. Each iteration collects every
+ * overlap of the current degree from an `OverlapTable`, assembles
+ * a Macaulay matrix whose rows are the overlap polynomials plus
+ * their tail-reducers (drawn from the running basis, the inputs,
+ * and previously-built reducer rows --- the three `PreRow`
+ * flavours `ReducerPreRow` / `OverlapPreRow` /
+ * `PreviousReducerPreRow`) and whose columns are the distinct
+ * monomials seen in any row sorted by the non-commutative
+ * monomial order, then row-reduces the whole matrix via the
+ * shared `VectorArithmetic` backend. Echelon rows whose leading
+ * column was not already a basis-element leading column become
+ * new GB elements; their overlaps feed the next degree.
+ *
+ * Memory for monomials and packed words is owned by an internal
+ * `MemoryBlock`; word divisibility uses `WordTable` or the
+ * experimental `SuffixTree`. `m2tbb.hpp` is pulled in so the
+ * row-arithmetic kernels can parallelise across TBB threads.
+ * For dense inputs with many shared suffixes this batched
+ * approach is dramatically faster than `NCGroebner`'s
+ * Buchberger loop; for sparse inputs the per-row overhead
+ * dominates and the dispatcher prefers the older path.
+ *
+ * @see NCGroebner.hpp
+ * @see FreeAlgebra.hpp
+ * @see OverlapTable.hpp
+ * @see WordTable.hpp
+ * @see SuffixTree.hpp
+ * @see VectorArithmetic.hpp
+ */
+
 #include "m2tbb.hpp"                      // for tbb interface
 
 #include "NCAlgebras/FreeMonoid.hpp"      // for MonomEq
