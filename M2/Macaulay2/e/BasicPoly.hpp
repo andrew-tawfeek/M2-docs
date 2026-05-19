@@ -1,3 +1,29 @@
+/**
+ * @file BasicPoly.hpp
+ * @brief Minimal, portable polynomial value type used where heavier engine types would be overkill.
+ *
+ * `BasicPoly` stores a polynomial as three parallel `std::vector`s:
+ * `mCoefficients` (one `mpz_class` per term), `mComponents` (one `int`
+ * per term naming the free-module component, or empty as shorthand for
+ * "all components are zero"), and `mMonomials` (a flat concatenation of
+ * varpower-encoded monomials, each prefixed by its own length so the
+ * array can be walked sequentially). The type carries no reference to
+ * a specific ring or monomial layout, which makes it the right vehicle
+ * for serialisation, parser-fed test inputs, and the streaming
+ * constructors of newer Groebner-basis code (notably `gb-f4`).
+ *
+ * Coefficients are currently restricted to `mpz_class`; extending this
+ * to GF(p^n), QQ, fraction fields, or polynomial coefficients is on the
+ * TODO list. Companion types `BasicPolyList` (a `std::vector<BasicPoly>`
+ * with convenience methods) and `BasicPolyListParser` (reads the simple
+ * line-per-polynomial text format used by tests) live alongside.
+ *
+ * @see Polynomial.hpp
+ * @see gbring.hpp
+ * @see BasicPolyList.hpp
+ * @see BasicPolyListParser.hpp
+ */
+
 // Current restriction: the coefficients must be an integral type.
 //   TODO: allow infinite precision integers too.
 //   TODO: how should we handle coefficients which are: GF(p^n), QQ, fraction fields? or even polynomials?
