@@ -1,6 +1,36 @@
 // In BUILD tree in Macaulay2/e:
 // ./M2-unit-tests --gtest_filter="*F4*"
 
+/**
+ * @file unit-tests/PolyRingTest.cpp
+ * @brief gtest coverage for `MonomialOrdering`, `Monoid`, and `PolynomialRing` construction.
+ *
+ * Hosts the `TEST(PolyRing, *)` battery that walks the
+ * polynomial-ring stack from the bottom up: build a degree
+ * monoid via `degreeRing(n)` or `degreeRing({"t1", "t2"})` from
+ * `util-polyring-creation.hpp`, assemble a `MonomialOrdering`
+ * out of the engine's `raw*MonomialOrdering` factories, hand it
+ * to `Monoid::create`, and finally construct a `PolynomialRing`
+ * over a chosen coefficient ring. Each step is checked against
+ * `error()` so any failure in the construction chain surfaces
+ * with the user-facing engine error message rather than a
+ * cryptic null pointer.
+ *
+ * The opening developer recipe (`--gtest_filter="*F4*"` --- the
+ * tests double as the polynomial-ring side of the F4 smoke
+ * suite) keeps the entire ring-construction path under
+ * regression coverage. Sibling files `DMatZZpTest.cpp` and
+ * `MatrixIOTest.cpp` (covered by the same
+ * `file-dmat-matrix-tests` markdown) exercise the dense-matrix
+ * and I/O surfaces that ride on top of these rings.
+ *
+ * @see util-polyring-creation.hpp
+ * @see polyring.hpp
+ * @see interface/monomial-ordering.h
+ * @see interface/monoid.h
+ * @see NewF4Test.cpp
+ */
+
 #include <vector>
 #include <iostream>
 #include <memory>
