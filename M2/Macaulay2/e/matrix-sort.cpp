@@ -2,21 +2,27 @@
  * @file matrix-sort.cpp
  * @brief `MatrixSorter` --- compute the column permutation that sorts a `Matrix` by degree / leading term.
  *
- * Defines `MatrixSorter`, the helper class M2's `sort(M)` and
- * `mingens(M)` reach into. It carries parallel per-column arrays
- * (`sort_vals`, `sort_vecs`, `sort_degs`) plus two ascending
- * flags that flip the direction of the degree comparison and the
- * ring-order comparison; the comparator returns `LT` / `EQ` /
- * `GT` via the standard style convention by walking degrees
- * first, then leading monomials. The sorter does not mutate the
- * input matrix --- it computes a permutation `M2_arrayint result`
- * and hands that back, so the same permutation can be applied
- * uniformly to a basis, its change-of-basis matrix, and its
- * syzygies in lockstep.
+ * Defines `MatrixSorter`, the helper that the engine-level
+ * `Matrix::sort(degorder, ringorder)` (defined at the bottom of
+ * this file --- the only external entry point) hands off to.
+ * It carries parallel per-column arrays (`sort_vals`, `sort_vecs`,
+ * `sort_degs`) plus the `deg_ascending` and `ringorder_ascending`
+ * flags from the constructor, which flip the sign of the degree
+ * comparison and the ring-order comparison respectively. The
+ * comparator walks degrees first (skipped entirely when
+ * `deg_ascending == 0`), then leading monomials via
+ * `R->compare_vecs`, returning the standard `-1` / `0` / `1`
+ * comparator triple. A hand-rolled `sort_partition` /
+ * `sort_range` quicksort drives the permutation; null vectors
+ * sort to the end. The sorter does not mutate the input matrix
+ * --- it computes a permutation `M2_arrayint result` and hands
+ * that back via `MatrixSorter::value()`, so the same permutation
+ * can be applied uniformly to a basis, its change-of-basis
+ * matrix, and its syzygies in lockstep.
  *
- * Used by the M2-level `sort` and `mingens` operations and by
- * any engine path that needs columns in degree/leading-term order
- * before further processing.
+ * The class is file-local: no other engine translation unit
+ * references `MatrixSorter` directly; everyone goes through
+ * `Matrix::sort`.
  *
  * @see matrix.hpp
  * @see style.hpp
