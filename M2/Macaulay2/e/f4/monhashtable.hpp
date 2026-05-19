@@ -3,6 +3,32 @@
 #ifndef _monhashtable_h_
 #define _monhashtable_h_
 
+/**
+ * @file f4/monhashtable.hpp
+ * @brief `MonomialsWithComponent` / `MonomialsIgnoringComponent` --- traits for the F4 monomial hash table.
+ *
+ * Declares the two trait classes that parameterise the mathic
+ * `HashTable<Traits>` for F4's packed monomials.
+ * `MonomialsWithComponent` keeps free-module component slots
+ * distinct, treating `e_i * m` and `e_j * m` as different
+ * keys, so the table can map column indices in a Macaulay
+ * matrix. `MonomialsIgnoringComponent` strips the component
+ * for equality and is used when only the underlying monomial
+ * matters. Both share the same cheap hash --- the sum of the
+ * first two ints of the packed monomial (which the encoding
+ * sets to length/degree plus the first variable's exponent),
+ * giving a well-spread value for the typical input mix.
+ *
+ * The same traits are consumed by the resolution code in
+ * `schreyer-resolution/`, which is why this header pulls in
+ * `res-moninfo.hpp` and `res-monomial-types.hpp` alongside F4's
+ * `MonomialInfo` --- both subsystems share the underlying hash
+ * table to keep their per-monomial cost identical.
+ *
+ * @see moninfo.hpp
+ * @see schreyer-resolution/res-moninfo.hpp
+ */
+
 #include <memory>                                      // for unique_ptr
 #include "f4/moninfo.hpp"                              // for MonomialInfo
 #include "schreyer-resolution/res-moninfo.hpp"         // for ResMonoid
