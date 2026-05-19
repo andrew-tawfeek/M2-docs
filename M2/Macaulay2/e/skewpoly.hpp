@@ -7,25 +7,30 @@
  * @file skewpoly.hpp
  * @brief `SkewPolynomialRing` --- polynomial ring with a designated set of anticommuting variables.
  *
- * Declares `SkewPolynomialRing`, the `PolyRing` subclass for the
- * super-commutative case: a set of variables passed at
- * construction in `skewvars` anticommutes pairwise and squares
- * to zero (`x_i x_j = -x_j x_i`, `x_i^2 = 0`), while every
- * other variable commutes with everything. Construction
- * delegates the bookkeeping to the inherited
- * `SkewMultiplication skew_` field (declared in `skew.hpp`);
- * arithmetic enters the skew code path through the `is_skew_`
- * flag tested on the base. Multiplication walks both factors
- * term-by-term and produces the sign by counting transpositions
- * needed to move skew variables of the second factor past skew
- * variables of the first.
+ * Declares `SkewPolynomialRing`, the `PolyRing` subclass for
+ * the super-commutative case: a set of variables passed to
+ * `create(K, M, skewvars)` anticommutes pairwise and squares to
+ * zero (`x_i x_j = -x_j x_i`, `x_i^2 = 0`), while every other
+ * variable commutes with everything. Construction routes
+ * through `initialize_skew(skewvars)` and delegates the
+ * bookkeeping to the inherited `SkewMultiplication skew_` field
+ * (declared in `skew.hpp`); arithmetic enters the skew code
+ * path through the `is_skew_` flag inherited from
+ * `PolynomialRing`. The overridden `mult_by_term` walks the
+ * second factor and produces the sign by counting the
+ * transpositions needed to move its skew variables past those
+ * of the first.
  *
- * Overrides `has_gcd()` to `false` because the ring is not a
- * domain, and reports `is_skew_commutative_ring()` `true` to
- * the dispatcher in `polyring.hpp`. Exterior algebras are the
- * familiar special case (every variable skew); the broader
- * setup with a strict subset is what makes the class more
- * general than a pure exterior algebra.
+ * Reports `is_skew_commutative_ring()` true and
+ * `is_commutative_ring()` false; `has_gcd()` is overridden to
+ * false because the ring is not a domain (any skew generator
+ * `x_i` is a zero divisor with itself). The `antipode(f)`
+ * method implements the `R <-> R^op` isomorphism by twisting
+ * each monomial of skew degree `d` by `(-1)^{d choose 2}`.
+ * Exterior algebras are the familiar special case (every
+ * variable skew); the broader setup with a strict subset is
+ * what makes the class more general than a pure exterior
+ * algebra.
  *
  * @see skew.hpp
  * @see poly.hpp
