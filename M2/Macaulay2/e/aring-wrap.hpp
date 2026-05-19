@@ -5,25 +5,24 @@
 
 /**
  * @file aring-wrap.hpp
- * @brief `RElementWrap<RingType>` --- templated wrapper that exposes one aring value as the abstract `RElement`.
+ * @brief `RElementWrap<RingType>` and `AConcreteRing<RingType>` --- abandoned scaffolding for an abstract `ARing` / `RElement` base.
  *
- * The aring framework resolves arithmetic by ring type at compile
- * time, but values that flow across the engine boundary (or land in
- * a `Matrix` or `Polynomial` slot) need a runtime base class because
- * the caller does not always know which aring produced them.
- * `RElement` is that base; `RElementWrap<RingType>` is the concrete
- * derivation that stores one `RingType::ElementType` value. The
- * `friend ARing::converter(...)` declaration is what allows
- * cross-ring coercion in `aring-translate.hpp` to extract or inject
- * the typed value during a translate call.
- *
- * This file is the element-level counterpart of `aring-glue.hpp`'s
- * ring-level `ConcreteRing<RingType>`: together they implement the
- * "wrap a templated implementation in an abstract base" pattern at
- * two scales (rings, and values inside rings). Reading them together
- * is the quickest way to see how the aring framework handles type
- * erasure at the engine boundary while preserving compile-time
- * specialisation inside hot paths.
+ * Declares two templates that sketch an alternative aring
+ * type-erasure design: `RElementWrap<RingType>` inherits from
+ * `RElement` and stores one `RingType::ElementType` value, and
+ * `AConcreteRing<RingType>` inherits from `ARing`, holds a
+ * `RingType` by value, and forwards `init_set` / `add_to` to it
+ * through the `RELEM(RingType, ...)` cast macros. Both templates
+ * `friend bool ARing::converter(const ARing*, const ARing*,
+ * const RElement&, RElement&)` --- but neither `RElement`,
+ * `ARing`, nor `ARing::converter` is defined anywhere in the
+ * engine tree; the two templates are not referenced by any
+ * other file. Treat this header as orphan scaffolding kept
+ * around for historical / sketch purposes rather than as part
+ * of the live aring framework, whose actual ring- and
+ * element-level bridges live in `aring-glue.hpp` (vertical
+ * bridge to `Ring*`) and the `mypromote` / `mylift` family in
+ * `aring-translate.hpp`.
  *
  * @see aring.hpp
  * @see aring-glue.hpp
