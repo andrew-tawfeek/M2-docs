@@ -3,6 +3,31 @@
 #ifndef _ring_elem_hh_
 #define _ring_elem_hh_
 
+/**
+ * @file relem.hpp
+ * @brief `RingElement` --- tagged `(Ring*, ring_elem)` pair, the engine's universal element type.
+ *
+ * Declares `RingElement`, the `EngineObject` subclass that
+ * stores one element of a ring as a pair `(R, val)`: the
+ * `Ring*` pointer tags the value and the opaque `ring_elem`
+ * carries it. Every arithmetic op (`add`, `mult`, `negate`,
+ * ...) delegates to the ring's virtuals, so the same
+ * `RingElement` shape represents integers, rationals,
+ * polynomials, quotient-ring elements, Weyl operators, and any
+ * other algebraic object the engine knows about. The
+ * `make_raw(R, f)` factory wraps a freshly-built `ring_elem`
+ * with its ring; direct construction is rare.
+ *
+ * The `ring_elem` union itself lives in `ringelem.hpp`. Small
+ * values (Z/p element, `int`) stay inline in the union, while
+ * large values (`mpz_ptr`, polynomial pointer) reference
+ * heap-allocated storage --- the encapsulation is why each ring
+ * is the only thing that knows what its `val` means.
+ *
+ * @see ring.hpp
+ * @see ringelem.hpp
+ */
+
 #include "ring.hpp"
 
 class EngineMonomial;
