@@ -1,6 +1,37 @@
 #ifndef _ring_h_
 #  define _ring_h_
 
+/**
+ * @file interface/ring.h
+ * @brief Engine-boundary C API for the legacy `Ring` hierarchy --- coefficient, polynomial, and composite rings.
+ *
+ * Declares the `extern "C"` factories the M2 interpreter calls
+ * to build every `Ring` flavour: coefficient rings
+ * (`IM2_Ring_ZZ`, `IM2_Ring_QQ`, `rawZZp`, `rawGaloisField`,
+ * `IM2_Ring_RR_precision` / `CC_precision`), polynomial-ring
+ * constructions (`IM2_Ring_polyring`, plus the skew-commutative,
+ * Weyl-algebra, and solvable-algebra variants), composite builds
+ * (`IM2_Ring_quotient` over a `GBComputation*`,
+ * `IM2_Ring_fraction_ring`, `IM2_Ring_localization`,
+ * `IM2_Ring_RR_RR_polyring`), and the per-ring inspection
+ * (`rawRingHash`, `IM2_Ring_to_string`, `rawRingCharacteristic`,
+ * `rawIsField`, `rawIsCommutative`, `rawCoefficientRing`,
+ * `rawAmbientRing`).
+ *
+ * Some coefficient rings exist twice: a legacy table-based
+ * variant declared here (`rawZZp`, `rawGaloisField`) and an
+ * `aring`-backed one in `interface/aring.h`. Both build a
+ * `Ring*` the interpreter handles uniformly, but the newer code
+ * prefers `aring` for its templated arithmetic. The
+ * `Computation` forward declaration is here only because
+ * quotient-ring construction takes a `GBComputation*` for the
+ * defining ideal's Gröbner basis.
+ *
+ * @see ring.cpp
+ * @see aring.h
+ * @see engine-includes.hpp
+ */
+
 #  include "engine-includes.hpp"
 
 // TODO: fix this
