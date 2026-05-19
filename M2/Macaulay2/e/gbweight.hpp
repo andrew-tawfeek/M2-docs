@@ -9,19 +9,22 @@
  *
  * Declares `GBWeight`, the helper that GB code consults to assign
  * a heuristic weight to a `gbvector` or to a single
- * `(monomial, component)` pair. The constructor takes a
+ * `(monomial, component)` pair. The single constructor takes a
  * `FreeModule` and an `M2_arrayint` weight vector; the `GBRing`
- * pointer and the `use_component_degrees_` flag are derived
- * internally. If no weights are supplied, `GBWeight` falls back
- * to the variables' primary degrees (subbed with `1` where the
- * primary degree is non-positive) and enables component-degree
- * compensation; an explicit weight vector disables that flag.
- * `GBWeight` itself does not choose an S-pair selection policy
- * --- callers use the returned weight as the sort key.
+ * pointer is derived from `F->get_ring()->cast_to_PolynomialRing()`.
+ * If the weight argument is `nullptr` or has the wrong length,
+ * `GBWeight` falls back to the variables' primary degrees (subbed
+ * with `1` where the primary degree is non-positive) and turns on
+ * `use_component_degrees_` only when *every* primary degree is
+ * positive --- a single non-positive primary degree turns it back
+ * off mid-loop. An explicit weight vector always disables that
+ * flag. `GBWeight` itself does not choose an S-pair selection
+ * policy --- callers use the returned weight as the sort key.
  *
  * The implementation is a packed dot product of the exponent
- * vector with `wts_`, plus a constant-time per-component lookup
- * when component degrees are enabled. The two-argument
+ * vector with `wts_` (via `exponents::weight`), plus a
+ * constant-time `Fdegs_[comp]` lookup when component degrees are
+ * enabled and `comp > 0`. The two-argument
  * `gbvector_weight(f, lead_term_weight)` returns the maximum
  * weight over all terms of `f` and writes the lead-term weight
  * to its out-parameter, letting an S-pair queue snapshot both
