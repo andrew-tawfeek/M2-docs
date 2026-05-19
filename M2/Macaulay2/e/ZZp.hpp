@@ -10,23 +10,29 @@ class ARingZZp;
 
 /**
  * @file ZZp.hpp
- * @brief Legacy `Z_mod` --- a `Ring`-derived `Z/p` with log/exp/Zech tables.
+ * @brief Legacy `Z_mod` --- a `Ring`-derived `Z/p` with log / exp tables.
  *
  * `Z_mod` is the original `Z/p` class, pre-dating the `aring`
- * framework. Elements are stored as log-indices of a chosen primitive
- * root `alpha`: `0` is the field zero and each `1 <= n <= p - 1`
- * represents `alpha^n mod p`. Multiplication reduces to
- * `(log a + log b) mod (p - 1)` over the integer indices, and
- * addition is performed via a Zech-log lookup. The class supports
- * characteristic `< 32767`.
+ * framework. Elements are stored as log indices of a chosen
+ * primitive root `alpha`, but the encoding differs from the
+ * aring sibling: here the *high* index `P - 1` (stored as
+ * `_ZERO`) represents the field zero, and `0 <= n <= P - 2`
+ * represent `alpha^n mod p` (so `alpha^0 = 1` lives at index
+ * `0`). Multiplication of non-zero values reduces to
+ * `(a + b) mod (P - 1)` on the indices, and addition is
+ * performed via parallel `_exp_table` / `_log_table` lookups
+ * built at construction. The class supports characteristic
+ * `< 32767`.
  *
- * Several `Z/p` implementations coexist today --- `ARingZZp` (aring,
- * portable), `ARingZZpFlint` (aring, FLINT-backed), `ARingZZpFFPACK`
- * (aring, FFLAS-backed), and `CoefficientRingZZp` --- and the
- * dispatcher selects among them by prime size and hardware. The
- * legacy `Z_mod` is retained as the reference implementation that the
- * modern variants are validated against, and because some pre-aring
- * interpreter paths still construct it directly.
+ * `Z_mod` retains pointers to a `CoefficientRingZZp` and an
+ * `M2::ARingZZp` for the same prime --- exposed via
+ * `get_CoeffRing()` and `get_ARing()` --- so callers on either
+ * side of the legacy / aring boundary can ask for the form they
+ * need. `M2::ARingZZp` (`aring-zzp.hpp`) uses the inverted
+ * convention (`0` is the field zero), and `M2::ARingZZpFlint`
+ * (`aring-zzp-flint.hpp`) / `M2::ARingZZpFFPACK`
+ * (`aring-zzp-ffpack.hpp`) are the FLINT- and FFLAS-backed
+ * variants.
  *
  * @see aring-zzp.hpp
  * @see aring-zzp-flint.hpp
