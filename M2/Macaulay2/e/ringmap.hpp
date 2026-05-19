@@ -2,6 +2,33 @@
 #ifndef _ringmap_hh_
 #define _ringmap_hh_
 
+/**
+ * @file ringmap.hpp
+ * @brief `RingMap` --- engine representation of a ring homomorphism `R -> S`.
+ *
+ * Declares `RingMap`, an `EngineObject` that stores a
+ * homomorphism by holding the source ring `R`, the target ring
+ * `S`, and one image per generator of `R`. Each image lives as a
+ * pre-factored `var` record split into `coeff * monom * bigelem`
+ * with cheap `is_one` flags so the inner-loop evaluator can skip
+ * trivial multiplications, plus a top-level `is_monomial_` flag
+ * that unlocks a much faster evaluation path when every image is
+ * a single monomial of `S`. Application of a `RingMap` to a
+ * polynomial walks each term, substitutes the image of every
+ * variable, and accumulates the result in `S`, threading
+ * coefficient maps through the appropriate target where source
+ * and target differ in coefficient ring.
+ *
+ * `RingMap`s are typically built ad hoc (quotient projection in
+ * `qring.cpp`, M2's `map(S, R, ...)`, coercion-style maps, ring-
+ * extension morphisms) and short-lived. Composition is not a
+ * first-class operation: callers evaluate one map on the image
+ * list of another to produce a new image list.
+ *
+ * @see ring.hpp
+ * @see qring.hpp
+ */
+
 #include "ring.hpp"
 
 class RingElement;
