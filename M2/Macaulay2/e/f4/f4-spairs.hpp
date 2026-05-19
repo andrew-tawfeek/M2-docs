@@ -7,13 +7,15 @@
  * @brief `F4SPairSet` --- priority-queue + pruning logic for F4 S-pairs.
  *
  * Declares `F4SPairSet`, the structure that manages the S-pair
- * worklist for the F4 inner loop: a `std::priority_queue` of
- * `spair*` ordered degree-first (with lcm as tiebreaker)
+ * worklist for the F4 inner loop: a
+ * `std::priority_queue<size_t, std::vector<size_t>, SPairCompare>`
+ * indexing into a parallel vector of `spair` records, ordered
+ * by `SPairCompare` (degree first, lcm as tiebreaker),
  * combined with chain-criterion pruning. `make_spair(type, deg,
- * i, j)` allocates a new pair from an internal
- * `F4MemoryBlock` bump arena --- the lcm field is allocated
- * but not initialised, leaving that to the caller. After a new
- * basis element joins, `pair_not_needed(p, m)` tests one pair
+ * i, j)` allocates a new pair from an internal `F4MemoryBlock`
+ * bump arena --- the lcm field is allocated but not
+ * initialised, leaving that to the caller. After a new basis
+ * element joins, `pair_not_needed(p, m)` tests one pair
  * against the chain criterion and `remove_unneeded_pairs()`
  * sweeps the queue for every pair the new element subsumes.
  * Without these prunes the queue would grow quadratically in
