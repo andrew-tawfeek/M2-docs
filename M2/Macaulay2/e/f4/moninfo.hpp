@@ -9,13 +9,16 @@
  *
  * Declares `MonomialInfo`, the F4-side compiled form of a
  * `Monoid`. The class exposes the operations the F4 inner loop
- * needs: `monomial_size` (the int count of one encoded
- * monomial), `compare(a, b)`, `multiply(a, b, out)`,
- * `divide(a, b, out)`, `is_divisible(a, b)`, and the
- * `to_varpower` / `from_varpower` converters between the dense
- * `ntuple_monomial` and sparse `varpower_monomial` encodings.
- * A `SkewMultiplication` field carries the skew-variable
- * configuration when the ambient ring is exterior-flavoured.
+ * needs: `monomial_size(m)` for the int count of one encoded
+ * monomial, `compare_grevlex(a, b)` for the order test, `mult`
+ * / `unchecked_mult` for multiplication, `divide` /
+ * `unchecked_divide` for division (with `divide` returning
+ * `bool` for the divisibility test), and the
+ * `to_varpower_monomial` / `from_varpower_monomial` converters
+ * between the dense `ntuple_monomial` and sparse
+ * `varpower_monomial` encodings. A `SkewMultiplication` field
+ * carries the skew-variable configuration when the ambient
+ * ring is exterior-flavoured.
  *
  * `MonomialInfo` strips out everything F4 does not need from
  * the general-purpose `Monoid` (multi-degrees beyond a single
