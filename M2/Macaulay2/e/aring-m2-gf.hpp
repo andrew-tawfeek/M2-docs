@@ -5,25 +5,30 @@
 
 /**
  * @file aring-m2-gf.hpp
- * @brief `M2::ARingGFM2` --- native engine Galois field, no FLINT/Givaro dependency.
+ * @brief `M2::ARingGFM2` --- native engine Galois field, no FLINT dependency.
  *
- * `ARingGFM2` implements `GF(p^k)` entirely in engine code as a
- * `SimpleARing<ARingGFM2>` with `elem = GFElement` (an `int` log
- * index of a chosen primitive root, `0` reserved for the field zero
- * --- the same convention as `aring-zzp.hpp`, generalised to extension
- * fields). Construction picks a base `Z/p`, a primitive polynomial
- * `f(t)` of degree `k`, builds `GF(p^k) = (Z/p)[t] / f(t)`, locates a
- * primitive element of the multiplicative group, and precomputes
- * log / exp / Zech tables of size `p^k`. With those in place every
- * operation reduces to one or two integer lookups; the table-based
- * approach is fast up to roughly `p^k = 32000`.
+ * `ARingGFM2` implements `GF(p^k)` entirely in engine code as
+ * a `SimpleARing<ARingGFM2>` with `ElementType = int` --- a
+ * `GFElement` log index of a chosen primitive root, with `0`
+ * reserved for the field zero (the same convention as
+ * `aring-zzp.hpp`, generalised to extension fields).
+ * Construction goes through `GaloisFieldTable(R, prim)`: it
+ * takes a `PolynomialRing` `R = Z/p[t] / f(t)` plus a
+ * user-supplied primitive element, locates the primitive root,
+ * and precomputes the two tables that drive arithmetic ---
+ * `mOneTable` (the "add one to a log index" lookup, i.e. the
+ * Zech logarithm) and `mFromIntTable` (mapping `Z/p` residues
+ * into log indices). Multiplication of non-zero elements is
+ * index addition mod `q - 1`; addition uses one `mOneTable`
+ * lookup.
  *
- * The class is kept around for three reasons: it works without any
- * external GF library (so minimal builds still have a GF), it serves
- * as the reference implementation that the FLINT and Givaro variants
- * are validated against, and it integrates with the engine's
- * `polyring.hpp` so a user-supplied primitive polynomial in M2's
- * natural form can drive construction.
+ * The class is the M2-side entry point `rawARingGaloisField1`
+ * in `interface/aring.cpp` and is the GF implementation used
+ * when no FLINT backend is requested. The old Givaro path is
+ * gone --- `rawARingGaloisField(prime, dimension)` errors out
+ * with "givaro is no longer available". The FLINT variants are
+ * `aring-gf-flint.hpp` (small Zech-table) and
+ * `aring-gf-flint-big.hpp` (polynomial-quotient).
  *
  * @see aring-gf-flint.hpp
  * @see aring-gf-flint-big.hpp
