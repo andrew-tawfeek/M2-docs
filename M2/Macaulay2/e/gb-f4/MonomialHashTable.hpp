@@ -2,6 +2,38 @@
 
 #pragma once
 
+/**
+ * @file gb-f4/MonomialHashTable.hpp
+ * @brief `newf4::MonomialHashFunction` and the new-F4 monomial-to-index hash table.
+ *
+ * Declares the self-contained monomial-canonicalisation surface
+ * for the refactored F4. `MonomialHashFunction` keeps a vector
+ * of precomputed random 64-bit constants `c_i` (one per
+ * variable, modulo a table size, lazily extended as variable
+ * counts grow) and folds a `MonomialView` into a single
+ * `HashInt` by summing `c_i * e_i` over the sparse `(var,
+ * power)` pairs. The constants are baked in so identical inputs
+ * across runs produce identical hash sequences --- this is the
+ * determinism the engine relies on to reproduce
+ * floating-point-sensitive output.
+ *
+ * The accompanying hash-table layer (developed alongside this
+ * header, with linear-probing buckets backed by a `MemoryBlock`)
+ * maps every monomial the algorithm encounters --- basis leading
+ * terms, S-pair LCMs, Macaulay-matrix column heads --- to a
+ * single canonical `MonomialIndex`, so the rest of the engine
+ * works on integer indices and only reads monomial data when
+ * actually printing or comparing. Modern successor to the
+ * `f4/monhashtable.hpp` trait classes that wrapped the external
+ * mathic table.
+ *
+ * @see MonomialView.hpp
+ * @see MonomialTypes.hpp
+ * @see MemoryBlock.hpp
+ * @see MonomialLookupTable.hpp
+ * @see GBF4Computation.hpp
+ */
+
 #include "MonomialTypes.hpp"
 #include "../MemoryBlock.hpp"
 #include "MonomialView.hpp"
