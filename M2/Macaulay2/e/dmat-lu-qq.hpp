@@ -1,4 +1,27 @@
-// This file should only be included once, by what?
+/**
+ * @file dmat-lu-qq.hpp
+ * @brief `DMatLinAlg<M2::ARingQQ>` --- rational dense LU routed through FLINT `fmpq_mat` / `fmpz_mat`.
+ *
+ * Specialises `DMatLinAlg` for the rational aring `ARingQQ`. Each
+ * operation copies the input through `FlintQQMat`
+ * (`dmat-qq-interface-flint.hpp`) so that the FLINT `fmpq_mat_t`
+ * representation is available without disturbing the M2 matrix,
+ * then dispatches into FLINT: rank goes through
+ * `fmpq_mat_get_fmpz_mat_rowwise` followed by `fmpz_mat_rank`,
+ * which clears denominators row by row and reduces the rational
+ * problem to an integer one --- materially faster than doing rank
+ * over `Q` directly because the underlying `fmpz_mat` routines
+ * inline small-integer arithmetic. Determinant, LU, and null-space
+ * follow the same denominator-clearing pattern.
+ *
+ * The header is designed to be `#include`d exactly once from
+ * `dmat-lu.hpp` (the lead comment flags the single-include
+ * intent), where it slots into the `DMatLinAlg<R>` dispatch table.
+ *
+ * @see dmat-lu.hpp
+ * @see dmat-qq-interface-flint.hpp
+ * @see aring-qq.hpp
+ */
 
 //////////////////////
 // ZZpFlint //////////
