@@ -10,20 +10,20 @@
  * inspect them once built. Construction comes in plain
  * (`IM2_FreeModule_make(R, rank)`) and graded
  * (`IM2_FreeModule_make_degs(R, degs)`) flavours; the
- * combinators `rawDirectSum`, `rawTensor`, `rawDual`, `rawSymm`,
- * `rawExterior`, and `rawSubmoduleOfFree` produce derived free
- * modules from existing ones; and the accessors
- * `IM2_FreeModule_ring`, `IM2_FreeModule_rank`, and the various
- * `rawDegrees` / `rawGetSchreyer` variants expose the underlying
+ * combinators `rawDirectSum`, `rawTensor`, `rawDual`,
+ * `rawSymmetricPower`, `rawExteriorPower`, and `rawSubmodule`
+ * produce derived free modules from existing ones; and the
+ * accessors `IM2_FreeModule_ring`, `IM2_FreeModule_rank`,
+ * `rawDegrees`, and `rawGetSchreyer` expose the underlying
  * state. Schreyer-order setup goes through its own
  * `rawSchreyerSource` / `rawSchreyerOrder` entries.
  *
  * `FreeModule`s are immutable once returned, so every "modify"
  * operation builds a fresh object. The header documents one
  * outstanding limitation in a TODO: the Schreyer orders produced
- * by sum / tensor / symm / exterior / submodule currently ignore
- * tie-breaker information, and the engine does not yet intern
- * free modules per ring.
+ * by sum / tensor / symm / exterior / submodule currently
+ * ignore tie-breaker information, and the engine does not yet
+ * intern free modules per ring.
  *
  * @see freemodule.cpp
  * @see engine-includes.hpp
