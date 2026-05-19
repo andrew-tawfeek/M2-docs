@@ -1,6 +1,32 @@
 // Copyright 1997 Michael E. Stillman
 #pragma once
 
+/**
+ * @file ExponentVector.hpp
+ * @brief Dense exponent-vector template `[e_0, ..., e_{nvars-1}]` for monomial operations.
+ *
+ * `ExponentVector<ExponentT, overflowChecked>` is the engine's dense
+ * monomial encoding --- a fixed-length array indexed by variable
+ * position, with no in-band length prefix (callers carry `nvars`
+ * separately). The first template parameter selects the exponent type
+ * (typically `int`, `int32_t`, or `int64_t`); the second toggles
+ * checked arithmetic via `overflow.hpp` helpers. The template provides
+ * the per-monomial operations the engine needs in a single place ---
+ * `multiply`, `divide`, `divides`, `compare`, `hash` --- and is
+ * specialised by `f4/ntuple-monomial.hpp` and the resolution code in
+ * `schreyer-resolution/`.
+ *
+ * Dense storage is the right choice when variable count is small and
+ * support is dense; the sparse counterpart `ExponentList.hpp`
+ * dominates when support is small relative to many ambient variables.
+ * Inner loops that have already bounded exponent magnitude can
+ * instantiate with `overflowChecked = false` to skip the safe-add /
+ * safe-mul wrappers.
+ *
+ * @see ExponentList.hpp
+ * @see overflow.hpp
+ */
+
 #include <assert.h>     // for assert
 #include <string.h>     // for memcpy
 #include <type_traits>  // for make_unsigned
