@@ -8,22 +8,29 @@
  * Declares the `extern "C"` entry points the M2 interpreter
  * calls to build graded free modules over a given `Ring` and to
  * inspect them once built. Construction comes in plain
- * (`IM2_FreeModule_make(R, rank)`) and graded
- * (`IM2_FreeModule_make_degs(R, degs)`) flavours; the
- * combinators `rawDirectSum`, `rawTensor`, `rawDual`,
+ * (`IM2_FreeModule_make(R, rank)`, bound on the M2 side as
+ * `rawFreeModule`) and graded
+ * (`IM2_FreeModule_make_degs(R, degs)`, also `rawFreeModule`)
+ * flavours, plus the Schreyer-induced
+ * `IM2_FreeModule_make_schreyer(m)` bound as
+ * `rawSchreyerSource`. The combinators bound as
+ * `rawDirectSum`, `rawTensor`, `rawDual`,
  * `rawSymmetricPower`, `rawExteriorPower`, and `rawSubmodule`
- * produce derived free modules from existing ones; and the
- * accessors `IM2_FreeModule_ring`, `IM2_FreeModule_rank`,
- * `rawDegrees`, and `rawGetSchreyer` expose the underlying
- * state. Schreyer-order setup goes through its own
- * `rawSchreyerSource` / `rawSchreyerOrder` entries.
+ * produce derived free modules from existing ones; the
+ * accessors `IM2_FreeModule_ring` (`rawRing`),
+ * `IM2_FreeModule_rank` (`rawRank`),
+ * `IM2_FreeModule_get_degrees` (`rawMultiDegree`), and
+ * `IM2_FreeModule_get_schreyer` (`rawGetSchreyer`) expose the
+ * underlying state.
  *
  * `FreeModule`s are immutable once returned, so every "modify"
- * operation builds a fresh object. The header documents one
- * outstanding limitation in a TODO: the Schreyer orders produced
- * by sum / tensor / symm / exterior / submodule currently
- * ignore tie-breaker information, and the engine does not yet
- * intern free modules per ring.
+ * operation builds a fresh object. The in-file BUGS/TODO block
+ * notes two outstanding limitations: the Schreyer orders
+ * produced by `sum` / `tensor` / `symm` / `exterior` /
+ * `submodule` currently ignore tie-breaker information, and
+ * the engine does not intern free modules per ring (a possible
+ * future change). Per-function `/* drg: connected ... */`
+ * trailers mark the M2-side binding for each C entry point.
  *
  * @see freemodule.cpp
  * @see engine-includes.hpp
