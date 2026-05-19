@@ -1,6 +1,38 @@
 #ifndef _free_algebra_hpp_
 #define _free_algebra_hpp_
 
+/**
+ * @file NCAlgebras/FreeAlgebra.hpp
+ * @brief `FreeAlgebra` --- the free associative algebra `k<x_1,...,x_n>` over an arbitrary coefficient ring.
+ *
+ * Declares the non-commutative analogue of the engine's
+ * `PolyRing`: a `FreeAlgebra` pairs a reference to a coefficient
+ * `Ring` (typically a field) with a `shared_ptr<FreeMonoid>`
+ * carrying the word side --- variable names, degrees, weight and
+ * heft vectors, and the underlying ordering on monomials.
+ * Polynomial values are the shared `Poly` type from
+ * `Polynomial.hpp`, stored as a vector of `(coefficient, word)`
+ * pairs sorted by the monoid order; multiplication is
+ * `Sum_{i,j} (c_i*d_j) * (m_i ~ n_j)` with `~` standing for
+ * concatenation, with no reordering. A `SumCollector` (declared
+ * in `ring.hpp`) combines like terms during accumulation.
+ *
+ * `FreeAlgebra` deliberately does *not* inherit from `Ring`;
+ * the `Ring`-shaped facade the rest of the engine expects lives
+ * in `M2FreeAlgebra` and `M2FreeAlgebraQuotient`. The static
+ * `create(...)` factory is the only construction path: it takes
+ * the coefficient ring, the variable names, the degree ring,
+ * and the per-variable degree / weight / heft vectors, builds
+ * the matching `FreeMonoid`, and returns the wrapper that the
+ * NCGroebner / NCF4 engines consume.
+ *
+ * @see FreeMonoid.hpp
+ * @see Word.hpp
+ * @see Polynomial.hpp
+ * @see NCGroebner.hpp
+ * @see FreeAlgebraQuotient.hpp
+ */
+
 #include "Polynomial.hpp"             // for Poly, Monom
 #include "NCAlgebras/FreeMonoid.hpp"  // for FreeMonoid
 #include "NCAlgebras/Word.hpp"        // for Word
