@@ -1,6 +1,38 @@
 #ifndef _word_hpp_
 #define _word_hpp_
 
+/**
+ * @file NCAlgebras/Word.hpp
+ * @brief `Word` and `WordWithData` --- non-owning views over the flat-int encoding of a non-commutative word.
+ *
+ * Declares the NC-side lightweight view that every word-table,
+ * suffix-tree, overlap, and reduction routine passes around.
+ * `Word` carries `mBegin` / `mEnd` pointers plus a cached size
+ * into a raw `int[]` of variable indices `[v_1, ..., v_k]` ---
+ * with no length or weight prefix, since `FreeMonoid` already
+ * stores those separately. The class never allocates; the
+ * underlying buffer normally lives in a `MemoryBlock` or in a
+ * `std::vector<int>` that outlives the `Word`. `init` lets one
+ * `Word` instance be rebound across many buffers in a tight
+ * loop without reconstruction; the `std::vector<int>`
+ * constructor is `explicit` and exists for unit tests where the
+ * lifetime is obvious.
+ *
+ * `WordWithData` decorates a `Word` with `mEcartDegree` and
+ * `mHeftDegree` so the word-table sort and divisibility checks
+ * over a homogenised system can compare by ecart degree before
+ * walking the variable indices. Equality on `WordWithData`
+ * deliberately ignores heft degree but respects ecart degree,
+ * matching the divisibility convention used by `NCGroebner`'s
+ * reducer-selection step. Commutative counterpart is
+ * `gb-f4/MonomialView`.
+ *
+ * @see FreeMonoid.hpp
+ * @see WordTable.hpp
+ * @see SuffixTree.hpp
+ * @see OverlapTable.hpp
+ */
+
 #include <iosfwd>    // for ostream
 #include <vector>    // for vector, vector<>::value_type
 
