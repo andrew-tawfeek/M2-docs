@@ -7,24 +7,23 @@
  * @brief `HermiteComputation` --- Hermite normal form over `ZZ`, the `ZZ`-analogue of `GaussElimComputation`.
  *
  * Declares `HermiteComputation`, a `GBComputation` subclass that
- * reduces a sparse matrix of generators over `ZZ` to Hermite
- * normal form: upper-triangular with positive diagonal pivots
- * and above-diagonal entries each in `[0, pivot)`. Rows live as
- * an intrusive list of `hm_elem` structs (a `gm_elem` cousin
- * with an explicit cached `mpz_t lead` so pivot sorting does not
- * have to re-walk `f`). Each elimination step is an extended-GCD
- * (Bezout) update of the pivot followed by a reduction of the
- * rows below to land in the allowed range --- a structure that
- * preserves integrality where the field-coefficient
- * `GaussElimComputation` could not.
+ * reduces a sparse matrix of generators over `ZZ` to a Hermite
+ * normal form: each row has a distinct lead component, and the
+ * above-pivot entries in that column are reduced against the
+ * pivot in absolute value via `globalZZ->remainderAndQuotient`.
+ * Rows live as an intrusive list of `hm_elem` structs --- a
+ * `gm_elem` cousin with an explicit cached `mpz_t lead` so pivot
+ * comparisons do not have to re-walk `f` (the class even carries
+ * its own `merge` / `sort` over `hm_elem*` lists). Each
+ * elimination step is an extended-GCD (Bezout) update of the
+ * pivot followed by a reduction of the remaining rows --- a
+ * structure that preserves integrality where the
+ * field-coefficient `GaussElimComputation` could not.
  *
- * The dispatcher picks this path automatically when a GB is
- * requested over a submodule of `ZZ^n`; the result is the
- * unique Hermite normal form, used downstream by Smith-normal-
- * form computation, lattice routines, and the integer-lattice
- * portion of the `Polyhedra` package. The header notes the
- * implementation is "slow, replace" --- candidate for a
- * future-perf rewrite.
+ * The dispatcher in `comp-gb.cpp` picks this path automatically
+ * when a GB is requested with the base ring `globalZZ`, i.e. for
+ * any submodule of `ZZ^n`. The header notes the implementation
+ * is "slow, replace" --- a candidate for a future-perf rewrite.
  *
  * @see gauss.hpp
  * @see comp-gb.hpp
