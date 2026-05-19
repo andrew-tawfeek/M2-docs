@@ -3,32 +3,30 @@
 
 /**
  * @file interface/m2-types.h
- * @brief Engine-to-interpreter type vocabulary --- `M2_bool`, `M2_arrayint`, `M2_string`, GMP / MPFR / MPFI wrappers, and `engine_Raw*` array structs.
+ * @brief Engine-to-interpreter type vocabulary across the C++ / `.dd` boundary.
  *
- * Declares the bridging types every engine-boundary function
- * uses to pass values across the C++/C/`.dd` line. Scalars
- * (`M2_bool`, `hash_t = uint64_t`); GC-managed length-prefixed
- * arrays (`M2_arrayint`, `M2_string`, `M2_ArrayString`); pointer
- * aliases over GMP / MPFR / MPFI types (`gmp_ZZ`, `gmp_QQ`,
- * `gmp_RR`, `gmp_RRi`, `gmp_CC`, `gmp_CCi`, plus their `mutable`
- * and `orNull` variants); and the family of `engine_RawXxxArray`
- * /  `RawArrayPair` / `RawMatrixPair` / `RawRingElementPair`
- * structs that the interpreter sees as opaque containers of
- * engine pointers. Forward declarations for `Ring`, `Matrix`,
- * `FreeModule`, `MonomialOrdering`, the SLP types, etc. let
- * every other `interface/*.h` header refer to engine classes
+ * Declares the bridging types every `interface/*.h` header
+ * uses: scalars (`M2_bool`, `hash_t = uint64_t`); GC-managed
+ * length-prefixed arrays (`M2_arrayint`, `M2_string`,
+ * `M2_ArrayString`); pointer aliases over GMP / MPFR / MPFI
+ * (`gmp_ZZ`, `gmp_QQ`, `gmp_RR`, `gmp_RRi`, `gmp_CC`, `gmp_CCi`
+ * with their `mutable` and `orNull` variants); and the
+ * `engine_RawXxxArray` / `RawArrayPair` / `RawMatrixPair` /
+ * `RawRingElementPair` structs the interpreter sees as opaque
+ * containers of engine pointers. Forward declarations for
+ * `Ring`, `Matrix`, `FreeModule`, `MonomialOrdering`, and the
+ * SLP types let downstream headers refer to engine classes
  * without dragging in their C++ definitions.
  *
- * The `IWYU pragma: private` annotation marks this file as
- * "include `engine-includes.hpp` instead"; callers transitively
- * pick it up through that umbrella. The `BASECLASS` macro
- * expands to `: public our_new_delete` in C++ and to nothing in
- * C, so the same struct definitions compile cleanly on either
- * side. A handful of helpers (`M2_makearrayint`, `M2_tostring`,
- * `M2_join`, `M2_tocharstar`) and the global trace counters
- * (`M2_gbTrace`, `M2_numTBBThreads`,
- * `M2_numericalAlgebraicGeometryTrace`) are exported alongside
- * the types.
+ * The `IWYU pragma: private` annotation routes callers through
+ * `engine-includes.hpp` instead of including this file
+ * directly. The `BASECLASS` macro expands to `: public
+ * our_new_delete` in C++ and to nothing in C so the struct
+ * definitions compile on either side; a handful of helpers
+ * (`M2_makearrayint`, `M2_tostring`, `M2_join`,
+ * `M2_tocharstar`) and the global trace counters (`M2_gbTrace`,
+ * `M2_numTBBThreads`, `M2_numericalAlgebraicGeometryTrace`) are
+ * exported alongside the types.
  *
  * @see engine-includes.hpp
  * @see m2-mem.h
