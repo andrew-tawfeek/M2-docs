@@ -1,24 +1,27 @@
 /**
  * @file dmat-lu-zzp-flint.hpp
- * @brief `DMatLinAlg<M2::ARingZZpFlint>` --- dense Z/p LU routed through FLINT `nmod_mat_*`.
+ * @brief `DMatLinAlg<M2::ARingZZpFlint>` --- dense Z/p linear algebra routed through FLINT `nmod_mat_*`.
  *
- * Specialises `DMatLinAlg` for the FLINT-backed Z/p aring. Each
- * operation forwards directly to the matching `nmod_mat_*`
- * routine: `rank` becomes `nmod_mat_rank`, determinant becomes
- * `nmod_mat_det`, LU becomes `nmod_mat_lu`, and so on. The
- * underlying `nmod_mat_t` carries `Z/p` entries packed as
- * `mp_limb_t`s with the precomputed `ninv` reciprocal that FLINT
- * uses for fast Barrett-style modular reduction, so the inner loop
- * never performs an integer division.
+ * Specialises `DMatLinAlg` for the FLINT-backed Z/p aring,
+ * with each public method forwarding to the matching
+ * `nmod_mat_*` routine on the underlying `nmod_mat_t`:
+ * `rank()` to `nmod_mat_rank`, `determinant` to `nmod_mat_det`,
+ * `inverse` to `nmod_mat_inv`, `kernel` to `nmod_mat_nullspace`,
+ * and `solveInvertible(B, X)` to `nmod_mat_solve`. `matrixPLU`
+ * copies the input matrix, runs `nmod_mat_lu` on the copy, and
+ * then calls `LUUtil<RingType>::setUpperLower` to split the
+ * packed result into separate L and U. The general-shape
+ * `solve(B, X)` concatenates `[A | B]` via
+ * `concatenateMatrices<Mat>`, runs `nmod_mat_rref`, reads the
+ * column-rank profile via `LUUtil::computePivotColumns`, and
+ * either rejects the system as inconsistent or copies the
+ * solution out of the trailing columns of `AB`.
  *
- * The header is `#include`d exactly once from `dmat-lu.hpp`; the
- * `M2/gc-include.h` shim must precede the FLINT include so that
- * `flint_malloc` routes through bdwgc, and the diagnostic pragmas
- * silence FLINT-internal conversion warnings. For very small
- * primes the FFLAS-FFPACK alternative
- * (`dmat-lu-zzp-ffpack.hpp`) wins via BLAS dispatch; this path is
- * the right choice for medium primes where the BLAS double trick
- * no longer applies.
+ * The header is `#include`d from `dmat-lu.hpp`;
+ * `M2/gc-include.h` precedes the FLINT include so
+ * `flint_malloc` routes through bdwgc, and the diagnostic
+ * pragmas silence FLINT-internal conversion warnings. The
+ * FFLAS-FFPACK alternative is `dmat-lu-zzp-ffpack.hpp`.
  *
  * @see dmat-lu.hpp
  * @see dmat-lu-zzp-ffpack.hpp
