@@ -25,26 +25,27 @@
  * @brief `SchreyerFrame` --- in-progress representation of a free resolution organised by (level, degree).
  *
  * Declares the state container the F4 resolution engine builds
- * up as it walks homological levels. The frame stores, per
- * level `i`, an ordered list of generators of `F_i` together
- * with each generator's leading monomial, its `ResSchreyerOrder`
- * data (the tie-breaker information the next level needs), its
- * degree, and per-element live / retired status. These
- * together let `F4Res` build the next level's Macaulay matrix
- * without ever revisiting the original input. `BettiDisplay`
- * production reads directly off the frame, so users can pull a
- * partial Betti table while higher levels are still being
- * filled in.
+ * up as it walks homological levels. Each `Level` holds a
+ * `std::vector<FrameElement>`, where every `FrameElement`
+ * carries its leading monomial `mMonom`, the actual `mDegree`,
+ * a `mBegin` / `mEnd` slice into the next level's element
+ * vector (the descendants this generator contributes), and the
+ * `mSyzygy` polynomial once that level has been computed. Each
+ * level additionally carries its `ResSchreyerOrder` so the next
+ * level inherits the right tie-breaker data. These together let
+ * `F4Res` build the next level's Macaulay matrix without ever
+ * revisiting the original input, and `BettiDisplay` production
+ * reads directly off the frame so users can pull a partial
+ * Betti table mid-run.
  *
  * The header pulls in `m2tbb.hpp` so the per-cell scheduler in
  * `res-dep-graph.hpp` can fire work in parallel across
- * `(level, slanted_degree)` cells; the
- * `parallelizeByDegree` flag on `F4ResComputation` picks the
- * grain. The TODO list preserved at the top of the file is the
- * active refactor agenda (display of `poly` elements, lazy
- * `get_matrix`, incremental `CoefficientArray`, monomial-
- * lookup choices); the matching long-form work plan lives in
- * `TODO-branch-res-2018` in this subdir.
+ * `(level, slanted_degree)` cells; the `parallelizeByDegree`
+ * flag on `F4ResComputation` picks the grain. The TODO list at
+ * the top of the file is the active refactor agenda (display
+ * of `poly` elements, lazy `get_matrix`, incremental
+ * `CoefficientArray`, monomial-lookup choices); the long-form
+ * work plan lives in `TODO-branch-res-2018` in this subdir.
  *
  * @see res-f4.hpp
  * @see res-f4-computation.hpp
