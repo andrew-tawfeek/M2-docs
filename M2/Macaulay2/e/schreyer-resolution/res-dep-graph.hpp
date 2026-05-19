@@ -1,6 +1,39 @@
 #ifndef _res_dep_graph_hpp_
 #define _res_dep_graph_hpp_
 
+/**
+ * @file schreyer-resolution/res-dep-graph.hpp
+ * @brief `DependencyGraph` --- TBB flow-graph over (level, slanted-degree) cells of a Schreyer-frame resolution.
+ *
+ * Declares the parallel scheduler the F4 resolution driver uses
+ * to run multiple homological degrees concurrently while
+ * respecting the dependency that cell `(level,
+ * slanted_degree)` requires both `(level + 1, slanted_degree)`
+ * and `(level, slanted_degree - 1)` to have completed first.
+ * Each cell is a `Node` carrying a `mFillAndReduceNode`,
+ * `mRankNode`, and optional `mMinimalBettiNode`, all
+ * `tbb::flow::continue_node<continue_msg>` so a node fires once
+ * all its predecessors have. `addVertex` / `addFillMatrixEdge`
+ * / `addMinimalBettiEdge` wire the graph, `startComputation`
+ * triggers the root, and `waitForCompletion` blocks on the
+ * whole frontier. The free function `makeDependencyGraph(G,
+ * nlevels, nslanted_degrees, doMinimalBetti)` constructs the
+ * standard layout.
+ *
+ * The 2-D grid is linearised via `getIndex(lev, sldeg, nlevels,
+ * nslanted_degrees) = lev + sldeg * nlevels`, with the matching
+ * inverse `getPair`. The whole header is `#ifdef WITH_TBB`-
+ * gated; on builds without TBB the parallel layer compiles to
+ * nothing and `F4ResComputation` falls back to the serial path.
+ * The `parallelizeByDegree` flag on `F4ResComputation`
+ * determines whether the scheduler walks the grid degree-major
+ * or level-major.
+ *
+ * @see res-f4-computation.hpp
+ * @see res-schreyer-frame.hpp
+ * @see m2tbb.hpp
+ */
+
 #include "m2tbb.hpp"
 
 #ifdef WITH_TBB
