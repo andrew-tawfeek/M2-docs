@@ -1,5 +1,40 @@
 #pragma once
 
+/**
+ * @file gb-f4/SPairs.hpp
+ * @brief `newf4::SPair` / `SPairSet` --- typed S-pair queue grouped by degree and S-pair flavour.
+ *
+ * Declares the per-pair record and the queue the refactored F4
+ * uses to schedule the matrix it builds each degree. `SPair`
+ * tags each entry with an `SPairType` --- `SPair` between two
+ * basis elements, `Ring` between a basis element and a ring-
+ * relation generator (for GB over a quotient), `Exterior` for
+ * the `var * lead = 0` cancellations exterior algebras require,
+ * or `Gen` for an original input still pending insertion --- and
+ * carries the basis indices, the LCM's `MonomialIndex` into the
+ * S-pair monomial hash table, and the cached degree of the LCM.
+ * `SPairSet::updatePairs(basis, which)` is the workhorse: given
+ * the newly added basis element, it produces every pair that
+ * element generates (per its type), prunes by the standard
+ * Buchberger / Faugère criteria, and inserts the survivors.
+ *
+ * The interior storage is a `std::map<(degree, SPairType),
+ * vector<SPair>>` so the driver can pop the next degree's work
+ * in one chunk via `getNextDegree`, and so `Ring` / `Exterior`
+ * pairs sort ahead of plain `SPair` / `Gen` pairs at the same
+ * degree (the standard ordering of "lighter" reductions first).
+ * The header is part of the long-running F4 refactor noted in
+ * `TODO-refactor-f4`, so the surface continues to evolve --- in
+ * particular the planned two-stage "pre-S-pair / S-pair" split
+ * (sketched in the in-file comments) is not yet wired up.
+ *
+ * @see Basis.hpp
+ * @see MonomialView.hpp
+ * @see MonomialTypes.hpp
+ * @see MacaulayMatrix.hpp
+ * @see GBF4Computation.hpp
+ */
+
 #include "MonomialTypes.hpp"
 #include "MonomialView.hpp"
 #include "Basis.hpp"
