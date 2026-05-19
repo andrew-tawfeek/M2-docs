@@ -3,6 +3,33 @@
 #ifndef _solvable_hh_
 #define _solvable_hh_
 
+/**
+ * @file solvable.hpp
+ * @brief `SolvableAlgebra` --- PBW algebra where `x_j x_i = x_i x_j + q_{ij}` for fixed commutators.
+ *
+ * Declares `SolvableAlgebra`, the `PolyRing` subclass for
+ * polynomial-shaped algebras whose generators do not commute
+ * but satisfy a PBW-style straightening relation
+ * `x_j x_i = x_i x_j + q_{ij}` for `i < j`, with each
+ * commutator polynomial `q_{ij}` supplied as the `(i, j)` entry
+ * of a constructor-provided `Matrix Q_`. The framework covers
+ * Weyl algebras, quantum planes, universal enveloping algebras
+ * `U(g)`, and the trivial zero-`Q` case where the algebra
+ * degenerates to an ordinary polynomial ring. Multiplication
+ * walks both factors and substitutes `x_j x_i -> x_i x_j +
+ * q_{ij}` whenever it encounters an out-of-order product,
+ * recursing on `q_{ij}`.
+ *
+ * Termination requires every `q_{ij}` to lie strictly below
+ * `x_i x_j` in some well-founded ordering --- the PBW
+ * condition. The constructor checks this lazily and trusts the
+ * caller to supply a `Q` that defines an associative algebra.
+ *
+ * @see poly.hpp
+ * @see weylalg.hpp
+ * @see skewpoly.hpp
+ */
+
 #include "poly.hpp"
 
 ///// Ring Hierarchy ///////////////////////////////////
