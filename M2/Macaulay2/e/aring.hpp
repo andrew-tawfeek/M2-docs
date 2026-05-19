@@ -16,14 +16,16 @@
  * `ring_tower_ZZp`, plus `ring_old` for everything still on the
  * legacy `Ring` API), the empty `RingInterface : our_new_delete`
  * inheritance tag that every `ConcreteRing` template parameter
- * must derive from, the `ElementImpl<T>` CRTP base that wraps a
- * raw element with conversion operators, and the
- * `SimpleARing<ARing>` CRTP template that gives a concrete ring
+ * must derive from, the plain templated `ElementImpl<ElementType>`
+ * base that wraps a raw element with conversion operators
+ * (templated on the raw element type, **not** the derived class
+ * --- so not CRTP), and the genuinely CRTP-typed
+ * `SimpleARing<ARing>` template that gives a concrete ring
  * (e.g. `CoefficientRingZZp`) ready-made `Element` and
- * `ElementArray` wrappers that call back into the derived class
+ * `ElementArray` wrappers calling back into the derived class
  * for `init` / `clear` / `init_set`. The placeholder `DummyRing`
- * subclass is a fully-stubbed `SimpleARing` used as a no-op
- * implementation.
+ * subclass is a fully-stubbed `SimpleARing<DummyRing>` used as a
+ * no-op implementation.
  *
  * The `aring` framework coexists permanently with the older
  * `Ring` API: existing engine code reads `Ring*`,
