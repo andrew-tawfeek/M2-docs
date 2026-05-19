@@ -8,23 +8,24 @@
  * @brief `ChineseRemainder` --- CRT lifting and rational reconstruction primitives.
  *
  * Declares `ChineseRemainder`, a static-only collection that
- * combines modular results back into `ZZ` and `QQ`. `CRA0` is the
- * core step: given `a mod m`, `b mod n` with `gcd(m, n) = 1` and
- * precomputed Bezout coefficients `um`, `vn`, it produces the
- * unique value mod `m * n` reducing to `a mod m` and `b mod n`,
- * stored in balanced-residue form (range `[-mn/2, mn/2]`) so small
- * integers stay small after lifting --- a precondition the
- * comment at the top of the header flags as essential. Beyond CRT,
- * the class supplies rational reconstruction: given `x mod m`, the
- * extended Euclidean algorithm with a `q` bound recovers a fraction
- * `p / q` with `p == x * q (mod m)` and returns it whenever `m` is
- * large enough relative to `p * q` for the answer to be unique.
+ * combines modular results back into `ZZ` and `QQ`. `CRA0` is
+ * the core step: given `a mod m`, `b mod n` with `gcd(m, n) = 1`
+ * and the precomputed values `um = u*m`, `vn = v*n`, `mn = m*n`
+ * (where `1 = u*m + v*n`), it produces the unique value reducing
+ * to `a mod m` and `b mod n`; the `.cpp` lifts the result into
+ * balanced-residue form on `(-mn/2, mn/2]` so small integers
+ * stay small. `computeMultipliers` produces those Bezout terms
+ * up front and `CRA` overloads lift `ring_elem`, `vec`, `Matrix`,
+ * and `RingElement` element-by-element with the same multipliers.
  *
- * The engine reaches for these primitives whenever a `ZZ` or `QQ`
- * problem is slow head-on but cheap mod many primes: rational
- * Groebner bases (compute modularly across many primes, CRT-lift,
- * reconstruct), `ZZ` determinants and polynomial GCDs, and the
- * modular preprocessing used by some NAG paths.
+ * `ratConversion` does rational reconstruction: given `x mod m`,
+ * the half-extended-Euclidean run recovers a fraction `p / q`
+ * with `p == x * q (mod m)` and returns `true` iff the numerator
+ * and denominator can both be chosen smaller than `sqrt(m) / 2`,
+ * which is the standard uniqueness threshold. `interface/cra.cpp`
+ * exposes the whole class to M2 as the `rawRingElementCRA` /
+ * `rawMatrixCRA` / `rawRingElementRatConversion` /
+ * `rawMatrixRatConversion` raw entry points.
  *
  * @see interface/cra.h
  */
