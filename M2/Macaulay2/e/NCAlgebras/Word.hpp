@@ -31,6 +31,7 @@
  * @see WordTable.hpp
  * @see SuffixTree.hpp
  * @see OverlapTable.hpp
+ * @see gb-f4/MonomialView.hpp
  */
 
 #include <iosfwd>    // for ostream
