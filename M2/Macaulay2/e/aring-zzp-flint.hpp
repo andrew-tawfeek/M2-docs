@@ -5,29 +5,36 @@
 
 /**
  * @file aring-zzp-flint.hpp
- * @brief `M2::ARingZZpFlint` --- `Z/p` via FLINT's `nmod_t` (Barrett-style fast reduction).
+ * @brief `M2::ARingZZpFlint` --- `Z/p` via FLINT's `nmod_t` precomputed-reciprocal reduction.
  *
  * `ARingZZpFlint` stores a `Z/p` value as a single `mp_limb_t`
- * reduced representative in `[0, p)`. FLINT's `nmod_t` carries the
- * modulus `n` together with a precomputed reciprocal `ninv` so each
- * `nmod_add`, `nmod_mul`, `nmod_neg`, and `nmod_div` skips integer
- * division in favour of Barrett-style multiply-and-shift. For primes
- * up to roughly `2^63` this is materially faster than the log/exp
- * table approach in `aring-zzp.hpp` and is the standard choice for
- * small-to-medium primes whenever FFLAS-FFPACK is not in play.
+ * reduced representative in `[0, p)`; per the in-source
+ * comment, `p` can be any prime that fits in `mp_limb_t` (i.e.,
+ * up to the largest prime less than `2^64` on a 64-bit
+ * platform). FLINT's `nmod_t` bundles the modulus with a
+ * precomputed reciprocal `ninv` so each `nmod_add`, `nmod_mul`,
+ * `nmod_neg`, and `nmod_div` reduces via multiply-and-shift
+ * instead of a hardware division. This makes the class the
+ * default `Z/p` choice for primes that fall outside the small
+ * table-based path of `aring-zzp.hpp`.
  *
- * The FLINT-include dance is the usual one: `M2/gc-include.h` first
- * so allocations route through bdwgc, diagnostic pragmas wrapped
- * around FLINT's own headers. `HAVE_FLINT_NMOD_H` accommodates the
- * FLINT release that split `nmod_*` out of `flint.h` into its own
- * `nmod.h` --- `configure` decides which path applies. Primary
- * consumers are `dmat-zzp-flint.hpp`, the F4 GB engines (when
- * `Strategy =>` selects FLINT), and several resolution paths;
- * `aring-zzp-ffpack.hpp` tends to win for very small primes via
- * BLAS dispatch.
+ * The FLINT-include dance is the usual one: `M2/gc-include.h`
+ * first so allocations route through bdwgc, diagnostic pragmas
+ * wrapping FLINT's own headers. `HAVE_FLINT_NMOD_H`
+ * accommodates the FLINT release that split `nmod_*` out of
+ * `flint.h` into its own `nmod.h` --- `configure` decides which
+ * path applies. Engine consumers are `dmat-zzp-flint.hpp` and
+ * its LU companion `dmat-lu-zzp-flint.hpp`, the corresponding
+ * dense linear-algebra paths in `mat-linalg.hpp`, and the
+ * `ConcreteVectorArithmetic<ARingZZpFlint>` specialisation in
+ * `VectorArithmetic.hpp` that exposes the ring to the
+ * gb-f4 / new-F4 pipeline. `aring-zzp-ffpack.hpp` is the
+ * BLAS-dispatch alternative for the small-prime range that
+ * FFLAS-FFPACK supports.
  *
  * @see aring-zzp.hpp
  * @see aring-zzp-ffpack.hpp
+ * @see VectorArithmetic.hpp
  * @see aring.hpp
  */
 
