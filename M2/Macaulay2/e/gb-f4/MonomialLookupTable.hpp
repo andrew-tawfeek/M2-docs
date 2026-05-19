@@ -10,23 +10,32 @@
  *
  * Declares the lookup structure that lets the refactored F4
  * answer "does some basis leading monomial divide this target?"
- * without scanning every basis element. Each `MonomialInfo`
- * entry caches an `mIsUsed` flag, the monomial's simple degree,
- * a `MonomialMask` (one bit per variable set iff the exponent is
- * positive), an offset into the encoded-monomial pool, and the
- * `mValue` index of the owning polynomial. `findDivisor`,
- * `findAllDivisors`, and `findAllDivisees` pre-filter by
- * `maskDivides` (bitwise subset) and `simpleDegree` before
- * running the exact exponent-vector test, which is what makes
- * the linear walk affordable.
+ * without scanning every basis element. Storage is split into
+ * a flat `std::vector<MonomialInt> mMonomialSpace` (the encoded
+ * `[length, var, power, ...]` byte pool) and a parallel
+ * `std::vector<MonomialInfo>` of summary records --- each
+ * `MonomialInfo` caches `mIsUsed`, `mSimpleDegree`, a
+ * `MonomialMask`, an `mOffset` into the byte pool, and the
+ * `mValue` index of the owning polynomial. The mask is
+ * `createMask(monView) = OR over present variables of
+ * (1 << (var mod B))` where `B = 8 * sizeof(MonomialMask)`, so
+ * with more than `B` variables several variables collide on the
+ * same bit --- it is a Bloom-style fast reject, not a perfect
+ * presence bitmap. `findDivisor` / `findAllDivisors` /
+ * `findAllDivisees` pre-filter by `maskDivides` (bitwise
+ * subset) and `simpleDegree` before running the exact
+ * exponent-vector test in `MonomialView::monomialDivides`.
  *
  * Soft-delete is the maintenance strategy: when a basis element
  * is subsumed, `retire(monIndex)` just flips its `mIsUsed` bit
- * to false; the structure tolerates many tombstones before
- * `compactify()` reshuffles the storage. Complements
- * `MonomialHashTable` (which keys by exact equality) and acts as
- * the new-F4 successor to the legacy `montable.hpp` / mathic-
- * trait-based path.
+ * to false; entries are skipped by future divisibility tests
+ * and `compactify()` later reshuffles the storage to reclaim
+ * space. Complements `MonomialHashTable` (which keys by exact
+ * equality) and is the new-F4 successor to the legacy
+ * `montable.hpp` doubly-linked-list-plus-bitmask index. The
+ * nested `MonomialLookupIterator` exposes the per-entry summary
+ * fields (`isUsed`, `simpleDegree`, `mask`, `value`, `offset`)
+ * to walking consumers.
  *
  * @see MonomialHashTable.hpp
  * @see MonomialView.hpp
