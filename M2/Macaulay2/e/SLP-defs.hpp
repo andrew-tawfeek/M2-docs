@@ -7,22 +7,39 @@
 
 /**
  * @file SLP-defs.hpp
- * @brief Type declarations for the SLP DAG and its M2-facing wrapper.
+ * @brief Type declarations for the SLP DAG, its evaluator hierarchy, and the homotopy abstraction.
  *
- * Declares `SLProgram` --- the straight-line program itself, a DAG
- * of arithmetic gates (`Copy`, `MCopy`, `Sum`, `Product`, `MSum`,
- * `MProduct`, `Det`, `Divide`) over a fixed set of inputs and
- * constants with tagged output positions --- and `M2SLProgram`, the
- * `MutableEngineObject` subclass that owns the program via
- * `std::unique_ptr` and is what NAG hands across the engine/M2
- * boundary. `M2SLProgram::value()` is the back-door accessor for
- * engine code that needs to talk to the underlying program directly.
+ * Declares the type lattice the templated SLP machinery is built
+ * on:
  *
- * The wrapper exists so the templated SLP machinery
- * (`SLEvaluatorConcrete<RT>` in `SLP-imp.hpp`) does not have to leak
- * through M2-visible names: the interpreter handles `M2SLProgram*`
- * as an opaque pointer while the numerical specialisation does the
- * actual work behind it.
+ * - `SLProgram` --- the straight-line program itself, a DAG of
+ *   arithmetic gates (`Copy`, `MCopy`, `Sum`, `Product`, `MSum`,
+ *   `MProduct`, `Det`, `Divide`) over a fixed set of inputs and
+ *   constants, with `mNodes`, `mNumInputs`, `mInputPositions`, and
+ *   `mOutputPositions` storing the wired topology.
+ * - `SLEvaluator` and `SLEvaluatorConcrete<RT>` --- the abstract
+ *   evaluator and its templated specialisation that walks the
+ *   program with a `std::vector<RT::ElementType>` of node values;
+ *   the template implementations of `evaluate` /
+ *   `createHomotopy` live in `SLP-imp.hpp`.
+ * - `Homotopy` and `HomotopyConcrete<RT, Algorithm>` --- the
+ *   predictor-corrector path-tracker abstraction, with two
+ *   `Algorithm` tag types (`TrivialHomotopyAlgorithm`,
+ *   `FixedPrecisionHomotopyAlgorithm`,
+ *   `VariablePrecisionHomotopyAlgorithm`) and a
+ *   `HomotopyAlgorithm<RT>` traits class that maps each numeric
+ *   ring (`ARingCC`, `ARingCCC`) to its preferred algorithm.
+ * - The three matching `MutableEngineObject` wrappers
+ *   `M2SLProgram`, `M2SLEvaluator`, `M2Homotopy` --- owned via
+ *   `std::unique_ptr` / raw pointer and exposing `value()` as
+ *   the back door for engine code that needs the unwrapped
+ *   object.
+ *
+ * The wrappers exist so the templated machinery does not leak
+ * through M2-visible names: the interpreter handles
+ * `M2SLProgram*` / `M2SLEvaluator*` / `M2Homotopy*` as opaque
+ * pointers while the numerical specialisation does the actual
+ * work behind them.
  *
  * @see SLP.hpp
  * @see SLP-imp.hpp
