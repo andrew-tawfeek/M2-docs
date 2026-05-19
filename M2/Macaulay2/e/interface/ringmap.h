@@ -18,17 +18,14 @@
  * `rawRingMapHash` carry the standard inspection surface.
  *
  * No `rawCompose` lives here on purpose --- composition is
- * built at the M2 level by recovering one map's image matrix,
- * applying the other map term-by-term, and packaging the result
- * as a fresh `RingMap`. The header is unique in `interface/`
- * for pulling in `MutableMatrix`, since the mutable-evaluation
- * entry has no immutable counterpart inside `Matrix`'s own
- * surface.
+ * built at the M2 level by recovering one map's image matrix
+ * via `rawMatrix(f)`, applying the other map term-by-term, and
+ * packaging the result as a fresh `RingMap`.
  *
  * @see ringmap.cpp
  * @see ringelement.h
  * @see ring.h
- * @see engine-includes.hpp
+ * @see mutable-matrix.h
  */
 
 #  include "engine-includes.hpp"
