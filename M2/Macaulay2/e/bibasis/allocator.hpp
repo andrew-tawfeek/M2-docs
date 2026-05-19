@@ -30,7 +30,7 @@
  * overloading `operator new` / `operator delete` to route through
  * a static `FastAllocator` for their size class.
  *
- * @see bibasis.hpp
+ * @see bibasis.cpp
  * @see polynom.hpp
  * @see monom.hpp
  */
