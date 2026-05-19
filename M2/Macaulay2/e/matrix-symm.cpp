@@ -1,3 +1,27 @@
+/**
+ * @file matrix-symm.cpp
+ * @brief `SymmMatrix::symmetricPower` --- the `p`-th symmetric power of a one-row `Matrix`.
+ *
+ * Implements `SymmMatrix`, a tiny static-only namespace whose
+ * single entry point `symmetricPower(m0, p)` takes a one-row
+ * matrix `m0 = [m_1, ..., m_n]` and returns a one-row matrix
+ * whose columns are all products `m_{i_1} m_{i_2} ... m_{i_p}`
+ * with `1 <= i_1 <= i_2 <= ... <= i_p <= n` --- the
+ * `binomial(n + p - 1, p)` symmetric monomials in degree `p`.
+ * The enumeration walks the multi-index tuples in lex order
+ * and feeds each product into a `MatrixConstructor`. Multi-row
+ * inputs are handled at the M2 level by composing row-wise
+ * symmetric powers; the engine entry insists on a single row.
+ *
+ * The combinatorial enumeration parallels the `Subsets`
+ * encoding in `comb.hpp`, restricted to multi-sets rather than
+ * subsets.
+ *
+ * @see matrix.hpp
+ * @see matrix-con.hpp
+ * @see comb.hpp
+ */
+
 #include "matrix.hpp"
 #include "matrix-con.hpp"
 
