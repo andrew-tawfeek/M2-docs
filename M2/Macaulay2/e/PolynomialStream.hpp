@@ -1,5 +1,29 @@
 #pragma once
 
+/**
+ * @file PolynomialStream.hpp
+ * @brief Type aliases and the (currently disabled) C++20 concept that streaming polynomial consumers implement.
+ *
+ * Declares `newf4::Coefficient`, `VarIndex`, `Exponent`, and
+ * `Component` --- the int aliases that name the four pieces of every
+ * streamed term and that callers throughout the refactored F4 path
+ * share with `gb-f4/MonomialTypes`. A TODO flags that these aliases
+ * must eventually track `BasicPoly`'s coefficient migration away from
+ * a bare `int32_t`.
+ *
+ * The remainder of the header sketches the streaming protocol any
+ * concrete consumer must support: `idealBegin` / `appendPolynomialBegin`
+ * / `appendTermBegin` / `appendExponent` / `appendTermDone` /
+ * `appendPolynomialDone` / `idealDone`. The actual `concept
+ * PolynomialStream` is parked under `#if 0` until the engine moves to
+ * C++20; consumers like `BasicPolyListParser` and the `gb-f4`
+ * `PolynomialList` builder already implement the shape unchecked.
+ *
+ * @see BasicPoly.hpp
+ * @see BasicPolyList.hpp
+ * @see BasicPolyListParser.hpp
+ */
+
 namespace newf4
 {
 
