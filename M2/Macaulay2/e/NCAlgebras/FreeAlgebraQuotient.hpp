@@ -5,11 +5,16 @@
  * @file NCAlgebras/FreeAlgebraQuotient.hpp
  * @brief A `FreeAlgebra` modulo a two-sided ideal carried by an embedded `NCGroebner`.
  *
- * Declares the non-commutative analogue of `PolyQuotient`. The
- * class holds a reference to its ambient `FreeAlgebra` together
- * with an `NCGroebner` that owns the stored Gröbner basis of
- * the defining ideal and the word-table / suffix-tree indices
- * used for divisor lookup; the constructor takes a precomputed
+ * Declares the non-commutative analogue of `PolyRingQuotient`
+ * (the commutative quotient ring lives in `polyquotient.hpp`;
+ * the `PolyQuotient` name in `polyring.hpp` is just a stale
+ * forward declaration). The class holds a reference to its
+ * ambient `FreeAlgebra` together with an `NCGroebner mGroebner`
+ * that owns the stored Gröbner basis of the defining ideal
+ * (the word-table / suffix-tree indices for divisor lookup
+ * also live inside `NCGroebner` --- in-source comments here
+ * confirm the lookup tables were "placed in NCGroebner
+ * object"). The constructor takes a precomputed
  * `ConstPolyList& GB` plus a `maxdeg` cap. `normalizeInPlace`,
  * `mult`, `power`, and the other arithmetic entries compute in
  * the ambient algebra and then reduce modulo the GB via the
@@ -19,17 +24,20 @@
  * engine-wide `Ring` facade.
  *
  * The companion `FreeAlgebraQuotientElement` at the bottom of
- * the header is a lightweight RAII handle around one `Poly`,
- * exposed for unit tests and interactive debugging. A two-sided
- * GB in a free algebra is in general infinite, so `maxdeg` is
- * how the engine keeps the computation finite at the cost of
- * incomplete reduction past that degree.
+ * the header is a lightweight RAII handle around one `Poly`
+ * (calls `init`/`clear` on construction/destruction) with
+ * overloaded `+` / `-` / `*` / `^` / `==`, exposed for unit
+ * tests and interactive debugging. A two-sided GB in a free
+ * algebra is in general infinite, so `maxdeg` is how the
+ * engine keeps the computation finite at the cost of incomplete
+ * reduction past that degree.
  *
  * @see FreeAlgebra.hpp
  * @see FreeMonoid.hpp
  * @see NCGroebner.hpp
  * @see Polynomial.hpp
  * @see M2FreeAlgebraQuotient.hpp
+ * @see polyquotient.hpp
  */
 
 #include "NCAlgebras/FreeAlgebra.hpp" // for FreeAlgebra
