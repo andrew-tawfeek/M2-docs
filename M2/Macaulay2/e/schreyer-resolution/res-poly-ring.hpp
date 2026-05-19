@@ -3,6 +3,43 @@
 #ifndef _res_poly_ring_hpp_
 #define _res_poly_ring_hpp_
 
+/**
+ * @file schreyer-resolution/res-poly-ring.hpp
+ * @brief `ResPolyRing` and `ResPolynomial` --- resolution-tuned polynomial-ring view and value type.
+ *
+ * Declares the F4 resolution's stripped-down counterpart of
+ * `GBRing` / `gbvector`. `ResPolynomial` stores a polynomial as
+ * a length counter, a flat `ElementArray` of coefficients
+ * (decoded through `VectorArithmetic`), and a flat
+ * `std::vector<res_monomial_word>` of packed monomials whose
+ * layout is controlled by `ResMonoid`; the destructor counts
+ * itself in the static `npoly_destructor` debug tally. The
+ * three friends --- `ResPolyRing`, `ResPolynomialConstructor`,
+ * and `ResPolynomialIterator` --- are the only entry points
+ * allowed to peek inside the layout, which lets future reshapes
+ * stay invisible to callers. `ResPolyRing` ties together the
+ * coefficient ring (via `VectorArithmetic`), the resolution
+ * monoid `M`, the original engine monoid `origM` (kept for
+ * promotion / lifting paths), and an optional
+ * `SkewMultiplication` so resolutions over skew-commutative
+ * rings get the right sign in `mult`.
+ *
+ * The split from `PolynomialRing` exists because resolutions do
+ * vastly more monomial arithmetic per second than ordinary
+ * polynomial ops, and the standard ring's virtual dispatch and
+ * full degree-monoid recursion would dominate. Here the
+ * `VectorArithmetic` indirection inlines, and the
+ * `ResMonoid` choice between dense (`res-moninfo-dense.hpp`)
+ * and sparse (`res-moninfo-sparse.hpp`) layouts can be
+ * benchmarked without touching call sites.
+ *
+ * @see VectorArithmetic.hpp
+ * @see res-moninfo.hpp
+ * @see res-monomial-types.hpp
+ * @see res-f4-computation.hpp
+ * @see res-schreyer-frame.hpp
+ */
+
 #include "VectorArithmetic.hpp"                        // for VectorArithmetic
 #include "newdelete.hpp"                               // for our_new_delete
 #include "schreyer-resolution/res-moninfo.hpp"         // for ResMonoid
