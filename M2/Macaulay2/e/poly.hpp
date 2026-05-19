@@ -10,18 +10,23 @@
  * Declares the concrete `PolyRing` that engine code instantiates
  * whenever it talks about "a polynomial ring." The class
  * descends from the abstract layer in `polyring.hpp` through
- * `PolyRingFlat` (the intermediate that asserts coefficients are
- * non-polynomial) and is the immediate parent of every flavoured
- * polynomial ring the engine ships: `PolyRingSkew` from
- * `skewpoly.cpp`, `PolyRingWeyl` from `weylalg.cpp`, the
- * non-commutative `M2FreeAlgebra`, and `PolyQuotient` from
- * `polyquotient.cpp`. `TermIdeal`, `Matrix`, `GBRing` /
- * `GBRingSkew`, `GBComputation`, and `ChineseRemainder` are
- * forward-declared so the header stays light.
+ * `PolyRingFlat` (the intermediate that asserts coefficients
+ * are non-polynomial) and is the parent of the flavoured
+ * polynomial-ring subclasses the engine actually defines:
+ * `SkewPolynomialRing` (`skewpoly.hpp`), `WeylAlgebra`
+ * (`weylalg.hpp`), `SolvableAlgebra` (`solvable.hpp`), and
+ * `SchurRing` (`schur.hpp`). The quotient flavour
+ * `PolyRingQuotient` (`polyquotient.hpp`) sits beside `PolyRing`
+ * --- both inherit directly from `PolyRingFlat` --- and the
+ * non-commutative `M2FreeAlgebra` (`M2FreeAlgebra.hpp`) is on a
+ * separate `Ring` hierarchy. `TermIdeal`, `Matrix`,
+ * `GBRing` / `GBRingSkew`, `GBComputation`, and
+ * `ChineseRemainder` are forward-declared so the header stays
+ * light.
  *
  * @see polyring.hpp
- * @see skewpoly.cpp
- * @see weylalg.cpp
+ * @see skewpoly.hpp
+ * @see weylalg.hpp
  * @see polyquotient.hpp
  */
 
