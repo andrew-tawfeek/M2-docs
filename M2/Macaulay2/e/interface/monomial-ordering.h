@@ -7,25 +7,38 @@
  *
  * Declares the `MonomialOrdering_type` enum --- `MO_LEX`,
  * `MO_GREVLEX`, packed `MO_LEX2` / `MO_LEX4` /
- * `MO_GREVLEX2` / `MO_GREVLEX4`, weighted GRevLex,
- * `MO_REVLEX`, `MO_WEIGHTS`, the Laurent variants, `MO_NC_LEX`,
- * and `MO_POSITION_UP` / `_DOWN` --- together with the per-
- * block `mon_part` record and the variable-length
+ * `MO_GREVLEX2` / `MO_GREVLEX4`, weighted GRevLex variants
+ * (`MO_GREVLEX_WTS` / `_GREVLEX2_WTS` / `_GREVLEX4_WTS`),
+ * `MO_REVLEX`, `MO_WEIGHTS`, the Laurent variants
+ * (`MO_LAURENT` and `MO_LAURENT_REVLEX`), `MO_NC_LEX`, and
+ * `MO_POSITION_UP` / `_DOWN` --- together with the per-block
+ * `mon_part` record (carrying type, `nvars`, and an optional
+ * `*wts` weight array) and the variable-length
  * `MonomialOrdering` struct that holds the assembled sequence
- * of parts plus a cached hash. Each `raw*MonomialOrdering`
- * factory builds one block (lex, group-lex, weights, revlex,
- * GRevLex with packing, position, NC-lex, ...); composition is
- * via `rawProductMonomialOrdering` over an array of those
- * blocks, mirroring the way M2 users write `(Weights => ...,
- * GRevLex => {...})` in a `monomialOrder` argument.
+ * of parts (`mon_part array[1]` flexible-style) plus a cached
+ * `_hash`. Each `raw*MonomialOrdering` factory builds one block
+ * (lex, GRevLex-with-packing, revlex, weights,
+ * group-lex / group-revlex, NC-lex, position-up/down);
+ * composition is via `rawProductMonomialOrdering` (for tensor
+ * products) and `rawJoinMonomialOrdering` (the default block-
+ * joining used when making monoids and polynomial rings),
+ * both over an `engine_RawMonomialOrderingArray`. Accessors
+ * include `rawNumberOfVariables`,
+ * `rawNumberOfInvertibleVariables`,
+ * `rawNonTermOrderVariables` (which detect local / tangent-cone
+ * orders where GB algorithms must switch behaviour),
+ * `IM2_MonomialOrdering_to_string`,
+ * `rawMonomialOrderingHash`, and the predicate helpers
+ * `moIsGRevLex` / `moIsLex` / `moGetWeightValues`.
  *
  * The output of these constructors flows into
  * `rawMonoid(mo, ...)`, where `imonorder.cpp` compiles the
  * declarative `MonomialOrdering` into an executable
- * `MonomialOrder` layout. The packed `MO_LEX2` / `MO_LEX4`
+ * `MonomialOrder` layout. The packed `MO_*2` / `MO_*4`
  * variants squeeze two or four exponents per `int` for small-
  * exponent rings, halving or quartering monomial-comparison
- * memory footprint.
+ * memory footprint --- they appear as `Lex`/`LexSmall`/`LexTiny`
+ * and `GRevLex`/`GRevLexSmall`/`GRevLexTiny` on the M2 side.
  *
  * @see monomial-ordering.cpp
  * @see monoid.h
