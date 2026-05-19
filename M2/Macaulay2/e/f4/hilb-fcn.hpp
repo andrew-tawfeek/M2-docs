@@ -3,6 +3,30 @@
 #ifndef _hilb_fcn_h_
 #define _hilb_fcn_h_
 
+/**
+ * @file f4/hilb-fcn.hpp
+ * @brief `HilbertController` --- early-exit driver for F4 given a known Hilbert series.
+ *
+ * Declares `HilbertController`, the helper F4 consults when the
+ * user supplies the expected Hilbert series of the input ideal.
+ * `setDegree(d)` reads the expected number of new generators in
+ * degree `d` off the supplied Hilbert series and stores it in
+ * `hilb_n_in_degree`; `addMonomial(...)` decrements the counter
+ * each time F4 commits a new leading monomial of that degree;
+ * `nRemainingExpected()` lets F4 abandon any remaining
+ * degree-`d` S-pairs once the counter hits zero. Skipping the
+ * unproductive pairs avoids the matrix builds they would have
+ * triggered and the cascading work at later degrees.
+ *
+ * Constructed from a target `FreeModule*` (so the Hilbert
+ * function is interpreted in the right multi-grading) and a
+ * `RingElement* hf` carrying the user-supplied series.
+ * `hilb.hpp` is what produces the series in the first place.
+ *
+ * @see f4.hpp
+ * @see hilb.hpp
+ */
+
 #include "newdelete.hpp"  // for VECTOR
 #include "ringelem.hpp"   // for vec
 
