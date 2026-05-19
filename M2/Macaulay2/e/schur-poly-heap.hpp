@@ -3,6 +3,34 @@
 #ifndef _schur_poly_heap_hpp_
 #define _schur_poly_heap_hpp_
 
+/**
+ * @file schur-poly-heap.hpp
+ * @brief `schur_poly_heap` --- geometric-bucket accumulator specialised for `SchurRing2` polynomials.
+ *
+ * Declares `schur_poly_heap`, a `GEOHEAP_SIZE` (15)-level
+ * size-doubling heap of `ring_elem` slots used by Schur-ring
+ * multiplication to collect the many `c_{lambda mu}^nu s_nu`
+ * intermediate terms produced by Littlewood-Richardson
+ * enumeration. `add(p)` drops `p` into the smallest level that
+ * can absorb it and cascades on overflow; `value()` flattens
+ * the tower into a single canonical sum and resets the heap.
+ * The amortised `O(n log k)` cost (`k` distinct output
+ * partitions) replaces the quadratic merge that a naive
+ * term-by-term accumulator would walk.
+ *
+ * The shape mirrors the engine's other geometric heaps
+ * (`gbring.hpp`'s `gbvectorHeap`, `geovec.hpp`, `geopoly.hpp`)
+ * but the slot type is the Schur-ring `ring_elem` and the
+ * promotion logic is supplied by the owning `SchurRing2`.
+ * Heavy callers are `schur2.hpp`'s `mult` and `schurSn.hpp`'s
+ * `mult` / `tensor_mult` plus the Schubert-calculus enumeration
+ * paths that exercise them.
+ *
+ * @see schur2.hpp
+ * @see schurSn.hpp
+ * @see geopoly.hpp
+ */
+
 class schur_poly_heap : public our_new_delete
 {
   ring_elem heap[GEOHEAP_SIZE];
