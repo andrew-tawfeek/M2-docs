@@ -7,20 +7,21 @@
  * @brief Older Schreyer-style kernel computation, predecessor of `schreyer-resolution/`.
  *
  * Declares `GBKernelComputation` --- a `Computation` subclass that,
- * given a matrix `f : F -> G` whose columns are a Groebner basis of
- * `im(f)`, produces the kernel `K` of `f` as a set of generators which
- * are themselves a Groebner basis under the Schreyer order on `F`
- * induced by `(f, lt(f_1), ..., lt(f_n))`. That structural guarantee
- * is what makes the routine useful for iterated free resolutions: the
- * kernel is in the right form to feed straight into the next step.
+ * given a matrix whose columns `f_1, ..., f_n` are a Groebner basis
+ * of their image, produces the kernel as a set of syzygy generators
+ * which are themselves a Groebner basis under the Schreyer order
+ * induced by `(lt(f_1), ..., lt(f_n))` on the source free module.
+ * That structural guarantee is what makes the routine useful for
+ * iterated free resolutions: the kernel is in the right form to feed
+ * straight into the next step.
  *
  * Also declares the lightweight `GBMatrix` --- a matrix whose columns
  * are owned `gbvector*` rather than opaque `vec` values, so the inner
  * loop sidesteps a `Matrix -> gbvector` conversion every iteration.
- * The newer `schreyer-resolution/` implementation reduces a whole
- * degree at once via F4 and is faster on most inputs; this older
- * single-row reduction is retained for regression testing and the rare
- * small-example case where it still wins.
+ * This single-row reduction loop is the live implementation behind
+ * `interface/groebner.cpp::rawKernelOfGB`; the newer
+ * `schreyer-resolution/` family targets full free resolutions via
+ * Macaulay matrices and is not a drop-in replacement.
  *
  * @see gbring.hpp
  * @see schorder.hpp
