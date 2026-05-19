@@ -1,21 +1,32 @@
 /**
  * @file matrix-symm.cpp
- * @brief `SymmMatrix::symmetricPower` --- the `p`-th symmetric power of a one-row `Matrix`.
+ * @brief `SymmMatrix` --- compute the `p`-th symmetric power of a one-row `Matrix`.
  *
- * Implements `SymmMatrix`, a tiny static-only namespace whose
- * single entry point `symmetricPower(m0, p)` takes a one-row
- * matrix `m0 = [m_1, ..., m_n]` and returns a one-row matrix
- * whose columns are all products `m_{i_1} m_{i_2} ... m_{i_p}`
- * with `1 <= i_1 <= i_2 <= ... <= i_p <= n` --- the
- * `binomial(n + p - 1, p)` symmetric monomials in degree `p`.
- * The enumeration walks the multi-index tuples in lex order
- * and feeds each product into a `MatrixConstructor`. Multi-row
- * inputs are handled at the M2 level by composing row-wise
- * symmetric powers; the engine entry insists on a single row.
+ * Implements `SymmMatrix`, a file-local class whose only public
+ * surface is the static factory
+ * `SymmMatrix::symmetricPower(m0, p)`. The factory checks
+ * `m0->n_rows() == 1` (the engine entry insists on a single
+ * row; the `ERROR("expected one row")` branch returns `nullptr`
+ * otherwise), constructs a transient `SymmMatrix` instance,
+ * and returns the result of its `value()` accessor. The
+ * recursive instance method `symm1(f, lastn, pow)` walks
+ * multi-index tuples in lex order: each level loops `i` from
+ * `lastn` to `ncols-1` and recurses with `(i, pow-1)` --- the
+ * key detail being that the next level starts at `i`, not
+ * `i + 1`, so variables can repeat. This enumerates all
+ * `binomial(n + p - 1, p)` symmetric monomials of degree `p`
+ * (the `m_{i_1} ... m_{i_p}` products with
+ * `1 <= i_1 <= ... <= i_p <= n`), filling them into a
+ * `MatrixConstructor` whose target and source free modules are
+ * built via `m0->rows()->symm(p)` and `m0->cols()->symm(p)`
+ * with the appropriate degree shift. The top-level
+ * `Matrix::symm(int n)` (defined at the bottom) is the actual
+ * external entry point and just forwards to
+ * `SymmMatrix::symmetricPower`.
  *
- * The combinatorial enumeration parallels the `Subsets`
- * encoding in `comb.hpp`, restricted to multi-sets rather than
- * subsets.
+ * The multi-set enumeration parallels the subset-encoding
+ * machinery in `comb.hpp`'s `Subsets`, but is hand-rolled here
+ * rather than going through that helper.
  *
  * @see matrix.hpp
  * @see matrix-con.hpp
