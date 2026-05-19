@@ -27,11 +27,12 @@
  * multiplicative prolongation --- and the destructor owns the
  * polynomial pointer.
  *
- * `Compare` orders triples descending by leading monomial so the
- * `QSet` priority queue always pops the heaviest pending
- * prolongation first; `SetNmp` / `TestNmp` are the bookkeeping
- * the algorithm uses to remember which variables are still
- * eligible for prolongation at each step.
+ * `Compare(a, b)` returns true when `a`'s leading monomial is
+ * greater than `b`'s, so `QSet` sorts triples by leading
+ * monomial and the algorithm's `back()`-popping loop processes
+ * the lightest pending prolongation first; `SetNmp` / `TestNmp`
+ * are the bookkeeping the algorithm uses to remember which
+ * variables are still eligible for prolongation at each step.
  *
  * @see polynom.hpp
  * @see janettree.hpp
