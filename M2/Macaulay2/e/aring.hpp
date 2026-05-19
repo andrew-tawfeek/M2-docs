@@ -5,24 +5,35 @@
 
 /**
  * @file aring.hpp
- * @brief Abstract-ring framework (`namespace M2`) that unifies the engine's coefficient rings.
+ * @brief Shared base of the `aring` framework (`namespace M2`) that unifies the engine's coefficient rings.
  *
- * Defines the dispatcher and shared base of the `aring` system. Each
- * concrete coefficient ring (ZZ via GMP, ZZ via FLINT, Z/p via
- * FFLAS, GF, RR, CC, ...) lives in its own `aring-*.{cpp,hpp}` pair
- * and registers itself by a `RingID` tag declared in
- * `coeffrings.hpp`. Cold paths branch on the tag; hot paths take a
- * concrete `ARing<R>` template parameter so the per-element
- * arithmetic inlines instead of going through a virtual dispatch ---
- * the original motivation for introducing the aring framework
- * alongside the older `Ring` API.
+ * Declares the pieces every concrete coefficient ring builds on:
+ * the `RingID` enum that names each back end
+ * (`ring_ZZ`, `ring_ZZFlint`, `ring_QQ` / `_QQFlint`,
+ * `ring_ZZp` / `_ZZpFfpack` / `_ZZpFlint`,
+ * `ring_GFM2` / `_GFFlintBig` / `_GFFlintZech`,
+ * `ring_RR` / `_CC` / `_RRR` / `_CCC` / `_RRi` / `_CCi`,
+ * `ring_tower_ZZp`, plus `ring_old` for everything still on the
+ * legacy `Ring` API), the empty `RingInterface : our_new_delete`
+ * inheritance tag that every `ConcreteRing` template parameter
+ * must derive from, the `ElementImpl<T>` CRTP base that wraps a
+ * raw element with conversion operators, and the
+ * `SimpleARing<ARing>` CRTP template that gives a concrete ring
+ * (e.g. `CoefficientRingZZp`) ready-made `Element` and
+ * `ElementArray` wrappers that call back into the derived class
+ * for `init` / `clear` / `init_set`. The placeholder `DummyRing`
+ * subclass is a fully-stubbed `SimpleARing` used as a no-op
+ * implementation.
  *
- * The two ring APIs coexist permanently: existing engine code reads
- * `Ring*`, performance-critical paths read `aring`, and the bridges
- * in `aring-glue.hpp`, `aring-translate.hpp`, and `aring-wrap.cpp`
- * move values between them. This file also contains the only
- * `HAVE_FLINT_RAND_INIT` compatibility shim aring users touch when
- * bumping the FLINT submodule version (`flint_rand_init` vs.
+ * The `aring` framework coexists permanently with the older
+ * `Ring` API: existing engine code reads `Ring*`,
+ * performance-critical paths take a `ARing<R>` template
+ * parameter so the per-element arithmetic inlines instead of
+ * going through a virtual, and the bridges in `aring-glue.hpp`,
+ * `aring-translate.hpp`, and `aring-wrap.hpp` move values
+ * between them. The file also carries the `HAVE_FLINT_RAND_INIT`
+ * compatibility shim that aring users touch when bumping the
+ * FLINT submodule version (`flint_rand_init` vs.
  * `flint_randinit`).
  *
  * @see aring-glue.hpp
