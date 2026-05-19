@@ -1,6 +1,24 @@
 // Copyright 2014-2016  Michael E. Stillman
 #pragma once
 
+/**
+ * @file util.hpp
+ * @brief Conversion helpers between M2 boundary types and standard C++ containers.
+ *
+ * Provides the small bidirectional converters every engine
+ * boundary needs: `string_std_to_M2` / `string_M2_to_std`
+ * marshal between `std::string` and `M2_string` (the engine's
+ * length-prefixed string type), and the matching
+ * `M2_arrayint_to_stdvector` / `stdvector_to_M2_arrayint` pair
+ * convert between `std::vector<int>` and `M2_arrayint` so the
+ * engine can use modern C++ containers internally while still
+ * speaking the older C-style boundary types when crossing the
+ * interpreter line. The helpers are header-inlined where
+ * possible so the call sites stay free.
+ *
+ * @see interface/m2-types.h
+ */
+
 #include <string>   // for string, basic_string
 #include <vector>   // for vector
 #include <iostream> // for ostream
