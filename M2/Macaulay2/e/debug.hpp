@@ -1,24 +1,30 @@
 /**
  * @file debug.hpp
- * @brief Debugger-callable `d*` helpers that pretty-print engine values to stdout.
+ * @brief Debugger-callable `d*` helpers that pretty-print engine values to stderr.
  *
- * Declares short-named global functions --- `dmatrix`, `drelem`,
- * `dfree`, `dringelem`, `showint`, and the analogous helpers for
- * `gbvector*`, `res_poly`, `MutableMatrix*`, `MonomialIdeal*`, ... ---
- * that print engine objects to stdout in a form readable from gdb or
- * lldb. The `dringelem` helper is `extern "C"` so that the debugger
- * can call it without supplying a mangled C++ name.
+ * Declares short-named global functions --- `dmatrix`,
+ * `drelem`, `dfree`, `dringelem`, `dNterm`, `dvec`, `dgbvec`,
+ * `drespoly` / `drespoly2`, `dmutablemat`, `dmonideal`,
+ * `dintarray`, `dvector`, `dstash`, `dRRR`, `pring`, `showint`
+ * --- that print engine objects in a form readable from gdb or
+ * lldb. The implementations typically format into a local
+ * `buffer` and flush it via `emit(o.str())` (defined in
+ * `text-io.hpp`), which writes to stderr. Most of the
+ * pointer-taking helpers are declared `extern "C"` so the
+ * debugger can call them by an unmangled name from a stopped
+ * frame.
  *
- * The functions exist alongside each class's own `text_out(buffer&)`
- * for two reasons: they write directly to stdout instead of an
- * in-memory buffer (so a debugger sees output immediately), and they
- * take only opaque pointers (so any stack frame can use them, even
- * one that has no `buffer` available). The breadth of forward
- * declarations is intentional --- every printable engine type is
- * forward-declared rather than included to keep this header cheap to
- * pull in.
+ * The functions exist alongside each class's own
+ * `text_out(buffer&)` because they take only opaque pointers
+ * (so any stack frame can use them, even one that has no
+ * `buffer` available) and they flush immediately rather than
+ * leaving the formatted text inside a caller-owned buffer. The
+ * breadth of forward declarations is intentional --- every
+ * printable engine type is forward-declared rather than
+ * included so the header stays cheap to pull in.
  *
  * @see buffer.hpp
+ * @see text-io.hpp
  */
 
 #include "ringelem.hpp"
