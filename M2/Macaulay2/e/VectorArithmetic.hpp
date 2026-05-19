@@ -5,22 +5,30 @@
  * @file VectorArithmetic.hpp
  * @brief Coefficient-ring-erased arithmetic dispatcher used by F4, GB, and resolution code.
  *
- * `VectorArithmetic` is the engine's abstract dispatcher for the
- * inner loop shared across F4-style code paths --- the
- * `accumulator[col] += coeff * scaling` operation that runs billions
- * of times. A single templated entry point hides the concrete
- * coefficient ring (`Z/p` via FFLAS, `Z/p` / `QQ` / `GF` via FLINT,
- * `RR` via MPFR, ...) behind one interface; dispatch happens via a
- * `std::variant` over ring types plus `std::visit`, after which the
- * call sees a `ConcreteRing<R>` and the native add/multiply inlines.
+ * `VectorArithmetic` is the engine's dispatcher for the inner
+ * loop shared across F4-style code paths --- the
+ * `accumulator[col] += coeff * scaling` operation that runs
+ * many times per S-pair. It holds a `std::variant` named
+ * `CVA_Type` over `ConcreteVectorArithmetic<RingType>*` for
+ * each supported coefficient ring (`ARingZZpFlint`,
+ * `ARingZZpFFPACK`, `ARingZZp`, `ARingQQGMP`, `ARingGFM2`,
+ * `ARingGFFlint`, `ARingGFFlintBig`, `CoefficientRingR`,
+ * `CoefficientRingZZp`, `DummyRing`); the constructor switches
+ * on `R->ringID()` to instantiate the matching variant slot,
+ * and every public method uses `std::visit` so the body sees a
+ * `ConcreteVectorArithmetic<R>*` and the native add / multiply
+ * inlines. Storage is the opaque `ElementArray` wrapper
+ * declared alongside, and the `VectorArithmeticStats` companion
+ * counts `mNumAdditions` for profiling.
  *
  * The point of the indirection is cross-ring reuse: `f4/`,
- * `gb-f4/`, `schreyer-resolution/`, and `NCAlgebras/NCF4` all hit
- * the dispatcher rather than coding against any particular ring, so
- * teaching the engine a new coefficient backend is a matter of
- * implementing it as an `aring`, registering it in this dispatcher's
- * variant, and exposing the construction through `interface/aring.h`
- * --- with no changes inside the F4 / resolution loops themselves.
+ * `gb-f4/`, `schreyer-resolution/`, and `NCAlgebras/NCF4` all
+ * hit this dispatcher rather than coding against any particular
+ * ring, so teaching the engine a new coefficient backend is a
+ * matter of implementing it as an `aring`, adding a
+ * `ConcreteVectorArithmetic<...>` specialisation, threading the
+ * new type into `CVA_Type`, and exposing construction through
+ * `interface/aring.h`.
  *
  * @see aring.hpp
  * @see aring-glue.hpp
