@@ -1,3 +1,25 @@
+/**
+ * @file overflow-test.cpp
+ * @brief Standalone microbenchmark for the `safe::` primitives declared in `overflow.hpp`.
+ *
+ * Not part of the engine library --- a separately-compiled
+ * binary developers reach for when measuring the per-call cost
+ * of `safe::add`, `safe::mult`, `safe::sub`, and friends in the
+ * single-digit-nanosecond range. The `outer x inner` macros pin
+ * a fixed iteration budget, the test deliberately uses simple
+ * inputs so the compiler cannot fold the work away, and the
+ * preserved `#if 0` block records the developer's loop-overhead
+ * timings from a previous run (a single `x = 1` ran in 4.5ns,
+ * pair of assignments in 8.9ns, confirming that the bench's
+ * loop overhead is negligible relative to the safe-arithmetic
+ * call cost).
+ *
+ * Build with optimisation but no LTO so call sites stay
+ * distinct; no engine state is involved.
+ *
+ * @see overflow.hpp
+ */
+
 #define outer 20000
 #define inner 5000
 
