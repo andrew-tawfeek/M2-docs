@@ -1,6 +1,36 @@
 #ifndef _monoid_h_
 #  define _monoid_h_
 
+/**
+ * @file interface/monoid.h
+ * @brief Engine-boundary C API for constructing and inspecting `Monoid` objects.
+ *
+ * Declares the `extern "C"` entry points the M2 interpreter
+ * calls to build the monoid of monomials underneath every
+ * polynomial ring. `rawTrivialMonoid()` returns the cached
+ * single-instance trivial monoid; `rawMonoid(mo, deg_ring,
+ * names, degrees, heftvec)` is the workhorse constructor that
+ * takes a `MonomialOrdering`, a degree-monoid pointer
+ * (`deg_ring`), the variable names, a flat degree vector, and a
+ * heft vector, and returns a fresh `Monoid*` or null if the
+ * inputs are inconsistent. `rawMonoidNumberOfBlocks`,
+ * `rawMonoidHash`, `rawMonoidToString`, and the helper
+ * `to_degree_vector` cover the per-monoid read accessors the
+ * interpreter needs after construction.
+ *
+ * The `deg_t = int32_t` and `const_monomial` typedefs declared
+ * here are the engine-wide format for degree slots and packed
+ * monomials passed back through this surface. The recursive
+ * `deg_ring` argument is what makes multi-degrees expressible:
+ * the degrees of a `Monoid` live in another `Monoid`, with the
+ * trivial monoid as the base case --- M2 builds the chain by
+ * calling `rawMonoid` repeatedly.
+ *
+ * @see monoid.cpp
+ * @see monomial-ordering.h
+ * @see engine-includes.hpp
+ */
+
 #  include "engine-includes.hpp"
 
 // TODO: make this unnecessary
