@@ -5,25 +5,33 @@
  * @file newdelete.hpp
  * @brief `our_new_delete` --- per-class opt-in routing of `new` / `delete` through bdwgc.
  *
- * Declares the `our_new_delete` base class (plus the `our_new_gc`
- * variant) and the `gc_vector<T>` typedef. A class inheriting
- * from `our_new_delete` overrides `operator new` to call
- * `GC_malloc` and `operator delete` to be a no-op (Boehm GC
- * reclaims when the object becomes unreferenced), so every
- * `new Foo(...)` of a participating class lands on the GC heap
- * without any per-allocation glue at the call site. The
- * companion `gc_vector<T>` is `std::vector` parameterised by a
- * GC-aware allocator; it is the right choice whenever `T` holds
- * GC pointers and the vector itself either lives in a
- * `our_new_delete`-derived object or stays on the stack.
+ * Declares the `our_new_delete` base class, the
+ * destructor-firing `our_gc_cleanup` subclass, the `gc_vector<T>`
+ * alias for `std::vector<T, gc_allocator<T>>`, and the
+ * allocation macro family (`newitem` / `newarray` /
+ * `newarray_clear` plus their `_atomic` pointer-free variants,
+ * `GETMEM` / `GETMEM_ATOMIC`, `ARRAY_ON_STACK`, and `VECTOR(T)`
+ * as a legacy alias for `gc_vector<T>`). A class inheriting
+ * from `our_new_delete` gets `operator new` / `new[]` routed
+ * through the engine's `getmem` (a `GC_malloc` wrapper from
+ * `interface/m2-mem.h`) and `operator delete` / `delete[]`
+ * routed through `freemem`, so every `new Foo(...)` of a
+ * participating class lands on the GC heap without any
+ * per-allocation glue at the call site. `our_gc_cleanup` adds
+ * a `GC_REGISTER_FINALIZER_IGNORE_SELF` registration in its
+ * constructor and a `cleanup` trampoline that runs the C++
+ * destructor when the collector reclaims the object.
  *
- * The engine deliberately avoids globally overriding `operator
- * new` because mixed memory regimes are in play (FLINT, MPFR,
- * GMP, and `std::vector` buffers all bring their own
- * allocators); subclassing is the opt-in mechanism that lets
- * each class choose. Production engine code uses
- * `our_new_delete` as the standard base, with `stash` from
- * `mem.hpp` for size-class-uniform hot paths.
+ * `gc_vector<T>` is the right choice whenever `T` holds GC
+ * pointers and the vector itself either lives in a
+ * `our_new_delete`-derived object or stays on the stack. The
+ * engine deliberately avoids globally overriding `operator new`
+ * because mixed memory regimes are in play (FLINT, MPFR, GMP,
+ * and `std::vector` buffers all bring their own allocators);
+ * subclassing is the opt-in mechanism that lets each class
+ * choose. Production engine code uses `our_new_delete` as the
+ * standard base, with `stash` from `mem.hpp` for
+ * size-class-uniform hot paths.
  *
  * @see hash.hpp
  * @see mem.hpp
