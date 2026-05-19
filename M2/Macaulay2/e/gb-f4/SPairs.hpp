@@ -5,28 +5,33 @@
  * @brief `newf4::SPair` / `SPairSet` --- typed S-pair queue grouped by degree and S-pair flavour.
  *
  * Declares the per-pair record and the queue the refactored F4
- * uses to schedule the matrix it builds each degree. `SPair`
- * tags each entry with an `SPairType` --- `SPair` between two
- * basis elements, `Ring` between a basis element and a ring-
- * relation generator (for GB over a quotient), `Exterior` for
- * the `var * lead = 0` cancellations exterior algebras require,
- * or `Gen` for an original input still pending insertion --- and
- * carries the basis indices, the LCM's `MonomialIndex` into the
- * S-pair monomial hash table, and the cached degree of the LCM.
- * `SPairSet::updatePairs(basis, which)` is the workhorse: given
- * the newly added basis element, it produces every pair that
- * element generates (per its type), prunes by the standard
- * Buchberger / Faugère criteria, and inserts the survivors.
+ * will use to schedule the matrix it builds each degree. `SPair`
+ * tags each entry with an `SPairType` --- `Ring` (between a
+ * basis element and a ring-relation generator, for GB over a
+ * quotient), `Exterior` (the `var * lead = 0` cancellations
+ * exterior algebras require), `SPair` (between two basis
+ * elements), or `Gen` (an original input still pending
+ * insertion) --- and carries the basis indices `mFirst` /
+ * `mLast`, the LCM's `MonomialIndex mLCM` into the S-pair
+ * monomial hash table, the cached `MonomialInt mDegree` of the
+ * LCM, and a still-tentative `mQuotient` field flagged "we
+ * might not need" in the source.
  *
- * The interior storage is a `std::map<(degree, SPairType),
- * vector<SPair>>` so the driver can pop the next degree's work
- * in one chunk via `getNextDegree`, and so `Ring` / `Exterior`
- * pairs sort ahead of plain `SPair` / `Gen` pairs at the same
- * degree (the standard ordering of "lighter" reductions first).
- * The header is part of the long-running F4 refactor noted in
- * `TODO-refactor-f4`, so the surface continues to evolve --- in
- * particular the planned two-stage "pre-S-pair / S-pair" split
- * (sketched in the in-file comments) is not yet wired up.
+ * Storage is `std::map<std::pair<long, SPairType>,
+ * vector<SPair>> mSPairsByDegree` (the `long` is sugar degree),
+ * so the driver can pop the next degree's work in one chunk via
+ * `getNextDegree`, and so within each degree the `std::map`
+ * ordering puts `Ring` / `Exterior` ahead of `SPair` / `Gen`
+ * (the enum is declared in that order) --- the standard
+ * "lighter reductions first" pattern.
+ *
+ * This header is part of the long-running F4 refactor noted in
+ * `TODO-refactor-f4`. The companion `SPairs.cpp` is currently
+ * **empty**, so `updatePairs(basis, which)`,
+ * `getNextDegree()`, and the placeholder `SPairIterator {}`
+ * class are declared but have no bodies; the planned two-stage
+ * "pre-S-pair / S-pair" split sketched in the in-file
+ * brainstorming comments is still on the drawing board.
  *
  * @see Basis.hpp
  * @see MonomialView.hpp
