@@ -1,21 +1,27 @@
 /**
  * @file dmat-lu-zzp-ffpack.hpp
- * @brief Free-function interface (`namespace ffpackInterface`) routing `DMatZZpFFPACK` LU work into FFLAS-FFPACK.
+ * @brief `DMatLinAlg<ARingZZpFFPACK>` and the `ffpackInterface` namespace --- FFLAS-FFPACK-backed Z/p linear algebra.
  *
- * Declares the `ffpackInterface` namespace --- `rank`,
- * `determinant`, `rankProfile`, `solveLinear`, `inverse`, and
- * `nullSpace` over `DMatZZpFFPACK`. Each entry point delegates to
- * FFLAS-FFPACK, which represents Z/p entries as `double`s and
- * reinterprets the matrix as a `double` matrix so multiplications
- * dispatch into BLAS; the result is reduced modulo `p` afterwards.
- * For primes small enough that intermediate products fit in the
- * 53-bit mantissa (roughly `p <= 2^25` at typical matrix sizes)
- * this is by far the fastest dense Z/p path in the engine.
+ * Declares the `ffpackInterface` namespace whose free functions
+ * (`rank`, `determinant`, two `rankProfile` overloads,
+ * `solveLinear`, `inverse`, `nullSpace`) operate on
+ * `DMatZZpFFPACK` --- the declarations are here so callers
+ * include only this header, while the bodies live in
+ * `dmat.cpp` to keep the FFLAS-FFPACK include surface
+ * contained. Each entry point delegates to FFLAS-FFPACK, which
+ * represents Z/p entries as `double`s and reinterprets the
+ * matrix so multiplications dispatch into BLAS; the result is
+ * reduced modulo `p` afterwards. For primes whose intermediate
+ * products fit in the 53-bit mantissa (roughly `p <= 2^25` at
+ * typical matrix sizes), this is by far the fastest dense Z/p
+ * path in the engine.
  *
- * The functions live in this file as bare declarations because the
- * `DMatLinAlg<M2::ARingZZpFFPACK>` specialisation in `dmat-lu.hpp`
- * forwards through them while their definitions sit in `dmat.cpp`,
- * keeping the FFLAS-FFPACK include surface contained.
+ * The same file defines the `DMatLinAlg<M2::ARingZZpFFPACK>`
+ * specialisation: `rank` / `determinant` / `columnRankProfile`
+ * / `solve` / `solveInvertible` / `inverse` / `kernel` forward
+ * directly to `ffpackInterface`, while `matrixPLU` falls back
+ * to a generic `DMatLUinPlace<RingType>` + `LUUtil::setUpperLower`
+ * to split L and U (FFPACK does not return an "honest" LU).
  *
  * @see dmat-lu.hpp
  * @see dmat-lu-zzp-flint.hpp
