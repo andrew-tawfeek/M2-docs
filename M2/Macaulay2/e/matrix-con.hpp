@@ -1,6 +1,31 @@
 #ifndef matrixcon_hpp_
 #define matrixcon_hpp_
 
+/**
+ * @file matrix-con.hpp
+ * @brief `MatrixConstructor` --- the mutable builder that produces an immutable `Matrix`.
+ *
+ * Declares `MatrixConstructor`, the only `friend` of the
+ * private-constructor `Matrix` class. It holds the ring, target
+ * and source `FreeModule*`s, and a working `VECTOR(vec)` of
+ * columns, accumulating state with `set_column` and / or
+ * `append_column` before handing back a finished immutable
+ * `Matrix*` via `to_matrix()`. The `cols_frozen` flag tracks the
+ * two construction modes: when the caller supplies the source
+ * free module up front, modifications that would change the
+ * column count are forbidden; when the source starts unset, the
+ * builder grows it column-by-column and freezes it on completion.
+ *
+ * The split exists because `Matrix` is intentionally immutable
+ * --- shared safely across threads and used as a memoisation key
+ * --- but the engine still needs a place to accumulate column
+ * data before degree-compatibility checks. `matrix-con.hpp`
+ * provides exactly that scratch surface and nothing else.
+ *
+ * @see matrix.hpp
+ * @see freemod.hpp
+ */
+
 #include <vector>
 #include "ring.hpp"
 #include <utility>
