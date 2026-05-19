@@ -5,16 +5,22 @@
  * @file util.hpp
  * @brief Conversion helpers between M2 boundary types and standard C++ containers.
  *
- * Provides the small bidirectional converters every engine
- * boundary needs: `string_std_to_M2` / `string_M2_to_std`
- * marshal between `std::string` and `M2_string` (the engine's
- * length-prefixed string type), and the matching
- * `M2_arrayint_to_stdvector` / `stdvector_to_M2_arrayint` pair
- * convert between `std::vector<int>` and `M2_arrayint` so the
- * engine can use modern C++ containers internally while still
- * speaking the older C-style boundary types when crossing the
- * interpreter line. The helpers are header-inlined where
- * possible so the call sites stay free.
+ * Provides the bidirectional converters every engine boundary
+ * needs, all `inline` so call sites stay free. Strings:
+ * `string_std_to_M2` / `string_M2_to_std` marshal between
+ * `std::string` and `M2_string` (the engine's length-prefixed
+ * type). String arrays: `M2_ArrayString_to_stdvector` (in two
+ * overloads --- one filling a caller-supplied
+ * `std::vector<std::string>&`, one returning a fresh vector)
+ * and `stdvector_to_M2_ArrayString`. Integer arrays:
+ * `stdvector_to_M2_arrayint` is templated on the element type
+ * `T` (with overloads for both `std::vector<T>` and
+ * `gc_vector<T>`), `static_cast`-ing each entry to `int`; the
+ * inverse `M2_arrayint_to_stdvector<T>` produces a fresh
+ * `std::vector<T>`. A trailing templated
+ * `operator<<(std::ostream&, const std::vector<T>&)` overload
+ * provides a `[a b c ]`-style debug dump for any printable
+ * element type.
  *
  * @see interface/m2-types.h
  */
