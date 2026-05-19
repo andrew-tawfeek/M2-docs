@@ -23,11 +23,12 @@
  * bdwgc, and the diagnostic pragmas wrap FLINT's own warnings (not
  * engine code). `gmp-util.h`'s `mpz_reallocate_limbs` is the bridge
  * for passing an `fmpz` to code that wants an `mpz_t` without copying
- * limbs. This is the integer ring instantiated by
- * `ring.cpp::makeIntegerRing` (`new ConcreteRing<ARingZZ>`),
- * and the FLINT-backed dense linear algebra in
- * `dmat-zz-flint.hpp` is templated on it directly; the legacy
- * `ZZ.hpp` remains for un-migrated callers.
+ * limbs. M2's user-facing integer ring is still the legacy `RingZZ`
+ * (`ring.cpp::makeIntegerRing` returns `new RingZZ`), which holds a
+ * sibling `ARingZZGMP* coeffR`; `ARingZZ` is the type the FLINT-
+ * backed dense linear algebra in `dmat-zz-flint.hpp` is templated on
+ * (`DMat<ARingZZ>` calls FLINT's `fmpz_mat_*` routines directly via
+ * the alias `DMatZZ`).
  *
  * @see ZZ.hpp
  * @see aring-zz-gmp.hpp
