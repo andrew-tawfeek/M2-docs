@@ -3,6 +3,33 @@
 #ifndef _buffer_hpp_
 #define _buffer_hpp_
 
+/**
+ * @file buffer.hpp
+ * @brief Append-only GC-backed byte buffer used throughout the engine for text output.
+ *
+ * `buffer` is the lightweight text-output primitive shared by every
+ * engine `text_out`, error message, debug trace, and serialised
+ * value. Storage is a `char*` allocated under `our_new_delete` (so
+ * it lives on the Boehm GC heap and is freed automatically); when a
+ * write would exceed `_capacity` the buffer reallocates --- the old
+ * block becomes unreferenced and the collector reaps it, with no
+ * manual frees. The starting capacity is `BUFFER_INITIAL_CAPACITY =
+ * 100`.
+ *
+ * The class is preferred over `std::ostringstream` for three
+ * reasons: GC integration (the STL string would create a heap
+ * boundary the collector cannot follow), determinism (no
+ * locale-dependent number formatting --- numeric output goes through
+ * the engine's own `RingElement` printers), and performance (no
+ * stream-locking, no `streambuf` indirection). The header overloads
+ * `operator<<` for primitive types plus a marker `indent` struct
+ * that emits a run of spaces. Contents come back out via `c_str()`
+ * (the live buffer with a nul terminator) or `to_string()` (a
+ * copy).
+ *
+ * @see newdelete.hpp
+ */
+
 #include "newdelete.hpp"
 #include "engine-includes.hpp"
 #include <string>
