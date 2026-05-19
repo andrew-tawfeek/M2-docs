@@ -6,24 +6,30 @@
 
 /**
  * @file GF.hpp
- * @brief Legacy `Ring`-based Galois field with explicit log/exp tables.
+ * @brief Legacy `Ring`-based Galois field with explicit Zech-style lookup tables.
  *
- * `GF` is the engine's original Galois-field implementation, pre-dating
- * the `aring` refactor. It inherits from `Ring` directly (so arithmetic
- * goes through virtual dispatch) and stores tabulated `log` / `exp` /
- * Zech entries indexed by powers of a chosen primitive element of
- * `K^*`. Alongside the tables it keeps a pointer to the presenting
- * polynomial ring `(Z/p)[t]/f(t)` and the primitive `RingElement`, so
- * M2 code that needs to introspect the defining polynomial or
- * round-trip through it can still do so --- this is the main reason
- * the legacy class is retained.
+ * `GF` is the engine's original Galois-field implementation,
+ * pre-dating the `aring` refactor. It inherits from `Ring`
+ * directly (so arithmetic goes through virtual dispatch) and
+ * stores two `int` tables indexed by powers of a chosen
+ * primitive element: `_one_table[i]` is the log index of
+ * `alpha^i + 1` (i.e. the Zech logarithm), and
+ * `_from_int_table[a]` maps a `Z/p` residue `a` to its log
+ * index. Multiplication of non-zero elements becomes index
+ * addition mod `Q - 1`, addition reduces to one `_one_table`
+ * lookup. Alongside the tables the class keeps a pointer to the
+ * presenting polynomial ring `(Z/p)[t]/f(t)` and the primitive
+ * `RingElement`, so M2 code that needs to introspect the
+ * defining polynomial or round-trip through it can still do so
+ * via `getMinimalPolynomial` / `get_rep`.
  *
- * Three modern siblings cover the same algebra with different backing
- * stores: `ARingGFM2` (native, CRTP-inlined via `SimpleARing`),
- * `ARingGFFlint` (FLINT Zech tables, small `q`), and `ARingGFFlintBig`
- * (FLINT `fq_nmod`, large `q`). New engine code prefers those; this
- * file is constructed only along the legacy paths still wired into
- * `m2/galois.m2`.
+ * Three modern siblings cover the same algebra with different
+ * backing stores: `ARingGFM2` (native, CRTP-inlined via
+ * `SimpleARing`), `ARingGFFlint` (FLINT Zech tables, small
+ * `q`), and `ARingGFFlintBig` (FLINT `fq_nmod`, large `q`).
+ * New engine code prefers those; the legacy class is reached
+ * through the `rawGaloisField` entry point in
+ * `interface/ring.cpp` (`GF::create(f)`).
  *
  * @see aring-m2-gf.hpp
  * @see aring-gf-flint.hpp
