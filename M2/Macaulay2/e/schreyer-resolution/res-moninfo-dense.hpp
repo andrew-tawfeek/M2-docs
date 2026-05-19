@@ -7,30 +7,40 @@
  * @file schreyer-resolution/res-moninfo-dense.hpp
  * @brief `ResMonoidDense` --- dense exponent-vector implementation of the resolution monoid.
  *
- * Declares the implementation `res-moninfo.hpp` picks as the
- * production `ResMonoid`. Each monomial is encoded as
- * `[hash, component, weight_1, ..., weight_r, exp_1, ...,
- * exp_nvars]` where the exponent slots are always present
- * regardless of which variables actually appear --- favouring
- * `O(1)` access and `memcmp`-style comparison over compactness.
- * Hashing uses a per-variable precomputed random word from
- * `hashfcn`, ANDed with `mask` to fit the engine-wide
- * `res_monomial_word`; weight slots front-load the comparison
- * with cached degree contributions so order tests can short-
- * circuit before walking the exponent suffix. Skew-commutative
- * variables are handled through the inherited `SkewMultiplication`
- * helper so `mult(a, b, result)` accounts for the appropriate
- * sign.
+ * Declares the implementation `res-moninfo.hpp` currently picks
+ * as the production `ResMonoid`. Each monomial is encoded as
+ * `[hash, component, weight_1, ..., weight_nweights, exp_0, ...,
+ * exp_{nvars-1}]` with `firstvar = 2 + nweights` and a fixed
+ * `nslots` total, so the slot count is the same for every
+ * monomial regardless of which variables actually appear ---
+ * favouring `O(1)` access and short-walk comparison over
+ * compactness. Hashing is the additive Steel trick:
+ * `from_expvector` stores `hash(m) = sum_i hashfcn[i] * e_i`
+ * (with `hashfcn` a per-variable precomputed random word), so
+ * `hash(m*n) = hash(m) + hash(n)` and `mult` updates the hash
+ * by a single add. The class-level `mask` is **not** part of
+ * the hash --- it is used only by `check_monomial` to detect
+ * overflow by AND-ing it against each slot. Weight slots
+ * front-load the comparison with cached degree contributions,
+ * so order tests can short-circuit before walking the exponent
+ * suffix. `mult(a, b, result)` is commutative: skew handling
+ * lives separately in `skew_vars` / `skew_mult_sign`, which
+ * take a `SkewMultiplication*` by parameter --- the class does
+ * not own or inherit one.
  *
- * Wins for rings with few variables or dense exponents (cache-
- * friendly inner loops, predictable layout); the sparse twin
- * `res-moninfo-sparse.hpp` wins on the opposite end. Both
- * expose identical `mult` / `divide` / `monomial_size` /
- * `compare_grevlex` / `compare_schreyer` / `to_expvector`
- * surfaces, which is what lets `res-moninfo.hpp` swap
- * implementations with a single typedef edit. The per-call
- * `ncalls_*` counters at the bottom of the class are the
- * engine's home-grown profiler hooks.
+ * `compare_schreyer(m, n, m0, n0, tie1, tie2)` is the live
+ * order test; the in-file `compare_grevlex` is currently `#if
+ * 0`-d out, so only the sparse twin offers a live grevlex
+ * comparator. Otherwise the two implementations share the same
+ * `mult` / `divide` / `monomial_size` / `to_expvector` /
+ * `from_expvector` / `from_varpower_monomial` surface ---
+ * which is what lets `res-moninfo.hpp` swap implementations
+ * with a single typedef edit. The dense layout wins for rings
+ * with few variables or dense exponents (cache-friendly inner
+ * loops, predictable layout); the sparse twin
+ * `res-moninfo-sparse.hpp` wins on the opposite end. The
+ * `mutable unsigned long ncalls_*` counters at the bottom of
+ * the class are the engine's home-grown profiler hooks.
  *
  * @see res-moninfo.hpp
  * @see res-moninfo-sparse.hpp
