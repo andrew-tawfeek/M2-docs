@@ -3,6 +3,33 @@
 #ifndef _det_hh_
 #  define _det_hh_
 
+/**
+ * @file det.hpp
+ * @brief Determinants and minors of `Matrix` values via Bareiss, cofactor, or dynamic-programming strategies.
+ *
+ * Declares `DetComputation` and the three integer strategy
+ * constants the caller selects between: `DET_BAREISS`,
+ * `DET_COFACTOR`, and `DET_DYNAMIC`. Bareiss is the fraction-free
+ * Gaussian variant --- preserves integer pivots through cancellation
+ * and is the right choice for matrices over `ZZ` or integer
+ * polynomial rings because no `frac` field is required and
+ * coefficient growth stays bounded. Cofactor is Laplace expansion
+ * with per-submatrix row/column selection along the densest-zero
+ * line; it dominates on very sparse matrices where most cofactors
+ * vanish. Dynamic is the memoised variant: it caches submatrix
+ * minors so that requests for many minors of varied sizes share
+ * work. The user-facing `det` / `minors` functions in
+ * `m2/matrix2.m2` map their `Strategy =>` option onto these three.
+ *
+ * Entry points operate on a `Matrix` and return either a
+ * `RingElement` (the determinant of a square submatrix) or a
+ * `Matrix` of minors. Regression coverage of the three strategies
+ * lives in `unit-tests/`.
+ *
+ * @see matrix.hpp
+ * @see matrix-con.hpp
+ */
+
 #  include "matrix.hpp"
 #  include "matrix-con.hpp"
 #  include <utility>
