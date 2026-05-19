@@ -5,27 +5,42 @@
 
 /**
  * @file schreyer-resolution/res-f4.hpp
- * @brief F4-style matrix-reduction worker over a `SchreyerFrame`.
+ * @brief `F4Res` --- F4-style matrix-reduction worker over a `SchreyerFrame`.
  *
  * Declares the per-cell algorithm class `F4ResComputation`
  * invokes to advance the resolution one `(level, degree)` step
  * at a time. `construct(lev, degree)` reads the frame's pending
- * syzygies, collects matching tail-reducers from lower levels
- * and earlier degrees, builds a Macaulay matrix whose rows are
- * those payloads and whose columns are the union of their
- * monomials sorted by Schreyer order, row-reduces via the
- * shared `VectorArithmetic` backend, and writes the new
- * echelon-row syzygies back into the frame.
- * `processMonomialProduct`, `findDivisor`, and the `Row`
- * payload (`mLeadTerm` / `mComponents` / `mCoeffs`) wire the
- * column-enumeration and reducer-selection plumbing.
+ * syzygies into one matrix and collects the matching
+ * tail-reducers from lower levels and earlier degrees into a
+ * second matrix sharing the same columns; the column set is
+ * the union of monomials at level `lev - 2` reachable from
+ * those rows, sorted by Schreyer order, and the hashtable
+ * `MonomialHashTable<ResMonomialsWithComponent> mHashTable`
+ * keys those monomials back to their column index.
+ * `gaussReduce` row-reduces the S-pair matrix against the
+ * reducer matrix via the shared `VectorArithmetic` backend,
+ * and the resulting echelon rows are written back into the
+ * frame as new syzygies. The matrices live in two parallel
+ * `std::vector<Row>` --- `mReducers` (the square reducer
+ * matrix) and `mSPairs` (one row per element at this
+ * `(lev, degree)`) --- where each `Row` carries
+ * `mLeadTerm` / `mComponents` / `mCoeffs`. Monomials at this
+ * cell live in `MonomialMemorySpace mMonomSpace2` and are
+ * freed in bulk between cells.
  *
- * `F4Res` holds a reference to its `SchreyerFrame` rather than
- * owning it, so the frame outlives any single reduction and the
- * parallel `DependencyGraph` scheduler can spin up an `F4Res`
- * per cell. `friend class ResColumnsSorter` gives the column-
- * sorting helper access to the inner column-index map. Sibling
- * of `f4/f4.hpp`.
+ * Construction calls `processMonomialProduct` (creates or
+ * looks up a column for `m*n` with skew-sign tracking) and
+ * `findDivisor` (which reducer covers a given monomial) before
+ * `loadRow` / `reorderColumns` / `makeMatrix` / `gaussReduce`
+ * snap the matrix together. `F4Res` holds a reference to its
+ * `SchreyerFrame` rather than owning it, so the frame outlives
+ * any single reduction; `friend class ResColumnsSorter` gives
+ * the column-sorting helper access to the column-index
+ * map. `construct(lev, degree)` requires that both
+ * `(lev, degree-1)` and `(lev-1, degree-1)` are already
+ * complete, **but not** `(lev-1, degree)` (per the in-source
+ * NOTE comment). Sibling of `f4/f4.hpp` for the commutative
+ * F4.
  *
  * @see res-schreyer-frame.hpp
  * @see res-f4-computation.hpp
