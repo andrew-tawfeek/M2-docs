@@ -18,11 +18,10 @@
  * Companion files `ARingZZpTest.cpp`, `ARingQQGmpTest.cpp`, and
  * `ARingQQFlintTest.cpp` (covered by the same
  * `file-aring-zz-tests` markdown) follow the same template
- * against `Z/p`, GMP rationals, and FLINT rationals. Cross-
+ * against `Z/p`, GMP rationals, and FLINT rationals; cross-
  * backend agreement between the GMP and FLINT rational suites
- * has historically caught real regressions (a `fmpq_canonicalise`
- * sign bug, a GMP `invert(0)` rounding subtlety, a `set_from_long`
- * off-by-one at `INT_MIN`).
+ * is the standard regression guard when either backend ships
+ * an update.
  *
  * @see ARingTest.hpp
  * @see aring-zz-flint.hpp
