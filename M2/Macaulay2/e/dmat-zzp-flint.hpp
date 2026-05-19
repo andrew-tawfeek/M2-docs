@@ -5,24 +5,28 @@
 
 /**
  * @file dmat-zzp-flint.hpp
- * @brief `DMat<M2::ARingZZpFlint>` --- dense `Z/p` matrices stored in FLINT `nmod_mat_t`.
+ * @brief `DMat<M2::ARingZZpFlint>` --- dense `Z/p` matrices stored in a FLINT `nmod_mat_t`.
  *
- * Specialises the dense-matrix template for the FLINT-backed Z/p
- * aring. Entries live in a single `nmod_mat_t` --- an array of
- * `mp_limb_t` representatives in `[0, p)` plus the precomputed
- * reciprocal FLINT uses for Barrett-style fast modular reduction.
- * Arithmetic, rank, LU, determinant, inverse, and null-space all
- * dispatch into `nmod_mat_*` so the inner loop never performs an
- * integer division and the heavy linear-algebra work runs in
- * FLINT's cache-aware blocked routines.
+ * Specialises the dense-matrix template for the FLINT-backed
+ * `Z/p` aring. Storage is a single `nmod_mat_t mArray` (an
+ * `mp_limb_t` buffer of representatives in `[0, p)` carried
+ * alongside the precomputed-reciprocal modulus FLINT uses for
+ * fast reduction). The class exposes the standard `DMat`
+ * surface (`ring()`, `numRows`, `numColumns`, `entry(r, c)` via
+ * `nmod_mat_entry`, `resize`, `swap`) plus a raw `nmod_mat()`
+ * accessor and the `unsafeArray()` direct-pointer hook for
+ * consumers that need to hand the underlying buffer back to
+ * FLINT.
  *
- * The engine ships a sibling FFLAS-FFPACK specialisation in
- * `dmat-zzp-ffpack.hpp`. Dispatch (in `mat-linalg.hpp`) picks
- * between them by matrix shape and prime size: small matrices with
- * larger primes prefer FLINT because BLAS startup cost dominates;
- * larger matrices with small primes prefer FFPACK because it can
- * reinterpret entries as `double` and dispatch into BLAS. As with
- * every FLINT-backed header, `M2/gc-include.h` precedes the FLINT
+ * Arithmetic (`nmod_mat_add` / `nmod_mat_mul` / `nmod_mat_rank`
+ * / `nmod_mat_solve` / `nmod_mat_inv` / `nmod_mat_nullspace`,
+ * ...) is *not* declared in this file --- `mat-linalg.hpp` and
+ * the LU specialisations call those routines directly through
+ * `nmod_mat()` once they have a matrix in this form. A sibling
+ * FFLAS-FFPACK specialisation for `ARingZZpFFPACK` lives
+ * alongside in the `mat-linalg.hpp` machinery for primes that
+ * fit FFPACK's BLAS-via-`double` strategy. As with every
+ * FLINT-backed header, `M2/gc-include.h` precedes the FLINT
  * include so allocations route through bdwgc.
  *
  * @see dmat.hpp
