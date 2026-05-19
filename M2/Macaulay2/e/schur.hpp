@@ -7,26 +7,29 @@
  * @file schur.hpp
  * @brief `SchurRing` --- symmetric-function ring with Schur-basis multiplication via Littlewood-Richardson.
  *
- * Declares `SchurRing`, the `Ring` subclass whose elements are
- * Z-linear combinations of Schur functions `s_lambda` indexed
- * by partitions, plus the supporting `tableau` scratch struct
- * (partition vector `p`, contained partition `lambda`, and the
- * `(xloc, yloc)` coordinate arrays describing the cells of a
- * skew shape). Multiplication computes the structure constants
+ * Declares `SchurRing`, a `PolyRing` subclass whose elements
+ * are Z-linear combinations of Schur functions `s_lambda`
+ * indexed by partitions, plus the supporting `tableau` class
+ * (partition vector `p`, partition vector `lambda`, and
+ * `(xloc, yloc)` coordinate arrays giving the horizontal /
+ * vertical positions of each cell in the skew shape).
+ * Multiplication computes the structure constants
  * `s_lambda * s_mu = sum_nu c_{lambda mu}^nu s_nu` --- the
- * Littlewood-Richardson coefficients --- by enumerating
- * LR skew tableaux of shape `nu / lambda` and content `mu`,
- * which is the structural reason a `tableau` instance is the
- * inner-loop datum.
+ * Littlewood-Richardson coefficients --- via the private
+ * `skew_schur(lambda, p)` and `SM()` recursion, with reusable
+ * `_SMtab` / `_SMfilled` scratch tableaux kept on the ring so
+ * `mult_monomials` does not re-allocate on every product.
  *
  * `SCHUR_MAX_WT = 100` caps the partition weight the engine
- * will multiply (a tractability bound, raisable in principle);
- * `LARGE_NUMBER = 32000` is the sentinel marking empty slots in
- * tableau scratch space. The ring is consumed by combinatorial
- * Schubert-calculus and symmetric-function packages.
+ * will multiply; `LARGE_NUMBER = 32000` is the sentinel marking
+ * empty slots in the tableau scratch space. `schur2.hpp` is a
+ * parallel symmetric-function ring built on a different basis,
+ * and `schur-poly-heap.hpp` is the bucketed-collector helper
+ * for assembling large sums of Schur monomials.
  *
  * @see poly.hpp
- * @see ring.hpp
+ * @see schur2.hpp
+ * @see schur-poly-heap.hpp
  */
 
 #include <vector>
