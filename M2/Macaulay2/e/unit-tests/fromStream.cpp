@@ -3,6 +3,32 @@
 // 'i' is incremented to directly past the part read
 // an exception is raised on bad input?
 
+/**
+ * @file unit-tests/fromStream.cpp
+ * @brief Per-ring `fromStream` specialisations shared across the legacy `Ring*Test.cpp` suite.
+ *
+ * Centralises the explicit-instantiation definitions of the
+ * `fromStream<T>(istream, R, result)` family declared in
+ * `RingTest.hpp`. Each specialisation reads one element off an
+ * input stream and stores it into a caller-provided
+ * pre-`init`ed slot --- e.g. `fromStream<M2::ARingZZp>` reads an
+ * `int` and calls `R.set_from_long`, while
+ * `fromStream<Z_mod>` skips whitespace, accepts the optional
+ * sign, and then parses the digits before handing back a
+ * `ring_elem`. The unified file keeps the parser quirks in one
+ * place so individual test files stay focused on test logic.
+ *
+ * Companion to `RingTest.hpp` (which declares the templates),
+ * `M2-cpp-replacement.cpp` (stub for `system_interrupted`), and
+ * `util-polyring-creation.{cpp,hpp}` (one-line ring builders)
+ * under the same `file-test-harness` markdown family.
+ *
+ * @see RingTest.hpp
+ * @see aring-zzp.hpp
+ * @see ZZp.hpp
+ * @see RingZZpTest.cpp
+ */
+
 #include "RingTest.hpp"
 #include "aring-zzp.hpp"
 #include "ZZp.hpp"
