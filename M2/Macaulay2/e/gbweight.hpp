@@ -9,22 +9,23 @@
  *
  * Declares `GBWeight`, the helper that GB code consults to assign
  * a heuristic weight to a `gbvector` or to a single
- * `(monomial, component)` pair. Construction takes a weight
- * vector `wts_`, the ambient `FreeModule` and `GBRing`, and a
- * `use_component_degrees_` toggle that, when true, adds the
- * component's stored degree to the result. Callers use the
- * returned weight as a sort key on S-pairs (degree-first or
- * sugar-first orderings, custom weightings asked for at the M2
- * level, ...) --- `GBWeight` itself does not choose a policy, it
- * computes whichever weighting was configured.
+ * `(monomial, component)` pair. The constructor takes a
+ * `FreeModule` and an `M2_arrayint` weight vector; the `GBRing`
+ * pointer and the `use_component_degrees_` flag are derived
+ * internally. If no weights are supplied, `GBWeight` falls back
+ * to the variables' primary degrees (subbed with `1` where the
+ * primary degree is non-positive) and enables component-degree
+ * compensation; an explicit weight vector disables that flag.
+ * `GBWeight` itself does not choose an S-pair selection policy
+ * --- callers use the returned weight as the sort key.
  *
- * The implementation is intentionally minimal because the
- * functions are called millions of times per GB run: a packed
- * dot product of the exponent vector with `wts_`, plus a
- * constant-time per-component lookup when component degrees are
- * enabled. `gbvector_weight` also reports the maximum component
- * degree it encountered along the way so the S-pair queue can
- * use it directly.
+ * The implementation is a packed dot product of the exponent
+ * vector with `wts_`, plus a constant-time per-component lookup
+ * when component degrees are enabled. The two-argument
+ * `gbvector_weight(f, lead_term_weight)` returns the maximum
+ * weight over all terms of `f` and writes the lead-term weight
+ * to its out-parameter, letting an S-pair queue snapshot both
+ * numbers in one walk.
  *
  * @see gbring.hpp
  * @see spair.hpp
