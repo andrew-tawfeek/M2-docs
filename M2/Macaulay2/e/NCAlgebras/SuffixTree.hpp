@@ -1,6 +1,35 @@
 #ifndef _suffix_tree_hpp_
 #define _suffix_tree_hpp_
 
+/**
+ * @file NCAlgebras/SuffixTree.hpp
+ * @brief `SuffixTreeNode` --- experimental generalised suffix tree for non-commutative leading-word lookup.
+ *
+ * Declares the alternative leading-word index for `NCGroebner`
+ * and `NCF4`. A generalised suffix tree of the basis's leading
+ * words gives `O(|target|)` subword and substring queries
+ * regardless of basis size, where the production `WordTable`
+ * pays `O(|target| * |basis|)`. Each node stores an arc label
+ * (`Label = std::vector<int>` of variable indices), the
+ * cumulative label from the root, child pointers keyed by next-
+ * int (`std::map<Label, SuffixTreeNode*>`), Ukkonen's suffix
+ * link, and the `mIsFullPattern` / `mPatternLeafCount` flags
+ * that mark whether a node terminates one of the inserted
+ * basis words and how many descendant leaves it covers.
+ *
+ * The `Overlap` tuple is shared with `WordTable` so consumers
+ * see the same return type whichever index is active.
+ * `NCGroebner.hpp` is staged to swap the two indices via
+ * toggled `using` declarations; in production the `WordTable`
+ * path is used, with this header benchmarked on dense NC inputs
+ * where its constant-factor edge tends to win.
+ *
+ * @see Word.hpp
+ * @see WordTable.hpp
+ * @see NCGroebner.hpp
+ * @see NCF4.hpp
+ */
+
 #include "NCAlgebras/Word.hpp"  // for Word
 
 #include <iostream>  // for ostream
