@@ -5,24 +5,26 @@
  * @file overflow.hpp
  * @brief Overflow-checked integer arithmetic for monomial exponents and degree sums.
  *
- * Provides the `safe::` arithmetic helpers (`add`, `mult`,
- * `sub`, `sub_pos`, ...) that every monomial-arithmetic path in
- * the engine routes through. Exponents are stored as `int32_t`;
- * a silent wraparound in `e + e'` would not just produce a wrong
- * answer but would put the result *below* either input, breaking
- * the monomial-order invariant and potentially making a Groebner
- * basis loop forever or reduce to a non-zero canonical form.
- * Each helper performs the operation, checks the bound, and
- * throws `exc::overflow_exception` when the bound fails.
+ * Provides the `safe::` arithmetic helpers (`add`, `add_to`,
+ * `sub`, `sub_from`, `sub_pos`, `pos_add`) and the bit-width
+ * predicates `fits_7` / `fits_15` / ... that monomial-arithmetic
+ * paths in the engine route through. Exponents are stored as
+ * `int32_t`; a silent wraparound in `e + e'` would not just
+ * produce a wrong answer but would put the result *below* either
+ * input, breaking the monomial-order invariant and potentially
+ * making a Groebner basis loop forever or reduce to a non-zero
+ * canonical form. Each helper performs the operation, checks
+ * the bound, and on failure calls `safe::ov(msg)` --- which
+ * (in `overflow.cpp`) throws `exc::overflow_exception`.
  *
- * The header detects `__has_builtin(__builtin_add_overflow)` and
- * friends to use the compiler intrinsics where available (one
- * branch on the carry flag); the fallback path is a couple of
- * comparisons. Heavy callers include every `aring-*`, every GB
- * variant, the resolution engines, `monoid.hpp`, `imonorder.hpp`,
- * `montable.hpp`, `gbring.hpp`, and the skew / weyl / solvable
- * algebra layers --- essentially every file that does monomial
- * arithmetic.
+ * The bound checks are bit-pattern tests against a high-bit
+ * mask (e.g. `((uint32_t)x & ~0x7f) != 0`), not compiler
+ * overflow intrinsics; the header pulls in `__has_builtin` only
+ * to wire `expect_false` / `expect_true` macros around the bad
+ * path via `__builtin_expect`, so the success path stays
+ * branch-predicted. Callers include the `aring-*` family, the
+ * GB variants, the resolution engines, and the monoid /
+ * monomial-order machinery.
  *
  * @see exceptions.hpp
  * @see imonorder.hpp
