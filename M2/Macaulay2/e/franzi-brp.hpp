@@ -1,5 +1,32 @@
 /* This code written by Franziska Hinkelmann is in the public domain */
 
+/**
+ * @file franzi-brp.hpp
+ * @brief `brMonomial` --- bit-packed Boolean-ring monomials for the Hinkelmann GB engine.
+ *
+ * Declares `brMonomial = unsigned long`, the bit-set encoding of a
+ * monomial in `F_2[x_1, ..., x_n] / (x_i^2 - x_i)`: bit `i` is set
+ * iff variable `x_i` appears. Multiplication of monomials is
+ * bitwise OR (idempotent exponents), coprimality is `(a & b) == 0`,
+ * and S-polynomial reduction works by XOR of supporting bit-sets,
+ * so each monomial op reduces to one or two machine instructions.
+ * The encoding caps the engine at 64 variables, which is plenty
+ * for the cryptographic and coding-theory inputs that motivate it.
+ *
+ * The companion files in the `franzi-*` family (`franzi-brp.cpp`,
+ * `franzi-brp-test.cpp`, `franzi-gb.cpp`, `franzi-interface.cpp`)
+ * carry the polynomial representation, a standalone test driver,
+ * the Buchberger-style GB algorithm, and the M2 adapter that
+ * plugs the engine into the standard `GBComputation` dispatcher.
+ * The `// addition is not const` banner in this header is
+ * deliberate: `+=` mutates the left operand for speed, which is a
+ * pitfall for the engine's `const`-careful code elsewhere. The
+ * sibling `bibasis/` directory offers an alternative
+ * (variable-unbounded, Janet-basis) Boolean GB engine.
+ *
+ * @see comp-gb.hpp
+ */
+
 #include <set>
 #include <vector>
 #include <iostream>
