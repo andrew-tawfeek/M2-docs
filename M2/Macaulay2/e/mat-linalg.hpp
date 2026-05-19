@@ -3,6 +3,32 @@
 #ifndef _mat_linalg_hpp_
 #define _mat_linalg_hpp_
 
+/**
+ * @file mat-linalg.hpp
+ * @brief Templated `DMat<R>` linear algebra: `LU`, `rank`, `determinant`, `solve`, `inverse`, `nullSpace`.
+ *
+ * Declares the dense linear-algebra surface as free function
+ * templates over `RT` (the aring coefficient type) so a single
+ * generic body covers every supported ring. Specialisations route
+ * to the fastest available back end at compile time: FFLAS-FFPACK
+ * for small Z/p, FLINT `nmod_mat` / `fmpz_mat` / `fmpq_mat` for
+ * medium Z/p, ZZ, and QQ work, LAPACK for `RR` / `CC`, and a
+ * generic Bareiss / fraction-free fallback otherwise. The header
+ * pulls in every aring it specialises on, plus convenience type
+ * aliases (`DMatZZp`, `DMatGFM2`, `DMatZZpFFPACK`, ...) for
+ * downstream consumers.
+ *
+ * This file is what `MutableMatrix` (`mat.hpp`) forwards into for
+ * the heavy operations and is the natural complement to the
+ * arithmetic primitives in `mat-arith.hpp` and the elementary
+ * row / column operations in `mat-elem-ops.hpp`.
+ *
+ * @see dmat.hpp
+ * @see mat-arith.hpp
+ * @see mat-elem-ops.hpp
+ * @see lapack.hpp
+ */
+
 
 /**
  * \ingroup matrices
