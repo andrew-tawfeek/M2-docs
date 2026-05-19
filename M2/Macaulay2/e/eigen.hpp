@@ -3,30 +3,32 @@
 
 /**
  * @file eigen.hpp
- * @brief `EigenM2` namespace --- SVD / eigenvalues / eigenvectors over `DMat<R>` for `RR`, `CC`, `RRR`, `CCC`.
+ * @brief `EigenM2` namespace --- Eigen3-backed SVD / eigenvalues / eigenvectors / least-squares for `DMat<R>` over `RR`, `CC`, `RRR`, `CCC`.
  *
  * Declares aliases `LMatrixRR`, `LMatrixCC`, `LMatrixRRR`,
  * `LMatrixCCC` over the four `DMat<R>` instantiations the engine
  * cares about for numerical linear algebra, then a namespace
  * `EigenM2` of free-function wrappers --- `SVD`,
- * `SVD_divide_conquer`, `eigenvalues`, `eigenvectors`, ... ---
- * with LAPACK-style signatures that operate on those `DMat`
- * pointers. Each routine returns `bool` so the engine can surface
- * convergence failures to the M2 user.
+ * `SVD_divide_conquer`, `eigenvalues`, `eigenvalues_hermitian`,
+ * `eigenvectors`, `eigenvectors_hermitian`, `least_squares` ---
+ * that operate on those `DMat` pointers. Each routine returns
+ * `bool` so the engine can surface convergence failures to the
+ * M2 user.
  *
- * The actual numerical work is split: hardware-precision `RR` /
- * `CC` matrices go through LAPACK (`lapack.hpp`); MPFR-precision
- * `RRR` / `CCC` matrices route through the Eigen3 template library,
- * which supports arbitrary scalar types at the cost of speed.
- * Interval rings `RRi` / `CCi` are not yet plumbed through here.
- * NAG (`NAG.hpp`) reaches into these routines for Jacobian
- * eigenvalue queries during continuation, and the M2-side `SVD`,
- * `eigenvalues`, `eigenvectors`, `LUdecomposition` built-ins
- * forward through them.
+ * All implementations live in `eigen.cpp` and call into the
+ * Eigen3 template library (Eigen's `JacobiSVD` / `BDCSVD` /
+ * `EigenSolver` / `SelfAdjointEigenSolver`, plus mpreal-backed
+ * scalars from `<unsupported/Eigen/MPRealSupport>` for the
+ * MPFR-precision `RRR` / `CCC` cases). The `RR` / `CC`
+ * implementations are guarded by `#ifdef NO_LAPACK`: by default
+ * `mat-linalg.hpp` skips this header and routes hardware-precision
+ * SVD / eigen queries to `Lapack::` directly; the `RRR` / `CCC`
+ * overloads are always built. Interval rings `RRi` / `CCi` are
+ * not yet plumbed through here.
  *
  * @see lapack.hpp
  * @see dmat.hpp
- * @see NAG.hpp
+ * @see mat-linalg.hpp
  */
 
 #include "dmat.hpp"
