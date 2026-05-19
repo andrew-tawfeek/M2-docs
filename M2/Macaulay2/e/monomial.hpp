@@ -3,6 +3,32 @@
 #ifndef _monomial_hh_
 #define _monomial_hh_
 
+/**
+ * @file monomial.hpp
+ * @brief `EngineMonomial` --- opaque single-monomial value type used at the engine boundary.
+ *
+ * Declares `EngineMonomial`, the `EngineObject` subclass that
+ * stores one monomial as a varpower-encoded `gc_vector<int>` in
+ * the standard `[2n + 1, v_1, e_1, ..., v_n, e_n]` layout
+ * inherited from `ExponentList.hpp`. Constructors accept a
+ * variable/exponent pair, a varpower array, an `M2_arrayint`, or
+ * a `std::vector<int>`; the no-argument constructor is private
+ * because it leaves the value invalid until a varpower routine
+ * populates it. The class is the M2-level `Monomial` --- a
+ * different beast from the encoded monomials packed into a
+ * `Monoid`'s inner-loop layout and from the `ExponentVector` /
+ * `ExponentList` storage layer.
+ *
+ * The header's long-standing reversal note matters in the
+ * non-commutative case: the M2 front-end reverses the
+ * variable-power list before crossing the boundary, and engine
+ * code consuming `EngineMonomial` in the NC setting must
+ * un-reverse before computing word products.
+ *
+ * @see ExponentList.hpp
+ * @see monoid.hpp
+ */
+
 #include <vector>
 
 #include "ExponentList.hpp"
