@@ -14,14 +14,15 @@
  * @file bibasis/qset.hpp
  * @brief `BIBasis::QSet<MonomType>` --- prolongation work-queue sorted by leading monomial.
  *
- * Declares and defines the pending-work container that drives the
- * involutive engine's outer loop. Holds an owned
- * `std::list<Triple*>` kept sorted descending by leading monomial
- * via `Triple::Compare`, so `Get()` always returns the heaviest
- * pending prolongation --- the standard normal-strategy choice
- * that keeps the working basis small. `Insert(...)` accepts
- * either a list of polynomials (wrapping each in a fresh
- * `Triple`) or pre-built triples and merges them into the sort.
+ * Declares and defines the pending-work container that drives
+ * the involutive engine's outer loop. Holds an owned
+ * `std::list<Triple*>` kept sorted by leading monomial via
+ * `Triple::Compare`, with `Get()` popping the back of the list
+ * to return the lightest-LCM pending prolongation --- the
+ * standard normal-strategy choice that keeps the working basis
+ * small. `Insert(...)` accepts either a list of polynomials
+ * (wrapping each in a fresh `Triple`) or pre-built triples and
+ * merges them into the sort via `std::list::merge`.
  * `DeleteDescendants(ancestor)` walks the queue and discards
  * every triple whose recorded `Ancestor` matches; the driver
  * calls this whenever a new basis element makes a chunk of
