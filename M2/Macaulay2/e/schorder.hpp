@@ -11,19 +11,26 @@
  * lives on a `FreeModule` and supplies the data the engine
  * needs to compare two basis elements under a Schreyer order.
  * For each of the `_rank` basis elements the structure stores
- * one `(compare_num, encoded monomial)` entry, packed flatly in
- * `_order` (`_nslots = monomial_size + 1`) for cache-friendly
- * iteration. Comparing `e_i * m` against `e_j * m'` applies the
- * ambient monomial order to `m_i * m` vs `m_j * m'` and
- * tiebreaks by `compare_num`; the engine's encoded-monomial
- * arithmetic never has to unpack to do it.
+ * one `(compare_num, encoded monomial)` entry, packed flatly
+ * in `_order` with `_nslots = monoid->monomial_size() + 1`
+ * ints per entry --- `compare_num(i)` reads slot `i * _nslots`
+ * and `base_monom(i)` returns the monomial pointer at slot
+ * `i * _nslots + 1`. `schreyer_compare` /
+ * `schreyer_compare_encoded` use these to compare
+ * `(m, m_comp)` against `(n, n_comp)` by applying the ambient
+ * monomial order to `base * m` vs `base * n` and tiebreaking
+ * by `compare_num`; the helpers `schreyer_up` and
+ * `schreyer_down` multiply / divide a monomial by the
+ * inducing base monomial in place.
  *
- * A free module starts without a Schreyer order. `Eschreyer.cpp`
- * and the modern `schreyer-resolution/` install one when the
- * module is the target of a Schreyer syzygy step; classical GB
- * algorithms install one when the user opts in via
- * `Strategy =>`. Once installed, the order persists for the
- * lifetime of the free module.
+ * A free module starts without a Schreyer order;
+ * `Eschreyer.cpp` and the modern `schreyer-resolution/`
+ * install one (via `create(Matrix*)` / `create(GBMatrix*)`)
+ * when the module is the target of a Schreyer syzygy step.
+ * The standard transformations `sub_space`, `direct_sum`,
+ * `tensor`, `exterior`, `symm`, and `append_order` return a
+ * fresh `SchreyerOrder` matching the corresponding `FreeModule`
+ * operations.
  *
  * @see freemod.hpp
  * @see monoid.hpp
