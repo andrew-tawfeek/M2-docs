@@ -7,28 +7,31 @@
  * @file aring-CC.hpp
  * @brief `M2::ARingCC` --- machine-precision complex numbers (pair of `double`s).
  *
- * `ARingCC` is the complex sibling of `ARingRR` in the aring family:
- * a `SimpleARing<ARingCC>` specialisation whose element type is a
- * struct of two `double`s and whose arithmetic uses hardware
- * floating-point throughout --- no MPFR, no allocation. Addition,
- * multiplication, reciprocal, modulus, and complex conjugation use
- * the standard formulas on the real and imaginary parts; random
- * values come from `interface/random.h`'s `randomDouble()` applied
- * componentwise.
+ * `ARingCC` is the complex sibling of `ARingRR` in the aring
+ * family: a `SimpleARing<ARingCC>` specialisation whose element
+ * type is `cc_doubles_struct` (a `(re, im)` pair of `double`s).
+ * Hot-path arithmetic --- `add`, `subtract`, `mult`, `divide`,
+ * `invert`, modulus, complex conjugation --- runs as hardware
+ * floating-point on the real and imaginary parts; the only
+ * MPFR appearance is the `mpfr_get_d` down-conversion in the
+ * `set_from_BigReal` / `set_from_BigComplex` bridges. `random`
+ * applies `randomDouble()` from `interface/random.h`
+ * componentwise. The class also carries an `ARingRR mRR` and
+ * exposes it through `real_ring()` so callers can drop down to
+ * a real ring of matching precision.
  *
- * On top of the real-ring API it adds `conjugate`, `real`, `imag`,
- * `abs`, and `is_zero` (both components zero). The arbitrary-
- * precision siblings live in `aring-CCC.hpp` (MPFR) and
- * `aring-CCi.hpp` (Arb intervals); the dispatcher in `aring.hpp`
- * selects among them based on the user's precision option. Primary
- * consumer is the NAG path-tracker, which runs nearly all homotopy
- * continuation in this ring.
+ * On top of the real-ring API it adds `conjugate`, `real`,
+ * `imag`, and `abs`. The arbitrary-precision siblings live in
+ * `aring-CCC.hpp` (MPFR-backed) and `aring-CCi.hpp` (MPFI
+ * Cartesian-rectangle intervals); `IM2_Ring_CCC(prec)` in
+ * `interface/ring.cpp` is the M2-side factory --- it returns
+ * `ConcreteRing<ARingCC>` when `prec <= 53` and
+ * `ConcreteRing<ARingCCC>(prec)` otherwise.
  *
  * @see aring-RR.hpp
  * @see aring-CCC.hpp
  * @see aring-CCi.hpp
  * @see aring.hpp
- * @see NAG.hpp
  */
 
 #include "interface/gmp-util.h"  // for moveTo_gmpCC
