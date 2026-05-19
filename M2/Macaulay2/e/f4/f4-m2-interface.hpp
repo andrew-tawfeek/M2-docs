@@ -6,20 +6,29 @@
  * @brief `F4toM2Interface` --- static translators between engine `vec` / `Matrix` and F4's `GBF4Polynomial`.
  *
  * Declares the static-only `F4toM2Interface` namespace-class
- * that converts each direction across the F4 boundary:
- * `from_M2_vec` (and the matrix variant) packs an engine
- * `Matrix` column into a `GBF4Polynomial` for the F4 inner
- * loop; the inverse `to_M2_vec` unpacks F4 output back into the
- * engine's `vec` shape, and `poly_set_degrees` reads the
- * weight-system degree of an F4 polynomial for sugar tracking
- * and `DegreeLimit =>` accounting. Every method threads through
- * a `VectorArithmetic *` (the per-coefficient-ring fast path)
- * and a `MonomialInfo *` (the F4 packed-monomial layout) so the
- * helpers stay stateless.
+ * that converts each direction across the F4 boundary. Ingest
+ * side: `from_M2_vec` packs one engine `vec` into a single
+ * `GBF4Polynomial`, and `from_M2_matrix` walks the columns of
+ * an input `Matrix` and fills a `gb_array` of
+ * `GBF4Polynomial`s for the F4 generator list. Egress side:
+ * `to_M2_vec` unpacks one `GBF4Polynomial` back into an engine
+ * `vec`, `to_M2_matrix` produces a `Matrix` from a
+ * `gb_array` (used by the GB extraction path), and
+ * `to_M2_MutableMatrix` reconstructs a `MutableMatrix` directly
+ * from a Macaulay `coefficient_matrix` plus the generator and
+ * basis arrays (used by the debug / introspection path).
+ * `poly_set_degrees(VA, MI, wts, f, deg, alpha)` reads the
+ * weight-vector degree `deg` and the homogenising degree
+ * `alpha` of a packed polynomial for sugar / degree tracking
+ * inside `F4GB`.
  *
- * `f4-computation.hpp` reaches into these routines on every
- * call across the boundary, both when feeding the F4 engine and
- * when extracting its results.
+ * Every method threads through a `VectorArithmetic *` (the
+ * per-coefficient-ring fast path) and a `MonomialInfo *` (the
+ * F4 packed-monomial layout) so the helpers stay stateless.
+ * Both `f4-computation.cpp` (input ingestion + result vec
+ * extraction) and `f4.cpp` itself (per-element vec extraction
+ * during basis output and MutableMatrix reconstruction) call
+ * into this interface.
  *
  * @see f4-computation.hpp
  * @see f4-types.hpp
