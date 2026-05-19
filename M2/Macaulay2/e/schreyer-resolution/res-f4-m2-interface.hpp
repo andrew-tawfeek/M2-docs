@@ -3,27 +3,26 @@
 
 /**
  * @file schreyer-resolution/res-f4-m2-interface.hpp
- * @brief `ResF4toM2Interface` --- conversion layer between engine M2 types and the F4-resolution internal types.
+ * @brief Conversion layer between engine `Matrix` / `vec` types and the F4-resolution internal types.
  *
- * Declares the static-only helper class the F4 resolution path
- * uses to cross the boundary between the user-facing `Matrix` /
+ * Declares `ResF4toM2Interface`, a static-only helper class
+ * that crosses the boundary between the user-facing `Matrix` /
  * `vec` / `FreeModule` / `PolynomialRing` vocabulary and the
  * resolution-tuned `ResPolynomial` / `ResPolyRing` /
- * `SchreyerFrame` vocabulary. `from_M2_vec` translates an input
- * `vec` (sparse `(component, coeff)` list over the M2 ring)
- * into a `ResPolynomial`; `to_M2_vec`, `to_M2_freemodule`,
- * `to_M2_matrix`, and the two `to_M2_MutableMatrix` variants
- * walk back, including a variant that returns a dense matrix
- * over a `ZZ/p` coefficient ring for a specific
- * `(level, degree)` Macaulay submatrix. `setDegreeZeroMap`
- * additionally extracts the degree-zero part of a level for use
- * by the minimal-Betti accelerator.
+ * `SchreyerFrame` vocabulary. `from_M2_vec` translates an
+ * input `vec` (sparse `(component, coeff)` list over the M2
+ * ring) into a `ResPolynomial`; `to_M2_vec`,
+ * `to_M2_freemodule`, `to_M2_matrix`, and the two
+ * `to_M2_MutableMatrix` variants walk back, including a variant
+ * that returns a dense matrix over a `ZZ/p` coefficient ring
+ * for a specific `(level, degree)` Macaulay submatrix.
+ * `setDegreeZeroMap` extracts the degree-zero part of a level
+ * for the minimal-Betti accelerator.
  *
- * The class is a namespace of static methods; the
  * `F4ResComputation` translates inputs once at startup and
  * outputs once on demand, so the conversion cost lives entirely
  * at the boundaries and never inside the inner reduction loop.
- * Counterpart to the `f4/f4-m2-interface.hpp` GB-side bridge.
+ * Counterpart to `f4/f4-m2-interface.hpp` on the GB side.
  *
  * @see res-poly-ring.hpp
  * @see res-schreyer-frame.hpp
