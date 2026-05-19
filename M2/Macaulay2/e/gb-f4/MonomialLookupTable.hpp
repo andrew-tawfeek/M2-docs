@@ -4,6 +4,37 @@
 
 #pragma once
 
+/**
+ * @file gb-f4/MonomialLookupTable.hpp
+ * @brief `newf4::MonomialLookupTable` --- divisibility-aware leading-term index for the new F4.
+ *
+ * Declares the lookup structure that lets the refactored F4
+ * answer "does some basis leading monomial divide this target?"
+ * without scanning every basis element. Each `MonomialInfo`
+ * entry caches an `mIsUsed` flag, the monomial's simple degree,
+ * a `MonomialMask` (one bit per variable set iff the exponent is
+ * positive), an offset into the encoded-monomial pool, and the
+ * `mValue` index of the owning polynomial. `findDivisor`,
+ * `findAllDivisors`, and `findAllDivisees` pre-filter by
+ * `maskDivides` (bitwise subset) and `simpleDegree` before
+ * running the exact exponent-vector test, which is what makes
+ * the linear walk affordable.
+ *
+ * Soft-delete is the maintenance strategy: when a basis element
+ * is subsumed, `retire(monIndex)` just flips its `mIsUsed` bit
+ * to false; the structure tolerates many tombstones before
+ * `compactify()` reshuffles the storage. Complements
+ * `MonomialHashTable` (which keys by exact equality) and acts as
+ * the new-F4 successor to the legacy `montable.hpp` / mathic-
+ * trait-based path.
+ *
+ * @see MonomialHashTable.hpp
+ * @see MonomialView.hpp
+ * @see MonomialTypes.hpp
+ * @see GBF4Computation.hpp
+ * @see SPairs.hpp
+ */
+
 #include "MonomialTypes.hpp"
 #include "MonomialView.hpp"
 #include <vector>
