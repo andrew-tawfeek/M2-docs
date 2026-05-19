@@ -10,6 +10,30 @@
 #ifndef BIBASIS_PCOMPARATOR_HPP
 #define BIBASIS_PCOMPARATOR_HPP
 
+/**
+ * @file bibasis/pcomparator.hpp
+ * @brief `BIBasis::PointerLessComparator` / `PointerMoreComparator` --- pointer-deref comparators for STL containers.
+ *
+ * Two tiny templated function objects that the involutive engine
+ * passes to `std::sort` and `std::set` so collections of
+ * `Polynom*` (or `Triple*`) order by the pointed-to value rather
+ * than the raw pointer address. `PointerLessComparator` forwards
+ * to `T::operator<`; `PointerMoreComparator` forwards to
+ * `T::operator>` for descending sorts. Both throw a descriptive
+ * `std::string` on a null pointer so the algorithm fails loudly
+ * rather than dereferencing junk.
+ *
+ * Primary consumer is `BooleanInvolutiveBasis::ReduceSet`, which
+ * sorts the working `GBasis` list by leading monomial before
+ * incremental reduction; the rest of the subsystem reuses the
+ * pair generically whenever it needs to sort pointer-owned
+ * polynomials without copying.
+ *
+ * @see polynom.hpp
+ * @see involutive.hpp
+ * @see triple.hpp
+ */
+
 #include <string>
 #include "error.h"
 
