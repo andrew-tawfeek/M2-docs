@@ -5,24 +5,30 @@
 
 /**
  * @file schur2.hpp
- * @brief `SchurRing2` --- refactored Schur ring with length-prefixed partitions and broader operation set.
+ * @brief `SchurRing2` --- refactored Schur ring with length-prefixed partitions and an explicit `Ring` base.
  *
  * Declares `SchurRing2`, the second-generation Schur-function
- * ring that supersedes `schur.hpp`'s `SchurRing`. Partitions
- * carry an explicit length prefix in the
- * `[n + 1, a_1, ..., a_n]` `schur_partition` layout (with parts
- * non-increasing but possibly negative, enabling computation
- * over the virtual Schur ring of formal partitions), and the
- * companion `tableau2` is the matching Young-tableau scratch
- * record. Multiplication still goes through Littlewood-
- * Richardson enumeration; the broader operation set covers
- * plethysm and Frobenius characteristic alongside the
- * standard product.
+ * ring. Unlike `schur.hpp`'s `SchurRing` (which inherits from
+ * `PolyRing`), `SchurRing2` derives directly from `Ring`.
+ * Partitions are stored in the `schur_partition` layout
+ * `[n + 1, a_1, ..., a_n]` --- a length prefix followed by the
+ * non-increasing parts `a_1 >= a_2 >= ... >= a_n` (an in-source
+ * note flags that parts may be negative). Elements are
+ * `schur_poly` objects carrying parallel `coeffs` and `monoms`
+ * vectors, where `monoms` is a flat concatenation of
+ * `schur_partition`s walked by the length prefix. Multiplication
+ * uses Littlewood-Richardson enumeration through the private
+ * `skew_schur` / `SM` recursion with reusable `SMtab` / `SMfilled`
+ * `tableau2` scratch tableaux, and accumulates into the
+ * `schur_poly_heap *SMheap` defined in `schur-poly-heap.hpp`.
  *
- * The original `SchurRing` remains in tree because some
- * combinatorial packages still target it. New Schur work should
- * target `SchurRing2`; the geometric accumulator used by its
- * multiplication is `schur-poly-heap.hpp`.
+ * The class is allowed to have a free coefficient ring
+ * (`coefficientRing`) and an optional variable-count cap `nvars`
+ * (`-1` means "infinite-rank" virtual partitions, served by
+ * `createInfinite`). `dimension(f)` evaluates the Schur
+ * polynomial at the all-ones specialisation; `invert`,
+ * `divide`, and `syzygy` are explicitly no-ops because they
+ * have no meaning in this ring.
  *
  * @see schur.hpp
  * @see schur-poly-heap.hpp
