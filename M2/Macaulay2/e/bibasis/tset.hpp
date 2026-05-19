@@ -19,7 +19,7 @@
  * before producing its final answer. Internally a `std::list` of
  * `Triple<MonomType>*` paired with a `JanetTree` over the same
  * triples: the list preserves insertion order so the algorithm
- * can walk it deterministically, and the tree gives constant-time
+ * can walk it deterministically, and the tree gives `O(degree)`
  * Janet-divisor lookup via `Find(monom)`. `PushBack` keeps both
  * structures in sync, `Erase` removes from both, and `Clear`
  * destroys every triple it owns.
