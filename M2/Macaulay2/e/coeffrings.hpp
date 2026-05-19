@@ -5,27 +5,33 @@
 
 /**
  * @file coeffrings.hpp
- * @brief Coefficient-ring registry and the `CoefficientRingZZp` `SimpleARing` exemplar.
+ * @brief Two `SimpleARing`-style coefficient adapters: `CoefficientRingZZp` and `CoefficientRingR`.
  *
- * Declares `CoefficientRingZZp`, the smallest fully-worked
- * `SimpleARing<CoefficientRingZZp>` in the engine: `Z/p` for small
- * primes (`p <= 32749`) represented by discrete-logarithm tables.
- * Multiplication becomes addition of log indices and lookup in
- * `exp_table`; inversion, squaring, and powers are similar arithmetic
- * on the indices; both tables fit in cache for the supported
- * primes. The CRTP base supplies default implementations parameterised
- * on the derived class so the per-element operations inline at every
- * call site instead of going through a virtual.
+ * Declares `CoefficientRingZZp`, the engine's discrete-log
+ * `Z/p` implementation: a `SimpleARing<CoefficientRingZZp>`
+ * CRTP class that represents each non-zero residue as its
+ * exponent index relative to a generator and uses parallel
+ * `log_table` / `exp_table` arrays of size `p` to move between
+ * the index world and the residue world. Multiplication and
+ * division of non-zero elements become `modulus_add` /
+ * `modulus_sub` on the indices modulo `p - 1` with no table
+ * lookup; addition and subtraction first hop to residues via
+ * `exp_table`, do a `modulus_add` / `modulus_sub` mod `p`, and
+ * hop back via `log_table`. Inversion of a non-zero index `a`
+ * is `p - 1 - a` and `negate` shifts by `(p - 1) / 2` (the
+ * index of `-1`). The class is used for the small primes that
+ * the matching M2 raw entry point accepts (`2 <= p <= 32749`,
+ * per `interface/aring.h`).
  *
- * This file also serves as the central registration point connecting
- * concrete coefficient back ends (`aring-zzp-flint.hpp`,
- * `aring-zzp-ffpack.hpp`, `aring-zz-{gmp,flint}.hpp`,
- * `aring-qq-*.hpp`, `aring-gf-*.hpp`, the `RR` / `CC` family, ...)
- * to the `aring.hpp` dispatcher: each back end picks a `RingID` and
- * the registry threads the right type to the right tag. Adding a new
- * small coefficient ring follows the `CoefficientRingZZp` template
- * verbatim --- subclass `SimpleARing`, implement the arithmetic
- * primitives, register a `RingID`, expose via `interface/aring.h`.
+ * Also declares `CoefficientRingR`, the generic adapter that
+ * wraps an arbitrary `const Ring*` in the same operation
+ * surface --- forwarding `add` / `mult` / `subtract` /
+ * `invert` / ... to the wrapped ring's methods, and exposing
+ * `Element` (a `M2::ElementImpl` subclass) and `ElementArray`
+ * helpers for managed temporaries. This is the catch-all
+ * implementation used wherever code that expects a
+ * `CoefficientRing` interface needs to talk to a ring that
+ * doesn't have a faster specialisation.
  *
  * @see aring.hpp
  * @see aring-glue.hpp
