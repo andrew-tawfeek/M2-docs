@@ -5,24 +5,31 @@
 
 /**
  * @file dmat-gf-flint-big.hpp
- * @brief `DMat<M2::ARingGFFlintBig>` --- dense GF matrices stored in FLINT `fq_nmod_mat_t`.
+ * @brief `DMat<M2::ARingGFFlintBig>` --- dense GF matrices stored in a FLINT `fq_nmod_mat_t`.
  *
- * Specialises the dense-matrix template for the large-`q` Galois
- * field aring `ARingGFFlintBig`: each entry is a polynomial of
- * degree less than `k` over `Z/p`, stored in FLINT's
- * `fq_nmod_mat_t`. Matrix operations dispatch to `fq_nmod_mat_*`
- * routines so a `rank` or `mul` call becomes a single FLINT
- * invocation over the whole matrix, hitting FLINT's cache-aware
- * blocked algorithms instead of the generic per-entry path the
- * unspecialised `DMat<R>` would walk.
+ * Specialises the dense-matrix template for the large-`q`
+ * Galois-field aring `ARingGFFlintBig`. Storage is a single
+ * `fq_nmod_mat_t mArray` whose entries are polynomials over
+ * `Z/p` (the `fq_nmod_struct` carried by the aring). The class
+ * exposes the standard `DMat` surface (`ring()`, `numRows`,
+ * `numColumns`, `entry(r, c)` via `fq_nmod_mat_entry`,
+ * `resize`, `swap`) plus a raw `fq_nmod_mat()` accessor and
+ * the `unsafeArray()` direct-pointer hook for consumers that
+ * need to hand the underlying buffer back to FLINT. All
+ * `fq_nmod_mat_*` API calls take `ring().flintContext()`, which
+ * the constructors and destructor thread through.
  *
- * The companion `dmat-gf-flint.hpp` covers the small-`q` Zech-table
- * representation (`fq_zech_mat_t`); the dispatcher in
- * `aring-gf-flint*.hpp` selects between the two at ring
- * construction. The `#pragma GCC diagnostic push/pop` block around
- * the FLINT include is file-local and silences a benign FLINT-
- * header warning on modern GCC; `M2/gc-include.h` must precede
- * FLINT so the allocator routes through bdwgc.
+ * Arithmetic and linear-algebra (`rank`, `mul`, LU, solve,
+ * null-space) are *not* declared in this header --- consumers
+ * (the LU specialisations in `dmat-lu-inplace.hpp` and the
+ * `mat-linalg.hpp` machinery) reach into `fq_nmod_mat()` and
+ * call the FLINT routines directly. The companion
+ * `dmat-gf-flint.hpp` covers the small-`q` Zech-table
+ * (`fq_zech_mat_t`) representation; the user picks between the
+ * two at ring construction via the separate
+ * `rawARingGaloisFieldFlintZech` / `rawARingGaloisFieldFlintBig`
+ * entry points. `M2/gc-include.h` precedes the FLINT include
+ * so the allocator routes through bdwgc.
  *
  * @see dmat.hpp
  * @see dmat-gf-flint.hpp
