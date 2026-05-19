@@ -3,6 +3,35 @@
 #ifndef _aring_hpp_
 #define _aring_hpp_
 
+/**
+ * @file aring.hpp
+ * @brief Abstract-ring framework (`namespace M2`) that unifies the engine's coefficient rings.
+ *
+ * Defines the dispatcher and shared base of the `aring` system. Each
+ * concrete coefficient ring (ZZ via GMP, ZZ via FLINT, Z/p via
+ * FFLAS, GF, RR, CC, ...) lives in its own `aring-*.{cpp,hpp}` pair
+ * and registers itself by a `RingID` tag declared in
+ * `coeffrings.hpp`. Cold paths branch on the tag; hot paths take a
+ * concrete `ARing<R>` template parameter so the per-element
+ * arithmetic inlines instead of going through a virtual dispatch ---
+ * the original motivation for introducing the aring framework
+ * alongside the older `Ring` API.
+ *
+ * The two ring APIs coexist permanently: existing engine code reads
+ * `Ring*`, performance-critical paths read `aring`, and the bridges
+ * in `aring-glue.hpp`, `aring-translate.hpp`, and `aring-wrap.cpp`
+ * move values between them. This file also contains the only
+ * `HAVE_FLINT_RAND_INIT` compatibility shim aring users touch when
+ * bumping the FLINT submodule version (`flint_rand_init` vs.
+ * `flint_randinit`).
+ *
+ * @see aring-glue.hpp
+ * @see aring-translate.hpp
+ * @see aring-wrap.hpp
+ * @see coeffrings.hpp
+ * @see ring.hpp
+ */
+
 #include <cassert>
 #include <memory>
 #include "ringelem.hpp"
