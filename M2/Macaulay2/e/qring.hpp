@@ -5,18 +5,19 @@
 
 /**
  * @file qring.hpp
- * @brief `QRingInfo` --- bookkeeping struct attached to a `PolyQuotient` for `R / I` reductions.
+ * @brief `QRingInfo` --- bookkeeping struct attached to a `PolyRingQuotient` for `R / I` reductions.
  *
  * Declares `QRingInfo`, the helper that holds the defining
  * ideal of a polynomial-ring quotient in two redundant forms:
  * `VECTOR(Nterm*) quotient_ideal` for `ring_elem`-side
  * reduction, and `VECTOR(gbvector*) quotient_gbvectors` for the
  * GB-tuned reduction path through `gbring.hpp`. Keeping both
- * representations skips per-reduction conversion, and the
- * construction code in `qring.cpp` is what keeps them in sync.
- * `QRingInfo` is not itself a `Ring` subclass --- it is the
- * data hung off `PolyQuotient` (declared in `polyquotient.hpp`),
- * which is the `Ring` the rest of the engine sees.
+ * representations skips per-reduction conversion, and
+ * `qring.cpp` is what keeps them in sync via
+ * `appendQuotientElement`. `QRingInfo` is not itself a `Ring`
+ * subclass --- it is the data hung off `PolyRingQuotient` (a
+ * `PolyRingFlat` subclass in `polyquotient.hpp`), which is the
+ * `Ring` the rest of the engine sees.
  *
  * Multiplication inside a quotient runs the ambient
  * polynomial-ring product and then reduces against
