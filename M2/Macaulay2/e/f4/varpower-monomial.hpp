@@ -12,14 +12,14 @@
  * not have to spell out the template instantiation. The
  * underlying encoding is the standard `[length, v_1, e_1, ...,
  * v_r, e_r]` varpower layout inherited from `ExponentList.hpp`;
- * the `false` template flag disables overflow checking in
- * favour of inner-loop speed.
+ * the `false` `legacy_length` template flag selects the
+ * current length convention over the older one.
  *
- * The newer `gb-f4/` engine prefers its own `MonomialTypes` and
- * `MonomialView`; this header survives so the older `f4/`
+ * The newer `gb-f4/` engine prefers its own `MonomialTypes`
+ * and `MonomialView`; this header survives so the older `f4/`
  * subdirectory keeps building. Consumers include `f4.hpp`,
- * `f4-spairs.hpp` (S-pair LCM monomials), and `moninfo.hpp` (the
- * packed `MonomialInfo` layout shares the same encoding).
+ * `f4-spairs.hpp` (S-pair LCM monomials), and `moninfo.hpp`
+ * (the packed `MonomialInfo` layout shares the same encoding).
  *
  * @see ExponentList.hpp
  * @see ntuple-monomial.hpp
