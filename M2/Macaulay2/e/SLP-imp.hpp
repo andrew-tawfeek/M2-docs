@@ -5,6 +5,34 @@
 #ifndef _slp_imp_hpp_
 #define _slp_imp_hpp_
 
+/**
+ * @file SLP-imp.hpp
+ * @brief Templated `SLEvaluatorConcrete<RT>` --- the per-ring SLP evaluator implementation.
+ *
+ * `SLEvaluatorConcrete<RT>` is the templated implementation that
+ * evaluates an `SLProgram` at concrete inputs. The constructor takes
+ * the program, the integer arrays of constant and variable positions,
+ * and a `MutableMat<SMat<RT>>` of pre-evaluated constants; the ring
+ * is captured from that matrix. Calling `evaluate(x_1, ..., x_n)`
+ * initialises a working array, walks the SLP's nodes in topological
+ * order applying each gate's operation through `RT`'s aring methods,
+ * and reads off the values at the output positions. Compile-time
+ * specialisation on `RT` inlines the inner loop per ring.
+ *
+ * The header pulls in `<dlfcn.h>` for an experimental JIT path:
+ * compile an SLP to a shared library at runtime, `dlopen` it, and
+ * call into the compiled code for substantially faster path-tracking.
+ * That path is gated and not always enabled; the default evaluation
+ * walks nodes interpretively. `timing.hpp` is included so the
+ * evaluator can report aggregate time across continuation steps,
+ * which NAG uses to tune step sizes.
+ *
+ * @see SLP.hpp
+ * @see SLP-defs.hpp
+ * @see NAG.hpp
+ * @see VectorArithmetic.hpp
+ */
+
 #include <cstdlib>
 #include <algorithm>
 #include <dlfcn.h>
