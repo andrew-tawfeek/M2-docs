@@ -5,24 +5,27 @@
 
 /**
  * @file mat-util.hpp
- * @brief Generic helpers (`displayMat`, ...) for `DMat` / `SMat` matrices --- catch-all alongside `mat-arith` and friends.
+ * @brief Generic helpers (`displayMat`, `concatenateMatrices`) for `DMat` / `SMat` matrices.
  *
- * Collects the templated utilities that do not fit naturally into
- * `mat-arith.hpp`, `mat-elem-ops.hpp`, or `mat-linalg.hpp`. The
- * lead helper is `displayMat<Mat>(buffer&, const Mat&)` --- the
- * matrix-printing routine used throughout debugging code: it
- * walks the entries of any duck-typed `Mat` exposing
- * `ElementType`, `ring()`, `numRows()`, `numColumns()`, and
- * `entry(r, c)` and writes the result through the wrapped-line
- * helpers in `text-io.hpp`. Both `DMat<R>` and `SMat<R>` satisfy
- * the contract.
+ * Collects the templated utilities that do not fit naturally
+ * into `mat-arith.hpp`, `mat-elem-ops.hpp`, or `mat-linalg.hpp`.
+ * `displayMat<Mat>(buffer& o, const Mat& A)` walks any
+ * duck-typed `Mat` exposing `ElementType`, `ring()`,
+ * `numRows()`, `numColumns()`, and `entry(r, c)`, builds one
+ * per-row sub-buffer, pads each column to the widest entry,
+ * marks zero entries with `.`, and emits the assembled rows
+ * through the `buffer` followed by `newline`. The one-argument
+ * overload `displayMat(A)` wraps the same routine and flushes
+ * via `emit` from `text-io.hpp`. Both `DMat<R>` and `SMat<R>`
+ * satisfy the contract.
  *
- * Other entries in the file include iteration utilities that skip
- * zero entries, validation predicates such as `isSquareMatrix`
- * and `isUpperTriangular`, and the conversion helpers a few
- * higher-level routines need to move between matrix flavours.
+ * The companion `concatenateMatrices<Mat>(A, B, C)` writes the
+ * horizontal join `[A | B]` into a caller-supplied `C` (after
+ * resizing it to `A.numRows() x (A.numColumns() + B.numColumns())`),
+ * asserting that `A` and `B` have the same row count.
  *
  * @see buffer.hpp
+ * @see text-io.hpp
  * @see dmat.hpp
  * @see smat.hpp
  */
