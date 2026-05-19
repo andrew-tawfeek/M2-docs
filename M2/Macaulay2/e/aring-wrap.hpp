@@ -3,6 +3,33 @@
 #ifndef _aring_wrap_hpp_
 #define _aring_wrap_hpp_
 
+/**
+ * @file aring-wrap.hpp
+ * @brief `RElementWrap<RingType>` --- templated wrapper that exposes one aring value as the abstract `RElement`.
+ *
+ * The aring framework resolves arithmetic by ring type at compile
+ * time, but values that flow across the engine boundary (or land in
+ * a `Matrix` or `Polynomial` slot) need a runtime base class because
+ * the caller does not always know which aring produced them.
+ * `RElement` is that base; `RElementWrap<RingType>` is the concrete
+ * derivation that stores one `RingType::ElementType` value. The
+ * `friend ARing::converter(...)` declaration is what allows
+ * cross-ring coercion in `aring-translate.hpp` to extract or inject
+ * the typed value during a translate call.
+ *
+ * This file is the element-level counterpart of `aring-glue.hpp`'s
+ * ring-level `ConcreteRing<RingType>`: together they implement the
+ * "wrap a templated implementation in an abstract base" pattern at
+ * two scales (rings, and values inside rings). Reading them together
+ * is the quickest way to see how the aring framework handles type
+ * erasure at the engine boundary while preserving compile-time
+ * specialisation inside hot paths.
+ *
+ * @see aring.hpp
+ * @see aring-glue.hpp
+ * @see aring-translate.hpp
+ */
+
 #include "aring.hpp"
 
 namespace M2 {
