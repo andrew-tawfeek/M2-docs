@@ -6,24 +6,28 @@
  * @brief `Monoid` --- variable count, naming, grading, and monomial order of a polynomial ring.
  *
  * Declares `Monoid`, the multiplicative-side representation of
- * an M2 polynomial ring. It carries the variable count and
- * names, the per-variable (multi-)degree vectors flattened into
+ * an M2 polynomial ring. It carries the variable count
+ * (`mVariableCount`) and names (`mVariableNames`), the
+ * per-variable (multi-)degree vectors flattened into
  * `mDegrees`, a heft vector used to detect bounded-degree
- * subsets, and the recursive `mDegreeMonoid` / `mDegreeRing` in
- * which degrees themselves live (base case is the trivial
+ * subsets, and the recursive `mDegreeMonoid` / `mDegreeRing`
+ * in which degrees themselves live (base case is the trivial
  * monoid). Two parallel ordering representations sit alongside
- * each other: the declarative `MonomialOrdering` the user wrote
- * (`Lex`, `GRevLex`, weight blocks, ...) and the encoded
- * `MonomialOrder` walked by the inner loop --- the translator
- * lives in `imonorder.hpp`. `monomial_size()` reports the byte
- * width of an encoded monomial for this monoid.
+ * each other: the declarative `MonomialOrdering` the user
+ * wrote (`Lex`, `GRevLex`, weight blocks, ...) in `mo_` and the
+ * encoded `MonomialOrder` walked by the inner loop in
+ * `monorder_` --- the translator lives in `imonorder.hpp`.
+ * `monomial_size()` reports the number of `int`s in an encoded
+ * monomial for this monoid; the `MONOMIAL_BYTE_SIZE` macro
+ * scales that to bytes.
  *
  * Hot-path code allocates monomials on the stack via the
  * `ALLOCATE_MONOMIAL` / `ALLOCATE_EXPONENTS` `alloca`-backed
  * macros declared in this header; a typical GB step builds
  * thousands of transient monomials per pair and cannot afford
- * heap allocation. `Monoid` inherits from `MutableEngineObject`
- * so the engine can attach derived data with stable identity.
+ * heap allocation. `Monoid` inherits from
+ * `MutableEngineObject` so the engine can attach derived data
+ * with stable identity.
  *
  * @see imonorder.hpp
  * @see ExponentList.hpp
