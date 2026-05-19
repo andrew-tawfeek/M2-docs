@@ -29,6 +29,7 @@
  * @see FreeMonoid.hpp
  * @see NCGroebner.hpp
  * @see Polynomial.hpp
+ * @see M2FreeAlgebraQuotient.hpp
  */
 
 #include "NCAlgebras/FreeAlgebra.hpp" // for FreeAlgebra
