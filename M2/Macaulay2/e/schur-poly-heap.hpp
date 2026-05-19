@@ -8,27 +8,29 @@
  * @brief `schur_poly_heap` --- geometric-bucket accumulator specialised for `SchurRing2` polynomials.
  *
  * Declares `schur_poly_heap`, a `GEOHEAP_SIZE` (15)-level
- * size-doubling heap of `ring_elem` slots used by Schur-ring
+ * size-doubling heap of `ring_elem` slots used by `SchurRing2`
  * multiplication to collect the many `c_{lambda mu}^nu s_nu`
  * intermediate terms produced by Littlewood-Richardson
- * enumeration. `add(p)` drops `p` into the smallest level that
- * can absorb it and cascades on overflow; `value()` flattens
- * the tower into a single canonical sum and resets the heap.
- * The amortised `O(n log k)` cost (`k` distinct output
- * partitions) replaces the quadratic merge that a naive
- * term-by-term accumulator would walk.
+ * enumeration. `add(p)` drops `p` into the smallest level whose
+ * `heap_size[i]` threshold it fits under and cascades on
+ * overflow; `value()` flattens the tower into a single
+ * canonical sum and resets the heap. Sizing the threshold to
+ * each slot's current term count amortises the LR collection
+ * away from the quadratic merge a naive term-by-term
+ * accumulator would walk.
  *
  * The shape mirrors the engine's other geometric heaps
  * (`gbring.hpp`'s `gbvectorHeap`, `geovec.hpp`, `geopoly.hpp`)
- * but the slot type is the Schur-ring `ring_elem` and the
- * promotion logic is supplied by the owning `SchurRing2`.
- * Heavy callers are `schur2.hpp`'s `mult` and `schurSn.hpp`'s
- * `mult` / `tensor_mult` plus the Schubert-calculus enumeration
- * paths that exercise them.
+ * but the slot type is the `ring_elem` of the owning
+ * `SchurRing2 *S` --- `add_to` calls `S->add(a, b)` and assigns
+ * `S->zero()` to the drained slot. Only `schur2.cpp` consumes
+ * this header: the LR-multiplication driver allocates an
+ * `SMheap` of this type, calls `add` for each output term, and
+ * reads `value()` once at the end.
  *
  * @see schur2.hpp
- * @see schurSn.hpp
  * @see geopoly.hpp
+ * @see geovec.hpp
  */
 
 class schur_poly_heap : public our_new_delete
