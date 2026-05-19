@@ -3,6 +3,32 @@
 #ifndef _aring_gf_flint_big_hpp_
 #define _aring_gf_flint_big_hpp_
 
+/**
+ * @file aring-gf-flint-big.hpp
+ * @brief `M2::ARingGFFlintBig` --- arbitrary-degree `GF(p^k)` via FLINT `fq_nmod`.
+ *
+ * `ARingGFFlintBig` represents a Galois-field element as a
+ * degree-less-than-`k` polynomial over `Z/p`, stored in FLINT's
+ * `fq_nmod_t` (a wrapper around `nmod_poly_t`). Addition is
+ * coefficient-wise in `Z/p` (O(k)); multiplication is polynomial
+ * multiply followed by reduction modulo the primitive polynomial
+ * (O(k^2) schoolbook or O(k log k) with FFT for large k); inversion
+ * is extended Euclidean over `Z/p[t]`. No Zech tables --- every
+ * operation runs the underlying polynomial arithmetic, so per-op
+ * cost grows with `k`, but `q = p^k` carries no storage limit.
+ *
+ * The dispatcher in `aring.hpp` picks this implementation whenever
+ * Zech tables for `GF(q)` would be impractical (roughly `q > 2^16`),
+ * falling back to the small-`q` sibling `aring-gf-flint.hpp` when
+ * tables fit. The native, FLINT-free alternative is `aring-m2-gf.hpp`,
+ * and `aring-tower.hpp` handles iterated extensions.
+ *
+ * @see aring-gf-flint.hpp
+ * @see aring-m2-gf.hpp
+ * @see aring-tower.hpp
+ * @see aring.hpp
+ */
+
 #include <vector>
 
 // The following needs to be included before any flint files are included.
