@@ -5,27 +5,33 @@
 
 /**
  * @file schreyer-resolution/res-moninfo.hpp
- * @brief `ResMonoid` dispatcher --- single switch between `ResMonoidDense` and `ResMonoidSparse`.
+ * @brief `ResMonoid` dispatcher --- single typedef switch between `ResMonoidDense` and `ResMonoidSparse`.
  *
  * Pulls in both monomial-layout implementations the F4
  * resolution uses and aliases `ResMonoid` to the active one
- * (`ResMonoidDense` in production, `ResMonoidSparse` kept
- * available behind a commented-out `using`). The dense layout
- * stores each monomial as a length-`nvars` exponent vector and
- * wins for dense monomials or small variable counts; the sparse
- * layout stores `(variable, exponent)` pairs and wins for
- * low-support monomials in many-variable rings. Both expose the
- * same `monomial_size` / `compare_grevlex` / `compare_schreyer`
- * / `mult` / `divide` / `to_expvector` / `from_expvector` /
- * `from_varpower_monomial` surface, so switching only requires
- * editing this header.
+ * (`ResMonoidDense` in production via the live `using` on
+ * line 39; `ResMonoidSparse` kept available behind a
+ * commented-out `using` on line 40). The dense layout stores
+ * each monomial in a fixed `nslots`-word array
+ * `[hash, component, weights..., exponents_0..exponents_{nvars-1}]`
+ * and wins for dense exponents or small variable counts; the
+ * sparse layout uses a length-prefixed `(variable, exponent)`
+ * list (its `monomial_size(m)` returns `*m`) and wins for
+ * low-support monomials in many-variable rings.
  *
+ * The two implementations share most of their public
+ * surface --- `mult` / `divide` / `monomial_size` /
+ * `to_expvector` / `from_expvector` / `from_varpower_monomial`
+ * / `compare_schreyer` are live in both. `compare_grevlex` is
+ * live only in `ResMonoidSparse`; the dense version has it
+ * `#if 0`-d out, so switching the typedef silently changes
+ * which grevlex comparator the rest of the resolution sees.
  * The rest of the schreyer-resolution code references
  * `ResMonoid` through this typedef, which keeps the
  * implementation choice pinned to a single file and lets
- * benchmark-driven swaps stay zero-touch at call sites. Future
- * builds may make the choice configure-time rather than
- * compile-time, but for now the comment is the only mechanism.
+ * benchmark-driven swaps stay zero-touch at call sites; future
+ * builds may promote the choice to configure-time, but for now
+ * the source-comment toggle is the only mechanism.
  *
  * @see res-moninfo-dense.hpp
  * @see res-moninfo-sparse.hpp
