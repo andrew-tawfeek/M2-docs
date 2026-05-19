@@ -116,7 +116,7 @@ Classes</h2></td></tr>
 <div class="textblock"><p>Schreyer-order column sorters for the F4 resolution Macaulay matrix. </p>
 <p>Declares the sort kernel called once per <span class="tt">(level, degree)</span> cell to permute matrix columns into Schreyer order before reduction. <span class="tt"><a class="el" href="class_monomial_sorter_object.html">MonomialSorterObject</a></span> captures a <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span> plus a <span class="tt">vector&lt;int*&gt;</span> of encoded monomials and exposes <span class="tt">operator()(int a, int b)</span> as the comparator that walks the encoded order then applies the Schreyer tie-breaker stored in the first slot of each monomial; a static <span class="tt">mNumComparisons</span> counter tracks comparator calls for profiling.</p>
 <p><span class="tt"><a class="el" href="class_res_monomial_sorter.html">ResMonomialSorter</a></span> is the wrapper the engine calls in practice: it takes the level-1 <span class="tt"><a class="el" href="struct_res_schreyer_order.html">ResSchreyerOrder</a></span> and a vector of level-side <span class="tt"><a class="el" href="res-monomial-types_8hpp_af33ca331995cea8124ea3653cfbf069d.html#af33ca331995cea8124ea3653cfbf069d">res_packed_monomial</a></span>s, expands each column through the Schreyer "total monomial" composition <span class="tt">var_expvec(column) * var_expvec(orderTotal[comp])</span> into a <span class="tt">[tiebreaker, basecomp, encoded <a class="el" href="gb-toric_8cpp_a0020cb9370f27f1e0ebd02a704b50a68.html#a0020cb9370f27f1e0ebd02a704b50a68">monomial</a>]</span> row in an arena-allocated buffer, and runs <span class="tt">std::stable_sort</span> to return an index permutation. Stable sort preserves relative order among equal monomials, which the tiebreaker relies on. The <span class="tt">#if 0</span>'d <span class="tt">ResMonomialTransformer</span> records an earlier API shape kept for reference.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-moninfo_8hpp.html" title="ResMonoid dispatcher — single switch between ResMonoidDense and ResMonoidSparse.">res-moninfo.hpp</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-moninfo_8hpp.html" title="ResMonoid dispatcher — single typedef switch between ResMonoidDense and ResMonoidSparse.">res-moninfo.hpp</a> </dd>
 <dd>
 <a class="el" href="res-schreyer-order_8hpp.html" title="ResSchreyerOrder — per-free-module-summand data implementing the Schreyer order on the next level.">res-schreyer-order.hpp</a> </dd>
 <dd>
@@ -124,7 +124,7 @@ Classes</h2></td></tr>
 <dd>
 <a class="el" href="monoid_8hpp.html" title="Monoid — variable count, naming, grading, and monomial order of a polynomial ring.">monoid.hpp</a> </dd>
 <dd>
-<a class="el" href="res-f4-computation_8hpp.html" title="Top-level Schreyer-frame F4 free-resolution driver.">res-f4-computation.hpp</a> </dd></dl>
+<a class="el" href="res-f4-computation_8hpp.html" title="F4ResComputation — top-level Schreyer-frame F4 free-resolution driver.">res-f4-computation.hpp</a> </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="res-monomial-sorter_8hpp_source.html">res-monomial-sorter.hpp</a>.</p>
 </div></div><!-- contents -->

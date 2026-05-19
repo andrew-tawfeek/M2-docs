@@ -111,17 +111,17 @@ $(function(){initNavTree('classnewf4_1_1_monomial_hash_function_a0e647c0087d9272
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monomial_hash_table_8hpp_source.html#l00076">76</a> of file <a class="el" href="_monomial_hash_table_8hpp_source.html">MonomialHashTable.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>    {</div>
-<div class="line"><span class="lineno">   78</span>      <a class="code hl_typedef" href="namespacenewf4_a31d40ce79f2399c9bf4f0c3846f6e04a.html#a31d40ce79f2399c9bf4f0c3846f6e04a">HashInt</a> val = 0;</div>
-<div class="line"><span class="lineno">   79</span>      <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = w.begin(); i != w.end(); ++i)</div>
-<div class="line"><span class="lineno">   80</span>        <span class="comment">// TODO: check that the variables are in range in mHashValues.</span></div>
-<div class="line"><span class="lineno">   81</span>        <span class="comment">//  if not, increase the size by adding in new HashInt&#39;s (uint64_t).</span></div>
-<div class="line"><span class="lineno">   82</span>        <span class="comment">// val += mHashValues[(*i)%64] * (*(i+1));</span></div>
-<div class="line"><span class="lineno">   83</span>        val += <a class="code hl_variable" href="classnewf4_1_1_monomial_hash_function_ad197bb6587392d43b3ec5574f8ff738c.html#ad197bb6587392d43b3ec5574f8ff738c">mHashValues</a>[i.var() % 64] * i.power();</div>
-<div class="line"><span class="lineno">   84</span>      <span class="keywordflow">return</span> val;</div>
-<div class="line"><span class="lineno">   85</span>    }</div>
-<div class="ttc" id="aclassnewf4_1_1_monomial_hash_function_ad197bb6587392d43b3ec5574f8ff738c_html_ad197bb6587392d43b3ec5574f8ff738c"><div class="ttname"><a href="classnewf4_1_1_monomial_hash_function_ad197bb6587392d43b3ec5574f8ff738c.html#ad197bb6587392d43b3ec5574f8ff738c">newf4::MonomialHashFunction::mHashValues</a></div><div class="ttdeci">std::vector&lt; HashInt &gt; mHashValues</div><div class="ttdef"><b>Definition</b> <a href="_monomial_hash_table_8hpp_source.html#l00049">MonomialHashTable.hpp:49</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_monomial_hash_table_8hpp_source.html#l00086">86</a> of file <a class="el" href="_monomial_hash_table_8hpp_source.html">MonomialHashTable.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>    {</div>
+<div class="line"><span class="lineno">   88</span>      <a class="code hl_typedef" href="namespacenewf4_a31d40ce79f2399c9bf4f0c3846f6e04a.html#a31d40ce79f2399c9bf4f0c3846f6e04a">HashInt</a> val = 0;</div>
+<div class="line"><span class="lineno">   89</span>      <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = w.begin(); i != w.end(); ++i)</div>
+<div class="line"><span class="lineno">   90</span>        <span class="comment">// TODO: check that the variables are in range in mHashValues.</span></div>
+<div class="line"><span class="lineno">   91</span>        <span class="comment">//  if not, increase the size by adding in new HashInt&#39;s (uint64_t).</span></div>
+<div class="line"><span class="lineno">   92</span>        <span class="comment">// val += mHashValues[(*i)%64] * (*(i+1));</span></div>
+<div class="line"><span class="lineno">   93</span>        val += <a class="code hl_variable" href="classnewf4_1_1_monomial_hash_function_ad197bb6587392d43b3ec5574f8ff738c.html#ad197bb6587392d43b3ec5574f8ff738c">mHashValues</a>[i.var() % 64] * i.power();</div>
+<div class="line"><span class="lineno">   94</span>      <span class="keywordflow">return</span> val;</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="ttc" id="aclassnewf4_1_1_monomial_hash_function_ad197bb6587392d43b3ec5574f8ff738c_html_ad197bb6587392d43b3ec5574f8ff738c"><div class="ttname"><a href="classnewf4_1_1_monomial_hash_function_ad197bb6587392d43b3ec5574f8ff738c.html#ad197bb6587392d43b3ec5574f8ff738c">newf4::MonomialHashFunction::mHashValues</a></div><div class="ttdeci">std::vector&lt; HashInt &gt; mHashValues</div><div class="ttdef"><b>Definition</b> <a href="_monomial_hash_table_8hpp_source.html#l00059">MonomialHashTable.hpp:59</a></div></div>
 <div class="ttc" id="anamespacenewf4_a31d40ce79f2399c9bf4f0c3846f6e04a_html_a31d40ce79f2399c9bf4f0c3846f6e04a"><div class="ttname"><a href="namespacenewf4_a31d40ce79f2399c9bf4f0c3846f6e04a.html#a31d40ce79f2399c9bf4f0c3846f6e04a">newf4::HashInt</a></div><div class="ttdeci">uint64_t HashInt</div><div class="ttdef"><b>Definition</b> <a href="_monomial_types_8hpp_source.html#l00051">MonomialTypes.hpp:51</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classnewf4_1_1_monomial_hash_function_ad197bb6587392d43b3ec5574f8ff738c.html#ad197bb6587392d43b3ec5574f8ff738c">mHashValues</a>.</p>

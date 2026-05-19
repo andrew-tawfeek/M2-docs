@@ -111,15 +111,15 @@ $(function(){initNavTree('class_monomial_collection_var_size_a60a81c45bd34efd93e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00292">292</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  293</span>  {</div>
-<div class="line"><span class="lineno">  294</span>    std::pair&lt;int*, int*&gt; mon { <a class="code hl_variable" href="class_monomial_collection_var_size_ae17dbea2ff0677073d1ddd9f24f454f3.html#ae17dbea2ff0677073d1ddd9f24f454f3">mMonomialMemory</a>.alloc(*monom) };</div>
-<div class="line"><span class="lineno">  295</span>    std::copy(monom, monom + *monom, mon.first);</div>
-<div class="line"><span class="lineno">  296</span>    assert(mon.second - mon.first &gt;= *monom);</div>
-<div class="line"><span class="lineno">  297</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="class_monomial_collection_var_size_afc4d0d8b0767d19d9f0bb1756a1e3bfb.html#afc4d0d8b0767d19d9f0bb1756a1e3bfb">findOrInsertTopInternedMonomial</a>(mon.first);</div>
-<div class="line"><span class="lineno">  298</span>  }</div>
-<div class="ttc" id="aclass_monomial_collection_var_size_ae17dbea2ff0677073d1ddd9f24f454f3_html_ae17dbea2ff0677073d1ddd9f24f454f3"><div class="ttname"><a href="class_monomial_collection_var_size_ae17dbea2ff0677073d1ddd9f24f454f3.html#ae17dbea2ff0677073d1ddd9f24f454f3">MonomialCollectionVarSize::mMonomialMemory</a></div><div class="ttdeci">MonomialMemorySpace mMonomialMemory</div><div class="ttdef"><b>Definition</b> <a href="monomial-sets_8hpp_source.html#l00323">monomial-sets.hpp:323</a></div></div>
-<div class="ttc" id="aclass_monomial_collection_var_size_afc4d0d8b0767d19d9f0bb1756a1e3bfb_html_afc4d0d8b0767d19d9f0bb1756a1e3bfb"><div class="ttname"><a href="class_monomial_collection_var_size_afc4d0d8b0767d19d9f0bb1756a1e3bfb.html#afc4d0d8b0767d19d9f0bb1756a1e3bfb">MonomialCollectionVarSize::findOrInsertTopInternedMonomial</a></div><div class="ttdeci">std::pair&lt; const int *, bool &gt; findOrInsertTopInternedMonomial(int *&amp;monom)</div><div class="ttdef"><b>Definition</b> <a href="monomial-sets_8hpp_source.html#l00302">monomial-sets.hpp:302</a></div></div>
+<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00309">309</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  310</span>  {</div>
+<div class="line"><span class="lineno">  311</span>    std::pair&lt;int*, int*&gt; mon { <a class="code hl_variable" href="class_monomial_collection_var_size_ae17dbea2ff0677073d1ddd9f24f454f3.html#ae17dbea2ff0677073d1ddd9f24f454f3">mMonomialMemory</a>.alloc(*monom) };</div>
+<div class="line"><span class="lineno">  312</span>    std::copy(monom, monom + *monom, mon.first);</div>
+<div class="line"><span class="lineno">  313</span>    assert(mon.second - mon.first &gt;= *monom);</div>
+<div class="line"><span class="lineno">  314</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="class_monomial_collection_var_size_afc4d0d8b0767d19d9f0bb1756a1e3bfb.html#afc4d0d8b0767d19d9f0bb1756a1e3bfb">findOrInsertTopInternedMonomial</a>(mon.first);</div>
+<div class="line"><span class="lineno">  315</span>  }</div>
+<div class="ttc" id="aclass_monomial_collection_var_size_ae17dbea2ff0677073d1ddd9f24f454f3_html_ae17dbea2ff0677073d1ddd9f24f454f3"><div class="ttname"><a href="class_monomial_collection_var_size_ae17dbea2ff0677073d1ddd9f24f454f3.html#ae17dbea2ff0677073d1ddd9f24f454f3">MonomialCollectionVarSize::mMonomialMemory</a></div><div class="ttdeci">MonomialMemorySpace mMonomialMemory</div><div class="ttdef"><b>Definition</b> <a href="monomial-sets_8hpp_source.html#l00340">monomial-sets.hpp:340</a></div></div>
+<div class="ttc" id="aclass_monomial_collection_var_size_afc4d0d8b0767d19d9f0bb1756a1e3bfb_html_afc4d0d8b0767d19d9f0bb1756a1e3bfb"><div class="ttname"><a href="class_monomial_collection_var_size_afc4d0d8b0767d19d9f0bb1756a1e3bfb.html#afc4d0d8b0767d19d9f0bb1756a1e3bfb">MonomialCollectionVarSize::findOrInsertTopInternedMonomial</a></div><div class="ttdeci">std::pair&lt; const int *, bool &gt; findOrInsertTopInternedMonomial(int *&amp;monom)</div><div class="ttdef"><b>Definition</b> <a href="monomial-sets_8hpp_source.html#l00319">monomial-sets.hpp:319</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_monomial_collection_var_size_afc4d0d8b0767d19d9f0bb1756a1e3bfb.html#afc4d0d8b0767d19d9f0bb1756a1e3bfb">findOrInsertTopInternedMonomial()</a>, and <a class="el" href="class_monomial_collection_var_size_ae17dbea2ff0677073d1ddd9f24f454f3.html#ae17dbea2ff0677073d1ddd9f24f454f3">mMonomialMemory</a>.</p>
 

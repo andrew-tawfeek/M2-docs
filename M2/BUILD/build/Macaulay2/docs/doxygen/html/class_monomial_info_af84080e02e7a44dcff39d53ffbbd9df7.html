@@ -120,19 +120,19 @@ $(function(){initNavTree('class_monomial_info_af84080e02e7a44dcff39d53ffbbd9df7.
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="moninfo_8hpp_source.html#l00228">228</a> of file <a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  231</span>  {</div>
-<div class="line"><span class="lineno">  232</span>    <span class="comment">// Unpack the monomial m into result, which should already be allocated</span></div>
-<div class="line"><span class="lineno">  233</span>    <span class="comment">// 0..nvars-1</span></div>
-<div class="line"><span class="lineno">  234</span>    <span class="comment">// this is to connect with older &#39;int *&#39; monomials.</span></div>
-<div class="line"><span class="lineno">  235</span>    <a class="code hl_variable" href="class_monomial_info_a98a5648ed0a903736b1d675c80208b4b.html#a98a5648ed0a903736b1d675c80208b4b">ncalls_to_expvector</a>++;</div>
-<div class="line"><span class="lineno">  236</span>    result_comp = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m[1]);</div>
-<div class="line"><span class="lineno">  237</span>    m += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
-<div class="line"><span class="lineno">  238</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nvars; i++) *result++ = static_cast&lt;int&gt;(*m++);</div>
-<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  240</span>  }</div>
-<div class="ttc" id="aclass_monomial_info_a98a5648ed0a903736b1d675c80208b4b_html_a98a5648ed0a903736b1d675c80208b4b"><div class="ttname"><a href="class_monomial_info_a98a5648ed0a903736b1d675c80208b4b.html#a98a5648ed0a903736b1d675c80208b4b">MonomialInfo::ncalls_to_expvector</a></div><div class="ttdeci">unsigned long ncalls_to_expvector</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00106">moninfo.hpp:106</a></div></div>
-<div class="ttc" id="aclass_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c_html_ab871cfa4ab66344a8de516bf9fe5962c"><div class="ttname"><a href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">MonomialInfo::firstvar</a></div><div class="ttdeci">int firstvar</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00085">moninfo.hpp:85</a></div></div>
+<p class="definition">Definition at line <a class="el" href="moninfo_8hpp_source.html#l00241">241</a> of file <a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  244</span>  {</div>
+<div class="line"><span class="lineno">  245</span>    <span class="comment">// Unpack the monomial m into result, which should already be allocated</span></div>
+<div class="line"><span class="lineno">  246</span>    <span class="comment">// 0..nvars-1</span></div>
+<div class="line"><span class="lineno">  247</span>    <span class="comment">// this is to connect with older &#39;int *&#39; monomials.</span></div>
+<div class="line"><span class="lineno">  248</span>    <a class="code hl_variable" href="class_monomial_info_a98a5648ed0a903736b1d675c80208b4b.html#a98a5648ed0a903736b1d675c80208b4b">ncalls_to_expvector</a>++;</div>
+<div class="line"><span class="lineno">  249</span>    result_comp = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(m[1]);</div>
+<div class="line"><span class="lineno">  250</span>    m += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
+<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nvars; i++) *result++ = static_cast&lt;int&gt;(*m++);</div>
+<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  253</span>  }</div>
+<div class="ttc" id="aclass_monomial_info_a98a5648ed0a903736b1d675c80208b4b_html_a98a5648ed0a903736b1d675c80208b4b"><div class="ttname"><a href="class_monomial_info_a98a5648ed0a903736b1d675c80208b4b.html#a98a5648ed0a903736b1d675c80208b4b">MonomialInfo::ncalls_to_expvector</a></div><div class="ttdeci">unsigned long ncalls_to_expvector</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00119">moninfo.hpp:119</a></div></div>
+<div class="ttc" id="aclass_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c_html_ab871cfa4ab66344a8de516bf9fe5962c"><div class="ttname"><a href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">MonomialInfo::firstvar</a></div><div class="ttdeci">int firstvar</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00098">moninfo.hpp:98</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>, <a class="el" href="class_monomial_info_a98a5648ed0a903736b1d675c80208b4b.html#a98a5648ed0a903736b1d675c80208b4b">ncalls_to_expvector</a>, and <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result()</a>.</p>
 

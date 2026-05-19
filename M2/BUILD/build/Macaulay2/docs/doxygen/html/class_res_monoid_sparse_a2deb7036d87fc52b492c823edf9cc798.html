@@ -120,56 +120,56 @@ $(function(){initNavTree('class_res_monoid_sparse_a2deb7036d87fc52b492c823edf9cc
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="res-moninfo-sparse_8hpp_source.html#l00308">308</a> of file <a class="el" href="res-moninfo-sparse_8hpp_source.html">res-moninfo-sparse.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  311</span>  {</div>
-<div class="line"><span class="lineno">  312</span>    <span class="comment">// a: mFirstVar + degA</span></div>
-<div class="line"><span class="lineno">  313</span>    <span class="comment">// b: mFirstVar + degB</span></div>
-<div class="line"><span class="lineno">  314</span>    <span class="comment">// result size is mFirstVar + degA + degB = size(a) + size(b) - mFirstVar</span></div>
-<div class="line"><span class="lineno">  315</span>    <a class="code hl_variable" href="class_res_monoid_sparse_a7a432ad51bc757271265f0c735a438fd.html#a7a432ad51bc757271265f0c735a438fd">ncalls_mult</a>++;</div>
-<div class="line"><span class="lineno">  316</span>    <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>[0] = a[0] + b[0] - <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>;</div>
-<div class="line"><span class="lineno">  317</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>; ++i) <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>[i] = a[i] + b[i];</div>
-<div class="line"><span class="lineno">  318</span>    <span class="comment">// Now we merge the rest</span></div>
-<div class="line"><span class="lineno">  319</span>    <span class="keyword">const</span> <span class="keywordtype">int</span>* v1 = a + <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>;</div>
-<div class="line"><span class="lineno">  320</span>    <span class="keyword">const</span> <span class="keywordtype">int</span>* v2 = b + <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>;</div>
-<div class="line"><span class="lineno">  321</span>    <span class="keyword">const</span> <span class="keywordtype">int</span>* end1 = a + *a;</div>
-<div class="line"><span class="lineno">  322</span>    <span class="keyword">const</span> <span class="keywordtype">int</span>* end2 = b + *b;</div>
-<div class="line"><span class="lineno">  323</span>    <span class="keywordtype">int</span>* res = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> + <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>;</div>
-<div class="line"><span class="lineno">  324</span>    <span class="keywordflow">if</span> (v1 == end1)</div>
-<div class="line"><span class="lineno">  325</span>      {</div>
-<div class="line"><span class="lineno">  326</span>        <span class="keywordflow">while</span> (v2 != end2) *res++ = *v2++;</div>
-<div class="line"><span class="lineno">  327</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  328</span>      }</div>
-<div class="line"><span class="lineno">  329</span>    <span class="keywordflow">if</span> (v2 == end2)</div>
-<div class="line"><span class="lineno">  330</span>      {</div>
-<div class="line"><span class="lineno">  331</span>        <span class="keywordflow">while</span> (v1 != end1) *res++ = *v1++;</div>
-<div class="line"><span class="lineno">  332</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  333</span>      }</div>
-<div class="line"><span class="lineno">  334</span>    <span class="keywordflow">for</span> (;;)</div>
-<div class="line"><span class="lineno">  335</span>      {</div>
-<div class="line"><span class="lineno">  336</span>        <span class="keywordflow">if</span> (*v1 &gt;= *v2)</div>
-<div class="line"><span class="lineno">  337</span>          {</div>
-<div class="line"><span class="lineno">  338</span>            *res++ = *v1;</div>
-<div class="line"><span class="lineno">  339</span>            v1++;</div>
-<div class="line"><span class="lineno">  340</span>            <span class="keywordflow">if</span> (v1 == end1)</div>
-<div class="line"><span class="lineno">  341</span>              {</div>
-<div class="line"><span class="lineno">  342</span>                <span class="keywordflow">while</span> (v2 != end2) *res++ = *v2++;</div>
-<div class="line"><span class="lineno">  343</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  344</span>              }</div>
-<div class="line"><span class="lineno">  345</span>          }</div>
-<div class="line"><span class="lineno">  346</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  347</span>          {</div>
-<div class="line"><span class="lineno">  348</span>            *res++ = *v2;</div>
-<div class="line"><span class="lineno">  349</span>            v2++;</div>
-<div class="line"><span class="lineno">  350</span>            <span class="keywordflow">if</span> (v2 == end2)</div>
-<div class="line"><span class="lineno">  351</span>              {</div>
-<div class="line"><span class="lineno">  352</span>                <span class="keywordflow">while</span> (v1 != end1) *res++ = *v1++;</div>
-<div class="line"><span class="lineno">  353</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  354</span>              }</div>
-<div class="line"><span class="lineno">  355</span>          }</div>
-<div class="line"><span class="lineno">  356</span>      }</div>
-<div class="line"><span class="lineno">  357</span>  }</div>
-<div class="ttc" id="aclass_res_monoid_sparse_a7a432ad51bc757271265f0c735a438fd_html_a7a432ad51bc757271265f0c735a438fd"><div class="ttname"><a href="class_res_monoid_sparse_a7a432ad51bc757271265f0c735a438fd.html#a7a432ad51bc757271265f0c735a438fd">ResMonoidSparse::ncalls_mult</a></div><div class="ttdeci">unsigned long ncalls_mult</div><div class="ttdef"><b>Definition</b> <a href="res-moninfo-sparse_8hpp_source.html#l00079">res-moninfo-sparse.hpp:79</a></div></div>
-<div class="ttc" id="aclass_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f_html_ae74ccb6358dca8261f2b0c9d0cb4fc5f"><div class="ttname"><a href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">ResMonoidSparse::mFirstVar</a></div><div class="ttdeci">int mFirstVar</div><div class="ttdef"><b>Definition</b> <a href="res-moninfo-sparse_8hpp_source.html#l00068">res-moninfo-sparse.hpp:68</a></div></div>
+<p class="definition">Definition at line <a class="el" href="res-moninfo-sparse_8hpp_source.html#l00323">323</a> of file <a class="el" href="res-moninfo-sparse_8hpp_source.html">res-moninfo-sparse.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  326</span>  {</div>
+<div class="line"><span class="lineno">  327</span>    <span class="comment">// a: mFirstVar + degA</span></div>
+<div class="line"><span class="lineno">  328</span>    <span class="comment">// b: mFirstVar + degB</span></div>
+<div class="line"><span class="lineno">  329</span>    <span class="comment">// result size is mFirstVar + degA + degB = size(a) + size(b) - mFirstVar</span></div>
+<div class="line"><span class="lineno">  330</span>    <a class="code hl_variable" href="class_res_monoid_sparse_a7a432ad51bc757271265f0c735a438fd.html#a7a432ad51bc757271265f0c735a438fd">ncalls_mult</a>++;</div>
+<div class="line"><span class="lineno">  331</span>    <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>[0] = a[0] + b[0] - <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>;</div>
+<div class="line"><span class="lineno">  332</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>; ++i) <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>[i] = a[i] + b[i];</div>
+<div class="line"><span class="lineno">  333</span>    <span class="comment">// Now we merge the rest</span></div>
+<div class="line"><span class="lineno">  334</span>    <span class="keyword">const</span> <span class="keywordtype">int</span>* v1 = a + <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>;</div>
+<div class="line"><span class="lineno">  335</span>    <span class="keyword">const</span> <span class="keywordtype">int</span>* v2 = b + <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>;</div>
+<div class="line"><span class="lineno">  336</span>    <span class="keyword">const</span> <span class="keywordtype">int</span>* end1 = a + *a;</div>
+<div class="line"><span class="lineno">  337</span>    <span class="keyword">const</span> <span class="keywordtype">int</span>* end2 = b + *b;</div>
+<div class="line"><span class="lineno">  338</span>    <span class="keywordtype">int</span>* res = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> + <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>;</div>
+<div class="line"><span class="lineno">  339</span>    <span class="keywordflow">if</span> (v1 == end1)</div>
+<div class="line"><span class="lineno">  340</span>      {</div>
+<div class="line"><span class="lineno">  341</span>        <span class="keywordflow">while</span> (v2 != end2) *res++ = *v2++;</div>
+<div class="line"><span class="lineno">  342</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  343</span>      }</div>
+<div class="line"><span class="lineno">  344</span>    <span class="keywordflow">if</span> (v2 == end2)</div>
+<div class="line"><span class="lineno">  345</span>      {</div>
+<div class="line"><span class="lineno">  346</span>        <span class="keywordflow">while</span> (v1 != end1) *res++ = *v1++;</div>
+<div class="line"><span class="lineno">  347</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  348</span>      }</div>
+<div class="line"><span class="lineno">  349</span>    <span class="keywordflow">for</span> (;;)</div>
+<div class="line"><span class="lineno">  350</span>      {</div>
+<div class="line"><span class="lineno">  351</span>        <span class="keywordflow">if</span> (*v1 &gt;= *v2)</div>
+<div class="line"><span class="lineno">  352</span>          {</div>
+<div class="line"><span class="lineno">  353</span>            *res++ = *v1;</div>
+<div class="line"><span class="lineno">  354</span>            v1++;</div>
+<div class="line"><span class="lineno">  355</span>            <span class="keywordflow">if</span> (v1 == end1)</div>
+<div class="line"><span class="lineno">  356</span>              {</div>
+<div class="line"><span class="lineno">  357</span>                <span class="keywordflow">while</span> (v2 != end2) *res++ = *v2++;</div>
+<div class="line"><span class="lineno">  358</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  359</span>              }</div>
+<div class="line"><span class="lineno">  360</span>          }</div>
+<div class="line"><span class="lineno">  361</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  362</span>          {</div>
+<div class="line"><span class="lineno">  363</span>            *res++ = *v2;</div>
+<div class="line"><span class="lineno">  364</span>            v2++;</div>
+<div class="line"><span class="lineno">  365</span>            <span class="keywordflow">if</span> (v2 == end2)</div>
+<div class="line"><span class="lineno">  366</span>              {</div>
+<div class="line"><span class="lineno">  367</span>                <span class="keywordflow">while</span> (v1 != end1) *res++ = *v1++;</div>
+<div class="line"><span class="lineno">  368</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  369</span>              }</div>
+<div class="line"><span class="lineno">  370</span>          }</div>
+<div class="line"><span class="lineno">  371</span>      }</div>
+<div class="line"><span class="lineno">  372</span>  }</div>
+<div class="ttc" id="aclass_res_monoid_sparse_a7a432ad51bc757271265f0c735a438fd_html_a7a432ad51bc757271265f0c735a438fd"><div class="ttname"><a href="class_res_monoid_sparse_a7a432ad51bc757271265f0c735a438fd.html#a7a432ad51bc757271265f0c735a438fd">ResMonoidSparse::ncalls_mult</a></div><div class="ttdeci">unsigned long ncalls_mult</div><div class="ttdef"><b>Definition</b> <a href="res-moninfo-sparse_8hpp_source.html#l00094">res-moninfo-sparse.hpp:94</a></div></div>
+<div class="ttc" id="aclass_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f_html_ae74ccb6358dca8261f2b0c9d0cb4fc5f"><div class="ttname"><a href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">ResMonoidSparse::mFirstVar</a></div><div class="ttdeci">int mFirstVar</div><div class="ttdef"><b>Definition</b> <a href="res-moninfo-sparse_8hpp_source.html#l00083">res-moninfo-sparse.hpp:83</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>, <a class="el" href="class_res_monoid_sparse_a7a432ad51bc757271265f0c735a438fd.html#a7a432ad51bc757271265f0c735a438fd">ncalls_mult</a>, and <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result()</a>.</p>

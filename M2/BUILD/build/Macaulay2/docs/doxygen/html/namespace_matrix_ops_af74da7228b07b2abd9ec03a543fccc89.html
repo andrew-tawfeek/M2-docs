@@ -109,18 +109,18 @@ template&lt;typename RT&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mat-arith_8hpp_source.html#l00440">440</a> of file <a class="el" href="mat-arith_8hpp_source.html">mat-arith.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  441</span>{</div>
-<div class="line"><span class="lineno">  442</span>  <span class="comment">// result should be the 0 matrix of the correct size.</span></div>
-<div class="line"><span class="lineno">  443</span>  (void) A;</div>
-<div class="line"><span class="lineno">  444</span>  (void) <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
-<div class="line"><span class="lineno">  445</span>  assert(&amp;A != &amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>);  <span class="comment">// these cannot be aliased!</span></div>
-<div class="line"><span class="lineno">  446</span>  assert(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.numRows() == A.<a class="code hl_function" href="class_s_mat_ac2f48ab56ea6880bc030b45abb1f0b33.html#ac2f48ab56ea6880bc030b45abb1f0b33">numColumns</a>());</div>
-<div class="line"><span class="lineno">  447</span>  assert(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.numColumns() == A.<a class="code hl_function" href="class_s_mat_ab267714be3d09dad36331f7384aea056.html#ab267714be3d09dad36331f7384aea056">numRows</a>());</div>
-<div class="line"><span class="lineno">  448</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
-<div class="line"><span class="lineno">  449</span>      <span class="stringliteral">&quot;&#39;transpose&#39; not written for sparse mutable matrices&quot;</span>);</div>
-<div class="line"><span class="lineno">  450</span>  <span class="comment">// TODO: MES: write this!!</span></div>
-<div class="line"><span class="lineno">  451</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mat-arith_8hpp_source.html#l00444">444</a> of file <a class="el" href="mat-arith_8hpp_source.html">mat-arith.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  445</span>{</div>
+<div class="line"><span class="lineno">  446</span>  <span class="comment">// result should be the 0 matrix of the correct size.</span></div>
+<div class="line"><span class="lineno">  447</span>  (void) A;</div>
+<div class="line"><span class="lineno">  448</span>  (void) <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
+<div class="line"><span class="lineno">  449</span>  assert(&amp;A != &amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>);  <span class="comment">// these cannot be aliased!</span></div>
+<div class="line"><span class="lineno">  450</span>  assert(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.numRows() == A.<a class="code hl_function" href="class_s_mat_ac2f48ab56ea6880bc030b45abb1f0b33.html#ac2f48ab56ea6880bc030b45abb1f0b33">numColumns</a>());</div>
+<div class="line"><span class="lineno">  451</span>  assert(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.numColumns() == A.<a class="code hl_function" href="class_s_mat_ab267714be3d09dad36331f7384aea056.html#ab267714be3d09dad36331f7384aea056">numRows</a>());</div>
+<div class="line"><span class="lineno">  452</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
+<div class="line"><span class="lineno">  453</span>      <span class="stringliteral">&quot;&#39;transpose&#39; not written for sparse mutable matrices&quot;</span>);</div>
+<div class="line"><span class="lineno">  454</span>  <span class="comment">// TODO: MES: write this!!</span></div>
+<div class="line"><span class="lineno">  455</span>}</div>
 <div class="ttc" id="aclass_s_mat_ab267714be3d09dad36331f7384aea056_html_ab267714be3d09dad36331f7384aea056"><div class="ttname"><a href="class_s_mat_ab267714be3d09dad36331f7384aea056.html#ab267714be3d09dad36331f7384aea056">SMat::numRows</a></div><div class="ttdeci">size_t numRows() const</div><div class="ttdef"><b>Definition</b> <a href="smat_8hpp_source.html#l00097">smat.hpp:97</a></div></div>
 <div class="ttc" id="aclass_s_mat_ac2f48ab56ea6880bc030b45abb1f0b33_html_ac2f48ab56ea6880bc030b45abb1f0b33"><div class="ttname"><a href="class_s_mat_ac2f48ab56ea6880bc030b45abb1f0b33.html#ac2f48ab56ea6880bc030b45abb1f0b33">SMat::numColumns</a></div><div class="ttdeci">size_t numColumns() const</div><div class="ttdef"><b>Definition</b> <a href="smat_8hpp_source.html#l00098">smat.hpp:98</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>

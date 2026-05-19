@@ -125,11 +125,11 @@ Functions</h2></td></tr>
 <p>The split from <span class="tt"><a class="el" href="class_polynomial_ring.html">PolynomialRing</a></span> exists because resolutions do vastly more monomial arithmetic per second than ordinary polynomial ops, and the standard ring's virtual dispatch and full degree-monoid recursion would dominate. Here the <span class="tt"><a class="el" href="class_vector_arithmetic.html">VectorArithmetic</a></span> indirection inlines, and the <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> choice between dense (<span class="tt"><a class="el" href="res-moninfo-dense_8hpp.html" title="ResMonoidDense — dense exponent-vector implementation of the resolution monoid.">res-moninfo-dense.hpp</a></span>) and sparse (<span class="tt"><a class="el" href="res-moninfo-sparse_8hpp.html" title="ResMonoidSparse — sparse-multiset encoding alternative to ResMonoidDense.">res-moninfo-sparse.hpp</a></span>) layouts can be benchmarked without touching call sites.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_vector_arithmetic_8hpp.html" title="Coefficient-ring-erased arithmetic dispatcher used by F4, GB, and resolution code.">VectorArithmetic.hpp</a> </dd>
 <dd>
-<a class="el" href="res-moninfo_8hpp.html" title="ResMonoid dispatcher — single switch between ResMonoidDense and ResMonoidSparse.">res-moninfo.hpp</a> </dd>
+<a class="el" href="res-moninfo_8hpp.html" title="ResMonoid dispatcher — single typedef switch between ResMonoidDense and ResMonoidSparse.">res-moninfo.hpp</a> </dd>
 <dd>
 <a class="el" href="res-monomial-types_8hpp.html" title="Typed-monomial vocabulary shared by ResMonoid, ResPolyRing, SchreyerFrame, and F4Res.">res-monomial-types.hpp</a> </dd>
 <dd>
-<a class="el" href="res-f4-computation_8hpp.html" title="Top-level Schreyer-frame F4 free-resolution driver.">res-f4-computation.hpp</a> </dd>
+<a class="el" href="res-f4-computation_8hpp.html" title="F4ResComputation — top-level Schreyer-frame F4 free-resolution driver.">res-f4-computation.hpp</a> </dd>
 <dd>
 <a class="el" href="res-schreyer-frame_8hpp.html" title="SchreyerFrame — in-progress representation of a free resolution organised by (level,...">res-schreyer-frame.hpp</a> </dd></dl>
 
