@@ -7,24 +7,30 @@
  * @file reducedgb.hpp
  * @brief `ReducedGB` --- abstract base for the canonicalising reduction pass that follows GB computation.
  *
- * Declares `ReducedGB`, a `GBComputation` subclass that takes an
- * already-computed Groebner basis and canonicalises it: leading
- * monomials become distinct, no tail term is divisible by another
- * element's leading monomial, and (over a field) leading
- * coefficients are normalised to 1. The base owns the `GBRing*`,
- * the per-element `gbvector*` storage, and a `MonomialTable` /
- * `MonomialTableZZ` index of leading monomials; the static
- * `ReducedGB::create` factory picks the right concrete subclass
- * from the coefficient ring and the call shape.
+ * Declares `ReducedGB`, a `GBComputation` subclass that takes
+ * an already-computed Groebner basis and canonicalises it:
+ * leading monomials become distinct, no tail term is divisible
+ * by another element's leading monomial, and (over a field)
+ * leading coefficients are normalised to 1. The base owns the
+ * `GBRing *R`, `originalR`, source / target `FreeModule*`s,
+ * and a `VECTOR(POLY) polys` of the current basis; the leading
+ * monomial index (`MonomialTable` or `MonomialTableZZ` from
+ * `montable.hpp` / `montableZZ.hpp`) is added by the
+ * appropriate subclass. The static `ReducedGB::create` factory
+ * picks the right subclass from the coefficient ring and call
+ * shape.
  *
- * Concrete subclasses cover the cases that diverge in subtle
- * ways: `ReducedGB_Field` enforces the field convention,
- * `ReducedGB_FieldLocal` adds the unit-of-the-maximal-ideal
- * check required over local rings, `ReducedGB_ZZ` handles the
+ * Concrete subclasses cover the cases that diverge: `ReducedGB_Field`
+ * (`reducedgb-field.hpp`) enforces the field convention,
+ * `ReducedGB_Field_Local` (`reducedgb-field-local.hpp`, which
+ * extends `ReducedGB_Field` rather than `ReducedGB` directly)
+ * adds the unit-of-the-maximal-ideal check required over local
+ * rings, `ReducedGB_ZZ` (`reducedgb-ZZ.hpp`) handles
  * coefficient-aware reduction (multiple basis elements with the
  * same monomial support are allowed if they differ in
- * coefficient), and `MarkedGB` simply wraps a user-supplied
- * (basis, lead-term) pair without doing any reduction.
+ * coefficient), and `MarkedGB` (`reducedgb-marked.hpp`) simply
+ * wraps a user-supplied `(basis, lead-term)` pair without doing
+ * any reduction.
  *
  * @see comp-gb.hpp
  * @see gbring.hpp
