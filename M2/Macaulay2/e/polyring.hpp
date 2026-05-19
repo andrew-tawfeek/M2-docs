@@ -14,16 +14,19 @@
  * `PolyRing` (`poly.hpp`) and the quotient `PolyRingQuotient`
  * (`polyquotient.hpp`) inherit from. The forward declarations
  * for `PolyRingSkew` / `PolyRingWeyl` / `PolyRingNC` /
- * `PolyQuotient` near the top of the file are vestigial: skew,
- * Weyl, and solvable-algebra behaviour is selected by the
- * `is_skew_`, `is_weyl_`, `is_solvable_` flags on `PolyRing`
- * (cheap branches in hot paths) and the corresponding
- * polynomial code in `skewpoly.cpp` / `weylalg.cpp`, not by
- * dedicated subclasses with those names.
+ * `PolyQuotient` near the top of the file are **stale** ---
+ * those class names have no definitions anywhere. The real
+ * non-commutative-flavoured `PolyRing` subclasses use different
+ * names: `SkewPolynomialRing` (`skewpoly.hpp`), `WeylAlgebra`
+ * (`weylalg.hpp`), `SolvableAlgebra` (`solvable.hpp`), and
+ * `SchurRing` (`schur.hpp`). Inside that hierarchy
+ * `PolynomialRing` itself also carries `is_skew_` / `is_weyl_`
+ * / `is_solvable_` flags so cheap branches in tight loops can
+ * skip the virtual call when the answer is statically known.
  *
  * The base carries the monoid (`Monoid*`, see `monoid.hpp`)
  * and the coefficient ring (`Ring*`, typically an aring
- * wrapper), a graded-ring flag, a `QRingInfo *qinfo_` for
+ * wrapper), a graded-ring flag, a `QRingInfo* qinfo_` for
  * quotient bookkeeping, and the `SkewMultiplication`
  * configuration used when same-variable multiplications
  * collapse to zero in exterior-like rings. A small friend
@@ -33,6 +36,9 @@
  *
  * @see poly.hpp
  * @see polyquotient.hpp
+ * @see skewpoly.hpp
+ * @see weylalg.hpp
+ * @see solvable.hpp
  * @see monoid.hpp
  * @see gbring.hpp
  */
