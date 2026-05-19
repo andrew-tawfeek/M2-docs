@@ -6,24 +6,23 @@
  * @brief Engine-boundary C API for constructing and operating on `MonomialIdeal`s.
  *
  * Declares the `extern "C"` entry points the M2 interpreter
- * routes to the engine's combinatorial `MonomialIdeal` machinery.
- * `IM2_MonomialIdeal_make(M, n)` builds an ideal from the lead
- * monomials of the matrix columns landing in row `n`, and
- * `IM2_MonomialIdeal_to_matrix` walks back the other way.
- * Set-theoretic combinators (`IM2_MonomialIdeal_intersect`,
- * union, product), colon and saturation (`rawColonMonomialIdeal1`
- * / `2`, `rawSaturateMonomialIdeal1` / `2`),
- * `rawRadicalMonomialIdeal`, `IM2_MonomialIdeal_borel` /
- * `is_borel`, `rawAlexanderDual`, and the decomposition queries
- * (`IM2_MonomialIdeal_codim`, `rawMonomialMinimalPrimes`,
- * `rawMaximalIndependentSets`) cover the operations every
- * downstream M2 package needs. `IM2_MonomialIdeal_Hilbert`
- * computes the Hilbert-series numerator of `coker I` directly
- * from the monomial generators.
+ * routes to the engine's combinatorial `MonomialIdeal`
+ * machinery. `IM2_MonomialIdeal_make(M, n)` builds an ideal
+ * from the lead monomials of the matrix columns landing in row
+ * `n`, and `IM2_MonomialIdeal_to_matrix` walks back. The
+ * algebraic surface covers intersection (`IM2_MonomialIdeal_intersect`),
+ * colon and saturation (`rawColonMonomialIdeal1` / `2`,
+ * `rawSaturateMonomialIdeal1` / `2`), `rawRadicalMonomialIdeal`,
+ * the strongly-stable closure / test pair
+ * (`IM2_MonomialIdeal_borel` / `is_borel`), `rawAlexanderDual`,
+ * and the decomposition queries (`IM2_MonomialIdeal_codim`,
+ * `rawMonomialMinimalPrimes`, `rawMaximalIndependentSets`).
+ * `IM2_MonomialIdeal_Hilbert` computes the Hilbert-series
+ * numerator of `coker I` directly from the monomial generators,
+ * and `rawMonomialIdealLCM` returns the LCM as a degree vector.
  *
  * `MonomialIdeal` is immutable and always stored as a set of
- * minimal generators; the dedicated C surface (kept separate
- * from polynomial-ideal entry points) is what lets the
+ * minimal generators; the dedicated C surface lets the
  * interpreter manipulate initial ideals, leading-term matrices,
  * and Hilbert-function inputs without paying for polynomial-ring
  * machinery. The opaque `EngineMonomial` type is the single-
