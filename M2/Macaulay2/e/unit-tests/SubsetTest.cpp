@@ -1,5 +1,31 @@
 // Copyright 2013 Michael E. Stillman
 
+/**
+ * @file unit-tests/SubsetTest.cpp
+ * @brief gtest coverage for `Subsets` --- the bijection between integers and `k`-subsets of `{0..n-1}`.
+ *
+ * Hosts the `TEST(Subsets, encode*)` battery that round-trips
+ * every `k`-subset of `{0, ..., n-1}` through
+ * `Subsets::decode(i, a)` / `Subsets::encode(a)` for small
+ * `(n, k)` pairs (5 choose 2, 12 choose 6, ...), asserting
+ * `decode` returns a valid subset for every index in the
+ * `C(n, k)` range and that `encode(decode(i)) == i` for each.
+ * This encoding underpins the engine's free-resolution and
+ * Hilbert-function combinatorics, where each homological level
+ * indexes into a sparse range of subsets of variables.
+ *
+ * The companion files in the misc family
+ * (`PointArray.cpp` --- numerical clustering for NAG;
+ * `basics-test.cpp` --- the harness-itself liveness check) are
+ * covered by the same `file-misc-tests` markdown; each gets
+ * its own `@file` block on a separate firing.
+ *
+ * @see comb.hpp
+ * @see basics-test.cpp
+ * @see PointArray.cpp
+ * @see ARingTest.hpp
+ */
+
 #include <cstdio>
 #include <string>
 #include <iostream>
