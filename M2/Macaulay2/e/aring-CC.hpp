@@ -3,6 +3,34 @@
 #ifndef _aring_CC_hpp_
 #define _aring_CC_hpp_
 
+/**
+ * @file aring-CC.hpp
+ * @brief `M2::ARingCC` --- machine-precision complex numbers (pair of `double`s).
+ *
+ * `ARingCC` is the complex sibling of `ARingRR` in the aring family:
+ * a `SimpleARing<ARingCC>` specialisation whose element type is a
+ * struct of two `double`s and whose arithmetic uses hardware
+ * floating-point throughout --- no MPFR, no allocation. Addition,
+ * multiplication, reciprocal, modulus, and complex conjugation use
+ * the standard formulas on the real and imaginary parts; random
+ * values come from `interface/random.h`'s `randomDouble()` applied
+ * componentwise.
+ *
+ * On top of the real-ring API it adds `conjugate`, `real`, `imag`,
+ * `abs`, and `is_zero` (both components zero). The arbitrary-
+ * precision siblings live in `aring-CCC.hpp` (MPFR) and
+ * `aring-CCi.hpp` (Arb intervals); the dispatcher in `aring.hpp`
+ * selects among them based on the user's precision option. Primary
+ * consumer is the NAG path-tracker, which runs nearly all homotopy
+ * continuation in this ring.
+ *
+ * @see aring-RR.hpp
+ * @see aring-CCC.hpp
+ * @see aring-CCi.hpp
+ * @see aring.hpp
+ * @see NAG.hpp
+ */
+
 #include "interface/gmp-util.h"  // for moveTo_gmpCC
 #include "interface/random.h"    // for randomDouble
 
