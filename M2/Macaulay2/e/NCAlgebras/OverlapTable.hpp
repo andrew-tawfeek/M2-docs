@@ -1,6 +1,37 @@
 #ifndef _OverlapTable_hpp_
 #define _OverlapTable_hpp_
 
+/**
+ * @file NCAlgebras/OverlapTable.hpp
+ * @brief `OverlapTable` --- degree-sorted queue of pending word overlaps for non-commutative GB drivers.
+ *
+ * Declares the non-commutative analogue of the commutative
+ * `SPair` set: an `Overlap` is `(i, j, k, processed)` recording
+ * that a suffix of basis word `i` matches a prefix of basis word
+ * `k` starting at position `j` in `i`, and the `processed` flag
+ * marks whether the corresponding S-polynomial has been computed
+ * yet. The container is a `std::map<(degree, processed),
+ * std::deque<Overlap>>`, which lets `nextDegreeOverlaps` pop an
+ * entire degree's worth of pending pairs in one go, while
+ * `insert(deg, isGenerator, o)` appends new overlaps as the
+ * basis grows. `removeLowestDegree` advances the cursor;
+ * `isFinished(topDegree)` is the termination test the
+ * `NCGroebner` / `NCF4` outer loop uses.
+ *
+ * Each Buchberger-style pair in the commutative case becomes
+ * potentially many overlaps in the NC case, since a leading
+ * word can overlap a partner at every suffix-prefix match
+ * position. Pruning consults the cached `ConstPolyList*` for
+ * subsumption tests --- the structure stores polynomial
+ * pointers so the chain-criterion analogue can read the actual
+ * leading words rather than just their indices.
+ *
+ * @see WordTable.hpp
+ * @see NCGroebner.hpp
+ * @see NCF4.hpp
+ * @see Polynomial.hpp
+ */
+
 #include "Polynomial.hpp"  // for ConstPolyList
 
 #include <deque>           // for deque
