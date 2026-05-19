@@ -12,19 +12,24 @@
  * `local_elem` is a `(numer, denom)` pair (the same fraction
  * shape as `frac.hpp`) but with the denominator restricted to
  * `R \ P` rather than `R \ {0}`. The class stores the underlying
- * polynomial ring `mRing` and a `GBComputation* mPrime` ---
- * the Groebner basis of `P` --- and uses the GB to check after
- * each operation that the resulting denominator's normal form
- * modulo `P` is non-zero, raising an engine error if not.
+ * polynomial ring `mRing` and a `GBComputation* mPrime` (a GB of
+ * `P`); the private `is_in_prime(f)` wraps `f` in a one-column
+ * matrix and tests `mPrime->contains(M) == -1` to decide ideal
+ * membership. `is_unit(f)` is then `!is_in_prime(f.numer)`, and
+ * `divide` / `invert` raise `exc::engine_error("attempt to
+ * divide by a non-unit")` exactly when the divisor's numerator
+ * lies in `P` --- the check fires per division, not after every
+ * arithmetic op.
  *
  * The constraint is what justifies a distinct class from
  * `FractionField`: a `LocalRing` knows how to ask "does this
  * element lie in `P`?", its unit group depends on `P`, and the
- * simplifier can only cancel common factors that already live in
- * `R`. When `P = (0)` the two coincide. Heavy callers are local-
- * cohomology and tangent / normal-cone computations driven from
- * `m2/localring.m2`; GB work over a `LocalRing` reaches into the
- * specialised `reducedgb-field-local.hpp`.
+ * `simplify` pass only cancels GCDs when `use_gcd_simplify`
+ * holds (`true` by default, flagged with a `FIXME remove`).
+ * Heavy callers are local-cohomology and tangent / normal-cone
+ * computations driven from `m2/localring.m2`; GB work over a
+ * `LocalRing` reaches into the specialised
+ * `reducedgb-field-local.hpp`.
  *
  * @see frac.hpp
  * @see polyring.hpp
