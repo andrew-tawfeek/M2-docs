@@ -15,12 +15,14 @@
  * Every `Matrix` stores pointers to a source and target
  * `FreeModule`, so this class is what gives matrix shapes
  * their static guarantees --- degree compatibility and
- * base-ring agreement are checked through these pointers. The
- * class is intentionally immutable: the standard
- * transformations (`sub_space`, `direct_sum`, `tensor`,
- * `exterior`, and the schreyer-order variants
- * `make_schreyer` / `append_schreyer`) return a fresh
- * `FreeModule`.
+ * base-ring agreement are checked through these pointers. Once
+ * a `FreeModule` is interned its `EngineObject` hash freezes
+ * it, but during construction it is built up imperatively: the
+ * fresh-return transformations `sub_space`, `direct_sum`,
+ * `tensor`, `exterior` and the static `make_schreyer` allocate
+ * a new `FreeModule`, while `append`, `append_schreyer`,
+ * `change_degree`, and the in-place `direct_sum_to` mutate the
+ * receiver and are used to fill it in before it escapes.
  *
  * When a Schreyer order is installed, the comparison
  * `compare(e_i * m, e_j * m')` first compares
