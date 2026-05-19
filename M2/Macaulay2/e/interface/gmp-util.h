@@ -7,20 +7,21 @@
  *
  * Declares the small family of `mpz_reallocate_limbs` /
  * `mpfr_reallocate_limbs` / `mpfi_reallocate_limbs` rewriters
- * and their `moveTo_gmpZZ` / `moveTo_gmpQQ` / `moveTo_gmpRR` /
+ * and the typed `moveTo_gmpQQ` / `moveTo_gmpRR` /
  * `moveTo_gmpRRi` / `moveTo_gmpCC` / `moveTo_gmpCCi` wrappers
+ * (integer values go through `mpz_reallocate_limbs` directly)
  * that the engine uses to launder every GMP-allocated number
  * through `getmem_atomic` before handing it back to the
  * interpreter. The pattern is the same in every case: allocate
  * a fresh atomic GC buffer of the right limb size, `memcpy` the
- * existing limbs into it, `mpz_clear` / `mpfr_clear` the original
- * malloc-backed payload, and rewire the multiprecision struct
- * to point at the new GC-managed storage.
+ * existing limbs into it, `mpz_clear` / `mpfr_clear` the
+ * original malloc-backed payload, and rewire the multiprecision
+ * struct to point at the new GC-managed storage.
  *
- * Without this laundering the engine would interleave two memory
- * regimes inside the same value, and the bdwgc collector would
- * be unable to see the limbs --- so any rational, real, or
- * complex number crossing the engine-to-interpreter boundary
+ * Without this laundering the engine would interleave two
+ * memory regimes inside the same value and the bdwgc collector
+ * would be unable to see the limbs --- so any rational, real,
+ * or complex number crossing the engine-to-interpreter boundary
  * gets passed through a `moveTo_*` helper first. The
  * `CC_struct` / `CCi_struct` typedefs at the bottom carry the
  * complex (and complex-interval) layouts the helpers operate
