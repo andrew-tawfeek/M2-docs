@@ -7,20 +7,27 @@
  *
  * Defines the four `DMat<R>` aliases the LAPACK path uses
  * (`DMatRR`, `DMatCC`, `DMatRRR`, `DMatCCC`) and declares the
- * external entry points (`dgesv_`, `zgesv_`, `dgesvd_`, ...) the
- * engine forwards into for linear solve, LU, QR, SVD, and
- * eigenvalue work. The hardware-precision aliases are what
- * LAPACK actually operates on; calls supplying an MPFR-precision
- * matrix fall through per-entry casts as a fallback, with the
- * understanding that the result is no longer numerically
- * certified.
+ * Fortran ABI prototypes (`dgesv_`, `dgeev_`, `dsyev_`,
+ * `dgetrf_`, `dgesvd_`, `zgesv_`, `zgeev_`, ...) that the
+ * implementation forwards into for linear solve, LU, QR, SVD,
+ * eigenvalue, and least-squares work. Engine callers reach those
+ * routines through the static `Lapack` class declared further
+ * down: `Lapack::LU`, `solve`, `eigenvalues[_symmetric/_hermitian]`,
+ * `eigenvectors[_symmetric/_hermitian]`, `SVD`,
+ * `SVD_divide_conquer`, and `least_squares[_deficient]`, each
+ * overloaded once for the hardware-precision aliases (`DMatRR` /
+ * `DMatCC`) and once for the MPFR-precision aliases (`DMatRRR` /
+ * `DMatCCC`); the MPFR overloads copy through `double` /
+ * `complex<double>` element by element, so the answer carries
+ * hardware precision regardless of the input ring.
  *
- * The library is detected at configure time via
- * `m4/ax_lapack.m4` / `cmake/Find*.cmake` and resolves to system
- * LAPACK, Apple Accelerate (on macOS), or OpenBLAS depending on
- * what's available. The neighbouring `eigen.hpp` is the
- * Eigen3-backed counterpart used for MPFR-precision matrices and
- * for routines LAPACK does not provide.
+ * The library is detected at configure time --- the autotools
+ * macro `M2/m4/ax_lapack.m4` resolves to whatever LAPACK build
+ * is available (system reference LAPACK, Apple Accelerate,
+ * OpenBLAS, ...). The neighbouring `eigen.hpp` covers the
+ * Eigen3-backed path used for the genuine MPFR-precision
+ * computations and as the `#ifdef NO_LAPACK` fallback for the
+ * hardware-precision aliases.
  *
  * @see dmat.hpp
  * @see eigen.hpp
