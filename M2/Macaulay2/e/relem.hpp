@@ -10,19 +10,33 @@
  * Declares `RingElement`, the `EngineObject` subclass that
  * stores one element of a ring as a pair `(R, val)`: the
  * `Ring*` pointer tags the value and the opaque `ring_elem`
- * carries it. Every arithmetic op (`add`, `mult`, `negate`,
- * ...) delegates to the ring's virtuals, so the same
- * `RingElement` shape represents integers, rationals,
+ * carries it. Arithmetic is exposed through operator overloads
+ * (unary `operator-`, binary `operator+` / `operator-` /
+ * `operator*` / `operator/`, plus `operator*(int)`,
+ * `power(mpz_srcptr)` / `power(int)`, and `invert()`), each
+ * delegating to the corresponding virtual on the ring; the same
+ * `RingElement` shape thus represents integers, rationals,
  * polynomials, quotient-ring elements, Weyl operators, and any
  * other algebraic object the engine knows about. The
  * `make_raw(R, f)` factory wraps a freshly-built `ring_elem`
- * with its ring; direct construction is rare.
+ * with its ring; direct construction via the public constructor
+ * is rare.
  *
- * The `ring_elem` union itself lives in `ringelem.hpp`. Small
- * values (Z/p element, `int`) stay inline in the union, while
- * large values (`mpz_ptr`, polynomial pointer) reference
- * heap-allocated storage --- the encapsulation is why each ring
- * is the only thing that knows what its `val` means.
+ * Beyond core arithmetic, the class offers `promote(S, result)`
+ * / `lift(S, result)` for the canonical inter-ring maps
+ * (`R -> R[x]`, `R -> R/I`, `R -> frac R`, `Z/p[x]/F -> GF`),
+ * polynomial accessors (`lead_term`, `rest`, `n_terms`,
+ * `get_terms`, `get_coeff`, `lead_coeff`, `lead_monom`,
+ * `is_homogeneous`, `homogenize`, `degree_weights`, `degree`,
+ * `multi_degree`), fraction-field helpers (`numerator`,
+ * `denominator`, `fraction`), content extraction (`content`,
+ * `remove_content`, `split_off_content`), and the univariate-
+ * over-finite-field helper `getSmallIntegerCoefficients`. The
+ * `ring_elem` union itself lives in `ringelem.hpp` --- small
+ * values (`int`, Z/p element) stay inline, large values
+ * (`mpz_ptr`, polynomial pointer) reference heap-allocated
+ * storage, and each ring is the only thing that knows what its
+ * `val` means.
  *
  * @see ring.hpp
  * @see ringelem.hpp
