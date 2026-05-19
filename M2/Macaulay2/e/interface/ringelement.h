@@ -10,18 +10,21 @@
  * scalar coercions (`IM2_RingElement_from_Integer`,
  * `_from_rational`, `_from_BigReal`, `_from_BigComplex`) plus
  * the generator-and-power factory `IM2_RingElement_from_var` /
- * `IM2_RingElement_term`; arithmetic exposes `IM2_RingElement_plus`,
- * `_minus`, `_times`, `_negate`, `_divide`, and `_power`;
- * projection / decomposition cover `_lead_coefficient`,
- * `_lead_monomial`, `_terms`, `_get_coefficient(f, m)`, and the
- * homogeneous / degree introspection; and promotion / lift
- * (`rawPromote`, `rawLift`) move an element between compatible
- * super- and sub-rings while preserving its mathematical value.
+ * `rawTerm`; arithmetic flows mostly through the underlying
+ * `Ring*` with `IM2_RingElement_plus` and a small set of named
+ * helpers (`rawDiff`, `rawConvolve`, `rawHomogenize`,
+ * `rawPowerMod`, `rawRingElementAntipode`); projection and
+ * decomposition cover `rawLeadCoefficient`, `rawLeadMonomial`,
+ * `rawGetTerms`, `rawCoefficient`, `rawTermCount`, and the
+ * homogeneous / degree introspection (`rawIsHomogeneous`,
+ * `rawMultiDegree`, `rawWeightRange`); and `rawPromote` /
+ * `rawLift` move an element between compatible super- and
+ * sub-rings while preserving its mathematical value.
  *
- * Every entry point reads the `Ring*` off the input and
- * forwards through it --- `RingElement` carries no algorithmic
- * logic of its own. The opaque `EngineMonomial` type passed to
- * `_get_coefficient` is the single-monomial handle the
+ * Most entry points read the `Ring*` off the input and forward
+ * through it --- `RingElement` carries no algorithmic logic of
+ * its own. The opaque `EngineMonomial` type passed to
+ * `rawCoefficient` is the single-monomial handle the
  * interpreter uses elsewhere in `interface/`, so the same
  * vocabulary covers polynomials, monomial ideals, and ring
  * elements.
