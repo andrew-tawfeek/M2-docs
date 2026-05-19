@@ -16,23 +16,24 @@
  *
  * Declares the polymorphic root of the BIBasis monomial
  * hierarchy: a singly-linked list of `VarsListNode` records
- * (variable index plus `Next`) carrying a cached `TotalDegree`,
- * with the variable count `DimIndepend` shared across the
- * subsystem as a static. Each `VarsListNode` allocates from a
- * static `FastAllocator` slab so the millions of nodes the
- * prolongation loop creates stay cache-resident. Exponents are
- * stored as `short int`s --- in `F_2[x]/(x_i^2 - x_i)` every
- * exponent is 0 or 1, so the only thing the list needs to record
- * is the *set* of variables that appear.
+ * (each carrying a `short int Integer` variable index plus
+ * `Next`) with a cached `TotalDegree`, and the static
+ * `DimIndepend` that fixes the variable count for the whole
+ * subsystem. Each `VarsListNode` allocates from a static
+ * `FastAllocator` slab so the millions of nodes the
+ * prolongation loop creates stay cache-resident. Because the
+ * ground field is `F_2[x]/(x_i^2 - x_i)` every exponent is 0
+ * or 1, so the list records exactly the *set* of variables that
+ * appear; no exponent slots are needed.
  *
  * The pure virtuals `MultiplyBy`, `SetOne`, `operator[]`,
  * `FirstMultiVar`, and `GetVariablesSet` are filled in by the
- * three concrete subclasses --- `MonomLex`, `MonomDL`, `MonomDRL`
- * --- each implementing one monomial ordering. The bibasis
- * algorithm templates on the concrete type rather than dispatching
- * through `Monom*`, so the abstract surface here is mostly a
- * shared layout and a documentation anchor for the ordering
- * variants.
+ * three concrete subclasses --- `MonomLex`, `MonomDL`,
+ * `MonomDRL` --- each implementing one monomial ordering. The
+ * bibasis algorithm templates on the concrete type rather than
+ * dispatching through `Monom*`, so the abstract surface here is
+ * mostly a shared layout and a documentation anchor for the
+ * ordering variants.
  *
  * @see allocator.hpp
  * @see monomLex.hpp
