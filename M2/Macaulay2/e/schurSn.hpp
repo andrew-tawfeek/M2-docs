@@ -5,25 +5,26 @@
 
 /**
  * @file schurSn.hpp
- * @brief `SchurSnRing` --- symmetric-group representation ring built on `SchurRing2`.
+ * @brief `SchurSnRing` --- `SchurRing2` subclass intended for symmetric-group representation rings (Kronecker product is a stub).
  *
- * Declares `SchurSnRing`, a `SchurRing2` subclass whose elements
- * are characters of irreducible `S_n` representations (indexed
- * by partitions of `n`). The default constructor argument
- * `n = -1` selects the graded direct sum
- * `oplus_{n} R(S_n)` of all symmetric-group representation
- * rings; `n > 0` restricts to a single `R(S_n)`. The
+ * Declares `SchurSnRing`, a `SchurRing2` subclass meant to
+ * carry characters of irreducible `S_n` representations indexed
+ * by partitions of `n`. Construction forwards `(A, n)` to
+ * `SchurRing2(A, n)` and runs the same `initialize_SchurRing2`,
+ * so the rank cap and coefficient ring follow the parent's
+ * conventions (a default `n = -1` reaches `SchurRing2`'s
+ * infinite-rank mode, same as `createInfinite`). The
  * `cast_to_SchurSnRing` overrides let engine code distinguish
  * this specialisation from a generic Schur ring without
  * resorting to `dynamic_cast`.
  *
- * Two products coexist: the inherited `SchurRing2::mult` is the
- * ordinary Schur-function product (used for symmetric-function
- * identities), while the added `tensor_mult` is the Kronecker
- * tensor product of characters --- the operation the
- * representation theorist actually calls "multiplication" in
- * `R(S_n)`. They agree under some interpretations but diverge
- * in general; both are exposed so callers can pick.
+ * The class adds a `tensor_mult(f, g)` method alongside the
+ * overridden `mult(f, g)` --- but both implementations in
+ * `schurSn.cpp` are one-line passthroughs to
+ * `SchurRing2::mult(f, g)`. The intended Kronecker-product
+ * semantics for `tensor_mult` are not yet implemented; right
+ * now it is just an alias for the ordinary Schur-function
+ * product.
  *
  * @see schur2.hpp
  * @see schur-poly-heap.hpp
