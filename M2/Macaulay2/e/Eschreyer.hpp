@@ -2,6 +2,31 @@
 #ifndef _Eschreyer_hpp_
 #define _Eschreyer_hpp_
 
+/**
+ * @file Eschreyer.hpp
+ * @brief Older Schreyer-style kernel computation, predecessor of `schreyer-resolution/`.
+ *
+ * Declares `GBKernelComputation` --- a `Computation` subclass that,
+ * given a matrix `f : F -> G` whose columns are a Groebner basis of
+ * `im(f)`, produces the kernel `K` of `f` as a set of generators which
+ * are themselves a Groebner basis under the Schreyer order on `F`
+ * induced by `(f, lt(f_1), ..., lt(f_n))`. That structural guarantee
+ * is what makes the routine useful for iterated free resolutions: the
+ * kernel is in the right form to feed straight into the next step.
+ *
+ * Also declares the lightweight `GBMatrix` --- a matrix whose columns
+ * are owned `gbvector*` rather than opaque `vec` values, so the inner
+ * loop sidesteps a `Matrix -> gbvector` conversion every iteration.
+ * The newer `schreyer-resolution/` implementation reduces a whole
+ * degree at once via F4 and is faster on most inputs; this older
+ * single-row reduction is retained for regression testing and the rare
+ * small-example case where it still wins.
+ *
+ * @see gbring.hpp
+ * @see schorder.hpp
+ * @see comp.hpp
+ */
+
 #include "polyring.hpp"
 #include "gbring.hpp"
 #include "schorder.hpp"
