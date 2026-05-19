@@ -3,6 +3,41 @@
 #ifndef _res_moninfo_sparse_hpp_
 #define _res_moninfo_sparse_hpp_
 
+/**
+ * @file schreyer-resolution/res-moninfo-sparse.hpp
+ * @brief `ResMonoidSparse` --- sparse-multiset encoding alternative to `ResMonoidDense`.
+ *
+ * Declares the compact alternative `res-moninfo.hpp` keeps in
+ * the codebase for swap-in benchmarking against the production
+ * dense layout. Each monomial is encoded as `[length, hash,
+ * component, weight_1, ..., weight_r, v, ..., v_d]` where the
+ * tail is a non-increasing list of variable indices whose
+ * repetition rate encodes the exponent --- so a monomial
+ * `x^2 y z^5` with `nvars = 3` records `[8, hash, comp, 0, 0,
+ * 1, 2, 2, 2, 2, 2]` rather than the full-length dense
+ * exponent vector. Memory is `O(total_degree)` per monomial
+ * rather than `O(nvars)`, which wins big for rings with many
+ * variables and low-support monomials.
+ *
+ * `hashfcn` carries the per-variable random hash word and
+ * `mask` clamps the combined value into a `res_monomial_word`;
+ * leading weight slots front-load comparison so the order test
+ * can short-circuit before walking the variable suffix. The
+ * `SkewMultiplication` base supplies the sign-aware
+ * multiplication needed for anti-commuting (exterior-style)
+ * variables. The class exposes the same `mult` / `compare` /
+ * `divides` / `hash` / `degree` / `to_exponents` surface as
+ * `ResMonoidDense`, which is what lets the typedef switch in
+ * `res-moninfo.hpp` swap implementations with no call-site
+ * changes.
+ *
+ * @see res-moninfo.hpp
+ * @see res-moninfo-dense.hpp
+ * @see res-monomial-types.hpp
+ * @see res-poly-ring.hpp
+ * @see skew.hpp
+ */
+
 #include <iostream>                   // for ostream
 #include <memory>                     // for unique_ptr
 #include <vector>                     // for vector
