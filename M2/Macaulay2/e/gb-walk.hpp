@@ -3,6 +3,32 @@
 #ifndef _gb_walk_
 #define _gb_walk_
 
+/**
+ * @file gb-walk.hpp
+ * @brief `GBWalker` --- generic Groebner-walk strategy that transports a basis between term orders.
+ *
+ * Declares `GBWalker`, a `GBComputation` subclass that
+ * implements the Groebner-walk algorithm: given a basis for one
+ * monomial ordering, traverse a path of intermediate orderings
+ * and convert the basis to the target ordering by recomputing
+ * along each face of the Groebner fan. The header comment notes
+ * the implementation is not yet known to be working --- the
+ * file is in the tree for completeness alongside the other
+ * `Strategy =>` variants but should not be relied on without
+ * verification.
+ *
+ * `GBWalker` plugs into the same dispatch entry as
+ * `gb-default.hpp` (the default Buchberger `gbA`) and the other
+ * specialisations (`gb-homog2.hpp`, `gb-sugarless.hpp`,
+ * `gb-toric.hpp`); the user reaches it via `Strategy =>` only.
+ * It carries the same `GBRing` / `gbvector` / `MarkedGB`
+ * vocabulary as the rest of the GB family.
+ *
+ * @see comp-gb.hpp
+ * @see gb-default.hpp
+ * @see gbring.hpp
+ */
+
 #include "comp-gb.hpp"
 #include "engine-includes.hpp"
 #include "interface/monomial-ordering.h"  // for MonomialOrdering
