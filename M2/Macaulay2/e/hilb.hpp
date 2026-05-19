@@ -3,6 +3,33 @@
 #ifndef _hilb_hh_
 #define _hilb_hh_
 
+/**
+ * @file hilb.hpp
+ * @brief Hilbert series / function / polynomial via the Bigatti-Caboara-Robbiano recursion.
+ *
+ * Computes the Hilbert series of a graded module `M = R^a / I`,
+ * returning the numerator polynomial in `ZZ[t]` over the standard
+ * denominator `prod (1 - t^{deg x_i})`. The recursion picks a
+ * pivot monomial `m` and uses the short exact sequence
+ * `0 -> R/(I:m) -.m-> R/I -> R/(I + (m)) -> 0`, giving
+ * `H_{R/I} = t^{deg m} H_{R/(I:m)} + H_{R/(I + (m))}`; the
+ * `partition_table` declared at the top runs the union-find that
+ * groups variables into connected components so the recursion
+ * splits on independent subproblems whenever possible. Both
+ * monomial-ideal inputs (fast direct path) and general ideal
+ * inputs (engine first computes a GB and takes the initial
+ * monomial ideal) are accepted.
+ *
+ * The Hilbert function is read off the rational expansion of the
+ * series; the Hilbert polynomial (eventual polynomial behaviour
+ * in `d`) is extracted symbolically from the numerator. For very
+ * large inputs the resolution-based alternative in `comp-res.hpp`
+ * is sometimes preferable.
+ *
+ * @see monideal.hpp
+ * @see comp-res.hpp
+ */
+
 // Computation of Hilbert functions via Bigatti's (et al) algorithm.
 
 #include "hash.hpp"       // for MutableEngineObject
