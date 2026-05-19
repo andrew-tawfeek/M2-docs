@@ -5,23 +5,30 @@
 
 /**
  * @file dmat-lu-inplace.hpp
- * @brief `DMatLinAlg` specialisations for `ARingGFFlint{,Big}` wrapping FLINT's in-place LU plus LAPACK glue.
+ * @brief `DMatLUinPlace<RT>` --- the LU worker that `DMatLinAlg<RT>` delegates to, with `RR` / `CC` / GF specialisations.
  *
- * Carries the `DMatLinAlg<M2::ARingGFFlint>` and
- * `DMatLinAlg<M2::ARingGFFlintBig>` specialisations that route
- * dense LU, rank, determinant, and null-space over FLINT Galois
- * fields through `fq_zech_mat_lu` and `fq_nmod_mat_lu`. The LU
- * factors overwrite the input matrix (FLINT's "in-place" form),
- * which saves a copy at the cost of destroying the original ---
- * callers that need to preserve `M` make a copy themselves.
- * `_perm_parity` from `<flint/perm.h>` is pulled in so the routines
- * can read off the sign needed for downstream determinant code.
+ * Declares `DMatLUinPlace<RingType>`, the worker class
+ * `DMatLinAlg<RingType>::mLUObject` is built from. Its
+ * constructor copies the caller's matrix into the private `mLU`
+ * field (FLINT's "in-place" routines and the LAPACK routines
+ * below mutate that internal copy, *not* the user's original),
+ * runs `computeLU()` lazily on first access via `LUinPlace()`,
+ * and exposes `permutation()`, `pivotColumns()`, and
+ * `signOfPermutation()`. The generic `computeLU()` body in
+ * this file implements partial-pivot LU using
+ * `MatElementaryOps<Mat>::interchange_rows` and `findPivot`
+ * (with absolute-value-pivot `findPivot` specialisations for
+ * `ARingRRR` / `ARingCCC`).
  *
- * The header also declares the LAPACK-array glue used by the `RR`
- * / `CC` LU path: `make_lapack_array` / `fill_from_lapack_array`
- * marshal a `DMatRR` or `DMatCC` to and from the contiguous
- * `std::vector<double>` form LAPACK expects, and `LUUtil<RT>`
- * provides the shared helpers used across these specialisations.
+ * Four `computeLU` specialisations route to native back ends:
+ * `ARingGFFlintBig` via `fq_nmod_mat_lu`, `ARingGFFlint` via
+ * `fq_zech_mat_lu` (`<flint/perm.h>::_perm_parity` reads off
+ * the sign), and `ARingRR` / `ARingCC` via LAPACK's `dgetrf_`
+ * / `zgetrf_` --- marshalled in and out by the free helpers
+ * `make_lapack_array` / `fill_from_lapack_array` declared at
+ * the top of the header. The shared `LUUtil<RT>` template
+ * carries `setUpperLower` (splits an in-place LU back into
+ * separate L / U) and `computePivotColumns`.
  *
  * @see dmat-lu.hpp
  * @see dmat.hpp
