@@ -7,17 +7,26 @@
  *
  * Declares the `extern "C"` entry points the M2 interpreter
  * routes to Singular's Factory library (and MPSolve for
- * numerical complex roots): `rawGCDRingElement` and
- * `rawExtendedGCDRingElement` for univariate / multivariate GCD
- * with optional algebraic-extension minimal polynomial,
- * `rawPseudoRemainder` for division with leading-coefficient
- * scaling, `rawFactor` / `rawFactor2` for factorisation of
- * `RingElement`s (the latter accepting a minimal polynomial so
- * factorisation can run over an algebraic extension),
- * `rawIdealReorder` / `rawCharSeries` for characteristic-set
- * preprocessing of polynomial ideals, and `rawRoots` for
- * arbitrary-precision numerical roots of univariate polynomials
- * via MPSolve.
+ * numerical complex roots). GCDs:
+ * `rawGCDRingElement(f, g, mipo, inExtension)` computes the
+ * GCD, with the optional minimal polynomial `mipo` and
+ * `inExtension` flag selecting computation over an algebraic
+ * extension; `rawExtendedGCDRingElement(f, g, **A, **B)`
+ * returns the GCD via the regular return path and fills the
+ * Bezout coefficients `A`, `B` (with `A*f + B*g = gcd`)
+ * through output pointers --- no extension support on this
+ * variant. `rawPseudoRemainder(f, g)` performs pseudo-division
+ * (leading-coefficient scaling so the result stays in the
+ * integral domain).
+ *
+ * Factorisation: `rawFactor` and `rawFactor2` decompose a
+ * `RingElement` into `(factors, powers)` output arrays,
+ * with `rawFactor2` additionally accepting a minimal polynomial
+ * so the factorisation runs over an algebraic extension.
+ * `rawIdealReorder` / `rawCharSeries` do characteristic-set
+ * preprocessing of polynomial ideals. `rawRoots(g, prec,
+ * unique)` returns arbitrary-precision numerical roots of a
+ * univariate polynomial via MPSolve.
  *
  * If Factory or MPSolve is absent at build time the
  * corresponding entries return null and the M2 layer reports
