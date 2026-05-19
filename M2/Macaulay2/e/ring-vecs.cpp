@@ -1,5 +1,33 @@
 // Copyright 2003  Michael E. Stillman
 
+/**
+ * @file ring-vecs.cpp
+ * @brief `Ring`'s `vec`-shaped operations --- construction, traversal, arithmetic on sparse columns.
+ *
+ * Implements the `vec` (sparse `(component, ring_elem)` linked
+ * list) methods declared on `Ring`: `new_vec` and
+ * `remove_vec_node`, `make_vec` / `make_vec_from_array` for
+ * construction; `vec_n_terms`, `vec_lead_term`,
+ * `vec_lead_coeff`, `vec_lead_component` for traversal;
+ * `vec_add`, `vec_subtract`, `vec_negate`, `vec_scalar_mult`,
+ * `vec_mult_by_term` for arithmetic; plus comparison and
+ * conversion through `vec_to_matrix` and `vec_to_string`. Each
+ * operation is virtual on `Ring` so subclasses (`PolyRing`,
+ * `PolyQuotient`, `FractionField`, ...) can override; the
+ * generic implementations live here.
+ *
+ * `vec` is the value shape that backs every `Matrix` column and
+ * every `FreeModule` element. The header note codifies an
+ * invariant the rest of the engine relies on: `ring_elem`
+ * values are immutable, so vec terms can share references
+ * freely without defensive copies --- arithmetic always
+ * produces new values rather than mutating in place.
+ *
+ * @see ring.hpp
+ * @see matrix.hpp
+ * @see freemod.hpp
+ */
+
 #include "ring.hpp"
 #include "text-io.hpp"
 #include <vector>
