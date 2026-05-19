@@ -3,6 +3,34 @@
 #ifndef _dmat_zzp_flint_hpp_
 #define _dmat_zzp_flint_hpp_
 
+/**
+ * @file dmat-zzp-flint.hpp
+ * @brief `DMat<M2::ARingZZpFlint>` --- dense `Z/p` matrices stored in FLINT `nmod_mat_t`.
+ *
+ * Specialises the dense-matrix template for the FLINT-backed Z/p
+ * aring. Entries live in a single `nmod_mat_t` --- an array of
+ * `mp_limb_t` representatives in `[0, p)` plus the precomputed
+ * reciprocal FLINT uses for Barrett-style fast modular reduction.
+ * Arithmetic, rank, LU, determinant, inverse, and null-space all
+ * dispatch into `nmod_mat_*` so the inner loop never performs an
+ * integer division and the heavy linear-algebra work runs in
+ * FLINT's cache-aware blocked routines.
+ *
+ * The engine ships a sibling FFLAS-FFPACK specialisation in
+ * `dmat-zzp-ffpack.hpp`. Dispatch (in `mat-linalg.hpp`) picks
+ * between them by matrix shape and prime size: small matrices with
+ * larger primes prefer FLINT because BLAS startup cost dominates;
+ * larger matrices with small primes prefer FFPACK because it can
+ * reinterpret entries as `double` and dispatch into BLAS. As with
+ * every FLINT-backed header, `M2/gc-include.h` precedes the FLINT
+ * include so allocations route through bdwgc.
+ *
+ * @see dmat.hpp
+ * @see dmat-lu-zzp-flint.hpp
+ * @see dmat-lu-zzp-ffpack.hpp
+ * @see aring-zzp-flint.hpp
+ */
+
 #include <utility>              // for swap
 #include "aring-zzp-flint.hpp"  // for ARingZZpFlint
 
