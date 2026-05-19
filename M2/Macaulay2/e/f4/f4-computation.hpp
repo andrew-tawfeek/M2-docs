@@ -3,6 +3,34 @@
 #ifndef _F4Computation_h_
 #define _F4Computation_h_
 
+/**
+ * @file f4/f4-computation.hpp
+ * @brief `F4Computation` --- `GBComputation` adapter around the F4 inner-loop engine.
+ *
+ * Declares `F4Computation`, the `GBComputation` subclass the
+ * interpreter sees when F4 is selected. The class owns the
+ * `PolynomialRing` the user requested, an `F4GB` instance that
+ * runs the actual algorithm, a `MonomialInfo` describing the
+ * F4-specific packed monomial layout, and a `VectorArithmetic`
+ * carrying the per-coefficient-ring fast path
+ * (`aring-zzp-ffpack.hpp`, `aring-zzp-flint.hpp`, the generic
+ * variant, ...). At construction time it picks the right
+ * `F4GB` template instantiation and pins it for the lifetime of
+ * the computation.
+ *
+ * Standard `GBComputation` virtuals (`start_computation`,
+ * `get_gb`, `get_mingens`, `get_change`, `get_syzygies`,
+ * `get_initial`, `complete_thru_degree`) read state out of the
+ * running `F4GB` and re-wrap it as engine `Matrix` values. The
+ * translation between the engine's `vec`-shaped polynomials and
+ * F4's packed `GBF4Polynomial` lives in `f4-m2-interface.hpp`,
+ * which this class delegates to.
+ *
+ * @see f4.hpp
+ * @see f4-m2-interface.hpp
+ * @see comp-gb.hpp
+ */
+
 #include "comp-gb.hpp"              // for GBComputation
 #include "interface/m2-types.h"     // for M2_bool, M2_arrayint
 #include "f4/f4.hpp"                // for F4GB
