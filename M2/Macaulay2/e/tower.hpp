@@ -8,19 +8,25 @@
  *
  * Declares `Tower`, the original engine class for an iterated
  * finite extension `L_0 = Z/p`, `L_i = L_{i-1}[t_i] / f_i(t_i)`.
- * Each instance carries its `level` in the chain (0 is the base
- * `Z/p`), the variable count `nvars`, the user-supplied variable
- * names, and a `DRing *D` pointing at the level's polynomial-
- * representation back-end --- elements are polynomials in the
- * current level's variable with coefficients drawn from the
- * level below. `Tower` inherits directly from `Ring` and
- * dispatches arithmetic through virtuals, which is the reason
- * the modern `aring-tower.hpp` (a `SimpleARing<ARingTower>`
- * CRTP class with inlined operations) was written.
+ * Each instance carries its `level` in the chain (0 is the
+ * base `Z/p`), the variable count `nvars`, the user-supplied
+ * `M2_ArrayString names`, and a `DRing *D` pointing at the
+ * level's polynomial-representation back-end from `dpoly.hpp`
+ * --- elements are polynomials in the current level's variable
+ * with coefficients drawn from the level below. `Tower`
+ * inherits directly from `Ring` and dispatches arithmetic
+ * through virtuals; the modern `aring-tower.hpp::ARingTower`
+ * (which inherits from `RingInterface` directly because its
+ * heap-pointer elements need a backing-ring reference at
+ * destruction) was written to replace it.
  *
- * Kept in tree because legacy callers and regression tests
- * still construct it; new tower work should target the aring
- * path.
+ * Beyond the standard `Ring` API, `Tower` exposes
+ * `degreeInVariable`, `differentiate`, `extension_degree`,
+ * `power_mod` (`f^n mod g`), `lowerP` (Frobenius-related), and
+ * `translate` to move elements in from a `PolynomialRing`.
+ * The free functions `towerGCD` and `towerExtendedGCD` wrap
+ * the GCD machinery from `dpoly.hpp` at the `RingElement`
+ * level so M2 code can compute polynomial GCDs over the tower.
  *
  * @see aring-tower.hpp
  * @see ring.hpp
