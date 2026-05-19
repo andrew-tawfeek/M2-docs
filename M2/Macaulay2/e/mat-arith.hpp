@@ -5,19 +5,23 @@
 
 /**
  * @file mat-arith.hpp
- * @brief Templated matrix arithmetic for `DMat<R>` / `SMat<R>` plus the `MatrixWindow` sub-region view.
+ * @brief Templated matrix arithmetic for `DMat<R>` / `SMat<R>` plus the `MatrixWindow` / `SubMatrix` view types.
  *
- * Declares the basic arithmetic primitives (`add`, `subtract`,
- * `multiply`, `mult_by_element`, `negateInPlace`,
- * `transposeInPlace`) over `DMat<RT>` and `SMat<RT>` and forward-
- * declares `MatElementaryOps<MT>` whose definition lives in
- * `mat-elem-ops.hpp`. The companion `MatrixWindow` struct is a
- * `(begin_row, begin_column, end_row, end_column)` half-open
- * view over an existing matrix --- it owns no storage but lets
- * the same arithmetic routines operate on submatrices in place,
- * which is how LU decomposition walks the trailing sub-matrix
- * and how block-Strassen and similar paths describe their inner
- * regions.
+ * Declares free-function templates over `DMat<RT>` (and where
+ * applicable `SubMatrix<MatType>`): predicates (`isZero`,
+ * `isEqual`), in-place ops (`negateInPlace`, `addInPlace`,
+ * `subtractInPlace`, `scalarMultInPlace`), out-of-place ops
+ * (`transpose`, `scalarMult`), windowed forms (`setZero`,
+ * `set`, `addTo`, `addMultipleTo`), and the `normSquared`
+ * accumulator. Forward-declares `MatElementaryOps<MT>` whose
+ * definition lives in `mat-elem-ops.hpp`. The companion
+ * `MatrixWindow` struct stores `(begin_row, begin_column,
+ * end_row, end_column)` as a half-open view, and the
+ * templated `SubMatrix<MatType>` carries the same half-open
+ * window together with a reference to the underlying matrix
+ * plus operator overloads (`=`, `+=`, `*=`, `addMultipleTo`)
+ * so callers can compose submatrix updates without copying
+ * storage; this is how the LU paths walk trailing sub-matrices.
  *
  * Concrete implementations dispatch through the templated
  * specialisations in `mat-linalg.hpp` so each `(operation,
