@@ -10,12 +10,16 @@
  * Declares the pure-virtual `MutableMatrix` (a
  * `MutableEngineObject` subclass). The interpreter and most
  * interface code only see this base type: `n_rows`, `n_cols`,
- * `get_ring`, `is_dense`, `resize`, `get_entry` / `set_entry`,
- * the row / column primitives (`swap_rows`, `scale_row`,
- * `add_row`, `delete_rows`, ...), and the heavy linear-algebra
- * entry points (`rank`, `determinant`, `LU_decomposition`,
- * `solve_LU`, `null_space`, `inverse`, `transpose`, `mult`,
- * `add`). Concrete storage lives one level down in the
+ * `get_ring`, `is_dense`, `get_entry` / `set_entry`, the row /
+ * column primitives (`interchange_rows` / `_columns`,
+ * `scale_row` / `_column`, `divide_row` / `_column`,
+ * `row_op` / `column_op`, `row_permute` / `column_permute`,
+ * `insert_rows` / `_columns`, `delete_rows` / `_columns`,
+ * `dot_product`), and the heavy linear-algebra entry points
+ * (`rank`, `determinant`, `LU`, `LUincremental`,
+ * `LQUPFactorizationInPlace`, `solveLinear`,
+ * `solveInvertible`, `nullSpace`, `invert`, `transpose`,
+ * `mult`, `add`). Concrete storage lives one level down in the
  * templated `MutableMat<MatT>` wrapper, specialised over the
  * dense `DMat<R>` and sparse `SMat<R>` back ends.
  *
