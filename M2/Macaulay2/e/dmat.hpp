@@ -3,6 +3,37 @@
 #ifndef _dmat_hpp_
 #define _dmat_hpp_
 
+/**
+ * @file dmat.hpp
+ * @brief `DMat<ACoeffRing>` --- dense-matrix template plus the umbrella that wires in every per-ring specialisation.
+ *
+ * `DMat<R>` is the engine's dense matrix type, parameterised on the
+ * coefficient ring's aring class. The generic instantiation stores
+ * entries column-major in a `std::vector<ring_elem>` of size
+ * `n_rows * n_cols` and dispatches arithmetic to `R`'s aring
+ * methods. The header doubles as an umbrella: it `#include`s the
+ * per-ring specialisations (`dmat-zz-flint.hpp`,
+ * `dmat-qq-flint.hpp`, `dmat-zzp-flint.hpp`,
+ * `dmat-gf-flint-big.hpp`, `dmat-gf-flint.hpp`), so consumers that
+ * pull in just `dmat.hpp` automatically resolve to the
+ * native-backed `fmpz_mat_t` / `nmod_mat_t` / similar at compile
+ * time. The performance-critical LU path has its own per-ring
+ * variants under `dmat-lu*.hpp` (the FFLAS-FFPACK Z/p variant is
+ * the fastest in tree).
+ *
+ * Templated operations on `DMat<R>` live in sibling headers ---
+ * `mat-arith.hpp` for ring arithmetic, `mat-elem-ops.hpp` for row /
+ * column / swap / scale, `mat-linalg.hpp` for rank, LU, solve,
+ * determinant, inverse, nullspace, `mat-jordan.hpp` for Jordan
+ * form, `mat-util.hpp` for iteration helpers. `MutableMatrix`
+ * (`mutablemat.hpp`) is the abstract front-end that picks the right
+ * `DMat<R>` instantiation when constructed dense.
+ *
+ * @see mutablemat.hpp
+ * @see smat.hpp
+ * @see mat-linalg.hpp
+ */
+
 #include "engine-includes.hpp"
 #include "mat-util.hpp"
 
