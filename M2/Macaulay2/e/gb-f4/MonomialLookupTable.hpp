@@ -33,6 +33,7 @@
  * @see MonomialTypes.hpp
  * @see GBF4Computation.hpp
  * @see SPairs.hpp
+ * @see montable.hpp
  */
 
 #include "MonomialTypes.hpp"
