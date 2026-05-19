@@ -1,6 +1,39 @@
 #ifndef _NCGroebner_hpp_
 #define _NCGroebner_hpp_
 
+/**
+ * @file NCAlgebras/NCGroebner.hpp
+ * @brief `NCGroebner` --- Buchberger-style two-sided Gröbner basis driver over a `FreeAlgebra`.
+ *
+ * Declares the non-commutative analogue of `gbA`: given a list
+ * of input polynomials in a `FreeAlgebra`, the class drives a
+ * Buchberger-style loop where the role of S-pairs is taken by
+ * "overlaps" --- pairs of basis words whose suffix and prefix
+ * match. An `OverlapTable` schedules the queue, a `WordTable`
+ * (with an experimental `SuffixTree` alternative) indexes
+ * leading words for divisor lookup, and the reduction step uses
+ * `NCReduction`'s `PolynomialHeap` (a min-heap that fuses many
+ * tail-polynomial subtractions, analogous to the commutative
+ * engine's `gbvectorHeap`). `computeHomogeneous` and
+ * `computeInhomogeneous` carry the sugar-degree variants the
+ * `compute(softDegreeLimit)` entry dispatches between.
+ *
+ * Non-commutative two-sided GBs need not terminate, so
+ * construction takes a `hardDegreeLimit` and the algorithm
+ * stops respecting it; the resulting (partial) basis is still
+ * usable for normal-form work up to that degree. The
+ * `tryOutMathicCode` free function is a benchmark hook for an
+ * experimental mathic integration and is not part of the
+ * production API.
+ *
+ * @see FreeAlgebra.hpp
+ * @see WordTable.hpp
+ * @see SuffixTree.hpp
+ * @see OverlapTable.hpp
+ * @see NCReduction.hpp
+ * @see NCF4.hpp
+ */
+
 #include "NCAlgebras/NCReduction.hpp"   // for PolynomialHeap
 #include "NCAlgebras/OverlapTable.hpp"  // for OverlapTable
 #include "NCAlgebras/WordTable.hpp"     // for Overlap, WordTable
