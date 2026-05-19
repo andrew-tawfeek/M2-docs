@@ -3,6 +3,32 @@
 #ifndef _cra_hpp_
 #define _cra_hpp_
 
+/**
+ * @file cra.hpp
+ * @brief `ChineseRemainder` --- CRT lifting and rational reconstruction primitives.
+ *
+ * Declares `ChineseRemainder`, a static-only collection that
+ * combines modular results back into `ZZ` and `QQ`. `CRA0` is the
+ * core step: given `a mod m`, `b mod n` with `gcd(m, n) = 1` and
+ * precomputed Bezout coefficients `um`, `vn`, it produces the
+ * unique value mod `m * n` reducing to `a mod m` and `b mod n`,
+ * stored in balanced-residue form (range `[-mn/2, mn/2]`) so small
+ * integers stay small after lifting --- a precondition the
+ * comment at the top of the header flags as essential. Beyond CRT,
+ * the class supplies rational reconstruction: given `x mod m`, the
+ * extended Euclidean algorithm with a `q` bound recovers a fraction
+ * `p / q` with `p == x * q (mod m)` and returns it whenever `m` is
+ * large enough relative to `p * q` for the answer to be unique.
+ *
+ * The engine reaches for these primitives whenever a `ZZ` or `QQ`
+ * problem is slow head-on but cheap mod many primes: rational
+ * Groebner bases (compute modularly across many primes, CRT-lift,
+ * reconstruct), `ZZ` determinants and polynomial GCDs, and the
+ * modular preprocessing used by some NAG paths.
+ *
+ * @see interface/cra.h
+ */
+
 #include <M2/math-include.h>
 
 #include "ringelem.hpp"  // for ring_elem, vec
