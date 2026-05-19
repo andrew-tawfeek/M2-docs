@@ -3,6 +3,37 @@
 #ifndef _gbA_h_
 #define _gbA_h_
 
+/**
+ * @file gb-default.hpp
+ * @brief `gbA` --- the engine's default Buchberger-style Groebner-basis algorithm.
+ *
+ * Declares `gbA`, the `GBComputation` subclass that runs when M2's
+ * `gb` is invoked with no `Strategy =>` override. The classical
+ * Buchberger loop --- select an S-pair, compute its S-polynomial,
+ * reduce against the current basis, insert non-zero remainders,
+ * generate / flush S-pairs --- is layered on top of a tuned
+ * `gbring` value representation (`gbvector`), a `MonomialTable`
+ * index of leading monomials, and a `ReducedGB` final reduction
+ * pass. The three status bits `ELEM_IN_RING`, `ELEM_MINGEN`, and
+ * `ELEM_MINGB` declared at the top tag each basis element so the
+ * interpreter can extract either the minimal generators or the
+ * minimal GB at the end of the computation.
+ *
+ * The default S-pair selection is sugar-aware degree-first ---
+ * pick the pair whose sugar (a degree-based proxy for the
+ * eventual S-polynomial's degree) is smallest, beating pure-LCM
+ * on most inputs. Sibling strategies (`gb-homog2.cpp`,
+ * `gb-sugarless.cpp`, `gb-toric.cpp`, `gb-walk.cpp`) plug into
+ * the same `GBComputation` interface and are reachable via
+ * `Strategy =>`. All allocations live on the GC heap so the
+ * whole structure is reclaimable once the interpreter drops it.
+ *
+ * @see comp-gb.hpp
+ * @see gbring.hpp
+ * @see montable.hpp
+ * @see reducedgb.hpp
+ */
+
 #include "comp-gb.hpp"
 
 #include "gbring.hpp"
