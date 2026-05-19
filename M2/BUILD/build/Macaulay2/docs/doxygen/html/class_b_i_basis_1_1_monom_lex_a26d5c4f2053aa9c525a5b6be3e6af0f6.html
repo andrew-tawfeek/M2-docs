@@ -111,27 +111,27 @@ $(function(){initNavTree('class_b_i_basis_1_1_monom_lex_a26d5c4f2053aa9c525a5b6b
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="monom_lex_8hpp_source.html#l00438">438</a> of file <a class="el" href="monom_lex_8hpp_source.html">monomLex.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  439</span>    {</div>
-<div class="line"><span class="lineno">  440</span>        <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a> *iterator = <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a>,</div>
-<div class="line"><span class="lineno">  441</span>                     *anotherIterator = anotherMonom.ListHead;</div>
-<div class="line"><span class="lineno">  442</span>        <span class="keywordflow">while</span> (anotherIterator &amp;&amp; iterator)</div>
-<div class="line"><span class="lineno">  443</span>        {</div>
-<div class="line"><span class="lineno">  444</span>            <span class="keywordflow">if</span> (iterator-&gt;Value &lt; anotherIterator-&gt;Value)</div>
-<div class="line"><span class="lineno">  445</span>            {</div>
-<div class="line"><span class="lineno">  446</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  447</span>            }</div>
-<div class="line"><span class="lineno">  448</span>            <span class="keywordflow">if</span> (iterator-&gt;Value &gt; anotherIterator-&gt;Value)</div>
-<div class="line"><span class="lineno">  449</span>            {</div>
-<div class="line"><span class="lineno">  450</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  451</span>            }</div>
-<div class="line"><span class="lineno">  452</span>            iterator = iterator-&gt;Next;</div>
-<div class="line"><span class="lineno">  453</span>            anotherIterator = anotherIterator-&gt;Next;</div>
-<div class="line"><span class="lineno">  454</span>        }</div>
-<div class="line"><span class="lineno">  455</span>        <span class="keywordflow">return</span> iterator;</div>
-<div class="line"><span class="lineno">  456</span>    }</div>
-<div class="ttc" id="aclass_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4_html_ace5c7e7f9d408c26588328d3d9b772e4"><div class="ttname"><a href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">BIBasis::Monom::ListHead</a></div><div class="ttdeci">VarsListNode * ListHead</div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00074">monom.hpp:74</a></div></div>
-<div class="ttc" id="astruct_b_i_basis_1_1_monom_1_1_vars_list_node_html"><div class="ttname"><a href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">BIBasis::Monom::VarsListNode</a></div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00062">monom.hpp:63</a></div></div>
+<p class="definition">Definition at line <a class="el" href="monom_lex_8hpp_source.html#l00439">439</a> of file <a class="el" href="monom_lex_8hpp_source.html">monomLex.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  440</span>    {</div>
+<div class="line"><span class="lineno">  441</span>        <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a> *iterator = <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a>,</div>
+<div class="line"><span class="lineno">  442</span>                     *anotherIterator = anotherMonom.ListHead;</div>
+<div class="line"><span class="lineno">  443</span>        <span class="keywordflow">while</span> (anotherIterator &amp;&amp; iterator)</div>
+<div class="line"><span class="lineno">  444</span>        {</div>
+<div class="line"><span class="lineno">  445</span>            <span class="keywordflow">if</span> (iterator-&gt;Value &lt; anotherIterator-&gt;Value)</div>
+<div class="line"><span class="lineno">  446</span>            {</div>
+<div class="line"><span class="lineno">  447</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  448</span>            }</div>
+<div class="line"><span class="lineno">  449</span>            <span class="keywordflow">if</span> (iterator-&gt;Value &gt; anotherIterator-&gt;Value)</div>
+<div class="line"><span class="lineno">  450</span>            {</div>
+<div class="line"><span class="lineno">  451</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  452</span>            }</div>
+<div class="line"><span class="lineno">  453</span>            iterator = iterator-&gt;Next;</div>
+<div class="line"><span class="lineno">  454</span>            anotherIterator = anotherIterator-&gt;Next;</div>
+<div class="line"><span class="lineno">  455</span>        }</div>
+<div class="line"><span class="lineno">  456</span>        <span class="keywordflow">return</span> iterator;</div>
+<div class="line"><span class="lineno">  457</span>    }</div>
+<div class="ttc" id="aclass_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4_html_ace5c7e7f9d408c26588328d3d9b772e4"><div class="ttname"><a href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">BIBasis::Monom::ListHead</a></div><div class="ttdeci">VarsListNode * ListHead</div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00075">monom.hpp:75</a></div></div>
+<div class="ttc" id="astruct_b_i_basis_1_1_monom_1_1_vars_list_node_html"><div class="ttname"><a href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">BIBasis::Monom::VarsListNode</a></div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00063">monom.hpp:64</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">BIBasis::Monom::ListHead</a>, <a class="el" href="class_b_i_basis_1_1_monom_lex_ae6a7b4dcac573426fb3241991225f3e8.html#ae6a7b4dcac573426fb3241991225f3e8">MonomLex()</a>, and <a class="el" href="#a26d5c4f2053aa9c525a5b6be3e6af0f6">operator&gt;()</a>.</p>
 

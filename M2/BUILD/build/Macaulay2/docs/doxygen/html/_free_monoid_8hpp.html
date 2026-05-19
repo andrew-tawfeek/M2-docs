@@ -122,14 +122,14 @@ Functions</h2></td></tr>
 <div class="textblock"><p><span class="tt"><a class="el" href="class_free_monoid.html">FreeMonoid</a></span> &mdash; monoid of length-prefixed non-commutative words with weight-vector prefix. </p>
 <p>Declares the word-side counterpart of the commutative <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span>: a non-commutative monomial is a sequence of variable indices <span class="tt">[v_1, v_2, ..., v_s]</span>, and <span class="tt"><a class="el" href="class_free_monoid.html">FreeMonoid</a></span> stores it in the packed form <span class="tt">[total length] wt_0 ... wt_{r-1}
 w_0 ... w_s</span> &mdash; a leading length so the word can be <span class="tt">memcpy</span>ed, <span class="tt">r</span> weight values used to short-circuit comparison, and the indices themselves. Multiplication is plain concatenation: no reordering, no normalisation, since the algebra is free. The intended comparison is weight-first then lexicographic, matching the "leading word" convention of the non-commutative Gröbner literature; the in-file TODOs track wiring the weight values through the front end so compare can use them consistently.</p>
-<p>The companion <span class="tt"><a class="el" href="class_free_monoid_logger.html">FreeMonoidLogger</a></span> at the top of the header is a debug helper that counts monomial compares; it is normally compiled out and exists so the developers of <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> / <span class="tt"><a class="el" href="class_n_c_f4.html">NCF4</a></span> can profile the cost of the word-ordering kernel.</p>
+<p>The companion <span class="tt"><a class="el" href="class_free_monoid_logger.html">FreeMonoidLogger</a></span> at the top of the header is a debug helper that counts monomial compares for profiling. <span class="tt"><a class="el" href="_n_c_groebner_8cpp.html">NCGroebner.cpp</a></span> resets the counter and prints it after each reduction, but the <span class="tt">logCompare()</span> call inside <span class="tt"><a class="el" href="_free_monoid_8cpp.html">FreeMonoid.cpp</a></span> is currently commented out, so the counter only ticks if a developer re-enables it.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_word_8hpp.html" title="Word and WordWithData — non-owning views over the flat-int encoding of a non-commutative word.">Word.hpp</a> </dd>
 <dd>
-<a class="el" href="_free_algebra_8hpp.html" title="FreeAlgebra — the free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a> </dd>
+<a class="el" href="_free_algebra_8hpp.html" title="Free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a> </dd>
 <dd>
 <a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
 <dd>
-<a class="el" href="_polynomial_8hpp.html" title="Modern Monom / Poly value types shared by NC algebras and the refactored F4.">Polynomial.hpp</a> </dd></dl>
+<a class="el" href="_polynomial_8hpp.html" title="Modern Monom / Polynomial value types shared by NC algebras and the refactored F4.">Polynomial.hpp</a> </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
 </div></div><!-- contents -->

@@ -107,25 +107,25 @@ $(function(){initNavTree('_d_mat_z_zp_test_8cpp_ac9ac63b64ef8455534937f799624b79
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_d_mat_z_zp_test_8cpp_source.html#l00035">35</a> of file <a class="el" href="_d_mat_z_zp_test_8cpp_source.html">DMatZZpTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>{</div>
-<div class="line"><span class="lineno">   37</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="class_m2_1_1_a_ring_z_zp.html">M2::ARingZZp</a> RingZZp;</div>
-<div class="line"><span class="lineno">   38</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="class_d_mat.html">DMat&lt;M2::ARingZZp&gt;</a> MatZZp;</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>  RingZZp* R = <span class="keyword">new</span> RingZZp(101);</div>
-<div class="line"><span class="lineno">   41</span>  MatZZp M(*R, 5, 5);</div>
+<p class="definition">Definition at line <a class="el" href="_d_mat_z_zp_test_8cpp_source.html#l00033">33</a> of file <a class="el" href="_d_mat_z_zp_test_8cpp_source.html">DMatZZpTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
+<div class="line"><span class="lineno">   35</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="class_m2_1_1_a_ring_z_zp.html">M2::ARingZZp</a> RingZZp;</div>
+<div class="line"><span class="lineno">   36</span>  <span class="keyword">typedef</span> <a class="code hl_class" href="class_d_mat.html">DMat&lt;M2::ARingZZp&gt;</a> MatZZp;</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>  RingZZp* R = <span class="keyword">new</span> RingZZp(101);</div>
+<div class="line"><span class="lineno">   39</span>  MatZZp M(*R, 5, 5);</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>  EXPECT_TRUE(&amp;M.ring() == R);</div>
 <div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>  EXPECT_TRUE(&amp;M.ring() == R);</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>  RingZZp::ElementType a, b;</div>
-<div class="line"><span class="lineno">   46</span>  R-&gt;init(a);</div>
-<div class="line"><span class="lineno">   47</span>  R-&gt;init(b);</div>
-<div class="line"><span class="lineno">   48</span>  R-&gt;set_from_long(a, 13);</div>
-<div class="line"><span class="lineno">   49</span>  R-&gt;set(M.entry(0, 2), a);</div>
-<div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>  R-&gt;set(b, M.entry(0, 2));</div>
-<div class="line"><span class="lineno">   52</span>  EXPECT_TRUE(R-&gt;is_equal(a, b));</div>
-<div class="line"><span class="lineno">   53</span>}</div>
+<div class="line"><span class="lineno">   43</span>  RingZZp::ElementType a, b;</div>
+<div class="line"><span class="lineno">   44</span>  R-&gt;init(a);</div>
+<div class="line"><span class="lineno">   45</span>  R-&gt;init(b);</div>
+<div class="line"><span class="lineno">   46</span>  R-&gt;set_from_long(a, 13);</div>
+<div class="line"><span class="lineno">   47</span>  R-&gt;set(M.entry(0, 2), a);</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>  R-&gt;set(b, M.entry(0, 2));</div>
+<div class="line"><span class="lineno">   50</span>  EXPECT_TRUE(R-&gt;is_equal(a, b));</div>
+<div class="line"><span class="lineno">   51</span>}</div>
 <div class="ttc" id="aclass_d_mat_html"><div class="ttname"><a href="class_d_mat.html">DMat</a></div><div class="ttdef"><b>Definition</b> <a href="dmat_8hpp_source.html#l00055">dmat.hpp:56</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_z_zp_html"><div class="ttname"><a href="class_m2_1_1_a_ring_z_zp.html">M2::ARingZZp</a></div><div class="ttdef"><b>Definition</b> <a href="aring-zzp_8hpp_source.html#l00049">aring-zzp.hpp:50</a></div></div>
 </div><!-- fragment -->

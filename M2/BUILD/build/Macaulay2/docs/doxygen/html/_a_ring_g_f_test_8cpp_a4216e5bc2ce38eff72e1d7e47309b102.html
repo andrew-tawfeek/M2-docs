@@ -107,45 +107,45 @@ $(function(){initNavTree('_a_ring_g_f_test_8cpp_a4216e5bc2ce38eff72e1d7e47309b10
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_ring_g_f_test_8cpp_source.html#l00091">91</a> of file <a class="el" href="_a_ring_g_f_test_8cpp_source.html">ARingGFTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>{</div>
-<div class="line"><span class="lineno">   93</span>  <a class="code hl_class" href="class_m2_1_1_a_ring_g_f_flint.html">M2::ARingGFFlint</a> R(5, 3);</div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>  EXPECT_EQ(<a class="code hl_function" href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a>(R), <span class="stringliteral">&quot;GF(5,3,Flint)&quot;</span>);</div>
-<div class="line"><span class="lineno">   96</span>  EXPECT_EQ(R.cardinality(), 125);</div>
-<div class="line"><span class="lineno">   97</span>  EXPECT_EQ(R.characteristic(), 5);</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>  <a class="code hl_class" href="class_m2__arrayint.html">M2_arrayint</a> gen_modpoly = R.getModPolynomialCoeffs();</div>
-<div class="line"><span class="lineno">  100</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;minimal polynomial = &quot;</span>;</div>
-<div class="line"><span class="lineno">  101</span>  <a class="code hl_function" href="debug_8cpp_ae74b02a41cc908aca13dc500035debed.html#ae74b02a41cc908aca13dc500035debed">dintarray</a>(gen_modpoly);</div>
-<div class="line"><span class="lineno">  102</span>  std::cout &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  103</span> </div>
-<div class="line"><span class="lineno">  104</span>  <a class="code hl_class" href="class_m2__arrayint.html">M2_arrayint</a> gen_coeffs = R.getGeneratorCoeffs();</div>
-<div class="line"><span class="lineno">  105</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;generator polynomial = &quot;</span>;</div>
-<div class="line"><span class="lineno">  106</span>  <a class="code hl_function" href="debug_8cpp_ae74b02a41cc908aca13dc500035debed.html#ae74b02a41cc908aca13dc500035debed">dintarray</a>(gen_coeffs);</div>
-<div class="line"><span class="lineno">  107</span>  std::cout &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>  <span class="comment">// Check what values integers go to</span></div>
-<div class="line"><span class="lineno">  110</span>  <a class="code hl_typedef" href="class_m2_1_1_a_ring_g_f_flint_a1d6793f12ba7ff455e9e90348f303393.html#a1d6793f12ba7ff455e9e90348f303393">M2::ARingGFFlint::ElementType</a> a;</div>
-<div class="line"><span class="lineno">  111</span>  R.init(a);</div>
-<div class="line"><span class="lineno">  112</span>  <span class="comment">//    for (int i=-5; i&lt;R.characteristic(); i++)</span></div>
-<div class="line"><span class="lineno">  113</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = -130; i &lt; 130; i++)</div>
-<div class="line"><span class="lineno">  114</span>    {</div>
-<div class="line"><span class="lineno">  115</span>      R.set_from_long(a, i);</div>
-<div class="line"><span class="lineno">  116</span>      <a class="code hl_class" href="class_m2__arrayint.html">M2_arrayint</a> coeffs = R.fieldElementToM2Array(a);</div>
-<div class="line"><span class="lineno">  117</span>      EXPECT_EQ(coeffs-&gt;len, 3);</div>
-<div class="line"><span class="lineno">  118</span>      <span class="keywordtype">int</span> imodp = i % 5;</div>
-<div class="line"><span class="lineno">  119</span>      <span class="keywordflow">if</span> (imodp &lt; 0) imodp += 5;</div>
-<div class="line"><span class="lineno">  120</span>      EXPECT_EQ(coeffs-&gt;array[0], imodp);</div>
-<div class="line"><span class="lineno">  121</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 1; j &lt; 3; j++) EXPECT_EQ(coeffs-&gt;array[j], 0);</div>
-<div class="line"><span class="lineno">  122</span>      <span class="comment">//        std::cout &lt;&lt; i &lt;&lt; &quot; = &quot;;</span></div>
-<div class="line"><span class="lineno">  123</span>      <span class="comment">//        dintarray(coeffs);</span></div>
-<div class="line"><span class="lineno">  124</span>      <span class="comment">//        std::cout &lt;&lt; std::endl;</span></div>
-<div class="line"><span class="lineno">  125</span>    }</div>
-<div class="line"><span class="lineno">  126</span>  R.clear(a);</div>
-<div class="line"><span class="lineno">  127</span> </div>
-<div class="line"><span class="lineno">  128</span>  <a class="code hl_function" href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a>(R);</div>
-<div class="line"><span class="lineno">  129</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_a_ring_g_f_test_8cpp_source.html#l00090">90</a> of file <a class="el" href="_a_ring_g_f_test_8cpp_source.html">ARingGFTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>{</div>
+<div class="line"><span class="lineno">   92</span>  <a class="code hl_class" href="class_m2_1_1_a_ring_g_f_flint.html">M2::ARingGFFlint</a> R(5, 3);</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>  EXPECT_EQ(<a class="code hl_function" href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a>(R), <span class="stringliteral">&quot;GF(5,3,Flint)&quot;</span>);</div>
+<div class="line"><span class="lineno">   95</span>  EXPECT_EQ(R.cardinality(), 125);</div>
+<div class="line"><span class="lineno">   96</span>  EXPECT_EQ(R.characteristic(), 5);</div>
+<div class="line"><span class="lineno">   97</span> </div>
+<div class="line"><span class="lineno">   98</span>  <a class="code hl_class" href="class_m2__arrayint.html">M2_arrayint</a> gen_modpoly = R.getModPolynomialCoeffs();</div>
+<div class="line"><span class="lineno">   99</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;minimal polynomial = &quot;</span>;</div>
+<div class="line"><span class="lineno">  100</span>  <a class="code hl_function" href="debug_8cpp_ae74b02a41cc908aca13dc500035debed.html#ae74b02a41cc908aca13dc500035debed">dintarray</a>(gen_modpoly);</div>
+<div class="line"><span class="lineno">  101</span>  std::cout &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  102</span> </div>
+<div class="line"><span class="lineno">  103</span>  <a class="code hl_class" href="class_m2__arrayint.html">M2_arrayint</a> gen_coeffs = R.getGeneratorCoeffs();</div>
+<div class="line"><span class="lineno">  104</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;generator polynomial = &quot;</span>;</div>
+<div class="line"><span class="lineno">  105</span>  <a class="code hl_function" href="debug_8cpp_ae74b02a41cc908aca13dc500035debed.html#ae74b02a41cc908aca13dc500035debed">dintarray</a>(gen_coeffs);</div>
+<div class="line"><span class="lineno">  106</span>  std::cout &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  107</span> </div>
+<div class="line"><span class="lineno">  108</span>  <span class="comment">// Check what values integers go to</span></div>
+<div class="line"><span class="lineno">  109</span>  <a class="code hl_typedef" href="class_m2_1_1_a_ring_g_f_flint_a1d6793f12ba7ff455e9e90348f303393.html#a1d6793f12ba7ff455e9e90348f303393">M2::ARingGFFlint::ElementType</a> a;</div>
+<div class="line"><span class="lineno">  110</span>  R.init(a);</div>
+<div class="line"><span class="lineno">  111</span>  <span class="comment">//    for (int i=-5; i&lt;R.characteristic(); i++)</span></div>
+<div class="line"><span class="lineno">  112</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = -130; i &lt; 130; i++)</div>
+<div class="line"><span class="lineno">  113</span>    {</div>
+<div class="line"><span class="lineno">  114</span>      R.set_from_long(a, i);</div>
+<div class="line"><span class="lineno">  115</span>      <a class="code hl_class" href="class_m2__arrayint.html">M2_arrayint</a> coeffs = R.fieldElementToM2Array(a);</div>
+<div class="line"><span class="lineno">  116</span>      EXPECT_EQ(coeffs-&gt;len, 3);</div>
+<div class="line"><span class="lineno">  117</span>      <span class="keywordtype">int</span> imodp = i % 5;</div>
+<div class="line"><span class="lineno">  118</span>      <span class="keywordflow">if</span> (imodp &lt; 0) imodp += 5;</div>
+<div class="line"><span class="lineno">  119</span>      EXPECT_EQ(coeffs-&gt;array[0], imodp);</div>
+<div class="line"><span class="lineno">  120</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 1; j &lt; 3; j++) EXPECT_EQ(coeffs-&gt;array[j], 0);</div>
+<div class="line"><span class="lineno">  121</span>      <span class="comment">//        std::cout &lt;&lt; i &lt;&lt; &quot; = &quot;;</span></div>
+<div class="line"><span class="lineno">  122</span>      <span class="comment">//        dintarray(coeffs);</span></div>
+<div class="line"><span class="lineno">  123</span>      <span class="comment">//        std::cout &lt;&lt; std::endl;</span></div>
+<div class="line"><span class="lineno">  124</span>    }</div>
+<div class="line"><span class="lineno">  125</span>  R.clear(a);</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>  <a class="code hl_function" href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a>(R);</div>
+<div class="line"><span class="lineno">  128</span>}</div>
 <div class="ttc" id="a_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d_html_ad04b41a127aac065327bfdbfd39db31d"><div class="ttname"><a href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a></div><div class="ttdeci">void testSomeMore(const T &amp;R)</div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00063">ARingTest.hpp:63</a></div></div>
 <div class="ttc" id="a_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807_html_aed865d319365c090f84bd7fd38400807"><div class="ttname"><a href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a></div><div class="ttdeci">std::string ringName(const T &amp;R)</div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00114">ARingTest.hpp:114</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_g_f_flint_a1d6793f12ba7ff455e9e90348f303393_html_a1d6793f12ba7ff455e9e90348f303393"><div class="ttname"><a href="class_m2_1_1_a_ring_g_f_flint_a1d6793f12ba7ff455e9e90348f303393.html#a1d6793f12ba7ff455e9e90348f303393">M2::ARingGFFlint::ElementType</a></div><div class="ttdeci">fq_zech_struct ElementType</div><div class="ttdef"><b>Definition</b> <a href="aring-gf-flint_8hpp_source.html#l00069">aring-gf-flint.hpp:69</a></div></div>

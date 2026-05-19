@@ -113,42 +113,42 @@ $(function(){initNavTree('class_b_i_basis_1_1_monom_lex_a173f25a73b18777a3544400
 
 <p>Implements <a class="el" href="class_b_i_basis_1_1_monom_a1ffd80b92a44ecfcc14202685397ee08.html#a1ffd80b92a44ecfcc14202685397ee08">BIBasis::Monom</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="monom_lex_8hpp_source.html#l00220">220</a> of file <a class="el" href="monom_lex_8hpp_source.html">monomLex.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  221</span>    {</div>
-<div class="line"><span class="lineno">  222</span>        <span class="comment">//inserted variable is the only one</span></div>
-<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a>)</div>
-<div class="line"><span class="lineno">  224</span>        {</div>
-<div class="line"><span class="lineno">  225</span>            <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>();</div>
-<div class="line"><span class="lineno">  226</span>            <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a>-&gt;Value = var;</div>
-<div class="line"><span class="lineno">  227</span>            ++<a class="code hl_variable" href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">TotalDegree</a>;</div>
-<div class="line"><span class="lineno">  228</span>        }</div>
-<div class="line"><span class="lineno">  229</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  230</span>        {</div>
-<div class="line"><span class="lineno">  231</span>            <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>* position = <a class="code hl_function" href="class_b_i_basis_1_1_monom_lex_a17c42c68d47700fd30c951e6f86ed467.html#a17c42c68d47700fd30c951e6f86ed467">Find</a>(var);</div>
-<div class="line"><span class="lineno">  232</span>            <span class="comment">//inserted variable is the eldest one</span></div>
-<div class="line"><span class="lineno">  233</span>            <span class="keywordflow">if</span> (!position)</div>
-<div class="line"><span class="lineno">  234</span>            {</div>
-<div class="line"><span class="lineno">  235</span>                position = <span class="keyword">new</span> <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>();</div>
-<div class="line"><span class="lineno">  236</span>                position-&gt;Value = var;</div>
-<div class="line"><span class="lineno">  237</span>                position-&gt;Next = <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a>;</div>
-<div class="line"><span class="lineno">  238</span>                <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a> = position;</div>
-<div class="line"><span class="lineno">  239</span>                ++<a class="code hl_variable" href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">TotalDegree</a>;</div>
-<div class="line"><span class="lineno">  240</span>            }</div>
-<div class="line"><span class="lineno">  241</span>            <span class="comment">//all other cases</span></div>
-<div class="line"><span class="lineno">  242</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(position-&gt;Value != var)</div>
-<div class="line"><span class="lineno">  243</span>            {</div>
-<div class="line"><span class="lineno">  244</span>                <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>* newNode = <span class="keyword">new</span> <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>();</div>
-<div class="line"><span class="lineno">  245</span>                newNode-&gt;Value = var;</div>
-<div class="line"><span class="lineno">  246</span>                newNode-&gt;Next = position-&gt;Next;</div>
-<div class="line"><span class="lineno">  247</span>                position-&gt;Next = newNode;</div>
-<div class="line"><span class="lineno">  248</span>                ++<a class="code hl_variable" href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">TotalDegree</a>;</div>
-<div class="line"><span class="lineno">  249</span>            }</div>
-<div class="line"><span class="lineno">  250</span>        }</div>
-<div class="line"><span class="lineno">  251</span>    }</div>
-<div class="ttc" id="aclass_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0_html_aa0046595752d9d293c84b9146bc701e0"><div class="ttname"><a href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">BIBasis::Monom::TotalDegree</a></div><div class="ttdeci">Integer TotalDegree</div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00075">monom.hpp:75</a></div></div>
-<div class="ttc" id="aclass_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4_html_ace5c7e7f9d408c26588328d3d9b772e4"><div class="ttname"><a href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">BIBasis::Monom::ListHead</a></div><div class="ttdeci">VarsListNode * ListHead</div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00074">monom.hpp:74</a></div></div>
-<div class="ttc" id="aclass_b_i_basis_1_1_monom_lex_a17c42c68d47700fd30c951e6f86ed467_html_a17c42c68d47700fd30c951e6f86ed467"><div class="ttname"><a href="class_b_i_basis_1_1_monom_lex_a17c42c68d47700fd30c951e6f86ed467.html#a17c42c68d47700fd30c951e6f86ed467">BIBasis::MonomLex::Find</a></div><div class="ttdeci">VarsListNode * Find(const Integer var) const</div><div class="ttdef"><b>Definition</b> <a href="monom_lex_8hpp_source.html#l00137">monomLex.hpp:137</a></div></div>
-<div class="ttc" id="astruct_b_i_basis_1_1_monom_1_1_vars_list_node_html"><div class="ttname"><a href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">BIBasis::Monom::VarsListNode</a></div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00062">monom.hpp:63</a></div></div>
+<p class="definition">Definition at line <a class="el" href="monom_lex_8hpp_source.html#l00221">221</a> of file <a class="el" href="monom_lex_8hpp_source.html">monomLex.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  222</span>    {</div>
+<div class="line"><span class="lineno">  223</span>        <span class="comment">//inserted variable is the only one</span></div>
+<div class="line"><span class="lineno">  224</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a>)</div>
+<div class="line"><span class="lineno">  225</span>        {</div>
+<div class="line"><span class="lineno">  226</span>            <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a> = <span class="keyword">new</span> <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>();</div>
+<div class="line"><span class="lineno">  227</span>            <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a>-&gt;Value = var;</div>
+<div class="line"><span class="lineno">  228</span>            ++<a class="code hl_variable" href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">TotalDegree</a>;</div>
+<div class="line"><span class="lineno">  229</span>        }</div>
+<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  231</span>        {</div>
+<div class="line"><span class="lineno">  232</span>            <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>* position = <a class="code hl_function" href="class_b_i_basis_1_1_monom_lex_a17c42c68d47700fd30c951e6f86ed467.html#a17c42c68d47700fd30c951e6f86ed467">Find</a>(var);</div>
+<div class="line"><span class="lineno">  233</span>            <span class="comment">//inserted variable is the eldest one</span></div>
+<div class="line"><span class="lineno">  234</span>            <span class="keywordflow">if</span> (!position)</div>
+<div class="line"><span class="lineno">  235</span>            {</div>
+<div class="line"><span class="lineno">  236</span>                position = <span class="keyword">new</span> <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>();</div>
+<div class="line"><span class="lineno">  237</span>                position-&gt;Value = var;</div>
+<div class="line"><span class="lineno">  238</span>                position-&gt;Next = <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a>;</div>
+<div class="line"><span class="lineno">  239</span>                <a class="code hl_variable" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">ListHead</a> = position;</div>
+<div class="line"><span class="lineno">  240</span>                ++<a class="code hl_variable" href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">TotalDegree</a>;</div>
+<div class="line"><span class="lineno">  241</span>            }</div>
+<div class="line"><span class="lineno">  242</span>            <span class="comment">//all other cases</span></div>
+<div class="line"><span class="lineno">  243</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(position-&gt;Value != var)</div>
+<div class="line"><span class="lineno">  244</span>            {</div>
+<div class="line"><span class="lineno">  245</span>                <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>* newNode = <span class="keyword">new</span> <a class="code hl_struct" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a>();</div>
+<div class="line"><span class="lineno">  246</span>                newNode-&gt;Value = var;</div>
+<div class="line"><span class="lineno">  247</span>                newNode-&gt;Next = position-&gt;Next;</div>
+<div class="line"><span class="lineno">  248</span>                position-&gt;Next = newNode;</div>
+<div class="line"><span class="lineno">  249</span>                ++<a class="code hl_variable" href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">TotalDegree</a>;</div>
+<div class="line"><span class="lineno">  250</span>            }</div>
+<div class="line"><span class="lineno">  251</span>        }</div>
+<div class="line"><span class="lineno">  252</span>    }</div>
+<div class="ttc" id="aclass_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0_html_aa0046595752d9d293c84b9146bc701e0"><div class="ttname"><a href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">BIBasis::Monom::TotalDegree</a></div><div class="ttdeci">Integer TotalDegree</div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00076">monom.hpp:76</a></div></div>
+<div class="ttc" id="aclass_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4_html_ace5c7e7f9d408c26588328d3d9b772e4"><div class="ttname"><a href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">BIBasis::Monom::ListHead</a></div><div class="ttdeci">VarsListNode * ListHead</div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00075">monom.hpp:75</a></div></div>
+<div class="ttc" id="aclass_b_i_basis_1_1_monom_lex_a17c42c68d47700fd30c951e6f86ed467_html_a17c42c68d47700fd30c951e6f86ed467"><div class="ttname"><a href="class_b_i_basis_1_1_monom_lex_a17c42c68d47700fd30c951e6f86ed467.html#a17c42c68d47700fd30c951e6f86ed467">BIBasis::MonomLex::Find</a></div><div class="ttdeci">VarsListNode * Find(const Integer var) const</div><div class="ttdef"><b>Definition</b> <a href="monom_lex_8hpp_source.html#l00138">monomLex.hpp:138</a></div></div>
+<div class="ttc" id="astruct_b_i_basis_1_1_monom_1_1_vars_list_node_html"><div class="ttname"><a href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">BIBasis::Monom::VarsListNode</a></div><div class="ttdef"><b>Definition</b> <a href="monom_8hpp_source.html#l00063">monom.hpp:64</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_b_i_basis_1_1_monom_lex_a17c42c68d47700fd30c951e6f86ed467.html#a17c42c68d47700fd30c951e6f86ed467">Find()</a>, <a class="el" href="class_b_i_basis_1_1_monom_ace5c7e7f9d408c26588328d3d9b772e4.html#ace5c7e7f9d408c26588328d3d9b772e4">BIBasis::Monom::ListHead</a>, <a class="el" href="#a173f25a73b18777a3544400944e4fa01">MultiplyBy()</a>, <a class="el" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node_ad94cd89a5774ddecb9cd01102e148e02.html#ad94cd89a5774ddecb9cd01102e148e02">BIBasis::Monom::VarsListNode::Next</a>, <a class="el" href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">BIBasis::Monom::TotalDegree</a>, and <a class="el" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node_a27e6ebbc6d73553e4cc3ab65c46c45af.html#a27e6ebbc6d73553e4cc3ab65c46c45af">BIBasis::Monom::VarsListNode::Value</a>.</p>
 

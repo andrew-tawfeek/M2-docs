@@ -105,21 +105,21 @@ template&lt;typename MonomType&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="qset_8hpp_source.html#l00096">96</a> of file <a class="el" href="qset_8hpp_source.html">qset.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>    {</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keyword">typename</span> <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">std::list&lt;Polynom&lt;MonomType&gt;</a>*&gt;<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">::const_iterator</a> <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a>(<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">addList</a>.begin());</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">while</span> ( <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a> != <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">addList</a>.end() )</div>
-<div class="line"><span class="lineno">  100</span>        {</div>
-<div class="line"><span class="lineno">  101</span>            <span class="keywordflow">if</span> (*<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a>)</div>
-<div class="line"><span class="lineno">  102</span>            {</div>
-<div class="line"><span class="lineno">  103</span>                <a class="code hl_variable" href="class_b_i_basis_1_1_q_set_ac4106516a245082520f9a48964ae1636.html#ac4106516a245082520f9a48964ae1636">TripleList</a>.push_back(<span class="keyword">new</span> <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">Triple&lt;MonomType&gt;</a>(*<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a>));</div>
-<div class="line"><span class="lineno">  104</span>            }</div>
-<div class="line"><span class="lineno">  105</span>            ++<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a>;</div>
-<div class="line"><span class="lineno">  106</span>        }</div>
-<div class="line"><span class="lineno">  107</span>        <a class="code hl_variable" href="class_b_i_basis_1_1_q_set_ac4106516a245082520f9a48964ae1636.html#ac4106516a245082520f9a48964ae1636">TripleList</a>.sort(<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">Triple&lt;MonomType&gt;::Compare</a>);</div>
-<div class="line"><span class="lineno">  108</span>    }</div>
-<div class="ttc" id="aclass_b_i_basis_1_1_q_set_ac4106516a245082520f9a48964ae1636_html_ac4106516a245082520f9a48964ae1636"><div class="ttname"><a href="class_b_i_basis_1_1_q_set_ac4106516a245082520f9a48964ae1636.html#ac4106516a245082520f9a48964ae1636">BIBasis::QSet::TripleList</a></div><div class="ttdeci">std::list&lt; Triple&lt; MonomType &gt; * &gt; TripleList</div><div class="ttdef"><b>Definition</b> <a href="qset_8hpp_source.html#l00049">qset.hpp:49</a></div></div>
-<div class="ttc" id="aclass_b_i_basis_1_1_q_set_html"><div class="ttname"><a href="class_b_i_basis_1_1_q_set.html">BIBasis::QSet</a></div><div class="ttdef"><b>Definition</b> <a href="qset_8hpp_source.html#l00046">qset.hpp:47</a></div></div>
+<p class="definition">Definition at line <a class="el" href="qset_8hpp_source.html#l00097">97</a> of file <a class="el" href="qset_8hpp_source.html">qset.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   98</span>    {</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keyword">typename</span> <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">std::list&lt;Polynom&lt;MonomType&gt;</a>*&gt;<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">::const_iterator</a> <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a>(<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">addList</a>.begin());</div>
+<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">while</span> ( <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a> != <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">addList</a>.end() )</div>
+<div class="line"><span class="lineno">  101</span>        {</div>
+<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">if</span> (*<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a>)</div>
+<div class="line"><span class="lineno">  103</span>            {</div>
+<div class="line"><span class="lineno">  104</span>                <a class="code hl_variable" href="class_b_i_basis_1_1_q_set_ac4106516a245082520f9a48964ae1636.html#ac4106516a245082520f9a48964ae1636">TripleList</a>.push_back(<span class="keyword">new</span> <a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">Triple&lt;MonomType&gt;</a>(*<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a>));</div>
+<div class="line"><span class="lineno">  105</span>            }</div>
+<div class="line"><span class="lineno">  106</span>            ++<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">itBasis</a>;</div>
+<div class="line"><span class="lineno">  107</span>        }</div>
+<div class="line"><span class="lineno">  108</span>        <a class="code hl_variable" href="class_b_i_basis_1_1_q_set_ac4106516a245082520f9a48964ae1636.html#ac4106516a245082520f9a48964ae1636">TripleList</a>.sort(<a class="code hl_class" href="class_b_i_basis_1_1_q_set.html">Triple&lt;MonomType&gt;::Compare</a>);</div>
+<div class="line"><span class="lineno">  109</span>    }</div>
+<div class="ttc" id="aclass_b_i_basis_1_1_q_set_ac4106516a245082520f9a48964ae1636_html_ac4106516a245082520f9a48964ae1636"><div class="ttname"><a href="class_b_i_basis_1_1_q_set_ac4106516a245082520f9a48964ae1636.html#ac4106516a245082520f9a48964ae1636">BIBasis::QSet::TripleList</a></div><div class="ttdeci">std::list&lt; Triple&lt; MonomType &gt; * &gt; TripleList</div><div class="ttdef"><b>Definition</b> <a href="qset_8hpp_source.html#l00050">qset.hpp:50</a></div></div>
+<div class="ttc" id="aclass_b_i_basis_1_1_q_set_html"><div class="ttname"><a href="class_b_i_basis_1_1_q_set.html">BIBasis::QSet</a></div><div class="ttdef"><b>Definition</b> <a href="qset_8hpp_source.html#l00047">qset.hpp:48</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_b_i_basis_1_1_triple_ae50a0e582021ec022e9b8a7ee0bbb67b.html#ae50a0e582021ec022e9b8a7ee0bbb67b">BIBasis::Triple&lt; MonomType &gt;::Compare()</a>, and <a class="el" href="class_b_i_basis_1_1_q_set_ac4106516a245082520f9a48964ae1636.html#ac4106516a245082520f9a48964ae1636">TripleList</a>.</p>
 

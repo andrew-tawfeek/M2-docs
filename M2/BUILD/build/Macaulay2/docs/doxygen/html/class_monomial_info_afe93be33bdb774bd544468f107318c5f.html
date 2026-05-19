@@ -125,36 +125,36 @@ $(function(){initNavTree('class_monomial_info_afe93be33bdb774bd544468f107318c5f.
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="moninfo_8hpp_source.html#l00541">541</a> of file <a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  556</span>  {</div>
-<div class="line"><span class="lineno">  557</span>    <span class="comment">// TODO: MES: this maybe should check that lead components of m and p1 and</span></div>
-<div class="line"><span class="lineno">  558</span>    <span class="comment">// p2 are the same...</span></div>
-<div class="line"><span class="lineno">  559</span>    <a class="code hl_variable" href="class_monomial_info_a5622d6443ec251cb5337db4a0a499e4b.html#a5622d6443ec251cb5337db4a0a499e4b">ncalls_unneccesary</a>++;</div>
-<div class="line"><span class="lineno">  560</span>    <span class="keywordtype">bool</span> A = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  561</span>    <span class="keywordtype">bool</span> B = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  562</span>    m += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
-<div class="line"><span class="lineno">  563</span>    <a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a> += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
-<div class="line"><span class="lineno">  564</span>    p2 += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
-<div class="line"><span class="lineno">  565</span>    lcm += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
-<div class="line"><span class="lineno">  566</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">nvars</a>; i++)</div>
-<div class="line"><span class="lineno">  567</span>      {</div>
-<div class="line"><span class="lineno">  568</span>        <span class="keywordflow">if</span> (m[i] &gt; lcm[i]) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  569</span>        <span class="keywordflow">if</span> (m[i] == lcm[i]) <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  570</span>        <span class="keywordflow">if</span> (!A &amp;&amp; <a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>[i] &lt; lcm[i])</div>
-<div class="line"><span class="lineno">  571</span>          {</div>
-<div class="line"><span class="lineno">  572</span>            A = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  573</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  574</span>          }</div>
-<div class="line"><span class="lineno">  575</span>        <span class="keywordflow">if</span> (!B &amp;&amp; p2[i] &lt; lcm[i])</div>
-<div class="line"><span class="lineno">  576</span>          {</div>
-<div class="line"><span class="lineno">  577</span>            B = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  578</span>          }</div>
-<div class="line"><span class="lineno">  579</span>      }</div>
-<div class="line"><span class="lineno">  580</span>    <span class="keywordflow">return</span> (A &amp;&amp; B);</div>
-<div class="line"><span class="lineno">  581</span>  }</div>
-<div class="ttc" id="aclass_monomial_info_a5622d6443ec251cb5337db4a0a499e4b_html_a5622d6443ec251cb5337db4a0a499e4b"><div class="ttname"><a href="class_monomial_info_a5622d6443ec251cb5337db4a0a499e4b.html#a5622d6443ec251cb5337db4a0a499e4b">MonomialInfo::ncalls_unneccesary</a></div><div class="ttdeci">unsigned long ncalls_unneccesary</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00110">moninfo.hpp:110</a></div></div>
-<div class="ttc" id="aclass_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6_html_a68e18bb4033baee1ab6a43913f29d3a6"><div class="ttname"><a href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">MonomialInfo::nvars</a></div><div class="ttdeci">int nvars</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00076">moninfo.hpp:76</a></div></div>
-<div class="ttc" id="aclass_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c_html_ab871cfa4ab66344a8de516bf9fe5962c"><div class="ttname"><a href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">MonomialInfo::firstvar</a></div><div class="ttdeci">int firstvar</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00082">moninfo.hpp:82</a></div></div>
+<p class="definition">Definition at line <a class="el" href="moninfo_8hpp_source.html#l00544">544</a> of file <a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  559</span>  {</div>
+<div class="line"><span class="lineno">  560</span>    <span class="comment">// TODO: MES: this maybe should check that lead components of m and p1 and</span></div>
+<div class="line"><span class="lineno">  561</span>    <span class="comment">// p2 are the same...</span></div>
+<div class="line"><span class="lineno">  562</span>    <a class="code hl_variable" href="class_monomial_info_a5622d6443ec251cb5337db4a0a499e4b.html#a5622d6443ec251cb5337db4a0a499e4b">ncalls_unneccesary</a>++;</div>
+<div class="line"><span class="lineno">  563</span>    <span class="keywordtype">bool</span> A = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  564</span>    <span class="keywordtype">bool</span> B = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  565</span>    m += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
+<div class="line"><span class="lineno">  566</span>    <a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a> += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
+<div class="line"><span class="lineno">  567</span>    p2 += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
+<div class="line"><span class="lineno">  568</span>    lcm += <a class="code hl_variable" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>;</div>
+<div class="line"><span class="lineno">  569</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">nvars</a>; i++)</div>
+<div class="line"><span class="lineno">  570</span>      {</div>
+<div class="line"><span class="lineno">  571</span>        <span class="keywordflow">if</span> (m[i] &gt; lcm[i]) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  572</span>        <span class="keywordflow">if</span> (m[i] == lcm[i]) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  573</span>        <span class="keywordflow">if</span> (!A &amp;&amp; <a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>[i] &lt; lcm[i])</div>
+<div class="line"><span class="lineno">  574</span>          {</div>
+<div class="line"><span class="lineno">  575</span>            A = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  576</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  577</span>          }</div>
+<div class="line"><span class="lineno">  578</span>        <span class="keywordflow">if</span> (!B &amp;&amp; p2[i] &lt; lcm[i])</div>
+<div class="line"><span class="lineno">  579</span>          {</div>
+<div class="line"><span class="lineno">  580</span>            B = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  581</span>          }</div>
+<div class="line"><span class="lineno">  582</span>      }</div>
+<div class="line"><span class="lineno">  583</span>    <span class="keywordflow">return</span> (A &amp;&amp; B);</div>
+<div class="line"><span class="lineno">  584</span>  }</div>
+<div class="ttc" id="aclass_monomial_info_a5622d6443ec251cb5337db4a0a499e4b_html_a5622d6443ec251cb5337db4a0a499e4b"><div class="ttname"><a href="class_monomial_info_a5622d6443ec251cb5337db4a0a499e4b.html#a5622d6443ec251cb5337db4a0a499e4b">MonomialInfo::ncalls_unneccesary</a></div><div class="ttdeci">unsigned long ncalls_unneccesary</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00113">moninfo.hpp:113</a></div></div>
+<div class="ttc" id="aclass_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6_html_a68e18bb4033baee1ab6a43913f29d3a6"><div class="ttname"><a href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">MonomialInfo::nvars</a></div><div class="ttdeci">int nvars</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00079">moninfo.hpp:79</a></div></div>
+<div class="ttc" id="aclass_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c_html_ab871cfa4ab66344a8de516bf9fe5962c"><div class="ttname"><a href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">MonomialInfo::firstvar</a></div><div class="ttdeci">int firstvar</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00085">moninfo.hpp:85</a></div></div>
 <div class="ttc" id="agodbolt_test_8cpp_a8d5504470de9fec69f0389092910c500_html_a8d5504470de9fec69f0389092910c500"><div class="ttname"><a href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a></div><div class="ttdeci">int p1</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00033">godboltTest.cpp:33</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_monomial_info_ab871cfa4ab66344a8de516bf9fe5962c.html#ab871cfa4ab66344a8de516bf9fe5962c">firstvar</a>, <a class="el" href="class_monomial_info_a5622d6443ec251cb5337db4a0a499e4b.html#a5622d6443ec251cb5337db4a0a499e4b">ncalls_unneccesary</a>, <a class="el" href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">nvars</a>, and <a class="el" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>.</p>

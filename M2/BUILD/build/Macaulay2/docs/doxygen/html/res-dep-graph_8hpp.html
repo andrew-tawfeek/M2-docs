@@ -104,7 +104,7 @@ slanted_degree)</span> requires both <span class="tt">(level + 1, slanted_degree
 nlevels, nslanted_degrees, doMinimalBetti)</span> constructs the standard layout.</p>
 <p>The 2-D grid is linearised via <span class="tt">getIndex(lev, sldeg, nlevels,
 nslanted_degrees) = lev + sldeg * nlevels</span>, with the matching inverse <span class="tt">getPair</span>. The whole header is <span class="tt">#ifdef <a class="el" href="mtbb_8hpp_a781665ad4e25185f593a1689aed1e704.html#a781665ad4e25185f593a1689aed1e704">WITH_TBB</a></span>- gated; on builds without TBB the parallel layer compiles to nothing and <span class="tt"><a class="el" href="class_f4_res_computation.html">F4ResComputation</a></span> falls back to the serial path. The <span class="tt">parallelizeByDegree</span> flag on <span class="tt"><a class="el" href="class_f4_res_computation.html">F4ResComputation</a></span> determines whether the scheduler walks the grid degree-major or level-major.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-f4-computation_8hpp.html" title="F4ResComputation — top-level Schreyer-frame F4 free-resolution driver.">res-f4-computation.hpp</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-f4-computation_8hpp.html" title="Top-level Schreyer-frame F4 free-resolution driver.">res-f4-computation.hpp</a> </dd>
 <dd>
 <a class="el" href="res-schreyer-frame_8hpp.html" title="SchreyerFrame — in-progress representation of a free resolution organised by (level,...">res-schreyer-frame.hpp</a> </dd>
 <dd>

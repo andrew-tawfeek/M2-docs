@@ -114,29 +114,29 @@ template&lt;&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="from_stream_8cpp_source.html#l00069">69</a> of file <a class="el" href="from_stream_8cpp_source.html">fromStream.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
-<div class="line"><span class="lineno">   71</span>  <span class="keywordflow">while</span> (isspace(i.peek())) i.get();</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>  <span class="keywordflow">if</span> (!isdigit(i.peek()) &amp;&amp; i.peek() != <span class="charliteral">&#39;+&#39;</span> &amp;&amp; i.peek() != <span class="charliteral">&#39;-&#39;</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> original_s_len = 100;</div>
-<div class="line"><span class="lineno">   76</span>  <span class="keywordtype">char</span> original_s[original_s_len];</div>
-<div class="line"><span class="lineno">   77</span>  <span class="keywordtype">char</span> *s_str = original_s;</div>
-<div class="line"><span class="lineno">   78</span>  <span class="keywordtype">char</span> *<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> = s_str;</div>
-<div class="line"><span class="lineno">   79</span>  <span class="comment">//  int s_len = original_s_len;</span></div>
-<div class="line"><span class="lineno">   80</span>  <span class="comment">//  int len = 0;</span></div>
-<div class="line"><span class="lineno">   81</span>  <span class="keywordflow">while</span> (isdigit(i.peek()))</div>
-<div class="line"><span class="lineno">   82</span>    {</div>
-<div class="line"><span class="lineno">   83</span>      <span class="comment">// NOT DONE BEING WRITTEN!!!!!!</span></div>
-<div class="line"><span class="lineno">   84</span>    }</div>
-<div class="line"><span class="lineno">   85</span>  *<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>++ = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>  <span class="keywordtype">int</span> a;</div>
-<div class="line"><span class="lineno">   88</span>  i &gt;&gt; a;</div>
-<div class="line"><span class="lineno">   89</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = R.<a class="code hl_function" href="class_ring_z_z_a62f0ce64ee20c653555de36b8ddc8d07.html#a62f0ce64ee20c653555de36b8ddc8d07">from_long</a>(a);</div>
-<div class="line"><span class="lineno">   90</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   91</span>}</div>
+<p class="definition">Definition at line <a class="el" href="from_stream_8cpp_source.html#l00070">70</a> of file <a class="el" href="from_stream_8cpp_source.html">fromStream.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
+<div class="line"><span class="lineno">   72</span>  <span class="keywordflow">while</span> (isspace(i.peek())) i.get();</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>  <span class="keywordflow">if</span> (!isdigit(i.peek()) &amp;&amp; i.peek() != <span class="charliteral">&#39;+&#39;</span> &amp;&amp; i.peek() != <span class="charliteral">&#39;-&#39;</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> original_s_len = 100;</div>
+<div class="line"><span class="lineno">   77</span>  <span class="keywordtype">char</span> original_s[original_s_len];</div>
+<div class="line"><span class="lineno">   78</span>  <span class="keywordtype">char</span> *s_str = original_s;</div>
+<div class="line"><span class="lineno">   79</span>  <span class="keywordtype">char</span> *<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> = s_str;</div>
+<div class="line"><span class="lineno">   80</span>  <span class="comment">//  int s_len = original_s_len;</span></div>
+<div class="line"><span class="lineno">   81</span>  <span class="comment">//  int len = 0;</span></div>
+<div class="line"><span class="lineno">   82</span>  <span class="keywordflow">while</span> (isdigit(i.peek()))</div>
+<div class="line"><span class="lineno">   83</span>    {</div>
+<div class="line"><span class="lineno">   84</span>      <span class="comment">// NOT DONE BEING WRITTEN!!!!!!</span></div>
+<div class="line"><span class="lineno">   85</span>    }</div>
+<div class="line"><span class="lineno">   86</span>  *<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>++ = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><span class="lineno">   87</span> </div>
+<div class="line"><span class="lineno">   88</span>  <span class="keywordtype">int</span> a;</div>
+<div class="line"><span class="lineno">   89</span>  i &gt;&gt; a;</div>
+<div class="line"><span class="lineno">   90</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = R.<a class="code hl_function" href="class_ring_z_z_a62f0ce64ee20c653555de36b8ddc8d07.html#a62f0ce64ee20c653555de36b8ddc8d07">from_long</a>(a);</div>
+<div class="line"><span class="lineno">   91</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   92</span>}</div>
 <div class="ttc" id="aclass_ring_z_z_a62f0ce64ee20c653555de36b8ddc8d07_html_a62f0ce64ee20c653555de36b8ddc8d07"><div class="ttname"><a href="class_ring_z_z_a62f0ce64ee20c653555de36b8ddc8d07.html#a62f0ce64ee20c653555de36b8ddc8d07">RingZZ::from_long</a></div><div class="ttdeci">virtual ring_elem from_long(long n) const</div><div class="ttdef"><b>Definition</b> <a href="_z_z_8cpp_source.html#l00110">ZZ.cpp:110</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5_html_a2fc91f4e89bc37f261db820d231da2e5"><div class="ttname"><a href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a></div><div class="ttdeci">void size_t s</div><div class="ttdef"><b>Definition</b> <a href="m2-mem_8cpp_source.html#l00271">m2-mem.cpp:271</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>

@@ -130,7 +130,7 @@ Classes</h2></td></tr>
 <p>Memory for monomials and packed words is owned by an internal <span class="tt"><a class="el" href="class_memory_block.html">MemoryBlock</a></span>; word divisibility uses <span class="tt"><a class="el" href="class_word_table.html">WordTable</a></span> or the experimental <span class="tt"><a class="el" href="class_suffix_tree.html">SuffixTree</a></span>. <span class="tt"><a class="el" href="m2tbb_8hpp.html" title="Engine TBB shim — single point of inclusion for every parallel primitive.">m2tbb.hpp</a></span> is pulled in so the row-arithmetic kernels can parallelise across TBB threads. For dense inputs with many shared suffixes this batched approach is dramatically faster than <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span>'s Buchberger loop; for sparse inputs the per-row overhead dominates and the dispatcher prefers the older path.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
 <dd>
-<a class="el" href="_free_algebra_8hpp.html" title="FreeAlgebra — the free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a> </dd>
+<a class="el" href="_free_algebra_8hpp.html" title="Free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a> </dd>
 <dd>
 <a class="el" href="_overlap_table_8hpp.html" title="OverlapTable — degree-sorted queue of pending word overlaps for non-commutative GB drivers.">OverlapTable.hpp</a> </dd>
 <dd>
