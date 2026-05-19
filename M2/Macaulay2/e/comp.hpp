@@ -7,23 +7,32 @@
  * @file comp.hpp
  * @brief Abstract `Computation` base class --- stop-condition machinery for incremental engine work.
  *
- * `Computation` is the pure-virtual root of every long-running
- * engine task (Groebner basis, resolution, Hilbert series, ...). It
- * carries a `ComputationStatusCode` (`COMP_DONE`,
- * `COMP_INTERRUPTED`, `COMP_DEGREE_LIMIT_REACHED`, ...) and a
- * `StopConditions` struct that bundles the user-facing limit
- * vocabulary: `degree_limit`, `basis_element_limit`, `syzygy_limit`,
- * `pair_limit`, `codim_limit`, `subring_limit`, `just_min_gens`,
- * `length_limit`, and the `always_stop` debug knob. M2 statements
- * like `gb(I, DegreeLimit => 5)` map to constructing a concrete
- * subclass, calling `set_stop_conditions`, then `start_computation`.
+ * `Computation` is the pure-virtual root (inheriting from
+ * `MutableEngineObject`) of every long-running engine task ---
+ * Groebner basis, resolution, Hilbert series, ... . It carries
+ * a `ComputationStatusCode` (`COMP_DONE`, `COMP_INTERRUPTED`,
+ * `COMP_DONE_DEGREE_LIMIT`, `COMP_DONE_GB_LIMIT`,
+ * `COMP_OVERFLOWED`, ...) and a `StopConditions` struct that
+ * bundles the user-facing limit vocabulary: `degree_limit`,
+ * `basis_element_limit`, `syzygy_limit`, `pair_limit`,
+ * `codim_limit`, `subring_limit`, `just_min_gens`,
+ * `length_limit`, and the `always_stop` debug knob. M2
+ * statements like `gb(I, DegreeLimit => 5)` map to constructing
+ * a concrete subclass, calling `set_stop_conditions`, then
+ * `start_computation`. The pure-virtual surface every subclass
+ * fills in is `stop_conditions_ok`, `complete_thru_degree`,
+ * `start_computation`; the typed downcasts
+ * `cast_to_GBComputation` / `cast_to_ResolutionComputation`
+ * default to `nullptr` so callers can branch on the concrete
+ * flavour without RTTI.
  *
  * The incremental design is what makes the engine usable on
  * hour-or-day computations: users can interrupt cleanly (status
- * flips to `COMP_INTERRUPTED`), inspect the partial state, raise
- * a limit, and call `start_computation` again to resume where the
- * previous run stopped. The same pattern shows up in every
- * `comp-*` subclass.
+ * flips to `COMP_INTERRUPTED`), inspect the partial state via
+ * `complete_thru_degree`, raise a limit, and call
+ * `start_computation` again to resume where the previous run
+ * stopped. `text_out` and `show` are the two diagnostic
+ * hooks.
  *
  * @see comp-gb.hpp
  * @see comp-res.hpp
