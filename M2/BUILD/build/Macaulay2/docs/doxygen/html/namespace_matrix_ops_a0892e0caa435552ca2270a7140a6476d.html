@@ -113,15 +113,15 @@ template&lt;typename Mat&gt; </div>
 <p>result_rref should be a Mat, with the same ring/type as the input matrix A. result_rref does not need to be the same size as A, it will be resized if needed. returns the rank of A.</p>
 <p>throws an engine_error for ring/matrix types where the function is not implemented. </p>
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00133">133</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
-<div class="line"><span class="lineno">  135</span>  (void) A;</div>
-<div class="line"><span class="lineno">  136</span>  (void) result_rref;</div>
-<div class="line"><span class="lineno">  137</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
-<div class="line"><span class="lineno">  138</span>      <span class="stringliteral">&quot;&#39;rowReducedEchelonForm&#39; not implemented for this kind of matrix over &quot;</span></div>
-<div class="line"><span class="lineno">  139</span>      <span class="stringliteral">&quot;this ring&quot;</span>);</div>
-<div class="line"><span class="lineno">  140</span>}</div>
-<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00008">exceptions.hpp:9</a></div></div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00159">159</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  160</span>{</div>
+<div class="line"><span class="lineno">  161</span>  (void) A;</div>
+<div class="line"><span class="lineno">  162</span>  (void) result_rref;</div>
+<div class="line"><span class="lineno">  163</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
+<div class="line"><span class="lineno">  164</span>      <span class="stringliteral">&quot;&#39;rowReducedEchelonForm&#39; not implemented for this kind of matrix over &quot;</span></div>
+<div class="line"><span class="lineno">  165</span>      <span class="stringliteral">&quot;this ring&quot;</span>);</div>
+<div class="line"><span class="lineno">  166</span>}</div>
+<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00037">exceptions.hpp:38</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_mutable_mat_af6928764341651a5a09164141fa9d481.html#af6928764341651a5a09164141fa9d481">MutableMat&lt; Mat &gt;::rowReducedEchelonForm()</a>.</p>
 

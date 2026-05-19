@@ -117,38 +117,38 @@ template&lt;typename Sorter&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="monsort_8hpp_source.html#l00054">54</a> of file <a class="el" href="monsort_8hpp_source.html">monsort.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
-<div class="line"><span class="lineno">   56</span>  <a class="code hl_typedef" href="class_quick_sorter_abaefec981673f1ebc0995ff4a0d282d2.html#abaefec981673f1ebc0995ff4a0d282d2">value</a> <a class="code hl_class" href="class_quick_sorter.html">pivot</a> = <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">lo</a>];</div>
-<div class="line"><span class="lineno">   57</span>  <span class="keywordtype">long</span> <a class="code hl_class" href="class_quick_sorter.html">i</a> = <a class="code hl_class" href="class_quick_sorter.html">lo</a> - 1;</div>
-<div class="line"><span class="lineno">   58</span>  <span class="keywordtype">long</span> <a class="code hl_class" href="class_quick_sorter.html">j</a> = <a class="code hl_class" href="class_quick_sorter.html">hi</a> + 1;</div>
-<div class="line"><span class="lineno">   59</span>  <span class="keywordflow">for</span> (;;)</div>
-<div class="line"><span class="lineno">   60</span>    {</div>
-<div class="line"><span class="lineno">   61</span>      <span class="keywordflow">do</span></div>
-<div class="line"><span class="lineno">   62</span>        {</div>
-<div class="line"><span class="lineno">   63</span>          <a class="code hl_class" href="class_quick_sorter.html">j</a>--;</div>
-<div class="line"><span class="lineno">   64</span>        }</div>
-<div class="line"><span class="lineno">   65</span>      <span class="keywordflow">while</span> (<a class="code hl_variable" href="class_quick_sorter_a0ac19750a30a6dd517ec1740ee634f3c.html#a0ac19750a30a6dd517ec1740ee634f3c">M</a>-&gt;compare(<a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">j</a>], <a class="code hl_class" href="class_quick_sorter.html">pivot</a>) &lt; 0);</div>
-<div class="line"><span class="lineno">   66</span>      <span class="keywordflow">do</span></div>
-<div class="line"><span class="lineno">   67</span>        {</div>
-<div class="line"><span class="lineno">   68</span>          <a class="code hl_class" href="class_quick_sorter.html">i</a>++;</div>
-<div class="line"><span class="lineno">   69</span>        }</div>
-<div class="line"><span class="lineno">   70</span>      <span class="keywordflow">while</span> (<a class="code hl_variable" href="class_quick_sorter_a0ac19750a30a6dd517ec1740ee634f3c.html#a0ac19750a30a6dd517ec1740ee634f3c">M</a>-&gt;compare(<a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">i</a>], <a class="code hl_class" href="class_quick_sorter.html">pivot</a>) &gt; 0);</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="class_quick_sorter.html">i</a> &lt; <a class="code hl_class" href="class_quick_sorter.html">j</a>)</div>
-<div class="line"><span class="lineno">   73</span>        {</div>
-<div class="line"><span class="lineno">   74</span>          <a class="code hl_typedef" href="class_quick_sorter_abaefec981673f1ebc0995ff4a0d282d2.html#abaefec981673f1ebc0995ff4a0d282d2">value</a> <a class="code hl_class" href="class_quick_sorter.html">tmp</a> = <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">j</a>];</div>
-<div class="line"><span class="lineno">   75</span>          <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">j</a>] = <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">i</a>];</div>
-<div class="line"><span class="lineno">   76</span>          <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">i</a>] = <a class="code hl_class" href="class_quick_sorter.html">tmp</a>;</div>
-<div class="line"><span class="lineno">   77</span>        }</div>
-<div class="line"><span class="lineno">   78</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="class_quick_sorter.html">j</a>;</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
-<div class="line"><span class="lineno">   81</span>}</div>
-<div class="ttc" id="aclass_quick_sorter_a0ac19750a30a6dd517ec1740ee634f3c_html_a0ac19750a30a6dd517ec1740ee634f3c"><div class="ttname"><a href="class_quick_sorter_a0ac19750a30a6dd517ec1740ee634f3c.html#a0ac19750a30a6dd517ec1740ee634f3c">QuickSorter::M</a></div><div class="ttdeci">Sorter * M</div><div class="ttdef"><b>Definition</b> <a href="monsort_8hpp_source.html#l00024">monsort.hpp:24</a></div></div>
-<div class="ttc" id="aclass_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb_html_a23fc644df86d45fa5ef2c73b5ff85fdb"><div class="ttname"><a href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">QuickSorter::elems</a></div><div class="ttdeci">value * elems</div><div class="ttdef"><b>Definition</b> <a href="monsort_8hpp_source.html#l00025">monsort.hpp:25</a></div></div>
-<div class="ttc" id="aclass_quick_sorter_abaefec981673f1ebc0995ff4a0d282d2_html_abaefec981673f1ebc0995ff4a0d282d2"><div class="ttname"><a href="class_quick_sorter_abaefec981673f1ebc0995ff4a0d282d2.html#abaefec981673f1ebc0995ff4a0d282d2">QuickSorter::value</a></div><div class="ttdeci">Sorter::value value</div><div class="ttdef"><b>Definition</b> <a href="monsort_8hpp_source.html#l00023">monsort.hpp:23</a></div></div>
-<div class="ttc" id="aclass_quick_sorter_html"><div class="ttname"><a href="class_quick_sorter.html">QuickSorter</a></div><div class="ttdef"><b>Definition</b> <a href="monsort_8hpp_source.html#l00021">monsort.hpp:22</a></div></div>
+<p class="definition">Definition at line <a class="el" href="monsort_8hpp_source.html#l00078">78</a> of file <a class="el" href="monsort_8hpp_source.html">monsort.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>{</div>
+<div class="line"><span class="lineno">   80</span>  <a class="code hl_typedef" href="class_quick_sorter_abaefec981673f1ebc0995ff4a0d282d2.html#abaefec981673f1ebc0995ff4a0d282d2">value</a> <a class="code hl_class" href="class_quick_sorter.html">pivot</a> = <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">lo</a>];</div>
+<div class="line"><span class="lineno">   81</span>  <span class="keywordtype">long</span> <a class="code hl_class" href="class_quick_sorter.html">i</a> = <a class="code hl_class" href="class_quick_sorter.html">lo</a> - 1;</div>
+<div class="line"><span class="lineno">   82</span>  <span class="keywordtype">long</span> <a class="code hl_class" href="class_quick_sorter.html">j</a> = <a class="code hl_class" href="class_quick_sorter.html">hi</a> + 1;</div>
+<div class="line"><span class="lineno">   83</span>  <span class="keywordflow">for</span> (;;)</div>
+<div class="line"><span class="lineno">   84</span>    {</div>
+<div class="line"><span class="lineno">   85</span>      <span class="keywordflow">do</span></div>
+<div class="line"><span class="lineno">   86</span>        {</div>
+<div class="line"><span class="lineno">   87</span>          <a class="code hl_class" href="class_quick_sorter.html">j</a>--;</div>
+<div class="line"><span class="lineno">   88</span>        }</div>
+<div class="line"><span class="lineno">   89</span>      <span class="keywordflow">while</span> (<a class="code hl_variable" href="class_quick_sorter_a0ac19750a30a6dd517ec1740ee634f3c.html#a0ac19750a30a6dd517ec1740ee634f3c">M</a>-&gt;compare(<a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">j</a>], <a class="code hl_class" href="class_quick_sorter.html">pivot</a>) &lt; 0);</div>
+<div class="line"><span class="lineno">   90</span>      <span class="keywordflow">do</span></div>
+<div class="line"><span class="lineno">   91</span>        {</div>
+<div class="line"><span class="lineno">   92</span>          <a class="code hl_class" href="class_quick_sorter.html">i</a>++;</div>
+<div class="line"><span class="lineno">   93</span>        }</div>
+<div class="line"><span class="lineno">   94</span>      <span class="keywordflow">while</span> (<a class="code hl_variable" href="class_quick_sorter_a0ac19750a30a6dd517ec1740ee634f3c.html#a0ac19750a30a6dd517ec1740ee634f3c">M</a>-&gt;compare(<a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">i</a>], <a class="code hl_class" href="class_quick_sorter.html">pivot</a>) &gt; 0);</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>      <span class="keywordflow">if</span> (<a class="code hl_class" href="class_quick_sorter.html">i</a> &lt; <a class="code hl_class" href="class_quick_sorter.html">j</a>)</div>
+<div class="line"><span class="lineno">   97</span>        {</div>
+<div class="line"><span class="lineno">   98</span>          <a class="code hl_typedef" href="class_quick_sorter_abaefec981673f1ebc0995ff4a0d282d2.html#abaefec981673f1ebc0995ff4a0d282d2">value</a> <a class="code hl_class" href="class_quick_sorter.html">tmp</a> = <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">j</a>];</div>
+<div class="line"><span class="lineno">   99</span>          <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">j</a>] = <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">i</a>];</div>
+<div class="line"><span class="lineno">  100</span>          <a class="code hl_variable" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>[<a class="code hl_class" href="class_quick_sorter.html">i</a>] = <a class="code hl_class" href="class_quick_sorter.html">tmp</a>;</div>
+<div class="line"><span class="lineno">  101</span>        }</div>
+<div class="line"><span class="lineno">  102</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="class_quick_sorter.html">j</a>;</div>
+<div class="line"><span class="lineno">  104</span>    }</div>
+<div class="line"><span class="lineno">  105</span>}</div>
+<div class="ttc" id="aclass_quick_sorter_a0ac19750a30a6dd517ec1740ee634f3c_html_a0ac19750a30a6dd517ec1740ee634f3c"><div class="ttname"><a href="class_quick_sorter_a0ac19750a30a6dd517ec1740ee634f3c.html#a0ac19750a30a6dd517ec1740ee634f3c">QuickSorter::M</a></div><div class="ttdeci">Sorter * M</div><div class="ttdef"><b>Definition</b> <a href="monsort_8hpp_source.html#l00048">monsort.hpp:48</a></div></div>
+<div class="ttc" id="aclass_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb_html_a23fc644df86d45fa5ef2c73b5ff85fdb"><div class="ttname"><a href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">QuickSorter::elems</a></div><div class="ttdeci">value * elems</div><div class="ttdef"><b>Definition</b> <a href="monsort_8hpp_source.html#l00049">monsort.hpp:49</a></div></div>
+<div class="ttc" id="aclass_quick_sorter_abaefec981673f1ebc0995ff4a0d282d2_html_abaefec981673f1ebc0995ff4a0d282d2"><div class="ttname"><a href="class_quick_sorter_abaefec981673f1ebc0995ff4a0d282d2.html#abaefec981673f1ebc0995ff4a0d282d2">QuickSorter::value</a></div><div class="ttdeci">Sorter::value value</div><div class="ttdef"><b>Definition</b> <a href="monsort_8hpp_source.html#l00047">monsort.hpp:47</a></div></div>
+<div class="ttc" id="aclass_quick_sorter_html"><div class="ttname"><a href="class_quick_sorter.html">QuickSorter</a></div><div class="ttdef"><b>Definition</b> <a href="monsort_8hpp_source.html#l00045">monsort.hpp:46</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_quick_sorter_a23fc644df86d45fa5ef2c73b5ff85fdb.html#a23fc644df86d45fa5ef2c73b5ff85fdb">elems</a>, and <a class="el" href="class_quick_sorter_a0ac19750a30a6dd517ec1740ee634f3c.html#a0ac19750a30a6dd517ec1740ee634f3c">M</a>.</p>
 

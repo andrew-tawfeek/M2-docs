@@ -91,6 +91,9 @@ $(function(){initNavTree('mat-arith_8hpp.html','',''); });
   <div class="headertitle"><div class="title">mat-arith.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Templated matrix arithmetic for <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;R&gt;</span> / <span class="tt"><a class="el" href="class_s_mat.html">SMat</a>&lt;R&gt;</span> plus the <span class="tt"><a class="el" href="struct_matrix_window.html">MatrixWindow</a></span> sub-region view.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="dmat_8hpp_source.html">dmat.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="smat_8hpp_source.html">smat.hpp</a>&quot;</code><br />
 </div>
@@ -156,7 +159,21 @@ Functions</h2></td></tr>
 <tr class="memitem:af74da7228b07b2abd9ec03a543fccc89" id="r_af74da7228b07b2abd9ec03a543fccc89"><td class="memTemplParams" colspan="2">template&lt;typename RT&gt; </td></tr>
 <tr class="memitem:af74da7228b07b2abd9ec03a543fccc89 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_matrix_ops_af74da7228b07b2abd9ec03a543fccc89.html#af74da7228b07b2abd9ec03a543fccc89">MatrixOps::transpose</a> (const <a class="el" href="class_s_mat.html">SMat</a>&lt; RT &gt; &amp;A, <a class="el" href="class_s_mat.html">SMat</a>&lt; RT &gt; &amp;<a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Templated matrix arithmetic for <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;R&gt;</span> / <span class="tt"><a class="el" href="class_s_mat.html">SMat</a>&lt;R&gt;</span> plus the <span class="tt"><a class="el" href="struct_matrix_window.html">MatrixWindow</a></span> sub-region view. </p>
+<p>Declares the basic arithmetic primitives (<span class="tt">add</span>, <span class="tt"><a class="el" href="godbolt_test_8cpp_acb0e524578d913d164058b989f113b93.html#acb0e524578d913d164058b989f113b93">subtract</a></span>, <span class="tt">multiply</span>, <span class="tt">mult_by_element</span>, <span class="tt">negateInPlace</span>, <span class="tt">transposeInPlace</span>) over <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;RT&gt;</span> and <span class="tt"><a class="el" href="class_s_mat.html">SMat</a>&lt;RT&gt;</span> and forward- declares <span class="tt"><a class="el" href="class_mat_elementary_ops.html">MatElementaryOps</a>&lt;MT&gt;</span> whose definition lives in <span class="tt"><a class="el" href="mat-elem-ops_8hpp.html" title="MatElementaryOps&lt;MT&gt; — row / column primitives templated over dense or sparse matrix storage.">mat-elem-ops.hpp</a></span>. The companion <span class="tt"><a class="el" href="struct_matrix_window.html">MatrixWindow</a></span> struct is a <span class="tt">(begin_row, begin_column, end_row, end_column)</span> half-open view over an existing matrix &mdash; it owns no storage but lets the same arithmetic routines operate on submatrices in place, which is how LU decomposition walks the trailing sub-matrix and how block-Strassen and similar paths describe their inner regions.</p>
+<p>Concrete implementations dispatch through the templated specialisations in <span class="tt"><a class="el" href="mat-linalg_8hpp.html" title="Templated DMat&lt;R&gt; linear algebra: LU, rank, determinant, solve, inverse, nullSpace.">mat-linalg.hpp</a></span> so each <span class="tt">(operation,
+RingType)</span> pair lands on the best back end &mdash; FLINT / FFLAS-FFPACK / BLAS where they help, generic per-element loops otherwise.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mat-linalg_8hpp.html" title="Templated DMat&lt;R&gt; linear algebra: LU, rank, determinant, solve, inverse, nullSpace.">mat-linalg.hpp</a> </dd>
+<dd>
+<a class="el" href="mat-elem-ops_8hpp.html" title="MatElementaryOps&lt;MT&gt; — row / column primitives templated over dense or sparse matrix storage.">mat-elem-ops.hpp</a> </dd>
+<dd>
+<a class="el" href="dmat_8hpp.html" title="DMat&lt;ACoeffRing&gt; — dense-matrix template plus the umbrella that wires in every per-ring specialisatio...">dmat.hpp</a> </dd>
+<dd>
+<a class="el" href="smat_8hpp.html">smat.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="mat-arith_8hpp_source.html">mat-arith.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

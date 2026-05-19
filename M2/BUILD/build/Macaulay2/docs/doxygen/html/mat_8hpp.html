@@ -91,6 +91,9 @@ $(function(){initNavTree('mat_8hpp.html','',''); });
   <div class="headertitle"><div class="title">mat.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> &mdash; abstract base of every mutable matrix the engine hands across the boundary.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="exceptions_8hpp_source.html">exceptions.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hash_8hpp_source.html">hash.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="relem_8hpp_source.html">relem.hpp</a>&quot;</code><br />
@@ -102,7 +105,18 @@ $(function(){initNavTree('mat_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:MutableMatrix" id="r_MutableMatrix"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> &mdash; abstract base of every mutable matrix the engine hands across the boundary. </p>
+<p>Declares the pure-virtual <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> class. The interpreter and most interface code only see this base type: <span class="tt">n_rows</span>, <span class="tt">n_cols</span>, <span class="tt">get_ring</span>, <span class="tt">resize</span>, <span class="tt">get_entry</span> / <span class="tt">set_entry</span>, the row / column primitives (<span class="tt">swap_rows</span>, <span class="tt">scale_row</span>, <span class="tt">add_row</span>, <span class="tt">delete_rows</span>, ...), and the heavy linear-algebra entry points (<span class="tt">rank</span>, <span class="tt">determinant</span>, <span class="tt">LU_decomposition</span>, <span class="tt">solve_LU</span>, <span class="tt">null_space</span>, <span class="tt">inverse</span>, <span class="tt">transpose</span>, <span class="tt">mult</span>, <span class="tt">add</span>). Concrete storage lives one level down in the templated <span class="tt"><a class="el" href="class_mutable_mat.html">MutableMat</a>&lt;MatT&gt;</span> wrapper, which is specialised over the dense <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;R&gt;</span> and sparse <span class="tt"><a class="el" href="class_s_mat.html">SMat</a>&lt;R&gt;</span> back ends.</p>
+<p>The two-layer split keeps the per-ring fast paths fully templated (no virtual dispatch inside the inner loop) while presenting a single uniform <span class="tt">MutableMatrix*</span> interface across the engine / interpreter boundary. The companion <span class="tt"><a class="el" href="mat_8cpp.html">mat.cpp</a></span> runs the ring-tag dispatcher that picks the right concrete <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;R&gt;</span> specialisation (FFLAS-FFPACK for small Z/p, FLINT for medium primes and <a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a> / <a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a>, LAPACK for RR / CC, fraction- free routines for general ZZ-coefficient matrices).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="dmat_8hpp.html" title="DMat&lt;ACoeffRing&gt; — dense-matrix template plus the umbrella that wires in every per-ring specialisatio...">dmat.hpp</a> </dd>
+<dd>
+<a class="el" href="smat_8hpp.html">smat.hpp</a> </dd>
+<dd>
+<a class="el" href="mutablemat_8hpp.html" title="Umbrella header that ties together MutableMat declarations, implementations, and the SLP variant.">mutablemat.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="mat_8hpp_source.html">mat.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

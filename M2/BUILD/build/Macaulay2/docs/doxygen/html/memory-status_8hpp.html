@@ -92,6 +92,9 @@ $(function(){initNavTree('memory-status_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p>Placeholder memory-statistics hooks: <span class="tt"><a class="el" href="memory-status_8hpp_a4157586c6c1e7175be35ace605147f62.html#a4157586c6c1e7175be35ace605147f62">memorystat1</a></span> / <span class="tt"><a class="el" href="memory-status_8hpp_ac5b51b035e73fa23317282ad7fccf7ee.html#ac5b51b035e73fa23317282ad7fccf7ee">memorystat2</a></span> / <span class="tt"><a class="el" href="memory-status_8hpp_a7b49512d61f327fb4376da45baea6fcb.html#a7b49512d61f327fb4376da45baea6fcb">memorystat3</a></span>.  
+<a href="#details">More...</a></p>
+
 <p><a href="memory-status_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
@@ -100,7 +103,13 @@ Functions</h2></td></tr>
 <tr class="memitem:ac5b51b035e73fa23317282ad7fccf7ee" id="r_ac5b51b035e73fa23317282ad7fccf7ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory-status_8hpp_ac5b51b035e73fa23317282ad7fccf7ee.html#ac5b51b035e73fa23317282ad7fccf7ee">memorystat2</a> (void)</td></tr>
 <tr class="memitem:a7b49512d61f327fb4376da45baea6fcb" id="r_a7b49512d61f327fb4376da45baea6fcb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory-status_8hpp_a7b49512d61f327fb4376da45baea6fcb.html#a7b49512d61f327fb4376da45baea6fcb">memorystat3</a> (void)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Placeholder memory-statistics hooks: <span class="tt"><a class="el" href="memory-status_8hpp_a4157586c6c1e7175be35ace605147f62.html#a4157586c6c1e7175be35ace605147f62">memorystat1</a></span> / <span class="tt"><a class="el" href="memory-status_8hpp_ac5b51b035e73fa23317282ad7fccf7ee.html#ac5b51b035e73fa23317282ad7fccf7ee">memorystat2</a></span> / <span class="tt"><a class="el" href="memory-status_8hpp_a7b49512d61f327fb4376da45baea6fcb.html#a7b49512d61f327fb4376da45baea6fcb">memorystat3</a></span>. </p>
+<p>Declares three unimplemented <span class="tt"><a class="el" href="classint.html">int</a></span>-returning functions whose definitions in <span class="tt"><a class="el" href="memory-status_8cpp.html">memory-status.cpp</a></span> return distinct sentinel constants (<span class="tt">123</span>, <span class="tt">1234</span>, <span class="tt">12345</span>). The names are referenced from the interpreter side through the <span class="tt">.d</span> glue layer and surface in <a class="el" href="namespace_m2.html">M2</a>'s <span class="tt">memory()</span> builtin, but no real engine-wide memory accounting has been wired in yet &mdash; the sentinels are a deliberate signal that "this stat is not implemented." The file exists so the link line keeps working while the real implementation is deferred.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mem_8hpp.html" title="stash — size-class slab allocator for fixed-size objects in engine hot paths.">mem.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="memory-status_8hpp_source.html">memory-status.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -125,22 +125,22 @@ $(function(){initNavTree('classmpfr_1_1mpreal_a7aeaa1060b3caff7d5308863a85b7ebe.
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mpreal_8h_source.html#l02545">2545</a> of file <a class="el" href="mpreal_8h_source.html">mpreal.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 2546</span>{</div>
-<div class="line"><span class="lineno"> 2547</span>    <a class="code hl_function" href="classmpfr_1_1mpreal_a9c370c68865b32775c1c1cb5123cea90.html#a9c370c68865b32775c1c1cb5123cea90">mpreal</a> a;</div>
-<div class="line"><span class="lineno"> 2548</span>    mp_prec_t <a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>, p2, p3;</div>
-<div class="line"><span class="lineno"> 2549</span> </div>
-<div class="line"><span class="lineno"> 2550</span>    <a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a> = v1.get_prec();</div>
-<div class="line"><span class="lineno"> 2551</span>    p2 = v2.get_prec();</div>
-<div class="line"><span class="lineno"> 2552</span>    p3 = v3.get_prec();</div>
-<div class="line"><span class="lineno"> 2553</span> </div>
-<div class="line"><span class="lineno"> 2554</span>    a.set_prec(p3&gt;p2?(p3&gt;<a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>?p3:<a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>):(p2&gt;<a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>?p2:<a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>));</div>
-<div class="line"><span class="lineno"> 2555</span> </div>
-<div class="line"><span class="lineno"> 2556</span>    mpfr_fms(a.mp,v1.mp,v2.mp,v3.mp,rnd_mode);</div>
-<div class="line"><span class="lineno"> 2557</span>    <span class="keywordflow">return</span> a;</div>
-<div class="line"><span class="lineno"> 2558</span>}</div>
-<div class="ttc" id="aclassmpfr_1_1mpreal_a9c370c68865b32775c1c1cb5123cea90_html_a9c370c68865b32775c1c1cb5123cea90"><div class="ttname"><a href="classmpfr_1_1mpreal_a9c370c68865b32775c1c1cb5123cea90.html#a9c370c68865b32775c1c1cb5123cea90">mpfr::mpreal::mpreal</a></div><div class="ttdeci">mpreal()</div><div class="ttdef"><b>Definition</b> <a href="mpreal_8h_source.html#l00581">mpreal.h:581</a></div></div>
-<div class="ttc" id="agodbolt_test_8cpp_a8d5504470de9fec69f0389092910c500_html_a8d5504470de9fec69f0389092910c500"><div class="ttname"><a href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a></div><div class="ttdeci">int p1</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00009">godboltTest.cpp:9</a></div></div>
+<p class="definition">Definition at line <a class="el" href="mpreal_8h_source.html#l02568">2568</a> of file <a class="el" href="mpreal_8h_source.html">mpreal.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 2569</span>{</div>
+<div class="line"><span class="lineno"> 2570</span>    <a class="code hl_function" href="classmpfr_1_1mpreal_a9c370c68865b32775c1c1cb5123cea90.html#a9c370c68865b32775c1c1cb5123cea90">mpreal</a> a;</div>
+<div class="line"><span class="lineno"> 2571</span>    mp_prec_t <a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>, p2, p3;</div>
+<div class="line"><span class="lineno"> 2572</span> </div>
+<div class="line"><span class="lineno"> 2573</span>    <a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a> = v1.get_prec();</div>
+<div class="line"><span class="lineno"> 2574</span>    p2 = v2.get_prec();</div>
+<div class="line"><span class="lineno"> 2575</span>    p3 = v3.get_prec();</div>
+<div class="line"><span class="lineno"> 2576</span> </div>
+<div class="line"><span class="lineno"> 2577</span>    a.set_prec(p3&gt;p2?(p3&gt;<a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>?p3:<a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>):(p2&gt;<a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>?p2:<a class="code hl_variable" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>));</div>
+<div class="line"><span class="lineno"> 2578</span> </div>
+<div class="line"><span class="lineno"> 2579</span>    mpfr_fms(a.mp,v1.mp,v2.mp,v3.mp,rnd_mode);</div>
+<div class="line"><span class="lineno"> 2580</span>    <span class="keywordflow">return</span> a;</div>
+<div class="line"><span class="lineno"> 2581</span>}</div>
+<div class="ttc" id="aclassmpfr_1_1mpreal_a9c370c68865b32775c1c1cb5123cea90_html_a9c370c68865b32775c1c1cb5123cea90"><div class="ttname"><a href="classmpfr_1_1mpreal_a9c370c68865b32775c1c1cb5123cea90.html#a9c370c68865b32775c1c1cb5123cea90">mpfr::mpreal::mpreal</a></div><div class="ttdeci">mpreal()</div><div class="ttdef"><b>Definition</b> <a href="mpreal_8h_source.html#l00604">mpreal.h:604</a></div></div>
+<div class="ttc" id="agodbolt_test_8cpp_a8d5504470de9fec69f0389092910c500_html_a8d5504470de9fec69f0389092910c500"><div class="ttname"><a href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a></div><div class="ttdeci">int p1</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00033">godboltTest.cpp:33</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="#a7aeaa1060b3caff7d5308863a85b7ebe">fms</a>, <a class="el" href="classmpfr_1_1mpreal_ae0bdf9ca1838bd5851ac1c7c6b360553.html#ae0bdf9ca1838bd5851ac1c7c6b360553">get_default_rnd()</a>, <a class="el" href="classmpfr_1_1mpreal_a3a7ea3586a91489fa7509562becd304d.html#a3a7ea3586a91489fa7509562becd304d">get_prec()</a>, <a class="el" href="classmpfr_1_1mpreal_ae4f2e74bdf6be3e7df116b2ad9883d7d.html#ae4f2e74bdf6be3e7df116b2ad9883d7d">mp</a>, <a class="el" href="classmpfr_1_1mpreal_a9c370c68865b32775c1c1cb5123cea90.html#a9c370c68865b32775c1c1cb5123cea90">mpreal()</a>, <a class="el" href="godbolt_test_8cpp_a8d5504470de9fec69f0389092910c500.html#a8d5504470de9fec69f0389092910c500">p1</a>, and <a class="el" href="classmpfr_1_1mpreal_a7e096c82de9a582878e55834733788bc.html#a7e096c82de9a582878e55834733788bc">set_prec()</a>.</p>
 

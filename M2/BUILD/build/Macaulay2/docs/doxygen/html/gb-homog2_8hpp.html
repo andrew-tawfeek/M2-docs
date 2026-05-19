@@ -91,6 +91,9 @@ $(function(){initNavTree('gb-homog2_8hpp.html','',''); });
   <div class="headertitle"><div class="title">gb-homog2.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt">gb_homog2_comp</span> &mdash; Buchberger GB specialised to homogeneous input.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="relem_8hpp_source.html">relem.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a>&quot;</code><br />
@@ -115,7 +118,20 @@ Variables</h2></td></tr>
 <tr class="memitem:a25db298a4be0865d3ef8ad63a5bac52a" id="r_a25db298a4be0865d3ef8ad63a5bac52a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb-homog2_8hpp_a25db298a4be0865d3ef8ad63a5bac52a.html#a25db298a4be0865d3ef8ad63a5bac52a">GB_COMP_NEWPAIRS</a> = 6</td></tr>
 <tr class="memitem:a085e3a4ab785bc3a885c9780b6854498" id="r_a085e3a4ab785bc3a885c9780b6854498"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb-homog2_8hpp_a085e3a4ab785bc3a885c9780b6854498.html#a085e3a4ab785bc3a885c9780b6854498">GB_COMP_DONE</a> = 7</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt">gb_homog2_comp</span> &mdash; Buchberger GB specialised to homogeneous input. </p>
+<p>Declares the homogeneous-specialised Groebner basis strategy along with its <span class="tt">GB_COMP_*</span> state constants (<span class="tt">NEWDEGREE</span>, <span class="tt">NEED_RESIZE</span>, <span class="tt">S_PAIRS</span>, <span class="tt">GENS</span>, <span class="tt">AUTO_REDUCE</span>, <span class="tt">NEWPAIRS</span>, <span class="tt">DONE</span>). The point of the specialisation is that S-polynomial degrees in a homogeneous ideal are monotonically non-decreasing, so the algorithm can process one degree at a time: ingest all generators of degree <span class="tt">d</span>, process every S-pair of degree <span class="tt">d</span> to completion, then yield the basis-up-to-degree-<span class="tt">d</span> and either stop (under <span class="tt">DegreeLimit =&gt;</span>) or move on. This makes the homogeneous case naturally resumable and avoids the sugar bookkeeping the default <span class="tt"><a class="el" href="classgb_a.html" title="The default Groebner basis computation class.">gbA</a></span> carries.</p>
+<p>The default <span class="tt"><a class="el" href="gb-default_8hpp.html" title="gbA — the engine&#39;s default Buchberger-style Groebner-basis algorithm.">gb-default.hpp</a></span> (<span class="tt"><a class="el" href="classgb_a.html" title="The default Groebner basis computation class.">gbA</a></span>) produces the same answer for homogeneous input but pays the sugar overhead; this specialisation is selected automatically when the input is recognised homogeneous (or forced via <span class="tt">Strategy =&gt;</span>). Sibling variants <span class="tt"><a class="el" href="gb-sugarless_8hpp.html" title="GBinhom_comp — Buchberger GB without the sugar heuristic, primarily for inhomogeneous input.">gb-sugarless.hpp</a></span>, <span class="tt"><a class="el" href="gb-toric_8hpp.html" title="binomialGB_comp — Buchberger GB specialised to binomial / toric ideals.">gb-toric.hpp</a></span>, and <span class="tt"><a class="el" href="gb-walk_8hpp.html" title="GBWalker — generic Groebner-walk strategy that transports a basis between term orders.">gb-walk.hpp</a></span> cover the other specialised paths.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="gb-default_8hpp.html" title="gbA — the engine&#39;s default Buchberger-style Groebner-basis algorithm.">gb-default.hpp</a> </dd>
+<dd>
+<a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd>
+<dd>
+<a class="el" href="spair_8hpp.html">spair.hpp</a> </dd>
+<dd>
+<a class="el" href="gbweight_8hpp.html" title="GBWeight — packed-weight evaluator that drives S-pair selection.">gbweight.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="gb-homog2_8hpp_source.html">gb-homog2.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

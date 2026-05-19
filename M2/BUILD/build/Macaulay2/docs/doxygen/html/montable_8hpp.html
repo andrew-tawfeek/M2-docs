@@ -91,6 +91,9 @@ $(function(){initNavTree('montable_8hpp.html','',''); });
   <div class="headertitle"><div class="title">montable.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_monomial_table.html">MonomialTable</a></span> &mdash; leading-monomial divisor index used by the GB reducer.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="mem_8hpp_source.html">mem.hpp</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
@@ -108,7 +111,18 @@ Classes</h2></td></tr>
 <tr class="memitem:MonomialTable" id="r_MonomialTable"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_table.html">MonomialTable</a></td></tr>
 <tr class="memitem:MonomialTable_3A_3Amon_5Fterm" id="r_MonomialTable_3A_3Amon_5Fterm"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_monomial_table_1_1mon__term.html">MonomialTable::mon_term</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_monomial_table.html">MonomialTable</a></span> &mdash; leading-monomial divisor index used by the GB reducer. </p>
+<p>Declares <span class="tt"><a class="el" href="class_monomial_table.html">MonomialTable</a></span>, the data structure GB code queries thousands of times per reduction: given a monomial <span class="tt">m</span>, find a basis element whose leading monomial divides <span class="tt">m</span>. Entries are kept in lex-increasing order so the divisibility scan can prune as soon as a candidate's first-variable exponent exceeds the query's. The table stores <span class="tt">(<a class="el" href="gb-toric_8cpp_a0020cb9370f27f1e0ebd02a704b50a68.html#a0020cb9370f27f1e0ebd02a704b50a68">monomial</a> pointer, basis-index)</span> pairs and does not own its monomials &mdash; the owning polynomial remains responsible for the underlying exponent vector, which may carry trailing entries (sugar homogenisation) that the table simply ignores.</p>
+<p>Operations are <span class="tt">insert(exp, value)</span>, <span class="tt">find_divisor(exp)</span>, <span class="tt">find_divisors(exp, out)</span>, and <span class="tt">remove(exp)</span>. The coefficient-aware ZZ-coefficient analogue lives in <span class="tt"><a class="el" href="montable_z_z_8hpp.html" title="MonomialTableZZ — coefficient-aware leading-monomial index for ZZ-coefficient Groebner bases.">montableZZ.hpp</a></span>, where the divisibility test must additionally check that a candidate's leading coefficient divides the reducee's.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="montable_z_z_8hpp.html" title="MonomialTableZZ — coefficient-aware leading-monomial index for ZZ-coefficient Groebner bases.">montableZZ.hpp</a> </dd>
+<dd>
+<a class="el" href="gb-default_8hpp.html" title="gbA — the engine&#39;s default Buchberger-style Groebner-basis algorithm.">gb-default.hpp</a> </dd>
+<dd>
+<a class="el" href="_exponent_vector_8hpp.html" title="Dense exponent-vector template [e_0, ..., e_{nvars-1}] for monomial operations.">ExponentVector.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="montable_8hpp_source.html">montable.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

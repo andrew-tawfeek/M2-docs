@@ -91,6 +91,9 @@ $(function(){initNavTree('monomial-sets_8hpp.html','',''); });
   <div class="headertitle"><div class="title">monomial-sets.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt">FixedSizeMonomialSet&lt;NWords&gt;</span> / <span class="tt">VariableSizeMonomialSet</span> &mdash; hash-backed monomial sets.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="memtailor_8h_source.html">memtailor.h</a>&quot;</code><br />
 <code>#include &lt;unordered_set&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
@@ -109,7 +112,16 @@ Classes</h2></td></tr>
 <tr class="memitem:MonomialCollectionFixedSize" id="r_MonomialCollectionFixedSize"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_collection_fixed_size.html">MonomialCollectionFixedSize</a></td></tr>
 <tr class="memitem:MonomialCollectionVarSize" id="r_MonomialCollectionVarSize"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_collection_var_size.html">MonomialCollectionVarSize</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt">FixedSizeMonomialSet&lt;NWords&gt;</span> / <span class="tt">VariableSizeMonomialSet</span> &mdash; hash-backed monomial sets. </p>
+<p>Declares two <span class="tt">std::unordered_set</span>-backed containers plus the <span class="tt"><a class="el" href="class_monomial_memory_space.html">MonomialMemorySpace</a></span> arena they share. <span class="tt">FixedSizeMonomialSet</span> stores monomials of exactly <span class="tt">NWords</span> ints; <span class="tt">VariableSizeMonomialSet</span> uses the first int as a length prefix so each value spans <span class="tt">[m, m + *m)</span>. Both treat the monomial as an opaque contiguous int sequence: hashing and equality consider every entry (and the length, for the variable case), so <span class="tt">[3, 4, 5]</span> and <span class="tt">[5, 4, 5]</span> collide under neither set even though they share leading data.</p>
+<p>Monomials live in a <span class="tt">memtailor</span> arena (the <span class="tt"><a class="el" href="class_monomial_memory_space.html">MonomialMemorySpace</a></span> wraps it), so insertion is bump-pointer cheap and the set frees its entire contents in one shot when destroyed. Consumers are the new commutative <span class="tt">gb-f4/MonomialHashTable</span> pattern and the mid-refactor <span class="tt"><a class="el" href="monomial-collection_8hpp.html" title="IntsSet&lt;MonomType&gt; — set of monomials with insert / lookup / ordered iteration.">monomial-collection.hpp</a></span> used by <span class="tt"><a class="el" href="class_m2_free_algebra.html">M2FreeAlgebra</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="monomial-collection_8hpp.html" title="IntsSet&lt;MonomType&gt; — set of monomials with insert / lookup / ordered iteration.">monomial-collection.hpp</a> </dd>
+<dd>
+<a class="el" href="_memory_block_8hpp.html" title="Bump-pointer arena allocator for transient inner-loop allocations.">MemoryBlock.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

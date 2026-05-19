@@ -92,6 +92,9 @@ $(function(){initNavTree('_macaulay2_2e_2error_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p>Engine error-reporting primitives: <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_aa1e71b9c0f1bdf1cee4fc0998db66c7a.html#aa1e71b9c0f1bdf1cee4fc0998db66c7a">ERROR</a></span>, <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_ab0cecac1cffe5487678959fae3092a66.html#ab0cecac1cffe5487678959fae3092a66">INTERNAL_ERROR</a></span>, <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_ad1a5ba420409525ff5ab1be86ac5e526.html#ad1a5ba420409525ff5ab1be86ac5e526">error</a></span>, <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_ac31687987f7bad1448440a2049272a67.html#ac31687987f7bad1448440a2049272a67">error_message</a></span>.  
+<a href="#details">More...</a></p>
+
 <p><a href="_macaulay2_2e_2error_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
@@ -101,7 +104,16 @@ Functions</h2></td></tr>
 <tr class="memitem:ad1a5ba420409525ff5ab1be86ac5e526" id="r_ad1a5ba420409525ff5ab1be86ac5e526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_macaulay2_2e_2error_8h_ad1a5ba420409525ff5ab1be86ac5e526.html#ad1a5ba420409525ff5ab1be86ac5e526">error</a> ()</td></tr>
 <tr class="memitem:ac31687987f7bad1448440a2049272a67" id="r_ac31687987f7bad1448440a2049272a67"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_macaulay2_2e_2error_8h_ac31687987f7bad1448440a2049272a67.html#ac31687987f7bad1448440a2049272a67">error_message</a> ()</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine error-reporting primitives: <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_aa1e71b9c0f1bdf1cee4fc0998db66c7a.html#aa1e71b9c0f1bdf1cee4fc0998db66c7a">ERROR</a></span>, <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_ab0cecac1cffe5487678959fae3092a66.html#ab0cecac1cffe5487678959fae3092a66">INTERNAL_ERROR</a></span>, <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_ad1a5ba420409525ff5ab1be86ac5e526.html#ad1a5ba420409525ff5ab1be86ac5e526">error</a></span>, <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_ac31687987f7bad1448440a2049272a67.html#ac31687987f7bad1448440a2049272a67">error_message</a></span>. </p>
+<p>Declares the C-linkage error API used throughout the engine. <span class="tt"><a class="el" href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR(fmt, ...)</a></span> is the printf-style entry point that sets a thread-local error string and an "we have an error" flag; <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_ad1a5ba420409525ff5ab1be86ac5e526.html#ad1a5ba420409525ff5ab1be86ac5e526">error()</a></span> queries that flag, <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_ac31687987f7bad1448440a2049272a67.html#ac31687987f7bad1448440a2049272a67">error_message()</a></span> reads the string back out, and <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_ab0cecac1cffe5487678959fae3092a66.html#ab0cecac1cffe5487678959fae3092a66">INTERNAL_ERROR</a></span> is the unrecoverable variant that exits the program. The header <span class="tt">#undef</span>s a stray <span class="tt"><a class="el" href="_macaulay2_2e_2error_8h_aa1e71b9c0f1bdf1cee4fc0998db66c7a.html#aa1e71b9c0f1bdf1cee4fc0998db66c7a">ERROR</a></span> macro that some MinGW system headers define as <span class="tt">0</span>.</p>
+<p>The engine avoids C++ exceptions across the boundary in favour of this protocol: a <span class="tt">.cpp</span> routine calls <span class="tt"><a class="el" href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR(...)</a></span> on a detected problem and returns; every caller checks the flag and propagates an early exit; the interpreter loop ultimately surfaces the message to the <a class="el" href="namespace_m2.html">M2</a> user. C linkage is deliberate so the routines remain callable from the <span class="tt">.d</span>-generated glue, the C++ engine code, and external library callbacks alike. The thread-local state matters for the <span class="tt"><a class="el" href="class_computation.html">Computation</a></span> workers run under the system supervisor &mdash; each worker has its own error slot.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="buffer_8hpp.html" title="Append-only GC-backed byte buffer used throughout the engine for text output.">buffer.hpp</a> </dd>
+<dd>
+<a class="el" href="overflow_8hpp.html">overflow.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_macaulay2_2e_2error_8h_source.html">error.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

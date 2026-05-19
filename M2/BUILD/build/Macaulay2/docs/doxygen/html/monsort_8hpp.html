@@ -91,6 +91,9 @@ $(function(){initNavTree('monsort_8hpp.html','',''); });
   <div class="headertitle"><div class="title">monsort.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_quick_sorter.html">QuickSorter</a>&lt;Sorter&gt;</span> &mdash; ring-agnostic in-place sort over a duck-typed adapter.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;cstdlib&gt;</code><br />
 <code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
@@ -111,7 +114,14 @@ Macros</h2></td></tr>
 <tr class="memitem:a0656018abfc9fa2821827415f5d5ea57" id="r_a0656018abfc9fa2821827415f5d5ea57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monsort_8hpp_a0656018abfc9fa2821827415f5d5ea57.html#a0656018abfc9fa2821827415f5d5ea57">THRESH</a>&#160;&#160;&#160;6</td></tr>
 <tr class="memitem:ad1ebdbd34b0535c35692b9e2173d9ef2" id="r_ad1ebdbd34b0535c35692b9e2173d9ef2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monsort_8hpp_ad1ebdbd34b0535c35692b9e2173d9ef2.html#ad1ebdbd34b0535c35692b9e2173d9ef2">NSTACK</a>&#160;&#160;&#160;50</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_quick_sorter.html">QuickSorter</a>&lt;Sorter&gt;</span> &mdash; ring-agnostic in-place sort over a duck-typed adapter. </p>
+<p>Declares the templated <span class="tt"><a class="el" href="class_quick_sorter.html">QuickSorter</a></span>, an in-place sort algorithm parameterised on a <span class="tt">Sorter</span> adapter that supplies <span class="tt">Sorter::value</span> (the element type) and <span class="tt">Sorter::compare(value, value)</span> returning a signed integer in the standard <span class="tt">(neg, 0, pos)</span> shape. The point of the template is to keep the comparator local to each call site so the compiler can inline it; consumers write their own tiny adapter rather than passing a function pointer or <span class="tt">std::function</span>.</p>
+<p>Used wherever the engine needs to sort a monomial-keyed sequence with call-site-specific semantics: F4 column ordering by leading monomial, frame entries by Schreyer order in resolution code, deterministic output ordering for printers and serialisers. The adapter pattern lets each site bring its own comparison rule (lex, grevlex, Schreyer-tiebreak, ...) without paying a virtual-dispatch tax in the inner loop.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="newdelete_8hpp.html">newdelete.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="monsort_8hpp_source.html">monsort.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

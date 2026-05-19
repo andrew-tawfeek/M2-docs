@@ -91,6 +91,9 @@ $(function(){initNavTree('frac_8hpp.html','',''); });
   <div class="headertitle"><div class="title">frac.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_fraction_field.html">FractionField</a></span> &mdash; field of fractions of an integral domain, with on-the-fly normalisation.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="monoid_8hpp_source.html">monoid.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ring_8hpp_source.html">ring.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a>&quot;</code><br />
@@ -102,7 +105,18 @@ Classes</h2></td></tr>
 <tr class="memitem:frac_5Felem" id="r_frac_5Felem"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfrac__elem.html">frac_elem</a></td></tr>
 <tr class="memitem:FractionField" id="r_FractionField"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fraction_field.html">FractionField</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_fraction_field.html">FractionField</a></span> &mdash; field of fractions of an integral domain, with on-the-fly normalisation. </p>
+<p>Declares <span class="tt"><a class="el" href="class_fraction_field.html">FractionField</a></span> (a <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass) along with its value type <span class="tt"><a class="el" href="structfrac__elem.html">frac_elem</a></span>, a <span class="tt">(numer, denom)</span> pair of <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span>s. Construction wraps a base ring <span class="tt">R_</span> that the caller asserts is an integral domain; the engine does not verify this, so a non-domain input produces silent garbage and the M2-side wrapper is responsible for the check. Every arithmetic op (<span class="tt">a/b + c/d = (ad + bc)/bd</span>, similarly for multiplication) is followed by a <span class="tt">simplify</span> pass that normalises the denominator's sign / leading coefficient so that <span class="tt">2/3</span> and <span class="tt">4/6</span> compare equal.</p>
+<p>When the base is <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a>[x_1, ..., x_n]</span> or <span class="tt">(Z/p)[x_1, ..., x_n]</span> the <span class="tt">use_gcd_simplify</span> flag turns on an explicit GCD reduction that puts fractions into canonical form; other domains fall back to a weaker normalisation that still preserves equality but may leave common factors in place. The base must currently be a <span class="tt"><a class="el" href="class_poly_ring_flat.html">PolyRingFlat</a></span>; iterated <span class="tt">frac(frac(R))</span> works only because the engine flattens first, an artefact the header comment flags as removable once fractions themselves become flat.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="localring_8hpp.html" title="LocalRing — localisation of a polynomial ring at a prime ideal P.">localring.hpp</a> </dd>
+<dd>
+<a class="el" href="qring_8hpp.html">qring.hpp</a> </dd>
+<dd>
+polyring.hpp </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="frac_8hpp_source.html">frac.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

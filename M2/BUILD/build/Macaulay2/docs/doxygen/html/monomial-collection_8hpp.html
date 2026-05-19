@@ -91,6 +91,9 @@ $(function(){initNavTree('monomial-collection_8hpp.html','',''); });
   <div class="headertitle"><div class="title">monomial-collection.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a>&lt;MonomType&gt;</span> &mdash; set of monomials with insert / lookup / ordered iteration.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="style_8hpp_source.html">style.hpp</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="_arena_8h_source.html">memtailor/Arena.h</a>&gt;</code><br />
@@ -127,7 +130,16 @@ Functions</h2></td></tr>
 <tr class="memitem:aab253b9966f47519a03ff742f440ca48" id="r_aab253b9966f47519a03ff742f440ca48"><td class="memTemplParams" colspan="2">template&lt;typename <a class="el" href="struct_t.html">T</a>&gt; </td></tr>
 <tr class="memitem:aab253b9966f47519a03ff742f440ca48 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monomial-collection_8hpp_aab253b9966f47519a03ff742f440ca48.html#aab253b9966f47519a03ff742f440ca48">printHashTableState</a> (const <a class="el" href="struct_t.html">T</a> &amp;cont)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a>&lt;MonomType&gt;</span> &mdash; set of monomials with insert / lookup / ordered iteration. </p>
+<p>Declares the templated <span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a></span>, the engine's in-transition "set of monomials" helper used by <span class="tt"><a class="el" href="class_m2_free_algebra.html">M2FreeAlgebra</a></span> and the non-commutative arithmetic paths to track which <span class="tt"><a class="el" href="struct_monom.html">Monom</a></span> / <span class="tt"><a class="el" href="class_module_monom.html">ModuleMonom</a></span> values have appeared during a multiplication or product. Insertion returns the existing index when the monomial is already present, otherwise it appends. Iteration walks the set in insertion order. Storage is an arena from <span class="tt">&lt;<a class="el" href="_arena_8h.html">memtailor/Arena.h</a>&gt;</span> plus a hash index, so per-monomial work stays bump-pointer cheap.</p>
+<p>The header's TODO block flags a planned rename of <span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a></span> to a non-templated <span class="tt">ModuleMonomSet</span>, a new <span class="tt">VarPowerMonom</span> companion, hash-function improvements, and migration of the commutative <span class="tt">gb-f4/</span> <span class="tt"><a class="el" href="class_monomial_hash_table.html">MonomialHashTable</a></span> toward the same pattern &mdash; the file is mid-refactor.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_polynomial_8hpp.html" title="Modern Monom / Poly value types shared by NC algebras and the refactored F4.">Polynomial.hpp</a> </dd>
+<dd>
+<a class="el" href="_m2_free_algebra_8hpp.html" title="Ring-shaped wrapper that exposes a non-commutative FreeAlgebra to the rest of the engine.">M2FreeAlgebra.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

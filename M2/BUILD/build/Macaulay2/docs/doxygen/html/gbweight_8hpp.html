@@ -91,6 +91,9 @@ $(function(){initNavTree('gbweight_8hpp.html','',''); });
   <div class="headertitle"><div class="title">gbweight.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_g_b_weight.html">GBWeight</a></span> &mdash; packed-weight evaluator that drives S-pair selection.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_exponent_vector_8hpp_source.html">ExponentVector.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="monoid_8hpp_source.html">monoid.hpp</a>&quot;</code><br />
@@ -102,7 +105,18 @@ $(function(){initNavTree('gbweight_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:GBWeight" id="r_GBWeight"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_b_weight.html">GBWeight</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_g_b_weight.html">GBWeight</a></span> &mdash; packed-weight evaluator that drives S-pair selection. </p>
+<p>Declares <span class="tt"><a class="el" href="class_g_b_weight.html">GBWeight</a></span>, the helper that GB code consults to assign a heuristic weight to a <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span> or to a single <span class="tt">(<a class="el" href="gb-toric_8cpp_a0020cb9370f27f1e0ebd02a704b50a68.html#a0020cb9370f27f1e0ebd02a704b50a68">monomial</a>, component)</span> pair. Construction takes a weight vector <span class="tt">wts_</span>, the ambient <span class="tt"><a class="el" href="class_free_module.html">FreeModule</a></span> and <span class="tt"><a class="el" href="class_g_b_ring.html">GBRing</a></span>, and a <span class="tt">use_component_degrees_</span> toggle that, when true, adds the component's stored degree to the result. Callers use the returned weight as a sort key on S-pairs (degree-first or sugar-first orderings, custom weightings asked for at the <a class="el" href="namespace_m2.html">M2</a> level, ...) &mdash; <span class="tt"><a class="el" href="class_g_b_weight.html">GBWeight</a></span> itself does not choose a policy, it computes whichever weighting was configured.</p>
+<p>The implementation is intentionally minimal because the functions are called millions of times per GB run: a packed dot product of the exponent vector with <span class="tt">wts_</span>, plus a constant-time per-component lookup when component degrees are enabled. <span class="tt">gbvector_weight</span> also reports the maximum component degree it encountered along the way so the S-pair queue can use it directly.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd>
+<dd>
+<a class="el" href="spair_8hpp.html">spair.hpp</a> </dd>
+<dd>
+<a class="el" href="gb-default_8hpp.html" title="gbA — the engine&#39;s default Buchberger-style Groebner-basis algorithm.">gb-default.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="gbweight_8hpp_source.html">gbweight.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

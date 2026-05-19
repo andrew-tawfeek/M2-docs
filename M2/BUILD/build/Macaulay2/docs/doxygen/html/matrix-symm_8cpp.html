@@ -91,6 +91,9 @@ $(function(){initNavTree('matrix-symm_8cpp.html','',''); });
   <div class="headertitle"><div class="title">matrix-symm.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_symm_matrix_a09dff20e6c2d0d3d0e34667a82fd4731.html#a09dff20e6c2d0d3d0e34667a82fd4731">SymmMatrix::symmetricPower</a></span> &mdash; the <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>-th symmetric power of a one-row <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="matrix-con_8hpp_source.html">matrix-con.hpp</a>&quot;</code><br />
 </div>
@@ -100,7 +103,18 @@ $(function(){initNavTree('matrix-symm_8cpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:SymmMatrix" id="r_SymmMatrix"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_symm_matrix.html">SymmMatrix</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_symm_matrix_a09dff20e6c2d0d3d0e34667a82fd4731.html#a09dff20e6c2d0d3d0e34667a82fd4731">SymmMatrix::symmetricPower</a></span> &mdash; the <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>-th symmetric power of a one-row <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span>. </p>
+<p>Implements <span class="tt"><a class="el" href="class_symm_matrix.html">SymmMatrix</a></span>, a tiny static-only namespace whose single entry point <span class="tt">symmetricPower(m0, p)</span> takes a one-row matrix <span class="tt">m0 = [m_1, ..., m_n]</span> and returns a one-row matrix whose columns are all products <span class="tt">m_{i_1} m_{i_2} ... m_{i_p}</span> with <span class="tt">1 &lt;= i_1 &lt;= i_2 &lt;= ... &lt;= i_p &lt;= n</span> &mdash; the <span class="tt"><a class="el" href="structbinomial.html">binomial</a>(n + <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> - 1, <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>)</span> symmetric monomials in degree <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>. The enumeration walks the multi-index tuples in lex order and feeds each product into a <span class="tt"><a class="el" href="class_matrix_constructor.html">MatrixConstructor</a></span>. Multi-row inputs are handled at the <a class="el" href="namespace_m2.html">M2</a> level by composing row-wise symmetric powers; the engine entry insists on a single row.</p>
+<p>The combinatorial enumeration parallels the <span class="tt"><a class="el" href="class_subsets.html">Subsets</a></span> encoding in <span class="tt"><a class="el" href="comb_8hpp.html" title="Subsets — combinatorial-number-system encoding of p-subsets of {0,...,n-1}.">comb.hpp</a></span>, restricted to multi-sets rather than subsets.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="matrix_8hpp.html" title="Matrix — the engine&#39;s immutable homomorphism F -&gt; G between free modules.">matrix.hpp</a> </dd>
+<dd>
+<a class="el" href="matrix-con_8hpp.html" title="MatrixConstructor — the mutable builder that produces an immutable Matrix.">matrix-con.hpp</a> </dd>
+<dd>
+<a class="el" href="comb_8hpp.html" title="Subsets — combinatorial-number-system encoding of p-subsets of {0,...,n-1}.">comb.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="matrix-symm_8cpp_source.html">matrix-symm.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

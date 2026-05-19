@@ -120,19 +120,19 @@ $(function(){initNavTree('namespace_matrix_ops_a85bcff7b5dd5464a3b671dc9d748162a
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00904">904</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  907</span>{</div>
-<div class="line"><span class="lineno">  908</span>  <span class="comment">//    DMatGFFlintBig&amp; A1 = const_cast&lt;DMatGFFlintBig&amp;&gt;(A); // needed because</span></div>
-<div class="line"><span class="lineno">  909</span>  <span class="comment">//    nmod_mat_mul doesn&#39;t declare params const</span></div>
-<div class="line"><span class="lineno">  910</span>  <span class="comment">//    DMatGFFlintBig&amp; B1 = const_cast&lt;DMatGFFlintBig&amp;&gt;(B);</span></div>
-<div class="line"><span class="lineno">  911</span>  <span class="comment">// The A1 and B1 on the next line are switched because the memory layout</span></div>
-<div class="line"><span class="lineno">  912</span>  <span class="comment">// expected</span></div>
-<div class="line"><span class="lineno">  913</span>  <span class="comment">// is the transpose of what we have for DMat.</span></div>
-<div class="line"><span class="lineno">  914</span>  fq_nmod_mat_mul(result_product.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_ac8f764f53f1e6ec033023db6424bca14.html#ac8f764f53f1e6ec033023db6424bca14">fq_nmod_mat</a>(),</div>
-<div class="line"><span class="lineno">  915</span>                  A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_ac8f764f53f1e6ec033023db6424bca14.html#ac8f764f53f1e6ec033023db6424bca14">fq_nmod_mat</a>(),</div>
-<div class="line"><span class="lineno">  916</span>                  B.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_ac8f764f53f1e6ec033023db6424bca14.html#ac8f764f53f1e6ec033023db6424bca14">fq_nmod_mat</a>(),</div>
-<div class="line"><span class="lineno">  917</span>                  A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_a608d5b35594b0ebc8e82fc61c899f7f7.html#a608d5b35594b0ebc8e82fc61c899f7f7">ring</a>().<a class="code hl_function" href="class_m2_1_1_a_ring_g_f_flint_big_a3b68f26031cf61d584265cbb7c2c06d2.html#a3b68f26031cf61d584265cbb7c2c06d2">flintContext</a>());</div>
-<div class="line"><span class="lineno">  918</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00930">930</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  933</span>{</div>
+<div class="line"><span class="lineno">  934</span>  <span class="comment">//    DMatGFFlintBig&amp; A1 = const_cast&lt;DMatGFFlintBig&amp;&gt;(A); // needed because</span></div>
+<div class="line"><span class="lineno">  935</span>  <span class="comment">//    nmod_mat_mul doesn&#39;t declare params const</span></div>
+<div class="line"><span class="lineno">  936</span>  <span class="comment">//    DMatGFFlintBig&amp; B1 = const_cast&lt;DMatGFFlintBig&amp;&gt;(B);</span></div>
+<div class="line"><span class="lineno">  937</span>  <span class="comment">// The A1 and B1 on the next line are switched because the memory layout</span></div>
+<div class="line"><span class="lineno">  938</span>  <span class="comment">// expected</span></div>
+<div class="line"><span class="lineno">  939</span>  <span class="comment">// is the transpose of what we have for DMat.</span></div>
+<div class="line"><span class="lineno">  940</span>  fq_nmod_mat_mul(result_product.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_ac8f764f53f1e6ec033023db6424bca14.html#ac8f764f53f1e6ec033023db6424bca14">fq_nmod_mat</a>(),</div>
+<div class="line"><span class="lineno">  941</span>                  A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_ac8f764f53f1e6ec033023db6424bca14.html#ac8f764f53f1e6ec033023db6424bca14">fq_nmod_mat</a>(),</div>
+<div class="line"><span class="lineno">  942</span>                  B.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_ac8f764f53f1e6ec033023db6424bca14.html#ac8f764f53f1e6ec033023db6424bca14">fq_nmod_mat</a>(),</div>
+<div class="line"><span class="lineno">  943</span>                  A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_a608d5b35594b0ebc8e82fc61c899f7f7.html#a608d5b35594b0ebc8e82fc61c899f7f7">ring</a>().<a class="code hl_function" href="class_m2_1_1_a_ring_g_f_flint_big_a3b68f26031cf61d584265cbb7c2c06d2.html#a3b68f26031cf61d584265cbb7c2c06d2">flintContext</a>());</div>
+<div class="line"><span class="lineno">  944</span>}</div>
 <div class="ttc" id="aclass_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_a608d5b35594b0ebc8e82fc61c899f7f7_html_a608d5b35594b0ebc8e82fc61c899f7f7"><div class="ttname"><a href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_a608d5b35594b0ebc8e82fc61c899f7f7.html#a608d5b35594b0ebc8e82fc61c899f7f7">DMat&lt; M2::ARingGFFlintBig &gt;::ring</a></div><div class="ttdeci">const ACoeffRing &amp; ring() const</div><div class="ttdef"><b>Definition</b> <a href="dmat-gf-flint-big_8hpp_source.html#l00080">dmat-gf-flint-big.hpp:80</a></div></div>
 <div class="ttc" id="aclass_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_ac8f764f53f1e6ec033023db6424bca14_html_ac8f764f53f1e6ec033023db6424bca14"><div class="ttname"><a href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_big_01_4_ac8f764f53f1e6ec033023db6424bca14.html#ac8f764f53f1e6ec033023db6424bca14">DMat&lt; M2::ARingGFFlintBig &gt;::fq_nmod_mat</a></div><div class="ttdeci">const fq_nmod_mat_t &amp; fq_nmod_mat() const</div><div class="ttdef"><b>Definition</b> <a href="dmat-gf-flint-big_8hpp_source.html#l00113">dmat-gf-flint-big.hpp:113</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_g_f_flint_big_a3b68f26031cf61d584265cbb7c2c06d2_html_a3b68f26031cf61d584265cbb7c2c06d2"><div class="ttname"><a href="class_m2_1_1_a_ring_g_f_flint_big_a3b68f26031cf61d584265cbb7c2c06d2.html#a3b68f26031cf61d584265cbb7c2c06d2">M2::ARingGFFlintBig::flintContext</a></div><div class="ttdeci">const fq_nmod_ctx_struct * flintContext() const</div><div class="ttdef"><b>Definition</b> <a href="aring-gf-flint-big_8hpp_source.html#l00137">aring-gf-flint-big.hpp:137</a></div></div>

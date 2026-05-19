@@ -91,6 +91,9 @@ $(function(){initNavTree('fractionfree_l_u_8hpp.html','',''); });
   <div class="headertitle"><div class="title">fractionfreeLU.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_f_f___l_u_computation.html">FF_LUComputation</a></span> &mdash; Bareiss-style fraction-free LU over an integral domain.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="mat_8hpp_source.html">mat.hpp</a>&quot;</code><br />
 </div>
 <p><a href="fractionfree_l_u_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -99,7 +102,16 @@ $(function(){initNavTree('fractionfree_l_u_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:FF_5FLUComputation" id="r_FF_5FLUComputation"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_f_f___l_u_computation.html">FF_LUComputation</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_f_f___l_u_computation.html">FF_LUComputation</a></span> &mdash; Bareiss-style fraction-free LU over an integral domain. </p>
+<p>Declares <span class="tt"><a class="el" href="class_f_f___l_u_computation.html">FF_LUComputation</a></span>, a private-constructor class that runs Bareiss's algorithm on a <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> whose base ring <span class="tt">R</span> is asserted to be an integral domain. The Bareiss update <span class="tt">M[i, j] := (M[i, j] M[k, k] - M[i, k] M[k, j]) / lastpivot</span> is guaranteed to produce an exact ring element (with no remainder) whenever <span class="tt">R</span> is a domain, so every intermediate value stays in <span class="tt">R</span> without a detour through the fraction field. For matrices with polynomial coefficients this can be orders of magnitude faster than ordinary LU plus fraction simplification.</p>
+<p>The class tracks the column permutation it applied (<span class="tt">col_perm</span>), the previous pivot (<span class="tt">lastpivot</span>, used as the Bareiss denominator), the current pivot, and a per-step <span class="tt">need_div</span> flag indicating whether the division should run (the first step does not). After completion <span class="tt">M</span> carries the LU factors packed in the standard compact form (strictly-below for <span class="tt">L</span>, on-and-above for <span class="tt">U</span>) and the determinant is the final pivot up to the sign of the column permutation. <a class="el" href="namespace_m2.html">M2</a> reaches this path via <span class="tt">LUdecomposition</span> over polynomial coefficient rings and via the <span class="tt"><a class="el" href="det_8hpp_ae4b7ff3ae001d9606b906216effe30aa.html#ae4b7ff3ae001d9606b906216effe30aa">DET_BAREISS</a></span> strategy in <span class="tt"><a class="el" href="det_8hpp.html" title="Determinants and minors of Matrix values via Bareiss, cofactor, or dynamic-programming strategies.">det.hpp</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="det_8hpp.html" title="Determinants and minors of Matrix values via Bareiss, cofactor, or dynamic-programming strategies.">det.hpp</a> </dd>
+<dd>
+<a class="el" href="mat_8hpp.html" title="MutableMatrix — abstract base of every mutable matrix the engine hands across the boundary.">mat.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="fractionfree_l_u_8hpp_source.html">fractionfreeLU.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('interreduce_8hpp.html','',''); });
   <div class="headertitle"><div class="title">interreduce.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_interreducer.html">Interreducer</a></span> &mdash; inter-reduction of a list of <span class="tt">gbvector*</span> elements over a <span class="tt"><a class="el" href="class_g_b_ring.html">GBRing</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>&quot;</code><br />
 </div>
 <p><a href="interreduce_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -99,7 +102,18 @@ $(function(){initNavTree('interreduce_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:Interreducer" id="r_Interreducer"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interreducer.html">Interreducer</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_interreducer.html">Interreducer</a></span> &mdash; inter-reduction of a list of <span class="tt">gbvector*</span> elements over a <span class="tt"><a class="el" href="class_g_b_ring.html">GBRing</a></span>. </p>
+<p>Declares <span class="tt"><a class="el" href="class_interreducer.html">Interreducer</a></span>, the helper that brings a collection of <span class="tt">gbvector*</span> polynomials into a head-reduced state: for every pair <span class="tt">(f_i, f_j)</span> whose leading terms divide one another, the smaller-pivot cancellation is applied until no further leading- term reduction is possible. The class stores its working <span class="tt">GBRing*</span>, <span class="tt">FreeModule*</span>, and the live <span class="tt"><a class="el" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR(gbvector*)</a></span> it is updating in place. Two atomic reduction primitives drive the loop: <span class="tt">cancelLT(f, g)</span> cancels the leading term of <span class="tt">f</span> using <span class="tt">g</span> and returns the number of reductions performed, and <span class="tt">reduceTail(f, g)</span> keeps going until no term of <span class="tt">f</span> is divisible by <span class="tt">lt(g)</span>. <span class="tt">showElem</span> / <span class="tt">show</span> are debug printers that dump the first <span class="tt">nterms</span> of each element.</p>
+<p>Inter-reduction is a stable building block reused across the engine: the default GB algorithm in <span class="tt"><a class="el" href="gb-default_8hpp.html" title="gbA — the engine&#39;s default Buchberger-style Groebner-basis algorithm.">gb-default.hpp</a></span> calls into it at finalisation, <span class="tt"><a class="el" href="reducedgb_8hpp.html">reducedgb.hpp</a></span> uses it as part of canonicalising the reduced GB, and <span class="tt">forceGB</span> runs it to drag a user-supplied basis into shape.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd>
+<dd>
+<a class="el" href="reducedgb_8hpp.html">reducedgb.hpp</a> </dd>
+<dd>
+<a class="el" href="gb-default_8hpp.html" title="gbA — the engine&#39;s default Buchberger-style Groebner-basis algorithm.">gb-default.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="interreduce_8hpp_source.html">interreduce.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

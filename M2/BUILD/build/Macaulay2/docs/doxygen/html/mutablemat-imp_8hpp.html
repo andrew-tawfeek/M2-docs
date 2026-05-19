@@ -92,8 +92,22 @@ $(function(){initNavTree('mutablemat-imp_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p>Template implementations of <span class="tt"><a class="el" href="class_mutable_mat.html">MutableMat</a>&lt;Mat&gt;</span> &mdash; including the SLP-evaluator bridge.  
+<a href="#details">More...</a></p>
+
 <p><a href="mutablemat-imp_8hpp_source.html">Go to the source code of this file.</a></p>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Template implementations of <span class="tt"><a class="el" href="class_mutable_mat.html">MutableMat</a>&lt;Mat&gt;</span> &mdash; including the SLP-evaluator bridge. </p>
+<p>Carries the inline template bodies for <span class="tt"><a class="el" href="class_mutable_mat.html">MutableMat</a>&lt;Mat&gt;</span> &mdash; the same wrapper declared in <span class="tt"><a class="el" href="mutablemat-defs_8hpp.html" title="MutableMat&lt;Mat&gt; — the templated bridge from DMat / SMat to the abstract MutableMatrix.">mutablemat-defs.hpp</a></span>. The split keeps the heavy includes (<a class="el" href="class_s_l_p.html">SLP</a> machinery, NAG bridges) out of every translation unit that only needs the declarations; this file is pulled in where a specific <span class="tt"><a class="el" href="class_mutable_mat.html">MutableMat</a>&lt;<a class="el" href="class_d_mat.html">DMat</a>&lt;R&gt;&gt;</span> or <span class="tt"><a class="el" href="class_mutable_mat.html">MutableMat</a>&lt;<a class="el" href="class_s_mat.html">SMat</a>&lt;R&gt;&gt;</span> is actually instantiated. Beyond forwarding shapes, it provides <span class="tt">createSLEvaluator</span> and <span class="tt">createCompiledSLEvaluator</span>, which build the <span class="tt"><a class="el" href="class_s_l_evaluator_concrete.html">SLEvaluatorConcrete</a>&lt;R&gt;</span> instance NAG uses to walk a compiled straight-line program against a one-row mutable matrix of constants.</p>
+<p><a class="el" href="class_pair.html">Pair</a> with <span class="tt"><a class="el" href="mutablemat-defs_8hpp.html" title="MutableMat&lt;Mat&gt; — the templated bridge from DMat / SMat to the abstract MutableMatrix.">mutablemat-defs.hpp</a></span> for the class declarations and <span class="tt"><a class="el" href="_s_l_p-imp_8hpp.html" title="Templated SLEvaluatorConcrete&lt;RT&gt; — the per-ring SLP evaluator implementation.">SLP-imp.hpp</a></span> for the straight-line-program evaluator itself.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mutablemat_8hpp.html" title="Umbrella header that ties together MutableMat declarations, implementations, and the SLP variant.">mutablemat.hpp</a> </dd>
+<dd>
+<a class="el" href="mutablemat-defs_8hpp.html" title="MutableMat&lt;Mat&gt; — the templated bridge from DMat / SMat to the abstract MutableMatrix.">mutablemat-defs.hpp</a> </dd>
+<dd>
+<a class="el" href="_s_l_p-imp_8hpp.html" title="Templated SLEvaluatorConcrete&lt;RT&gt; — the per-ring SLP evaluator implementation.">SLP-imp.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="mutablemat-imp_8hpp_source.html">mutablemat-imp.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

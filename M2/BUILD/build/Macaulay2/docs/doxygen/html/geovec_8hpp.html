@@ -92,6 +92,9 @@ $(function(){initNavTree('geovec_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="classvec_heap.html">vecHeap</a></span> &mdash; geometric heap specialised for accumulating <span class="tt">vec</span> values.  
+<a href="#details">More...</a></p>
+
 <p><a href="geovec_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -102,7 +105,20 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a93a6254b3accee4629ec45fc0e4a64cd" id="r_a93a6254b3accee4629ec45fc0e4a64cd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geovec_8hpp_a93a6254b3accee4629ec45fc0e4a64cd.html#a93a6254b3accee4629ec45fc0e4a64cd">compare</a> (const <a class="el" href="structvecterm.html">vecterm</a> *t, const <a class="el" href="structvecterm.html">vecterm</a> *<a class="el" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="classvec_heap.html">vecHeap</a></span> &mdash; geometric heap specialised for accumulating <span class="tt">vec</span> values. </p>
+<p>Declares <span class="tt"><a class="el" href="classvec_heap.html">vecHeap</a></span>, the free-module-element counterpart of <span class="tt"><a class="el" href="classpolyheap.html">polyheap</a></span> (<span class="tt"><a class="el" href="geopoly_8hpp.html" title="polyheap — polynomial-specialised geometric heap for reduction accumulators.">geopoly.hpp</a></span>) and the templated <span class="tt"><a class="el" href="classgeobucket.html">geobucket</a></span> (<span class="tt"><a class="el" href="geobucket_8hpp.html" title="geobucket&lt;FREEMODULETYPE, VECTYPE&gt; — size-doubling accumulator for fast polynomial sums.">geobucket.hpp</a></span>). The structure keeps <span class="tt"><a class="el" href="style_8hpp_a7ad908ecb2518165a3f24d63b222140e.html#a7ad908ecb2518165a3f24d63b222140e">GEOHEAP_SIZE</a></span> (15) levels of bounded <span class="tt"><a class="el" href="structvecterm.html">vecterm</a></span> lists, each sorted component- descending; insertion drops into the smallest level that can absorb the new contribution and cascades on overflow, <span class="tt">remove_lead_term</span> reads off the next term by scanning the non-empty levels and summing components that match the leading one. Per-operation cost is amortised <span class="tt">O(log N)</span> instead of the <span class="tt">O(N)</span> a naive merge into a single accumulator would pay &mdash; the difference that makes large reduction sums tractable.</p>
+<p>Used wherever ring-element-shaped accumulation appears outside the classical GB inner loop (which prefers the <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span>-typed variant in <span class="tt"><a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a></span>). Bucket capacities come from the <span class="tt"><a class="el" href="engine_8cpp_a7f0014af4839bb515bdfe826ce4a7bcb.html#a7f0014af4839bb515bdfe826ce4a7bcb">heap_size</a>[]</span> table in <span class="tt"><a class="el" href="engine_8cpp.html" title="Tiny translation unit that holds the engine&#39;s true process-global singletons.">engine.cpp</a></span>; <span class="tt"><a class="el" href="style_8hpp_a7ad908ecb2518165a3f24d63b222140e.html#a7ad908ecb2518165a3f24d63b222140e">GEOHEAP_SIZE</a></span> itself is in <span class="tt"><a class="el" href="style_8hpp.html">style.hpp</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="geopoly_8hpp.html" title="polyheap — polynomial-specialised geometric heap for reduction accumulators.">geopoly.hpp</a> </dd>
+<dd>
+<a class="el" href="geobucket_8hpp.html" title="geobucket&lt;FREEMODULETYPE, VECTYPE&gt; — size-doubling accumulator for fast polynomial sums.">geobucket.hpp</a> </dd>
+<dd>
+<a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd>
+<dd>
+<a class="el" href="style_8hpp.html">style.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="geovec_8hpp_source.html">geovec.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

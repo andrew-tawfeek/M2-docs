@@ -91,6 +91,9 @@ $(function(){initNavTree('gb-default_8hpp.html','',''); });
   <div class="headertitle"><div class="title">gb-default.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="classgb_a.html" title="The default Groebner basis computation class.">gbA</a></span> &mdash; the engine's default Buchberger-style Groebner-basis algorithm.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="comp-gb_8hpp_source.html">comp-gb.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="montable_8hpp_source.html">montable.hpp</a>&quot;</code><br />
@@ -113,7 +116,20 @@ Variables</h2></td></tr>
 <tr class="memitem:a47eb96af1040e2a7c58b0a0dda0fdf48" id="r_a47eb96af1040e2a7c58b0a0dda0fdf48"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb-default_8hpp_a47eb96af1040e2a7c58b0a0dda0fdf48.html#a47eb96af1040e2a7c58b0a0dda0fdf48">ELEM_MINGEN</a> = 2</td></tr>
 <tr class="memitem:a151a9ee3ae828ad09e070b7d26829661" id="r_a151a9ee3ae828ad09e070b7d26829661"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb-default_8hpp_a151a9ee3ae828ad09e070b7d26829661.html#a151a9ee3ae828ad09e070b7d26829661">ELEM_MINGB</a> = 4</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="classgb_a.html" title="The default Groebner basis computation class.">gbA</a></span> &mdash; the engine's default Buchberger-style Groebner-basis algorithm. </p>
+<p>Declares <span class="tt"><a class="el" href="classgb_a.html" title="The default Groebner basis computation class.">gbA</a></span>, the <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> subclass that runs when <a class="el" href="namespace_m2.html">M2</a>'s <span class="tt"><a class="el" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a></span> is invoked with no <span class="tt">Strategy =&gt;</span> override. The classical Buchberger loop &mdash; select an S-pair, compute its S-polynomial, reduce against the current basis, insert non-zero remainders, generate / flush S-pairs &mdash; is layered on top of a tuned <span class="tt">gbring</span> value representation (<span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span>), a <span class="tt"><a class="el" href="class_monomial_table.html">MonomialTable</a></span> index of leading monomials, and a <span class="tt"><a class="el" href="class_reduced_g_b.html" title="Base class for reduced Groebner basis computation.">ReducedGB</a></span> final reduction pass. The three status bits <span class="tt"><a class="el" href="gb-default_8hpp_a593f45b9bda94ea6bb58718bb472392b.html#a593f45b9bda94ea6bb58718bb472392b">ELEM_IN_RING</a></span>, <span class="tt"><a class="el" href="gb-default_8hpp_a47eb96af1040e2a7c58b0a0dda0fdf48.html#a47eb96af1040e2a7c58b0a0dda0fdf48">ELEM_MINGEN</a></span>, and <span class="tt"><a class="el" href="gb-default_8hpp_a151a9ee3ae828ad09e070b7d26829661.html#a151a9ee3ae828ad09e070b7d26829661">ELEM_MINGB</a></span> declared at the top tag each basis element so the interpreter can extract either the minimal generators or the minimal GB at the end of the computation.</p>
+<p>The default S-pair selection is sugar-aware degree-first &mdash; pick the pair whose sugar (a degree-based proxy for the eventual S-polynomial's degree) is smallest, beating pure-LCM on most inputs. Sibling strategies (<span class="tt"><a class="el" href="gb-homog2_8cpp.html">gb-homog2.cpp</a></span>, <span class="tt"><a class="el" href="gb-sugarless_8cpp.html">gb-sugarless.cpp</a></span>, <span class="tt"><a class="el" href="gb-toric_8cpp.html">gb-toric.cpp</a></span>, <span class="tt"><a class="el" href="gb-walk_8cpp.html">gb-walk.cpp</a></span>) plug into the same <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> interface and are reachable via <span class="tt">Strategy =&gt;</span>. All allocations live on the GC heap so the whole structure is reclaimable once the interpreter drops it.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd>
+<dd>
+<a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd>
+<dd>
+<a class="el" href="montable_8hpp.html" title="MonomialTable — leading-monomial divisor index used by the GB reducer.">montable.hpp</a> </dd>
+<dd>
+<a class="el" href="reducedgb_8hpp.html">reducedgb.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="gb-default_8hpp_source.html">gb-default.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

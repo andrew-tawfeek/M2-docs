@@ -92,13 +92,23 @@ $(function(){initNavTree('interrupted_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="interrupted_8hpp_a5035d07c37876dc3b866e1d4457ff390.html#a5035d07c37876dc3b866e1d4457ff390">system_interrupted()</a></span> &mdash; thread-safe polling predicate for Ctrl+C handling.  
+<a href="#details">More...</a></p>
+
 <p><a href="interrupted_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5035d07c37876dc3b866e1d4457ff390" id="r_a5035d07c37876dc3b866e1d4457ff390"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interrupted_8hpp_a5035d07c37876dc3b866e1d4457ff390.html#a5035d07c37876dc3b866e1d4457ff390">system_interrupted</a> ()</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="interrupted_8hpp_a5035d07c37876dc3b866e1d4457ff390.html#a5035d07c37876dc3b866e1d4457ff390">system_interrupted()</a></span> &mdash; thread-safe polling predicate for Ctrl+C handling. </p>
+<p>Exposes the single global function <span class="tt"><a class="el" href="interrupted_8hpp_a5035d07c37876dc3b866e1d4457ff390.html#a5035d07c37876dc3b866e1d4457ff390">system_interrupted()</a></span>, a cheap atomic read of the thread-local <span class="tt">interrupts_interruptedFlag</span> the system supervisor sets in response to <span class="tt">SIGINT</span>. Engine inner loops poll this at roughly one-millisecond cadence and bail out to <span class="tt"><a class="el" href="computation_8h_aed0217a90e756a9ee4da649f09850213.html#aed0217a90e756a9ee4da649f09850213af7f83acff45b8cb3944b17a21c048b06">COMP_INTERRUPTED</a></span> when the flag is true, the chain that delivers a user Ctrl+C to a running computation. The actual definition (in <span class="tt"><a class="el" href="interrupted_8cpp.html">interrupted.cpp</a></span>) is one wrapped macro call &mdash; the file exists so callers see only the abstract predicate without having to pull in the supervisor and atomic-primitive headers.</p>
+<p>Polled by every long-running engine loop &mdash; the GB and resolution algorithms, NAG path tracking, F4 matrix passes, the dense linear-algebra routines &mdash; as the cooperative cancellation handshake matching the stop-condition machinery declared in <span class="tt"><a class="el" href="comp_8hpp.html" title="Abstract Computation base class — stop-condition machinery for incremental engine work.">comp.hpp</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp_8hpp.html" title="Abstract Computation base class — stop-condition machinery for incremental engine work.">comp.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="interrupted_8hpp_source.html">interrupted.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

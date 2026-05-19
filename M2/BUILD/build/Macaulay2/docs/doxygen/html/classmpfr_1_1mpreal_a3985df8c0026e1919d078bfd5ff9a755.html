@@ -111,32 +111,32 @@ $(function(){initNavTree('classmpfr_1_1mpreal_a3985df8c0026e1919d078bfd5ff9a755.
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mpreal_8h_source.html#l01892">1892</a> of file <a class="el" href="mpreal_8h_source.html">mpreal.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1893</span>{</div>
-<div class="line"><span class="lineno"> 1894</span>    std::ostringstream format;</div>
-<div class="line"><span class="lineno"> 1895</span>    <span class="keyword">const</span> std::ios::fmtflags flags = os.flags();</div>
-<div class="line"><span class="lineno"> 1896</span> </div>
-<div class="line"><span class="lineno"> 1897</span>    format &lt;&lt; ((flags &amp; std::ios::showpos) ? <span class="stringliteral">&quot;%+&quot;</span> : <span class="stringliteral">&quot;%&quot;</span>);</div>
-<div class="line"><span class="lineno"> 1898</span>    <span class="keywordflow">if</span> (os.precision() &gt;= 0)</div>
-<div class="line"><span class="lineno"> 1899</span>        format &lt;&lt; <span class="charliteral">&#39;.&#39;</span> &lt;&lt; os.precision() &lt;&lt; <span class="stringliteral">&quot;R*&quot;</span></div>
-<div class="line"><span class="lineno"> 1900</span>               &lt;&lt; ((flags &amp; std::ios::floatfield) == std::ios::fixed ? <span class="charliteral">&#39;f&#39;</span> :</div>
-<div class="line"><span class="lineno"> 1901</span>                   (flags &amp; std::ios::floatfield) == std::ios::scientific ? <span class="charliteral">&#39;e&#39;</span> :</div>
-<div class="line"><span class="lineno"> 1902</span>                   <span class="charliteral">&#39;g&#39;</span>);</div>
-<div class="line"><span class="lineno"> 1903</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1904</span>        format &lt;&lt; <span class="stringliteral">&quot;R*e&quot;</span>;</div>
-<div class="line"><span class="lineno"> 1905</span> </div>
-<div class="line"><span class="lineno"> 1906</span>    <span class="keywordtype">char</span> *<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> = NULL;</div>
-<div class="line"><span class="lineno"> 1907</span>    <span class="keywordflow">if</span>(!(mpfr_asprintf(&amp;<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>, format.str().c_str(),</div>
-<div class="line"><span class="lineno"> 1908</span>                        mpfr::mpreal::get_default_rnd(),</div>
-<div class="line"><span class="lineno"> 1909</span>                        <a class="code hl_function" href="classmpfr_1_1mpreal_a566f64ca066c54923d19c11d6c3d15cd.html#a566f64ca066c54923d19c11d6c3d15cd">mpfr_srcptr</a>())</div>
-<div class="line"><span class="lineno"> 1910</span>        &lt; 0))</div>
-<div class="line"><span class="lineno"> 1911</span>    {</div>
-<div class="line"><span class="lineno"> 1912</span>        os &lt;&lt; std::string(<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>);</div>
-<div class="line"><span class="lineno"> 1913</span>        mpfr_free_str(<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>);</div>
-<div class="line"><span class="lineno"> 1914</span>    }</div>
-<div class="line"><span class="lineno"> 1915</span>    <span class="keywordflow">return</span> os;</div>
-<div class="line"><span class="lineno"> 1916</span>}</div>
-<div class="ttc" id="aclassmpfr_1_1mpreal_a566f64ca066c54923d19c11d6c3d15cd_html_a566f64ca066c54923d19c11d6c3d15cd"><div class="ttname"><a href="classmpfr_1_1mpreal_a566f64ca066c54923d19c11d6c3d15cd.html#a566f64ca066c54923d19c11d6c3d15cd">mpfr::mpreal::mpfr_srcptr</a></div><div class="ttdeci">::mpfr_srcptr mpfr_srcptr() const</div><div class="ttdef"><b>Definition</b> <a href="mpreal_8h_source.html#l01742">mpreal.h:1742</a></div></div>
+<p class="definition">Definition at line <a class="el" href="mpreal_8h_source.html#l01915">1915</a> of file <a class="el" href="mpreal_8h_source.html">mpreal.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1916</span>{</div>
+<div class="line"><span class="lineno"> 1917</span>    std::ostringstream format;</div>
+<div class="line"><span class="lineno"> 1918</span>    <span class="keyword">const</span> std::ios::fmtflags flags = os.flags();</div>
+<div class="line"><span class="lineno"> 1919</span> </div>
+<div class="line"><span class="lineno"> 1920</span>    format &lt;&lt; ((flags &amp; std::ios::showpos) ? <span class="stringliteral">&quot;%+&quot;</span> : <span class="stringliteral">&quot;%&quot;</span>);</div>
+<div class="line"><span class="lineno"> 1921</span>    <span class="keywordflow">if</span> (os.precision() &gt;= 0)</div>
+<div class="line"><span class="lineno"> 1922</span>        format &lt;&lt; <span class="charliteral">&#39;.&#39;</span> &lt;&lt; os.precision() &lt;&lt; <span class="stringliteral">&quot;R*&quot;</span></div>
+<div class="line"><span class="lineno"> 1923</span>               &lt;&lt; ((flags &amp; std::ios::floatfield) == std::ios::fixed ? <span class="charliteral">&#39;f&#39;</span> :</div>
+<div class="line"><span class="lineno"> 1924</span>                   (flags &amp; std::ios::floatfield) == std::ios::scientific ? <span class="charliteral">&#39;e&#39;</span> :</div>
+<div class="line"><span class="lineno"> 1925</span>                   <span class="charliteral">&#39;g&#39;</span>);</div>
+<div class="line"><span class="lineno"> 1926</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1927</span>        format &lt;&lt; <span class="stringliteral">&quot;R*e&quot;</span>;</div>
+<div class="line"><span class="lineno"> 1928</span> </div>
+<div class="line"><span class="lineno"> 1929</span>    <span class="keywordtype">char</span> *<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> = NULL;</div>
+<div class="line"><span class="lineno"> 1930</span>    <span class="keywordflow">if</span>(!(mpfr_asprintf(&amp;<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>, format.str().c_str(),</div>
+<div class="line"><span class="lineno"> 1931</span>                        mpfr::mpreal::get_default_rnd(),</div>
+<div class="line"><span class="lineno"> 1932</span>                        <a class="code hl_function" href="classmpfr_1_1mpreal_a566f64ca066c54923d19c11d6c3d15cd.html#a566f64ca066c54923d19c11d6c3d15cd">mpfr_srcptr</a>())</div>
+<div class="line"><span class="lineno"> 1933</span>        &lt; 0))</div>
+<div class="line"><span class="lineno"> 1934</span>    {</div>
+<div class="line"><span class="lineno"> 1935</span>        os &lt;&lt; std::string(<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>);</div>
+<div class="line"><span class="lineno"> 1936</span>        mpfr_free_str(<a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>);</div>
+<div class="line"><span class="lineno"> 1937</span>    }</div>
+<div class="line"><span class="lineno"> 1938</span>    <span class="keywordflow">return</span> os;</div>
+<div class="line"><span class="lineno"> 1939</span>}</div>
+<div class="ttc" id="aclassmpfr_1_1mpreal_a566f64ca066c54923d19c11d6c3d15cd_html_a566f64ca066c54923d19c11d6c3d15cd"><div class="ttname"><a href="classmpfr_1_1mpreal_a566f64ca066c54923d19c11d6c3d15cd.html#a566f64ca066c54923d19c11d6c3d15cd">mpfr::mpreal::mpfr_srcptr</a></div><div class="ttdeci">::mpfr_srcptr mpfr_srcptr() const</div><div class="ttdef"><b>Definition</b> <a href="mpreal_8h_source.html#l01765">mpreal.h:1765</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5_html_a2fc91f4e89bc37f261db820d231da2e5"><div class="ttname"><a href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a></div><div class="ttdeci">void size_t s</div><div class="ttdef"><b>Definition</b> <a href="m2-mem_8cpp_source.html#l00271">m2-mem.cpp:271</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classmpfr_1_1mpreal_ae0bdf9ca1838bd5851ac1c7c6b360553.html#ae0bdf9ca1838bd5851ac1c7c6b360553">get_default_rnd()</a>, <a class="el" href="classmpfr_1_1mpreal_a566f64ca066c54923d19c11d6c3d15cd.html#a566f64ca066c54923d19c11d6c3d15cd">mpfr_srcptr()</a>, <a class="el" href="#a3985df8c0026e1919d078bfd5ff9a755">output()</a>, and <a class="el" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>.</p>

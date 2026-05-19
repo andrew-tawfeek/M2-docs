@@ -91,6 +91,9 @@ $(function(){initNavTree('monordering_8hpp.html','',''); });
   <div class="headertitle"><div class="title">monordering.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_monomial_orderings.html">MonomialOrderings</a></span> &mdash; C++ factories for the declarative <span class="tt"><a class="el" href="struct_monomial_ordering.html">MonomialOrdering</a></span> blocks.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div>
@@ -104,7 +107,16 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ac8e6aec63b8db19052ae6ed45d4540f0" id="r_ac8e6aec63b8db19052ae6ed45d4540f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monordering_8hpp_ac8e6aec63b8db19052ae6ed45d4540f0.html#ac8e6aec63b8db19052ae6ed45d4540f0">monomialOrderingToMatrix</a> (const struct <a class="el" href="struct_monomial_ordering.html">MonomialOrdering</a> &amp;mo, std::vector&lt; <a class="el" href="classint.html">int</a> &gt; &amp;mat, <a class="el" href="classbool.html">bool</a> &amp;base_is_revlex, <a class="el" href="classint.html">int</a> &amp;component_direction, <a class="el" href="classint.html">int</a> &amp;component_is_before_row)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_monomial_orderings.html">MonomialOrderings</a></span> &mdash; C++ factories for the declarative <span class="tt"><a class="el" href="struct_monomial_ordering.html">MonomialOrdering</a></span> blocks. </p>
+<p>Declares the static-only <span class="tt"><a class="el" href="class_monomial_orderings.html">MonomialOrderings</a></span> namespace whose members build single <span class="tt"><a class="el" href="struct_monomial_ordering.html">MonomialOrdering</a></span> blocks (<span class="tt">Lex</span> / <span class="tt">Lex2</span> / <span class="tt">Lex4</span>, <span class="tt">GRevLex</span> / <span class="tt">GRevLex2</span> / <span class="tt">GRevLex4</span> with or without a weight vector, <span class="tt">RevLex</span>, <span class="tt">Weights</span>, <span class="tt">GroupLex</span>, ...) and compose them (<span class="tt">product</span>, <span class="tt">join</span>) into the multi-block orderings the user actually writes. The accompanying <span class="tt"><a class="el" href="monomial-ordering_8cpp_a2df59f2ce4ad9361c691ca93d9108955.html#a2df59f2ce4ad9361c691ca93d9108955">toString</a></span> renders an ordering back to the textual form <a class="el" href="namespace_m2.html">M2</a> displays. Each factory validates the variable counts and weight-vector lengths it is given.</p>
+<p>This is the user-facing <b>declarative</b> side of the monomial- order story &mdash; what the user types and what <a class="el" href="namespace_m2.html">M2</a> serialises &mdash; paired with the operational <span class="tt">MonomialOrder</span> produced by <span class="tt"><a class="el" href="imonorder_8hpp.html" title="Internal (runtime) form of a monomial ordering.">imonorder.hpp</a></span>. A <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span> constructor consumes the declarative output of these factories once at ring construction and walks the encoded form thereafter.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="imonorder_8hpp.html" title="Internal (runtime) form of a monomial ordering.">imonorder.hpp</a> </dd>
+<dd>
+<a class="el" href="monoid_8hpp.html" title="Monoid — variable count, naming, grading, and monomial order of a polynomial ring.">monoid.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="monordering_8hpp_source.html">monordering.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

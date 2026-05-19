@@ -91,6 +91,9 @@ $(function(){initNavTree('mutablecomplex_8hpp.html','',''); });
   <div class="headertitle"><div class="title">mutablecomplex.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_mutable_complex.html">MutableComplex</a></span> &mdash; in-place chain complex of <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> differentials.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="localring_8hpp_source.html">localring.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="style_8hpp_source.html">style.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hash_8hpp_source.html">hash.hpp</a>&quot;</code><br />
@@ -105,7 +108,18 @@ Classes</h2></td></tr>
 <tr class="memitem:MutableComplex" id="r_MutableComplex"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mutable_complex.html">MutableComplex</a></td></tr>
 <tr class="memitem:MutableComplex_3A_3Aiterator" id="r_MutableComplex_3A_3Aiterator"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mutable_complex_1_1iterator.html">MutableComplex::iterator</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_mutable_complex.html">MutableComplex</a></span> &mdash; in-place chain complex of <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> differentials. </p>
+<p>Declares <span class="tt"><a class="el" href="class_mutable_complex.html">MutableComplex</a></span>, an <span class="tt"><a class="el" href="class_engine_object.html">EngineObject</a></span> carrying a sequence of <span class="tt">MutableMatrix*</span> differentials chained together with their source / target <span class="tt"><a class="el" href="class_free_module.html">FreeModule</a></span>s and a working degree map. The class wraps the bookkeeping that keeps the composition-equals-zero invariant true under row and column operations: editing one differential automatically propagates the matching column or row update to its neighbour, and degree propagation through composition is handled centrally instead of by each caller. The constructor accepts a <span class="tt"><a class="el" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR(MutableMatrix*)</a></span> and infers ring, local-ring, and polynomial-ring context from the first matrix.</p>
+<p>Typical workflows construct a <span class="tt"><a class="el" href="class_mutable_complex.html">MutableComplex</a></span> from an existing resolution (<span class="tt"><a class="el" href="comp-res_8hpp.html" title="ResolutionComputation — abstract base for every free-resolution algorithm in the engine.">comp-res.hpp</a></span>) and reduce it to a minimal form by sequential row/column eliminations, or compute a Smith-normal-form-like canonicalisation across the whole complex. The TODO at the top of the header flags the open question of templating over sparse vs. dense <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mat_8hpp.html" title="MutableMatrix — abstract base of every mutable matrix the engine hands across the boundary.">mat.hpp</a> </dd>
+<dd>
+<a class="el" href="comp-res_8hpp.html" title="ResolutionComputation — abstract base for every free-resolution algorithm in the engine.">comp-res.hpp</a> </dd>
+<dd>
+<a class="el" href="localring_8hpp.html" title="LocalRing — localisation of a polynomial ring at a prime ideal P.">localring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="mutablecomplex_8hpp_source.html">mutablecomplex.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

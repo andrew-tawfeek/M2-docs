@@ -91,6 +91,9 @@ $(function(){initNavTree('monomial_8hpp.html','',''); });
   <div class="headertitle"><div class="title">monomial.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_engine_monomial.html">EngineMonomial</a></span> &mdash; opaque single-monomial value type used at the engine boundary.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="_exponent_list_8hpp_source.html">ExponentList.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hash_8hpp_source.html">hash.hpp</a>&quot;</code><br />
@@ -103,7 +106,16 @@ $(function(){initNavTree('monomial_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:EngineMonomial" id="r_EngineMonomial"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_monomial.html">EngineMonomial</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_engine_monomial.html">EngineMonomial</a></span> &mdash; opaque single-monomial value type used at the engine boundary. </p>
+<p>Declares <span class="tt"><a class="el" href="class_engine_monomial.html">EngineMonomial</a></span>, the <span class="tt"><a class="el" href="class_engine_object.html">EngineObject</a></span> subclass that stores one monomial as a varpower-encoded <span class="tt"><a class="el" href="newdelete_8hpp_a372d8395e2d40d72e37f3f32375dd58a.html#a372d8395e2d40d72e37f3f32375dd58a" title="a version of the STL vector, which allocates its backing memory with gc.">gc_vector</a>&lt;<a class="el" href="classint.html">int</a>&gt;</span> in the standard <span class="tt">[2n + 1, v_1, e_1, ..., v_n, e_n]</span> layout inherited from <span class="tt"><a class="el" href="_exponent_list_8hpp.html" title="Variable-length sparse (variable, exponent) encoding of monomials.">ExponentList.hpp</a></span>. Constructors accept a variable/exponent pair, a varpower array, an <span class="tt"><a class="el" href="class_m2__arrayint.html">M2_arrayint</a></span>, or a <span class="tt">std::vector&lt;<a class="el" href="classint.html">int</a>&gt;</span>; the no-argument constructor is private because it leaves the value invalid until a varpower routine populates it. The class is the M2-level <span class="tt"><a class="el" href="class_monomial.html">Monomial</a></span> &mdash; a different beast from the encoded monomials packed into a <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span>'s inner-loop layout and from the <span class="tt"><a class="el" href="class_exponent_vector.html">ExponentVector</a></span> / <span class="tt"><a class="el" href="class_exponent_list.html">ExponentList</a></span> storage layer.</p>
+<p>The header's long-standing reversal note matters in the non-commutative case: the <a class="el" href="namespace_m2.html">M2</a> front-end reverses the variable-power list before crossing the boundary, and engine code consuming <span class="tt"><a class="el" href="class_engine_monomial.html">EngineMonomial</a></span> in the NC setting must un-reverse before computing word products.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_exponent_list_8hpp.html" title="Variable-length sparse (variable, exponent) encoding of monomials.">ExponentList.hpp</a> </dd>
+<dd>
+<a class="el" href="monoid_8hpp.html" title="Monoid — variable count, naming, grading, and monomial order of a polynomial ring.">monoid.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="monomial_8hpp_source.html">monomial.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

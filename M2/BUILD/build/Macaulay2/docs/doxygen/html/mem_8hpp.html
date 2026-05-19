@@ -91,6 +91,9 @@ $(function(){initNavTree('mem_8hpp.html','',''); });
   <div class="headertitle"><div class="title">mem.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="classstash.html">stash</a></span> &mdash; size-class slab allocator for fixed-size objects in engine hot paths.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cassert&gt;</code><br />
 <code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
 <code>#include &quot;../system/mutex.h&quot;</code><br />
@@ -118,7 +121,14 @@ Variables</h2></td></tr>
 <tr class="memitem:ae9f933a898857a61840c94259a2eb771" id="r_ae9f933a898857a61840c94259a2eb771"><td class="memItemLeft" align="right" valign="top"><a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8hpp_ae9f933a898857a61840c94259a2eb771.html#ae9f933a898857a61840c94259a2eb771">engine_highwater</a></td></tr>
 <tr class="memitem:a05e4d9829321b3db5b3dced46a697515" id="r_a05e4d9829321b3db5b3dced46a697515"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdoubling__stash.html">doubling_stash</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8hpp_a05e4d9829321b3db5b3dced46a697515.html#a05e4d9829321b3db5b3dced46a697515">doubles</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="classstash.html">stash</a></span> &mdash; size-class slab allocator for fixed-size objects in engine hot paths. </p>
+<p>Declares the engine's <span class="tt"><a class="el" href="classstash.html">stash</a></span>, a per-size-class free-list allocator: <span class="tt">new_elem()</span> pops from the free list (and carves a fresh slab if it is empty) and <span class="tt">delete_elem(ptr)</span> pushes the pointer back without releasing it. Both operations are O(1). The configuration constants pin the largest size handled at <span class="tt">2 * 2^25</span> (<span class="tt"><a class="el" href="mem_8hpp_a68f338430f08beb25d341e25ad038cbf.html#a68f338430f08beb25d341e25ad038cbf">NDOUBLES</a> = 25</span>) and the slab granularity at 2032 bytes so each slab fits comfortably in L1; allocations above the size cap fall through to the GC heap. The <span class="tt"><a class="el" href="mem_8hpp_ad17ca910f8bb913bb2cf633d74d7d5c8.html#ad17ca910f8bb913bb2cf633d74d7d5c8">bad_pattern</a></span> byte and the <span class="tt"><a class="el" href="mem_8hpp_aca2b58b464f2a314aba4cee850d0c170.html#aca2b58b464f2a314aba4cee850d0c170">word_size</a></span> constant support the slab's debug- fill and pointer-arithmetic paths.</p>
+<p>Used everywhere the engine allocates the same small struct (S-pair records, GB vectors, monomial cells, ...) in tight loops, where <span class="tt">bdwgc</span>'s <span class="tt">GC_malloc</span> per-call cost would dominate. <span class="tt"><a class="el" href="mem_8hpp_a600986b99d0f55331b59693fbec33df6.html#a600986b99d0f55331b59693fbec33df6">engine_allocated</a></span> / <span class="tt"><a class="el" href="mem_8hpp_ae9f933a898857a61840c94259a2eb771.html#ae9f933a898857a61840c94259a2eb771">engine_highwater</a></span> track the cumulative and peak usage for benchmarks and leak detection; <span class="tt">reset_stash</span> purges everything.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="newdelete_8hpp.html">newdelete.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="mem_8hpp_source.html">mem.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

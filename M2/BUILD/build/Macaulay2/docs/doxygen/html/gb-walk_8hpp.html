@@ -91,6 +91,9 @@ $(function(){initNavTree('gb-walk_8hpp.html','',''); });
   <div class="headertitle"><div class="title">gb-walk.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_g_b_walker.html" title="The generic Groebner walk algorithm. Not yet working?">GBWalker</a></span> &mdash; generic Groebner-walk strategy that transports a basis between term orders.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="comp-gb_8hpp_source.html">comp-gb.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="monomial-ordering_8h_source.html">interface/monomial-ordering.h</a>&quot;</code><br />
@@ -103,7 +106,18 @@ Classes</h2></td></tr>
 <tr class="memitem:GBWalker" id="r_GBWalker"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_b_walker.html">GBWalker</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The generic Groebner walk algorithm. Not yet working?  <a href="class_g_b_walker.html#details">More...</a><br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_g_b_walker.html" title="The generic Groebner walk algorithm. Not yet working?">GBWalker</a></span> &mdash; generic Groebner-walk strategy that transports a basis between term orders. </p>
+<p>Declares <span class="tt"><a class="el" href="class_g_b_walker.html" title="The generic Groebner walk algorithm. Not yet working?">GBWalker</a></span>, a <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> subclass that implements the Groebner-walk algorithm: given a basis for one monomial ordering, traverse a path of intermediate orderings and convert the basis to the target ordering by recomputing along each face of the Groebner fan. The header comment notes the implementation is not yet known to be working &mdash; the file is in the tree for completeness alongside the other <span class="tt">Strategy =&gt;</span> variants but should not be relied on without verification.</p>
+<p><span class="tt"><a class="el" href="class_g_b_walker.html" title="The generic Groebner walk algorithm. Not yet working?">GBWalker</a></span> plugs into the same dispatch entry as <span class="tt"><a class="el" href="gb-default_8hpp.html" title="gbA — the engine&#39;s default Buchberger-style Groebner-basis algorithm.">gb-default.hpp</a></span> (the default Buchberger <span class="tt"><a class="el" href="classgb_a.html" title="The default Groebner basis computation class.">gbA</a></span>) and the other specialisations (<span class="tt"><a class="el" href="gb-homog2_8hpp.html" title="gb_homog2_comp — Buchberger GB specialised to homogeneous input.">gb-homog2.hpp</a></span>, <span class="tt"><a class="el" href="gb-sugarless_8hpp.html" title="GBinhom_comp — Buchberger GB without the sugar heuristic, primarily for inhomogeneous input.">gb-sugarless.hpp</a></span>, <span class="tt"><a class="el" href="gb-toric_8hpp.html" title="binomialGB_comp — Buchberger GB specialised to binomial / toric ideals.">gb-toric.hpp</a></span>); the user reaches it via <span class="tt">Strategy =&gt;</span> only. It carries the same <span class="tt"><a class="el" href="class_g_b_ring.html">GBRing</a></span> / <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span> / <span class="tt"><a class="el" href="class_marked_g_b.html" title="Computation of a reduced GB w.r.t. a marked ordering.">MarkedGB</a></span> vocabulary as the rest of the GB family.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd>
+<dd>
+<a class="el" href="gb-default_8hpp.html" title="gbA — the engine&#39;s default Buchberger-style Groebner-basis algorithm.">gb-default.hpp</a> </dd>
+<dd>
+<a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="gb-walk_8hpp_source.html">gb-walk.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

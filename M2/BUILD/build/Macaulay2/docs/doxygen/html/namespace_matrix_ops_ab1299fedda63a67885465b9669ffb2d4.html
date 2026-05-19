@@ -118,15 +118,15 @@ template&lt;typename Mat&gt; </div>
 <p>result_product is set to the product A*B result_product should be a Mat, with the same ring/type as the input matrices A,B. result_product does not need to be the same size as A*B, it will be resized if needed.</p>
 <p>throws an engine_error for ring/matrix types where the function is not implemented. throws an error if the number of columns of A is not the number of rows of B. result_prod should not be the same as A or B (assertion error). </p>
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00156">156</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  157</span>{</div>
-<div class="line"><span class="lineno">  158</span>  (void) A;</div>
-<div class="line"><span class="lineno">  159</span>  (void) B;</div>
-<div class="line"><span class="lineno">  160</span>  (void) result_product;</div>
-<div class="line"><span class="lineno">  161</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
-<div class="line"><span class="lineno">  162</span>      <span class="stringliteral">&quot;&#39;mult matrices&#39; not implemented for this kind of matrix over this ring&quot;</span>);</div>
-<div class="line"><span class="lineno">  163</span>}</div>
-<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00008">exceptions.hpp:9</a></div></div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00182">182</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  183</span>{</div>
+<div class="line"><span class="lineno">  184</span>  (void) A;</div>
+<div class="line"><span class="lineno">  185</span>  (void) B;</div>
+<div class="line"><span class="lineno">  186</span>  (void) result_product;</div>
+<div class="line"><span class="lineno">  187</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
+<div class="line"><span class="lineno">  188</span>      <span class="stringliteral">&quot;&#39;mult matrices&#39; not implemented for this kind of matrix over this ring&quot;</span>);</div>
+<div class="line"><span class="lineno">  189</span>}</div>
+<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00037">exceptions.hpp:38</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

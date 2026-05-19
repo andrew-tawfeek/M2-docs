@@ -122,17 +122,17 @@ template&lt;typename Mat&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mat-util_8hpp_source.html#l00061">61</a> of file <a class="el" href="mat-util_8hpp_source.html">mat-util.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{</div>
-<div class="line"><span class="lineno">   63</span>  assert(A.numRows() == B.numRows());</div>
-<div class="line"><span class="lineno">   64</span>  C.resize(A.numRows(), A.numColumns() + B.numColumns());</div>
-<div class="line"><span class="lineno">   65</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> r = 0; r &lt; A.numRows(); r++)</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">for</span> (<span class="keywordtype">long</span> c = 0; c &lt; A.numColumns(); c++)</div>
-<div class="line"><span class="lineno">   67</span>      A.ring().set(C.entry(r, c), A.entry(r, c));</div>
-<div class="line"><span class="lineno">   68</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> r = 0; r &lt; A.numRows(); r++)</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">for</span> (<span class="keywordtype">long</span> c = 0; c &lt; B.numColumns(); c++)</div>
-<div class="line"><span class="lineno">   70</span>      A.ring().set(C.entry(r, c + A.numColumns()), B.entry(r, c));</div>
-<div class="line"><span class="lineno">   71</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mat-util_8hpp_source.html#l00085">85</a> of file <a class="el" href="mat-util_8hpp_source.html">mat-util.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>  assert(A.numRows() == B.numRows());</div>
+<div class="line"><span class="lineno">   88</span>  C.resize(A.numRows(), A.numColumns() + B.numColumns());</div>
+<div class="line"><span class="lineno">   89</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> r = 0; r &lt; A.numRows(); r++)</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">for</span> (<span class="keywordtype">long</span> c = 0; c &lt; A.numColumns(); c++)</div>
+<div class="line"><span class="lineno">   91</span>      A.ring().set(C.entry(r, c), A.entry(r, c));</div>
+<div class="line"><span class="lineno">   92</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> r = 0; r &lt; A.numRows(); r++)</div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">for</span> (<span class="keywordtype">long</span> c = 0; c &lt; B.numColumns(); c++)</div>
+<div class="line"><span class="lineno">   94</span>      A.ring().set(C.entry(r, c + A.numColumns()), B.entry(r, c));</div>
+<div class="line"><span class="lineno">   95</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_d_mat_lin_alg_3_01_m2_1_1_a_ring_q_q_01_4_a9eb1c05e010f0f26087403f68dcadc1e.html#a9eb1c05e010f0f26087403f68dcadc1e">DMatLinAlg&lt; M2::ARingQQ &gt;::solve()</a>, and <a class="el" href="class_d_mat_lin_alg_3_01_m2_1_1_a_ring_z_zp_flint_01_4_a98595833789f68eba689a1b44e048afe.html#a98595833789f68eba689a1b44e048afe">DMatLinAlg&lt; M2::ARingZZpFlint &gt;::solve()</a>.</p>
 

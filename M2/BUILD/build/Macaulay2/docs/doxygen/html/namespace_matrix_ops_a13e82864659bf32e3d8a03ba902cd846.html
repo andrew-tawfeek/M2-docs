@@ -125,17 +125,17 @@ $(function(){initNavTree('namespace_matrix_ops_a13e82864659bf32e3d8a03ba902cd846
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01301">1301</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1305</span>{</div>
-<div class="line"><span class="lineno"> 1306</span><span class="preprocessor">#ifndef NO_LAPACK</span></div>
-<div class="line"><span class="lineno"> 1307</span>  <span class="keywordflow">if</span> (assume_full_rank)</div>
-<div class="line"><span class="lineno"> 1308</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="class_lapack_a8267ad0361541d97e08889577fe0ce2e.html#a8267ad0361541d97e08889577fe0ce2e">Lapack::least_squares</a>(&amp;A, &amp;B, &amp;X);</div>
-<div class="line"><span class="lineno"> 1309</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1310</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="class_lapack_a1c93c0fb449e68891e1adc7036544195.html#a1c93c0fb449e68891e1adc7036544195">Lapack::least_squares_deficient</a>(&amp;A, &amp;B, &amp;X);</div>
-<div class="line"><span class="lineno"> 1311</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno"> 1312</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_eigen_m2_a522b8e40e31815a2f7dfc664347bde5f.html#a522b8e40e31815a2f7dfc664347bde5f">EigenM2::least_squares</a>(&amp;A, &amp;B, &amp;X);</div>
-<div class="line"><span class="lineno"> 1313</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno"> 1314</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01327">1327</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1331</span>{</div>
+<div class="line"><span class="lineno"> 1332</span><span class="preprocessor">#ifndef NO_LAPACK</span></div>
+<div class="line"><span class="lineno"> 1333</span>  <span class="keywordflow">if</span> (assume_full_rank)</div>
+<div class="line"><span class="lineno"> 1334</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="class_lapack_a8267ad0361541d97e08889577fe0ce2e.html#a8267ad0361541d97e08889577fe0ce2e">Lapack::least_squares</a>(&amp;A, &amp;B, &amp;X);</div>
+<div class="line"><span class="lineno"> 1335</span>  <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1336</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="class_lapack_a1c93c0fb449e68891e1adc7036544195.html#a1c93c0fb449e68891e1adc7036544195">Lapack::least_squares_deficient</a>(&amp;A, &amp;B, &amp;X);</div>
+<div class="line"><span class="lineno"> 1337</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno"> 1338</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_eigen_m2_a522b8e40e31815a2f7dfc664347bde5f.html#a522b8e40e31815a2f7dfc664347bde5f">EigenM2::least_squares</a>(&amp;A, &amp;B, &amp;X);</div>
+<div class="line"><span class="lineno"> 1339</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno"> 1340</span>}</div>
 <div class="ttc" id="aclass_lapack_a1c93c0fb449e68891e1adc7036544195_html_a1c93c0fb449e68891e1adc7036544195"><div class="ttname"><a href="class_lapack_a1c93c0fb449e68891e1adc7036544195.html#a1c93c0fb449e68891e1adc7036544195">Lapack::least_squares_deficient</a></div><div class="ttdeci">static bool least_squares_deficient(const DMatRRR *A, const DMatRRR *b, DMatRRR *x)</div></div>
 <div class="ttc" id="aclass_lapack_a8267ad0361541d97e08889577fe0ce2e_html_a8267ad0361541d97e08889577fe0ce2e"><div class="ttname"><a href="class_lapack_a8267ad0361541d97e08889577fe0ce2e.html#a8267ad0361541d97e08889577fe0ce2e">Lapack::least_squares</a></div><div class="ttdeci">static bool least_squares(const DMatRRR *A, const DMatRRR *b, DMatRRR *x)</div></div>
 <div class="ttc" id="anamespace_eigen_m2_a522b8e40e31815a2f7dfc664347bde5f_html_a522b8e40e31815a2f7dfc664347bde5f"><div class="ttname"><a href="namespace_eigen_m2_a522b8e40e31815a2f7dfc664347bde5f.html#a522b8e40e31815a2f7dfc664347bde5f">EigenM2::least_squares</a></div><div class="ttdeci">bool least_squares(const LMatrixRRR *A, const LMatrixRRR *B, LMatrixRRR *X)</div><div class="ttdef"><b>Definition</b> <a href="eigen_8cpp_source.html#l00558">eigen.cpp:558</a></div></div>

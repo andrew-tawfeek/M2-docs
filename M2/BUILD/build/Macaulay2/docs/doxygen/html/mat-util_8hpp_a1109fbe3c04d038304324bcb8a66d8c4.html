@@ -109,45 +109,45 @@ template&lt;typename Mat&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mat-util_8hpp_source.html#l00014">14</a> of file <a class="el" href="mat-util_8hpp_source.html">mat-util.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>{</div>
-<div class="line"><span class="lineno">   16</span>  <span class="comment">// Assumption: Mat is either DMat&lt;RingType&gt; or SMat&lt;RingType&gt;, in that it</span></div>
-<div class="line"><span class="lineno">   17</span>  <span class="comment">// defines the following:</span></div>
-<div class="line"><span class="lineno">   18</span>  <span class="comment">// Mat::ElementType</span></div>
-<div class="line"><span class="lineno">   19</span>  <span class="comment">// A.ring()</span></div>
-<div class="line"><span class="lineno">   20</span>  <span class="comment">// A.numRows(), A.numColumns()</span></div>
-<div class="line"><span class="lineno">   21</span>  <span class="comment">// A.entry(r,c)</span></div>
-<div class="line"><span class="lineno">   22</span>  <span class="comment">// and A.ring().elem_text_out</span></div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>  <span class="keywordtype">size_t</span> nrows = A.numRows();</div>
-<div class="line"><span class="lineno">   25</span>  <span class="keywordtype">size_t</span> ncols = A.numColumns();</div>
-<div class="line"><span class="lineno">   26</span>  <a class="code hl_class" href="classbuffer.html">buffer</a>* <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = <span class="keyword">new</span> <a class="code hl_class" href="classbuffer.html">buffer</a>[nrows];</div>
-<div class="line"><span class="lineno">   27</span>  <span class="keywordtype">size_t</span> r;</div>
-<div class="line"><span class="lineno">   28</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> c = 0; c &lt; ncols; c++)</div>
-<div class="line"><span class="lineno">   29</span>    {</div>
-<div class="line"><span class="lineno">   30</span>      <span class="keywordtype">size_t</span> maxcount = 0;</div>
-<div class="line"><span class="lineno">   31</span>      <span class="keywordflow">for</span> (r = 0; r &lt; nrows; r++)</div>
-<div class="line"><span class="lineno">   32</span>        {</div>
-<div class="line"><span class="lineno">   33</span>          <span class="keyword">const</span> <span class="keyword">typename</span> Mat::ElementType&amp; a = A.entry(r, c);</div>
-<div class="line"><span class="lineno">   34</span>          <span class="keywordflow">if</span> (!A.ring().is_zero(a))</div>
-<div class="line"><span class="lineno">   35</span>            A.ring().elem_text_out(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r], a, <span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   36</span>          <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   37</span>            <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r] &lt;&lt; <span class="stringliteral">&quot;.&quot;</span>;</div>
-<div class="line"><span class="lineno">   38</span>          <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r].size() &gt; maxcount) maxcount = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r].size();</div>
-<div class="line"><span class="lineno">   39</span>        }</div>
-<div class="line"><span class="lineno">   40</span>      <span class="keywordflow">for</span> (r = 0; r &lt; nrows; r++)</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = maxcount + 1 - <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r].size(); k &gt; 0; k--) <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r] &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><span class="lineno">   42</span>    }</div>
-<div class="line"><span class="lineno">   43</span>  <span class="keywordflow">for</span> (r = 0; r &lt; nrows; r++)</div>
-<div class="line"><span class="lineno">   44</span>    {</div>
-<div class="line"><span class="lineno">   45</span>      <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r] &lt;&lt; <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><span class="lineno">   46</span>      <span class="keywordtype">char</span>* <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r].str();</div>
-<div class="line"><span class="lineno">   47</span>      o &lt;&lt; <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> &lt;&lt; <a class="code hl_variable" href="m2-types_8cpp_a9652bd683300dd969acdf07396e1c1dd.html#a9652bd683300dd969acdf07396e1c1dd">newline</a>;</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keyword">delete</span>[] <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>;</div>
-<div class="line"><span class="lineno">   50</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mat-util_8hpp_source.html#l00038">38</a> of file <a class="el" href="mat-util_8hpp_source.html">mat-util.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>{</div>
+<div class="line"><span class="lineno">   40</span>  <span class="comment">// Assumption: Mat is either DMat&lt;RingType&gt; or SMat&lt;RingType&gt;, in that it</span></div>
+<div class="line"><span class="lineno">   41</span>  <span class="comment">// defines the following:</span></div>
+<div class="line"><span class="lineno">   42</span>  <span class="comment">// Mat::ElementType</span></div>
+<div class="line"><span class="lineno">   43</span>  <span class="comment">// A.ring()</span></div>
+<div class="line"><span class="lineno">   44</span>  <span class="comment">// A.numRows(), A.numColumns()</span></div>
+<div class="line"><span class="lineno">   45</span>  <span class="comment">// A.entry(r,c)</span></div>
+<div class="line"><span class="lineno">   46</span>  <span class="comment">// and A.ring().elem_text_out</span></div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>  <span class="keywordtype">size_t</span> nrows = A.numRows();</div>
+<div class="line"><span class="lineno">   49</span>  <span class="keywordtype">size_t</span> ncols = A.numColumns();</div>
+<div class="line"><span class="lineno">   50</span>  <a class="code hl_class" href="classbuffer.html">buffer</a>* <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = <span class="keyword">new</span> <a class="code hl_class" href="classbuffer.html">buffer</a>[nrows];</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keywordtype">size_t</span> r;</div>
+<div class="line"><span class="lineno">   52</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> c = 0; c &lt; ncols; c++)</div>
+<div class="line"><span class="lineno">   53</span>    {</div>
+<div class="line"><span class="lineno">   54</span>      <span class="keywordtype">size_t</span> maxcount = 0;</div>
+<div class="line"><span class="lineno">   55</span>      <span class="keywordflow">for</span> (r = 0; r &lt; nrows; r++)</div>
+<div class="line"><span class="lineno">   56</span>        {</div>
+<div class="line"><span class="lineno">   57</span>          <span class="keyword">const</span> <span class="keyword">typename</span> Mat::ElementType&amp; a = A.entry(r, c);</div>
+<div class="line"><span class="lineno">   58</span>          <span class="keywordflow">if</span> (!A.ring().is_zero(a))</div>
+<div class="line"><span class="lineno">   59</span>            A.ring().elem_text_out(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r], a, <span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   60</span>          <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   61</span>            <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r] &lt;&lt; <span class="stringliteral">&quot;.&quot;</span>;</div>
+<div class="line"><span class="lineno">   62</span>          <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r].size() &gt; maxcount) maxcount = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r].size();</div>
+<div class="line"><span class="lineno">   63</span>        }</div>
+<div class="line"><span class="lineno">   64</span>      <span class="keywordflow">for</span> (r = 0; r &lt; nrows; r++)</div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> k = maxcount + 1 - <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r].size(); k &gt; 0; k--) <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r] &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span>  <span class="keywordflow">for</span> (r = 0; r &lt; nrows; r++)</div>
+<div class="line"><span class="lineno">   68</span>    {</div>
+<div class="line"><span class="lineno">   69</span>      <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r] &lt;&lt; <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><span class="lineno">   70</span>      <span class="keywordtype">char</span>* <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>[r].str();</div>
+<div class="line"><span class="lineno">   71</span>      o &lt;&lt; <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> &lt;&lt; <a class="code hl_variable" href="m2-types_8cpp_a9652bd683300dd969acdf07396e1c1dd.html#a9652bd683300dd969acdf07396e1c1dd">newline</a>;</div>
+<div class="line"><span class="lineno">   72</span>    }</div>
+<div class="line"><span class="lineno">   73</span>  <span class="keyword">delete</span>[] <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>;</div>
+<div class="line"><span class="lineno">   74</span>}</div>
 <div class="ttc" id="aclassbuffer_html"><div class="ttname"><a href="classbuffer.html">buffer</a></div><div class="ttdef"><b>Definition</b> <a href="buffer_8hpp_source.html#l00050">buffer.hpp:51</a></div></div>
-<div class="ttc" id="agodbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552_html_a533391314665d6bf1b5575e9a9cd8552"><div class="ttname"><a href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></div><div class="ttdeci">int p</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00010">godboltTest.cpp:10</a></div></div>
+<div class="ttc" id="agodbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552_html_a533391314665d6bf1b5575e9a9cd8552"><div class="ttname"><a href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></div><div class="ttdeci">int p</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00034">godboltTest.cpp:34</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5_html_a2fc91f4e89bc37f261db820d231da2e5"><div class="ttname"><a href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a></div><div class="ttdeci">void size_t s</div><div class="ttdef"><b>Definition</b> <a href="m2-mem_8cpp_source.html#l00271">m2-mem.cpp:271</a></div></div>
 <div class="ttc" id="am2-types_8cpp_a9652bd683300dd969acdf07396e1c1dd_html_a9652bd683300dd969acdf07396e1c1dd"><div class="ttname"><a href="m2-types_8cpp_a9652bd683300dd969acdf07396e1c1dd.html#a9652bd683300dd969acdf07396e1c1dd">newline</a></div><div class="ttdeci">char newline[]</div><div class="ttdef"><b>Definition</b> <a href="m2-types_8cpp_source.html#l00049">m2-types.cpp:49</a></div></div>
 </div><!-- fragment -->

@@ -91,6 +91,9 @@ $(function(){initNavTree('localring_8hpp.html','',''); });
   <div class="headertitle"><div class="title">localring.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_local_ring.html">LocalRing</a></span> &mdash; localisation of a polynomial ring at a prime ideal <span class="tt">P</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ring_8hpp_source.html">ring.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2poly_8hpp_source.html">poly.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a>&quot;</code><br />
@@ -103,7 +106,19 @@ Classes</h2></td></tr>
 <tr class="memitem:local_5Felem" id="r_local_5Felem"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlocal__elem.html">local_elem</a></td></tr>
 <tr class="memitem:LocalRing" id="r_LocalRing"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_local_ring.html">LocalRing</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_local_ring.html">LocalRing</a></span> &mdash; localisation of a polynomial ring at a prime ideal <span class="tt">P</span>. </p>
+<p>Declares <span class="tt"><a class="el" href="class_local_ring.html">LocalRing</a></span>, a <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass whose value type <span class="tt"><a class="el" href="structlocal__elem.html">local_elem</a></span> is a <span class="tt">(numer, denom)</span> pair (the same fraction shape as <span class="tt"><a class="el" href="frac_8hpp.html" title="FractionField — field of fractions of an integral domain, with on-the-fly normalisation.">frac.hpp</a></span>) but with the denominator restricted to <span class="tt">R \ P</span> rather than <span class="tt">R \ {0}</span>. The class stores the underlying polynomial ring <span class="tt">mRing</span> and a <span class="tt">GBComputation* mPrime</span> &mdash; the Groebner basis of <span class="tt">P</span> &mdash; and uses the GB to check after each operation that the resulting denominator's normal form modulo <span class="tt">P</span> is non-zero, raising an engine error if not.</p>
+<p>The constraint is what justifies a distinct class from <span class="tt"><a class="el" href="class_fraction_field.html">FractionField</a></span>: a <span class="tt"><a class="el" href="class_local_ring.html">LocalRing</a></span> knows how to ask "does this
+element lie in `P`?", its unit group depends on <span class="tt">P</span>, and the simplifier can only cancel common factors that already live in <span class="tt">R</span>. When <span class="tt">P = (0)</span> the two coincide. Heavy callers are local- cohomology and tangent / normal-cone computations driven from <span class="tt">m2/localring.m2</span>; GB work over a <span class="tt"><a class="el" href="class_local_ring.html">LocalRing</a></span> reaches into the specialised <span class="tt"><a class="el" href="reducedgb-field-local_8hpp.html">reducedgb-field-local.hpp</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="frac_8hpp.html" title="FractionField — field of fractions of an integral domain, with on-the-fly normalisation.">frac.hpp</a> </dd>
+<dd>
+polyring.hpp </dd>
+<dd>
+<a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="localring_8hpp_source.html">localring.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

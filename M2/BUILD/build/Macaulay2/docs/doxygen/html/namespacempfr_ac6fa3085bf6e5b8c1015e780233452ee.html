@@ -111,22 +111,22 @@ $(function(){initNavTree('namespacempfr_ac6fa3085bf6e5b8c1015e780233452ee.html',
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mpreal_8h_source.html#l02867">2867</a> of file <a class="el" href="mpreal_8h_source.html">mpreal.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 2868</span>{</div>
-<div class="line"><span class="lineno"> 2869</span>    <span class="keyword">static</span> gmp_randstate_t <a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>;</div>
-<div class="line"><span class="lineno"> 2870</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> initialize = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno"> 2871</span> </div>
-<div class="line"><span class="lineno"> 2872</span>    <span class="keywordflow">if</span>(initialize)</div>
-<div class="line"><span class="lineno"> 2873</span>    {</div>
-<div class="line"><span class="lineno"> 2874</span>        gmp_randinit_default(<a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>);</div>
-<div class="line"><span class="lineno"> 2875</span>        gmp_randseed_ui(<a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>,0);</div>
-<div class="line"><span class="lineno"> 2876</span>        initialize = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno"> 2877</span>    }</div>
-<div class="line"><span class="lineno"> 2878</span> </div>
-<div class="line"><span class="lineno"> 2879</span>    <span class="keywordflow">if</span>(seed != 0) gmp_randseed_ui(<a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>,seed);</div>
-<div class="line"><span class="lineno"> 2880</span> </div>
-<div class="line"><span class="lineno"> 2881</span>    <span class="keywordflow">return</span> mpfr::grandom(<a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>);</div>
-<div class="line"><span class="lineno"> 2882</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mpreal_8h_source.html#l02890">2890</a> of file <a class="el" href="mpreal_8h_source.html">mpreal.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 2891</span>{</div>
+<div class="line"><span class="lineno"> 2892</span>    <span class="keyword">static</span> gmp_randstate_t <a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>;</div>
+<div class="line"><span class="lineno"> 2893</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> initialize = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno"> 2894</span> </div>
+<div class="line"><span class="lineno"> 2895</span>    <span class="keywordflow">if</span>(initialize)</div>
+<div class="line"><span class="lineno"> 2896</span>    {</div>
+<div class="line"><span class="lineno"> 2897</span>        gmp_randinit_default(<a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>);</div>
+<div class="line"><span class="lineno"> 2898</span>        gmp_randseed_ui(<a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>,0);</div>
+<div class="line"><span class="lineno"> 2899</span>        initialize = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno"> 2900</span>    }</div>
+<div class="line"><span class="lineno"> 2901</span> </div>
+<div class="line"><span class="lineno"> 2902</span>    <span class="keywordflow">if</span>(seed != 0) gmp_randseed_ui(<a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>,seed);</div>
+<div class="line"><span class="lineno"> 2903</span> </div>
+<div class="line"><span class="lineno"> 2904</span>    <span class="keywordflow">return</span> mpfr::grandom(<a class="code hl_variable" href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a>);</div>
+<div class="line"><span class="lineno"> 2905</span>}</div>
 <div class="ttc" id="arandom_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d_html_a9f8b71742e74bcfa6c4b6d38a690329d"><div class="ttname"><a href="random_8cpp_a9f8b71742e74bcfa6c4b6d38a690329d.html#a9f8b71742e74bcfa6c4b6d38a690329d">state</a></div><div class="ttdeci">static gmp_randstate_t state</div><div class="ttdef"><b>Definition</b> <a href="random_8cpp_source.html#l00018">random.cpp:18</a></div></div>
 </div><!-- fragment -->
 </div>

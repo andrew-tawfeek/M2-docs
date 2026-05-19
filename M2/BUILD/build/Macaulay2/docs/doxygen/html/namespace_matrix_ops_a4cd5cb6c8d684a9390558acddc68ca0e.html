@@ -120,19 +120,19 @@ $(function(){initNavTree('namespace_matrix_ops_a4cd5cb6c8d684a9390558acddc68ca0e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01027">1027</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1028</span>{</div>
-<div class="line"><span class="lineno"> 1029</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> A1(A);</div>
-<div class="line"><span class="lineno"> 1030</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> B1(B);</div>
-<div class="line"><span class="lineno"> 1031</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> C1(C);</div>
-<div class="line"><span class="lineno"> 1032</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> result1(A.<a class="code hl_function" href="class_d_mat_a29d6106319cc01e580c0ddee6f3ddb29.html#a29d6106319cc01e580c0ddee6f3ddb29">numRows</a>(), B.<a class="code hl_function" href="class_d_mat_aff91923e882c194ecf16030897933e45.html#aff91923e882c194ecf16030897933e45">numColumns</a>());</div>
-<div class="line"><span class="lineno"> 1033</span> </div>
-<div class="line"><span class="lineno"> 1034</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> D1(A.<a class="code hl_function" href="class_d_mat_a29d6106319cc01e580c0ddee6f3ddb29.html#a29d6106319cc01e580c0ddee6f3ddb29">numRows</a>(), B.<a class="code hl_function" href="class_d_mat_aff91923e882c194ecf16030897933e45.html#aff91923e882c194ecf16030897933e45">numColumns</a>());</div>
-<div class="line"><span class="lineno"> 1035</span>  fmpq_mat_mul(D1.value(), A1.value(), B1.value());</div>
-<div class="line"><span class="lineno"> 1036</span>  fmpq_mat_sub(C1.value(), C1.value(), D1.value());</div>
-<div class="line"><span class="lineno"> 1037</span> </div>
-<div class="line"><span class="lineno"> 1038</span>  C1.toDMat(C);</div>
-<div class="line"><span class="lineno"> 1039</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01053">1053</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1054</span>{</div>
+<div class="line"><span class="lineno"> 1055</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> A1(A);</div>
+<div class="line"><span class="lineno"> 1056</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> B1(B);</div>
+<div class="line"><span class="lineno"> 1057</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> C1(C);</div>
+<div class="line"><span class="lineno"> 1058</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> result1(A.<a class="code hl_function" href="class_d_mat_a29d6106319cc01e580c0ddee6f3ddb29.html#a29d6106319cc01e580c0ddee6f3ddb29">numRows</a>(), B.<a class="code hl_function" href="class_d_mat_aff91923e882c194ecf16030897933e45.html#aff91923e882c194ecf16030897933e45">numColumns</a>());</div>
+<div class="line"><span class="lineno"> 1059</span> </div>
+<div class="line"><span class="lineno"> 1060</span>  <a class="code hl_class" href="class_flint_q_q_mat.html">FlintQQMat</a> D1(A.<a class="code hl_function" href="class_d_mat_a29d6106319cc01e580c0ddee6f3ddb29.html#a29d6106319cc01e580c0ddee6f3ddb29">numRows</a>(), B.<a class="code hl_function" href="class_d_mat_aff91923e882c194ecf16030897933e45.html#aff91923e882c194ecf16030897933e45">numColumns</a>());</div>
+<div class="line"><span class="lineno"> 1061</span>  fmpq_mat_mul(D1.value(), A1.value(), B1.value());</div>
+<div class="line"><span class="lineno"> 1062</span>  fmpq_mat_sub(C1.value(), C1.value(), D1.value());</div>
+<div class="line"><span class="lineno"> 1063</span> </div>
+<div class="line"><span class="lineno"> 1064</span>  C1.toDMat(C);</div>
+<div class="line"><span class="lineno"> 1065</span>}</div>
 <div class="ttc" id="aclass_d_mat_a29d6106319cc01e580c0ddee6f3ddb29_html_a29d6106319cc01e580c0ddee6f3ddb29"><div class="ttname"><a href="class_d_mat_a29d6106319cc01e580c0ddee6f3ddb29.html#a29d6106319cc01e580c0ddee6f3ddb29">DMat::numRows</a></div><div class="ttdeci">size_t numRows() const</div><div class="ttdef"><b>Definition</b> <a href="dmat_8hpp_source.html#l00138">dmat.hpp:138</a></div></div>
 <div class="ttc" id="aclass_d_mat_aff91923e882c194ecf16030897933e45_html_aff91923e882c194ecf16030897933e45"><div class="ttname"><a href="class_d_mat_aff91923e882c194ecf16030897933e45.html#aff91923e882c194ecf16030897933e45">DMat::numColumns</a></div><div class="ttdeci">size_t numColumns() const</div><div class="ttdef"><b>Definition</b> <a href="dmat_8hpp_source.html#l00139">dmat.hpp:139</a></div></div>
 <div class="ttc" id="aclass_flint_q_q_mat_html"><div class="ttname"><a href="class_flint_q_q_mat.html">FlintQQMat</a></div><div class="ttdef"><b>Definition</b> <a href="dmat-qq-interface-flint_8hpp_source.html#l00085">dmat-qq-interface-flint.hpp:86</a></div></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('hash_8hpp.html','',''); });
   <div class="headertitle"><div class="title">hash.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_engine_object.html">EngineObject</a></span> / <span class="tt"><a class="el" href="class_mutable_engine_object.html">MutableEngineObject</a></span> &mdash; shared base for every long-lived engine class.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
 <code>#include &lt;M2/gc-include.h&gt;</code><br />
@@ -102,7 +105,14 @@ Classes</h2></td></tr>
 <tr class="memitem:EngineObject" id="r_EngineObject"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_object.html">EngineObject</a></td></tr>
 <tr class="memitem:MutableEngineObject" id="r_MutableEngineObject"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mutable_engine_object.html">MutableEngineObject</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_engine_object.html">EngineObject</a></span> / <span class="tt"><a class="el" href="class_mutable_engine_object.html">MutableEngineObject</a></span> &mdash; shared base for every long-lived engine class. </p>
+<p>Declares <span class="tt"><a class="el" href="class_engine_object.html">EngineObject</a></span>, the common base that every long-lived engine type derives from. It routes allocation through bdwgc (via <span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span>), supplies the virtual destructor anchor that makes <span class="tt">delete base_ptr</span> safe across subclass boundaries, and stores a lazily computed <span class="tt">mHashValue</span> filled by the subclass's <span class="tt">computeHashValue()</span> on first read; the 0-to-1 bump keeps "not yet computed" distinguishable from a legitimate hash of zero. <span class="tt"><a class="el" href="class_mutable_engine_object.html">MutableEngineObject</a></span> extends the base with the discipline that any mutation resets the cache, so mutable objects (<span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span>, GB intermediate state, ...) still obey the lazy-hash invariant.</p>
+<p>The hashes are the cache keys <a class="el" href="namespace_m2.html">M2</a>'s interpreter <span class="tt">HashTable</span> uses to identify engine objects across sessions; each subclass implements <span class="tt">computeHashValue</span> over a stable subset of its state (e.g. <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> hashes its source/target plus column entries). <span class="tt">std::hash&lt;<a class="el" href="struct_t.html">T</a>&gt;</span> is unsuitable because engine objects are too large to hash in full per lookup.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="newdelete_8hpp.html">newdelete.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="hash_8hpp_source.html">hash.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

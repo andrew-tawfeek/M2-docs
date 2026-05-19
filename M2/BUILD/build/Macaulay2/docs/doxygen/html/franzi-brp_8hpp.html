@@ -91,6 +91,9 @@ $(function(){initNavTree('franzi-brp_8hpp.html','',''); });
   <div class="headertitle"><div class="title">franzi-brp.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="franzi-brp_8hpp_a0b7d8b2720cde71ff864b1f7425fa486.html#a0b7d8b2720cde71ff864b1f7425fa486">brMonomial</a></span> &mdash; bit-packed Boolean-ring monomials for the Hinkelmann GB engine.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;set&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -113,7 +116,14 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a03b2d8991b080597c4904eadbfed3d36" id="r_a03b2d8991b080597c4904eadbfed3d36"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; <a class="el" href="classint.html">int</a>, <a class="el" href="class_b_r_p.html">BRP</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="franzi-brp_8hpp_a03b2d8991b080597c4904eadbfed3d36.html#a03b2d8991b080597c4904eadbfed3d36">IntermediateBasisMap</a></td></tr>
 <tr class="memitem:ab757760310571764b5752f09c0e29abc" id="r_ab757760310571764b5752f09c0e29abc"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; <a class="el" href="classint.html">int</a>, <a class="el" href="class_b_r_p.html">BRP</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="franzi-brp_8hpp_ab757760310571764b5752f09c0e29abc.html#ab757760310571764b5752f09c0e29abc">IntermediateBasis</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="franzi-brp_8hpp_a0b7d8b2720cde71ff864b1f7425fa486.html#a0b7d8b2720cde71ff864b1f7425fa486">brMonomial</a></span> &mdash; bit-packed Boolean-ring monomials for the Hinkelmann GB engine. </p>
+<p>Declares <span class="tt"><a class="el" href="franzi-brp_8hpp_a0b7d8b2720cde71ff864b1f7425fa486.html#a0b7d8b2720cde71ff864b1f7425fa486">brMonomial</a> = unsigned long</span>, the bit-set encoding of a monomial in <span class="tt">F_2[x_1, ..., x_n] / (x_i^2 - x_i)</span>: bit <span class="tt">i</span> is set iff variable <span class="tt">x_i</span> appears. Multiplication of monomials is bitwise OR (idempotent exponents), coprimality is <span class="tt">(a &amp; b) == 0</span>, and S-polynomial reduction works by XOR of supporting bit-sets, so each monomial op reduces to one or two machine instructions. The encoding caps the engine at 64 variables, which is plenty for the cryptographic and coding-theory inputs that motivate it.</p>
+<p>The companion files in the <span class="tt">franzi-*</span> family (<span class="tt"><a class="el" href="franzi-brp_8cpp.html">franzi-brp.cpp</a></span>, <span class="tt"><a class="el" href="franzi-brp-test_8cpp.html">franzi-brp-test.cpp</a></span>, <span class="tt"><a class="el" href="franzi-gb_8cpp.html">franzi-gb.cpp</a></span>, <span class="tt"><a class="el" href="franzi-interface_8cpp.html">franzi-interface.cpp</a></span>) carry the polynomial representation, a standalone test driver, the Buchberger-style GB algorithm, and the <a class="el" href="namespace_m2.html">M2</a> adapter that plugs the engine into the standard <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> dispatcher. The <span class="tt">// addition is not const</span> banner in this header is deliberate: <span class="tt">+=</span> mutates the left operand for speed, which is a pitfall for the engine's <span class="tt">const</span>-careful code elsewhere. The sibling <span class="tt">bibasis/</span> directory offers an alternative (variable-unbounded, Janet-basis) Boolean GB engine.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="franzi-brp_8hpp_source.html">franzi-brp.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
