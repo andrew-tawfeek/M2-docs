@@ -5,23 +5,31 @@
 
 /**
  * @file dmat-gf-flint.hpp
- * @brief `DMat<M2::ARingGFFlint>` --- dense GF matrices stored in FLINT `fq_zech_mat_t`.
+ * @brief `DMat<M2::ARingGFFlint>` --- dense GF matrices stored in a FLINT `fq_zech_mat_t`.
  *
- * Specialises the dense-matrix template for the small-`q` Galois
- * field aring `ARingGFFlint`: each entry is a Zech log index in
- * `[0, q - 1)` and the storage is FLINT's `fq_zech_mat_t`, so
- * matrix arithmetic dispatches through `fq_zech_mat_*` routines that
- * are O(1) per element --- multiplication is a table-driven log
- * addition, addition is a Zech-table lookup. For `q = p^k` up to
- * roughly `2^15` this is the fastest dense GF matrix path the
- * engine ships.
+ * Specialises the dense-matrix template for the small-`q`
+ * Galois-field aring `ARingGFFlint`. Storage is a single
+ * `fq_zech_mat_t mArray` whose entries are Zech log indices
+ * shared with the aring; the class exposes the standard `DMat`
+ * surface (`ring()`, `numRows`, `numColumns`, `entry(r, c)`
+ * via `fq_zech_mat_entry`, `resize`, `swap`) plus a raw
+ * `fq_zech_mat()` accessor and the `unsafeArray()` direct-pointer
+ * hook for consumers that need to hand the underlying buffer
+ * back to FLINT. All `fq_zech_mat_*` API calls take the
+ * `ring().flintContext()` so the constructors and destructor
+ * thread it through.
  *
+ * Arithmetic and the LU / rank / solve paths are not declared
+ * in this header --- consumers (the LU specialisations in
+ * `dmat-lu-inplace.hpp` and the `mat-linalg.hpp` family) reach
+ * into `fq_zech_mat()` and call the FLINT routines directly.
  * The companion `dmat-gf-flint-big.hpp` covers the polynomial-
- * quotient representation (`fq_nmod_mat_t`) used when `q` grows
- * past what the Zech tables can hold; dispatch between the two is
- * automatic and follows the choice made at ring construction by
- * `aring-gf-flint.hpp` / `aring-gf-flint-big.hpp`. The required
- * `M2/gc-include.h` shim must precede the FLINT headers so FLINT's
+ * quotient (`fq_nmod_mat_t`) representation used by
+ * `ARingGFFlintBig`; the user picks between the two at ring
+ * construction time through the separate
+ * `rawARingGaloisFieldFlintZech` and `rawARingGaloisFieldFlintBig`
+ * entry points (no in-engine auto-fallback). The required
+ * `M2/gc-include.h` shim precedes the FLINT headers so the
  * allocator routes through bdwgc.
  *
  * @see dmat.hpp
