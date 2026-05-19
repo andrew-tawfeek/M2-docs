@@ -9,15 +9,16 @@
  * encoded `MonomialInt` payload. The encoding is `mData[0] =
  * total length`, followed by alternating `(var, power)` pairs
  * over only the variables with positive exponent; equality is a
- * single `std::memcmp` of the tail, divisibility (`monomialDivides`)
- * is a single linear walk over the sparse pairs, and
- * `simpleDegree` is just the sum of powers. Three constructors
- * cover the two non-allocating cases (over a raw pointer or a
- * `std::vector`) plus the allocating one that copies into a
- * caller-supplied `MemoryBlock`; the `combine` / `lcm` /
- * `product` / `quotient` static helpers all route their result
- * into a `MemoryBlock` so the view returned points at fresh
- * storage with predictable lifetime.
+ * single `std::memcmp` of the tail, divisibility
+ * (`monomialDivides`) is a single linear walk over the sparse
+ * pairs, and `simpleDegree` is just the sum of powers. Four
+ * constructors cover the non-allocating cases (raw pointer or
+ * `std::vector`) plus the two allocating ones that copy from
+ * `(std::vector, MemoryBlock&)` or `(MonomialView&, MemoryBlock&)`
+ * into caller-supplied arena storage; the `combine` / `lcm` /
+ * `product` / `quotient` static helpers route their result into
+ * a `MemoryBlock` so the view returned points at fresh storage
+ * with predictable lifetime.
  *
  * The class deliberately does not own its bytes: the same
  * encoded monomial gets referenced from `MonomialHashTable`
