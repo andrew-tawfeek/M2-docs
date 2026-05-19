@@ -1,6 +1,33 @@
 // run this with
 // clang++ -I`brew --prefix tbb@2021`/include -L`brew --prefix tbb@2021`/lib --std=c++17 -ltbb res-tasking-example.cpp -g -o example
 
+/**
+ * @file schreyer-resolution/res-tasking-example.cpp
+ * @brief Standalone TBB `flow::graph` sandbox simulating the F4 resolution's `(level, degree)` task DAG.
+ *
+ * A self-contained test program (not part of the engine build)
+ * that exercises Intel TBB's `flow::continue_node` primitives in
+ * exactly the dependency pattern the production resolution uses:
+ * `nodes[lev][sldeg]` is a per-cell task, each node depends on
+ * the cell one level up and one slanted-degree earlier, and
+ * each task simulates work by sleeping a uniform random
+ * duration before signalling its dependents. The leading
+ * comment carries the literal Homebrew-pinned compile recipe
+ * (`brew --prefix tbb@2021`) so a developer can rebuild and
+ * iterate the threading harness without touching CMake.
+ *
+ * Lives in-tree as documentation of the intended task-graph
+ * shape and as a regression-isolation harness: if the real
+ * `res-dep-graph.hpp` scheduler misbehaves, this sandbox
+ * verifies "is TBB itself doing the right thing?" without
+ * pulling in any engine state. New contributors can use it as
+ * a minimal reference for the parallel resolution design.
+ *
+ * @see res-dep-graph.hpp
+ * @see res-schreyer-frame.hpp
+ * @see m2tbb.hpp
+ */
+
 #include <tbb/tbb.h>
 #include <iostream>
 #include <vector>
