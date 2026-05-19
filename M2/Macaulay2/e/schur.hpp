@@ -3,6 +3,32 @@
 #ifndef _Schurring_hh_
 #define _Schurring_hh_
 
+/**
+ * @file schur.hpp
+ * @brief `SchurRing` --- symmetric-function ring with Schur-basis multiplication via Littlewood-Richardson.
+ *
+ * Declares `SchurRing`, the `Ring` subclass whose elements are
+ * Z-linear combinations of Schur functions `s_lambda` indexed
+ * by partitions, plus the supporting `tableau` scratch struct
+ * (partition vector `p`, contained partition `lambda`, and the
+ * `(xloc, yloc)` coordinate arrays describing the cells of a
+ * skew shape). Multiplication computes the structure constants
+ * `s_lambda * s_mu = sum_nu c_{lambda mu}^nu s_nu` --- the
+ * Littlewood-Richardson coefficients --- by enumerating
+ * LR skew tableaux of shape `nu / lambda` and content `mu`,
+ * which is the structural reason a `tableau` instance is the
+ * inner-loop datum.
+ *
+ * `SCHUR_MAX_WT = 100` caps the partition weight the engine
+ * will multiply (a tractability bound, raisable in principle);
+ * `LARGE_NUMBER = 32000` is the sentinel marking empty slots in
+ * tableau scratch space. The ring is consumed by combinatorial
+ * Schubert-calculus and symmetric-function packages.
+ *
+ * @see poly.hpp
+ * @see ring.hpp
+ */
+
 #include <vector>
 #include "poly.hpp"
 
