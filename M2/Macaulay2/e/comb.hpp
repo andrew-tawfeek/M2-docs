@@ -6,20 +6,23 @@
  * @file comb.hpp
  * @brief `Subsets` --- combinatorial-number-system encoding of `p`-subsets of `{0,...,n-1}`.
  *
- * `Subsets` enumerates and encodes `p`-element subsets of
- * `{0, 1, ..., n - 1}` as a single integer index via the standard
- * combinatorial number system: subsets are listed in the canonical
- * order shown in the header comment, and `encode(p, exp)` /
- * `decode(p, n, idx, exp)` / `next(p, n, exp)` move between an index
- * and the sorted element list. The encoding is stable under
- * extension of the ambient set --- adding new elements appends new
- * subset indices without renumbering existing ones --- which makes
- * it suitable as a long-term identifier.
+ * `Subsets` enumerates and encodes `q`-element subsets of
+ * `{0, 1, ..., n - 1}` (for any `q <= p`) as a single integer index
+ * via the standard combinatorial number system. The constructor
+ * `Subsets(n, p)` precomputes a binomial table; `encode(a)` returns
+ * the index of a sorted `Subset`, `decode(i, a)` writes the `i`-th
+ * subset back into `a`, and the static `increment(n, s)` advances
+ * `s` to the next subset in canonical order. `encodeBoundary` and
+ * `concatenateSubsets` cover the face-map and shuffle operations
+ * needed for exterior-power signs. The encoding is stable under
+ * extension of the ambient set --- the index of a subset depends
+ * only on its element list, not on `n` --- so adding new ambient
+ * elements appends new indices without renumbering existing ones.
  *
- * Engine consumers are exterior-algebra arithmetic (basis elements
- * `e_{i_1} ∧ ... ∧ e_{i_p}` indexed by their subset code),
- * minor-computation routines on matrices, and Schubert-calculus
- * partition machinery driven from `m2/schubert.m2`.
+ * Engine consumers are the exterior-power constructions on free
+ * modules in `freemod.cpp` and `schorder.cpp`, and the minor /
+ * pfaffian routines in `det.cpp`, `matrix.cpp`, and `pfaff.cpp`,
+ * which iterate over row- and column-subsets via `Subsets::increment`.
  */
 
 #include <cassert>
