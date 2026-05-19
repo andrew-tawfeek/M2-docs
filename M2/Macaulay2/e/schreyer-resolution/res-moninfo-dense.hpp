@@ -3,6 +3,41 @@
 #ifndef _res_moninfo_dense_hpp_
 #define _res_moninfo_dense_hpp_
 
+/**
+ * @file schreyer-resolution/res-moninfo-dense.hpp
+ * @brief `ResMonoidDense` --- dense exponent-vector implementation of the resolution monoid.
+ *
+ * Declares the implementation `res-moninfo.hpp` picks as the
+ * production `ResMonoid`. Each monomial is encoded as
+ * `[hash, component, weight_1, ..., weight_r, exp_1, ...,
+ * exp_nvars]` where the exponent slots are always present
+ * regardless of which variables actually appear --- favouring
+ * `O(1)` access and `memcmp`-style comparison over compactness.
+ * Hashing uses a per-variable precomputed random word from
+ * `hashfcn`, ANDed with `mask` to fit the engine-wide
+ * `res_monomial_word`; weight slots front-load the comparison
+ * with cached degree contributions so order tests can short-
+ * circuit before walking the exponent suffix. Skew-commutative
+ * variables are handled through the inherited `SkewMultiplication`
+ * helper so `mult(a, b, result)` accounts for the appropriate
+ * sign.
+ *
+ * Wins for rings with few variables or dense exponents (cache-
+ * friendly inner loops, predictable layout); the sparse twin
+ * `res-moninfo-sparse.hpp` wins on the opposite end. Both
+ * expose identical `mult` / `compare` / `divides` / `hash` /
+ * `degree` / `to_exponents` surfaces, which is what lets
+ * `res-moninfo.hpp` swap implementations with a single typedef
+ * edit. The per-call counters at the bottom of the class are
+ * the engine's home-grown profiler hooks.
+ *
+ * @see res-moninfo.hpp
+ * @see res-moninfo-sparse.hpp
+ * @see res-monomial-types.hpp
+ * @see res-poly-ring.hpp
+ * @see skew.hpp
+ */
+
 #include <iostream>                   // for ostream
 #include <memory>                     // for unique_ptr
 #include <vector>                     // for vector
