@@ -1,6 +1,38 @@
 #ifndef _word_table_hpp_
 #define _word_table_hpp_
 
+/**
+ * @file NCAlgebras/WordTable.hpp
+ * @brief `WordTable` --- production leading-word index for non-commutative Gröbner basis lookup.
+ *
+ * Declares the structure `NCGroebner` and `NCF4` consult to
+ * answer "does some basis leading word occur as a contiguous
+ * subword of this target?" --- the non-commutative analogue of
+ * monomial divisibility. The table stores leading `Word`s in a
+ * single backing `MemoryBlock` plus parallel index slots, with
+ * a planned soft-delete via `-1` markers in the index vector
+ * tracked in the in-file TODO. `subword(target, out)` reports
+ * the first match used to drive reduction, `subwords(target,
+ * out)` collects all of them for analysis, and `insert(w)` /
+ * `insert(w, newRightOverlaps)` extends the table while
+ * harvesting the fresh right-overlaps the new entry generates
+ * with every existing word.
+ *
+ * The string-matching subword search is the hot path of the
+ * entire NC GB engine; the naive walk is `O(|target| *
+ * |table|)` per query and is the production choice today.
+ * `SuffixTree` is the experimental constant-`O(|target|)`
+ * alternative the engine is staged to swap in. Memory is
+ * arena-allocated so `clear()` releases the entire payload at
+ * once when the algorithm restarts at a fresh degree.
+ *
+ * @see Word.hpp
+ * @see SuffixTree.hpp
+ * @see NCGroebner.hpp
+ * @see NCF4.hpp
+ * @see MemoryBlock.hpp
+ */
+
 #include <cstddef>
 #include <ostream>
 #include <tuple>
