@@ -3,6 +3,30 @@
 #ifndef _polyquotient_hpp_
 #define _polyquotient_hpp_
 
+/**
+ * @file polyquotient.hpp
+ * @brief `PolyRingQuotient` --- polynomial ring modulo an ideal whose Groebner basis is known.
+ *
+ * Declares the concrete `PolyRing` subclass for `R / I`, where
+ * `R` is a `PolyRingFlat` (the ambient ring) and `I` is a
+ * polynomial ideal carried in a `QRingInfo` bookkeeping struct
+ * (declared in `qring.hpp`). `QRingInfo` keeps the defining
+ * ideal's generators twice --- as `Nterm*` for ring-element
+ * arithmetic and as `gbvector*` for GB-internal reduction ---
+ * so multiplication, inversion, and every other operation in
+ * the quotient finishes with a reduction against the stored GB
+ * without having to convert representations on each call.
+ *
+ * Built from M2 by `R = k[xs]; I = ideal(...); Q = R/I`; the
+ * factory rejects trivial ideals (returns the ambient `R`
+ * unchanged) and routes through `PolynomialRing` to wire up the
+ * resulting `PolyRingQuotient` into the engine's ring hierarchy.
+ *
+ * @see poly.hpp
+ * @see qring.hpp
+ * @see polyring.hpp
+ */
+
 #include "engine-includes.hpp"
 
 #include "poly.hpp"
