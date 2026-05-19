@@ -3,6 +3,33 @@
 #ifndef _comp_hpp_
 #define _comp_hpp_
 
+/**
+ * @file comp.hpp
+ * @brief Abstract `Computation` base class --- stop-condition machinery for incremental engine work.
+ *
+ * `Computation` is the pure-virtual root of every long-running
+ * engine task (Groebner basis, resolution, Hilbert series, ...). It
+ * carries a `ComputationStatusCode` (`COMP_DONE`,
+ * `COMP_INTERRUPTED`, `COMP_DEGREE_LIMIT_REACHED`, ...) and a
+ * `StopConditions` struct that bundles the user-facing limit
+ * vocabulary: `degree_limit`, `basis_element_limit`, `syzygy_limit`,
+ * `pair_limit`, `codim_limit`, `subring_limit`, `just_min_gens`,
+ * `length_limit`, and the `always_stop` debug knob. M2 statements
+ * like `gb(I, DegreeLimit => 5)` map to constructing a concrete
+ * subclass, calling `set_stop_conditions`, then `start_computation`.
+ *
+ * The incremental design is what makes the engine usable on
+ * hour-or-day computations: users can interrupt cleanly (status
+ * flips to `COMP_INTERRUPTED`), inspect the partial state, raise
+ * a limit, and call `start_computation` again to resume where the
+ * previous run stopped. The same pattern shows up in every
+ * `comp-*` subclass.
+ *
+ * @see comp-gb.hpp
+ * @see comp-res.hpp
+ * @see interface/computation.h
+ */
+
 #include "interface/computation.h"
 #include "hash.hpp"
 
