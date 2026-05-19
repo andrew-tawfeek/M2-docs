@@ -2,6 +2,34 @@
 #ifndef _spair_hh_
 #define _spair_hh_
 
+/**
+ * @file spair.hpp
+ * @brief `gb_elem` / `s_pair` --- basis-element record and S-pair work unit for Buchberger-style GB algorithms.
+ *
+ * Declares the two intrusive structs at the heart of `gbA` and
+ * its sibling strategies. `gb_elem` carries one basis member:
+ * the `gbvector` polynomial `f` plus its syzygy companion
+ * `fsyz`, the cached leading exponent vector, an `is_min`
+ * bitmask, and an index `me` into the basis. Two intrusive
+ * lists thread through it (`next` over every element in
+ * insertion order, `next_min` over the still-minimal subset)
+ * and each element owns its own `pair_list` of pending
+ * `s_pair`s where it serves as the "first" pair operand ---
+ * shrinking that list to empty is what promotes an element to
+ * a finalised GB generator.
+ *
+ * `s_pair` stores enough information to rank the pair on the
+ * S-pair queue (degree, lcm of leading monomials, a
+ * `compare_num` tiebreaker) without computing the S-polynomial
+ * yet; the S-polynomial is materialised only when the pair is
+ * pulled off the queue. The default sugar-aware degree-first
+ * selection lives in `gb-default.hpp`.
+ *
+ * @see gb-default.hpp
+ * @see gbring.hpp
+ * @see gbweight.hpp
+ */
+
 #include "freemod.hpp"
 #include "polyring.hpp"
 #include "gbring.hpp"
