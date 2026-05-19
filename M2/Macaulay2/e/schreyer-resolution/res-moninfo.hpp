@@ -15,9 +15,10 @@
  * wins for dense monomials or small variable counts; the sparse
  * layout stores `(variable, exponent)` pairs and wins for
  * low-support monomials in many-variable rings. Both expose the
- * same `monomial_size`, `compare`, `multiply`, and
- * `to_expvector` / `from_expvector` surface, so switching only
- * requires editing this header.
+ * same `monomial_size` / `compare_grevlex` / `compare_schreyer`
+ * / `mult` / `divide` / `to_expvector` / `from_expvector` /
+ * `from_varpower_monomial` surface, so switching only requires
+ * editing this header.
  *
  * The rest of the schreyer-resolution code references
  * `ResMonoid` through this typedef, which keeps the
