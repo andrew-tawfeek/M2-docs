@@ -3,6 +3,35 @@
 #ifndef _coeffrings_hpp_
 #define _coeffrings_hpp_
 
+/**
+ * @file coeffrings.hpp
+ * @brief Coefficient-ring registry and the `CoefficientRingZZp` `SimpleARing` exemplar.
+ *
+ * Declares `CoefficientRingZZp`, the smallest fully-worked
+ * `SimpleARing<CoefficientRingZZp>` in the engine: `Z/p` for small
+ * primes (`p <= 32749`) represented by discrete-logarithm tables.
+ * Multiplication becomes addition of log indices and lookup in
+ * `exp_table`; inversion, squaring, and powers are similar arithmetic
+ * on the indices; both tables fit in cache for the supported
+ * primes. The CRTP base supplies default implementations parameterised
+ * on the derived class so the per-element operations inline at every
+ * call site instead of going through a virtual.
+ *
+ * This file also serves as the central registration point connecting
+ * concrete coefficient back ends (`aring-zzp-flint.hpp`,
+ * `aring-zzp-ffpack.hpp`, `aring-zz-{gmp,flint}.hpp`,
+ * `aring-qq-*.hpp`, `aring-gf-*.hpp`, the `RR` / `CC` family, ...)
+ * to the `aring.hpp` dispatcher: each back end picks a `RingID` and
+ * the registry threads the right type to the right tag. Adding a new
+ * small coefficient ring follows the `CoefficientRingZZp` template
+ * verbatim --- subclass `SimpleARing`, implement the arithmetic
+ * primitives, register a `RingID`, expose via `interface/aring.h`.
+ *
+ * @see aring.hpp
+ * @see aring-glue.hpp
+ * @see ZZp.hpp
+ */
+
 class Z_mod;
 #include "aring.hpp"
 #include "ringelem.hpp"
