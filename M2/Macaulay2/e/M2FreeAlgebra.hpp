@@ -6,19 +6,29 @@
  * @brief `Ring`-shaped wrapper that exposes a non-commutative `FreeAlgebra` to the rest of the engine.
  *
  * The non-commutative implementation in `NCAlgebras/FreeAlgebra.hpp`
- * deliberately does not inherit from `Ring` --- it wants clean
- * templates and no virtual-dispatch overhead. But matrices, modules,
- * resolutions, `Computation`s, and `RingMap` construction all want a
- * `Ring*`. `M2FreeAlgebra` reconciles the two: it owns a
- * `std::unique_ptr<FreeAlgebra>` and forwards every `Ring` virtual call
- * to the wrapped instance, so the non-commutative ring slots
- * transparently into `Matrix` / `MutableMatrix` / `RingElement` slots
- * and can serve as the coefficient ring in a layered construction.
+ * (`class FreeAlgebra : public our_new_delete`) deliberately does
+ * not inherit from `Ring` --- it wants clean templates and no
+ * virtual-dispatch overhead. But matrices, modules, resolutions,
+ * `Computation`s, and `RingMap` construction all want a `Ring*`.
+ * `M2FreeAlgebra` reconciles the two by owning a
+ * `std::unique_ptr<FreeAlgebra>` and forwarding every `Ring`
+ * virtual call to the wrapped instance, so the non-commutative
+ * ring slots transparently into `Matrix` / `MutableMatrix` /
+ * `RingElement` slots.
  *
- * The value type stored in `ring_elem` is the shared `Poly` from
- * `Polynomial.hpp`. This wrap-a-templated-implementation-in-a-`Ring`
- * pattern mirrors `aring-glue.hpp`'s `ConcreteRing<R>` for the aring
- * family. The quotient counterpart is `M2FreeAlgebraQuotient`.
+ * The class hierarchy here is two-level: this file also declares
+ * the abstract `M2FreeAlgebraOrQuotient : public Ring`, which
+ * `M2FreeAlgebra` and `M2FreeAlgebraQuotient` both inherit from.
+ * That intermediate fixes `is_commutative_ring()` to `false` and
+ * pins the abstract API (`freeAlgebra()`, `n_vars()`,
+ * `coefficientRing()`, `from_coefficient()`, `makeTerm()`,
+ * `cast_to_M2FreeAlgebraOrQuotient()`) plus `toPoly` / `fromPoly`
+ * / `appendFromModuleMonom` / `fromModuleMonom` helpers that
+ * translate between `ring_elem` (carrying the value through the
+ * `mPolyVal` slot) and the shared `Poly` from `Polynomial.hpp`.
+ * This wrap-a-templated-implementation-in-a-`Ring` pattern
+ * mirrors `aring-glue.hpp`'s `ConcreteRing<R>` for the aring
+ * family.
  *
  * @see NCAlgebras/FreeAlgebra.hpp
  * @see Polynomial.hpp
