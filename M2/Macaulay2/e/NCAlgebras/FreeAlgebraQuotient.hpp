@@ -3,30 +3,27 @@
 
 /**
  * @file NCAlgebras/FreeAlgebraQuotient.hpp
- * @brief `FreeAlgebraQuotient` --- a `FreeAlgebra` modulo a two-sided ideal carried by an embedded `NCGroebner`.
+ * @brief A `FreeAlgebra` modulo a two-sided ideal carried by an embedded `NCGroebner`.
  *
  * Declares the non-commutative analogue of `PolyQuotient`. The
  * class holds a reference to its ambient `FreeAlgebra` together
- * with an `NCGroebner` that owns both the stored Gröbner basis
- * of the defining two-sided ideal and the word-table /
- * suffix-tree indices used for divisor lookup; the constructor
- * takes a precomputed `ConstPolyList& GB` plus a `maxdeg`
- * degree limit. `normalizeInPlace`, `mult`, `power`, and the
- * other arithmetic entries first compute in the ambient
- * algebra and then reduce the result modulo the GB via the
+ * with an `NCGroebner` that owns the stored Gröbner basis of
+ * the defining ideal and the word-table / suffix-tree indices
+ * used for divisor lookup; the constructor takes a precomputed
+ * `ConstPolyList& GB` plus a `maxdeg` cap. `normalizeInPlace`,
+ * `mult`, `power`, and the other arithmetic entries compute in
+ * the ambient algebra and then reduce modulo the GB via the
  * embedded `NCGroebner`. The full `Ring`-like surface is
  * implemented here even though the class does not inherit from
- * `Ring`; `M2FreeAlgebraQuotient` wraps this object to provide
- * the engine-wide `Ring` facade.
+ * `Ring`; `M2FreeAlgebraQuotient` wraps it to provide the
+ * engine-wide `Ring` facade.
  *
  * The companion `FreeAlgebraQuotientElement` at the bottom of
- * the header is a lightweight RAII handle that owns one `Poly`
- * and routes the standard operators through the quotient ---
- * exposed for unit tests and interactive debugging rather than
- * production use. A two-sided GB in a free algebra is in
- * general infinite, so the `maxdeg` cap is the engine's way of
- * keeping the computation finite at the cost of incomplete
- * reduction past that degree.
+ * the header is a lightweight RAII handle around one `Poly`,
+ * exposed for unit tests and interactive debugging. A two-sided
+ * GB in a free algebra is in general infinite, so `maxdeg` is
+ * how the engine keeps the computation finite at the cost of
+ * incomplete reduction past that degree.
  *
  * @see FreeAlgebra.hpp
  * @see FreeMonoid.hpp
