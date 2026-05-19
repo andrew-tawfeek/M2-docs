@@ -17,13 +17,14 @@
  * freeing the chain so a whole degree's worth of transient
  * payload can be bulk-discarded with no per-allocation cost.
  *
- * Direct twin of `f4/memblock.hpp` on the GB side; both pre-
- * date the newer `MemoryBlock` (memtailor `Arena` wrapper) used
- * by `gb-f4/` and `NCAlgebras/`. The resolution copy lives
- * separately because `F4MemoryBlock` is parameterised
- * differently (no `our_new_delete` base, no atomic-pool flag),
- * and the F4 / resolution paths intentionally evolve
- * independently for now.
+ * Near-twin of `f4/memblock.hpp` on the GB side; both pre-date
+ * the newer `MemoryBlock` (memtailor `Arena` wrapper) used by
+ * `gb-f4/` and `NCAlgebras/`. The resolution variant differs
+ * from `F4MemoryBlock` by *not* inheriting from
+ * `our_new_delete`, so `ResMemoryBlock` instances are
+ * expected to live as members of larger structs rather than
+ * being individually GC-allocated; the F4 / resolution paths
+ * intentionally evolve independently for now.
  *
  * @see f4/memblock.hpp
  * @see MemoryBlock.hpp
