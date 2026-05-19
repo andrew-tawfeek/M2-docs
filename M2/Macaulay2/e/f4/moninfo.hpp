@@ -5,28 +5,41 @@
 
 /**
  * @file f4/moninfo.hpp
- * @brief `MonomialInfo` --- F4's specialised monoid descriptor over packed monomials.
+ * @brief `MonomialInfo` --- F4's `packed_monomial` encoding plus operations.
  *
- * Declares `MonomialInfo`, the F4-side compiled form of a
- * `Monoid`. The class exposes the operations the F4 inner loop
- * needs: `monomial_size(m)` for the int count of one encoded
- * monomial, `compare_grevlex(a, b)` for the order test, `mult`
- * / `unchecked_mult` for multiplication, `divide` /
- * `unchecked_divide` for division (with `divide` returning
- * `bool` for the divisibility test), and the
- * `to_varpower_monomial` / `from_varpower_monomial` converters
- * between the dense `ntuple_monomial` and sparse
- * `varpower_monomial` encodings. A `SkewMultiplication` field
- * carries the skew-variable configuration when the ambient
- * ring is exterior-flavoured.
+ * Declares `MonomialInfo`, the F4-side specialised monoid
+ * descriptor. A `packed_monomial` is a `monomial_word*` (long
+ * pointer) with the layout
+ * `[hashvalue, component, wt_1, ..., wt_s, e_0, ..., e_{n-1}]`;
+ * the total slot count `nslots` is fixed per ring, so
+ * `monomial_size()` returns it directly (the parameter is
+ * vestigial). The hash is the additive trick (credited to
+ * A. Steel in-source): each variable gets a random
+ * `hashfcn[i]`, and `hash(m) = sum hashfcn[i] * e_i` so
+ * `hash(m*n) = hash(m) + hash(n)` and `mult` updates the
+ * stored hash by a single add. `MonomialInfo` exposes the
+ * F4-inner-loop surface --- `mult` / `unchecked_mult`,
+ * `divide` (returns `bool`, used as a divisibility test) /
+ * `unchecked_divide`, `compare_grevlex` (plus `compare` for
+ * the general ordering), `get_component` /
+ * `set_component`, and conversions
+ * `from_expvector` / `to_expvector` (against the dense
+ * `ntuple_monomial`) and `from_varpower_monomial` /
+ * `to_varpower_monomial` (against the sparse
+ * `varpower_monomial`). Skew-variable operations
+ * (`skew_vars`, `skew_mult_sign`) take a `SkewMultiplication*`
+ * by parameter --- `MonomialInfo` does not own one. A bank
+ * of `mutable unsigned long ncalls_*` counters records every
+ * operation for the `show()` diagnostic dump.
  *
- * `MonomialInfo` strips out everything F4 does not need from
- * the general-purpose `Monoid` (multi-degrees beyond a single
- * scalar, generic-ordering walkers) and adds the F4-specific
- * accelerators (packed layout, preferred encoding choice). The
- * engine builds one per `PolynomialRing` at F4 startup and
- * shares it across all F4 operations on that ring; the `#if 0`
- * block at the top is stale configuration scaffolding kept
+ * The encoding carries multi-degree information: optional
+ * weight-vector slots (`mWeightVectors`, `mNumWeights`) are
+ * packed inline between the component and the exponents, and
+ * `mHeftDegrees` / `mModuleHeftDegrees` are kept on the side
+ * for the heft / module-heft scoring. The engine builds one
+ * `MonomialInfo` per `PolynomialRing` at F4 startup and shares
+ * it across all F4 operations on that ring; the `#if 0` block
+ * at the top is stale `stdint.h`/`config.h` scaffolding kept
  * alongside the live code.
  *
  * @see ntuple-monomial.hpp
