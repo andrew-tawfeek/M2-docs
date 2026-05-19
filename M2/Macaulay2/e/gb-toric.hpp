@@ -15,14 +15,16 @@
  * `smaller` back-link (non-null iff the current element is not a
  * minimal GB generator, in which case it points at a GB element
  * whose leading monomial divides this one). Specialising to
- * binomials lets the algorithm skip generic-coefficient arithmetic
- * entirely --- every operation is monomial manipulation --- which
- * is what makes toric ideals (the most important class of
- * binomial ideals) tractable at scale.
+ * binomials lets the algorithm skip generic-coefficient
+ * arithmetic entirely --- every operation is monomial
+ * manipulation through the helper class `binomial_ring`.
  *
- * The class plugs into the standard `GBComputation` interface
- * and is selected through M2's `Strategy =>` keyword when the
- * input is known to be toric. Sibling specialisations live in
+ * The dispatcher in `comp-gb.cpp` selects this path via
+ * `algorithm == 7`. The in-source class doxygen flags the
+ * implementation "Non-functional": `get_change`,
+ * `get_syzygies`, `matrix_remainder`, `matrix_lift`, and
+ * `contains` are declared but not planned to be implemented,
+ * and `text_out` is a no-op. Sibling GB specialisations live in
  * `gb-default.hpp`, `gb-sugarless.hpp`, `gb-homog2.hpp`, and
  * `gb-walk.hpp`. The TODO at the top of the header flags the
  * still-undecided typing of the `int *` monomial pointers that
