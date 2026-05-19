@@ -22,6 +22,7 @@
  * @see testMain.cpp
  * @see fromStream.cpp
  * @see util-polyring-creation.hpp
+ * @see interrupted.hpp
  */
 
 bool system_interrupted() { return false; }
