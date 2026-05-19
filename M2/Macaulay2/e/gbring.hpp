@@ -6,25 +6,28 @@
  * @brief `GBRing` and `gbvector` --- the GB-tuned polynomial-ring view used by classical Buchberger code.
  *
  * `gbvector` is the value type: a singly-linked list of
- * `(coeff, component, monomial)` triples sorted highest-term-
- * first, with the flexible-array `monom[1]` trailing whatever
- * variable-length encoding the monoid uses. `GBRing` is the
- * ring view that holds the matching coefficient ring and monoid,
- * remembers the ambient free module `F` and its syzygy companion
- * `Fsyz`, and hides any installed Schreyer order so reductions
- * can work uniformly. Its central operation is `reduce_vec`, the
- * inner loop of every Buchberger-style GB algorithm; the various
- * `GBRingSkew`, `GBRingWeyl`, ... subclasses cover the cross of
- * (Schreyer encoding x coefficient kind x ring flavour x
- * base-vs-quotient) the engine supports.
+ * `{ gbvector *next; ring_elem coeff; int comp; int monom[1]; }`
+ * nodes, with the flexible-array `monom[1]` trailing whatever
+ * variable-length encoding the monoid uses. `POLY { gbvector
+ * *f; gbvector *fsyz; }` pairs the polynomial with its evolving
+ * syzygy. `GBRing` is the matching ring view: it inherits from
+ * `our_new_delete`, holds the coefficient ring and monoid, and
+ * exposes the core polynomial-arithmetic primitives the GB
+ * inner loop needs --- in particular `gbvector_add_to`
+ * (general-coefficient addition) and its `gbvector_add_to_zzp`
+ * specialisation for prime-field hot paths. Concrete subclasses
+ * (`GBRingPoly`, `GBRingSkew`, `GBRingWeyl`, `GBRingWeylZZ`,
+ * `GBRingSolvable`) cover the cross of ring flavour and
+ * coefficient kind; the in-source comment block enumerates the
+ * full Schreyer-encoded / `KK` vs `ZZ` / quotient axes.
  *
  * Compared with `polyring.hpp`'s `PolynomialRing`, this view
  * trades the opaque `ring_elem` for an explicit linked-list
  * representation that makes head/tail decomposition cheap and
- * lets the `gbvectorHeap` accumulator do polynomial addition
- * over many summands in `O(n log k)`. A `GBRing` is constructed
- * once per GB computation from a `PolynomialRing` and torn down
- * at the end.
+ * lets the companion `gbvectorHeap` accumulator absorb the
+ * many summands of a GB reduction without quadratic merge
+ * cost. A `GBRing` is constructed once per GB computation from
+ * a `PolynomialRing` and torn down at the end.
  *
  * @see polyring.hpp
  * @see comp-gb.hpp
