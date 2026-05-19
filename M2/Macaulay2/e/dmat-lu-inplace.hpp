@@ -3,6 +3,32 @@
 #ifndef _dmat_lu_inplace_hpp_
 #define _dmat_lu_inplace_hpp_
 
+/**
+ * @file dmat-lu-inplace.hpp
+ * @brief `DMatLinAlg` specialisations for `ARingGFFlint{,Big}` wrapping FLINT's in-place LU plus LAPACK glue.
+ *
+ * Carries the `DMatLinAlg<M2::ARingGFFlint>` and
+ * `DMatLinAlg<M2::ARingGFFlintBig>` specialisations that route
+ * dense LU, rank, determinant, and null-space over FLINT Galois
+ * fields through `fq_zech_mat_lu` and `fq_nmod_mat_lu`. The LU
+ * factors overwrite the input matrix (FLINT's "in-place" form),
+ * which saves a copy at the cost of destroying the original ---
+ * callers that need to preserve `M` make a copy themselves.
+ * `_perm_parity` from `<flint/perm.h>` is pulled in so the routines
+ * can read off the sign needed for downstream determinant code.
+ *
+ * The header also declares the LAPACK-array glue used by the `RR`
+ * / `CC` LU path: `make_lapack_array` / `fill_from_lapack_array`
+ * marshal a `DMatRR` or `DMatCC` to and from the contiguous
+ * `std::vector<double>` form LAPACK expects, and `LUUtil<RT>`
+ * provides the shared helpers used across these specialisations.
+ *
+ * @see dmat-lu.hpp
+ * @see dmat.hpp
+ * @see aring-gf-flint.hpp
+ * @see aring-gf-flint-big.hpp
+ */
+
 #include "dmat.hpp"
 #include "mat-elem-ops.hpp"
 #include "mat-util.hpp"
