@@ -2,30 +2,29 @@
 
 /**
  * @file gb-f4/PolynomialList.hpp
- * @brief `newf4::PolynomialList` / `Polynomial` --- hash-table-keyed polynomial storage for the new F4.
+ * @brief Hash-table-keyed polynomial storage for the new F4.
  *
  * Declares the container and value type the refactored F4 uses
  * for inputs, intermediates, and basis elements. `PolynomialList`
- * holds an owned `std::vector<Polynomial>` together with
- * non-owning references to a shared `MonomialHashTable` and
- * `VectorArithmetic`; the shared monomial table means each
- * `Polynomial` is just three small parallel arrays --- an
- * `ElementArray` of coefficients (sized and decoded through the
- * `VectorArithmetic` dispatcher), a vector of `MonomialIndex`
- * keys into the table, and a vector of `ComponentIndex` slots
- * for free-module components. The list and its hash table must
- * have matching lifetimes since deletion of the table would
- * invalidate every polynomial in the list.
+ * owns a `std::vector<Polynomial>` together with non-owning
+ * references to a shared `MonomialHashTable` and
+ * `VectorArithmetic`; the shared table means each `Polynomial`
+ * reduces to three small parallel arrays --- an `ElementArray`
+ * of coefficients (sized and decoded through `VectorArithmetic`),
+ * a vector of `MonomialIndex` keys into the table, and a vector
+ * of `ComponentIndex` slots for free-module components. The
+ * list and its hash table must share a lifetime; deleting the
+ * table invalidates every polynomial in the list.
  *
  * The nested templated `PolynomialIterator` exposes per-term
- * `coeff()` / `monom()` / `comp()` accessors that decode through
- * the vector-arithmetic and hash-table indirections so callers
- * walk a polynomial without thinking about the underlying packing.
- * `PolynomialListStreamCollector` implements the mathicgb-style
- * `appendTermBegin` / `appendExponent` / `appendTermDone` stream
- * surface so a `BasicPolyListParser` (and the legacy `Matrix`
- * ingestion path) can feed terms in without an intermediate
- * buffer; the free `toStream` writes a list back out the same way.
+ * `coeff()` / `monom()` / `comp()` accessors that decode the
+ * vector-arithmetic and hash-table indirections behind the
+ * scenes. `PolynomialListStreamCollector` implements the
+ * mathicgb-style `appendTermBegin` / `appendExponent` /
+ * `appendTermDone` stream surface so a `BasicPolyListParser`
+ * (and the legacy `Matrix` ingestion path) can feed terms in
+ * without an intermediate buffer; the free `toStream` writes a
+ * list back out the same way.
  *
  * @see MonomialHashTable.hpp
  * @see MonomialTypes.hpp
