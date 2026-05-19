@@ -120,15 +120,15 @@ $(function(){initNavTree('class_m2_1_1_a_ring_r_r_aaaedb422fcef3f6c04086470db71e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aring-_r_r_8hpp_source.html#l00190">190</a> of file <a class="el" href="aring-_r_r_8hpp_source.html">aring-RR.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  191</span>  {</div>
-<div class="line"><span class="lineno">  192</span>    std::pair&lt;bool, int&gt; n1 = <a class="code hl_function" href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si</a>(n);</div>
-<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">if</span> (n1.first)</div>
-<div class="line"><span class="lineno">  194</span>      <a class="code hl_function" href="class_m2_1_1_a_ring_r_r_a8b0e0f67d0831c613788bce363d942bf.html#a8b0e0f67d0831c613788bce363d942bf">power</a>(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>, a, n1.second);</div>
-<div class="line"><span class="lineno">  195</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  196</span>      <span class="keywordflow">throw</span> exc::engine_error(<span class="stringliteral">&quot;exponent too large&quot;</span>);</div>
-<div class="line"><span class="lineno">  197</span>  }</div>
-<div class="ttc" id="aclass_m2_1_1_a_ring_r_r_a8b0e0f67d0831c613788bce363d942bf_html_a8b0e0f67d0831c613788bce363d942bf"><div class="ttname"><a href="class_m2_1_1_a_ring_r_r_a8b0e0f67d0831c613788bce363d942bf.html#a8b0e0f67d0831c613788bce363d942bf">M2::ARingRR::power</a></div><div class="ttdeci">void power(ElementType &amp;result, const ElementType &amp;a, int n) const</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_r_8hpp_source.html#l00185">aring-RR.hpp:185</a></div></div>
+<p class="definition">Definition at line <a class="el" href="aring-_r_r_8hpp_source.html#l00216">216</a> of file <a class="el" href="aring-_r_r_8hpp_source.html">aring-RR.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  217</span>  {</div>
+<div class="line"><span class="lineno">  218</span>    std::pair&lt;bool, int&gt; n1 = <a class="code hl_function" href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si</a>(n);</div>
+<div class="line"><span class="lineno">  219</span>    <span class="keywordflow">if</span> (n1.first)</div>
+<div class="line"><span class="lineno">  220</span>      <a class="code hl_function" href="class_m2_1_1_a_ring_r_r_a8b0e0f67d0831c613788bce363d942bf.html#a8b0e0f67d0831c613788bce363d942bf">power</a>(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>, a, n1.second);</div>
+<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  222</span>      <span class="keywordflow">throw</span> exc::engine_error(<span class="stringliteral">&quot;exponent too large&quot;</span>);</div>
+<div class="line"><span class="lineno">  223</span>  }</div>
+<div class="ttc" id="aclass_m2_1_1_a_ring_r_r_a8b0e0f67d0831c613788bce363d942bf_html_a8b0e0f67d0831c613788bce363d942bf"><div class="ttname"><a href="class_m2_1_1_a_ring_r_r_a8b0e0f67d0831c613788bce363d942bf.html#a8b0e0f67d0831c613788bce363d942bf">M2::ARingRR::power</a></div><div class="ttdeci">void power(ElementType &amp;result, const ElementType &amp;a, int n) const</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_r_8hpp_source.html#l00211">aring-RR.hpp:211</a></div></div>
 <div class="ttc" id="aclass_ring_z_z_a93f60c7348caad7f332820b455fb3735_html_a93f60c7348caad7f332820b455fb3735"><div class="ttname"><a href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si</a></div><div class="ttdeci">static std::pair&lt; bool, int &gt; get_si(mpz_srcptr n)</div><div class="ttdef"><b>Definition</b> <a href="_z_z_8cpp_source.html#l00046">ZZ.cpp:46</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 </div><!-- fragment -->

@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-_c_ci_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-CCi.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_ci.html">M2::ARingCCi</a></span> &mdash; certified complex intervals as Cartesian rectangles of MPFI intervals.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;mpfi.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="random_8h_source.html">interface/random.h</a>&quot;</code><br />
@@ -113,7 +116,20 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:M2" id="r_M2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2.html">M2</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_ci.html">M2::ARingCCi</a></span> &mdash; certified complex intervals as Cartesian rectangles of MPFI intervals. </p>
+<p><span class="tt">ARingCCi</span> represents a complex value as a pair of real intervals <span class="tt">(re_interval, im_interval)</span> &mdash; i.e. a Cartesian rectangle in the complex plane. Endpoints have arbitrary MPFR precision; the underlying interval arithmetic is MPFI. Addition is componentwise; multiplication uses the standard <span class="tt">(ac - bd) + (ad + bc) i</span> formula with outward rounding on each sub-interval so the result is a certified enclosure of the true product. The rectangle representation is simple but yields overly wide enclosures under rotation; for tighter bounds the disk form would be preferable, but this file does not implement it.</p>
+<p>The class composes three sibling arings: <span class="tt">ARingRRR</span> for endpoint precision, <span class="tt">ARingRRi</span> for the real-interval components, and <span class="tt">ARingCCC</span> for exact MPFR complex arithmetic used as a reference. The dispatcher in <span class="tt"><a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a></span> selects <span class="tt">ARingCCi</span> whenever the M2-level precision option requests a complex ring with the "interval" flag set.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-_r_ri_8hpp.html" title="M2::ARingRRi — certified real intervals [a, b] with MPFR endpoints, MPFI arithmetic.">aring-RRi.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_r_r_r_8hpp.html" title="M2::ARingRRR — arbitrary-precision real numbers backed by MPFR.">aring-RRR.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_c_c_c_8hpp.html" title="M2::ARingCCC — arbitrary-precision complex numbers (pair of MPFR floats).">aring-CCC.hpp</a> </dd>
+<dd>
+<a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-_c_ci_8hpp_source.html">aring-CCi.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

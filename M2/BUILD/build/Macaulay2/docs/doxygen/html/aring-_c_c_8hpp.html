@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-_c_c_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-CC.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_c.html">M2::ARingCC</a></span> &mdash; machine-precision complex numbers (pair of <span class="tt">double</span>s).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="gmp-util_8h_source.html">interface/gmp-util.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="random_8h_source.html">interface/random.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="aring_8hpp_source.html">aring.hpp</a>&quot;</code><br />
@@ -109,7 +112,22 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:M2" id="r_M2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2.html">M2</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_c.html">M2::ARingCC</a></span> &mdash; machine-precision complex numbers (pair of <span class="tt">double</span>s). </p>
+<p><span class="tt">ARingCC</span> is the complex sibling of <span class="tt">ARingRR</span> in the aring family: a <span class="tt">SimpleARing&lt;ARingCC&gt;</span> specialisation whose element type is a struct of two <span class="tt">double</span>s and whose arithmetic uses hardware floating-point throughout &mdash; no MPFR, no allocation. Addition, multiplication, reciprocal, modulus, and complex conjugation use the standard formulas on the real and imaginary parts; random values come from <span class="tt"><a class="el" href="random_8h.html">interface/random.h</a></span>'s <span class="tt"><a class="el" href="random_8cpp_a3e66b87ab993025e0246b1b05932064a.html#a3e66b87ab993025e0246b1b05932064a">randomDouble()</a></span> applied componentwise.</p>
+<p>On top of the real-ring API it adds <span class="tt">conjugate</span>, <span class="tt">real</span>, <span class="tt">imag</span>, <span class="tt"><a class="el" href="polyroots_8cpp_a3aa069ac3980707dae1e0530f50d59e4.html#a3aa069ac3980707dae1e0530f50d59e4">abs</a></span>, and <span class="tt">is_zero</span> (both components zero). The arbitrary- precision siblings live in <span class="tt"><a class="el" href="aring-_c_c_c_8hpp.html" title="M2::ARingCCC — arbitrary-precision complex numbers (pair of MPFR floats).">aring-CCC.hpp</a></span> (MPFR) and <span class="tt"><a class="el" href="aring-_c_ci_8hpp.html" title="M2::ARingCCi — certified complex intervals as Cartesian rectangles of MPFI intervals.">aring-CCi.hpp</a></span> (Arb intervals); the dispatcher in <span class="tt"><a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a></span> selects among them based on the user's precision option. Primary consumer is the NAG path-tracker, which runs nearly all homotopy continuation in this ring.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-_r_r_8hpp.html" title="M2::ARingRR — machine-precision real numbers (IEEE 754 double).">aring-RR.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_c_c_c_8hpp.html" title="M2::ARingCCC — arbitrary-precision complex numbers (pair of MPFR floats).">aring-CCC.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_c_ci_8hpp.html" title="M2::ARingCCi — certified complex intervals as Cartesian rectangles of MPFI intervals.">aring-CCi.hpp</a> </dd>
+<dd>
+<a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_a_g_8hpp.html" title="Numerical Algebraic Geometry entry point: homotopy continuation, witness sets, monodromy.">NAG.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-_c_c_8hpp_source.html">aring-CC.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

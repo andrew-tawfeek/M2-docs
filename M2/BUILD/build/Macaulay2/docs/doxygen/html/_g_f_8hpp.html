@@ -106,13 +106,13 @@ Classes</h2></td></tr>
 <div class="textblock"><p>Legacy <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>-based Galois field with explicit log/exp tables. </p>
 <p><span class="tt"><a class="el" href="class_g_f.html">GF</a></span> is the engine's original Galois-field implementation, pre-dating the <span class="tt">aring</span> refactor. It inherits from <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> directly (so arithmetic goes through virtual dispatch) and stores tabulated <span class="tt">log</span> / <span class="tt">exp</span> / Zech entries indexed by powers of a chosen primitive element of <span class="tt">K^*</span>. Alongside the tables it keeps a pointer to the presenting polynomial ring <span class="tt">(Z/p)[t]/f(t)</span> and the primitive <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span>, so <a class="el" href="namespace_m2.html">M2</a> code that needs to introspect the defining polynomial or round-trip through it can still do so &mdash; this is the main reason the legacy class is retained.</p>
 <p>Three modern siblings cover the same algebra with different backing stores: <span class="tt">ARingGFM2</span> (native, CRTP-inlined via <span class="tt">SimpleARing</span>), <span class="tt">ARingGFFlint</span> (FLINT Zech tables, small <span class="tt">q</span>), and <span class="tt">ARingGFFlintBig</span> (FLINT <span class="tt">fq_nmod</span>, large <span class="tt">q</span>). New engine code prefers those; this file is constructed only along the legacy paths still wired into <span class="tt">m2/galois.m2</span>.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-m2-gf_8hpp.html">aring-m2-gf.hpp</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-m2-gf_8hpp.html" title="M2::ARingGFM2 — native engine Galois field, no FLINT/Givaro dependency.">aring-m2-gf.hpp</a> </dd>
 <dd>
-<a class="el" href="aring-gf-flint_8hpp.html">aring-gf-flint.hpp</a> </dd>
+<a class="el" href="aring-gf-flint_8hpp.html" title="M2::ARingGFFlint — small GF(p^k) via FLINT Zech-logarithm tables.">aring-gf-flint.hpp</a> </dd>
 <dd>
-<a class="el" href="aring-gf-flint-big_8hpp.html">aring-gf-flint-big.hpp</a> </dd>
+<a class="el" href="aring-gf-flint-big_8hpp.html" title="M2::ARingGFFlintBig — arbitrary-degree GF(p^k) via FLINT fq_nmod.">aring-gf-flint-big.hpp</a> </dd>
 <dd>
-<a class="el" href="_z_zp_8hpp.html">ZZp.hpp</a> </dd></dl>
+<a class="el" href="_z_zp_8hpp.html" title="Legacy Z_mod — a Ring-derived Z/p with log/exp/Zech tables.">ZZp.hpp</a> </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="_g_f_8hpp_source.html">GF.hpp</a>.</p>
 </div></div><!-- contents -->

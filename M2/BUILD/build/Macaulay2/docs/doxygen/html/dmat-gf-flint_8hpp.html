@@ -91,6 +91,9 @@ $(function(){initNavTree('dmat-gf-flint_8hpp.html','',''); });
   <div class="headertitle"><div class="title">dmat-gf-flint.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="class_m2_1_1_a_ring_g_f_flint.html">M2::ARingGFFlint</a>&gt;</span> &mdash; dense <a class="el" href="class_g_f.html">GF</a> matrices stored in FLINT <span class="tt">fq_zech_mat_t</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;utility&gt;</code><br />
 <code>#include &quot;<a class="el" href="aring-gf-flint_8hpp_source.html">aring-gf-flint.hpp</a>&quot;</code><br />
 <code>#include &lt;M2/gc-include.h&gt;</code><br />
@@ -103,7 +106,18 @@ $(function(){initNavTree('dmat-gf-flint_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:DMat_3C_20M2_3A_3AARingGFFlint_20_3E" id="r_DMat_3C_20M2_3A_3AARingGFFlint_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_01_4.html">DMat&lt; M2::ARingGFFlint &gt;</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="class_m2_1_1_a_ring_g_f_flint.html">M2::ARingGFFlint</a>&gt;</span> &mdash; dense <a class="el" href="class_g_f.html">GF</a> matrices stored in FLINT <span class="tt">fq_zech_mat_t</span>. </p>
+<p>Specialises the dense-matrix template for the small-<span class="tt">q</span> Galois field aring <span class="tt">ARingGFFlint</span>: each entry is a Zech log index in <span class="tt">[0, q - 1)</span> and the storage is FLINT's <span class="tt">fq_zech_mat_t</span>, so matrix arithmetic dispatches through <span class="tt">fq_zech_mat_*</span> routines that are O(1) per element &mdash; multiplication is a table-driven log addition, addition is a Zech-table lookup. For <span class="tt">q = p^k</span> up to roughly <span class="tt">2^15</span> this is the fastest dense <a class="el" href="class_g_f.html">GF</a> matrix path the engine ships.</p>
+<p>The companion <span class="tt"><a class="el" href="dmat-gf-flint-big_8hpp.html" title="DMat&lt;M2::ARingGFFlintBig&gt; — dense GF matrices stored in FLINT fq_nmod_mat_t.">dmat-gf-flint-big.hpp</a></span> covers the polynomial- quotient representation (<span class="tt">fq_nmod_mat_t</span>) used when <span class="tt">q</span> grows past what the Zech tables can hold; dispatch between the two is automatic and follows the choice made at ring construction by <span class="tt"><a class="el" href="aring-gf-flint_8hpp.html" title="M2::ARingGFFlint — small GF(p^k) via FLINT Zech-logarithm tables.">aring-gf-flint.hpp</a></span> / <span class="tt"><a class="el" href="aring-gf-flint-big_8hpp.html" title="M2::ARingGFFlintBig — arbitrary-degree GF(p^k) via FLINT fq_nmod.">aring-gf-flint-big.hpp</a></span>. The required <span class="tt">M2/gc-include.h</span> shim must precede the FLINT headers so FLINT's allocator routes through bdwgc.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="dmat_8hpp.html" title="DMat&lt;ACoeffRing&gt; — dense-matrix template plus the umbrella that wires in every per-ring specialisatio...">dmat.hpp</a> </dd>
+<dd>
+<a class="el" href="dmat-gf-flint-big_8hpp.html" title="DMat&lt;M2::ARingGFFlintBig&gt; — dense GF matrices stored in FLINT fq_nmod_mat_t.">dmat-gf-flint-big.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-gf-flint_8hpp.html" title="M2::ARingGFFlint — small GF(p^k) via FLINT Zech-logarithm tables.">aring-gf-flint.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="dmat-gf-flint_8hpp_source.html">dmat-gf-flint.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('debug_8hpp.html','',''); });
   <div class="headertitle"><div class="title">debug.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Debugger-callable <span class="tt">d*</span> helpers that pretty-print engine values to stdout.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
 </div>
 <p><a href="debug_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -116,7 +119,14 @@ Functions</h2></td></tr>
 <tr class="memitem:aae37d7e33076a7505d635bf735460007" id="r_aae37d7e33076a7505d635bf735460007"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8hpp_aae37d7e33076a7505d635bf735460007.html#aae37d7e33076a7505d635bf735460007">dRRR</a> (<a class="el" href="m2-types_8h_a06f1f4d2dc6e969bdad2001e9fecfc41.html#a06f1f4d2dc6e969bdad2001e9fecfc41">gmp_RR</a> a)</td></tr>
 <tr class="memitem:aa588c0342d3da8e3deb06951d620e59b" id="r_aa588c0342d3da8e3deb06951d620e59b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8hpp_aa588c0342d3da8e3deb06951d620e59b.html#aa588c0342d3da8e3deb06951d620e59b">pring</a> (const <a class="el" href="class_ring.html">Ring</a> *R)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Debugger-callable <span class="tt">d*</span> helpers that pretty-print engine values to stdout. </p>
+<p>Declares short-named global functions &mdash; <span class="tt"><a class="el" href="debug_8hpp_a05ae86867314938de75ae863f9a47106.html#a05ae86867314938de75ae863f9a47106">dmatrix</a></span>, <span class="tt"><a class="el" href="debug_8hpp_a2639ce7a53a8493bd19049609968506e.html#a2639ce7a53a8493bd19049609968506e">drelem</a></span>, <span class="tt"><a class="el" href="debug_8hpp_ad8342a9e164b714b8c72a3fcd4052655.html#ad8342a9e164b714b8c72a3fcd4052655">dfree</a></span>, <span class="tt"><a class="el" href="debug_8hpp_aa8ce60387c7e0536df2d2b5970ef1b70.html#aa8ce60387c7e0536df2d2b5970ef1b70">dringelem</a></span>, <span class="tt"><a class="el" href="debug_8hpp_a7445c45b7924903958f0899bd97bdb7c.html#a7445c45b7924903958f0899bd97bdb7c">showint</a></span>, and the analogous helpers for <span class="tt">gbvector*</span>, <span class="tt"><a class="el" href="classres__poly.html">res_poly</a></span>, <span class="tt">MutableMatrix*</span>, <span class="tt">MonomialIdeal*</span>, ... &mdash; that print engine objects to stdout in a form readable from gdb or lldb. The <span class="tt"><a class="el" href="debug_8hpp_aa8ce60387c7e0536df2d2b5970ef1b70.html#aa8ce60387c7e0536df2d2b5970ef1b70">dringelem</a></span> helper is <span class="tt">extern "C"</span> so that the debugger can call it without supplying a mangled C++ name.</p>
+<p>The functions exist alongside each class's own <span class="tt">text_out(<a class="el" href="classbuffer.html">buffer</a>&amp;)</span> for two reasons: they write directly to stdout instead of an in-memory buffer (so a debugger sees output immediately), and they take only opaque pointers (so any stack frame can use them, even one that has no <span class="tt"><a class="el" href="classbuffer.html">buffer</a></span> available). The breadth of forward declarations is intentional &mdash; every printable engine type is forward-declared rather than included to keep this header cheap to pull in.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="buffer_8hpp.html" title="Append-only GC-backed byte buffer used throughout the engine for text output.">buffer.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="debug_8hpp_source.html">debug.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

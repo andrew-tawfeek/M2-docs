@@ -91,6 +91,9 @@ $(function(){initNavTree('_s_l_p_8hpp.html','',''); });
   <div class="headertitle"><div class="title">SLP.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Public umbrella header for the straight-line-program evaluator used by NAG.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="mutablemat-defs_8hpp_source.html">mutablemat-defs.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_s_l_p-imp_8hpp_source.html">SLP-imp.hpp</a>&quot;</code><br />
@@ -100,7 +103,18 @@ $(function(){initNavTree('_s_l_p_8hpp.html','',''); });
 <code>#include &quot;<a class="el" href="aring-glue_8hpp_source.html">aring-glue.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_s_l_p_8hpp_source.html">Go to the source code of this file.</a></p>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Public umbrella header for the straight-line-program evaluator used by NAG. </p>
+<p>A straight-line program is a DAG whose nodes are inputs, constants, and arithmetic operations (<span class="tt">+</span>, <span class="tt">*</span>, occasionally <span class="tt">-</span>, <span class="tt">/</span>, <span class="tt">^</span>, scalar negation, square root) with tagged outputs. <span class="tt"><a class="el" href="_n_a_g_8cpp.html">NAG.cpp</a></span> compiles a polynomial system to one of these once and then evaluates it at every step of a homotopy continuation path, sharing common subexpressions across all outputs and reusing the forward graph in a backward pass to obtain partial derivatives for Newton's method. The evaluation pass is a single forward sweep &mdash; cache-friendly compared to re-walking a polynomial AST.</p>
+<p>The implementation is split across three files so the same code can be instantiated over <span class="tt">double</span>, <span class="tt">mpfr_t</span> (RRR), <span class="tt">acb_t</span> (CCC), and other numerical backends: <span class="tt"><a class="el" href="_s_l_p-defs_8hpp.html" title="Type declarations for the SLP DAG and its M2-facing wrapper.">SLP-defs.hpp</a></span> declares the node types and value-type templates, <span class="tt"><a class="el" href="_s_l_p-imp_8hpp.html" title="Templated SLEvaluatorConcrete&lt;RT&gt; — the per-ring SLP evaluator implementation.">SLP-imp.hpp</a></span> provides the template implementations of evaluation and differentiation, and <span class="tt"><a class="el" href="_s_l_p_8cpp.html">SLP.cpp</a></span> carries the non-template glue and the registry.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_n_a_g_8hpp.html" title="Numerical Algebraic Geometry entry point: homotopy continuation, witness sets, monodromy.">NAG.hpp</a> </dd>
+<dd>
+<a class="el" href="_s_l_p-defs_8hpp.html" title="Type declarations for the SLP DAG and its M2-facing wrapper.">SLP-defs.hpp</a> </dd>
+<dd>
+<a class="el" href="_s_l_p-imp_8hpp.html" title="Templated SLEvaluatorConcrete&lt;RT&gt; — the per-ring SLP evaluator implementation.">SLP-imp.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_s_l_p_8hpp_source.html">SLP.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

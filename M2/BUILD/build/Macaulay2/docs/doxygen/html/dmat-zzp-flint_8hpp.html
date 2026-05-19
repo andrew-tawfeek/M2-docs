@@ -91,6 +91,9 @@ $(function(){initNavTree('dmat-zzp-flint_8hpp.html','',''); });
   <div class="headertitle"><div class="title">dmat-zzp-flint.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="class_m2_1_1_a_ring_z_zp_flint.html">M2::ARingZZpFlint</a>&gt;</span> &mdash; dense <span class="tt">Z/p</span> matrices stored in FLINT <span class="tt">nmod_mat_t</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;utility&gt;</code><br />
 <code>#include &quot;<a class="el" href="aring-zzp-flint_8hpp_source.html">aring-zzp-flint.hpp</a>&quot;</code><br />
 <code>#include &lt;M2/gc-include.h&gt;</code><br />
@@ -102,7 +105,20 @@ $(function(){initNavTree('dmat-zzp-flint_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:DMat_3C_20M2_3A_3AARingZZpFlint_20_3E" id="r_DMat_3C_20M2_3A_3AARingZZpFlint_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_mat_3_01_m2_1_1_a_ring_z_zp_flint_01_4.html">DMat&lt; M2::ARingZZpFlint &gt;</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="class_m2_1_1_a_ring_z_zp_flint.html">M2::ARingZZpFlint</a>&gt;</span> &mdash; dense <span class="tt">Z/p</span> matrices stored in FLINT <span class="tt">nmod_mat_t</span>. </p>
+<p>Specialises the dense-matrix template for the FLINT-backed Z/p aring. Entries live in a single <span class="tt">nmod_mat_t</span> &mdash; an array of <span class="tt">mp_limb_t</span> representatives in <span class="tt">[0, <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>)</span> plus the precomputed reciprocal FLINT uses for Barrett-style fast modular reduction. Arithmetic, rank, LU, determinant, inverse, and null-space all dispatch into <span class="tt">nmod_mat_*</span> so the inner loop never performs an integer division and the heavy linear-algebra work runs in FLINT's cache-aware blocked routines.</p>
+<p>The engine ships a sibling FFLAS-FFPACK specialisation in <span class="tt">dmat-zzp-ffpack.hpp</span>. Dispatch (in <span class="tt"><a class="el" href="mat-linalg_8hpp.html">mat-linalg.hpp</a></span>) picks between them by matrix shape and prime size: small matrices with larger primes prefer FLINT because BLAS startup cost dominates; larger matrices with small primes prefer FFPACK because it can reinterpret entries as <span class="tt">double</span> and dispatch into BLAS. As with every FLINT-backed header, <span class="tt">M2/gc-include.h</span> precedes the FLINT include so allocations route through bdwgc.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="dmat_8hpp.html" title="DMat&lt;ACoeffRing&gt; — dense-matrix template plus the umbrella that wires in every per-ring specialisatio...">dmat.hpp</a> </dd>
+<dd>
+<a class="el" href="dmat-lu-zzp-flint_8hpp.html" title="DMatLinAlg&lt;M2::ARingZZpFlint&gt; — dense Z/p LU routed through FLINT nmod_mat_*.">dmat-lu-zzp-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="dmat-lu-zzp-ffpack_8hpp.html" title="Free-function interface (namespace ffpackInterface) routing DMatZZpFFPACK LU work into FFLAS-FFPACK.">dmat-lu-zzp-ffpack.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-zzp-flint_8hpp.html" title="M2::ARingZZpFlint — Z/p via FLINT&#39;s nmod_t (Barrett-style fast reduction).">aring-zzp-flint.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="dmat-zzp-flint_8hpp_source.html">dmat-zzp-flint.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

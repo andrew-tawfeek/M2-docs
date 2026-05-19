@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-qq-gmp_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-qq-gmp.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_q_q_g_m_p.html" title="wrapper for the gmp mpq_t integer representation">M2::ARingQQGMP</a></span> &mdash; arbitrary-precision rationals backed straight by GMP <span class="tt">mpq_t</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="gmp-util_8h_source.html">interface/gmp-util.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="random_8h_source.html">interface/random.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="aring_8hpp_source.html">aring.hpp</a>&quot;</code><br />
@@ -111,7 +114,20 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:M2" id="r_M2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2.html">M2</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_q_q_g_m_p.html" title="wrapper for the gmp mpq_t integer representation">M2::ARingQQGMP</a></span> &mdash; arbitrary-precision rationals backed straight by GMP <span class="tt">mpq_t</span>. </p>
+<p><span class="tt">ARingQQGMP</span> is the GMP counterpart of <span class="tt">ARingQQFlint</span>: every value is a heap-allocated <span class="tt">mpq_t</span>, with no small-value inlining. The class is a <span class="tt">SimpleARing&lt;ARingQQGMP&gt;</span> and supplies the standard aring API (<span class="tt">init</span> / <span class="tt">clear</span>, <span class="tt">set_from_long</span> / <span class="tt">_mpz</span> / <span class="tt">_mpq</span>, <span class="tt">add</span>, <span class="tt"><a class="el" href="godbolt_test_8cpp_acb0e524578d913d164058b989f113b93.html#acb0e524578d913d164058b989f113b93">subtract</a></span>, <span class="tt">mult</span>, <span class="tt">divide</span>, <span class="tt">negate</span>, <span class="tt">invert</span>, <span class="tt">is_zero</span>, <span class="tt">is_equal</span>, <span class="tt">is_unit</span>, <span class="tt">random</span> bounded by a per-ring <span class="tt">mMaxHeight</span> defaulting to 50). The constructor calls <span class="tt">gmp_randinit_default</span> so each instance carries its own random state; <span class="tt">eval</span> defers <a class="el" href="namespace_m2.html">M2</a> ring-map evaluation to <span class="tt">target_ring-&gt;from_rational</span>.</p>
+<p>Observable behaviour matches <span class="tt">ARingQQFlint</span>; the dispatcher in <span class="tt"><a class="el" href="aring-qq_8hpp.html" title="Tiny dispatcher header that picks the default ARingQQ from among the QQ aring implementations.">aring-qq.hpp</a></span> currently aliases the default <span class="tt">ARingQQ</span> here for historical reasons even though the FLINT path is faster in most cases. The lingering <span class="tt">#include "<a class="el" href="ring_8hpp.html">ring.hpp</a>"</span> is for cross-ring promotion &mdash; the same pending refactor flagged in <span class="tt"><a class="el" href="aring-qq-flint_8hpp.html" title="M2::ARingQQFlint — rationals backed by FLINT&#39;s fmpq with small-value inlining.">aring-qq-flint.hpp</a></span> (promotion is intended to migrate to <span class="tt"><a class="el" href="aring-translate_8hpp.html" title="Cross-ring coercion templates between any two aring rings.">aring-translate.hpp</a></span>).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-qq_8hpp.html" title="Tiny dispatcher header that picks the default ARingQQ from among the QQ aring implementations.">aring-qq.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-qq-flint_8hpp.html" title="M2::ARingQQFlint — rationals backed by FLINT&#39;s fmpq with small-value inlining.">aring-qq-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-zz-gmp_8hpp.html" title="M2::ARingZZGMP — aring integer ring backed straight by GMP mpz_t.">aring-zz-gmp.hpp</a> </dd>
+<dd>
+<a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-qq-gmp_8hpp_source.html">aring-qq-gmp.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

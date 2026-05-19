@@ -91,6 +91,9 @@ $(function(){initNavTree('comp-gb-proxy_8hpp.html','',''); });
   <div class="headertitle"><div class="title">comp-gb-proxy.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_g_b_proxy.html" title="handle to a GB. Should be expunged, as full functionality isn&#39;t used.">GBProxy</a></span> &mdash; legacy indirection wrapper around another <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> (deprecated).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="comp-gb_8hpp_source.html">comp-gb.hpp</a>&quot;</code><br />
 </div>
 <p><a href="comp-gb-proxy_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -100,7 +103,16 @@ Classes</h2></td></tr>
 <tr class="memitem:GBProxy" id="r_GBProxy"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_b_proxy.html">GBProxy</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">handle to a GB. Should be expunged, as full functionality isn't used.  <a href="class_g_b_proxy.html#details">More...</a><br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_g_b_proxy.html" title="handle to a GB. Should be expunged, as full functionality isn&#39;t used.">GBProxy</a></span> &mdash; legacy indirection wrapper around another <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> (deprecated). </p>
+<p><span class="tt"><a class="el" href="class_g_b_proxy.html" title="handle to a GB. Should be expunged, as full functionality isn&#39;t used.">GBProxy</a></span> is a <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> subclass that holds a pointer to another <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a> *G</span> and forwards every virtual call to it, propagating its own <span class="tt">stop_</span> conditions down before each operation. Originally written so engine code could swap GB strategies at runtime &mdash; start one algorithm, jettison its internal state, and keep only the resulting basis under a new wrapper &mdash; but in practice the indirection is rarely useful: the destructor is intentionally empty (no owned resources beyond the forwarded pointer) and the doxygen comment in this header flags the class as expungeable.</p>
+<p>New code should prefer constructing the desired <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> subclass directly, or wrap a precomputed basis in <span class="tt"><a class="el" href="class_g_b_declared.html" title="declared Groebner bases.">GBDeclared</a></span> (<span class="tt"><a class="el" href="comp-gb-declared_8hpp.html" title="GBDeclared — a user-asserted Groebner basis the engine accepts without computing.">comp-gb-declared.hpp</a></span>) when a trusted GB is already in hand.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd>
+<dd>
+<a class="el" href="comp-gb-declared_8hpp.html" title="GBDeclared — a user-asserted Groebner basis the engine accepts without computing.">comp-gb-declared.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="comp-gb-proxy_8hpp_source.html">comp-gb-proxy.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -92,6 +92,9 @@ $(function(){initNavTree('dmat-lu-zzp-ffpack_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p>Free-function interface (<span class="tt">namespace <a class="el" href="namespaceffpack_interface.html">ffpackInterface</a></span>) routing <span class="tt"><a class="el" href="mat-linalg_8hpp_a846148954610b60694ad60d414507a16.html#a846148954610b60694ad60d414507a16">DMatZZpFFPACK</a></span> LU work into FFLAS-FFPACK.  
+<a href="#details">More...</a></p>
+
 <p><a href="dmat-lu-zzp-ffpack_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -112,7 +115,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a5f340072f054162970669b72506c4cd3" id="r_a5f340072f054162970669b72506c4cd3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceffpack_interface_a5f340072f054162970669b72506c4cd3.html#a5f340072f054162970669b72506c4cd3">ffpackInterface::inverse</a> (const <a class="el" href="mat-linalg_8hpp_a846148954610b60694ad60d414507a16.html#a846148954610b60694ad60d414507a16">DMatZZpFFPACK</a> &amp;A, <a class="el" href="mat-linalg_8hpp_a846148954610b60694ad60d414507a16.html#a846148954610b60694ad60d414507a16">DMatZZpFFPACK</a> &amp;result_inv)</td></tr>
 <tr class="memitem:a86ab584bf845bf73e336b4051e585a14" id="r_a86ab584bf845bf73e336b4051e585a14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceffpack_interface_a86ab584bf845bf73e336b4051e585a14.html#a86ab584bf845bf73e336b4051e585a14">ffpackInterface::nullSpace</a> (const <a class="el" href="mat-linalg_8hpp_a846148954610b60694ad60d414507a16.html#a846148954610b60694ad60d414507a16">DMatZZpFFPACK</a> &amp;A, <a class="el" href="mat-linalg_8hpp_a846148954610b60694ad60d414507a16.html#a846148954610b60694ad60d414507a16">DMatZZpFFPACK</a> &amp;result_nullspace)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Free-function interface (<span class="tt">namespace <a class="el" href="namespaceffpack_interface.html">ffpackInterface</a></span>) routing <span class="tt"><a class="el" href="mat-linalg_8hpp_a846148954610b60694ad60d414507a16.html#a846148954610b60694ad60d414507a16">DMatZZpFFPACK</a></span> LU work into FFLAS-FFPACK. </p>
+<p>Declares the <span class="tt"><a class="el" href="namespaceffpack_interface.html">ffpackInterface</a></span> namespace &mdash; <span class="tt">rank</span>, <span class="tt">determinant</span>, <span class="tt">rankProfile</span>, <span class="tt">solveLinear</span>, <span class="tt">inverse</span>, and <span class="tt">nullSpace</span> over <span class="tt"><a class="el" href="mat-linalg_8hpp_a846148954610b60694ad60d414507a16.html#a846148954610b60694ad60d414507a16">DMatZZpFFPACK</a></span>. Each entry point delegates to FFLAS-FFPACK, which represents Z/p entries as <span class="tt">double</span>s and reinterprets the matrix as a <span class="tt">double</span> matrix so multiplications dispatch into BLAS; the result is reduced modulo <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span> afterwards. For primes small enough that intermediate products fit in the 53-bit mantissa (roughly <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> &lt;= 2^25</span> at typical matrix sizes) this is by far the fastest dense Z/p path in the engine.</p>
+<p>The functions live in this file as bare declarations because the <span class="tt"><a class="el" href="class_d_mat_lin_alg.html">DMatLinAlg</a>&lt;<a class="el" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k.html" title="wrapper for the FFPACK::ModularBalanced&lt;double&gt; field implementation">M2::ARingZZpFFPACK</a>&gt;</span> specialisation in <span class="tt"><a class="el" href="dmat-lu_8hpp.html" title="Umbrella header that pulls together every DMat&lt;R&gt; LU-decomposition specialisation.">dmat-lu.hpp</a></span> forwards through them while their definitions sit in <span class="tt"><a class="el" href="dmat_8cpp.html">dmat.cpp</a></span>, keeping the FFLAS-FFPACK include surface contained.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="dmat-lu_8hpp.html" title="Umbrella header that pulls together every DMat&lt;R&gt; LU-decomposition specialisation.">dmat-lu.hpp</a> </dd>
+<dd>
+<a class="el" href="dmat-lu-zzp-flint_8hpp.html" title="DMatLinAlg&lt;M2::ARingZZpFlint&gt; — dense Z/p LU routed through FLINT nmod_mat_*.">dmat-lu-zzp-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-zzp-ffpack_8hpp.html" title="M2::ARingZZpFFPACK — Z/p via FFLAS-FFPACK&#39;s Modular&lt;double&gt; field.">aring-zzp-ffpack.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="dmat-lu-zzp-ffpack_8hpp_source.html">dmat-lu-zzp-ffpack.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

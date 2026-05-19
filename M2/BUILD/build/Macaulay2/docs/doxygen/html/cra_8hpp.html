@@ -91,6 +91,9 @@ $(function(){initNavTree('cra_8hpp.html','',''); });
   <div class="headertitle"><div class="title">cra.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_chinese_remainder.html">ChineseRemainder</a></span> &mdash; CRT lifting and rational reconstruction primitives.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;M2/math-include.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
 </div>
@@ -100,7 +103,14 @@ $(function(){initNavTree('cra_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:ChineseRemainder" id="r_ChineseRemainder"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_chinese_remainder.html">ChineseRemainder</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_chinese_remainder.html">ChineseRemainder</a></span> &mdash; CRT lifting and rational reconstruction primitives. </p>
+<p>Declares <span class="tt"><a class="el" href="class_chinese_remainder.html">ChineseRemainder</a></span>, a static-only collection that combines modular results back into <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span> and <span class="tt"><a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a></span>. <span class="tt">CRA0</span> is the core step: given <span class="tt">a mod m</span>, <span class="tt">b mod n</span> with <span class="tt">gcd(m, n) = 1</span> and precomputed Bezout coefficients <span class="tt">um</span>, <span class="tt">vn</span>, it produces the unique value mod <span class="tt">m * n</span> reducing to <span class="tt">a mod m</span> and <span class="tt">b mod n</span>, stored in balanced-residue form (range <span class="tt">[-mn/2, mn/2]</span>) so small integers stay small after lifting &mdash; a precondition the comment at the top of the header flags as essential. Beyond CRT, the class supplies rational reconstruction: given <span class="tt"><a class="el" href="overflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2.html#aa07f992d22249e2bef61db62f71671b2">x</a> mod m</span>, the extended Euclidean algorithm with a <span class="tt">q</span> bound recovers a fraction <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> / q</span> with <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> == <a class="el" href="overflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2.html#aa07f992d22249e2bef61db62f71671b2">x</a> * q (mod m)</span> and returns it whenever <span class="tt">m</span> is large enough relative to <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> * q</span> for the answer to be unique.</p>
+<p>The engine reaches for these primitives whenever a <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span> or <span class="tt"><a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a></span> problem is slow head-on but cheap mod many primes: rational Groebner bases (compute modularly across many primes, CRT-lift, reconstruct), <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span> determinants and polynomial GCDs, and the modular preprocessing used by some NAG paths.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="cra_8h.html">interface/cra.h</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="cra_8hpp_source.html">cra.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

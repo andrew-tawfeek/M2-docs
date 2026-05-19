@@ -92,8 +92,17 @@ $(function(){initNavTree('defgroups_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p>Pure Doxygen scaffolding &mdash; the <span class="tt">\mainpage</span> text and every <span class="tt">\defgroup</span> used in engine docs.  
+<a href="#details">More...</a></p>
+
 <p><a href="defgroups_8h_source.html">Go to the source code of this file.</a></p>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Pure Doxygen scaffolding &mdash; the <span class="tt">\mainpage</span> text and every <span class="tt">\defgroup</span> used in engine docs. </p>
+<p><span class="tt"><a class="el" href="defgroups_8h.html" title="Pure Doxygen scaffolding — the \mainpage text and every \defgroup used in engine docs.">defgroups.h</a></span> contains no C++ declarations. Its purpose is to carry the project-level documentation that Doxygen weaves into the generated HTML: the <span class="tt">\mainpage</span> text that lands on the top-level page, and the cascade of <span class="tt">\defgroup</span> / <span class="tt">\ingroup</span> stanzas that organise the engine's classes into categories (rings, ringinfo, coeffrings, polynomialrings, matrices, comp, ...). Other engine headers reference these groups by tagging their classes with <span class="tt">@ingroup &lt;name&gt;</span>, and Doxygen knits the cross-links together at build time.</p>
+<p>Edit this file when adding a new top-level category, when the project blurb on the front page changes, or when a category needs a parent/child relationship that an <span class="tt">@ingroup</span> tag should inherit. </p>
+
+<p class="definition">Definition in file <a class="el" href="defgroups_8h_source.html">defgroups.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

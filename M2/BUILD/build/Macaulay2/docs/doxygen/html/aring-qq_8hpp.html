@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-qq_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-qq.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Tiny dispatcher header that picks the default <span class="tt">ARingQQ</span> from among the <a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a> aring implementations.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="aring-qq-flint_8hpp_source.html">aring-qq-flint.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="aring-qq-gmp_8hpp_source.html">aring-qq-gmp.hpp</a>&quot;</code><br />
 </div>
@@ -104,7 +107,18 @@ Namespaces</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a4020664aefa28984a9e3e19b16a31981" id="r_a4020664aefa28984a9e3e19b16a31981"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="class_m2_1_1_a_ring_q_q_g_m_p.html">ARingQQGMP</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2_a4020664aefa28984a9e3e19b16a31981.html#a4020664aefa28984a9e3e19b16a31981">M2::ARingQQ</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Tiny dispatcher header that picks the default <span class="tt">ARingQQ</span> from among the <a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a> aring implementations. </p>
+<p>Pulls in both <span class="tt"><a class="el" href="aring-qq-flint_8hpp.html" title="M2::ARingQQFlint — rationals backed by FLINT&#39;s fmpq with small-value inlining.">aring-qq-flint.hpp</a></span> and <span class="tt"><a class="el" href="aring-qq-gmp_8hpp.html" title="M2::ARingQQGMP — arbitrary-precision rationals backed straight by GMP mpq_t.">aring-qq-gmp.hpp</a></span>, forward-declares <span class="tt">ARingQQFlint</span> and <span class="tt">ARingQQGMP</span>, and aliases the default <span class="tt">ARingQQ</span> to <span class="tt">ARingQQGMP</span>. The GMP default is historical: FLINT-backed <a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a> is now faster in most cases but the typedef has not been flipped to avoid disturbing existing engine code paths. Both concrete classes remain fully functional and accessible by name; <span class="tt">ARingQQ</span> exists so consumers like <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;ARingQQ&gt;</span> and <span class="tt"><a class="el" href="mat-linalg_8hpp.html">mat-linalg.hpp</a></span> template specialisations can say "the QQ aring" without committing to a backend.</p>
+<p>Switching the engine-wide default is a one-line edit to this file. The same pattern shows up in <span class="tt"><a class="el" href="res-moninfo_8hpp.html">schreyer-resolution/res-moninfo.hpp</a></span> for dense vs. sparse <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-qq-flint_8hpp.html" title="M2::ARingQQFlint — rationals backed by FLINT&#39;s fmpq with small-value inlining.">aring-qq-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-qq-gmp_8hpp.html" title="M2::ARingQQGMP — arbitrary-precision rationals backed straight by GMP mpq_t.">aring-qq-gmp.hpp</a> </dd>
+<dd>
+<a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-qq_8hpp_source.html">aring-qq.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

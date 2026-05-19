@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-glue_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-glue.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt">ConcreteRing&lt;RingType&gt;</span> &mdash; the templated bridge between <span class="tt">aring</span> and the legacy <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> API.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="aring_8hpp_source.html">aring.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="aring-translate_8hpp_source.html">aring-translate.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ring_8hpp_source.html">ring.hpp</a>&quot;</code><br />
@@ -139,7 +142,20 @@ Variables</h2></td></tr>
 <tr class="memitem:af7af31f4fef8a9c0dbc7805aad103764" id="r_af7af31f4fef8a9c0dbc7805aad103764"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aring-glue_8hpp_af7af31f4fef8a9c0dbc7805aad103764.html#af7af31f4fef8a9c0dbc7805aad103764">displayArithmeticCalls</a> = false</td></tr>
 <tr class="memitem:ab88d3ea2a9742f382a17da830d0b7857" id="r_ab88d3ea2a9742f382a17da830d0b7857"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="aring-glue_8hpp_a5e26cd6518e668e854b796e39831d07f.html#a5e26cd6518e668e854b796e39831d07f">RingQQ</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aring-glue_8hpp_ab88d3ea2a9742f382a17da830d0b7857.html#ab88d3ea2a9742f382a17da830d0b7857">globalQQ</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt">ConcreteRing&lt;RingType&gt;</span> &mdash; the templated bridge between <span class="tt">aring</span> and the legacy <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> API. </p>
+<p><span class="tt">ConcreteRing&lt;RingType&gt;</span> is a <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass that owns a <span class="tt">std::unique_ptr&lt;RingType&gt;</span> to a concrete aring (<span class="tt">ARingZZ</span>, <span class="tt">ARingZZpFlint</span>, ...) and implements every <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> virtual by forwarding to the aring's inline method. Because the wrapper is itself a template parameterised on <span class="tt">RingType</span>, the compiler inlines the forwarding calls &mdash; so the only virtual-dispatch cost lives at the outer <span class="tt">Ring*</span> boundary; once inside <span class="tt">ConcreteRing&lt;R&gt;</span>, all arithmetic is direct calls to the aring's hot path. The <span class="tt"><a class="el" href="aring-glue_8hpp_a062ef10059eb1cd9d99799e106298fa9.html#a062ef10059eb1cd9d99799e106298fa9">COERCE_RING(RingType, R)</a></span> macro is a <span class="tt">dynamic_cast</span> shortcut downcasting an opaque <span class="tt">Ring*</span> to the concrete aring when a caller knows the underlying type.</p>
+<p>This file is the single piece that lets the legacy and aring ring APIs coexist permanently: every aring becomes a usable <span class="tt">Ring*</span> for older engine code without losing the performance of inlined arithmetic in templated hot paths. <span class="tt"><a class="el" href="aring-translate_8hpp.html" title="Cross-ring coercion templates between any two aring rings.">aring-translate.hpp</a></span> is the companion for cross-ring coercion, and <span class="tt"><a class="el" href="aring-wrap_8hpp.html" title="RElementWrap&lt;RingType&gt; — templated wrapper that exposes one aring value as the abstract RElement.">aring-wrap.hpp</a></span> covers the inverse direction. The <span class="tt"><a class="el" href="aring-glue_8hpp_af7af31f4fef8a9c0dbc7805aad103764.html#af7af31f4fef8a9c0dbc7805aad103764">displayArithmeticCalls</a></span> static flag at the top is a debug toggle for per-op logging.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-translate_8hpp.html" title="Cross-ring coercion templates between any two aring rings.">aring-translate.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-wrap_8hpp.html" title="RElementWrap&lt;RingType&gt; — templated wrapper that exposes one aring value as the abstract RElement.">aring-wrap.hpp</a> </dd>
+<dd>
+<a class="el" href="ring_8hpp.html">ring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-glue_8hpp_source.html">aring-glue.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

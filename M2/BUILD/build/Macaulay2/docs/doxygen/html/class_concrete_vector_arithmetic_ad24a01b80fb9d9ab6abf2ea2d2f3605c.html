@@ -120,35 +120,35 @@ $(function(){initNavTree('class_concrete_vector_arithmetic_ad24a01b80fb9d9ab6abf
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_vector_arithmetic_8hpp_source.html#l00554">554</a> of file <a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  557</span>{</div>
-<div class="line"><span class="lineno">  558</span>  <span class="comment">// TODO: this function ignores denom, this is non-intuitive and bug-prone.</span></div>
-<div class="line"><span class="lineno">  559</span>    <span class="comment">// TODO: this will fail: input is alas ZZ integers... not QQ elements...</span></div>
-<div class="line"><span class="lineno">  560</span>    (<a class="code hl_class" href="class_concrete_vector_arithmetic.html">void</a>) <a class="code hl_class" href="class_concrete_vector_arithmetic.html">denom</a>;</div>
-<div class="line"><span class="lineno">  561</span>    <span class="keyword">auto</span>&amp; <a class="code hl_class" href="class_concrete_vector_arithmetic.html">svec</a> = * <a class="code hl_function" href="class_concrete_vector_arithmetic_a972b0c376867451274e65c210318750c.html#a972b0c376867451274e65c210318750c">elementArray</a>(<a class="code hl_class" href="class_concrete_vector_arithmetic.html">coeffs</a>);</div>
-<div class="line"><span class="lineno">  562</span>    <span class="comment">//ring_elem val = numer;</span></div>
-<div class="line"><span class="lineno">  563</span>    <a class="code hl_typedef" href="class_concrete_vector_arithmetic_af4cc261edd845f45f01bcbc021e113c6.html#af4cc261edd845f45f01bcbc021e113c6">FieldElement</a> <a class="code hl_class" href="class_concrete_vector_arithmetic.html">inumer</a>;</div>
-<div class="line"><span class="lineno">  564</span>    <span class="comment">//FieldElement idenom;</span></div>
-<div class="line"><span class="lineno">  565</span>    <a class="code hl_variable" href="class_concrete_vector_arithmetic_a8517130d3ba384cea716493da51c154b.html#a8517130d3ba384cea716493da51c154b">mRing</a>-&gt;init(<a class="code hl_class" href="class_concrete_vector_arithmetic.html">inumer</a>);</div>
-<div class="line"><span class="lineno">  566</span>    <a class="code hl_variable" href="class_concrete_vector_arithmetic_a8517130d3ba384cea716493da51c154b.html#a8517130d3ba384cea716493da51c154b">mRing</a>-&gt;from_ring_elem(<a class="code hl_class" href="class_concrete_vector_arithmetic.html">inumer</a>, <a class="code hl_class" href="class_concrete_vector_arithmetic.html">numer</a>);</div>
-<div class="line"><span class="lineno">  567</span>    <a class="code hl_class" href="class_concrete_vector_arithmetic.html">svec</a>.emplace_back(<a class="code hl_class" href="class_concrete_vector_arithmetic.html">inumer</a>);</div>
-<div class="line"><span class="lineno">  568</span> </div>
-<div class="line"><span class="lineno">  569</span>  <span class="comment">//   auto&amp; svec = * elementArray(coeffs);</span></div>
-<div class="line"><span class="lineno">  570</span>  <span class="comment">// ring_elem val = numer;</span></div>
-<div class="line"><span class="lineno">  571</span>  <span class="comment">// FieldElement inumer;</span></div>
-<div class="line"><span class="lineno">  572</span>  <span class="comment">// FieldElement idenom;</span></div>
-<div class="line"><span class="lineno">  573</span>  <span class="comment">// mRing-&gt;init(inumer);</span></div>
-<div class="line"><span class="lineno">  574</span>  <span class="comment">// mRing-&gt;from_ring_elem(numer, inumer);</span></div>
-<div class="line"><span class="lineno">  575</span>  <span class="comment">// mRing-&gt;init(idenom);</span></div>
-<div class="line"><span class="lineno">  576</span>  <span class="comment">// mRing-&gt;from_ring_elem(idenom, denom);</span></div>
-<div class="line"><span class="lineno">  577</span>  <span class="comment">// if (not mRing-&gt;is_one(idenom))</span></div>
-<div class="line"><span class="lineno">  578</span>  <span class="comment">//   mRing-&gt;divide(inumer, inumer, idenom);</span></div>
-<div class="line"><span class="lineno">  579</span>  </div>
-<div class="line"><span class="lineno">  580</span>}</div>
-<div class="ttc" id="aclass_concrete_vector_arithmetic_a8517130d3ba384cea716493da51c154b_html_a8517130d3ba384cea716493da51c154b"><div class="ttname"><a href="class_concrete_vector_arithmetic_a8517130d3ba384cea716493da51c154b.html#a8517130d3ba384cea716493da51c154b">ConcreteVectorArithmetic::mRing</a></div><div class="ttdeci">const RingType * mRing</div><div class="ttdef"><b>Definition</b> <a href="_vector_arithmetic_8hpp_source.html#l00095">VectorArithmetic.hpp:95</a></div></div>
-<div class="ttc" id="aclass_concrete_vector_arithmetic_a972b0c376867451274e65c210318750c_html_a972b0c376867451274e65c210318750c"><div class="ttname"><a href="class_concrete_vector_arithmetic_a972b0c376867451274e65c210318750c.html#a972b0c376867451274e65c210318750c">ConcreteVectorArithmetic::elementArray</a></div><div class="ttdeci">ElementArrayContainer * elementArray(const ElementArray &amp;f) const</div><div class="ttdef"><b>Definition</b> <a href="_vector_arithmetic_8hpp_source.html#l00098">VectorArithmetic.hpp:98</a></div></div>
-<div class="ttc" id="aclass_concrete_vector_arithmetic_af4cc261edd845f45f01bcbc021e113c6_html_af4cc261edd845f45f01bcbc021e113c6"><div class="ttname"><a href="class_concrete_vector_arithmetic_af4cc261edd845f45f01bcbc021e113c6.html#af4cc261edd845f45f01bcbc021e113c6">ConcreteVectorArithmetic::FieldElement</a></div><div class="ttdeci">typename RingType::ElementType FieldElement</div><div class="ttdef"><b>Definition</b> <a href="_vector_arithmetic_8hpp_source.html#l00084">VectorArithmetic.hpp:84</a></div></div>
-<div class="ttc" id="aclass_concrete_vector_arithmetic_html"><div class="ttname"><a href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a></div><div class="ttdef"><b>Definition</b> <a href="_vector_arithmetic_8hpp_source.html#l00081">VectorArithmetic.hpp:82</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_vector_arithmetic_8hpp_source.html#l00579">579</a> of file <a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  582</span>{</div>
+<div class="line"><span class="lineno">  583</span>  <span class="comment">// TODO: this function ignores denom, this is non-intuitive and bug-prone.</span></div>
+<div class="line"><span class="lineno">  584</span>    <span class="comment">// TODO: this will fail: input is alas ZZ integers... not QQ elements...</span></div>
+<div class="line"><span class="lineno">  585</span>    (<a class="code hl_class" href="class_concrete_vector_arithmetic.html">void</a>) <a class="code hl_class" href="class_concrete_vector_arithmetic.html">denom</a>;</div>
+<div class="line"><span class="lineno">  586</span>    <span class="keyword">auto</span>&amp; <a class="code hl_class" href="class_concrete_vector_arithmetic.html">svec</a> = * <a class="code hl_function" href="class_concrete_vector_arithmetic_a972b0c376867451274e65c210318750c.html#a972b0c376867451274e65c210318750c">elementArray</a>(<a class="code hl_class" href="class_concrete_vector_arithmetic.html">coeffs</a>);</div>
+<div class="line"><span class="lineno">  587</span>    <span class="comment">//ring_elem val = numer;</span></div>
+<div class="line"><span class="lineno">  588</span>    <a class="code hl_typedef" href="class_concrete_vector_arithmetic_af4cc261edd845f45f01bcbc021e113c6.html#af4cc261edd845f45f01bcbc021e113c6">FieldElement</a> <a class="code hl_class" href="class_concrete_vector_arithmetic.html">inumer</a>;</div>
+<div class="line"><span class="lineno">  589</span>    <span class="comment">//FieldElement idenom;</span></div>
+<div class="line"><span class="lineno">  590</span>    <a class="code hl_variable" href="class_concrete_vector_arithmetic_a8517130d3ba384cea716493da51c154b.html#a8517130d3ba384cea716493da51c154b">mRing</a>-&gt;init(<a class="code hl_class" href="class_concrete_vector_arithmetic.html">inumer</a>);</div>
+<div class="line"><span class="lineno">  591</span>    <a class="code hl_variable" href="class_concrete_vector_arithmetic_a8517130d3ba384cea716493da51c154b.html#a8517130d3ba384cea716493da51c154b">mRing</a>-&gt;from_ring_elem(<a class="code hl_class" href="class_concrete_vector_arithmetic.html">inumer</a>, <a class="code hl_class" href="class_concrete_vector_arithmetic.html">numer</a>);</div>
+<div class="line"><span class="lineno">  592</span>    <a class="code hl_class" href="class_concrete_vector_arithmetic.html">svec</a>.emplace_back(<a class="code hl_class" href="class_concrete_vector_arithmetic.html">inumer</a>);</div>
+<div class="line"><span class="lineno">  593</span> </div>
+<div class="line"><span class="lineno">  594</span>  <span class="comment">//   auto&amp; svec = * elementArray(coeffs);</span></div>
+<div class="line"><span class="lineno">  595</span>  <span class="comment">// ring_elem val = numer;</span></div>
+<div class="line"><span class="lineno">  596</span>  <span class="comment">// FieldElement inumer;</span></div>
+<div class="line"><span class="lineno">  597</span>  <span class="comment">// FieldElement idenom;</span></div>
+<div class="line"><span class="lineno">  598</span>  <span class="comment">// mRing-&gt;init(inumer);</span></div>
+<div class="line"><span class="lineno">  599</span>  <span class="comment">// mRing-&gt;from_ring_elem(numer, inumer);</span></div>
+<div class="line"><span class="lineno">  600</span>  <span class="comment">// mRing-&gt;init(idenom);</span></div>
+<div class="line"><span class="lineno">  601</span>  <span class="comment">// mRing-&gt;from_ring_elem(idenom, denom);</span></div>
+<div class="line"><span class="lineno">  602</span>  <span class="comment">// if (not mRing-&gt;is_one(idenom))</span></div>
+<div class="line"><span class="lineno">  603</span>  <span class="comment">//   mRing-&gt;divide(inumer, inumer, idenom);</span></div>
+<div class="line"><span class="lineno">  604</span>  </div>
+<div class="line"><span class="lineno">  605</span>}</div>
+<div class="ttc" id="aclass_concrete_vector_arithmetic_a8517130d3ba384cea716493da51c154b_html_a8517130d3ba384cea716493da51c154b"><div class="ttname"><a href="class_concrete_vector_arithmetic_a8517130d3ba384cea716493da51c154b.html#a8517130d3ba384cea716493da51c154b">ConcreteVectorArithmetic::mRing</a></div><div class="ttdeci">const RingType * mRing</div><div class="ttdef"><b>Definition</b> <a href="_vector_arithmetic_8hpp_source.html#l00120">VectorArithmetic.hpp:120</a></div></div>
+<div class="ttc" id="aclass_concrete_vector_arithmetic_a972b0c376867451274e65c210318750c_html_a972b0c376867451274e65c210318750c"><div class="ttname"><a href="class_concrete_vector_arithmetic_a972b0c376867451274e65c210318750c.html#a972b0c376867451274e65c210318750c">ConcreteVectorArithmetic::elementArray</a></div><div class="ttdeci">ElementArrayContainer * elementArray(const ElementArray &amp;f) const</div><div class="ttdef"><b>Definition</b> <a href="_vector_arithmetic_8hpp_source.html#l00123">VectorArithmetic.hpp:123</a></div></div>
+<div class="ttc" id="aclass_concrete_vector_arithmetic_af4cc261edd845f45f01bcbc021e113c6_html_af4cc261edd845f45f01bcbc021e113c6"><div class="ttname"><a href="class_concrete_vector_arithmetic_af4cc261edd845f45f01bcbc021e113c6.html#af4cc261edd845f45f01bcbc021e113c6">ConcreteVectorArithmetic::FieldElement</a></div><div class="ttdeci">typename RingType::ElementType FieldElement</div><div class="ttdef"><b>Definition</b> <a href="_vector_arithmetic_8hpp_source.html#l00109">VectorArithmetic.hpp:109</a></div></div>
+<div class="ttc" id="aclass_concrete_vector_arithmetic_html"><div class="ttname"><a href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a></div><div class="ttdef"><b>Definition</b> <a href="_vector_arithmetic_8hpp_source.html#l00106">VectorArithmetic.hpp:107</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_concrete_vector_arithmetic_a972b0c376867451274e65c210318750c.html#a972b0c376867451274e65c210318750c">elementArray()</a>, and <a class="el" href="class_concrete_vector_arithmetic_a8517130d3ba384cea716493da51c154b.html#a8517130d3ba384cea716493da51c154b">mRing</a>.</p>
 

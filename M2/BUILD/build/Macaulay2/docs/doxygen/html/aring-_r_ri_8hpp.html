@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-_r_ri_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-RRi.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_r_ri.html">M2::ARingRRi</a></span> &mdash; certified real intervals <span class="tt">[a, b]</span> with MPFR endpoints, MPFI arithmetic.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;mpfi.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="random_8h_source.html">interface/random.h</a>&quot;</code><br />
@@ -110,7 +113,20 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:M2" id="r_M2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2.html">M2</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_r_ri.html">M2::ARingRRi</a></span> &mdash; certified real intervals <span class="tt">[a, b]</span> with MPFR endpoints, MPFI arithmetic. </p>
+<p><span class="tt">ARingRRi</span> represents a real value as a closed interval <span class="tt">[a, b]</span> whose endpoints are MPFR floats and whose enclosure is guaranteed to contain the mathematical result. The class is a <span class="tt">SimpleARing&lt;ARingRRi&gt;</span> layered on top of <span class="tt">ARingRRR</span> for the endpoint format, with all arithmetic routed through MPFI (<span class="tt">mpfi_add</span>, <span class="tt">mpfi_mul</span>, ...) so outward rounding is handled automatically: <span class="tt">[a,b] + [c,d] -&gt; [a+c, b+d]</span> with the result widened to the next representable bounds, and analogous sign-cased formulas for multiplication and division.</p>
+<p>Each instance carries a per-endpoint precision; distinct precisions form distinct rings. The certification comes at the cost of wider error bars than point MPFR arithmetic &mdash; the right trade for root isolation, certified NAG bounds, and validation of approximate solutions. The complex counterpart is <span class="tt">ARingCCi</span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-_r_r_r_8hpp.html" title="M2::ARingRRR — arbitrary-precision real numbers backed by MPFR.">aring-RRR.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_r_r_8hpp.html" title="M2::ARingRR — machine-precision real numbers (IEEE 754 double).">aring-RR.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_c_ci_8hpp.html" title="M2::ARingCCi — certified complex intervals as Cartesian rectangles of MPFI intervals.">aring-CCi.hpp</a> </dd>
+<dd>
+<a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-_r_ri_8hpp_source.html">aring-RRi.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

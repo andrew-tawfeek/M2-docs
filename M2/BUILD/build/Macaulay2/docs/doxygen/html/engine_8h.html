@@ -91,6 +91,9 @@ $(function(){initNavTree('engine_8h.html','',''); });
   <div class="headertitle"><div class="title">engine.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Legacy umbrella header that re-exports the full engine public surface.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="aring_8h_source.html">interface/aring.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="computation_8h_source.html">interface/computation.h</a>&quot;</code><br />
@@ -146,7 +149,14 @@ Functions</h2></td></tr>
 <tr class="memitem:adcfbd82f581fb14d565049bee25fb138" id="r_adcfbd82f581fb14d565049bee25fb138"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_matrix.html">Matrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h_adcfbd82f581fb14d565049bee25fb138.html#adcfbd82f581fb14d565049bee25fb138">rawGbBoolean</a> (const <a class="el" href="class_matrix.html">Matrix</a> *m)</td></tr>
 <tr class="memitem:a235d160c27ba48f4ab6ff271afc09ff2" id="r_a235d160c27ba48f4ab6ff271afc09ff2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_matrix.html">Matrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h_a235d160c27ba48f4ab6ff271afc09ff2.html#a235d160c27ba48f4ab6ff271afc09ff2">rawBIBasis</a> (const <a class="el" href="class_matrix.html">Matrix</a> *m, <a class="el" href="classint.html">int</a> toGroebner)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Legacy umbrella header that re-exports the full engine public surface. </p>
+<p><span class="tt"><a class="el" href="engine_8h.html" title="Legacy umbrella header that re-exports the full engine public surface.">engine.h</a></span> historically declared every public entry point in one place. Today it forward-declares the engine's user-facing handle types (<span class="tt"><a class="el" href="class_free_module.html">FreeModule</a></span>, <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span>, <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span>, <span class="tt"><a class="el" href="class_ring_map.html">RingMap</a></span>, <span class="tt"><a class="el" href="class_computation.html">Computation</a></span>, <span class="tt"><a class="el" href="class_mutable_complex.html">MutableComplex</a></span>) under the same dual C/C++ pattern that each <span class="tt">interface/*.h</span> uses, then <span class="tt">#include</span>s the per-area interface headers so that a single <span class="tt">#include "<a class="el" href="engine_8h.html" title="Legacy umbrella header that re-exports the full engine public surface.">engine.h</a>"</span> still resolves to the entire public surface. New engine code is encouraged to reach for only the narrower <span class="tt">interface/&lt;area&gt;.h</span> headers &mdash; doing so reduces compile-time include bloat and makes dependencies explicit &mdash; but this header remains for backward compatibility with callers outside the engine and as the documented front-door entry point.</p>
+<p>The exact set of re-exports drifts over time as files migrate out of the legacy bucket; the file itself is the authoritative inventory. <span class="tt"><a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a></span> carries the engine-wide baseline (<span class="tt">config.h</span>, <span class="tt">M2_*</span> typedefs) that this header layers on top of.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="engine_8h_source.html">engine.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -120,15 +120,15 @@ $(function(){initNavTree('class_m2_1_1_a_ring_z_z_a9f6a3eb40c8e7892a030fb3d383de
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aring-zz-flint_8hpp_source.html#l00193">193</a> of file <a class="el" href="aring-zz-flint_8hpp_source.html">aring-zz-flint.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  196</span>  {</div>
-<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">if</span> (mpz_sgn(n) &lt; 0) <span class="keywordflow">throw</span> exc::engine_error(<span class="stringliteral">&quot;can only raise to a nonnegative power&quot;</span>);</div>
-<div class="line"><span class="lineno">  198</span>    std::pair&lt;bool, int&gt; n1 = <a class="code hl_function" href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si</a>(n);</div>
-<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">if</span> (n1.first)</div>
-<div class="line"><span class="lineno">  200</span>      fmpz_pow_ui(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>, &amp;a, n1.second);</div>
-<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  202</span>      <span class="keywordflow">throw</span> exc::engine_error(<span class="stringliteral">&quot;exponent too large&quot;</span>);</div>
-<div class="line"><span class="lineno">  203</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="aring-zz-flint_8hpp_source.html#l00222">222</a> of file <a class="el" href="aring-zz-flint_8hpp_source.html">aring-zz-flint.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  225</span>  {</div>
+<div class="line"><span class="lineno">  226</span>    <span class="keywordflow">if</span> (mpz_sgn(n) &lt; 0) <span class="keywordflow">throw</span> exc::engine_error(<span class="stringliteral">&quot;can only raise to a nonnegative power&quot;</span>);</div>
+<div class="line"><span class="lineno">  227</span>    std::pair&lt;bool, int&gt; n1 = <a class="code hl_function" href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si</a>(n);</div>
+<div class="line"><span class="lineno">  228</span>    <span class="keywordflow">if</span> (n1.first)</div>
+<div class="line"><span class="lineno">  229</span>      fmpz_pow_ui(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>, &amp;a, n1.second);</div>
+<div class="line"><span class="lineno">  230</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  231</span>      <span class="keywordflow">throw</span> exc::engine_error(<span class="stringliteral">&quot;exponent too large&quot;</span>);</div>
+<div class="line"><span class="lineno">  232</span>  }</div>
 <div class="ttc" id="aclass_ring_z_z_a93f60c7348caad7f332820b455fb3735_html_a93f60c7348caad7f332820b455fb3735"><div class="ttname"><a href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si</a></div><div class="ttdeci">static std::pair&lt; bool, int &gt; get_si(mpz_srcptr n)</div><div class="ttdef"><b>Definition</b> <a href="_z_z_8cpp_source.html#l00046">ZZ.cpp:46</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 </div><!-- fragment -->

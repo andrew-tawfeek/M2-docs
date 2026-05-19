@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-_c_c_c_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-CCC.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_c_c.html">M2::ARingCCC</a></span> &mdash; arbitrary-precision complex numbers (pair of MPFR floats).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="gmp-util_8h_source.html">interface/gmp-util.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="random_8h_source.html">interface/random.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="aring_8hpp_source.html">aring.hpp</a>&quot;</code><br />
@@ -109,7 +112,22 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:M2" id="r_M2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2.html">M2</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_c_c.html">M2::ARingCCC</a></span> &mdash; arbitrary-precision complex numbers (pair of MPFR floats). </p>
+<p><span class="tt">ARingCCC</span> is the complex counterpart to <span class="tt">ARingRRR</span>: a <span class="tt">SimpleARing&lt;ARingCCC&gt;</span> whose element type is a pair of MPFR floats with mantissa precision chosen at construction. Arithmetic evaluates the standard formulas <span class="tt">(a+bi) +/- (c+di)</span>, <span class="tt">(a+bi)(c+di) = (ac-bd) + (ad+bc)i</span>, <span class="tt">1/(a+bi) = (a-bi)/(a^2+b^2)</span>, and <span class="tt">|a+bi| = sqrt(a^2+b^2)</span> component-wise via <span class="tt">mpfr_add</span> / <span class="tt">mpfr_mul</span> / <span class="tt">mpfr_sqrt</span> under round-to-nearest-ties-even.</p>
+<p>The header pulls in <span class="tt"><a class="el" href="gmp-util_8h.html">interface/gmp-util.h</a></span> for <span class="tt"><a class="el" href="gmp-util_8h_a7089c4618e1129e1149d2d3d7baf62ca.html#a7089c4618e1129e1149d2d3d7baf62ca">mpfr_reallocate_limbs</a></span> (moves the mantissa from MPFR's heap onto the GC heap) and <span class="tt"><a class="el" href="gmp-util_8h_a5666f6a5496dd378bc6502276f87008c.html#a5666f6a5496dd378bc6502276f87008c">moveTo_gmpCC</a></span> (bundles two MPFRs into the interpreter's GC-managed complex type), plus <span class="tt"><a class="el" href="random_8h.html">interface/random.h</a></span> for <span class="tt"><a class="el" href="random_8cpp_abbbd078918c5dcee460c8dac8218749c.html#abbbd078918c5dcee460c8dac8218749c">randomMpfr</a></span>. Primary consumers are high-precision NAG homotopy continuation and any numerical linear algebra over <span class="tt">CC_n</span> for <span class="tt">n != 53</span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-_r_r_r_8hpp.html" title="M2::ARingRRR — arbitrary-precision real numbers backed by MPFR.">aring-RRR.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_c_c_8hpp.html" title="M2::ARingCC — machine-precision complex numbers (pair of doubles).">aring-CC.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_c_ci_8hpp.html" title="M2::ARingCCi — certified complex intervals as Cartesian rectangles of MPFI intervals.">aring-CCi.hpp</a> </dd>
+<dd>
+<a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_a_g_8hpp.html" title="Numerical Algebraic Geometry entry point: homotopy continuation, witness sets, monodromy.">NAG.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-_c_c_c_8hpp_source.html">aring-CCC.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

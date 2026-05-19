@@ -91,6 +91,9 @@ $(function(){initNavTree('complex_8h.html','',''); });
   <div class="headertitle"><div class="title">complex.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="m2-types_8h_a18e5439d68407cce7cf8b4433a93f091.html#a18e5439d68407cce7cf8b4433a93f091">gmp_CC</a></span> C primitives: arithmetic on arbitrary-precision complex values (pair of MPFR reals).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="m2-types_8h_source.html">interface/m2-types.h</a>&quot;</code><br />
 </div>
 <p><a href="complex_8h_source.html">Go to the source code of this file.</a></p>
@@ -115,7 +118,16 @@ Functions</h2></td></tr>
 <tr class="memitem:a72149f13477bf7b82a4a85244a74d091" id="r_a72149f13477bf7b82a4a85244a74d091"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="complex_8h_a72149f13477bf7b82a4a85244a74d091.html#a72149f13477bf7b82a4a85244a74d091">mpfc_sqrt</a> (<a class="el" href="m2-types_8h_a4c94265a164e162d16914f55bb94902c.html#a4c94265a164e162d16914f55bb94902c">gmp_CCmutable</a> <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>, <a class="el" href="m2-types_8h_a18e5439d68407cce7cf8b4433a93f091.html#a18e5439d68407cce7cf8b4433a93f091">gmp_CC</a> a)</td></tr>
 <tr class="memitem:a1cda78c07e7d55c0913be822da2f08ba" id="r_a1cda78c07e7d55c0913be822da2f08ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="complex_8h_a1cda78c07e7d55c0913be822da2f08ba.html#a1cda78c07e7d55c0913be822da2f08ba">mpfc_conj</a> (<a class="el" href="m2-types_8h_a4c94265a164e162d16914f55bb94902c.html#a4c94265a164e162d16914f55bb94902c">gmp_CCmutable</a> <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>, <a class="el" href="m2-types_8h_a4c94265a164e162d16914f55bb94902c.html#a4c94265a164e162d16914f55bb94902c">gmp_CCmutable</a> a)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="m2-types_8h_a18e5439d68407cce7cf8b4433a93f091.html#a18e5439d68407cce7cf8b4433a93f091">gmp_CC</a></span> C primitives: arithmetic on arbitrary-precision complex values (pair of MPFR reals). </p>
+<p>Declares the engine's C-style API for <span class="tt"><a class="el" href="m2-types_8h_a18e5439d68407cce7cf8b4433a93f091.html#a18e5439d68407cce7cf8b4433a93f091">gmp_CC</a></span> &mdash; an arbitrary-precision complex number stored as a pair of MPFR floats. The function naming follows MPFR/GMP conventions (<span class="tt"><a class="el" href="complex_8h_a42120d65860994fe587ef0de5bfa3b41.html#a42120d65860994fe587ef0de5bfa3b41">mpfc_init</a></span> / <span class="tt"><a class="el" href="complex_8h_a58d6d27d14d700e95711d52d29da2fa3.html#a58d6d27d14d700e95711d52d29da2fa3">mpfc_init_set</a></span> / <span class="tt"><a class="el" href="complex_8h_afa305c2a23fd4e91a402899fb6da4629.html#afa305c2a23fd4e91a402899fb6da4629">mpfc_clear</a></span> / <span class="tt"><a class="el" href="complex_8h_a25c6caccdef7e8b9c83507d9718c2867.html#a25c6caccdef7e8b9c83507d9718c2867">mpfc_add</a></span> / <span class="tt"><a class="el" href="complex_8h_a686736155513e39557ea162f29dab243.html#a686736155513e39557ea162f29dab243">mpfc_mul</a></span> / <span class="tt"><a class="el" href="complex_8h_a48ad86e8f6e14abd31220b9ee84a5435.html#a48ad86e8f6e14abd31220b9ee84a5435">mpfc_div</a></span>, plus special functions like <span class="tt">exp</span>, <span class="tt">log</span>, <span class="tt">sqrt</span>), the result is always the first argument, and every rounding step uses <span class="tt">MPFR_RNDN</span>. Every <span class="tt"><a class="el" href="m2-types_8h_a18e5439d68407cce7cf8b4433a93f091.html#a18e5439d68407cce7cf8b4433a93f091">gmp_CC</a></span> must be initialised with <span class="tt">init</span> (or <span class="tt">init_set</span>) before use and freed with <span class="tt">clear</span>.</p>
+<p>The C surface exists because the interpreter / engine boundary passes complex values as opaque pointers, and because some legacy paths predate the templated <span class="tt">aring</span> framework. Internally, <span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_c_c.html">M2::ARingCCC</a></span> (<span class="tt"><a class="el" href="aring-_c_c_c_8hpp.html" title="M2::ARingCCC — arbitrary-precision complex numbers (pair of MPFR floats).">aring-CCC.hpp</a></span>) is a thin C++ wrapper over this same code; new engine code should reach for <span class="tt">ARingCCC</span> and let this header carry the FFI surface.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-_c_c_c_8hpp.html" title="M2::ARingCCC — arbitrary-precision complex numbers (pair of MPFR floats).">aring-CCC.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_c_c_8hpp.html" title="M2::ARingCC — machine-precision complex numbers (pair of doubles).">aring-CC.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="complex_8h_source.html">complex.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

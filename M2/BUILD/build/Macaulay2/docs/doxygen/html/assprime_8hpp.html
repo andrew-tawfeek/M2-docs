@@ -91,6 +91,9 @@ $(function(){initNavTree('assprime_8hpp.html','',''); });
   <div class="headertitle"><div class="title">assprime.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_associated_primes.html">AssociatedPrimes</a></span> &mdash; codimension and minimal-codimension associated primes of a monomial ideal.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="monideal_8hpp_source.html">monideal.hpp</a>&quot;</code><br />
 </div>
 <p><a href="assprime_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -99,7 +102,14 @@ $(function(){initNavTree('assprime_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:AssociatedPrimes" id="r_AssociatedPrimes"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_associated_primes.html">AssociatedPrimes</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_associated_primes.html">AssociatedPrimes</a></span> &mdash; codimension and minimal-codimension associated primes of a monomial ideal. </p>
+<p>Declares <span class="tt"><a class="el" href="class_associated_primes.html">AssociatedPrimes</a></span>, a state-machine-shaped class that operates on a radical <span class="tt"><a class="el" href="class_monomial_ideal.html">MonomialIdeal</a></span>. It can run in two phases &mdash; <span class="tt">do_codim</span> (cheap, computes the codimension) and <span class="tt">do_primes</span> (expensive, enumerates the associated primes of minimal codimension) &mdash; so a caller can pay only for the codimension when that is all they need and step the same instance through to the primes later without restarting. The result is returned as a <span class="tt"><a class="el" href="class_monomial_ideal.html">MonomialIdeal</a></span> whose generators are squarefree monomials, each encoding one associated prime by the set of variables it contains.</p>
+<p><a class="el" href="class_monomial.html">Monomial</a> associated-prime calculation avoids Groebner bases and coefficient arithmetic entirely: it is the combinatorial recursion <span class="tt">ass(I) = ass(I, x_i) U {(x_i) + ass(I : x_i^inf)}</span> on exponent vectors. Callers (general primary decomposition, <span class="tt">codim I</span>, <span class="tt">dim R/I</span>) are expected to have already radicalised the input.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="monideal_8hpp.html">monideal.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="assprime_8hpp_source.html">assprime.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

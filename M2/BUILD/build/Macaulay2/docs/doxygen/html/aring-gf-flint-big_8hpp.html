@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-gf-flint-big_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-gf-flint-big.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big.html">M2::ARingGFFlintBig</a></span> &mdash; arbitrary-degree <span class="tt"><a class="el" href="class_g_f.html">GF(p^k)</a></span> via FLINT <span class="tt">fq_nmod</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;M2/gc-include.h&gt;</code><br />
 <code>#include &lt;M2/math-include.h&gt;</code><br />
@@ -116,7 +119,20 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:M2" id="r_M2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2.html">M2</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big.html">M2::ARingGFFlintBig</a></span> &mdash; arbitrary-degree <span class="tt"><a class="el" href="class_g_f.html">GF(p^k)</a></span> via FLINT <span class="tt">fq_nmod</span>. </p>
+<p><span class="tt">ARingGFFlintBig</span> represents a Galois-field element as a degree-less-than-<span class="tt">k</span> polynomial over <span class="tt">Z/p</span>, stored in FLINT's <span class="tt">fq_nmod_t</span> (a wrapper around <span class="tt">nmod_poly_t</span>). Addition is coefficient-wise in <span class="tt">Z/p</span> (O(k)); multiplication is polynomial multiply followed by reduction modulo the primitive polynomial (O(k^2) schoolbook or O(k log k) with FFT for large k); inversion is extended Euclidean over <span class="tt">Z/p[t]</span>. No Zech tables &mdash; every operation runs the underlying polynomial arithmetic, so per-op cost grows with <span class="tt">k</span>, but <span class="tt">q = p^k</span> carries no storage limit.</p>
+<p>The dispatcher in <span class="tt"><a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a></span> picks this implementation whenever Zech tables for <span class="tt"><a class="el" href="class_g_f.html">GF(q)</a></span> would be impractical (roughly <span class="tt">q &gt; 2^16</span>), falling back to the small-<span class="tt">q</span> sibling <span class="tt"><a class="el" href="aring-gf-flint_8hpp.html" title="M2::ARingGFFlint — small GF(p^k) via FLINT Zech-logarithm tables.">aring-gf-flint.hpp</a></span> when tables fit. The native, FLINT-free alternative is <span class="tt"><a class="el" href="aring-m2-gf_8hpp.html" title="M2::ARingGFM2 — native engine Galois field, no FLINT/Givaro dependency.">aring-m2-gf.hpp</a></span>, and <span class="tt"><a class="el" href="aring-tower_8hpp.html" title="M2::ARingTower — iterated finite-field extension tower for very large GF(p^k).">aring-tower.hpp</a></span> handles iterated extensions.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-gf-flint_8hpp.html" title="M2::ARingGFFlint — small GF(p^k) via FLINT Zech-logarithm tables.">aring-gf-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-m2-gf_8hpp.html" title="M2::ARingGFM2 — native engine Galois field, no FLINT/Givaro dependency.">aring-m2-gf.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-tower_8hpp.html" title="M2::ARingTower — iterated finite-field extension tower for very large GF(p^k).">aring-tower.hpp</a> </dd>
+<dd>
+<a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-gf-flint-big_8hpp_source.html">aring-gf-flint-big.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,12 +91,24 @@ $(function(){initNavTree('engine-includes_8hpp.html','',''); });
   <div class="headertitle"><div class="title">engine-includes.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-wide include prelude &mdash; a single point of truth for portability shims.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;M2/config.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="m2-types_8h_source.html">interface/m2-types.h</a>&quot;</code><br />
 <code>#include &lt;M2/gc-include.h&gt;</code><br />
 </div>
 <p><a href="engine-includes_8hpp_source.html">Go to the source code of this file.</a></p>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-wide include prelude &mdash; a single point of truth for portability shims. </p>
+<p>The header wraps four pieces of glue: <span class="tt">M2/config.h</span> (autotools / CMake <span class="tt">HAVE_*</span> macros), <span class="tt"><a class="el" href="m2-types_8h.html">interface/m2-types.h</a></span> (the cross-language <span class="tt"><a class="el" href="class_m2__arrayint.html">M2_arrayint</a></span>, <span class="tt">M2_string</span>, ... types shared with the interpreter &mdash; skipped when <span class="tt">SAFEC_EXPORTS</span> is set, signalling that scc1 is generating the C ABI), the right fixed-width-int header (<span class="tt">&lt;stdint.h&gt;</span> if <span class="tt">HAVE_STDINT_H</span>, else <span class="tt">&lt;inttypes.h&gt;</span>, with <span class="tt">__STDC_LIMIT_MACROS</span> defined first so C++ sees <span class="tt">UINT64_MAX</span> and friends), and <span class="tt">M2/gc-include.h</span> &mdash; but only when compiled as C (C++ defers GC integration to <span class="tt"><a class="el" href="newdelete_8hpp.html">newdelete.hpp</a></span> and its overloaded <span class="tt">operator new</span>).</p>
+<p>The whole body sits inside an <span class="tt">IWYU pragma: begin_exports</span>/<span class="tt">end_exports</span> pair so include-what-you-use treats the bundled headers as re-exported: files including <span class="tt"><a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a></span> count as including the inner declarations and IWYU will not suggest pulling them in directly. Avoid adding new entries here unless they are genuinely needed by ~90% of the engine; touching this file recompiles everything downstream.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="newdelete_8hpp.html">newdelete.hpp</a> </dd>
+<dd>
+<a class="el" href="m2-types_8h.html">interface/m2-types.h</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

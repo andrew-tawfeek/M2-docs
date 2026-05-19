@@ -91,6 +91,9 @@ $(function(){initNavTree('comb_8hpp.html','',''); });
   <div class="headertitle"><div class="title">comb.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_subsets.html">Subsets</a></span> &mdash; combinatorial-number-system encoding of <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>-subsets of <span class="tt">{0,...,n-1}</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cassert&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;iosfwd&gt;</code><br />
@@ -105,7 +108,13 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a3dbc1effdceb64fb669cf05c4776eec3" id="r_a3dbc1effdceb64fb669cf05c4776eec3"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comb_8hpp_a3dbc1effdceb64fb669cf05c4776eec3.html#a3dbc1effdceb64fb669cf05c4776eec3">Subset</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_subsets.html">Subsets</a></span> &mdash; combinatorial-number-system encoding of <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>-subsets of <span class="tt">{0,...,n-1}</span>. </p>
+<p><span class="tt"><a class="el" href="class_subsets.html">Subsets</a></span> enumerates and encodes <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>-element subsets of <span class="tt">{0, 1, ..., n - 1}</span> as a single integer index via the standard combinatorial number system: subsets are listed in the canonical order shown in the header comment, and <span class="tt">encode(p, exp)</span> / <span class="tt">decode(p, n, idx, exp)</span> / <span class="tt">next(p, n, exp)</span> move between an index and the sorted element list. The encoding is stable under extension of the ambient set &mdash; adding new elements appends new subset indices without renumbering existing ones &mdash; which makes it suitable as a long-term identifier.</p>
+<p>Engine consumers are exterior-algebra arithmetic (basis elements <span class="tt">e_{i_1} ∧ ... ∧ e_{i_p}</span> indexed by their subset code), minor-computation routines on matrices, and Schubert-calculus partition machinery driven from <span class="tt">m2/schubert.m2</span>. </p>
+
+<p class="definition">Definition in file <a class="el" href="comb_8hpp_source.html">comb.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

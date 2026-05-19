@@ -113,14 +113,14 @@ template&lt;typename ConcreteRT&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aring-glue_8hpp_source.html#l01258">1258</a> of file <a class="el" href="aring-glue_8hpp_source.html">aring-glue.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1260</span>{</div>
-<div class="line"><span class="lineno"> 1261</span>  <span class="keyword">typename</span> ConcreteRT::Element a(R.ring());</div>
-<div class="line"><span class="lineno"> 1262</span>  <a class="code hl_union" href="unionring__elem.html">ring_elem</a> b;</div>
-<div class="line"><span class="lineno"> 1263</span>  R.ring().getGenerator(a);</div>
-<div class="line"><span class="lineno"> 1264</span>  R.ring().to_ring_elem(b, a);</div>
-<div class="line"><span class="lineno"> 1265</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_ring_element_ab978463e39096a4e0d1ecc0720f9acf3.html#ab978463e39096a4e0d1ecc0720f9acf3">RingElement::make_raw</a>(&amp;R, b);</div>
-<div class="line"><span class="lineno"> 1266</span>}</div>
+<p class="definition">Definition at line <a class="el" href="aring-glue_8hpp_source.html#l01288">1288</a> of file <a class="el" href="aring-glue_8hpp_source.html">aring-glue.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1290</span>{</div>
+<div class="line"><span class="lineno"> 1291</span>  <span class="keyword">typename</span> ConcreteRT::Element a(R.ring());</div>
+<div class="line"><span class="lineno"> 1292</span>  <a class="code hl_union" href="unionring__elem.html">ring_elem</a> b;</div>
+<div class="line"><span class="lineno"> 1293</span>  R.ring().getGenerator(a);</div>
+<div class="line"><span class="lineno"> 1294</span>  R.ring().to_ring_elem(b, a);</div>
+<div class="line"><span class="lineno"> 1295</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_ring_element_ab978463e39096a4e0d1ecc0720f9acf3.html#ab978463e39096a4e0d1ecc0720f9acf3">RingElement::make_raw</a>(&amp;R, b);</div>
+<div class="line"><span class="lineno"> 1296</span>}</div>
 <div class="ttc" id="aclass_ring_element_ab978463e39096a4e0d1ecc0720f9acf3_html_ab978463e39096a4e0d1ecc0720f9acf3"><div class="ttname"><a href="class_ring_element_ab978463e39096a4e0d1ecc0720f9acf3.html#ab978463e39096a4e0d1ecc0720f9acf3">RingElement::make_raw</a></div><div class="ttdeci">static RingElement * make_raw(const Ring *R, ring_elem f)</div><div class="ttdef"><b>Definition</b> <a href="relem_8cpp_source.html#l00020">relem.cpp:20</a></div></div>
 <div class="ttc" id="aunionring__elem_html"><div class="ttname"><a href="unionring__elem.html">ring_elem</a></div><div class="ttdef"><b>Definition</b> <a href="ringelem_8hpp_source.html#l00050">ringelem.hpp:51</a></div></div>
 </div><!-- fragment -->

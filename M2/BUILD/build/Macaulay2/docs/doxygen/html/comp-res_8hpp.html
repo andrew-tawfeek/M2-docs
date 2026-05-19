@@ -91,6 +91,9 @@ $(function(){initNavTree('comp-res_8hpp.html','',''); });
   <div class="headertitle"><div class="title">comp-res.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> &mdash; abstract base for every free-resolution algorithm in the engine.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="comp_8hpp_source.html">comp.hpp</a>&quot;</code><br />
 </div>
 <p><a href="comp-res_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -104,7 +107,20 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:abc48b76918e28478bd41d7d9645360f3" id="r_abc48b76918e28478bd41d7d9645360f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comp-res_8hpp_abc48b76918e28478bd41d7d9645360f3.html#abc48b76918e28478bd41d7d9645360f3">intern_res</a> (<a class="el" href="class_resolution_computation.html">ResolutionComputation</a> *<a class="el" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a>)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> &mdash; abstract base for every free-resolution algorithm in the engine. </p>
+<p><span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> is the resolution-side mirror of <span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span>: a <span class="tt"><a class="el" href="class_computation.html">Computation</a></span> subclass that adds the resolution-specific virtuals <span class="tt">get_free(level)</span>, <span class="tt">get_matrix(level)</span> (the differential <span class="tt">F_level -&gt; F_{level - 1}</span>), <span class="tt">get_betti(type)</span> (Betti table with <span class="tt">type</span> selecting <span class="tt">minimal</span>, <span class="tt">total</span>, <span class="tt">graded</span>, ...), and <span class="tt">complete_thru_degree</span>. Concrete subclasses span the engine's resolution algorithms &mdash; <span class="tt"><a class="el" href="classres__comp.html" title="One of the Resolution computations, based on Schreyer and Lascala.">res_comp</a></span>, <span class="tt"><a class="el" href="classres2__comp.html" title="One of the Resolution computations, based on Schreyer and Lascala.">res2_comp</a></span>, <span class="tt">ResolutionComputationA2</span>, <span class="tt">EschreyerComputation</span>, <span class="tt"><a class="el" href="class_f4_res_computation.html">F4ResComputation</a></span> in <span class="tt">schreyer-resolution/</span>, and <span class="tt"><a class="el" href="class_n_c_res_computation.html">NCResComputation</a></span> &mdash; each keeping its own internal layout.</p>
+<p>The factory <span class="tt">ResolutionComputation::choose_res(...)</span> selects an implementation from <a class="el" href="namespace_m2.html">M2</a>'s <span class="tt">Strategy =&gt;</span> option; older strategies remain alive primarily for regression and the occasional small input on which they still win. Per-degree state lives on the heap so a typical <span class="tt">Strategy =&gt; N, DegreeLimit =&gt; k</span> workflow can inspect Betti numbers, decide whether to continue, and resume by relaxing the limit and calling <span class="tt">start_computation</span> again.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp_8hpp.html" title="Abstract Computation base class — stop-condition machinery for incremental engine work.">comp.hpp</a> </dd>
+<dd>
+<a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd>
+<dd>
+<a class="el" href="_eschreyer_8hpp.html" title="Older Schreyer-style kernel computation, predecessor of schreyer-resolution/.">Eschreyer.hpp</a> </dd>
+<dd>
+<a class="el" href="betti_8hpp.html" title="BettiDisplay — engine-side container and renderer for the Betti table of a free resolution.">betti.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="comp-res_8hpp_source.html">comp-res.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

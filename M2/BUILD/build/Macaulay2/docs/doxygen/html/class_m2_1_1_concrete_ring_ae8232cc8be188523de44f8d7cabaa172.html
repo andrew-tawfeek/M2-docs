@@ -122,20 +122,20 @@ $(function(){initNavTree('class_m2_1_1_concrete_ring_ae8232cc8be188523de44f8d7ca
 
 <p>Implements <a class="el" href="class_ring_a6d3d042f950ad9d90bb4ac65814789a1.html#a6d3d042f950ad9d90bb4ac65814789a1">Ring</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="aring-glue_8hpp_source.html#l00920">920</a> of file <a class="el" href="aring-glue_8hpp_source.html">aring-glue.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  923</span>{</div>
-<div class="line"><span class="lineno">  924</span>  <span class="comment">// Rf = Z/p[x]/F(x) ---&gt; GF(p,n)</span></div>
-<div class="line"><span class="lineno">  925</span>  <span class="comment">// promotion: need to be able to know the value of &#39;x&#39;.</span></div>
-<div class="line"><span class="lineno">  926</span>  <span class="comment">// lift: need to compute (primite_element)^e</span></div>
-<div class="line"><span class="lineno">  927</span> </div>
-<div class="line"><span class="lineno">  928</span>  <a class="code hl_typedef" href="class_m2_1_1_concrete_ring_a333c37f42ff2d3e521441991c8da0a58.html#a333c37f42ff2d3e521441991c8da0a58">ElementType</a> <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">a</a>;</div>
-<div class="line"><span class="lineno">  929</span>  <a class="code hl_variable" href="class_m2_1_1_concrete_ring_ac5931fcf132c0d43e222045e93f5a0cf.html#ac5931fcf132c0d43e222045e93f5a0cf">R</a>-&gt;from_ring_elem(<a class="code hl_class" href="class_m2_1_1_concrete_ring.html">a</a>, <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">f</a>);</div>
-<div class="line"><span class="lineno">  930</span>  <span class="keywordtype">bool</span> <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">retval</a> = <a class="code hl_variable" href="class_m2_1_1_concrete_ring_ac5931fcf132c0d43e222045e93f5a0cf.html#ac5931fcf132c0d43e222045e93f5a0cf">R</a>-&gt;lift(<a class="code hl_class" href="class_m2_1_1_concrete_ring.html">Rg</a>, <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">a</a>, <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">result</a>);</div>
-<div class="line"><span class="lineno">  931</span>  <span class="keywordflow">return</span> <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">retval</a>;</div>
-<div class="line"><span class="lineno">  932</span>}</div>
-<div class="ttc" id="aclass_m2_1_1_concrete_ring_a333c37f42ff2d3e521441991c8da0a58_html_a333c37f42ff2d3e521441991c8da0a58"><div class="ttname"><a href="class_m2_1_1_concrete_ring_a333c37f42ff2d3e521441991c8da0a58.html#a333c37f42ff2d3e521441991c8da0a58">M2::ConcreteRing::ElementType</a></div><div class="ttdeci">RingType::ElementType ElementType</div><div class="ttdef"><b>Definition</b> <a href="aring-glue_8hpp_source.html#l00032">aring-glue.hpp:32</a></div></div>
-<div class="ttc" id="aclass_m2_1_1_concrete_ring_ac5931fcf132c0d43e222045e93f5a0cf_html_ac5931fcf132c0d43e222045e93f5a0cf"><div class="ttname"><a href="class_m2_1_1_concrete_ring_ac5931fcf132c0d43e222045e93f5a0cf.html#ac5931fcf132c0d43e222045e93f5a0cf">M2::ConcreteRing::R</a></div><div class="ttdeci">std::unique_ptr&lt; RingType &gt; R</div><div class="ttdef"><b>Definition</b> <a href="aring-glue_8hpp_source.html#l00023">aring-glue.hpp:23</a></div></div>
-<div class="ttc" id="aclass_m2_1_1_concrete_ring_html"><div class="ttname"><a href="class_m2_1_1_concrete_ring.html">M2::ConcreteRing</a></div><div class="ttdef"><b>Definition</b> <a href="aring-glue_8hpp_source.html#l00021">aring-glue.hpp:22</a></div></div>
+<p class="definition">Definition at line <a class="el" href="aring-glue_8hpp_source.html#l00950">950</a> of file <a class="el" href="aring-glue_8hpp_source.html">aring-glue.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  953</span>{</div>
+<div class="line"><span class="lineno">  954</span>  <span class="comment">// Rf = Z/p[x]/F(x) ---&gt; GF(p,n)</span></div>
+<div class="line"><span class="lineno">  955</span>  <span class="comment">// promotion: need to be able to know the value of &#39;x&#39;.</span></div>
+<div class="line"><span class="lineno">  956</span>  <span class="comment">// lift: need to compute (primite_element)^e</span></div>
+<div class="line"><span class="lineno">  957</span> </div>
+<div class="line"><span class="lineno">  958</span>  <a class="code hl_typedef" href="class_m2_1_1_concrete_ring_a333c37f42ff2d3e521441991c8da0a58.html#a333c37f42ff2d3e521441991c8da0a58">ElementType</a> <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">a</a>;</div>
+<div class="line"><span class="lineno">  959</span>  <a class="code hl_variable" href="class_m2_1_1_concrete_ring_ac5931fcf132c0d43e222045e93f5a0cf.html#ac5931fcf132c0d43e222045e93f5a0cf">R</a>-&gt;from_ring_elem(<a class="code hl_class" href="class_m2_1_1_concrete_ring.html">a</a>, <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">f</a>);</div>
+<div class="line"><span class="lineno">  960</span>  <span class="keywordtype">bool</span> <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">retval</a> = <a class="code hl_variable" href="class_m2_1_1_concrete_ring_ac5931fcf132c0d43e222045e93f5a0cf.html#ac5931fcf132c0d43e222045e93f5a0cf">R</a>-&gt;lift(<a class="code hl_class" href="class_m2_1_1_concrete_ring.html">Rg</a>, <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">a</a>, <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">result</a>);</div>
+<div class="line"><span class="lineno">  961</span>  <span class="keywordflow">return</span> <a class="code hl_class" href="class_m2_1_1_concrete_ring.html">retval</a>;</div>
+<div class="line"><span class="lineno">  962</span>}</div>
+<div class="ttc" id="aclass_m2_1_1_concrete_ring_a333c37f42ff2d3e521441991c8da0a58_html_a333c37f42ff2d3e521441991c8da0a58"><div class="ttname"><a href="class_m2_1_1_concrete_ring_a333c37f42ff2d3e521441991c8da0a58.html#a333c37f42ff2d3e521441991c8da0a58">M2::ConcreteRing::ElementType</a></div><div class="ttdeci">RingType::ElementType ElementType</div><div class="ttdef"><b>Definition</b> <a href="aring-glue_8hpp_source.html#l00062">aring-glue.hpp:62</a></div></div>
+<div class="ttc" id="aclass_m2_1_1_concrete_ring_ac5931fcf132c0d43e222045e93f5a0cf_html_ac5931fcf132c0d43e222045e93f5a0cf"><div class="ttname"><a href="class_m2_1_1_concrete_ring_ac5931fcf132c0d43e222045e93f5a0cf.html#ac5931fcf132c0d43e222045e93f5a0cf">M2::ConcreteRing::R</a></div><div class="ttdeci">std::unique_ptr&lt; RingType &gt; R</div><div class="ttdef"><b>Definition</b> <a href="aring-glue_8hpp_source.html#l00053">aring-glue.hpp:53</a></div></div>
+<div class="ttc" id="aclass_m2_1_1_concrete_ring_html"><div class="ttname"><a href="class_m2_1_1_concrete_ring.html">M2::ConcreteRing</a></div><div class="ttdef"><b>Definition</b> <a href="aring-glue_8hpp_source.html#l00051">aring-glue.hpp:52</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

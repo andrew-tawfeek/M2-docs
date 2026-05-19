@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-qq-flint_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-qq-flint.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_q_q_flint.html" title="wrapper for the flint fmpq_t integer representation">M2::ARingQQFlint</a></span> &mdash; rationals backed by FLINT's <span class="tt">fmpq</span> with small-value inlining.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="gmp-util_8h_source.html">interface/gmp-util.h</a>&quot;</code><br />
 <code>#include &lt;M2/gc-include.h&gt;</code><br />
 <code>#include &lt;flint/flint.h&gt;</code><br />
@@ -113,7 +116,20 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:M2" id="r_M2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2.html">M2</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_q_q_flint.html" title="wrapper for the flint fmpq_t integer representation">M2::ARingQQFlint</a></span> &mdash; rationals backed by FLINT's <span class="tt">fmpq</span> with small-value inlining. </p>
+<p><span class="tt">ARingQQFlint</span> represents a rational as FLINT's <span class="tt">fmpq</span> data struct, which is a pair of <span class="tt">fmpz</span>s and therefore inherits the small-value inlining used by <span class="tt">ARingZZ</span> (<span class="tt"><a class="el" href="aring-zz-flint_8hpp.html" title="M2::ARingZZ — FLINT-backed arbitrary-precision integers with small-value inlining.">aring-zz-flint.hpp</a></span>): when both numerator and denominator fit in a single machine word the value lives entirely in registers, with heap allocation only on blowup. Arithmetic uses <span class="tt">fmpq_add</span>, <span class="tt">fmpq_mul</span>, ..., which normalise after every operation, so <span class="tt">(1/2) + (1/2)</span> is stored as <span class="tt">1</span> rather than <span class="tt">2/2</span>. This is the engine's modern default <span class="tt"><a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a></span> implementation; the GMP <span class="tt">mpq_t</span>-backed sibling <span class="tt"><a class="el" href="aring-qq-gmp_8hpp.html" title="M2::ARingQQGMP — arbitrary-precision rationals backed straight by GMP mpq_t.">aring-qq-gmp.hpp</a></span> remains available but heap-allocates every value.</p>
+<p>The FLINT-include dance routes its malloc hooks through bdwgc via <span class="tt">M2/gc-include.h</span> (which must precede every FLINT header), guards conversion warnings with diagnostic pragmas, and currently still pulls in <span class="tt"><a class="el" href="ring_8hpp.html">ring.hpp</a></span> for cross-ring promotion &mdash; a known refactor (promotion is intended to migrate to <span class="tt"><a class="el" href="aring-translate_8hpp.html" title="Cross-ring coercion templates between any two aring rings.">aring-translate.hpp</a></span>). Heavy consumers are <span class="tt"><a class="el" href="dmat-qq-flint_8hpp.html" title="DMat&lt;M2::ARingQQFlint&gt; — dense rational matrices stored in FLINT fmpq_mat_t.">dmat-qq-flint.hpp</a></span> and F4 with rational coefficients (via CRT lifting).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-qq_8hpp.html" title="Tiny dispatcher header that picks the default ARingQQ from among the QQ aring implementations.">aring-qq.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-qq-gmp_8hpp.html" title="M2::ARingQQGMP — arbitrary-precision rationals backed straight by GMP mpq_t.">aring-qq-gmp.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-zz-flint_8hpp.html" title="M2::ARingZZ — FLINT-backed arbitrary-precision integers with small-value inlining.">aring-zz-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-qq-flint_8hpp_source.html">aring-qq-flint.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

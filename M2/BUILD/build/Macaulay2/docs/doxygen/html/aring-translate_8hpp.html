@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-translate_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-translate.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Cross-ring coercion templates between any two <span class="tt">aring</span> rings.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="aring-_r_r_8hpp_source.html">aring-RR.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="aring-_c_c_8hpp_source.html">aring-CC.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="aring-_r_r_r_8hpp_source.html">aring-RRR.hpp</a>&quot;</code><br />
@@ -195,7 +198,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a34274cf6c2846784c2567832cdeae64e" id="r_a34274cf6c2846784c2567832cdeae64e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2_a34274cf6c2846784c2567832cdeae64e.html#a34274cf6c2846784c2567832cdeae64e">M2::mylift</a> (const <a class="el" href="class_m2_1_1_a_ring_r_r_r.html">ARingRRR</a> &amp;R, const <a class="el" href="class_m2_1_1_a_ring_r_ri.html">ARingRRi</a> &amp;S, <a class="el" href="class_m2_1_1_a_ring_r_r_r_aa47716308a33493ab12c0b87b48151e4.html#aa47716308a33493ab12c0b87b48151e4">ARingRRR::ElementType</a> &amp;result_gR, const <a class="el" href="class_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef.html#a86a415cc3939d4c69e0faab511f8ddef">ARingRRi::ElementType</a> &amp;gS)</td></tr>
 <tr class="memitem:aa9054085544fd1cbad96cc5b75da0865" id="r_aa9054085544fd1cbad96cc5b75da0865"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2_aa9054085544fd1cbad96cc5b75da0865.html#aa9054085544fd1cbad96cc5b75da0865">M2::mylift</a> (const <a class="el" href="namespace_m2_a4020664aefa28984a9e3e19b16a31981.html#a4020664aefa28984a9e3e19b16a31981">ARingQQ</a> &amp;R, const <a class="el" href="class_m2_1_1_a_ring_r_ri.html">ARingRRi</a> &amp;S, <a class="el" href="class_m2_1_1_a_ring_q_q_g_m_p_ae2d30dc8390b77b42b89aa0b10dae502.html#ae2d30dc8390b77b42b89aa0b10dae502">ARingQQ::ElementType</a> &amp;result_gR, const <a class="el" href="class_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef.html#a86a415cc3939d4c69e0faab511f8ddef">ARingRRi::ElementType</a> &amp;gS)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Cross-ring coercion templates between any two <span class="tt">aring</span> rings. </p>
+<p>Declares templated <span class="tt">translate&lt;SourceRing, TargetRing&gt;(...)</span> routines that convert values from one aring to another at compile- time-resolved speed: <span class="tt">Z -&gt; Q</span> (place integer over 1), <span class="tt">Q -&gt; RR</span> (MPFR divide), <span class="tt">Z/p -&gt; Z</span> (lift to canonical representative), <span class="tt">Z -&gt; Z/p</span> (reduce), and the other pairs that make algebraic sense. Unsupported pairs &mdash; e.g. <span class="tt">RR -&gt; Z</span>, which has no canonical answer &mdash; are deliberately left unspecialised so a call instantiates to a compile-time error instead of a silent default. Because each aring's own header knows only about itself, this file pulls in <b>every</b> <span class="tt">aring-*.hpp</span> so the specialisations have access to both source and target types.</p>
+<p>Together with <span class="tt"><a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a></span> this file completes the aring integration story: <span class="tt"><a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a></span> is the vertical bridge (aring up to the legacy <span class="tt">Ring*</span> API) and <span class="tt"><a class="el" href="aring-translate_8hpp.html" title="Cross-ring coercion templates between any two aring rings.">aring-translate.hpp</a></span> is the horizontal bridge (aring across to another aring). Heavy callers are the <span class="tt">promote</span> / <span class="tt">lift</span> paths in <span class="tt"><a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a></span>, cross-ring <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> operations, and <span class="tt"><a class="el" href="class_ring_map.html">RingMap</a></span> application.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring_8hpp.html" title="Abstract-ring framework (namespace M2) that unifies the engine&#39;s coefficient rings.">aring.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a> </dd>
+<dd>
+<a class="el" href="ringmap_8hpp.html">ringmap.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-translate_8hpp_source.html">aring-translate.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

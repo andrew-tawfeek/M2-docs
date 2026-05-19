@@ -91,6 +91,9 @@ $(function(){initNavTree('dmat-lu-inplace_8hpp.html','',''); });
   <div class="headertitle"><div class="title">dmat-lu-inplace.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_d_mat_lin_alg.html">DMatLinAlg</a></span> specialisations for <span class="tt">ARingGFFlint{,Big}</span> wrapping FLINT's in-place LU plus LAPACK glue.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="dmat_8hpp_source.html">dmat.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mat-elem-ops_8hpp_source.html">mat-elem-ops.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mat-util_8hpp_source.html">mat-util.hpp</a>&quot;</code><br />
@@ -112,7 +115,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a480bc96c84fc68bf689e889b1f65ae70" id="r_a480bc96c84fc68bf689e889b1f65ae70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dmat-lu-inplace_8hpp_a480bc96c84fc68bf689e889b1f65ae70.html#a480bc96c84fc68bf689e889b1f65ae70">fill_from_lapack_array</a> (const std::vector&lt; double &gt; &amp;<a class="el" href="mem_8cpp_a05e4d9829321b3db5b3dced46a697515.html#a05e4d9829321b3db5b3dced46a697515">doubles</a>, <a class="el" href="lapack_8hpp_af08ee838e04db100344bab171255dbdc.html#af08ee838e04db100344bab171255dbdc">DMatRR</a> &amp;mat)</td></tr>
 <tr class="memitem:ae48c10b495ee0250224ba9fc8741fde2" id="r_ae48c10b495ee0250224ba9fc8741fde2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dmat-lu-inplace_8hpp_ae48c10b495ee0250224ba9fc8741fde2.html#ae48c10b495ee0250224ba9fc8741fde2">fill_from_lapack_array</a> (const std::vector&lt; double &gt; &amp;<a class="el" href="mem_8cpp_a05e4d9829321b3db5b3dced46a697515.html#a05e4d9829321b3db5b3dced46a697515">doubles</a>, <a class="el" href="lapack_8hpp_a88a894ae4db001572530f62898cd39f0.html#a88a894ae4db001572530f62898cd39f0">DMatCC</a> &amp;mat)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_d_mat_lin_alg.html">DMatLinAlg</a></span> specialisations for <span class="tt">ARingGFFlint{,Big}</span> wrapping FLINT's in-place LU plus LAPACK glue. </p>
+<p>Carries the <span class="tt"><a class="el" href="class_d_mat_lin_alg.html">DMatLinAlg</a>&lt;<a class="el" href="class_m2_1_1_a_ring_g_f_flint.html">M2::ARingGFFlint</a>&gt;</span> and <span class="tt"><a class="el" href="class_d_mat_lin_alg.html">DMatLinAlg</a>&lt;<a class="el" href="class_m2_1_1_a_ring_g_f_flint_big.html">M2::ARingGFFlintBig</a>&gt;</span> specialisations that route dense LU, rank, determinant, and null-space over FLINT Galois fields through <span class="tt">fq_zech_mat_lu</span> and <span class="tt">fq_nmod_mat_lu</span>. The LU factors overwrite the input matrix (FLINT's "in-place" form), which saves a copy at the cost of destroying the original &mdash; callers that need to preserve <span class="tt">M</span> make a copy themselves. <span class="tt">_perm_parity</span> from <span class="tt">&lt;flint/perm.h&gt;</span> is pulled in so the routines can read off the sign needed for downstream determinant code.</p>
+<p>The header also declares the LAPACK-array glue used by the <span class="tt">RR</span> / <span class="tt">CC</span> LU path: <span class="tt"><a class="el" href="dmat-lu-inplace_8hpp_a1d9fe790cb0cb4f0fe5ec99737d82ed4.html#a1d9fe790cb0cb4f0fe5ec99737d82ed4">make_lapack_array</a></span> / <span class="tt"><a class="el" href="dmat-lu-inplace_8hpp_a480bc96c84fc68bf689e889b1f65ae70.html#a480bc96c84fc68bf689e889b1f65ae70">fill_from_lapack_array</a></span> marshal a <span class="tt"><a class="el" href="lapack_8hpp_af08ee838e04db100344bab171255dbdc.html#af08ee838e04db100344bab171255dbdc">DMatRR</a></span> or <span class="tt"><a class="el" href="lapack_8hpp_a88a894ae4db001572530f62898cd39f0.html#a88a894ae4db001572530f62898cd39f0">DMatCC</a></span> to and from the contiguous <span class="tt">std::vector&lt;double&gt;</span> form LAPACK expects, and <span class="tt"><a class="el" href="class_l_u_util.html">LUUtil</a>&lt;RT&gt;</span> provides the shared helpers used across these specialisations.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="dmat-lu_8hpp.html" title="Umbrella header that pulls together every DMat&lt;R&gt; LU-decomposition specialisation.">dmat-lu.hpp</a> </dd>
+<dd>
+<a class="el" href="dmat_8hpp.html" title="DMat&lt;ACoeffRing&gt; — dense-matrix template plus the umbrella that wires in every per-ring specialisatio...">dmat.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-gf-flint_8hpp.html" title="M2::ARingGFFlint — small GF(p^k) via FLINT Zech-logarithm tables.">aring-gf-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-gf-flint-big_8hpp.html" title="M2::ARingGFFlintBig — arbitrary-degree GF(p^k) via FLINT fq_nmod.">aring-gf-flint-big.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="dmat-lu-inplace_8hpp_source.html">dmat-lu-inplace.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -114,15 +114,15 @@ template&lt;class Mat&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dmat-lu_8hpp_source.html#l00430">430</a> of file <a class="el" href="dmat-lu_8hpp_source.html">dmat-lu.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  433</span>{</div>
-<div class="line"><span class="lineno">  434</span>  <span class="comment">// Better would be if the Mat type allows easy swapping of rows...</span></div>
-<div class="line"><span class="lineno">  435</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.resize(B.numRows(),</div>
-<div class="line"><span class="lineno">  436</span>                B.numColumns());  <span class="comment">// leaves B alone if correct size already...</span></div>
-<div class="line"><span class="lineno">  437</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> r = 0; r &lt; B.numRows(); r++)</div>
-<div class="line"><span class="lineno">  438</span>    <span class="keywordflow">for</span> (<span class="keywordtype">long</span> c = 0; c &lt; B.numColumns(); c++)</div>
-<div class="line"><span class="lineno">  439</span>      B.ring().set(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.entry(r, c), B.entry(permutation[r], c));</div>
-<div class="line"><span class="lineno">  440</span>}</div>
+<p class="definition">Definition at line <a class="el" href="dmat-lu_8hpp_source.html#l00458">458</a> of file <a class="el" href="dmat-lu_8hpp_source.html">dmat-lu.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  461</span>{</div>
+<div class="line"><span class="lineno">  462</span>  <span class="comment">// Better would be if the Mat type allows easy swapping of rows...</span></div>
+<div class="line"><span class="lineno">  463</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.resize(B.numRows(),</div>
+<div class="line"><span class="lineno">  464</span>                B.numColumns());  <span class="comment">// leaves B alone if correct size already...</span></div>
+<div class="line"><span class="lineno">  465</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> r = 0; r &lt; B.numRows(); r++)</div>
+<div class="line"><span class="lineno">  466</span>    <span class="keywordflow">for</span> (<span class="keywordtype">long</span> c = 0; c &lt; B.numColumns(); c++)</div>
+<div class="line"><span class="lineno">  467</span>      B.ring().set(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.entry(r, c), B.entry(permutation[r], c));</div>
+<div class="line"><span class="lineno">  468</span>}</div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result()</a>.</p>

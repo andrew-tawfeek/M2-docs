@@ -91,6 +91,9 @@ $(function(){initNavTree('aring_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Abstract-ring framework (<span class="tt">namespace <a class="el" href="namespace_m2.html">M2</a></span>) that unifies the engine's coefficient rings.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cassert&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
@@ -149,7 +152,22 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Abstract-ring framework (<span class="tt">namespace <a class="el" href="namespace_m2.html">M2</a></span>) that unifies the engine's coefficient rings. </p>
+<p>Defines the dispatcher and shared base of the <span class="tt">aring</span> system. Each concrete coefficient ring (<a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a> via GMP, <a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a> via FLINT, Z/p via FFLAS, <a class="el" href="class_g_f.html">GF</a>, RR, CC, ...) lives in its own <span class="tt">aring-*.{cpp,hpp}</span> pair and registers itself by a <span class="tt">RingID</span> tag declared in <span class="tt"><a class="el" href="coeffrings_8hpp.html" title="Coefficient-ring registry and the CoefficientRingZZp SimpleARing exemplar.">coeffrings.hpp</a></span>. Cold paths branch on the tag; hot paths take a concrete <span class="tt"><a class="el" href="class_a_ring.html">ARing</a>&lt;R&gt;</span> template parameter so the per-element arithmetic inlines instead of going through a virtual dispatch &mdash; the original motivation for introducing the aring framework alongside the older <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> API.</p>
+<p>The two ring APIs coexist permanently: existing engine code reads <span class="tt">Ring*</span>, performance-critical paths read <span class="tt">aring</span>, and the bridges in <span class="tt"><a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a></span>, <span class="tt"><a class="el" href="aring-translate_8hpp.html" title="Cross-ring coercion templates between any two aring rings.">aring-translate.hpp</a></span>, and <span class="tt"><a class="el" href="aring-wrap_8cpp.html">aring-wrap.cpp</a></span> move values between them. This file also contains the only <span class="tt">HAVE_FLINT_RAND_INIT</span> compatibility shim aring users touch when bumping the FLINT submodule version (<span class="tt">flint_rand_init</span> vs. <span class="tt">flint_randinit</span>).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-translate_8hpp.html" title="Cross-ring coercion templates between any two aring rings.">aring-translate.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-wrap_8hpp.html" title="RElementWrap&lt;RingType&gt; — templated wrapper that exposes one aring value as the abstract RElement.">aring-wrap.hpp</a> </dd>
+<dd>
+<a class="el" href="coeffrings_8hpp.html" title="Coefficient-ring registry and the CoefficientRingZZp SimpleARing exemplar.">coeffrings.hpp</a> </dd>
+<dd>
+<a class="el" href="ring_8hpp.html">ring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring_8hpp_source.html">aring.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

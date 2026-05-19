@@ -92,6 +92,9 @@ $(function(){initNavTree('_s_l_p-defs_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p>Type declarations for the <a class="el" href="class_s_l_p.html">SLP</a> DAG and its M2-facing wrapper.  
+<a href="#details">More...</a></p>
+
 <p><a href="_s_l_p-defs_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -112,7 +115,18 @@ Classes</h2></td></tr>
 <tr class="memitem:HomotopyConcrete_3C_20RT_2C_20Algorithm_20_3E" id="r_HomotopyConcrete_3C_20RT_2C_20Algorithm_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_homotopy_concrete.html">HomotopyConcrete&lt; RT, Algorithm &gt;</a></td></tr>
 <tr class="memitem:HomotopyConcrete_3C_20RT_2C_20FixedPrecisionHomotopyAlgorithm_20_3E" id="r_HomotopyConcrete_3C_20RT_2C_20FixedPrecisionHomotopyAlgorithm_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_homotopy_concrete_3_01_r_t_00_01_fixed_precision_homotopy_algorithm_01_4.html">HomotopyConcrete&lt; RT, FixedPrecisionHomotopyAlgorithm &gt;</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Type declarations for the <a class="el" href="class_s_l_p.html">SLP</a> DAG and its M2-facing wrapper. </p>
+<p>Declares <span class="tt"><a class="el" href="class_s_l_program.html">SLProgram</a></span> &mdash; the straight-line program itself, a DAG of arithmetic gates (<span class="tt">Copy</span>, <span class="tt">MCopy</span>, <span class="tt">Sum</span>, <span class="tt">Product</span>, <span class="tt">MSum</span>, <span class="tt">MProduct</span>, <span class="tt">Det</span>, <span class="tt">Divide</span>) over a fixed set of inputs and constants with tagged output positions &mdash; and <span class="tt"><a class="el" href="class_m2_s_l_program.html">M2SLProgram</a></span>, the <span class="tt"><a class="el" href="class_mutable_engine_object.html">MutableEngineObject</a></span> subclass that owns the program via <span class="tt">std::unique_ptr</span> and is what NAG hands across the engine/M2 boundary. <span class="tt"><a class="el" href="class_m2_s_l_program_a1005118ac05ff326296ea86f3994d46c.html#a1005118ac05ff326296ea86f3994d46c">M2SLProgram::value()</a></span> is the back-door accessor for engine code that needs to talk to the underlying program directly.</p>
+<p>The wrapper exists so the templated <a class="el" href="class_s_l_p.html">SLP</a> machinery (<span class="tt"><a class="el" href="class_s_l_evaluator_concrete.html">SLEvaluatorConcrete</a>&lt;RT&gt;</span> in <span class="tt"><a class="el" href="_s_l_p-imp_8hpp.html" title="Templated SLEvaluatorConcrete&lt;RT&gt; — the per-ring SLP evaluator implementation.">SLP-imp.hpp</a></span>) does not have to leak through M2-visible names: the interpreter handles <span class="tt">M2SLProgram*</span> as an opaque pointer while the numerical specialisation does the actual work behind it.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_s_l_p_8hpp.html" title="Public umbrella header for the straight-line-program evaluator used by NAG.">SLP.hpp</a> </dd>
+<dd>
+<a class="el" href="_s_l_p-imp_8hpp.html" title="Templated SLEvaluatorConcrete&lt;RT&gt; — the per-ring SLP evaluator implementation.">SLP-imp.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_a_g_8hpp.html" title="Numerical Algebraic Geometry entry point: homotopy continuation, witness sets, monodromy.">NAG.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

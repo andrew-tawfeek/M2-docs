@@ -91,6 +91,9 @@ $(function(){initNavTree('buffer_8hpp.html','',''); });
   <div class="headertitle"><div class="title">buffer.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Append-only GC-backed byte buffer used throughout the engine for text output.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -106,7 +109,15 @@ Classes</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a3781a8fc11dbfb68c533b57f9557fecd" id="r_a3781a8fc11dbfb68c533b57f9557fecd"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="buffer_8hpp_a3781a8fc11dbfb68c533b57f9557fecd.html#a3781a8fc11dbfb68c533b57f9557fecd">BUFFER_INITIAL_CAPACITY</a> = 100</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Append-only GC-backed byte buffer used throughout the engine for text output. </p>
+<p><span class="tt"><a class="el" href="classbuffer.html">buffer</a></span> is the lightweight text-output primitive shared by every engine <span class="tt">text_out</span>, error message, debug trace, and serialised value. Storage is a <span class="tt">char*</span> allocated under <span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span> (so it lives on the Boehm GC heap and is freed automatically); when a write would exceed <span class="tt">_capacity</span> the buffer reallocates &mdash; the old block becomes unreferenced and the collector reaps it, with no manual frees. The starting capacity is <span class="tt"><a class="el" href="buffer_8hpp_a3781a8fc11dbfb68c533b57f9557fecd.html#a3781a8fc11dbfb68c533b57f9557fecd">BUFFER_INITIAL_CAPACITY</a> =
+100</span>.</p>
+<p>The class is preferred over <span class="tt">std::ostringstream</span> for three reasons: GC integration (the STL string would create a heap boundary the collector cannot follow), determinism (no locale-dependent number formatting &mdash; numeric output goes through the engine's own <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> printers), and performance (no stream-locking, no <span class="tt">streambuf</span> indirection). The header overloads <span class="tt">operator&lt;&lt;</span> for primitive types plus a marker <span class="tt"><a class="el" href="structindent.html">indent</a></span> struct that emits a run of spaces. Contents come back out via <span class="tt">c_str()</span> (the live buffer with a nul terminator) or <span class="tt">to_string()</span> (a copy).</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="newdelete_8hpp.html">newdelete.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

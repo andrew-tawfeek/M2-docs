@@ -91,6 +91,9 @@ $(function(){initNavTree('aring-tower_8hpp.html','',''); });
   <div class="headertitle"><div class="title">aring-tower.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower.html">M2::ARingTower</a></span> &mdash; iterated finite-field extension tower for very large <span class="tt"><a class="el" href="class_g_f.html">GF(p^k)</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="_exponent_vector_8hpp_source.html">ExponentVector.hpp</a>&quot;</code><br />
@@ -117,7 +120,20 @@ Namespaces</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga490857490c2a55400c60f9f0ff498f80" id="r_ga490857490c2a55400c60f9f0ff498f80"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_m2_1_1_a_ring_polynomial_struct.html">ARingPolynomialStruct</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__polynomialrings_ga490857490c2a55400c60f9f0ff498f80.html#ga490857490c2a55400c60f9f0ff498f80">M2::ARingPolynomial</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower.html">M2::ARingTower</a></span> &mdash; iterated finite-field extension tower for very large <span class="tt"><a class="el" href="class_g_f.html">GF(p^k)</a></span>. </p>
+<p>Builds a finite field as a chain <span class="tt">L_0 = Z/p</span>, <span class="tt">L_i = L_{i-1}[t_i] / f_i(t_i)</span>. A field element at level <span class="tt">k</span> is a polynomial in <span class="tt">t_k</span> of degree less than <span class="tt">deg(f_k)</span> whose coefficients themselves live in <span class="tt">L_{k-1}</span>, so values are represented recursively as <span class="tt">ARingPolynomial</span> structs (degree, length, coefficient array) bottoming out at <span class="tt">Z/p</span> arithmetic from <span class="tt"><a class="el" href="aring-zzp-ffpack_8hpp.html" title="M2::ARingZZpFFPACK — Z/p via FFLAS-FFPACK&#39;s Modular&lt;double&gt; field.">aring-zzp-ffpack.hpp</a></span>. Multiplication at each level is polynomial multiplication followed by reduction modulo the level's minimal polynomial.</p>
+<p>The tower path is what makes <span class="tt"><a class="el" href="class_g_f.html">GF(2^60)</a></span> and similar giants practical: storage drops from <span class="tt">O(p^k)</span> (impossible to tabulate at scale) to the sum of subfield sizes. The trade-off is per-operation cost: each multiply walks the tower of polynomial reductions instead of dispatching a single FLINT call as <span class="tt"><a class="el" href="aring-gf-flint-big_8hpp.html" title="M2::ARingGFFlintBig — arbitrary-degree GF(p^k) via FLINT fq_nmod.">aring-gf-flint-big.hpp</a></span> does, so the dispatcher prefers the FLINT path for standard <span class="tt"><a class="el" href="class_g_f.html">GF(p^k)</a></span> and uses <span class="tt">ARingTower</span> whenever the user has specified an explicit tower structure.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-zzp-ffpack_8hpp.html" title="M2::ARingZZpFFPACK — Z/p via FFLAS-FFPACK&#39;s Modular&lt;double&gt; field.">aring-zzp-ffpack.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-gf-flint_8hpp.html" title="M2::ARingGFFlint — small GF(p^k) via FLINT Zech-logarithm tables.">aring-gf-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-gf-flint-big_8hpp.html" title="M2::ARingGFFlintBig — arbitrary-degree GF(p^k) via FLINT fq_nmod.">aring-gf-flint-big.hpp</a> </dd>
+<dd>
+<a class="el" href="_exponent_vector_8hpp.html" title="Dense exponent-vector template [e_0, ..., e_{nvars-1}] for monomial operations.">ExponentVector.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

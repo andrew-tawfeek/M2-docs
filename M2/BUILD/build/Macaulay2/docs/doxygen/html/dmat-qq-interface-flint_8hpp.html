@@ -92,6 +92,9 @@ $(function(){initNavTree('dmat-qq-interface-flint_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p>Translation bridge that lets GMP-backed <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;ARingQQ&gt;</span> borrow FLINT matrix arithmetic.  
+<a href="#details">More...</a></p>
+
 <p><a href="dmat-qq-interface-flint_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -99,7 +102,18 @@ Classes</h2></td></tr>
 <tr class="memitem:FlintZZMat" id="r_FlintZZMat"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flint_z_z_mat.html">FlintZZMat</a></td></tr>
 <tr class="memitem:FlintQQMat" id="r_FlintQQMat"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flint_q_q_mat.html">FlintQQMat</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Translation bridge that lets GMP-backed <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;ARingQQ&gt;</span> borrow FLINT matrix arithmetic. </p>
+<p>Declares <span class="tt"><a class="el" href="class_flint_z_z_mat.html">FlintZZMat</a></span> (and the corresponding <span class="tt"><a class="el" href="class_flint_q_q_mat.html">FlintQQMat</a></span> used by neighbouring LU code), small RAII wrappers that hold a FLINT <span class="tt">fmpz_mat_t</span> / <span class="tt">fmpq_mat_t</span> and copy entries in from a <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="namespace_m2_a4020664aefa28984a9e3e19b16a31981.html#a4020664aefa28984a9e3e19b16a31981">M2::ARingQQ</a>&gt;</span> (or <span class="tt"><a class="el" href="mat-linalg_8hpp_a114b5da0f74642d3b8aabfaa14ac2a57.html#a114b5da0f74642d3b8aabfaa14ac2a57">DMatZZGMP</a></span>) on construction so the work itself can run through FLINT's fast <span class="tt">fmpz_mat_*</span> / <span class="tt">fmpq_mat_*</span> routines. After the FLINT call the wrapper provides a back-copy path to land the result in the engine's native matrix type, and the destructor releases the FLINT storage.</p>
+<p>The layer exists because the default <span class="tt">ARingQQ</span> alias still resolves to <span class="tt">ARingQQGMP</span>, so <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;ARingQQ&gt;</span> stores <span class="tt">mpq_t</span> values &mdash; but FLINT's matrix routines need FLINT storage to deliver their speedups. Once the default <span class="tt">ARingQQ</span> flips to <span class="tt">ARingQQFlint</span> (see <span class="tt"><a class="el" href="aring-qq_8hpp.html" title="Tiny dispatcher header that picks the default ARingQQ from among the QQ aring implementations.">aring-qq.hpp</a></span>), callers can talk to <span class="tt"><a class="el" href="dmat-qq-flint_8hpp.html" title="DMat&lt;M2::ARingQQFlint&gt; — dense rational matrices stored in FLINT fmpq_mat_t.">dmat-qq-flint.hpp</a></span> directly and this translation file can be removed.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="dmat-qq-flint_8hpp.html" title="DMat&lt;M2::ARingQQFlint&gt; — dense rational matrices stored in FLINT fmpq_mat_t.">dmat-qq-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-qq_8hpp.html" title="Tiny dispatcher header that picks the default ARingQQ from among the QQ aring implementations.">aring-qq.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-qq-gmp_8hpp.html" title="M2::ARingQQGMP — arbitrary-precision rationals backed straight by GMP mpq_t.">aring-qq-gmp.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="dmat-qq-interface-flint_8hpp_source.html">dmat-qq-interface-flint.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

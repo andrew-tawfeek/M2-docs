@@ -91,6 +91,9 @@ $(function(){initNavTree('dmat-qq-flint_8hpp.html','',''); });
   <div class="headertitle"><div class="title">dmat-qq-flint.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="class_m2_1_1_a_ring_q_q_flint.html" title="wrapper for the flint fmpq_t integer representation">M2::ARingQQFlint</a>&gt;</span> &mdash; dense rational matrices stored in FLINT <span class="tt">fmpq_mat_t</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &quot;<a class="el" href="aring-qq-flint_8hpp_source.html">aring-qq-flint.hpp</a>&quot;</code><br />
@@ -103,7 +106,18 @@ $(function(){initNavTree('dmat-qq-flint_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:DMat_3C_20M2_3A_3AARingQQFlint_20_3E" id="r_DMat_3C_20M2_3A_3AARingQQFlint_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4.html">DMat&lt; M2::ARingQQFlint &gt;</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="class_m2_1_1_a_ring_q_q_flint.html" title="wrapper for the flint fmpq_t integer representation">M2::ARingQQFlint</a>&gt;</span> &mdash; dense rational matrices stored in FLINT <span class="tt">fmpq_mat_t</span>. </p>
+<p>Specialises the dense-matrix template for the FLINT rational aring. Each entry is an <span class="tt">fmpq_t</span> (a pair of <span class="tt">fmpz</span>s sharing the small-value-inlined representation of <span class="tt">ARingZZ</span>), so the typical "small numerator over small denominator" rationals stay in registers and only blow up to a heap-allocated <span class="tt">mpq_t</span> when the values grow. Arithmetic routes to FLINT's <span class="tt">fmpq_mat_*</span> family &mdash; <span class="tt">fmpq_mat_add</span>, <span class="tt">fmpq_mat_mul</span>, <span class="tt">fmpq_mat_neg</span>, <span class="tt">fmpq_mat_rank</span>, <span class="tt">fmpq_mat_solve</span>, <span class="tt">fmpq_mat_inv</span>, <span class="tt">fmpq_mat_det</span> &mdash; giving cache-aware blocked algorithms over the whole matrix instead of the generic per-element loop the unspecialised template would walk.</p>
+<p>The header is part of the <span class="tt"><a class="el" href="dmat_8hpp.html" title="DMat&lt;ACoeffRing&gt; — dense-matrix template plus the umbrella that wires in every per-ring specialisatio...">dmat.hpp</a></span> umbrella include and is never delivered to the front-end directly (the legacy file comment flags this). Conversion helpers between this representation, the engine's <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> type, and the older <span class="tt">ARingQQGMP</span> path live in the companion <span class="tt"><a class="el" href="dmat-qq-interface-flint_8hpp.html" title="Translation bridge that lets GMP-backed DMat&lt;ARingQQ&gt; borrow FLINT matrix arithmetic.">dmat-qq-interface-flint.hpp</a></span>. As always for FLINT-backed files, <span class="tt">M2/gc-include.h</span> precedes the FLINT include so allocations route through bdwgc.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="dmat_8hpp.html" title="DMat&lt;ACoeffRing&gt; — dense-matrix template plus the umbrella that wires in every per-ring specialisatio...">dmat.hpp</a> </dd>
+<dd>
+<a class="el" href="dmat-qq-interface-flint_8hpp.html" title="Translation bridge that lets GMP-backed DMat&lt;ARingQQ&gt; borrow FLINT matrix arithmetic.">dmat-qq-interface-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-qq-flint_8hpp.html" title="M2::ARingQQFlint — rationals backed by FLINT&#39;s fmpq with small-value inlining.">aring-qq-flint.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="dmat-qq-flint_8hpp_source.html">dmat-qq-flint.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

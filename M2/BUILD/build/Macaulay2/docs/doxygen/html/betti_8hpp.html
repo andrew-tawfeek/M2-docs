@@ -91,6 +91,9 @@ $(function(){initNavTree('betti_8hpp.html','',''); });
   <div class="headertitle"><div class="title">betti.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_betti_display.html">BettiDisplay</a></span> &mdash; engine-side container and renderer for the Betti table of a free resolution.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="buffer_8hpp_source.html">buffer.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="memtailor_8h_source.html">memtailor.h</a>&quot;</code><br />
 <code>#include &lt;unordered_set&gt;</code><br />
@@ -104,7 +107,15 @@ Classes</h2></td></tr>
 <tr class="memitem:BettiDisplay" id="r_BettiDisplay"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_betti_display.html">BettiDisplay</a></td></tr>
 <tr class="memitem:BettiHashAndEq" id="r_BettiHashAndEq"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_betti_hash_and_eq.html">BettiHashAndEq</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_betti_display.html">BettiDisplay</a></span> &mdash; engine-side container and renderer for the Betti table of a free resolution. </p>
+<p><span class="tt"><a class="el" href="class_betti_display.html">BettiDisplay</a></span> holds the graded Betti numbers <span class="tt">beta_{i,j} = rank
+(F_i)_j</span> produced when an engine <span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> finishes: row index is the internal degree <span class="tt">j - i</span>, column index is the homological degree <span class="tt">i</span>. The class itself is intentionally just a 2-D <span class="tt"><a class="el" href="classint.html">int</a></span> array with bounds plus printing helpers &mdash; the actual mathematics (which entries are non-zero and what they equal) is done by the resolution code that fills the table. Small per-table allocations route through <span class="tt">memtailor</span> so resolutions of large monomial ideals (hundreds of rows/columns) stay cheap.</p>
+<p>Rendering supports three modes: the plain text layout returned by <a class="el" href="namespace_m2.html">M2</a>'s <span class="tt">betti</span> function, an HTML form for <span class="tt">installPackage</span>-generated documentation, and a LaTeX form for <span class="tt">latex</span>. Format selection happens at print time through the engine's <span class="tt"><a class="el" href="classbuffer.html">buffer</a></span> machinery.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="buffer_8hpp.html" title="Append-only GC-backed byte buffer used throughout the engine for text output.">buffer.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="betti_8hpp_source.html">betti.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

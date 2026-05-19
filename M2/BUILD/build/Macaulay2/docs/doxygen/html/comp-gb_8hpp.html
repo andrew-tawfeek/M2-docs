@@ -91,6 +91,9 @@ $(function(){initNavTree('comp-gb_8hpp.html','',''); });
   <div class="headertitle"><div class="title">comp-gb.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> &mdash; abstract base of every Groebner-basis algorithm in the engine.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="comp_8hpp_source.html">comp.hpp</a>&quot;</code><br />
 </div>
 <p><a href="comp-gb_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -113,7 +116,18 @@ Variables</h2></td></tr>
 <tr class="memitem:ac428fd8877b6a388ef66d00ca26d42dc" id="r_ac428fd8877b6a388ef66d00ca26d42dc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comp-gb_8hpp_ac428fd8877b6a388ef66d00ca26d42dc.html#ac428fd8877b6a388ef66d00ca26d42dc">SPAIR_REMOVED</a> = 8</td></tr>
 <tr class="memitem:a9131ff672fa89b5e3caf15d0e2fafe8a" id="r_a9131ff672fa89b5e3caf15d0e2fafe8a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="comp-gb_8hpp_a9131ff672fa89b5e3caf15d0e2fafe8a.html#a9131ff672fa89b5e3caf15d0e2fafe8a">SPAIR_DEFERRED</a> = 9</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> &mdash; abstract base of every Groebner-basis algorithm in the engine. </p>
+<p><span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span> extends <span class="tt"><a class="el" href="class_computation.html">Computation</a></span> with the GB-specific vocabulary the interpreter requests once a basis has been (partially) built: <span class="tt">get_gb</span>, <span class="tt">get_mingens</span>, <span class="tt">get_change</span> (the change-of-basis matrix), <span class="tt">get_syzygies</span>, <span class="tt">get_initial</span> (leading terms), and <span class="tt">complete_thru_degree</span>. Each accessor is virtual because the concrete subclasses keep different internal representations &mdash; the classical default keeps a Buchberger-style list of marked polynomials, F4 keeps a <span class="tt"><a class="el" href="class_basis.html" title="A collection of polynomials.">Basis</a></span>, mathicgb returns a <span class="tt"><a class="el" href="class_mono_monoid.html">MonoMonoid</a></span>-encoded basis, and <span class="tt">NCGroebnerComputation</span> works over the non-commutative <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> type.</p>
+<p>The factory <span class="tt">GBComputation::choose_gb(...)</span> reads the user's <span class="tt">Strategy =&gt;</span>, the ring flavour, and the input shape and instantiates the right subclass &mdash; most user code never constructs one directly. The header also exposes the <span class="tt">SPAIR_*</span> return codes that the s-pair step routine returns inside the classical algorithm. Companion variants <span class="tt"><a class="el" href="comp-gb-declared_8cpp.html">comp-gb-declared.cpp</a></span> (basis supplied by the user via <span class="tt">forceGB</span>, no computation) and <span class="tt"><a class="el" href="comp-gb-proxy_8cpp.html">comp-gb-proxy.cpp</a></span> (forwards calls to a worker thread) reuse the same interface.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp_8hpp.html" title="Abstract Computation base class — stop-condition machinery for incremental engine work.">comp.hpp</a> </dd>
+<dd>
+<a class="el" href="comp-res_8hpp.html" title="ResolutionComputation — abstract base for every free-resolution algorithm in the engine.">comp-res.hpp</a> </dd>
+<dd>
+<a class="el" href="gbring_8hpp.html">gbring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="comp-gb_8hpp_source.html">comp-gb.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
