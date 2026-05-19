@@ -3,6 +3,39 @@
 #ifndef _res_f4_computation_hpp_
 #define _res_f4_computation_hpp_
 
+/**
+ * @file schreyer-resolution/res-f4-computation.hpp
+ * @brief `F4ResComputation` --- top-level Schreyer-frame F4 free-resolution driver.
+ *
+ * Declares the `ResolutionComputation` subclass that owns a
+ * `SchreyerFrame`, walks it homological-level by level, and
+ * reports Betti tables / free modules / differential matrices
+ * back to the M2 interpreter. The constructor is private; the
+ * friend factory `createF4Res(gbmatrix, max_level, strategy,
+ * numThreads, parallelizeByDegree)` is the only entry point and
+ * requires the input matrix to already be a Gröbner basis with
+ * respect to the chosen monomial order. `minimal_betti(...)`
+ * and the `get_mutable_matrix` accessors expose the per-degree
+ * Macaulay-matrix data without forcing the full resolution to
+ * complete first.
+ *
+ * Two `Ring`-flavoured pointers thread through the
+ * implementation: the user-facing `PolynomialRing` and the
+ * resolution-tuned `ResPolyRing` declared next door. The split
+ * mirrors the legacy `PolynomialRing` / `GBRing` separation on
+ * the GB side. As with the NC counterpart, only `length_limit`
+ * and `degree_limit` from `Computation`'s stop conditions are
+ * honoured; everything else is ignored. The
+ * `parallelizeByDegree` flag picks between the two scheduling
+ * strategies the `DependencyGraph` supports.
+ *
+ * @see comp-res.hpp
+ * @see res-poly-ring.hpp
+ * @see res-schreyer-frame.hpp
+ * @see res-f4.hpp
+ * @see res-dep-graph.hpp
+ */
+
 #include "res-poly-ring.hpp"
 #include "polyring.hpp"
 #include "comp-res.hpp"
