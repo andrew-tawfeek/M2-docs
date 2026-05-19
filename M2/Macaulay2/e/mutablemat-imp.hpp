@@ -5,6 +5,30 @@
 #ifndef _mutable_mat_imp_hpp_
 #define _mutable_mat_imp_hpp_
 
+/**
+ * @file mutablemat-imp.hpp
+ * @brief Template implementations of `MutableMat<Mat>` --- including the SLP-evaluator bridge.
+ *
+ * Carries the inline template bodies for `MutableMat<Mat>` ---
+ * the same wrapper declared in `mutablemat-defs.hpp`. The split
+ * keeps the heavy includes (SLP machinery, NAG bridges) out of
+ * every translation unit that only needs the declarations; this
+ * file is pulled in where a specific `MutableMat<DMat<R>>` or
+ * `MutableMat<SMat<R>>` is actually instantiated. Beyond
+ * forwarding shapes, it provides `createSLEvaluator` and
+ * `createCompiledSLEvaluator`, which build the
+ * `SLEvaluatorConcrete<R>` instance NAG uses to walk a compiled
+ * straight-line program against a one-row mutable matrix of
+ * constants.
+ *
+ * Pair with `mutablemat-defs.hpp` for the class declarations and
+ * `SLP-imp.hpp` for the straight-line-program evaluator itself.
+ *
+ * @see mutablemat.hpp
+ * @see mutablemat-defs.hpp
+ * @see SLP-imp.hpp
+ */
+
 template <typename Mat>
 M2SLEvaluator* MutableMat<Mat>::createSLEvaluator(M2SLProgram* P,
                                                 M2_arrayint constsPos,
