@@ -12,21 +12,26 @@
  * @file assprime.hpp
  * @brief `AssociatedPrimes` --- codimension and minimal-codimension associated primes of a monomial ideal.
  *
- * Declares `AssociatedPrimes`, a state-machine-shaped class that
- * operates on a radical `MonomialIdeal`. It can run in two phases ---
- * `do_codim` (cheap, computes the codimension) and `do_primes`
- * (expensive, enumerates the associated primes of minimal codimension)
- * --- so a caller can pay only for the codimension when that is all
- * they need and step the same instance through to the primes later
- * without restarting. The result is returned as a `MonomialIdeal`
- * whose generators are squarefree monomials, each encoding one
- * associated prime by the set of variables it contains.
+ * Declares `AssociatedPrimes`, a class that operates on a
+ * (caller-supplied radical) `MonomialIdeal`. Its `state` enum
+ * has two values, `do_codim` (cheap, computes the codimension)
+ * and `do_primes` (expensive, enumerates the associated primes
+ * of minimal codimension), so a caller can pay only for the
+ * codimension and step the same instance through to the primes
+ * later without restarting. The public entry points are
+ * `codimension()`, `associated_primes(count)`,
+ * `min_primes(maxcodim, count)`, and `max_indep_sets(count)`;
+ * `count = -1` means "no limit". Results come back as a
+ * `MonomialIdeal` whose generators are squarefree monomials,
+ * each encoding one prime by the variables it contains (the
+ * `max_indep_sets` output is the complementary squarefree
+ * monomial for each min prime).
  *
- * Monomial associated-prime calculation avoids Groebner bases and
- * coefficient arithmetic entirely: it is the combinatorial recursion
- * `ass(I) = ass(I, x_i) U {(x_i) + ass(I : x_i^inf)}` on exponent
- * vectors. Callers (general primary decomposition, `codim I`,
- * `dim R/I`) are expected to have already radicalised the input.
+ * Monomial associated-prime calculation avoids Groebner bases
+ * and coefficient arithmetic entirely: it is the combinatorial
+ * recursion `ass(I) = ass(I, x_i) U {(x_i) + ass(I : x_i^inf)}`
+ * walking the `Nmi_node` tree of the input. Callers are
+ * expected to have already radicalised the input.
  *
  * @see monideal.hpp
  */
