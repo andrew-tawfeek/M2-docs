@@ -22,9 +22,12 @@
  * the Hilbert series of an arbitrary ideal pass in a Groebner basis.
  * Reading the Hilbert function or extracting the Hilbert polynomial
  * from the numerator lives in top-level M2 code; this header exposes
- * only the static `hilbertNumerator` family and the per-instance
- * `value()` / `calc()` driver, plus `coeff_of` for sampling a single
- * coefficient.
+ * only the static `hilbertNumerator` family --- three overloads
+ * (`const Matrix*`, `const FreeModule*`, `const MonomialIdeal*`)
+ * --- and the per-instance `value()` / `calc(nsteps)` / `is_done()` /
+ * `reset()` / `next_monideal()` driver, plus `coeff_of` for sampling
+ * a single coefficient and `stats()` for printing the recursion
+ * counters (`nsteps`, `depth`, `maxdepth`, `nideal`, `nrecurse`).
  *
  * @see monideal.hpp
  */
