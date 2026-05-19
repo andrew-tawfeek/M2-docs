@@ -1,5 +1,33 @@
 // Copyright 2017 Michael E. Stillman
 
+/**
+ * @file unit-tests/ResTest.cpp
+ * @brief gtest coverage for `ResMonoidDense` --- the dense-exponent monoid used by the F4 resolution.
+ *
+ * Hosts the `TEST(ResMonoidDense, *)` battery that builds
+ * `ResMonoidDense` instances under different weight, heft, and
+ * ordering combinations (`GRevLex`, `Weights`, `Lex`) and
+ * asserts construction, variable counts, monomial encoding /
+ * decoding, multiplication via `mult`, and the per-ordering
+ * `compare` semantics behave correctly. The monomial-storage
+ * pattern --- pre-allocate a `std::vector<res_monomial_word>`
+ * and let `from_expvector` / `to_expvector` round-trip through
+ * it --- is exactly how the production `SchreyerFrame` lays out
+ * level monomials, so the tests double as living documentation
+ * of the expected workflow.
+ *
+ * End-to-end resolution coverage lives in the M2-level test
+ * suite where Gröbner inputs are easier to express; this file
+ * intentionally pins down only the monoid building block so a
+ * regression in `ResMonoidDense` surfaces here instead of as a
+ * cryptic miscompare three layers up.
+ *
+ * @see schreyer-resolution/res-moninfo.hpp
+ * @see schreyer-resolution/res-moninfo-dense.hpp
+ * @see schreyer-resolution/res-poly-ring.hpp
+ * @see MonoidTest.cpp
+ */
+
 #include <cstdio>
 #include <string>
 #include <iostream>
