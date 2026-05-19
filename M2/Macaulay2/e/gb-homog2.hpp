@@ -4,10 +4,10 @@
 
 /**
  * @file gb-homog2.hpp
- * @brief `gb_homog2_comp` --- Buchberger GB specialised to homogeneous input.
+ * @brief `GB_comp` --- Buchberger GB specialised to homogeneous input.
  *
- * Declares the homogeneous-specialised Groebner basis strategy
- * along with its `GB_COMP_*` state constants
+ * Declares the homogeneous-specialised Groebner basis class
+ * `GB_comp`, along with its `GB_COMP_*` state constants
  * (`NEWDEGREE`, `NEED_RESIZE`, `S_PAIRS`, `GENS`, `AUTO_REDUCE`,
  * `NEWPAIRS`, `DONE`). The point of the specialisation is that
  * S-polynomial degrees in a homogeneous ideal are monotonically
@@ -20,11 +20,12 @@
  * carries.
  *
  * The default `gb-default.hpp` (`gbA`) produces the same answer
- * for homogeneous input but pays the sugar overhead; this
- * specialisation is selected automatically when the input is
- * recognised homogeneous (or forced via `Strategy =>`). Sibling
- * variants `gb-sugarless.hpp`, `gb-toric.hpp`, and `gb-walk.hpp`
- * cover the other specialised paths.
+ * for homogeneous input but pays the sugar overhead; the
+ * dispatcher in `comp-gb.cpp` reaches `GB_comp` through
+ * `algorithm == 5` (homogeneity is not auto-detected --- the
+ * caller picks). Sibling variants `gb-sugarless.hpp`,
+ * `gb-toric.hpp`, and `gb-walk.hpp` cover the other specialised
+ * paths.
  *
  * @see gb-default.hpp
  * @see comp-gb.hpp
