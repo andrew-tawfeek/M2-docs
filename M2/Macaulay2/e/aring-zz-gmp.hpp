@@ -3,6 +3,32 @@
 #ifndef _aring_zz_gmp_hpp_
 #define _aring_zz_gmp_hpp_
 
+/**
+ * @file aring-zz-gmp.hpp
+ * @brief `M2::ARingZZGMP` --- aring integer ring backed straight by GMP `mpz_t`.
+ *
+ * `ARingZZGMP` is the original aring ZZ implementation: a
+ * `SimpleARing<ARingZZGMP>` whose `elem` wraps GMP's `mpz_struct`,
+ * with every value heap-allocated under GMP's allocation model and
+ * arithmetic delegated to `mpz_add`, `mpz_mul`, ... Each operation
+ * routes the resulting limbs through
+ * `interface/gmp-util.h::mpz_reallocate_limbs` so they live on the GC
+ * heap rather than GMP's malloc heap --- without that step bdwgc
+ * would not see them and could free them out from under the engine.
+ *
+ * The FLINT-backed sibling `aring-zz-flint.hpp` is the modern default
+ * because it inlines small values; this file remains as the
+ * reference implementation that validates FLINT's results, a
+ * fallback for builds without FLINT, and a known-good baseline for
+ * regression tests. The `rawARingZZ` factory in `interface/aring.h`
+ * picks FLINT when available; explicit strategy options can request
+ * this GMP path instead.
+ *
+ * @see ZZ.hpp
+ * @see aring-zz-flint.hpp
+ * @see aring.hpp
+ */
+
 #include "interface/gmp-util.h"  // for mpz_reallocate_limbs
 #include "interface/random.h"    // for rawRandomInteger
 
