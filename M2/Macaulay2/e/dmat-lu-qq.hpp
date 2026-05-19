@@ -2,21 +2,28 @@
  * @file dmat-lu-qq.hpp
  * @brief `DMatLinAlg<M2::ARingQQ>` --- rational dense LU routed through FLINT `fmpq_mat` / `fmpz_mat`.
  *
- * Specialises `DMatLinAlg` for the rational aring `ARingQQ`. Each
- * operation copies the input through `FlintQQMat`
- * (`dmat-qq-interface-flint.hpp`) so that the FLINT `fmpq_mat_t`
- * representation is available without disturbing the M2 matrix,
- * then dispatches into FLINT: rank goes through
- * `fmpq_mat_get_fmpz_mat_rowwise` followed by `fmpz_mat_rank`,
- * which clears denominators row by row and reduces the rational
- * problem to an integer one --- materially faster than doing rank
- * over `Q` directly because the underlying `fmpz_mat` routines
- * inline small-integer arithmetic. Determinant, LU, and null-space
- * follow the same denominator-clearing pattern.
+ * Specialises `DMatLinAlg` for the rational aring `ARingQQ`.
+ * Each operation copies the input through `FlintQQMat`
+ * (`dmat-qq-interface-flint.hpp`) so a FLINT `fmpq_mat_t` is
+ * available without disturbing the M2 matrix, then dispatches:
+ * `rank` clears denominators via
+ * `fmpq_mat_get_fmpz_mat_rowwise` and falls into
+ * `fmpz_mat_rank`; `kernel` (null-space) follows the same
+ * denominator-clearing pattern and finishes with
+ * `fmpz_mat_nullspace`; `inverse` goes through `fmpz_mat_inv`
+ * on the cleared matrix and scales back to `fmpq`; and
+ * `determinant` and `solveInvertible` stay in rationals via
+ * `fmpq_mat_det` and `fmpq_mat_solve_dixon` directly.
  *
- * The header is designed to be `#include`d exactly once from
- * `dmat-lu.hpp` (the lead comment flags the single-include
- * intent), where it slots into the `DMatLinAlg<R>` dispatch table.
+ * `matrixPLU` is the exception: an in-source comment notes
+ * `fmpz_mat_fflu` does not return a true LU factorisation, so
+ * the specialisation builds a generic `DMatLUinPlace<ARingQQ>`
+ * locally and uses `LUUtil<ARingQQ>::setUpperLower` to split.
+ * `solve(B, X)` handles the non-square / rank-deficient case
+ * by `concatenateMatrices<Mat>` of `[A | B]`, calling
+ * `fmpq_mat_rref`, and reading the solution out of the
+ * column-rank profile via the static
+ * `findColumnRankProfileFromLU`.
  *
  * @see dmat-lu.hpp
  * @see dmat-qq-interface-flint.hpp
