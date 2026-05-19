@@ -5,7 +5,7 @@
 
 /**
  * @file qring.hpp
- * @brief `QRingInfo` --- bookkeeping struct attached to a `PolyRingQuotient` for `R / I` reductions.
+ * @brief `QRingInfo` family --- bookkeeping plus normal-form machinery attached to a `PolyRingQuotient` for `R / I` reductions.
  *
  * Declares `QRingInfo`, the helper that holds the defining
  * ideal of a polynomial-ring quotient in two redundant forms:
@@ -14,15 +14,28 @@
  * GB-tuned reduction path through `gbring.hpp`. Keeping both
  * representations skips per-reduction conversion, and
  * `qring.cpp` is what keeps them in sync via
- * `appendQuotientElement`. `QRingInfo` is not itself a `Ring`
- * subclass --- it is the data hung off `PolyRingQuotient` (a
+ * `appendQuotientElement`. The base class itself is a virtual
+ * shell: its `normal_form` and `gbvector_normal_form` are no-ops
+ * (the bodies cast their arguments to `(void)` and return), and
+ * its `get_quotient_monomials` / `_MonomialTable` / `_MonomialTableZZ`
+ * all return `nullptr` --- the real reduction lives in three
+ * subclass branches.
+ *
+ * `QRingInfo_field` adds a `MonomialIdeal Rideal` and a
+ * `MonomialTable ringtable` indexed by `quotient_ideal` slot;
+ * `QRingInfo_field_basic` (basic field coefficients) supplies
+ * `reduce_lead_term_basic_field` and the matching `normal_form`
+ * / `gbvector_normal_form` overrides, while
+ * `QRingInfo_field_QQ` does the same with a denominator-aware
+ * `reduce_lead_term_QQ` plus the three-argument
+ * `gbvector_normal_form(F, f, use_denom, denom)` overload.
+ * `QRingInfo_ZZ` swaps in a `MonomialTableZZ` and tracks the
+ * `is_ZZ_quotient_` / `ZZ_quotient_value_` pair so quotients
+ * whose defining ideal contains a non-zero integer can short-
+ * circuit coefficient reductions. `QRingInfo` is not itself a
+ * `Ring` --- it is the data hung off `PolyRingQuotient` (a
  * `PolyRingFlat` subclass in `polyquotient.hpp`), which is the
  * `Ring` the rest of the engine sees.
- *
- * Multiplication inside a quotient runs the ambient
- * polynomial-ring product and then reduces against
- * `quotient_gbvectors`; the M2-side `R / I` factory computes a
- * GB of `I` once and stores it here.
  *
  * @see polyquotient.hpp
  * @see gbring.hpp
