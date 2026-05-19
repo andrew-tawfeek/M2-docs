@@ -3,6 +3,34 @@
 #ifndef _moninfo_hpp_
 #define _moninfo_hpp_
 
+/**
+ * @file f4/moninfo.hpp
+ * @brief `MonomialInfo` --- F4's specialised monoid descriptor over packed monomials.
+ *
+ * Declares `MonomialInfo`, the F4-side compiled form of a
+ * `Monoid`. The class exposes the operations the F4 inner loop
+ * needs: `monomial_size` (the int count of one encoded
+ * monomial), `compare(a, b)`, `multiply(a, b, out)`,
+ * `divide(a, b, out)`, `is_divisible(a, b)`, and the
+ * `to_varpower` / `from_varpower` converters between the dense
+ * `ntuple_monomial` and sparse `varpower_monomial` encodings.
+ * A `SkewMultiplication` field carries the skew-variable
+ * configuration when the ambient ring is exterior-flavoured.
+ *
+ * `MonomialInfo` strips out everything F4 does not need from
+ * the general-purpose `Monoid` (multi-degrees beyond a single
+ * scalar, generic-ordering walkers) and adds the F4-specific
+ * accelerators (packed layout, preferred encoding choice). The
+ * engine builds one per `PolynomialRing` at F4 startup and
+ * shares it across all F4 operations on that ring; the `#if 0`
+ * block at the top is stale configuration scaffolding kept
+ * alongside the live code.
+ *
+ * @see ntuple-monomial.hpp
+ * @see varpower-monomial.hpp
+ * @see f4.hpp
+ */
+
 #include "interface/m2-types.h"           // for M2_arrayint, M2_arrayint_st...
 #include "f4/ntuple-monomial.hpp"         // for ntuple_word, const_ntuple_m...
 #include "f4/varpower-monomial.hpp"       // for varpower_word, index_varpow...
