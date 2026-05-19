@@ -7,22 +7,30 @@
  * @file aring-gf-flint.hpp
  * @brief `M2::ARingGFFlint` --- small `GF(p^k)` via FLINT Zech-logarithm tables.
  *
- * `ARingGFFlint` represents a Galois field `GF(q)` of small order via
- * FLINT's `fq_zech_*` interface. The element type is a `ulong` Zech
- * log index of a chosen primitive root, so every operation reduces to
- * O(1) integer arithmetic on indices: multiplication becomes
- * `(i + j) mod (q - 1)`, addition `i + Zech(j - i)` via a
- * precomputed Zech table. One machine word per field element and no
- * per-call allocations make this the fastest representation when the
- * Zech table fits in memory --- in practice `q` up to roughly
- * `2^16`.
+ * `ARingGFFlint` (registered as `ringID = ring_GFFlintZech`)
+ * represents a Galois field `GF(q)` of small order via FLINT's
+ * `fq_zech_*` interface. The element type is FLINT's
+ * `fq_zech_struct`, which wraps a single `mp_limb_t` Zech log
+ * index of a chosen primitive root; every non-zero operation
+ * reduces to O(1) integer arithmetic on that index
+ * (multiplication is `(i + j) mod (q - 1)`, addition uses a
+ * Zech table built once at construction). One word per element
+ * and no per-call allocations make this the fastest path for
+ * small `q`; FLINT's Zech table sizing imposes the upper limit
+ * on `q`. The class inherits from `RingInterface` directly (not
+ * `SimpleARing<ARingGFFlint>`) so its nested `Element` can hold
+ * an `fq_zech_ctx_struct*` for the destructor.
  *
- * The construction-time dispatcher consults FLINT's
- * `fq_zech_ctx_init_modulus` and falls through to
- * `aring-gf-flint-big.hpp` (polynomial-quotient via `fq_nmod_*`) for
- * larger extensions. The native `aring-m2-gf.hpp` path provides the
- * same algebra without a FLINT dependency, and `GF.hpp` is the
- * legacy table-based class.
+ * The context is initialised via `fq_zech_ctx_init_modulus`
+ * against a user-supplied minimal polynomial; the M2-side entry
+ * point is `rawARingGaloisFieldFlintZech` in
+ * `interface/aring.cpp`. Larger extensions are reached by the
+ * separate `rawARingGaloisFieldFlintBig` entry point (which
+ * builds an `ARingGFFlintBig` from `aring-gf-flint-big.hpp`
+ * using polynomial-quotient `fq_nmod_*` arithmetic). The native
+ * `aring-m2-gf.hpp` path provides the same algebra without a
+ * FLINT dependency, and `GF.hpp` is the legacy table-based
+ * class.
  *
  * @see aring-gf-flint-big.hpp
  * @see aring-m2-gf.hpp
