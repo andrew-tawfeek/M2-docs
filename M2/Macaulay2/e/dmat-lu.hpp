@@ -3,6 +3,34 @@
 #ifndef _dmat_lu_hpp_
 #define _dmat_lu_hpp_
 
+/**
+ * @file dmat-lu.hpp
+ * @brief Umbrella header that pulls together every `DMat<R>` LU-decomposition specialisation.
+ *
+ * Declares the dispatch template `DMatLinAlg<RingType>` and
+ * `#include`s the per-ring LU specialisations: `dmat-lu-inplace.hpp`
+ * (shared in-place buffer logic), `dmat-lu-zzp-ffpack.hpp` (Z/p via
+ * FFLAS-FFPACK, fastest for small primes via BLAS-style dispatch),
+ * `dmat-lu-zzp-flint.hpp` (Z/p via FLINT, fast for medium primes),
+ * and `dmat-lu-qq.hpp` (rational LU). `DMatLinAlg<RingType>` is the
+ * common entry point: each `RingType` with a specialisation
+ * overrides the template to route directly into the back-end-
+ * native routine, and rings without a specialisation fall through
+ * to a generic in-place implementation.
+ *
+ * LU returns `A = P * L * U` with `L` (unit lower-triangular) and
+ * `U` packed into a single `DMat<R>` --- strictly-below-diagonal
+ * for `L`, on-and-above for `U` --- and the permutation `P` as a
+ * separate `M2_arrayint`; the rank of `A` is implicit in the
+ * factored result. Consumers include `mutablemat.hpp`'s
+ * `LUdecomposition` op, the dispatching `mat-linalg.hpp` family,
+ * `det.hpp`, and `LLL.hpp`.
+ *
+ * @see dmat.hpp
+ * @see mat-linalg.hpp
+ * @see det.hpp
+ */
+
 #include "dmat.hpp"
 #include "mat-elem-ops.hpp"
 #include "mat-util.hpp"
