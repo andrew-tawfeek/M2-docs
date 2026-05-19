@@ -1,6 +1,37 @@
 #ifndef _ringelement_h_
 #  define _ringelement_h_
 
+/**
+ * @file interface/ringelement.h
+ * @brief Engine-boundary C API for constructing, querying, and operating on `RingElement` values.
+ *
+ * Declares the `extern "C"` entry points that cover the full
+ * life cycle of a `RingElement`. Construction goes through the
+ * scalar coercions (`IM2_RingElement_from_Integer`,
+ * `_from_rational`, `_from_BigReal`, `_from_BigComplex`) plus
+ * the generator-and-power factory `IM2_RingElement_from_var` /
+ * `IM2_RingElement_term`; arithmetic exposes `IM2_RingElement_plus`,
+ * `_minus`, `_times`, `_negate`, `_divide`, and `_power`;
+ * projection / decomposition cover `_lead_coefficient`,
+ * `_lead_monomial`, `_terms`, `_get_coefficient(f, m)`, and the
+ * homogeneous / degree introspection; and promotion / lift
+ * (`rawPromote`, `rawLift`) move an element between compatible
+ * super- and sub-rings while preserving its mathematical value.
+ *
+ * Every entry point reads the `Ring*` off the input and
+ * forwards through it --- `RingElement` carries no algorithmic
+ * logic of its own. The opaque `EngineMonomial` type passed to
+ * `_get_coefficient` is the single-monomial handle the
+ * interpreter uses elsewhere in `interface/`, so the same
+ * vocabulary covers polynomials, monomial ideals, and ring
+ * elements.
+ *
+ * @see ringelement.cpp
+ * @see ring.h
+ * @see ringmap.h
+ * @see engine-includes.hpp
+ */
+
 #  include "engine-includes.hpp"
 
 // TODO: fix this
