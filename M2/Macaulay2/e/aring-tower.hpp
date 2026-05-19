@@ -7,23 +7,30 @@
  * @brief `M2::ARingTower` --- iterated finite-field extension tower for very large `GF(p^k)`.
  *
  * Builds a finite field as a chain `L_0 = Z/p`,
- * `L_i = L_{i-1}[t_i] / f_i(t_i)`. A field element at level `k` is a
- * polynomial in `t_k` of degree less than `deg(f_k)` whose
+ * `L_i = L_{i-1}[t_i] / f_i(t_i)`. A field element at level `k`
+ * is a polynomial in `t_k` of degree less than `deg(f_k)` whose
  * coefficients themselves live in `L_{k-1}`, so values are
- * represented recursively as `ARingPolynomial` structs (degree,
- * length, coefficient array) bottoming out at `Z/p` arithmetic from
- * `aring-zzp-ffpack.hpp`. Multiplication at each level is polynomial
- * multiplication followed by reduction modulo the level's minimal
- * polynomial.
+ * represented recursively as `ARingPolynomial` --- a pointer to
+ * `ARingPolynomialStruct { int deg; int len; union { ElementType*
+ * coeffs; ARingPolynomial* polys; }; }` that bottoms out at the
+ * `ARingZZpFFPACK` aring from `aring-zzp-ffpack.hpp` (the base
+ * ring is fixed; the in-source TODO flags making this a template
+ * over the bottom ring). Multiplication at each level is
+ * polynomial multiplication followed by reduction modulo the
+ * level's minimal polynomial. Unlike the other arings,
+ * `ARingTower` inherits from `RingInterface` directly rather
+ * than from `SimpleARing<ARingTower>` because element values are
+ * heap-managed pointers that need a backing-ring reference at
+ * destruction time --- the nested `Element` class holds an
+ * `ARingTower&` for exactly that reason.
  *
- * The tower path is what makes `GF(2^60)` and similar giants
- * practical: storage drops from `O(p^k)` (impossible to tabulate at
- * scale) to the sum of subfield sizes. The trade-off is per-operation
- * cost: each multiply walks the tower of polynomial reductions
- * instead of dispatching a single FLINT call as
- * `aring-gf-flint-big.hpp` does, so the dispatcher prefers the FLINT
- * path for standard `GF(p^k)` and uses `ARingTower` whenever the user
- * has specified an explicit tower structure.
+ * The tower path is the right choice when the user wants an
+ * explicit tower presentation. The M2-side entry points are
+ * `rawARingTower1` (build from a base `Z/p` and variable names)
+ * and `rawARingTower2` (extend an existing tower with more
+ * variables) in `interface/aring.cpp`; standard monolithic
+ * `GF(p^k)` rings are reached via separate factories that pick
+ * `aring-gf-flint.hpp` or `aring-gf-flint-big.hpp` instead.
  *
  * @see aring-zzp-ffpack.hpp
  * @see aring-gf-flint.hpp
