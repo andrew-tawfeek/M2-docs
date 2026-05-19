@@ -3,6 +3,34 @@
 #ifndef _aring_translate_hpp_
 #define _aring_translate_hpp_
 
+/**
+ * @file aring-translate.hpp
+ * @brief Cross-ring coercion templates between any two `aring` rings.
+ *
+ * Declares templated `translate<SourceRing, TargetRing>(...)`
+ * routines that convert values from one aring to another at compile-
+ * time-resolved speed: `Z -> Q` (place integer over 1), `Q -> RR`
+ * (MPFR divide), `Z/p -> Z` (lift to canonical representative),
+ * `Z -> Z/p` (reduce), and the other pairs that make algebraic sense.
+ * Unsupported pairs --- e.g. `RR -> Z`, which has no canonical answer
+ * --- are deliberately left unspecialised so a call instantiates to a
+ * compile-time error instead of a silent default. Because each
+ * aring's own header knows only about itself, this file pulls in
+ * **every** `aring-*.hpp` so the specialisations have access to both
+ * source and target types.
+ *
+ * Together with `aring-glue.hpp` this file completes the aring
+ * integration story: `aring-glue.hpp` is the vertical bridge (aring
+ * up to the legacy `Ring*` API) and `aring-translate.hpp` is the
+ * horizontal bridge (aring across to another aring). Heavy callers
+ * are the `promote` / `lift` paths in `aring.hpp`, cross-ring
+ * `RingElement` operations, and `RingMap` application.
+ *
+ * @see aring.hpp
+ * @see aring-glue.hpp
+ * @see ringmap.hpp
+ */
+
 ///////////////////////////////////////////////////////
 // Contains functions which are "ring translational" //
 ///////////////////////////////////////////////////////
