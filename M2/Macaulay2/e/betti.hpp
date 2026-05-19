@@ -18,14 +18,16 @@
  * the table.
  *
  * `getBetti()` flattens the table into an `M2_arrayint` of the
- * form `[lo, hi, len, values...]` (with the visible degree and
- * level windows trimmed to where non-zero entries occur), and
+ * form `[lo, hi1, len1, values...]` where `lo` is unchanged from
+ * `mLoDegree` and `hi1` / `len1` are trimmed down to the largest
+ * degree / level that still has a positive entry, and
  * `displayBetti(buffer&)` writes the standard M2 plain-text
  * Betti diagram --- column totals, a `[grand total]` header,
  * `-` for zero entries --- to a `buffer`. The `BettiHashAndEq`
  * functor at the bottom of the header is a `(int*, int)`-keyed
- * hash/equality pair used by resolution code that indexes
- * Betti-style contributions in `std::unordered_*` containers.
+ * hash/equality pair that hashes the `int*` by its raw pointer
+ * value (`+ 13 * second`) rather than its contents; no engine
+ * code outside this header currently instantiates it.
  *
  * @see buffer.hpp
  */
