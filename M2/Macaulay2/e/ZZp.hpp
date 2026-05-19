@@ -7,6 +7,33 @@
 namespace M2 {
 class ARingZZp;
 };
+
+/**
+ * @file ZZp.hpp
+ * @brief Legacy `Z_mod` --- a `Ring`-derived `Z/p` with log/exp/Zech tables.
+ *
+ * `Z_mod` is the original `Z/p` class, pre-dating the `aring`
+ * framework. Elements are stored as log-indices of a chosen primitive
+ * root `alpha`: `0` is the field zero and each `1 <= n <= p - 1`
+ * represents `alpha^n mod p`. Multiplication reduces to
+ * `(log a + log b) mod (p - 1)` over the integer indices, and
+ * addition is performed via a Zech-log lookup. The class supports
+ * characteristic `< 32767`.
+ *
+ * Several `Z/p` implementations coexist today --- `ARingZZp` (aring,
+ * portable), `ARingZZpFlint` (aring, FLINT-backed), `ARingZZpFFPACK`
+ * (aring, FFLAS-backed), and `CoefficientRingZZp` --- and the
+ * dispatcher selects among them by prime size and hardware. The
+ * legacy `Z_mod` is retained as the reference implementation that the
+ * modern variants are validated against, and because some pre-aring
+ * interpreter paths still construct it directly.
+ *
+ * @see aring-zzp.hpp
+ * @see aring-zzp-flint.hpp
+ * @see aring-zzp-ffpack.hpp
+ * @see coeffrings.hpp
+ */
+
 /**
     @ingroup rings
 */
