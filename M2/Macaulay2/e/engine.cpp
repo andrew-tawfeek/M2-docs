@@ -7,14 +7,15 @@
  * Defines (rather than declares) a handful of symbols that need to
  * exist exactly once: `MutableEngineObject::mNextMutableHashValue`,
  * the counter that hands out stable integer hashes to mutable
- * engine objects (mutable objects cannot use content-based hashing
- * because their contents change); `heap_size[GEOHEAP_SIZE]`, the
- * quadrupling bucket-capacity table `4, 16, 64, ..., 67108864`
- * consumed by the geometric-heap data structures (`geopoly.hpp`,
- * `geovec.hpp`, `geobucket.hpp`, `schur-poly-heap.hpp`,
- * `gbring.cpp`) when they accumulate large polynomial sums; and
- * the `doubles` / `doubling_stash` global allocators backing
- * fixed-size and growing arrays inside Boehm-managed memory.
+ * engine objects (mutable objects cannot use content-based
+ * hashing because their contents change); `heap_size[GEOHEAP_SIZE]`,
+ * the quadrupling bucket-capacity table `4, 16, 64, ..., 1073741824`
+ * (15 buckets) consumed by the geometric-heap data structures
+ * (`geopoly.hpp`, `geovec.hpp`, `geobucket.hpp`,
+ * `schur-poly-heap.hpp`, `gbring.cpp`) when they accumulate
+ * large polynomial sums; and the `doubles` / `doubling_stash`
+ * global allocators backing fixed-size and growing arrays
+ * inside Boehm-managed memory.
  *
  * The file stays small because the engine has very little true
  * process-global state --- most of what looks global actually
