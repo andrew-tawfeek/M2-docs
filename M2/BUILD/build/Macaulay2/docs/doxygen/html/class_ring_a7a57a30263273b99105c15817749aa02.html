@@ -107,36 +107,36 @@ $(function(){initNavTree('class_ring_a7a57a30263273b99105c15817749aa02.html','',
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00472">472</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  473</span>{</div>
-<div class="line"><span class="lineno">  474</span>  <span class="keywordflow">if</span> (this-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(a))</div>
-<div class="line"><span class="lineno">  475</span>    {</div>
-<div class="line"><span class="lineno">  476</span>      <a class="code hl_function" href="class_ring_a54898084da41b2130f8a8f844043ca6d.html#a54898084da41b2130f8a8f844043ca6d">remove_vec</a>(v);</div>
-<div class="line"><span class="lineno">  477</span>      v = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  478</span>    }</div>
-<div class="line"><span class="lineno">  479</span>  vecterm head;</div>
-<div class="line"><span class="lineno">  480</span>  head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a> = v;</div>
-<div class="line"><span class="lineno">  481</span>  vec <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = &amp;head;</div>
-<div class="line"><span class="lineno">  482</span>  <span class="keywordflow">while</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next != <span class="keyword">nullptr</span>)</div>
+<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00480">480</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  481</span>{</div>
+<div class="line"><span class="lineno">  482</span>  <span class="keywordflow">if</span> (this-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(a))</div>
 <div class="line"><span class="lineno">  483</span>    {</div>
-<div class="line"><span class="lineno">  484</span>      <span class="comment">// old version: this-&gt;mult_to(p-&gt;next-&gt;coeff, a);</span></div>
-<div class="line"><span class="lineno">  485</span>      ring_elem c =</div>
-<div class="line"><span class="lineno">  486</span>          this-&gt;<a class="code hl_function" href="class_ring_a2b8cbd8d5bfa9610f5f1070e390ef2c8.html#a2b8cbd8d5bfa9610f5f1070e390ef2c8">divide</a>(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;coeff, a);  <span class="comment">// exact or quotient?? MES MES</span></div>
-<div class="line"><span class="lineno">  487</span>      <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;coeff = c;</div>
-<div class="line"><span class="lineno">  488</span>      <span class="keywordflow">if</span> (this-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;coeff))</div>
-<div class="line"><span class="lineno">  489</span>        {</div>
-<div class="line"><span class="lineno">  490</span>          vec tmp = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  491</span>          <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next = tmp-&gt;next;</div>
-<div class="line"><span class="lineno">  492</span>          <a class="code hl_function" href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">remove_vec_node</a>(tmp);</div>
-<div class="line"><span class="lineno">  493</span>        }</div>
-<div class="line"><span class="lineno">  494</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  495</span>        <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  496</span>    }</div>
-<div class="line"><span class="lineno">  497</span>  v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
-<div class="line"><span class="lineno">  498</span>}</div>
+<div class="line"><span class="lineno">  484</span>      <a class="code hl_function" href="class_ring_a54898084da41b2130f8a8f844043ca6d.html#a54898084da41b2130f8a8f844043ca6d">remove_vec</a>(v);</div>
+<div class="line"><span class="lineno">  485</span>      v = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  486</span>    }</div>
+<div class="line"><span class="lineno">  487</span>  vecterm head;</div>
+<div class="line"><span class="lineno">  488</span>  head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a> = v;</div>
+<div class="line"><span class="lineno">  489</span>  vec <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = &amp;head;</div>
+<div class="line"><span class="lineno">  490</span>  <span class="keywordflow">while</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  491</span>    {</div>
+<div class="line"><span class="lineno">  492</span>      <span class="comment">// old version: this-&gt;mult_to(p-&gt;next-&gt;coeff, a);</span></div>
+<div class="line"><span class="lineno">  493</span>      ring_elem c =</div>
+<div class="line"><span class="lineno">  494</span>          this-&gt;<a class="code hl_function" href="class_ring_a2b8cbd8d5bfa9610f5f1070e390ef2c8.html#a2b8cbd8d5bfa9610f5f1070e390ef2c8">divide</a>(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;coeff, a);  <span class="comment">// exact or quotient?? MES MES</span></div>
+<div class="line"><span class="lineno">  495</span>      <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;coeff = c;</div>
+<div class="line"><span class="lineno">  496</span>      <span class="keywordflow">if</span> (this-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;coeff))</div>
+<div class="line"><span class="lineno">  497</span>        {</div>
+<div class="line"><span class="lineno">  498</span>          vec tmp = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  499</span>          <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next = tmp-&gt;next;</div>
+<div class="line"><span class="lineno">  500</span>          <a class="code hl_function" href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">remove_vec_node</a>(tmp);</div>
+<div class="line"><span class="lineno">  501</span>        }</div>
+<div class="line"><span class="lineno">  502</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  503</span>        <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  504</span>    }</div>
+<div class="line"><span class="lineno">  505</span>  v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
+<div class="line"><span class="lineno">  506</span>}</div>
 <div class="ttc" id="aclass_ring_a2b8cbd8d5bfa9610f5f1070e390ef2c8_html_a2b8cbd8d5bfa9610f5f1070e390ef2c8"><div class="ttname"><a href="class_ring_a2b8cbd8d5bfa9610f5f1070e390ef2c8.html#a2b8cbd8d5bfa9610f5f1070e390ef2c8">Ring::divide</a></div><div class="ttdeci">virtual ring_elem divide(const ring_elem f, const ring_elem g) const =0</div></div>
-<div class="ttc" id="aclass_ring_a310e247bc4db676e4641f02cf2177474_html_a310e247bc4db676e4641f02cf2177474"><div class="ttname"><a href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">Ring::remove_vec_node</a></div><div class="ttdeci">void remove_vec_node(vec n) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00043">ring-vecs.cpp:43</a></div></div>
-<div class="ttc" id="aclass_ring_a54898084da41b2130f8a8f844043ca6d_html_a54898084da41b2130f8a8f844043ca6d"><div class="ttname"><a href="class_ring_a54898084da41b2130f8a8f844043ca6d.html#a54898084da41b2130f8a8f844043ca6d">Ring::remove_vec</a></div><div class="ttdeci">void remove_vec(vec v) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00095">ring-vecs.cpp:95</a></div></div>
+<div class="ttc" id="aclass_ring_a310e247bc4db676e4641f02cf2177474_html_a310e247bc4db676e4641f02cf2177474"><div class="ttname"><a href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">Ring::remove_vec_node</a></div><div class="ttdeci">void remove_vec_node(vec n) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00051">ring-vecs.cpp:51</a></div></div>
+<div class="ttc" id="aclass_ring_a54898084da41b2130f8a8f844043ca6d_html_a54898084da41b2130f8a8f844043ca6d"><div class="ttname"><a href="class_ring_a54898084da41b2130f8a8f844043ca6d.html#a54898084da41b2130f8a8f844043ca6d">Ring::remove_vec</a></div><div class="ttdeci">void remove_vec(vec v) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00103">ring-vecs.cpp:103</a></div></div>
 <div class="ttc" id="aclass_ring_aa8d762a00cdea91f8d26cea2b52ebce0_html_aa8d762a00cdea91f8d26cea2b52ebce0"><div class="ttname"><a href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">Ring::is_zero</a></div><div class="ttdeci">virtual bool is_zero(const ring_elem f) const =0</div></div>
 <div class="ttc" id="agodbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552_html_a533391314665d6bf1b5575e9a9cd8552"><div class="ttname"><a href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></div><div class="ttdeci">int p</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00034">godboltTest.cpp:34</a></div></div>
 <div class="ttc" id="astructvecterm_a0097010847a0593f115ad08738a72b3a_html_a0097010847a0593f115ad08738a72b3a"><div class="ttname"><a href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">vecterm::next</a></div><div class="ttdeci">vec next</div><div class="ttdef"><b>Definition</b> <a href="ringelem_8hpp_source.html#l00152">ringelem.hpp:152</a></div></div>

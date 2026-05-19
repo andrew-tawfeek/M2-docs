@@ -115,19 +115,19 @@ $(function(){initNavTree('class_symm_matrix_a09dff20e6c2d0d3d0e34667a82fd4731.ht
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="matrix-symm_8cpp_source.html#l00031">31</a> of file <a class="el" href="matrix-symm_8cpp_source.html">matrix-symm.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>  {</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span> (m0-&gt;<a class="code hl_function" href="class_matrix_a7d4293b74029beb92af3d47fdcb7c18c.html#a7d4293b74029beb92af3d47fdcb7c18c">n_rows</a>() != 1)</div>
-<div class="line"><span class="lineno">   34</span>      {</div>
-<div class="line"><span class="lineno">   35</span>        <a class="code hl_variable" href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR</a>(<span class="stringliteral">&quot;expected one row&quot;</span>);</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   37</span>      }</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>    <a class="code hl_function" href="class_symm_matrix_a47b3b8515df93a9800471ebb08f0ea17.html#a47b3b8515df93a9800471ebb08f0ea17">SymmMatrix</a> <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>(m0, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>);</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>.value();</div>
-<div class="line"><span class="lineno">   41</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="matrix-symm_8cpp_source.html#l00042">42</a> of file <a class="el" href="matrix-symm_8cpp_source.html">matrix-symm.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>  {</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">if</span> (m0-&gt;<a class="code hl_function" href="class_matrix_a7d4293b74029beb92af3d47fdcb7c18c.html#a7d4293b74029beb92af3d47fdcb7c18c">n_rows</a>() != 1)</div>
+<div class="line"><span class="lineno">   45</span>      {</div>
+<div class="line"><span class="lineno">   46</span>        <a class="code hl_variable" href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR</a>(<span class="stringliteral">&quot;expected one row&quot;</span>);</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   48</span>      }</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>    <a class="code hl_function" href="class_symm_matrix_a47b3b8515df93a9800471ebb08f0ea17.html#a47b3b8515df93a9800471ebb08f0ea17">SymmMatrix</a> <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>(m0, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>);</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>.value();</div>
+<div class="line"><span class="lineno">   52</span>  }</div>
 <div class="ttc" id="aclass_matrix_a7d4293b74029beb92af3d47fdcb7c18c_html_a7d4293b74029beb92af3d47fdcb7c18c"><div class="ttname"><a href="class_matrix_a7d4293b74029beb92af3d47fdcb7c18c.html#a7d4293b74029beb92af3d47fdcb7c18c">Matrix::n_rows</a></div><div class="ttdeci">int n_rows() const</div><div class="ttdef"><b>Definition</b> <a href="matrix_8hpp_source.html#l00130">matrix.hpp:130</a></div></div>
-<div class="ttc" id="aclass_symm_matrix_a47b3b8515df93a9800471ebb08f0ea17_html_a47b3b8515df93a9800471ebb08f0ea17"><div class="ttname"><a href="class_symm_matrix_a47b3b8515df93a9800471ebb08f0ea17.html#a47b3b8515df93a9800471ebb08f0ea17">SymmMatrix::SymmMatrix</a></div><div class="ttdeci">SymmMatrix(const Matrix *m0, int p)</div><div class="ttdef"><b>Definition</b> <a href="matrix-symm_8cpp_source.html#l00069">matrix-symm.cpp:69</a></div></div>
+<div class="ttc" id="aclass_symm_matrix_a47b3b8515df93a9800471ebb08f0ea17_html_a47b3b8515df93a9800471ebb08f0ea17"><div class="ttname"><a href="class_symm_matrix_a47b3b8515df93a9800471ebb08f0ea17.html#a47b3b8515df93a9800471ebb08f0ea17">SymmMatrix::SymmMatrix</a></div><div class="ttdeci">SymmMatrix(const Matrix *m0, int p)</div><div class="ttdef"><b>Definition</b> <a href="matrix-symm_8cpp_source.html#l00080">matrix-symm.cpp:80</a></div></div>
 <div class="ttc" id="agodbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552_html_a533391314665d6bf1b5575e9a9cd8552"><div class="ttname"><a href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></div><div class="ttdeci">int p</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00034">godboltTest.cpp:34</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5_html_a2fc91f4e89bc37f261db820d231da2e5"><div class="ttname"><a href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a></div><div class="ttdeci">void size_t s</div><div class="ttdef"><b>Definition</b> <a href="m2-mem_8cpp_source.html#l00271">m2-mem.cpp:271</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67_html_ac9bcbe19995a8140cd4ec61773cd6e67"><div class="ttname"><a href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR</a></div><div class="ttdeci">const int ERROR</div><div class="ttdef"><b>Definition</b> <a href="m2-mem_8cpp_source.html#l00055">m2-mem.cpp:55</a></div></div>

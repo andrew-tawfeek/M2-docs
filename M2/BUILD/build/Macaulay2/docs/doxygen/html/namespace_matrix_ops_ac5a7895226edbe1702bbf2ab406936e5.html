@@ -117,16 +117,16 @@ template&lt;typename Mat&gt; </div>
 <p>solve AX=B, where A is a square (invertible) matrix. </p>
 <p>return true if A is invertible, and in this case, sets X. If false is returned, X's value is undefined. </p>
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00230">230</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  231</span>{</div>
-<div class="line"><span class="lineno">  232</span>  (void) A;</div>
-<div class="line"><span class="lineno">  233</span>  (void) B;</div>
-<div class="line"><span class="lineno">  234</span>  (void) X;</div>
-<div class="line"><span class="lineno">  235</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
-<div class="line"><span class="lineno">  236</span>      <span class="stringliteral">&quot;&#39;solveInvertible&#39; not implemented for this kind of matrix over this &quot;</span></div>
-<div class="line"><span class="lineno">  237</span>      <span class="stringliteral">&quot;ring&quot;</span>);</div>
-<div class="line"><span class="lineno">  238</span>}</div>
-<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00037">exceptions.hpp:38</a></div></div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00243">243</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  244</span>{</div>
+<div class="line"><span class="lineno">  245</span>  (void) A;</div>
+<div class="line"><span class="lineno">  246</span>  (void) B;</div>
+<div class="line"><span class="lineno">  247</span>  (void) X;</div>
+<div class="line"><span class="lineno">  248</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
+<div class="line"><span class="lineno">  249</span>      <span class="stringliteral">&quot;&#39;solveInvertible&#39; not implemented for this kind of matrix over this &quot;</span></div>
+<div class="line"><span class="lineno">  250</span>      <span class="stringliteral">&quot;ring&quot;</span>);</div>
+<div class="line"><span class="lineno">  251</span>}</div>
+<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00039">exceptions.hpp:40</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_mutable_mat_a8e3bb176151bd8a7a87e1d18cbc85513.html#a8e3bb176151bd8a7a87e1d18cbc85513">MutableMat&lt; Mat &gt;::solveInvertible()</a>.</p>
 

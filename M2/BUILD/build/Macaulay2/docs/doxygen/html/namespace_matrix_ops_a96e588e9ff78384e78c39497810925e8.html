@@ -114,14 +114,14 @@ template&lt;typename Mat&gt; </div>
 <p>result_nullspace should be a Mat, with the same ring/type as the input matrix A. result_nullspace does not need to be the correct size, it will be resized if needed.</p>
 <p>throws an engine_error for ring/matrix types where the function is not implemented. </p>
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00205">205</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  206</span>{</div>
-<div class="line"><span class="lineno">  207</span>  (void) A;</div>
-<div class="line"><span class="lineno">  208</span>  (void) result_nullspace;</div>
-<div class="line"><span class="lineno">  209</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
-<div class="line"><span class="lineno">  210</span>      <span class="stringliteral">&quot;&#39;nullSpace&#39; not implemented for this kind of matrix over this ring&quot;</span>);</div>
-<div class="line"><span class="lineno">  211</span>}</div>
-<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00037">exceptions.hpp:38</a></div></div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00218">218</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  219</span>{</div>
+<div class="line"><span class="lineno">  220</span>  (void) A;</div>
+<div class="line"><span class="lineno">  221</span>  (void) result_nullspace;</div>
+<div class="line"><span class="lineno">  222</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
+<div class="line"><span class="lineno">  223</span>      <span class="stringliteral">&quot;&#39;nullSpace&#39; not implemented for this kind of matrix over this ring&quot;</span>);</div>
+<div class="line"><span class="lineno">  224</span>}</div>
+<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00039">exceptions.hpp:40</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_mutable_mat_a7b7ba4eedbd7730e8dac547529c10193.html#a7b7ba4eedbd7730e8dac547529c10193">MutableMat&lt; Mat &gt;::nullSpace()</a>.</p>
 

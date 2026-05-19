@@ -111,15 +111,15 @@ $(function(){initNavTree('util_8hpp_a9cfe7e8ddc54d5a80194cc1e23ba87a7.html','','
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util_8hpp_source.html#l00059">59</a> of file <a class="el" href="util_8hpp_source.html">util.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
-<div class="line"><span class="lineno">   62</span>  <span class="comment">// needed since M2_ArrayString len field is int</span></div>
-<div class="line"><span class="lineno">   63</span>  <span class="keyword">auto</span> len = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(strs.size());</div>
-<div class="line"><span class="lineno">   64</span>  M2_ArrayString a = <a class="code hl_define" href="m2-mem_8h_a31dcc58936c13ff01270d6ee43733178.html#a31dcc58936c13ff01270d6ee43733178">getmemarraytype</a>(M2_ArrayString, len);</div>
-<div class="line"><span class="lineno">   65</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; len; i++) a-&gt;array[i] = <a class="code hl_function" href="m2-types_8cpp_a4ff1fca74ab5662cbe7e9be26321a0be.html#a4ff1fca74ab5662cbe7e9be26321a0be">M2_tostring</a>(strs[i].c_str());</div>
-<div class="line"><span class="lineno">   66</span>  a-&gt;len = len;</div>
-<div class="line"><span class="lineno">   67</span>  <span class="keywordflow">return</span> a;</div>
-<div class="line"><span class="lineno">   68</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util_8hpp_source.html#l00065">65</a> of file <a class="el" href="util_8hpp_source.html">util.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
+<div class="line"><span class="lineno">   68</span>  <span class="comment">// needed since M2_ArrayString len field is int</span></div>
+<div class="line"><span class="lineno">   69</span>  <span class="keyword">auto</span> len = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(strs.size());</div>
+<div class="line"><span class="lineno">   70</span>  M2_ArrayString a = <a class="code hl_define" href="m2-mem_8h_a31dcc58936c13ff01270d6ee43733178.html#a31dcc58936c13ff01270d6ee43733178">getmemarraytype</a>(M2_ArrayString, len);</div>
+<div class="line"><span class="lineno">   71</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; len; i++) a-&gt;array[i] = <a class="code hl_function" href="m2-types_8cpp_a4ff1fca74ab5662cbe7e9be26321a0be.html#a4ff1fca74ab5662cbe7e9be26321a0be">M2_tostring</a>(strs[i].c_str());</div>
+<div class="line"><span class="lineno">   72</span>  a-&gt;len = len;</div>
+<div class="line"><span class="lineno">   73</span>  <span class="keywordflow">return</span> a;</div>
+<div class="line"><span class="lineno">   74</span>}</div>
 <div class="ttc" id="am2-mem_8h_a31dcc58936c13ff01270d6ee43733178_html_a31dcc58936c13ff01270d6ee43733178"><div class="ttname"><a href="m2-mem_8h_a31dcc58936c13ff01270d6ee43733178.html#a31dcc58936c13ff01270d6ee43733178">getmemarraytype</a></div><div class="ttdeci">#define getmemarraytype(S, len)</div><div class="ttdef"><b>Definition</b> <a href="m2-mem_8h_source.html#l00133">m2-mem.h:133</a></div></div>
 <div class="ttc" id="am2-types_8cpp_a4ff1fca74ab5662cbe7e9be26321a0be_html_a4ff1fca74ab5662cbe7e9be26321a0be"><div class="ttname"><a href="m2-types_8cpp_a4ff1fca74ab5662cbe7e9be26321a0be.html#a4ff1fca74ab5662cbe7e9be26321a0be">M2_tostring</a></div><div class="ttdeci">M2_string M2_tostring(const char *s)</div><div class="ttdef"><b>Definition</b> <a href="m2-types_8cpp_source.html#l00031">m2-types.cpp:31</a></div></div>
 </div><!-- fragment -->

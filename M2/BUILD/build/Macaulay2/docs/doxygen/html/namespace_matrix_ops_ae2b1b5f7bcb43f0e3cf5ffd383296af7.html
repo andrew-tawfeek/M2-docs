@@ -114,14 +114,14 @@ template&lt;typename Mat&gt; </div>
 <p>The return value is an ascending sequence of non-negative integers with an entry a occurring iff the submatrix of A of the first (a-1) rows (resp columns) has lower rank than the submatrix of the first a rows (resp columns).</p>
 <p>Notice that if the matrix is non-zero and the first row is non-zero, then the first entry will be 0. </p>
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00253">253</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  254</span>{</div>
-<div class="line"><span class="lineno">  255</span>  (void) A;</div>
-<div class="line"><span class="lineno">  256</span>  (void) row_profile;</div>
-<div class="line"><span class="lineno">  257</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
-<div class="line"><span class="lineno">  258</span>      <span class="stringliteral">&quot;&#39;rankProfile&#39; not implemented for this kind of matrix over this ring&quot;</span>);</div>
-<div class="line"><span class="lineno">  259</span>}</div>
-<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00037">exceptions.hpp:38</a></div></div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00266">266</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  267</span>{</div>
+<div class="line"><span class="lineno">  268</span>  (void) A;</div>
+<div class="line"><span class="lineno">  269</span>  (void) row_profile;</div>
+<div class="line"><span class="lineno">  270</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
+<div class="line"><span class="lineno">  271</span>      <span class="stringliteral">&quot;&#39;rankProfile&#39; not implemented for this kind of matrix over this ring&quot;</span>);</div>
+<div class="line"><span class="lineno">  272</span>}</div>
+<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00039">exceptions.hpp:40</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_mutable_mat_a44c17aea9464dfc594f37bd4f9d5a400.html#a44c17aea9464dfc594f37bd4f9d5a400">MutableMat&lt; Mat &gt;::rankProfile()</a>.</p>
 

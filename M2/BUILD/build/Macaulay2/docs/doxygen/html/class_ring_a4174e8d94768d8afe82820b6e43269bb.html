@@ -122,22 +122,22 @@ $(function(){initNavTree('class_ring_a4174e8d94768d8afe82820b6e43269bb.html','',
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00321">321</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  326</span>{</div>
-<div class="line"><span class="lineno">  327</span>  <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  328</span>    {</div>
-<div class="line"><span class="lineno">  329</span>      o &lt;&lt; <span class="stringliteral">&quot;0&quot;</span>;</div>
-<div class="line"><span class="lineno">  330</span>      <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  331</span>    }</div>
-<div class="line"><span class="lineno">  332</span> </div>
-<div class="line"><span class="lineno">  333</span>  p_one = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  334</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> vecterm *t = v; t != <span class="keyword">nullptr</span>; t = t-&gt;next)</div>
-<div class="line"><span class="lineno">  335</span>    {</div>
-<div class="line"><span class="lineno">  336</span>      this-&gt;<a class="code hl_function" href="class_ring_a7681f099a40a51225f38f66386820c39.html#a7681f099a40a51225f38f66386820c39">elem_text_out</a>(o, t-&gt;coeff, p_one, p_plus, p_parens);</div>
-<div class="line"><span class="lineno">  337</span>      o &lt;&lt; <span class="stringliteral">&quot;&lt;&quot;</span> &lt;&lt; t-&gt;comp &lt;&lt; <span class="stringliteral">&quot;&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">  338</span>      p_plus = <span class="keyword">true</span>;</div>
+<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00329">329</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  334</span>{</div>
+<div class="line"><span class="lineno">  335</span>  <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  336</span>    {</div>
+<div class="line"><span class="lineno">  337</span>      o &lt;&lt; <span class="stringliteral">&quot;0&quot;</span>;</div>
+<div class="line"><span class="lineno">  338</span>      <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  339</span>    }</div>
-<div class="line"><span class="lineno">  340</span>}</div>
+<div class="line"><span class="lineno">  340</span> </div>
+<div class="line"><span class="lineno">  341</span>  p_one = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  342</span>  <span class="keywordflow">for</span> (<span class="keyword">const</span> vecterm *t = v; t != <span class="keyword">nullptr</span>; t = t-&gt;next)</div>
+<div class="line"><span class="lineno">  343</span>    {</div>
+<div class="line"><span class="lineno">  344</span>      this-&gt;<a class="code hl_function" href="class_ring_a7681f099a40a51225f38f66386820c39.html#a7681f099a40a51225f38f66386820c39">elem_text_out</a>(o, t-&gt;coeff, p_one, p_plus, p_parens);</div>
+<div class="line"><span class="lineno">  345</span>      o &lt;&lt; <span class="stringliteral">&quot;&lt;&quot;</span> &lt;&lt; t-&gt;comp &lt;&lt; <span class="stringliteral">&quot;&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">  346</span>      p_plus = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  347</span>    }</div>
+<div class="line"><span class="lineno">  348</span>}</div>
 <div class="ttc" id="aclass_ring_a7681f099a40a51225f38f66386820c39_html_a7681f099a40a51225f38f66386820c39"><div class="ttname"><a href="class_ring_a7681f099a40a51225f38f66386820c39.html#a7681f099a40a51225f38f66386820c39">Ring::elem_text_out</a></div><div class="ttdeci">virtual void elem_text_out(buffer &amp;o, const ring_elem f, bool p_one=true, bool p_plus=false, bool p_parens=false) const =0</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_ring_a7681f099a40a51225f38f66386820c39.html#a7681f099a40a51225f38f66386820c39">elem_text_out()</a>, and <a class="el" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">vec::next</a>.</p>

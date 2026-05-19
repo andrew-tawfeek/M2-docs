@@ -120,14 +120,14 @@ $(function(){initNavTree('namespace_matrix_ops_a6493f42331568b7fecacbf0bce70cf9b
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01307">1307</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1310</span>{</div>
-<div class="line"><span class="lineno"> 1311</span><span class="preprocessor">#ifndef NO_LAPACK</span></div>
-<div class="line"><span class="lineno"> 1312</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_lapack_a7a036bcff354b9dd355663af1f4205ed.html#a7a036bcff354b9dd355663af1f4205ed">Lapack::eigenvectors_hermitian</a>(&amp;A, &amp;eigenvals, &amp;eigenvecs);</div>
-<div class="line"><span class="lineno"> 1313</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno"> 1314</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_eigen_m2_a68b3b512faaac33a0c9642950dc2871d.html#a68b3b512faaac33a0c9642950dc2871d">EigenM2::eigenvectors_hermitian</a>(&amp;A, &amp;eigenvals, &amp;eigenvecs);</div>
-<div class="line"><span class="lineno"> 1315</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno"> 1316</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01320">1320</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1323</span>{</div>
+<div class="line"><span class="lineno"> 1324</span><span class="preprocessor">#ifndef NO_LAPACK</span></div>
+<div class="line"><span class="lineno"> 1325</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_lapack_a7a036bcff354b9dd355663af1f4205ed.html#a7a036bcff354b9dd355663af1f4205ed">Lapack::eigenvectors_hermitian</a>(&amp;A, &amp;eigenvals, &amp;eigenvecs);</div>
+<div class="line"><span class="lineno"> 1326</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno"> 1327</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_eigen_m2_a68b3b512faaac33a0c9642950dc2871d.html#a68b3b512faaac33a0c9642950dc2871d">EigenM2::eigenvectors_hermitian</a>(&amp;A, &amp;eigenvals, &amp;eigenvecs);</div>
+<div class="line"><span class="lineno"> 1328</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno"> 1329</span>}</div>
 <div class="ttc" id="aclass_lapack_a7a036bcff354b9dd355663af1f4205ed_html_a7a036bcff354b9dd355663af1f4205ed"><div class="ttname"><a href="class_lapack_a7a036bcff354b9dd355663af1f4205ed.html#a7a036bcff354b9dd355663af1f4205ed">Lapack::eigenvectors_hermitian</a></div><div class="ttdeci">static bool eigenvectors_hermitian(const DMatCCC *A, DMatRRR *eigenvals, DMatCCC *eigenvecs)</div></div>
 <div class="ttc" id="anamespace_eigen_m2_a68b3b512faaac33a0c9642950dc2871d_html_a68b3b512faaac33a0c9642950dc2871d"><div class="ttname"><a href="namespace_eigen_m2_a68b3b512faaac33a0c9642950dc2871d.html#a68b3b512faaac33a0c9642950dc2871d">EigenM2::eigenvectors_hermitian</a></div><div class="ttdeci">bool eigenvectors_hermitian(const LMatrixRRR *A, LMatrixRRR *eigenvals, LMatrixRRR *eigenvecs)</div><div class="ttdef"><b>Definition</b> <a href="eigen_8cpp_source.html#l00528">eigen.cpp:528</a></div></div>
 </div><!-- fragment -->

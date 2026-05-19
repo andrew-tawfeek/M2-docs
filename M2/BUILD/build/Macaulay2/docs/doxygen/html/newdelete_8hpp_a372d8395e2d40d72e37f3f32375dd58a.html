@@ -106,7 +106,7 @@ template&lt;typename <a class="el" href="struct_t.html">T</a>&gt; </div>
 <p>This should be used instead of std::vector&lt;T&gt; in the following instances: (1) <a class="el" href="struct_t.html">T</a> contains (or is a pointer to) memory allocated with GC, and (2a) The object containing the vector is in GC collected memory that is, it is in a struct or class inheriting from <a class="el" href="structour__new__delete.html">our_new_delete</a>, or gc_cleanup, or (2b) The vector is in local memory, and has not been allocated on the heap.</p>
 <p>It is a (probably hard to detect) error if exactly (1) or (2a) holds. In that case, redesign your class! </p>
 
-<p class="definition">Definition at line <a class="el" href="newdelete_8hpp_source.html#l00067">67</a> of file <a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="newdelete_8hpp_source.html#l00074">74</a> of file <a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>.</p>
 
 </div>
 </div>

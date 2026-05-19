@@ -112,27 +112,27 @@ $(function(){initNavTree('class_ring_a9c70b217dab9985bc1f222cc05b7fbef.html','',
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00342">342</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  344</span>{</div>
-<div class="line"><span class="lineno">  345</span>  (void) F;</div>
-<div class="line"><span class="lineno">  346</span>  <span class="keyword">const</span> <a class="code hl_function" href="class_ring_afc47f40ab072db783126111b70693e49.html#afc47f40ab072db783126111b70693e49">Ring</a> *targetRing = map-&gt;<a class="code hl_function" href="class_ring_map_aa041dd8442eeac3e1fdf75e6e4d32bf8.html#aa041dd8442eeac3e1fdf75e6e4d32bf8">get_ring</a>();</div>
-<div class="line"><span class="lineno">  347</span> </div>
-<div class="line"><span class="lineno">  348</span>  vecterm head;</div>
-<div class="line"><span class="lineno">  349</span>  vec <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = &amp;head;</div>
-<div class="line"><span class="lineno">  350</span> </div>
-<div class="line"><span class="lineno">  351</span>  <span class="keywordflow">for</span> (vec t = v; t != <span class="keyword">nullptr</span>; t = t-&gt;next)</div>
-<div class="line"><span class="lineno">  352</span>    {</div>
-<div class="line"><span class="lineno">  353</span>      ring_elem a = <a class="code hl_function" href="class_ring_ae73829237c339809a6e9c6dd90897a14.html#ae73829237c339809a6e9c6dd90897a14">eval</a>(map, t-&gt;coeff, 0);  <span class="comment">// a is now in the target ring</span></div>
-<div class="line"><span class="lineno">  354</span>      <span class="keywordflow">if</span> (!targetRing-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(a))</div>
-<div class="line"><span class="lineno">  355</span>        {</div>
-<div class="line"><span class="lineno">  356</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = targetRing-&gt;<a class="code hl_function" href="class_ring_a2ab579eb49ebe28eed42e2a083c96c03.html#a2ab579eb49ebe28eed42e2a083c96c03">make_vec</a>(t-&gt;comp, a);</div>
-<div class="line"><span class="lineno">  357</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  358</span>        }</div>
-<div class="line"><span class="lineno">  359</span>    }</div>
-<div class="line"><span class="lineno">  360</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  361</span>  <span class="keywordflow">return</span> head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
-<div class="line"><span class="lineno">  362</span>}</div>
-<div class="ttc" id="aclass_ring_a2ab579eb49ebe28eed42e2a083c96c03_html_a2ab579eb49ebe28eed42e2a083c96c03"><div class="ttname"><a href="class_ring_a2ab579eb49ebe28eed42e2a083c96c03.html#a2ab579eb49ebe28eed42e2a083c96c03">Ring::make_vec</a></div><div class="ttdeci">vec make_vec(int r, ring_elem a) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00048">ring-vecs.cpp:48</a></div></div>
+<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00350">350</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  352</span>{</div>
+<div class="line"><span class="lineno">  353</span>  (void) F;</div>
+<div class="line"><span class="lineno">  354</span>  <span class="keyword">const</span> <a class="code hl_function" href="class_ring_afc47f40ab072db783126111b70693e49.html#afc47f40ab072db783126111b70693e49">Ring</a> *targetRing = map-&gt;<a class="code hl_function" href="class_ring_map_aa041dd8442eeac3e1fdf75e6e4d32bf8.html#aa041dd8442eeac3e1fdf75e6e4d32bf8">get_ring</a>();</div>
+<div class="line"><span class="lineno">  355</span> </div>
+<div class="line"><span class="lineno">  356</span>  vecterm head;</div>
+<div class="line"><span class="lineno">  357</span>  vec <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = &amp;head;</div>
+<div class="line"><span class="lineno">  358</span> </div>
+<div class="line"><span class="lineno">  359</span>  <span class="keywordflow">for</span> (vec t = v; t != <span class="keyword">nullptr</span>; t = t-&gt;next)</div>
+<div class="line"><span class="lineno">  360</span>    {</div>
+<div class="line"><span class="lineno">  361</span>      ring_elem a = <a class="code hl_function" href="class_ring_ae73829237c339809a6e9c6dd90897a14.html#ae73829237c339809a6e9c6dd90897a14">eval</a>(map, t-&gt;coeff, 0);  <span class="comment">// a is now in the target ring</span></div>
+<div class="line"><span class="lineno">  362</span>      <span class="keywordflow">if</span> (!targetRing-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(a))</div>
+<div class="line"><span class="lineno">  363</span>        {</div>
+<div class="line"><span class="lineno">  364</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = targetRing-&gt;<a class="code hl_function" href="class_ring_a2ab579eb49ebe28eed42e2a083c96c03.html#a2ab579eb49ebe28eed42e2a083c96c03">make_vec</a>(t-&gt;comp, a);</div>
+<div class="line"><span class="lineno">  365</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  366</span>        }</div>
+<div class="line"><span class="lineno">  367</span>    }</div>
+<div class="line"><span class="lineno">  368</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  369</span>  <span class="keywordflow">return</span> head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
+<div class="line"><span class="lineno">  370</span>}</div>
+<div class="ttc" id="aclass_ring_a2ab579eb49ebe28eed42e2a083c96c03_html_a2ab579eb49ebe28eed42e2a083c96c03"><div class="ttname"><a href="class_ring_a2ab579eb49ebe28eed42e2a083c96c03.html#a2ab579eb49ebe28eed42e2a083c96c03">Ring::make_vec</a></div><div class="ttdeci">vec make_vec(int r, ring_elem a) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00056">ring-vecs.cpp:56</a></div></div>
 <div class="ttc" id="aclass_ring_aa8d762a00cdea91f8d26cea2b52ebce0_html_aa8d762a00cdea91f8d26cea2b52ebce0"><div class="ttname"><a href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">Ring::is_zero</a></div><div class="ttdeci">virtual bool is_zero(const ring_elem f) const =0</div></div>
 <div class="ttc" id="aclass_ring_ae73829237c339809a6e9c6dd90897a14_html_ae73829237c339809a6e9c6dd90897a14"><div class="ttname"><a href="class_ring_ae73829237c339809a6e9c6dd90897a14.html#ae73829237c339809a6e9c6dd90897a14">Ring::eval</a></div><div class="ttdeci">virtual ring_elem eval(const RingMap *map, const ring_elem f, int first_var) const =0</div></div>
 <div class="ttc" id="aclass_ring_afc47f40ab072db783126111b70693e49_html_afc47f40ab072db783126111b70693e49"><div class="ttname"><a href="class_ring_afc47f40ab072db783126111b70693e49.html#afc47f40ab072db783126111b70693e49">Ring::Ring</a></div><div class="ttdeci">Ring()</div><div class="ttdef"><b>Definition</b> <a href="ring_8hpp_source.html#l00134">ring.hpp:134</a></div></div>

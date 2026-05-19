@@ -112,41 +112,41 @@ $(function(){initNavTree('class_ring_a58afa47f15c732860a8cec8e9fffe089.html','',
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00629">629</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  630</span>{</div>
-<div class="line"><span class="lineno">  631</span>  vec <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>;</div>
-<div class="line"><span class="lineno">  632</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacempfr_ab0241739d38513ff5b64b7344a722c2e.html#ab0241739d38513ff5b64b7344a722c2e">iszero</a> = this-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(a);</div>
-<div class="line"><span class="lineno">  633</span>  vecterm head;</div>
-<div class="line"><span class="lineno">  634</span>  head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a> = v;</div>
-<div class="line"><span class="lineno">  635</span>  <span class="keywordflow">for</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = &amp;head; <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next != <span class="keyword">nullptr</span>; <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next)</div>
-<div class="line"><span class="lineno">  636</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;comp &lt;= r) <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  637</span> </div>
-<div class="line"><span class="lineno">  638</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next == <span class="keyword">nullptr</span> || <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;comp &lt; r)</div>
-<div class="line"><span class="lineno">  639</span>    {</div>
-<div class="line"><span class="lineno">  640</span>      <span class="keywordflow">if</span> (iszero) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  641</span>      vec w = <a class="code hl_function" href="class_ring_afe8591877ff12e2221b8774625fe79f2.html#afe8591877ff12e2221b8774625fe79f2">new_vec</a>();</div>
-<div class="line"><span class="lineno">  642</span>      w-&gt;next = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  643</span>      w-&gt;comp = r;</div>
-<div class="line"><span class="lineno">  644</span>      w-&gt;coeff = a;</div>
-<div class="line"><span class="lineno">  645</span>      <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next = w;</div>
-<div class="line"><span class="lineno">  646</span>    }</div>
-<div class="line"><span class="lineno">  647</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;comp == r)</div>
-<div class="line"><span class="lineno">  648</span>    {</div>
-<div class="line"><span class="lineno">  649</span>      <span class="keywordflow">if</span> (iszero)</div>
-<div class="line"><span class="lineno">  650</span>        {</div>
-<div class="line"><span class="lineno">  651</span>          <span class="comment">// delete node</span></div>
-<div class="line"><span class="lineno">  652</span>          vec tmp = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  653</span>          <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next = tmp-&gt;next;</div>
-<div class="line"><span class="lineno">  654</span>          <a class="code hl_function" href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">remove_vec_node</a>(tmp);</div>
-<div class="line"><span class="lineno">  655</span>        }</div>
-<div class="line"><span class="lineno">  656</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  657</span>        <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;coeff = a;</div>
-<div class="line"><span class="lineno">  658</span>    }</div>
-<div class="line"><span class="lineno">  659</span>  v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
-<div class="line"><span class="lineno">  660</span>}</div>
-<div class="ttc" id="aclass_ring_a310e247bc4db676e4641f02cf2177474_html_a310e247bc4db676e4641f02cf2177474"><div class="ttname"><a href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">Ring::remove_vec_node</a></div><div class="ttdeci">void remove_vec_node(vec n) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00043">ring-vecs.cpp:43</a></div></div>
+<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00637">637</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  638</span>{</div>
+<div class="line"><span class="lineno">  639</span>  vec <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>;</div>
+<div class="line"><span class="lineno">  640</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacempfr_ab0241739d38513ff5b64b7344a722c2e.html#ab0241739d38513ff5b64b7344a722c2e">iszero</a> = this-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(a);</div>
+<div class="line"><span class="lineno">  641</span>  vecterm head;</div>
+<div class="line"><span class="lineno">  642</span>  head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a> = v;</div>
+<div class="line"><span class="lineno">  643</span>  <span class="keywordflow">for</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = &amp;head; <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next != <span class="keyword">nullptr</span>; <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next)</div>
+<div class="line"><span class="lineno">  644</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;comp &lt;= r) <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  645</span> </div>
+<div class="line"><span class="lineno">  646</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next == <span class="keyword">nullptr</span> || <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;comp &lt; r)</div>
+<div class="line"><span class="lineno">  647</span>    {</div>
+<div class="line"><span class="lineno">  648</span>      <span class="keywordflow">if</span> (iszero) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  649</span>      vec w = <a class="code hl_function" href="class_ring_afe8591877ff12e2221b8774625fe79f2.html#afe8591877ff12e2221b8774625fe79f2">new_vec</a>();</div>
+<div class="line"><span class="lineno">  650</span>      w-&gt;next = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  651</span>      w-&gt;comp = r;</div>
+<div class="line"><span class="lineno">  652</span>      w-&gt;coeff = a;</div>
+<div class="line"><span class="lineno">  653</span>      <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next = w;</div>
+<div class="line"><span class="lineno">  654</span>    }</div>
+<div class="line"><span class="lineno">  655</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;comp == r)</div>
+<div class="line"><span class="lineno">  656</span>    {</div>
+<div class="line"><span class="lineno">  657</span>      <span class="keywordflow">if</span> (iszero)</div>
+<div class="line"><span class="lineno">  658</span>        {</div>
+<div class="line"><span class="lineno">  659</span>          <span class="comment">// delete node</span></div>
+<div class="line"><span class="lineno">  660</span>          vec tmp = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  661</span>          <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next = tmp-&gt;next;</div>
+<div class="line"><span class="lineno">  662</span>          <a class="code hl_function" href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">remove_vec_node</a>(tmp);</div>
+<div class="line"><span class="lineno">  663</span>        }</div>
+<div class="line"><span class="lineno">  664</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  665</span>        <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>-&gt;next-&gt;coeff = a;</div>
+<div class="line"><span class="lineno">  666</span>    }</div>
+<div class="line"><span class="lineno">  667</span>  v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
+<div class="line"><span class="lineno">  668</span>}</div>
+<div class="ttc" id="aclass_ring_a310e247bc4db676e4641f02cf2177474_html_a310e247bc4db676e4641f02cf2177474"><div class="ttname"><a href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">Ring::remove_vec_node</a></div><div class="ttdeci">void remove_vec_node(vec n) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00051">ring-vecs.cpp:51</a></div></div>
 <div class="ttc" id="aclass_ring_aa8d762a00cdea91f8d26cea2b52ebce0_html_aa8d762a00cdea91f8d26cea2b52ebce0"><div class="ttname"><a href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">Ring::is_zero</a></div><div class="ttdeci">virtual bool is_zero(const ring_elem f) const =0</div></div>
-<div class="ttc" id="aclass_ring_afe8591877ff12e2221b8774625fe79f2_html_afe8591877ff12e2221b8774625fe79f2"><div class="ttname"><a href="class_ring_afe8591877ff12e2221b8774625fe79f2.html#afe8591877ff12e2221b8774625fe79f2">Ring::new_vec</a></div><div class="ttdeci">vec new_vec() const</div><div class="ttdoc">vector operations ////////////////////</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00042">ring-vecs.cpp:42</a></div></div>
+<div class="ttc" id="aclass_ring_afe8591877ff12e2221b8774625fe79f2_html_afe8591877ff12e2221b8774625fe79f2"><div class="ttname"><a href="class_ring_afe8591877ff12e2221b8774625fe79f2.html#afe8591877ff12e2221b8774625fe79f2">Ring::new_vec</a></div><div class="ttdeci">vec new_vec() const</div><div class="ttdoc">vector operations ////////////////////</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00050">ring-vecs.cpp:50</a></div></div>
 <div class="ttc" id="agodbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552_html_a533391314665d6bf1b5575e9a9cd8552"><div class="ttname"><a href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></div><div class="ttdeci">int p</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00034">godboltTest.cpp:34</a></div></div>
 <div class="ttc" id="anamespacempfr_ab0241739d38513ff5b64b7344a722c2e_html_ab0241739d38513ff5b64b7344a722c2e"><div class="ttname"><a href="namespacempfr_ab0241739d38513ff5b64b7344a722c2e.html#ab0241739d38513ff5b64b7344a722c2e">mpfr::iszero</a></div><div class="ttdeci">bool iszero(const mpreal &amp;op)</div><div class="ttdef"><b>Definition</b> <a href="mpreal_8h_source.html#l01745">mpreal.h:1745</a></div></div>
 <div class="ttc" id="astructvecterm_a0097010847a0593f115ad08738a72b3a_html_a0097010847a0593f115ad08738a72b3a"><div class="ttname"><a href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">vecterm::next</a></div><div class="ttdeci">vec next</div><div class="ttdef"><b>Definition</b> <a href="ringelem_8hpp_source.html#l00152">ringelem.hpp:152</a></div></div>

@@ -120,14 +120,14 @@ $(function(){initNavTree('namespace_matrix_ops_a142be27bb9e2241f9fb70908feb54f45
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01318">1318</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1319</span>{</div>
-<div class="line"><span class="lineno"> 1320</span><span class="preprocessor">#ifndef NO_LAPACK</span></div>
-<div class="line"><span class="lineno"> 1321</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_lapack_a836e1ee9803a1b77c5831c4c7baf45e6.html#a836e1ee9803a1b77c5831c4c7baf45e6">Lapack::eigenvectors</a>(&amp;A, &amp;eigenvals, &amp;eigenvecs);</div>
-<div class="line"><span class="lineno"> 1322</span><span class="preprocessor">#else</span></div>
-<div class="line"><span class="lineno"> 1323</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_eigen_m2_a56ba255897185438deb0d30995c23a0e.html#a56ba255897185438deb0d30995c23a0e">EigenM2::eigenvectors</a>(&amp;A, &amp;eigenvals, &amp;eigenvecs);</div>
-<div class="line"><span class="lineno"> 1324</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno"> 1325</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01331">1331</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1332</span>{</div>
+<div class="line"><span class="lineno"> 1333</span><span class="preprocessor">#ifndef NO_LAPACK</span></div>
+<div class="line"><span class="lineno"> 1334</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_lapack_a836e1ee9803a1b77c5831c4c7baf45e6.html#a836e1ee9803a1b77c5831c4c7baf45e6">Lapack::eigenvectors</a>(&amp;A, &amp;eigenvals, &amp;eigenvecs);</div>
+<div class="line"><span class="lineno"> 1335</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno"> 1336</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="namespace_eigen_m2_a56ba255897185438deb0d30995c23a0e.html#a56ba255897185438deb0d30995c23a0e">EigenM2::eigenvectors</a>(&amp;A, &amp;eigenvals, &amp;eigenvecs);</div>
+<div class="line"><span class="lineno"> 1337</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno"> 1338</span>}</div>
 <div class="ttc" id="aclass_lapack_a836e1ee9803a1b77c5831c4c7baf45e6_html_a836e1ee9803a1b77c5831c4c7baf45e6"><div class="ttname"><a href="class_lapack_a836e1ee9803a1b77c5831c4c7baf45e6.html#a836e1ee9803a1b77c5831c4c7baf45e6">Lapack::eigenvectors</a></div><div class="ttdeci">static bool eigenvectors(const DMatRRR *A, DMatCCC *eigenvals, DMatCCC *eigenvecs)</div></div>
 <div class="ttc" id="anamespace_eigen_m2_a56ba255897185438deb0d30995c23a0e_html_a56ba255897185438deb0d30995c23a0e"><div class="ttname"><a href="namespace_eigen_m2_a56ba255897185438deb0d30995c23a0e.html#a56ba255897185438deb0d30995c23a0e">EigenM2::eigenvectors</a></div><div class="ttdeci">bool eigenvectors(const LMatrixRRR *A, LMatrixCCC *eigenvals, LMatrixCCC *eigenvecs)</div><div class="ttdef"><b>Definition</b> <a href="eigen_8cpp_source.html#l00498">eigen.cpp:498</a></div></div>
 </div><!-- fragment -->

@@ -124,7 +124,7 @@ subword of this target?" &mdash; the non-commutative analogue of monomial divisi
 <p><span class="tt"><a class="el" href="class_word_with_data_table.html">WordWithDataTable</a></span> is the ecart-degree-aware variant &mdash; subword matches additionally require the matched word's ecart to be at most the target's, so inhomogeneous GB computations can pick the right reducer. The string-matching subword search is the hot path of the entire NC GB engine; the naive walk is <span class="tt">O(|target| * |table|)</span> per query and is the production choice today. <span class="tt"><a class="el" href="class_suffix_tree.html">SuffixTree</a></span> is the experimental constant-<span class="tt">O(|target|)</span> alternative the engine is staged to swap in (commented-out alternative in <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> / <span class="tt"><a class="el" href="class_n_c_f4.html">NCF4</a></span>).</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_word_8hpp.html" title="Word and WordWithData — non-owning views over the flat-int encoding of a non-commutative word.">Word.hpp</a> </dd>
 <dd>
-<a class="el" href="_suffix_tree_8hpp.html" title="SuffixTreeNode — experimental generalised suffix tree for non-commutative leading-word lookup.">SuffixTree.hpp</a> </dd>
+<a class="el" href="_suffix_tree_8hpp.html" title="SuffixTree / SuffixTreeNode — experimental generalised suffix tree for non-commutative leading-word l...">SuffixTree.hpp</a> </dd>
 <dd>
 <a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
 <dd>

@@ -114,14 +114,14 @@ template&lt;typename Mat&gt; </div>
 <p>throws an engine_error for ring/matrix types where the function is not implemented. throws an error if the matrix is not square.</p>
 <p>Note: the inverse of a 0 x 0 matrix is another 0 x 0 matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00141">141</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  142</span>{</div>
-<div class="line"><span class="lineno">  143</span>  (void) A;</div>
-<div class="line"><span class="lineno">  144</span>  (void) result_inv;</div>
-<div class="line"><span class="lineno">  145</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
-<div class="line"><span class="lineno">  146</span>      <span class="stringliteral">&quot;&#39;invert&#39; not implemented for this kind of matrix over this ring&quot;</span>);</div>
-<div class="line"><span class="lineno">  147</span>}</div>
-<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00037">exceptions.hpp:38</a></div></div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l00154">154</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  155</span>{</div>
+<div class="line"><span class="lineno">  156</span>  (void) A;</div>
+<div class="line"><span class="lineno">  157</span>  (void) result_inv;</div>
+<div class="line"><span class="lineno">  158</span>  <span class="keywordflow">throw</span> <a class="code hl_struct" href="structexc_1_1engine__error.html">exc::engine_error</a>(</div>
+<div class="line"><span class="lineno">  159</span>      <span class="stringliteral">&quot;&#39;invert&#39; not implemented for this kind of matrix over this ring&quot;</span>);</div>
+<div class="line"><span class="lineno">  160</span>}</div>
+<div class="ttc" id="astructexc_1_1engine__error_html"><div class="ttname"><a href="structexc_1_1engine__error.html">exc::engine_error</a></div><div class="ttdef"><b>Definition</b> <a href="exceptions_8hpp_source.html#l00039">exceptions.hpp:40</a></div></div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="class_mutable_mat_ad424319c2d602e5b56fa164f5523f88b.html#ad424319c2d602e5b56fa164f5523f88b">MutableMat&lt; Mat &gt;::invert()</a>.</p>
 

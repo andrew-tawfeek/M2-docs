@@ -107,76 +107,76 @@ $(function(){initNavTree('class_ring_ac3bf5e7ce2fc181cc6944e8614ca86c1.html','',
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00538">538</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  539</span>{</div>
-<div class="line"><span class="lineno">  540</span>  <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  541</span>  <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  542</span>    {</div>
-<div class="line"><span class="lineno">  543</span>      v = w;</div>
-<div class="line"><span class="lineno">  544</span>      w = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  545</span>      <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  546</span>    }</div>
-<div class="line"><span class="lineno">  547</span>  vecterm head;</div>
-<div class="line"><span class="lineno">  548</span>  vec <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = &amp;head;</div>
-<div class="line"><span class="lineno">  549</span>  <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
-<div class="line"><span class="lineno">  550</span>    <span class="keywordflow">if</span> (v-&gt;comp &lt; w-&gt;comp)</div>
-<div class="line"><span class="lineno">  551</span>      {</div>
-<div class="line"><span class="lineno">  552</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = w;</div>
-<div class="line"><span class="lineno">  553</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  554</span>        w = w-&gt;next;</div>
-<div class="line"><span class="lineno">  555</span>        <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  556</span>          {</div>
-<div class="line"><span class="lineno">  557</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = v;</div>
-<div class="line"><span class="lineno">  558</span>            v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
-<div class="line"><span class="lineno">  559</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  560</span>          }</div>
-<div class="line"><span class="lineno">  561</span>      }</div>
-<div class="line"><span class="lineno">  562</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v-&gt;comp &gt; w-&gt;comp)</div>
-<div class="line"><span class="lineno">  563</span>      {</div>
-<div class="line"><span class="lineno">  564</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = v;</div>
-<div class="line"><span class="lineno">  565</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  566</span>        v = v-&gt;next;</div>
-<div class="line"><span class="lineno">  567</span>        <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  568</span>          {</div>
-<div class="line"><span class="lineno">  569</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = w;</div>
-<div class="line"><span class="lineno">  570</span>            v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
-<div class="line"><span class="lineno">  571</span>            w = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  572</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  573</span>          }</div>
-<div class="line"><span class="lineno">  574</span>      }</div>
-<div class="line"><span class="lineno">  575</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  576</span>      {</div>
-<div class="line"><span class="lineno">  577</span>        vec tmv = v;</div>
-<div class="line"><span class="lineno">  578</span>        vec tmw = w;</div>
-<div class="line"><span class="lineno">  579</span>        v = v-&gt;next;</div>
-<div class="line"><span class="lineno">  580</span>        w = w-&gt;next;</div>
-<div class="line"><span class="lineno">  581</span>        tmv-&gt;coeff = this-&gt;<a class="code hl_function" href="class_ring_a42c4388ce795defc9623eb717f5bbbe4.html#a42c4388ce795defc9623eb717f5bbbe4">add</a>(tmv-&gt;coeff, tmw-&gt;coeff);</div>
-<div class="line"><span class="lineno">  582</span>        <span class="keywordflow">if</span> (this-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(tmv-&gt;coeff))</div>
-<div class="line"><span class="lineno">  583</span>          {</div>
-<div class="line"><span class="lineno">  584</span>            <a class="code hl_function" href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">remove_vec_node</a>(tmv);</div>
-<div class="line"><span class="lineno">  585</span>          }</div>
-<div class="line"><span class="lineno">  586</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  587</span>          {</div>
-<div class="line"><span class="lineno">  588</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = tmv;</div>
-<div class="line"><span class="lineno">  589</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
-<div class="line"><span class="lineno">  590</span>          }</div>
-<div class="line"><span class="lineno">  591</span>        <a class="code hl_function" href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">remove_vec_node</a>(tmw);</div>
-<div class="line"><span class="lineno">  592</span>        <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  593</span>          {</div>
-<div class="line"><span class="lineno">  594</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = v;</div>
-<div class="line"><span class="lineno">  595</span>            v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
-<div class="line"><span class="lineno">  596</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  597</span>          }</div>
-<div class="line"><span class="lineno">  598</span>        <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  599</span>          {</div>
-<div class="line"><span class="lineno">  600</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = w;</div>
-<div class="line"><span class="lineno">  601</span>            v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
-<div class="line"><span class="lineno">  602</span>            w = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  603</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  604</span>          }</div>
-<div class="line"><span class="lineno">  605</span>      }</div>
-<div class="line"><span class="lineno">  606</span>}</div>
-<div class="ttc" id="aclass_ring_a310e247bc4db676e4641f02cf2177474_html_a310e247bc4db676e4641f02cf2177474"><div class="ttname"><a href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">Ring::remove_vec_node</a></div><div class="ttdeci">void remove_vec_node(vec n) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00043">ring-vecs.cpp:43</a></div></div>
+<p class="definition">Definition at line <a class="el" href="ring-vecs_8cpp_source.html#l00546">546</a> of file <a class="el" href="ring-vecs_8cpp_source.html">ring-vecs.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  547</span>{</div>
+<div class="line"><span class="lineno">  548</span>  <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  549</span>  <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  550</span>    {</div>
+<div class="line"><span class="lineno">  551</span>      v = w;</div>
+<div class="line"><span class="lineno">  552</span>      w = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  553</span>      <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  554</span>    }</div>
+<div class="line"><span class="lineno">  555</span>  vecterm head;</div>
+<div class="line"><span class="lineno">  556</span>  vec <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = &amp;head;</div>
+<div class="line"><span class="lineno">  557</span>  <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><span class="lineno">  558</span>    <span class="keywordflow">if</span> (v-&gt;comp &lt; w-&gt;comp)</div>
+<div class="line"><span class="lineno">  559</span>      {</div>
+<div class="line"><span class="lineno">  560</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = w;</div>
+<div class="line"><span class="lineno">  561</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  562</span>        w = w-&gt;next;</div>
+<div class="line"><span class="lineno">  563</span>        <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  564</span>          {</div>
+<div class="line"><span class="lineno">  565</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = v;</div>
+<div class="line"><span class="lineno">  566</span>            v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
+<div class="line"><span class="lineno">  567</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  568</span>          }</div>
+<div class="line"><span class="lineno">  569</span>      }</div>
+<div class="line"><span class="lineno">  570</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (v-&gt;comp &gt; w-&gt;comp)</div>
+<div class="line"><span class="lineno">  571</span>      {</div>
+<div class="line"><span class="lineno">  572</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = v;</div>
+<div class="line"><span class="lineno">  573</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  574</span>        v = v-&gt;next;</div>
+<div class="line"><span class="lineno">  575</span>        <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  576</span>          {</div>
+<div class="line"><span class="lineno">  577</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = w;</div>
+<div class="line"><span class="lineno">  578</span>            v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
+<div class="line"><span class="lineno">  579</span>            w = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  580</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  581</span>          }</div>
+<div class="line"><span class="lineno">  582</span>      }</div>
+<div class="line"><span class="lineno">  583</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  584</span>      {</div>
+<div class="line"><span class="lineno">  585</span>        vec tmv = v;</div>
+<div class="line"><span class="lineno">  586</span>        vec tmw = w;</div>
+<div class="line"><span class="lineno">  587</span>        v = v-&gt;next;</div>
+<div class="line"><span class="lineno">  588</span>        w = w-&gt;next;</div>
+<div class="line"><span class="lineno">  589</span>        tmv-&gt;coeff = this-&gt;<a class="code hl_function" href="class_ring_a42c4388ce795defc9623eb717f5bbbe4.html#a42c4388ce795defc9623eb717f5bbbe4">add</a>(tmv-&gt;coeff, tmw-&gt;coeff);</div>
+<div class="line"><span class="lineno">  590</span>        <span class="keywordflow">if</span> (this-&gt;<a class="code hl_function" href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">is_zero</a>(tmv-&gt;coeff))</div>
+<div class="line"><span class="lineno">  591</span>          {</div>
+<div class="line"><span class="lineno">  592</span>            <a class="code hl_function" href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">remove_vec_node</a>(tmv);</div>
+<div class="line"><span class="lineno">  593</span>          }</div>
+<div class="line"><span class="lineno">  594</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  595</span>          {</div>
+<div class="line"><span class="lineno">  596</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = tmv;</div>
+<div class="line"><span class="lineno">  597</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
+<div class="line"><span class="lineno">  598</span>          }</div>
+<div class="line"><span class="lineno">  599</span>        <a class="code hl_function" href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">remove_vec_node</a>(tmw);</div>
+<div class="line"><span class="lineno">  600</span>        <span class="keywordflow">if</span> (w == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  601</span>          {</div>
+<div class="line"><span class="lineno">  602</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = v;</div>
+<div class="line"><span class="lineno">  603</span>            v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
+<div class="line"><span class="lineno">  604</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  605</span>          }</div>
+<div class="line"><span class="lineno">  606</span>        <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  607</span>          {</div>
+<div class="line"><span class="lineno">  608</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = w;</div>
+<div class="line"><span class="lineno">  609</span>            v = head.<a class="code hl_variable" href="structvecterm_a0097010847a0593f115ad08738a72b3a.html#a0097010847a0593f115ad08738a72b3a">next</a>;</div>
+<div class="line"><span class="lineno">  610</span>            w = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  611</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  612</span>          }</div>
+<div class="line"><span class="lineno">  613</span>      }</div>
+<div class="line"><span class="lineno">  614</span>}</div>
+<div class="ttc" id="aclass_ring_a310e247bc4db676e4641f02cf2177474_html_a310e247bc4db676e4641f02cf2177474"><div class="ttname"><a href="class_ring_a310e247bc4db676e4641f02cf2177474.html#a310e247bc4db676e4641f02cf2177474">Ring::remove_vec_node</a></div><div class="ttdeci">void remove_vec_node(vec n) const</div><div class="ttdef"><b>Definition</b> <a href="ring-vecs_8cpp_source.html#l00051">ring-vecs.cpp:51</a></div></div>
 <div class="ttc" id="aclass_ring_a42c4388ce795defc9623eb717f5bbbe4_html_a42c4388ce795defc9623eb717f5bbbe4"><div class="ttname"><a href="class_ring_a42c4388ce795defc9623eb717f5bbbe4.html#a42c4388ce795defc9623eb717f5bbbe4">Ring::add</a></div><div class="ttdeci">virtual ring_elem add(const ring_elem f, const ring_elem g) const =0</div></div>
 <div class="ttc" id="aclass_ring_aa8d762a00cdea91f8d26cea2b52ebce0_html_aa8d762a00cdea91f8d26cea2b52ebce0"><div class="ttname"><a href="class_ring_aa8d762a00cdea91f8d26cea2b52ebce0.html#aa8d762a00cdea91f8d26cea2b52ebce0">Ring::is_zero</a></div><div class="ttdeci">virtual bool is_zero(const ring_elem f) const =0</div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>

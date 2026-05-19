@@ -115,25 +115,25 @@ $(function(){initNavTree('namespace_matrix_ops_a4dcadfb47ea26c5fc121c8d043c4b91e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01112">1112</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1113</span>{</div>
-<div class="line"><span class="lineno"> 1114</span>  fmpz_mat_t m1;</div>
-<div class="line"><span class="lineno"> 1115</span>  fmpz_mat_t m2;</div>
-<div class="line"><span class="lineno"> 1116</span>  fmpz_mat_init(m1, A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a87f319190253043bfe918914bcc9177a.html#a87f319190253043bfe918914bcc9177a">numRows</a>(), A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>());</div>
-<div class="line"><span class="lineno"> 1117</span>  fmpz_mat_init(m2, A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>(), A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>());</div>
-<div class="line"><span class="lineno"> 1118</span>  fmpq_mat_get_fmpz_mat_rowwise(m1, <span class="keyword">nullptr</span>, A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ae2c1c01e5b10f46f96a28e6e475ba2ec.html#ae2c1c01e5b10f46f96a28e6e475ba2ec">fmpq_mat</a>());</div>
-<div class="line"><span class="lineno"> 1119</span>  <span class="comment">// fmpz_mat_print_pretty(m1);</span></div>
-<div class="line"><span class="lineno"> 1120</span>  <span class="keywordtype">size_t</span> nullity = fmpz_mat_nullspace(m2, m1);</div>
-<div class="line"><span class="lineno"> 1121</span>  <span class="comment">// now copy the first &#39;nullity&#39; columns into result_nullspace</span></div>
-<div class="line"><span class="lineno"> 1122</span>  result_nullspace.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a43f8581ae8cdd908a9ebd85b11d12a0c.html#a43f8581ae8cdd908a9ebd85b11d12a0c">resize</a>(A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>(), nullity);</div>
-<div class="line"><span class="lineno"> 1123</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> c = 0; c &lt; nullity; c++)</div>
-<div class="line"><span class="lineno"> 1124</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> r = 0; r &lt; A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>(); r++)</div>
-<div class="line"><span class="lineno"> 1125</span>      fmpz_set(fmpq_numref(&amp;result_nullspace.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a44d8581b4e76a5b4acffb0d3f81e78d5.html#a44d8581b4e76a5b4acffb0d3f81e78d5">entry</a>(r, c)),</div>
-<div class="line"><span class="lineno"> 1126</span>               fmpz_mat_entry(m2, r, c));</div>
-<div class="line"><span class="lineno"> 1127</span>  fmpz_mat_clear(m1);</div>
-<div class="line"><span class="lineno"> 1128</span>  fmpz_mat_clear(m2);</div>
-<div class="line"><span class="lineno"> 1129</span>  <span class="keywordflow">return</span> nullity;</div>
-<div class="line"><span class="lineno"> 1130</span>}</div>
+<p class="definition">Definition at line <a class="el" href="mat-linalg_8hpp_source.html#l01125">1125</a> of file <a class="el" href="mat-linalg_8hpp_source.html">mat-linalg.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1126</span>{</div>
+<div class="line"><span class="lineno"> 1127</span>  fmpz_mat_t m1;</div>
+<div class="line"><span class="lineno"> 1128</span>  fmpz_mat_t m2;</div>
+<div class="line"><span class="lineno"> 1129</span>  fmpz_mat_init(m1, A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a87f319190253043bfe918914bcc9177a.html#a87f319190253043bfe918914bcc9177a">numRows</a>(), A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>());</div>
+<div class="line"><span class="lineno"> 1130</span>  fmpz_mat_init(m2, A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>(), A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>());</div>
+<div class="line"><span class="lineno"> 1131</span>  fmpq_mat_get_fmpz_mat_rowwise(m1, <span class="keyword">nullptr</span>, A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ae2c1c01e5b10f46f96a28e6e475ba2ec.html#ae2c1c01e5b10f46f96a28e6e475ba2ec">fmpq_mat</a>());</div>
+<div class="line"><span class="lineno"> 1132</span>  <span class="comment">// fmpz_mat_print_pretty(m1);</span></div>
+<div class="line"><span class="lineno"> 1133</span>  <span class="keywordtype">size_t</span> nullity = fmpz_mat_nullspace(m2, m1);</div>
+<div class="line"><span class="lineno"> 1134</span>  <span class="comment">// now copy the first &#39;nullity&#39; columns into result_nullspace</span></div>
+<div class="line"><span class="lineno"> 1135</span>  result_nullspace.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a43f8581ae8cdd908a9ebd85b11d12a0c.html#a43f8581ae8cdd908a9ebd85b11d12a0c">resize</a>(A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>(), nullity);</div>
+<div class="line"><span class="lineno"> 1136</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> c = 0; c &lt; nullity; c++)</div>
+<div class="line"><span class="lineno"> 1137</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> r = 0; r &lt; A.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_ade234619ed4fd45f39da781d55cd882f.html#ade234619ed4fd45f39da781d55cd882f">numColumns</a>(); r++)</div>
+<div class="line"><span class="lineno"> 1138</span>      fmpz_set(fmpq_numref(&amp;result_nullspace.<a class="code hl_function" href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a44d8581b4e76a5b4acffb0d3f81e78d5.html#a44d8581b4e76a5b4acffb0d3f81e78d5">entry</a>(r, c)),</div>
+<div class="line"><span class="lineno"> 1139</span>               fmpz_mat_entry(m2, r, c));</div>
+<div class="line"><span class="lineno"> 1140</span>  fmpz_mat_clear(m1);</div>
+<div class="line"><span class="lineno"> 1141</span>  fmpz_mat_clear(m2);</div>
+<div class="line"><span class="lineno"> 1142</span>  <span class="keywordflow">return</span> nullity;</div>
+<div class="line"><span class="lineno"> 1143</span>}</div>
 <div class="ttc" id="aclass_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a43f8581ae8cdd908a9ebd85b11d12a0c_html_a43f8581ae8cdd908a9ebd85b11d12a0c"><div class="ttname"><a href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a43f8581ae8cdd908a9ebd85b11d12a0c.html#a43f8581ae8cdd908a9ebd85b11d12a0c">DMat&lt; M2::ARingQQFlint &gt;::resize</a></div><div class="ttdeci">void resize(size_t new_nrows, size_t new_ncols)</div><div class="ttdef"><b>Definition</b> <a href="dmat-qq-flint_8hpp_source.html#l00107">dmat-qq-flint.hpp:107</a></div></div>
 <div class="ttc" id="aclass_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a44d8581b4e76a5b4acffb0d3f81e78d5_html_a44d8581b4e76a5b4acffb0d3f81e78d5"><div class="ttname"><a href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a44d8581b4e76a5b4acffb0d3f81e78d5.html#a44d8581b4e76a5b4acffb0d3f81e78d5">DMat&lt; M2::ARingQQFlint &gt;::entry</a></div><div class="ttdeci">ElementType &amp; entry(size_t row, size_t column)</div><div class="ttdef"><b>Definition</b> <a href="dmat-qq-flint_8hpp_source.html#l00094">dmat-qq-flint.hpp:94</a></div></div>
 <div class="ttc" id="aclass_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a87f319190253043bfe918914bcc9177a_html_a87f319190253043bfe918914bcc9177a"><div class="ttname"><a href="class_d_mat_3_01_m2_1_1_a_ring_q_q_flint_01_4_a87f319190253043bfe918914bcc9177a.html#a87f319190253043bfe918914bcc9177a">DMat&lt; M2::ARingQQFlint &gt;::numRows</a></div><div class="ttdeci">size_t numRows() const</div><div class="ttdef"><b>Definition</b> <a href="dmat-qq-flint_8hpp_source.html#l00091">dmat-qq-flint.hpp:91</a></div></div>
