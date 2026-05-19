@@ -5,29 +5,28 @@
 
 /**
  * @file hilb.hpp
- * @brief Hilbert series / function / polynomial via the Bigatti-Caboara-Robbiano recursion.
+ * @brief Hilbert-series numerator via the Bigatti-Caboara-Robbiano recursion.
  *
- * Computes the Hilbert series of a graded module `M = R^a / I`,
- * returning the numerator polynomial in `ZZ[t]` over the standard
- * denominator `prod (1 - t^{deg x_i})`. The recursion picks a
- * pivot monomial `m` and uses the short exact sequence
+ * Declares `hilb_comp`, which computes the numerator of the
+ * Hilbert series for `coker leadterms(M)` (resp. `coker I` when the
+ * input is a `MonomialIdeal`) over the standard denominator
+ * `prod (1 - t^{deg x_i})`. The recursion picks a pivot monomial
+ * `m` and uses the short exact sequence
  * `0 -> R/(I:m) -.m-> R/I -> R/(I + (m)) -> 0`, giving
- * `H_{R/I} = t^{deg m} H_{R/(I:m)} + H_{R/(I + (m))}`; the
+ * `H_{R/I} = t^{deg m} H_{R/(I:m)} + H_{R/(I + (m))}`. The
  * `partition_table` declared at the top runs the union-find that
  * groups variables into connected components so the recursion
- * splits on independent subproblems whenever possible. Both
- * monomial-ideal inputs (fast direct path) and general ideal
- * inputs (engine first computes a GB and takes the initial
- * monomial ideal) are accepted.
+ * splits on independent subproblems whenever possible.
  *
- * The Hilbert function is read off the rational expansion of the
- * series; the Hilbert polynomial (eventual polynomial behaviour
- * in `d`) is extracted symbolically from the numerator. For very
- * large inputs the resolution-based alternative in `comp-res.hpp`
- * is sometimes preferable.
+ * The matrix entry point takes lead terms only --- callers wanting
+ * the Hilbert series of an arbitrary ideal pass in a Groebner basis.
+ * Reading the Hilbert function or extracting the Hilbert polynomial
+ * from the numerator lives in top-level M2 code; this header exposes
+ * only the static `hilbertNumerator` family and the per-instance
+ * `value()` / `calc()` driver, plus `coeff_of` for sampling a single
+ * coefficient.
  *
  * @see monideal.hpp
- * @see comp-res.hpp
  */
 
 // Computation of Hilbert functions via Bigatti's (et al) algorithm.
