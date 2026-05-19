@@ -8,6 +8,29 @@
 #ifndef _assprime_hh
 #define _assprime_hh
 
+/**
+ * @file assprime.hpp
+ * @brief `AssociatedPrimes` --- codimension and minimal-codimension associated primes of a monomial ideal.
+ *
+ * Declares `AssociatedPrimes`, a state-machine-shaped class that
+ * operates on a radical `MonomialIdeal`. It can run in two phases ---
+ * `do_codim` (cheap, computes the codimension) and `do_primes`
+ * (expensive, enumerates the associated primes of minimal codimension)
+ * --- so a caller can pay only for the codimension when that is all
+ * they need and step the same instance through to the primes later
+ * without restarting. The result is returned as a `MonomialIdeal`
+ * whose generators are squarefree monomials, each encoding one
+ * associated prime by the set of variables it contains.
+ *
+ * Monomial associated-prime calculation avoids Groebner bases and
+ * coefficient arithmetic entirely: it is the combinatorial recursion
+ * `ass(I) = ass(I, x_i) U {(x_i) + ass(I : x_i^inf)}` on exponent
+ * vectors. Callers (general primary decomposition, `codim I`,
+ * `dim R/I`) are expected to have already radicalised the input.
+ *
+ * @see monideal.hpp
+ */
+
 #include "monideal.hpp"
 
 class AssociatedPrimes
