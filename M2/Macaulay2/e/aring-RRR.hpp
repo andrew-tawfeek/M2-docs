@@ -3,6 +3,33 @@
 #ifndef _aring_RRR_hpp_
 #define _aring_RRR_hpp_
 
+/**
+ * @file aring-RRR.hpp
+ * @brief `M2::ARingRRR` --- arbitrary-precision real numbers backed by MPFR.
+ *
+ * `ARingRRR` is the precision-flexible sibling of `ARingRR`. Each
+ * instance carries a mantissa bit count and stores values as
+ * `mpfr_t`s of that precision; instances of different precisions are
+ * treated as distinct rings, so 53-bit and 100-bit values cannot
+ * silently mix. Every arithmetic operation routes through MPFR
+ * (`mpfr_add`, `mpfr_mul`, `mpfr_sin`, `mpfr_log`, ...) under
+ * round-to-nearest-ties-even, the IEEE 754 default; alternative
+ * rounding modes are not exposed.
+ *
+ * The header pulls in `interface/gmp-util.h` for `moveTo_gmpRR`,
+ * which migrates the MPFR mantissa onto the GC heap when returning a
+ * value to the interpreter, and `interface/random.h` for
+ * `randomMpfr` (uniformly distributed `mpfr_t` at the ring's
+ * precision). The dispatcher in `aring.hpp` selects `ARingRRR`
+ * whenever the M2 precision option is set to anything other than the
+ * hardware default.
+ *
+ * @see aring-RR.hpp
+ * @see aring-RRi.hpp
+ * @see aring-CCC.hpp
+ * @see aring.hpp
+ */
+
 #include "interface/gmp-util.h"  // for moveTo_gmpRR
 #include "interface/random.h"    // for randomMpfr
 
