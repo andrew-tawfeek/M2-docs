@@ -19,13 +19,18 @@
  * value is handed to legacy `Ring` code; in-place arithmetic on
  * `ARingZZGMP` values keeps GMP's own limb storage.
  *
- * The FLINT-backed sibling `aring-zz-flint.hpp` is what
- * `ring.cpp::makeIntegerRing` instantiates as the engine's
- * integer ring (`new ConcreteRing<ARingZZ>`); `ARingZZGMP` is the
- * one the legacy `RingZZ::makeMutableMatrix` reaches for when
- * building dense / sparse mutable matrices over the older
- * `RingZZ`, and `mat-linalg.hpp` aliases `DMat<ARingZZGMP>` as
- * `DMatZZGMP` for the matching dense linear-algebra paths.
+ * `ring.cpp::makeIntegerRing` actually returns
+ * `new RingZZ` --- the legacy `RingZZ` (`ZZ.hpp`) class, not a
+ * `ConcreteRing<ARing*>` --- and `RingZZ` internally carries an
+ * `ARingZZGMP *coeffR` member that it forwards arithmetic to.
+ * The FLINT-backed sibling `aring-zz-flint.hpp::ARingZZ` is a
+ * parallel aring choice but not the one M2's integer ring goes
+ * through. `RingZZ::makeMutableMatrix` (in `mat.cpp`) is where
+ * `ARingZZGMP` becomes the matrix back end: it builds
+ * `MutableMat<DMat<ARingZZGMP>>` or `MutableMat<SMat<ARingZZGMP>>`
+ * depending on the `dense` flag, and `mat-linalg.hpp` aliases
+ * `DMat<ARingZZGMP>` as `DMatZZGMP` for the matching dense
+ * linear-algebra paths.
  *
  * @see ZZ.hpp
  * @see aring-zz-flint.hpp
