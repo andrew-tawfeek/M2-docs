@@ -8,6 +8,32 @@
 #ifndef _monideal_minprimes_h_
 #define _monideal_minprimes_h_
 
+/**
+ * @file monideal-minprimes.hpp
+ * @brief `MinimalPrimes` --- minimal primes of a `MonomialIdeal` via a two-phase state machine.
+ *
+ * Declares `MinimalPrimes`, the cousin of `AssociatedPrimes`
+ * specialised to the minimal-codimension primes only. The
+ * constructor radicalises the input (minimal primes of `I` agree
+ * with minimal primes of `rad(I)`, and working with the radical
+ * eliminates higher-power monomials cheaply), sets `min_codim`
+ * to an impossibly large `nvars + 1`, and leaves an empty
+ * accumulator `primes`. The `state` field runs the same two-stage
+ * shape as `AssociatedPrimes`: `do_codim` finds the minimum
+ * codimension cheaply, `do_primes` enumerates the minimal-
+ * codimension primes; callers who only need `codim` can stop after
+ * the first phase. Generators are stored as squarefree monomials
+ * in `primes` --- one bit per variable that appears.
+ *
+ * The combinatorial recursion is the same monomial split-on-`x_i`
+ * that drives the rest of monomial primary decomposition; the
+ * `Q` worklist of `Bag*`s carries the in-progress candidate
+ * primes between recursive steps.
+ *
+ * @see monideal.hpp
+ * @see assprime.hpp
+ */
+
 #include "monideal.hpp"
 
 class MinimalPrimes
