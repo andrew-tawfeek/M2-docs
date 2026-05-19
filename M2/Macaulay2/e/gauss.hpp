@@ -8,28 +8,27 @@
  *
  * Declares `GaussElimComputation`, a `GBComputation` subclass that
  * row-reduces a sparse matrix of generators to echelon form
- * directly, plus the row-element struct `gm_elem` (intrusive
- * linked list of `(f, fsyz)` value/syzygy pairs sorted by
- * leading position, with a `nterms` count cached as a tiebreaker).
- * Keeping the list sorted lets the pivoting step pick the next
- * lowest-leading row in O(1); inserting a freshly-reduced row
- * walks until the right position. After every generator is
- * processed, the list is a complete echelon form whose `f`
- * components form the Groebner basis and whose `fsyz`
- * components form the matching syzygy module.
+ * directly, plus the row-element struct `gm_elem` --- a
+ * `(f, fsyz)` value/syzygy pair plus a cached `nterms` count and
+ * a `next` pointer. Rows are bucketed by lead component in
+ * parallel arrays `gb_list[i]` (the chosen pivot for component
+ * `i`) and `reduce_list[i]` (a linked list of pending rows with
+ * lead component `i`); on insert, the sparsest row (fewest
+ * nonzero terms) is promoted to `gb_list[i]` and any displaced
+ * pivot is pushed onto `reduce_list[i]`. After every generator
+ * is processed, the `gb_list` rows are a Groebner basis and the
+ * accumulated `fsyz` components form the matching syzygy module.
  *
  * The strategy is the right call when the input is genuinely a
  * linear-algebra problem in disguise --- field-coefficient
- * module presentations, degree-1 inputs, anything where
- * Buchberger would just be performing the same row reductions
- * with more overhead. The `Strategy =>` keyword in M2 routes
- * here when the user asks for it; the dispatcher in
- * `comp-gb.hpp` also picks this path automatically when it
- * recognises the shape. `hermite.hpp` is the analogous
- * `Z`-coefficient algorithm.
+ * module presentations where Buchberger would just be performing
+ * the same row reductions with more overhead. The dispatcher in
+ * `comp-gb.cpp` selects this path automatically whenever the
+ * base ring of the input is a (non-polynomial) field;
+ * `hermite.hpp` is the analogous `ZZ`-coefficient algorithm.
  *
  * @see comp-gb.hpp
- * @see gb-default.hpp
+ * @see hermite.hpp
  */
 
 #include "relem.hpp"
