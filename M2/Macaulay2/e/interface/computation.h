@@ -1,6 +1,34 @@
 #ifndef _computation_h_
 #  define _computation_h_
 
+/**
+ * @file interface/computation.h
+ * @brief `ComputationStatusCode` and `StopConditions` --- engine-to-interpreter vocabulary for long-running computations.
+ *
+ * Declares the C-side enum the interpreter switches on after
+ * every `start_computation()` call (`COMP_DONE`,
+ * `COMP_INTERRUPTED`, `COMP_DONE_DEGREE_LIMIT`,
+ * `COMP_DONE_GB_LIMIT`, ...) and the `StopConditions` struct
+ * the interpreter populates to tell a `Computation` when to
+ * pause: `always_stop`, `stop_after_degree` / `degree_limit`,
+ * `basis_element_limit`, `syzygy_limit`, `pair_limit`,
+ * `codim_limit`, `subring_limit`, `length_limit`, and
+ * `just_min_gens`. Concrete computation classes (GB, resolution,
+ * Hilbert, ...) build their own interface headers on this
+ * vocabulary.
+ *
+ * The enum is the single source of truth for the engine/M2
+ * boundary, and the header carries an explicit "Keep this enum
+ * in sync with RawStatusCodes in Macaulay2/m2/gb.m2" comment ---
+ * adding a value here without updating the M2-side mirror
+ * silently breaks status reporting. Intentionally minimal so the
+ * generated-C side of the `.dd` pipeline stays light.
+ *
+ * @see comp-gb.hpp
+ * @see comp-res.hpp
+ * @see engine-includes.hpp
+ */
+
 #  include "engine-includes.hpp"
 
 #  if defined(__cplusplus)
