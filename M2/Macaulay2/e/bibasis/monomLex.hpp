@@ -10,6 +10,35 @@
 #ifndef BIBASIS_MONOM_LEX_HPP
 #define BIBASIS_MONOM_LEX_HPP
 
+/**
+ * @file bibasis/monomLex.hpp
+ * @brief `BIBasis::MonomLex` --- pure lexicographic specialisation of the BIBasis monomial type.
+ *
+ * Concrete `Monom` subclass whose `Compare`, `operator<`, and
+ * `operator>` order monomials by the highest-index variable that
+ * differs, with no degree pre-test --- the textbook lex order.
+ * The variable list is kept sorted ascending so `Find` is a
+ * linear-but-short walk, and `MultiplyBy` / `operator*=` /
+ * `operator/=` / `SetQuotientOf` maintain that ordering as they
+ * splice nodes; equality and divisibility short-circuit on the
+ * cached `TotalDegree`. Storage is a per-class static
+ * `FastAllocator` so the millions of transient monomials created
+ * during prolongation stay slab-resident.
+ *
+ * Also exposes `IsPommaretDivisibleBy` (Janet's prefix
+ * divisibility used by the involutive driver) and
+ * `GetVariablesSet` / `FirstMultiVar` for translating between the
+ * linked-list encoding and the dense variable indices the
+ * engine's `Matrix` interface expects. Picked at runtime by
+ * `Launcher` when the user requests `Lex`.
+ *
+ * @see monom.hpp
+ * @see monomDL.hpp
+ * @see monomDRL.hpp
+ * @see launcher.hpp
+ * @see involutive.hpp
+ */
+
 #include <set>
 #include "allocator.hpp"
 #include "monom.hpp"
