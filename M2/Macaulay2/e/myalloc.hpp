@@ -3,6 +3,29 @@
 #ifndef __myalloc_hpp_
 #define __myalloc_hpp_
 
+/**
+ * @file myalloc.hpp
+ * @brief `AllocLogger` / `StatsAllocator` --- single-threaded debug/benchmark instrumentation.
+ *
+ * Declares `AllocLogger` with static counters (`mNumAllocs`,
+ * `mAllocSize`, `mNumDeallocs`, `mCurrentAllocSize`, `mHighWater`)
+ * and the `StatsAllocator` wrapper that bumps those counters on
+ * every allocation / deallocation. The class is intentionally
+ * minimal: counters are static so per-type statistics share a
+ * collector, there is no locking (single-threaded only), and
+ * some configurations skip the actual `free` to make double-free
+ * detection cheap. It is for debugging and benchmarking only ---
+ * not safe in any path the supervisor parallelises.
+ *
+ * Production allocators are `newdelete.hpp`'s `our_new_delete`
+ * (Boehm GC) and `mem.hpp`'s `stash` (size-class slabs); reach
+ * for `AllocLogger` only when you want to count allocations of a
+ * single type in a benchmark run and dump the totals afterward.
+ *
+ * @see newdelete.hpp
+ * @see mem.hpp
+ */
+
 #include <iostream>
 
 // This class is static as it appears easiest if all allocator objects
