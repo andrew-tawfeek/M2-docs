@@ -1,6 +1,39 @@
 #ifndef _mutable_matrix_h_
 #  define _mutable_matrix_h_
 
+/**
+ * @file interface/mutable-matrix.h
+ * @brief Engine-boundary C API for the engine's in-place `MutableMatrix`, including dense linear algebra.
+ *
+ * Declares the `extern "C"` entry points the M2 interpreter
+ * routes to the engine's mutable matrix type. Construction
+ * (`IM2_MutableMatrix_make`, `IM2_MutableMatrix_identity`,
+ * `IM2_MutableMatrix_from_matrix`, with `prefer_dense` choosing
+ * dense vs. sparse storage) is paired with the standard
+ * read-only queries (`IM2_MutableMatrix_to_matrix` snapshots back
+ * into an immutable `Matrix`, plus dimension, entry, ring, and
+ * string accessors); in-place mutation covers single-entry set,
+ * row / column swap, scale, and elementary row / column
+ * operations; and the linear-algebra surface exposes `rawLU`,
+ * `rawSolve`, `rawInverse`, `rawDeterminant`, `rawRank`,
+ * `rawNullSpace`, `rawRowReduce`, fraction-free LU, LLL, and
+ * the LAPACK / Arb fast-path entries for RR / CC.
+ *
+ * Each linear-algebra entry dispatches inside the engine through
+ * the templated `DMat<R>` family to the fastest available back
+ * end --- FFLAS-FFPACK for Z/p, FLINT for ZZ / QQ / GF, MPFR /
+ * Arb for arbitrary-precision real / complex, generic otherwise
+ * --- so the interpreter never picks the algorithm itself. The
+ * mutable / immutable boundary is the standard "snapshot" model:
+ * an immutable `Matrix` is copied in, the algorithm rewrites the
+ * mutable buffer, and the caller converts back if it wants an
+ * immutable result.
+ *
+ * @see mutable-matrix.cpp
+ * @see matrix.h
+ * @see engine-includes.hpp
+ */
+
 #  include "engine-includes.hpp"
 
 // TODO: fix this
