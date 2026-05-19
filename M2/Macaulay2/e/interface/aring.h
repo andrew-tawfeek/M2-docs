@@ -8,21 +8,35 @@
  * Declares the `extern "C"` `rawARing*` factories the M2
  * interpreter calls (via the generated `d/engine.dd` bindings)
  * whenever the user asks for one of the `aring`-family
- * coefficient rings: prime fields (`rawARingZZp`,
- * `rawARingZZpFlint`), the native and FLINT-backed Galois fields
- * (`rawARingGaloisField`, `rawARingGaloisFieldFlintBig`,
- * `rawARingGaloisFieldFlintZech`, `rawARingGaloisFieldFromQuotient`),
- * the FLINT-accelerated `ZZ` / `QQ` variants (`rawARingZZFlint`,
- * `rawARingQQFlint`), and the `rawARingTower` constructor for
- * iterated extensions. Each function returns a `Ring*` wrapping
- * the appropriate `aring` instance or null on a domain error so
- * the interpreter can report it back to the user.
+ * coefficient rings. Prime fields: `rawARingZZp` (small `p`,
+ * `2 <= p <= 32749`) and `rawARingZZpFlint` (`2 <= p <= 2^64-1`).
+ * Galois fields: `rawARingGaloisField(p, n)` plus four
+ * `prim`-driven variants taking a `RingElement` primitive
+ * element --- `rawARingGaloisField1` (M2's own GF code),
+ * `rawARingGaloisFieldFlintBig` (FLINT's wordsize-`p` code,
+ * no Zech tables), `rawARingGaloisFieldFlintZech` (FLINT
+ * with Zech lookup tables), and `rawARingGaloisFieldFromQuotient`
+ * (Givaro-backed). FLINT-accelerated rationals/integers:
+ * `rawARingZZFlint`, `rawARingQQFlint`. Iterated extensions:
+ * three constructors `rawARingTower1` / `_2` / `_3` for
+ * progressively building tower rings from a coefficient
+ * field, variable names, and defining equations. Each factory
+ * returns a `Ring*` wrapping the appropriate `aring` instance
+ * or null on a domain error so the interpreter can report it
+ * back to the user.
  *
- * The trailing `connected` annotations on individual entries
- * mark those that already have a matching `d/` binding;
- * adding a new `aring` requires declaring it here,
- * implementing in `aring.cpp`, and wiring the M2-side `.dd`
- * binding.
+ * Three additional helpers cross the same boundary:
+ * `rawARingGFPolynomial(R)` returns the coefficient array of
+ * the GF quotient polynomial; `rawARingGFCoefficients(f)`
+ * decomposes a GF element back into its `(f_0, ..., f_{d-1})`
+ * coefficients over `ZZ/p`; `rawMultiplicativeGenerator(R)`
+ * returns the generator of the GF multiplicative group. The
+ * trailing `/* connected */` annotations on individual entries
+ * mark those that already have a matching `d/` binding ---
+ * notably `rawARingTower1`/`_2`/`_3` are **not** marked
+ * connected. Adding a new `aring` requires declaring it
+ * here, implementing in `aring.cpp`, and wiring the M2-side
+ * `.dd` binding.
  *
  * @see aring.cpp
  * @see engine-includes.hpp
