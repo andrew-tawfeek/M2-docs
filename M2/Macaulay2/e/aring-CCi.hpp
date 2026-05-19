@@ -3,6 +3,34 @@
 #ifndef _aring_CCi_hpp_
 #define _aring_CCi_hpp_
 
+/**
+ * @file aring-CCi.hpp
+ * @brief `M2::ARingCCi` --- certified complex intervals as Cartesian rectangles of MPFI intervals.
+ *
+ * `ARingCCi` represents a complex value as a pair of real intervals
+ * `(re_interval, im_interval)` --- i.e. a Cartesian rectangle in the
+ * complex plane. Endpoints have arbitrary MPFR precision; the
+ * underlying interval arithmetic is MPFI. Addition is componentwise;
+ * multiplication uses the standard `(ac - bd) + (ad + bc) i` formula
+ * with outward rounding on each sub-interval so the result is a
+ * certified enclosure of the true product. The rectangle
+ * representation is simple but yields overly wide enclosures under
+ * rotation; for tighter bounds the disk form would be preferable, but
+ * this file does not implement it.
+ *
+ * The class composes three sibling arings: `ARingRRR` for endpoint
+ * precision, `ARingRRi` for the real-interval components, and
+ * `ARingCCC` for exact MPFR complex arithmetic used as a reference.
+ * The dispatcher in `aring.hpp` selects `ARingCCi` whenever the
+ * M2-level precision option requests a complex ring with the
+ * "interval" flag set.
+ *
+ * @see aring-RRi.hpp
+ * @see aring-RRR.hpp
+ * @see aring-CCC.hpp
+ * @see aring.hpp
+ */
+
 #include <iostream>
 
 #include <mpfi.h>
