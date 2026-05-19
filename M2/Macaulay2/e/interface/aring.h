@@ -8,14 +8,15 @@
  * Declares the `extern "C"` `rawARing*` factories the M2
  * interpreter calls (via the generated `d/engine.dd` bindings)
  * whenever the user asks for one of the `aring`-family
- * coefficient rings: prime fields (`rawARingZZp`), the native
- * and FLINT-backed Galois fields (`rawARingGaloisField`,
- * `rawARingGaloisFieldFlintBig`, `rawARingGaloisFieldFlintZech`,
- * `rawARingGaloisField1`), arbitrary-precision real and complex
- * fields, and the FLINT-accelerated `ZZ` / `QQ` variants. Each
- * function returns a `Ring*` wrapping the appropriate `aring`
- * instance or null on a domain error so the interpreter can
- * report it back to the user.
+ * coefficient rings: prime fields (`rawARingZZp`,
+ * `rawARingZZpFlint`), the native and FLINT-backed Galois fields
+ * (`rawARingGaloisField`, `rawARingGaloisFieldFlintBig`,
+ * `rawARingGaloisFieldFlintZech`, `rawARingGaloisFieldFromQuotient`),
+ * the FLINT-accelerated `ZZ` / `QQ` variants (`rawARingZZFlint`,
+ * `rawARingQQFlint`), and the `rawARingTower` constructor for
+ * iterated extensions. Each function returns a `Ring*` wrapping
+ * the appropriate `aring` instance or null on a domain error so
+ * the interpreter can report it back to the user.
  *
  * The trailing `connected` annotations on individual entries
  * mark those that already have a matching `d/` binding;
