@@ -5,20 +5,30 @@
 
 /**
  * @file NCResolutions/nc-res-computation.hpp
- * @brief `NCResComputation` --- free-resolution driver for modules over a `FreeAlgebraQuotient`.
+ * @brief `NCResComputation` --- placeholder free-resolution driver for modules over a `FreeAlgebraQuotient`.
  *
- * Declares the non-commutative counterpart of
+ * Declares the intended non-commutative counterpart of
  * `F4ResComputation`: a `ResolutionComputation` subclass that
- * computes a free resolution of a right module presented by its
- * Gröbner basis over a `FreeAlgebraQuotient` ring. The
- * constructor is private; the friend factory `createNCRes(M,
- * max_level, strategy)` is the only entry point, and the input
- * matrix must already be a (partial) GB of the module being
- * resolved. The class deliberately ignores every stop condition
- * inherited from `Computation` except `length_limit` and
- * `degree_limit`, since non-commutative resolutions are
- * exploratory and the user mainly wants a bound on how deep to
- * dig before reporting a Betti table.
+ * **will** compute a free resolution of a right module presented
+ * by its Gröbner basis over a `FreeAlgebraQuotient` ring. The
+ * constructor is private; the friend factory
+ * `createNCRes(groebnerBasisMatrix, max_level, strategy)` is the
+ * only entry point, and the input matrix is expected to be a
+ * (partial) GB of the module being resolved.
+ *
+ * This adapter is currently a **non-functional placeholder**.
+ * `stop_conditions_ok()` unconditionally returns `true`,
+ * `start_computation()` just prints "Starting computation." to
+ * `std::cout`, `complete_thru_degree()` returns `0`,
+ * `get_betti` and the `MutableMatrix`-shaped `get_matrix`
+ * return `nullptr`, the `Matrix`-shaped `get_matrix(level)`
+ * returns either the input module's GB at level 1 or an empty
+ * `MatrixConstructor` matrix elsewhere, `text_out` emits the
+ * fixed string "Noncommutative resolution", and even the
+ * stored fields (`mInputModuleGB`; commented-out `mRing` /
+ * `mMaxLevel`) reflect the unfinished plumbing. The companion
+ * `nc-res-computation.cpp` is 30 lines and only defines the
+ * constructor plus `createNCRes`.
  *
  * The expected per-level loop is sketched in the long comment
  * block at the bottom of the header: build levels 0 / 1 from
@@ -26,10 +36,10 @@
  * F4-style overlap reduction against both the ring's GB and the
  * earlier-level frame, and store each `(free module,
  * differential)` pair as the resolution grows. The `#if 0`
- * sketches `NCSchreyerResolution` / `Level` / `Element` /
- * `ModulePoly` types that the in-progress implementation is
- * expected to grow into. `notes.txt` in this subdir tracks the
- * still-open design questions.
+ * block sketches `NCSchreyerResolution` / `Level` / `Element` /
+ * `ModulePoly` types the implementation is expected to grow
+ * into; `NCResolutions/notes.txt` tracks the still-open design
+ * questions.
  *
  * @see comp-res.hpp
  * @see FreeAlgebraQuotient.hpp
