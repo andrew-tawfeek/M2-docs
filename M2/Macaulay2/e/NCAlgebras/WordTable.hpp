@@ -3,28 +3,39 @@
 
 /**
  * @file NCAlgebras/WordTable.hpp
- * @brief `WordTable` --- production leading-word index for non-commutative Gröbner basis lookup.
+ * @brief `WordTable` / `WordWithDataTable` --- leading-word indices for non-commutative Gröbner basis lookup.
  *
- * Declares the structure `NCGroebner` and `NCF4` consult to
- * answer "does some basis leading word occur as a contiguous
+ * Declares the two structures `NCGroebner` and `NCF4` consult
+ * to answer "does some basis leading word occur as a contiguous
  * subword of this target?" --- the non-commutative analogue of
- * monomial divisibility. The table stores leading `Word`s in a
- * single backing `MemoryBlock` plus parallel index slots, with
- * a planned soft-delete via `-1` markers in the index vector
- * tracked in the in-file TODO. `subword(target, out)` reports
- * the first match used to drive reduction, `subwords(target,
- * out)` collects all of them for analysis, and `insert(w)` /
- * `insert(w, newRightOverlaps)` extends the table while
- * harvesting the fresh right-overlaps the new entry generates
- * with every existing word.
+ * monomial divisibility. Storage is a parallel pair:
+ * `std::vector<Word> mMonomials` for the words themselves and
+ * `std::vector<int> mIndices` with `-1` marking retired
+ * entries; the actual word bytes live in
+ * `MemoryBlock mMonomialSpace`. The soft-delete mechanism is
+ * fully wired in the companion `WordWithDataTable` (whose
+ * `clear()` resets both vectors) but only partially wired in
+ * `WordTable` itself --- the in-file TODO at the top tracks
+ * the missing `retire(index)` / search-skipping work. Public
+ * surface: `insert(w)` / `insert(w, newRightOverlaps)` extends
+ * the table while harvesting the right-overlaps the new entry
+ * generates with every existing word; `subword(target, out)`
+ * reports the first match used to drive reduction;
+ * `subwords(target, out)` collects all of them; `superwords`
+ * does the reverse direction; `isPrefix`/`isSuffix`/
+ * `isNontrivialSuperword` check the boundary cases;
+ * `leftOverlaps` / `rightOverlaps` enumerate overlap pairs.
  *
- * The string-matching subword search is the hot path of the
- * entire NC GB engine; the naive walk is `O(|target| *
- * |table|)` per query and is the production choice today.
- * `SuffixTree` is the experimental constant-`O(|target|)`
- * alternative the engine is staged to swap in. Memory is
- * arena-allocated so `clear()` releases the entire payload at
- * once when the algorithm restarts at a fresh degree.
+ * `WordWithDataTable` is the ecart-degree-aware variant ---
+ * subword matches additionally require the matched word's
+ * ecart to be at most the target's, so inhomogeneous GB
+ * computations can pick the right reducer. The string-matching
+ * subword search is the hot path of the entire NC GB engine;
+ * the naive walk is `O(|target| * |table|)` per query and is
+ * the production choice today. `SuffixTree` is the
+ * experimental constant-`O(|target|)` alternative the engine
+ * is staged to swap in (commented-out alternative in
+ * `NCGroebner` / `NCF4`).
  *
  * @see Word.hpp
  * @see SuffixTree.hpp
