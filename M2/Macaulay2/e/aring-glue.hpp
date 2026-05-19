@@ -22,18 +22,24 @@
  * This file is the single piece that lets the legacy and aring
  * ring APIs coexist permanently: every aring becomes a usable
  * `Ring*` for older engine code without losing the performance
- * of inlined arithmetic in templated hot paths.
+ * of inlined arithmetic in templated hot paths. The variadic
+ * `create<Args...>` factory forwards its arguments straight to
+ * the aring's constructor, so building, say,
+ * `ConcreteRing<ARingZZpFlint>::create(p)` is a one-liner.
  * `aring-translate.hpp` is the companion for cross-ring
- * coercion, and `aring-wrap.hpp` is the element-level
- * counterpart (`RElementWrap<RingType>` wraps an aring value the
- * same way `ConcreteRing<RingType>` wraps an aring). The
- * `displayArithmeticCalls` flag (defaults to `false`) is a
- * compile-time debug toggle that, when enabled, has every
- * forwarded `Ring` virtual `fprintf(stderr, "calling ...\n")`.
+ * coercion (`mypromote` / `mylift`); on the element-handle side
+ * each aring carries its own `RingType::Element` (an
+ * `ElementImpl<R>` subclass exposed via the typedef on line 67)
+ * --- the abandoned `RElementWrap<RingType>` /
+ * `AConcreteRing<RingType>` scaffolding in `aring-wrap.hpp` was
+ * a never-completed alternative design, not the production
+ * element-level counterpart. The `displayArithmeticCalls` flag
+ * (defaults to `false`) is a compile-time debug toggle that,
+ * when enabled, has every forwarded `Ring` virtual
+ * `fprintf(stderr, "calling ...\n")`.
  *
  * @see aring.hpp
  * @see aring-translate.hpp
- * @see aring-wrap.hpp
  * @see ring.hpp
  */
 
