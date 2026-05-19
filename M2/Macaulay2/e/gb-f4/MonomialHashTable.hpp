@@ -17,13 +17,15 @@
  * determinism the engine relies on to reproduce
  * floating-point-sensitive output.
  *
- * The accompanying hash-table layer (developed alongside this
- * header, with linear-probing buckets backed by a `MemoryBlock`)
- * maps every monomial the algorithm encounters --- basis leading
- * terms, S-pair LCMs, Macaulay-matrix column heads --- to a
- * single canonical `MonomialIndex`, so the rest of the engine
- * works on integer indices and only reads monomial data when
- * actually printing or comparing. Modern successor to the
+ * The accompanying `MonomialHashTable` class stores monomial
+ * data in a `MemoryBlock` and keeps an open-addressed
+ * `mBuckets` vector whose slots hold either `0` (empty) or a
+ * `MonomialIndex >= 1` into the block. Every monomial the
+ * algorithm encounters --- basis leading terms, S-pair LCMs,
+ * Macaulay-matrix column heads --- gets a single canonical
+ * `MonomialIndex` here, so the rest of the engine works on
+ * integer indices and only reads monomial data when actually
+ * printing or comparing. Modern successor to the
  * `f4/monhashtable.hpp` trait classes that wrapped the external
  * mathic table.
  *
