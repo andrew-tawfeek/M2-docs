@@ -1,6 +1,33 @@
 #ifndef _ntl_interface_hpp_
 #define _ntl_interface_hpp_
 
+/**
+ * @file ntl-interface.hpp
+ * @brief Engine bridge into NTL --- conversions and entry points for the operations the engine still prefers it for.
+ *
+ * Pulls in `<NTL/ZZ.h>`, `<NTL/mat_ZZ.h>`, and `<NTL/LLL.h>`
+ * (with diagnostic pragmas around the include to silence NTL's
+ * internal narrowing warnings) and declares the engine-side
+ * conversion helpers: `ntl_ZZ_to_mpz` / `ntl_ZZ_from_mpz`
+ * marshal between NTL's `ZZ` and GMP `mpz_t`, while
+ * `makeNTLMatrixZZ` / `mat_ZZ_set_entry` / `mat_ZZ_get_entry`
+ * provide the entry-by-entry plumbing to convert an engine
+ * `MutableMatrix` to and from an NTL `mat_ZZ`. The `dntl_*`
+ * debugger printers from `ntl-debugio.cpp` are forward-declared
+ * here.
+ *
+ * NTL is linked alongside FLINT and selected per-operation: LLL
+ * with options FLINT lacks (e.g. floating-point variants with
+ * stricter error tracking) routes through here, as do a few
+ * legacy paths that pre-date the FLINT migration. The
+ * companion `ntl-internal.cpp` carries `using namespace NTL;`
+ * conversions that would otherwise clash with engine names
+ * (`gcd`, `random`, `mul`, ...).
+ *
+ * @see LLL.hpp
+ * @see ntl-debugio.cpp
+ */
+
 #include <stddef.h>
 #include <M2/math-include.h>
 
