@@ -3,6 +3,35 @@
 #ifndef _reducedgb_hpp_
 #define _reducedgb_hpp_
 
+/**
+ * @file reducedgb.hpp
+ * @brief `ReducedGB` --- abstract base for the canonicalising reduction pass that follows GB computation.
+ *
+ * Declares `ReducedGB`, a `GBComputation` subclass that takes an
+ * already-computed Groebner basis and canonicalises it: leading
+ * monomials become distinct, no tail term is divisible by another
+ * element's leading monomial, and (over a field) leading
+ * coefficients are normalised to 1. The base owns the `GBRing*`,
+ * the per-element `gbvector*` storage, and a `MonomialTable` /
+ * `MonomialTableZZ` index of leading monomials; the static
+ * `ReducedGB::create` factory picks the right concrete subclass
+ * from the coefficient ring and the call shape.
+ *
+ * Concrete subclasses cover the cases that diverge in subtle
+ * ways: `ReducedGB_Field` enforces the field convention,
+ * `ReducedGB_FieldLocal` adds the unit-of-the-maximal-ideal
+ * check required over local rings, `ReducedGB_ZZ` handles the
+ * coefficient-aware reduction (multiple basis elements with the
+ * same monomial support are allowed if they differ in
+ * coefficient), and `MarkedGB` simply wraps a user-supplied
+ * (basis, lead-term) pair without doing any reduction.
+ *
+ * @see comp-gb.hpp
+ * @see gbring.hpp
+ * @see montable.hpp
+ * @see montableZZ.hpp
+ */
+
 #include "comp-gb.hpp"
 #include <vector>
 #include "gbring.hpp"
