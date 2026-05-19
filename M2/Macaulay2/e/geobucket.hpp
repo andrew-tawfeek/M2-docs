@@ -2,7 +2,7 @@
 
 /**
  * @file geobucket.hpp
- * @brief `geobucket<FREEMODULETYPE, VECTYPE>` --- size-doubling accumulator for fast polynomial sums.
+ * @brief `geobucket<FREEMODULETYPE, VECTYPE>` --- size-quadrupling bucket accumulator for fast polynomial sums.
  *
  * Declares the templated `geobucket` accumulator used wherever
  * the engine adds many small polynomials into a growing
@@ -10,11 +10,11 @@
  * Groebner-basis algorithm and most resolution engines. Naive
  * "add a small `s` into a big `B`" is O(|B|) per call; with
  * geobuckets each level `i` holds at most `heap_size[i]` terms
- * (`4, 16, 64, ..., 1073741824` --- 15 entries, defined in
- * `engine.cpp`), so adding a polynomial of size `s` lands at the
- * smallest level that can absorb it and cascades upward only on
- * overflow. The amortised cost becomes O(log N) per addition
- * instead of O(N).
+ * (`4, 16, 64, ..., 1073741824` --- 15 entries, each level four
+ * times the previous, defined in `engine.cpp`), so adding a
+ * polynomial of size `s` lands at the smallest level that can
+ * absorb it and cascades upward only on overflow. The amortised
+ * cost becomes O(log N) per addition instead of O(N).
  *
  * The template is parameterised on the free-module type
  * (`FREEMODULETYPE`) and the vector value type (`VECTYPE`,
