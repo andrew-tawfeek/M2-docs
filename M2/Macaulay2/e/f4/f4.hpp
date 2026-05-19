@@ -7,25 +7,38 @@
  * @file f4/f4.hpp
  * @brief `F4GB` --- the inner-loop Faugère F4 Groebner-basis algorithm.
  *
- * Declares `F4GB`, the core class implementing Faugere's
- * linear-algebra GB algorithm. Each outer iteration selects a
- * batch of S-pairs from `F4SPairSet`, computes their
+ * Declares `F4GB`, the (non-templated) core class implementing
+ * Faugere's linear-algebra GB algorithm. Each outer iteration
+ * picks the next degree from `F4SPairSet mSPairSet`, asks for
+ * the batch of S-pairs at that degree, computes their
  * S-polynomials, collects every monomial appearing in those
- * polynomials and the tail reducers, builds a Macaulay matrix
- * whose rows are the S-polynomials plus reducers and whose
- * columns are the collected monomials in the chosen order,
- * reduces it to row-echelon form, and extracts as new basis
- * elements any echelon rows whose leading column was previously
- * unrepresented. Members carry the current basis (`gb_array`),
- * the S-pair queue, the `MonomialInfo` table, and the lookup
- * structures used to find a divisor or insert a monomial.
+ * polynomials and the tail reducers (interned through
+ * `MonomialHashTable<MonomialInfo>` to assign column indices),
+ * builds a Macaulay matrix (`coefficient_matrix *mat`) whose
+ * rows are S-polynomials plus reducers and whose columns are
+ * the collected monomials in the chosen order, reduces it to
+ * row-echelon form (`gauss_reduce`, with an optional follow-up
+ * `tail_reduce`), and extracts as new basis elements those
+ * echelon rows whose leading column was previously
+ * unrepresented (`is_new_GB_row` / `new_GB_elements` /
+ * `insert_gb_element`). Members carry the current basis
+ * (`gb_array mGroebnerBasis`), the generators
+ * (`gb_array mGenerators`), the `MonomialInfo*` describing the
+ * packed-monomial encoding, and a `MonomialLookupTable
+ * mLookupTable` mapping `(monom, comp)` to its GB index.
  *
- * The template parameterisation is looser than the refactored
- * `gb-f4/` engine because this F4 pre-dates the engine's
- * templated-arithmetic infrastructure; the header comment lists
- * the required policy types (packed_monomial, exponents,
- * varpower_monomial, MonomialLookupTable). The top-level
- * dispatcher `f4-computation.hpp` is what M2 user calls land on
+ * Coefficient-ring polymorphism is handled at runtime through
+ * `const VectorArithmetic* mVectorArithmetic`, not via template
+ * parameters --- the long source-level comment listing
+ * "Template parameters include: coefficient ring arithmetic,
+ * packed_monomial, exponents, varpower_monomial,
+ * MonomialLookupTable" describes the would-be template surface
+ * but `F4GB` is monomorphic; the refactored `gb-f4/` engine is
+ * the home of the templated-arithmetic version. When compiled
+ * `WITH_TBB`, an `mtbb::task_arena mScheduler` and `mNumThreads`
+ * field drive a parallel Gaussian-elimination path
+ * (`mParallelGaussTime` vs `mSerialGaussTime`). The top-level
+ * dispatcher `f4-computation.hpp` is where M2 user calls land
  * before delegating here.
  *
  * @see f4-computation.hpp
