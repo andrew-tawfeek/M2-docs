@@ -8,25 +8,28 @@
  * @brief `FreeModule` --- finite-rank free module `R^n`, the type-level anchor for every `Matrix`.
  *
  * Declares `FreeModule`, an `EngineObject` that holds its base
- * ring, its rank `n`, a degree vector for each generator (entries
- * in the ring's degree monoid), and optionally a `SchreyerOrder`.
+ * `Ring *R`, the per-generator degree vectors in
+ * `gc_vector<monomial> components` (the rank is just
+ * `components.size()`), and an optional `SchreyerOrder
+ * *schreyer` (NULL when no Schreyer structure is installed).
  * Every `Matrix` stores pointers to a source and target
- * `FreeModule`, so this class is what gives matrix shapes their
- * static guarantees --- degree compatibility and base-ring
- * agreement are checked through these pointers. The class is
- * intentionally immutable: every transformation (`sub_space`,
- * `direct_sum`, ...) returns a fresh `FreeModule`.
+ * `FreeModule`, so this class is what gives matrix shapes
+ * their static guarantees --- degree compatibility and
+ * base-ring agreement are checked through these pointers. The
+ * class is intentionally immutable: the standard
+ * transformations (`sub_space`, `direct_sum`, `tensor`,
+ * `exterior`, and the schreyer-order variants
+ * `make_schreyer` / `append_schreyer`) return a fresh
+ * `FreeModule`.
  *
- * When a Schreyer order is installed, the standard
+ * When a Schreyer order is installed, the comparison
  * `compare(e_i * m, e_j * m')` first compares
  * `m_{i} * m` against `m_{j} * m'` using the stored leading
  * monomials of the inducing generators and then tiebreaks by
- * index. This is what lets a syzygy module remember the order
- * structure of the resolution step it came from --- essential for
- * keeping leading-term arithmetic local to a homological degree
- * in `schreyer-resolution/`. The standalone `#undef FreeModule`
- * at the top of the header defuses a stray MinGW macro of the
- * same name.
+ * index, which is what lets a syzygy module remember the order
+ * structure of the resolution step it came from. The
+ * standalone `#undef FreeModule` near the top of the header
+ * defuses a stray MinGW system-header macro of the same name.
  *
  * @see ring.hpp
  * @see schorder.hpp
