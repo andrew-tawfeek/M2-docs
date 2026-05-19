@@ -3,6 +3,35 @@
 #ifndef _aring_ffpack_hpp_
 #define _aring_ffpack_hpp_
 
+/**
+ * @file aring-zzp-ffpack.hpp
+ * @brief `M2::ARingZZpFFPACK` --- `Z/p` via FFLAS-FFPACK's `Modular<double>` field.
+ *
+ * `ARingZZpFFPACK` represents a `Z/p` value as
+ * `FFPACK::Modular<double>::Element` --- a reduced representative in
+ * `[0, p)` stored as a `double`. The `double` choice is deliberate:
+ * matrices over this ring can be reinterpreted as `double` matrices,
+ * multiplied via BLAS, and then reduced, which is dramatically faster
+ * than element-wise multiplication for small primes where the
+ * pre-reduction product still fits in the 53-bit mantissa (roughly
+ * `p` up to `2^25` at typical matrix sizes). For larger primes the
+ * implementation falls back to `int64_t` arithmetic and loses the
+ * BLAS speed-up.
+ *
+ * The header has to defuse a name collision between C++17's
+ * `std::bool_constant` and Givaro's own `bool_constant` by
+ * `#define`-renaming Givaro's version for the duration of the
+ * FFLAS-FFPACK include; `<ratio>` is included as a macOS-specific
+ * workaround. The dispatcher in `aring.hpp` selects this aring for
+ * small primes whenever FFLAS-FFPACK is available; matrix-side dense
+ * routines come from `dmat-zzp-ffpack.hpp` and share the same field
+ * instance.
+ *
+ * @see aring-zzp.hpp
+ * @see aring-zzp-flint.hpp
+ * @see aring.hpp
+ */
+
 #include "aring.hpp"
 #include "buffer.hpp"
 #include "ringelem.hpp"
