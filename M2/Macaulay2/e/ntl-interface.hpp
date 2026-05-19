@@ -3,28 +3,33 @@
 
 /**
  * @file ntl-interface.hpp
- * @brief Engine bridge into NTL --- conversions and entry points for the operations the engine still prefers it for.
+ * @brief Engine bridge into NTL --- type conversions and the NTL-backed LLL entry point.
  *
  * Pulls in `<NTL/ZZ.h>`, `<NTL/mat_ZZ.h>`, and `<NTL/LLL.h>`
  * (with diagnostic pragmas around the include to silence NTL's
- * internal narrowing warnings) and declares the engine-side
+ * internal conversion warnings) and declares the engine-side
  * conversion helpers: `ntl_ZZ_to_mpz` / `ntl_ZZ_from_mpz`
  * marshal between NTL's `ZZ` and GMP `mpz_t`, while
  * `makeNTLMatrixZZ` / `mat_ZZ_set_entry` / `mat_ZZ_get_entry`
- * provide the entry-by-entry plumbing to convert an engine
- * `MutableMatrix` to and from an NTL `mat_ZZ`. The `dntl_*`
+ * and `mutableMatrix_to_NTL_mat_ZZ` provide the entry-by-entry
+ * plumbing to copy an engine `MutableMatrix` (transposed; NTL
+ * stores rows-first) to and from an NTL `mat_ZZ`. The `dntl_*`
  * debugger printers from `ntl-debugio.cpp` are forward-declared
  * here.
  *
- * NTL is linked alongside FLINT and selected per-operation: LLL
- * with options FLINT lacks (e.g. floating-point variants with
- * stricter error tracking) routes through here, as do a few
- * legacy paths that pre-date the FLINT migration. The
- * companion `ntl-internal.cpp` carries `using namespace NTL;`
- * conversions that would otherwise clash with engine names
- * (`gcd`, `random`, `mul`, ...).
+ * `ntl_LLL(M, U, a, b, strategy)` is the NTL-backed LLL entry
+ * point: threshold `delta = a/b`, optional unimodular transform
+ * captured in `U`, and `strategy` is a bit-packed selector that
+ * picks the NTL precision variant --- `LLL_FP`, `LLL_QP`,
+ * `LLL_XD`, or `LLL_RR` --- as documented for `rawLLL` in
+ * `engine.h`. The companion `ntl-internal.cpp` isolates the
+ * NTL-typed routines into their own translation unit (per the
+ * top-of-file comment, "routines which often conflict with our
+ * names") so the rest of the engine never has to drop NTL
+ * symbols into its namespace.
  *
  * @see LLL.hpp
+ * @see fplll-interface.hpp
  * @see ntl-debugio.cpp
  */
 
