@@ -7,27 +7,25 @@
  *
  * Declares the `extern "C"` entry points that span the entire
  * life cycle of the engine's immutable `Matrix`: construction
- * (`rawMatrixFromVecs`, `rawMatrixIdentity`, `rawZero`,
- * `rawSparseMatrix`), inspection (`IM2_Matrix_n_rows` /
- * `n_cols`, `IM2_Matrix_get_target` / `get_source`,
+ * (`rawMatrixFromVecs`, `rawMatrixIdentity`, `rawSparseMatrix`,
+ * `rawZero`), inspection (`IM2_Matrix_n_rows` / `n_cols`,
+ * `IM2_Matrix_get_target` / `get_source`,
  * `IM2_Matrix_get_entry`, `IM2_Matrix_get_degree`,
- * `IM2_Matrix_is_homogeneous`), arithmetic (`rawMatrixAdd` /
- * `Subtract` / `Mult` / `Negate` / `ScalarMult`), structural
- * transforms (`rawMatrixTranspose`, `rawSubmatrix`,
- * `rawHomogenize`, `rawMatrixSort`, `rawMatrixDirectSum`,
- * `rawMatrixTensor`), and the term-level queries
- * (`rawLeadCoefficients`, `rawLeadMonomial`, `rawCoefficients`)
- * the interpreter exposes for polynomial-matrix manipulation.
- * Promotion / lifting between coefficient rings goes through
- * `IM2_Matrix_promote` / `IM2_Matrix_lift`.
+ * `IM2_Matrix_is_homogeneous`), arithmetic (`rawMatrixAdd`,
+ * `rawConcat`, `rawTensor`), structural transforms
+ * (`rawMatrixTranspose`, `rawSubmatrix`, `rawHomogenize`,
+ * `rawMatrixSort`, `rawMatrixDirectSum`, `rawMatrixTensor`),
+ * and the term-level queries (`rawLeadCoefficients`,
+ * `rawLeadMonomial`, `rawCoefficients`) the interpreter exposes
+ * for polynomial-matrix manipulation. Promotion / lifting
+ * between coefficient rings goes through `IM2_Matrix_promote`
+ * / `IM2_Matrix_lift`.
  *
  * `Matrix` is immutable, so every transformation returns a
  * fresh pointer; the implementation in `matrix.cpp` validates
  * ring and dimension agreement before delegating to
  * `MatrixConstructor`, and reports failures through the engine
- * `error()` channel. The dual `class` / `typedef struct`
- * declarations keep the header usable from both C++ and the
- * generated-C side of the `.dd` pipeline.
+ * `error()` channel.
  *
  * @see matrix.cpp
  * @see mutable-matrix.h
