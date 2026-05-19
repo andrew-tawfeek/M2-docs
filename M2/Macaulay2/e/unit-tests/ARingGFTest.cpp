@@ -1,5 +1,34 @@
 // Copyright 2013 Michael E. Stillman
 
+/**
+ * @file unit-tests/ARingGFTest.cpp
+ * @brief gtest coverage for the FLINT-backed Galois-field aring (`ARingGFFlintBig`).
+ *
+ * Drives the `ARingTest.hpp` element generator against
+ * `M2::ARingGFFlintBig` (and adjacent FLINT-GF flavours)
+ * through the shared `testSomeMore` battery: arithmetic,
+ * equality, inverses, negation, and stream round-trips. A
+ * 200-entry hardcoded `randomVals` array supplies the test
+ * inputs deterministically, so a flaky RNG can never cause a
+ * spurious CI failure --- the exact values don't matter so long
+ * as they span the field, and pre-baking them at file-write
+ * time also avoids depending on the M2 random subsystem inside
+ * a test of the M2 ring stack.
+ *
+ * The companion `GivaroTest.cpp` (covered by the same
+ * `file-aring-gf-tests` markdown) smoke-tests the upstream
+ * Givaro library when it is linked in, so this file focuses on
+ * the FLINT-backed path. The engine ships several GF
+ * implementations side by side (FLINT-Big / FLINT / M2 native /
+ * Givaro / table) for different size regimes; each gets its own
+ * `ARing*GFTest` to isolate backend bugs.
+ *
+ * @see ARingTest.hpp
+ * @see aring-gf-flint.hpp
+ * @see GivaroTest.cpp
+ * @see ARingZZpTest.cpp
+ */
+
 #include <cstdio>
 #include <string>
 #include <iostream>
