@@ -11,21 +11,28 @@
  * `getmem_atomic` for pointer-free blocks the collector can
  * skip scanning, the `*_clear` variants that zero-initialise,
  * plus `freemem` / `freememlen` for explicit deletion when the
- * caller knows the lifetime. Implementations sit on top of
- * bdwgc (`GC_malloc` / `GC_malloc_atomic` / ...), so a future
- * GC swap only has to retarget this layer.
+ * caller knows the lifetime, and `outofmem2(size_t)` as the
+ * out-of-memory handler. Implementations sit on top of bdwgc
+ * (`GC_malloc` / `GC_malloc_atomic` / ...), so a future GC swap
+ * only has to retarget this layer.
  *
  * In non-`NDEBUG` builds the `trap*` group (`trapaddr`,
- * `trapcount`, `trapchk`, `badBlock`) gives a lightweight
- * allocation breakpoint: setting `trapaddr` to a pointer of
- * interest, or arming `trapset` / `trapcount` to count down to
- * the *N*-th allocation, makes the next matching `getmem`
- * invoke the (empty) `trap()` function so a debugger can
- * intercept it. The header also brings in Valgrind's
- * function-wrap shims so GC allocations are visible to
- * `memcheck`, and the `getmem*arraytype` / `getmem*structtype`
- * macros at the bottom centralise the `sizeof` arithmetic for
- * length-prefixed arrays and pointee-sized struct allocations.
+ * `trapcount`, `trapset`, `trapchk`, `trapchk_size`,
+ * `badBlock`) gives a lightweight allocation breakpoint:
+ * setting `trapaddr` to a pointer of interest, or arming
+ * `trapset` / `trapcount` to count down to the *N*-th
+ * allocation, makes the next matching `getmem` invoke the
+ * (empty) `trap()` function so a debugger can intercept it. The
+ * header also brings in Valgrind's function-wrap shims so GC
+ * allocations are visible to `memcheck`. The `getmem*arraytype`
+ * / `getmem*structtype` / `getmem*vectortype` macros at the
+ * bottom centralise the `sizeof` arithmetic for length-prefixed
+ * arrays, pointee-sized struct allocations, and plain
+ * `T[len]`-shaped vectors (with `_atomic` variants throughout
+ * for pointer-free payloads). An `#ifdef MEMDEBUG` block
+ * additionally exposes the `M2_debug_malloc` / `_free` /
+ * `_realloc` / `_to_outer` / `_to_inner` hooks for
+ * leak-tracking builds.
  *
  * @see m2-mem.cpp
  * @see gmp-util.h
