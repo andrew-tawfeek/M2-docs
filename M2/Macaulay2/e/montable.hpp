@@ -7,21 +7,25 @@
  *
  * Declares `MonomialTable`, the data structure GB code queries
  * thousands of times per reduction: given a monomial `m`, find
- * a basis element whose leading monomial divides `m`. Entries
- * are kept in lex-increasing order so the divisibility scan can
- * prune as soon as a candidate's first-variable exponent exceeds
- * the query's. The table stores `(monomial pointer, basis-index)`
- * pairs and does not own its monomials --- the owning polynomial
- * remains responsible for the underlying exponent vector, which
- * may carry trailing entries (sugar homogenisation) that the
- * table simply ignores.
+ * a basis element whose leading monomial divides `m`. Each
+ * `mon_term` carries a doubly-linked-list pair (`_next` /
+ * `_prev`), the borrowed exponent pointer `_lead` (the owning
+ * polynomial still owns it, with trailing sugar entries
+ * ignored), a precomputed bitmask `_mask` that fast-rejects
+ * non-divisors before a full exponent compare, and the basis
+ * index `_val`. Per the in-source comment, terms are kept in
+ * lex order so the divisibility scan can prune early; the
+ * implementation maintains a per-component list head in `_head`
+ * and a `_last_match` cache to speed repeated queries.
  *
- * Operations are `insert(exp, value)`, `find_divisor(exp)`,
- * `find_divisors(exp, out)`, and `remove(exp)`. The
- * coefficient-aware ZZ-coefficient analogue lives in
- * `montableZZ.hpp`, where the divisibility test must additionally
- * check that a candidate's leading coefficient divides the
- * reducee's.
+ * Public operations: `insert(exp, comp, id)`, `find_divisor`,
+ * `find_divisors(max, exp, comp, *result)`, and
+ * `find_exact(exp, comp)`. The static `make_minimal` and
+ * `minimalize` helpers compute a minimal subset of a list of
+ * generators by lead monomial. The coefficient-aware
+ * `ZZ`-coefficient analogue lives in `montableZZ.hpp`, where
+ * the divisibility test additionally checks that a candidate's
+ * leading coefficient divides the reducee's.
  *
  * @see montableZZ.hpp
  * @see gb-default.hpp
