@@ -3,6 +3,33 @@
 #ifndef _pfaff_hh_
 #define _pfaff_hh_
 
+/**
+ * @file pfaff.hpp
+ * @brief `PfaffianComputation` --- Pfaffians of skew-symmetric matrices via memoised row expansion.
+ *
+ * Declares `PfaffianComputation`, the engine routine that
+ * returns `Pf(A)` for a square skew-symmetric `A`. The Pfaffian
+ * satisfies `Pf(A)^2 = det(A)` but has half the polynomial degree
+ * in the entries, so for skew-symmetric inputs it is the
+ * natural and cheaper invariant. The class stores the ambient
+ * ring `R`, the input matrix `M` (skew-symmetry is asserted by
+ * the caller --- not verified), and an output `MatrixConstructor`
+ * that collects the non-zero Pfaffians as one-row entries.
+ *
+ * Computation runs the Laplace-style expansion `Pf(A) = sum_j
+ * (-1)^{j+1} A[1, j] Pf(A_{1, j})` (with `A_{1, j}` the
+ * `(2n-2) x (2n-2)` matrix obtained by deleting rows / columns
+ * 1 and `j`), bottoming out at the `2 x 2` base case
+ * `Pf([[0, a], [-a, 0]]) = a`. A dynamic-programming cache
+ * keyed on the surviving index set shares work between subproblems
+ * --- the same memoisation pattern `det.hpp`'s `DET_DYNAMIC`
+ * strategy uses.
+ *
+ * @see matrix.hpp
+ * @see matrix-con.hpp
+ * @see det.hpp
+ */
+
 #include "matrix.hpp"
 #include "matrix-con.hpp"
 
