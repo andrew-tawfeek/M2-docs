@@ -3,22 +3,26 @@
 
 /**
  * @file Polynomial.hpp
- * @brief Modern `Monom` / `Poly` value types shared by NC algebras and the refactored F4.
+ * @brief Modern `Monom` / `Polynomial` value types shared by NC algebras and the refactored F4.
  *
- * `Monom` is an array-of-ints encoding of a non-commutative word with
- * a degree prefix: `[length, degree, var_1, ..., var_n]` where
- * `length = n + 2`. The length-field-first layout lets a single
- * pointer walk past a monomial without external context. `Poly`
- * pairs a column-store of `ring_elem` coefficients with a parallel
- * column-store of monomial offsets into a shared int pool, which is
- * the cache-friendly shape that matrix-style F4 operations want.
+ * `Monom` is an array-of-ints encoding of a non-commutative word
+ * with a degree prefix: `[length, degree, var_1, ..., var_n]`
+ * where `length = n + 2`. The length-field-first layout lets a
+ * single pointer walk past a monomial without external context.
+ * `ModuleMonom` extends the layout with three prefix slots
+ * `[len, index, hashval, comp, deg, vars...]` for the
+ * resolution and module-side paths. `Polynomial<CoefficientRingType>`
+ * (aliased `Poly`) stores its terms as parallel `gc_vector`s ---
+ * an `mCoefficients` vector of `ElementType` and a flat
+ * `mMonomials` vector holding the encoded monomials end-to-end
+ * --- walked together by the monomial length prefix.
  *
- * This is the modern counterpart to the legacy `gbvector` in
- * `gbring.hpp` --- they coexist by design: `gbvector` is an
- * intrusive linked list optimised for term-by-term sorted merging
- * in the classical Buchberger inner loop, while `Poly` wins for the
- * batch operations of F4 and the resolution code. Primary consumers
- * are `NCAlgebras/` and `gb-f4/`; `schreyer-resolution/` carries a
+ * Modern counterpart to the legacy `gbvector` in `gbring.hpp`:
+ * `gbvector` is an intrusive linked list optimised for
+ * term-by-term sorted merging in the classical Buchberger inner
+ * loop, while `Polynomial` wins for the batch operations of F4
+ * and the resolution code. Primary consumers are `NCAlgebras/`
+ * and `gb-f4/`; `schreyer-resolution/` carries a
  * resolution-specialised variant.
  *
  * @see gbring.hpp
