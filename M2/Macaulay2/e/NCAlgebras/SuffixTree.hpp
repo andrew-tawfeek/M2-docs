@@ -3,26 +3,37 @@
 
 /**
  * @file NCAlgebras/SuffixTree.hpp
- * @brief `SuffixTreeNode` --- experimental generalised suffix tree for non-commutative leading-word lookup.
+ * @brief `SuffixTree` / `SuffixTreeNode` --- experimental generalised suffix tree for non-commutative leading-word lookup.
  *
  * Declares the alternative leading-word index for `NCGroebner`
  * and `NCF4`. A generalised suffix tree of the basis's leading
  * words gives `O(|target|)` subword and substring queries
  * regardless of basis size, where the production `WordTable`
- * pays `O(|target| * |basis|)`. Each node stores an arc label
- * (`Label = std::vector<int>` of variable indices), the
- * cumulative label from the root, child pointers keyed by next-
- * int (`std::map<Label, SuffixTreeNode*>`), Ukkonen's suffix
- * link, and the `mIsFullPattern` / `mPatternLeafCount` flags
- * that mark whether a node terminates one of the inserted
- * basis words and how many descendant leaves it covers.
+ * pays `O(|target| * |basis|)`. Each `SuffixTreeNode` stores
+ * an arc label (`Label = std::vector<int>` of variable
+ * indices), the cumulative label from the root, child pointers
+ * keyed by the first arc symbol
+ * (`std::map<Label, SuffixTreeNode*>`), a suffix link
+ * `mSuffixLink`, and the `mIsFullPattern` /
+ * `mPatternLeafCount` flags that mark whether a node
+ * terminates one of the inserted basis words and how many
+ * descendant leaves it covers. The owning `SuffixTree` class
+ * holds the root and the inserted-monomial list, deletes the
+ * subtree on `clear()` / destruction, and offers
+ * `insert(w)` / `insert(w, newRightOverlaps)`,
+ * `subword` / `subwords` / `superwords` /
+ * `isNontrivialSuperword`, and `leftOverlaps`. A
+ * `rightOverlaps` method is **commented out** with the in-source
+ * note "Not sure this is possible in this implementation",
+ * which is one of the reasons the production path stays on
+ * `WordTable`.
  *
  * The `Overlap` tuple is shared with `WordTable` so consumers
  * see the same return type whichever index is active.
- * `NCGroebner.hpp` is staged to swap the two indices via
- * toggled `using` declarations; in production the `WordTable`
- * path is used, with this header benchmarked on dense NC inputs
- * where its constant-factor edge tends to win.
+ * `NCGroebner` and `NCF4` are staged to swap the two indices
+ * via toggled `//SuffixTree mWordTable;` declarations
+ * commented out alongside the live `WordTable` member; in
+ * production the `WordTable` path is used.
  *
  * @see Word.hpp
  * @see WordTable.hpp
