@@ -7,22 +7,25 @@
  * @file aring-zz-gmp.hpp
  * @brief `M2::ARingZZGMP` --- aring integer ring backed straight by GMP `mpz_t`.
  *
- * `ARingZZGMP` is the original aring ZZ implementation: a
- * `SimpleARing<ARingZZGMP>` whose `elem` wraps GMP's `mpz_struct`,
- * with every value heap-allocated under GMP's allocation model and
- * arithmetic delegated to `mpz_add`, `mpz_mul`, ... Each operation
- * routes the resulting limbs through
- * `interface/gmp-util.h::mpz_reallocate_limbs` so they live on the GC
- * heap rather than GMP's malloc heap --- without that step bdwgc
- * would not see them and could free them out from under the engine.
+ * `ARingZZGMP` is a `SimpleARing<ARingZZGMP>` whose `ElementType`
+ * is GMP's `__mpz_struct` (the single-element form of `mpz_t`).
+ * Arithmetic is delegated to the corresponding GMP primitives
+ * (`mpz_add`, `mpz_sub`, `mpz_mul`, `mpz_submul`, `mpz_divexact`,
+ * `mpz_pow_ui`, ...); `divide` raises `exc::engine_error("division
+ * not exact")` when the dividend is not actually divisible. The
+ * `to_ring_elem` path calls
+ * `interface/gmp-util.h::mpz_reallocate_limbs` on the exported
+ * `mpz_ptr` so its limbs are migrated onto the GC heap before the
+ * value is handed to legacy `Ring` code; in-place arithmetic on
+ * `ARingZZGMP` values keeps GMP's own limb storage.
  *
- * The FLINT-backed sibling `aring-zz-flint.hpp` is the modern default
- * because it inlines small values; this file remains as the
- * reference implementation that validates FLINT's results, a
- * fallback for builds without FLINT, and a known-good baseline for
- * regression tests. The `rawARingZZ` factory in `interface/aring.h`
- * picks FLINT when available; explicit strategy options can request
- * this GMP path instead.
+ * The FLINT-backed sibling `aring-zz-flint.hpp` is what
+ * `ring.cpp::makeIntegerRing` instantiates as the engine's
+ * integer ring (`new ConcreteRing<ARingZZ>`); `ARingZZGMP` is the
+ * one the legacy `RingZZ::makeMutableMatrix` reaches for when
+ * building dense / sparse mutable matrices over the older
+ * `RingZZ`, and `mat-linalg.hpp` aliases `DMat<ARingZZGMP>` as
+ * `DMatZZGMP` for the matching dense linear-algebra paths.
  *
  * @see ZZ.hpp
  * @see aring-zz-flint.hpp
