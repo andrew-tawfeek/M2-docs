@@ -1,6 +1,36 @@
 #ifndef __gbring_hpp_
 #define __gbring_hpp_
 
+/**
+ * @file gbring.hpp
+ * @brief `GBRing` and `gbvector` --- the GB-tuned polynomial-ring view used by classical Buchberger code.
+ *
+ * `gbvector` is the value type: a singly-linked list of
+ * `(coeff, component, monomial)` triples sorted highest-term-
+ * first, with the flexible-array `monom[1]` trailing whatever
+ * variable-length encoding the monoid uses. `GBRing` is the
+ * ring view that holds the matching coefficient ring and monoid,
+ * remembers the ambient free module `F` and its syzygy companion
+ * `Fsyz`, and hides any installed Schreyer order so reductions
+ * can work uniformly. Its central operation is `reduce_vec`, the
+ * inner loop of every Buchberger-style GB algorithm; the various
+ * `GBRingSkew`, `GBRingWeyl`, ... subclasses cover the cross of
+ * (Schreyer encoding x coefficient kind x ring flavour x
+ * base-vs-quotient) the engine supports.
+ *
+ * Compared with `polyring.hpp`'s `PolynomialRing`, this view
+ * trades the opaque `ring_elem` for an explicit linked-list
+ * representation that makes head/tail decomposition cheap and
+ * lets the `gbvectorHeap` accumulator do polynomial addition
+ * over many summands in `O(n log k)`. A `GBRing` is constructed
+ * once per GB computation from a `PolynomialRing` and torn down
+ * at the end.
+ *
+ * @see polyring.hpp
+ * @see comp-gb.hpp
+ * @see gb-default.hpp
+ */
+
 // Problems to solve:
 //  a. F,Fsyz
 //  b. hide Schreyer order completely
