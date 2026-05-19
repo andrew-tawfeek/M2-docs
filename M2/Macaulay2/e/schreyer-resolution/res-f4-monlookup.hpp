@@ -15,9 +15,10 @@
  * caller needs. Each `mi_node` stores a `(var, exp)` test, left
  * and right children inside a doubly-linked sibling list under
  * a `header`, and either descends to a child node or terminates
- * at a leaf carrying the `Key`. `insert(monomial, key)` walks
- * the tree splitting on the encoded variable exponents, while
- * `find_divisor(monomial)` reports any payload whose stored
+ * at a leaf carrying the `Key`. `insert_vp` and
+ * `insert_minimal_vp` walk the tree splitting on the encoded
+ * variable exponents, while `find_one_divisor_vp` and
+ * `find_one_divisor_packed` report any payload whose stored
  * monomial divides the query --- the standard divisor lookup
  * the F4 reducer-selection step depends on.
  *
