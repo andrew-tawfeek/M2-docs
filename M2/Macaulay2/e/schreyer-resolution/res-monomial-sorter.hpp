@@ -5,18 +5,17 @@
 
 /**
  * @file schreyer-resolution/res-monomial-sorter.hpp
- * @brief `MonomialSorterObject` / `ResMonomialSorter` --- Schreyer-order column sorters for the resolution Macaulay matrix.
+ * @brief Schreyer-order column sorters for the F4 resolution Macaulay matrix.
  *
  * Declares the sort kernel called once per `(level, degree)`
- * cell of the F4 resolution to permute matrix columns into
- * Schreyer order before reduction. `MonomialSorterObject`
- * captures a `Monoid` plus a `vector<int*>` of encoded
- * monomials and exposes `operator()(int a, int b)` as the
- * comparator that walks the encoded order then applies the
- * Schreyer tie-breaker stored in the first slot of each
- * monomial. A static `mNumComparisons` counter tracks how often
- * the comparator fires so the developer can see whether
- * `std::stable_sort` is doing the expected `n log n` work.
+ * cell to permute matrix columns into Schreyer order before
+ * reduction. `MonomialSorterObject` captures a `Monoid` plus a
+ * `vector<int*>` of encoded monomials and exposes
+ * `operator()(int a, int b)` as the comparator that walks the
+ * encoded order then applies the Schreyer tie-breaker stored
+ * in the first slot of each monomial; a static
+ * `mNumComparisons` counter tracks comparator calls for
+ * profiling.
  *
  * `ResMonomialSorter` is the wrapper the engine calls in
  * practice: it takes the level-1 `ResSchreyerOrder` and a
@@ -24,11 +23,11 @@
  * column through the Schreyer "total monomial" composition
  * `var_expvec(column) * var_expvec(orderTotal[comp])` into a
  * `[tiebreaker, basecomp, encoded monomial]` row in an
- * arena-allocated buffer, and runs the sort returning an index
- * permutation. `std::stable_sort` preserves relative order
- * among equal monomials, which the Schreyer tiebreaker relies
- * on. The `#if 0`'d `ResMonomialTransformer` records an
- * earlier API shape kept for reference.
+ * arena-allocated buffer, and runs `std::stable_sort` to
+ * return an index permutation. Stable sort preserves relative
+ * order among equal monomials, which the tiebreaker relies on.
+ * The `#if 0`'d `ResMonomialTransformer` records an earlier
+ * API shape kept for reference.
  *
  * @see res-moninfo.hpp
  * @see res-schreyer-order.hpp
