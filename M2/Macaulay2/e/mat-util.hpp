@@ -3,6 +3,30 @@
 #ifndef _mat_util_hpp_
 #define _mat_util_hpp_
 
+/**
+ * @file mat-util.hpp
+ * @brief Generic helpers (`displayMat`, ...) for `DMat` / `SMat` matrices --- catch-all alongside `mat-arith` and friends.
+ *
+ * Collects the templated utilities that do not fit naturally into
+ * `mat-arith.hpp`, `mat-elem-ops.hpp`, or `mat-linalg.hpp`. The
+ * lead helper is `displayMat<Mat>(buffer&, const Mat&)` --- the
+ * matrix-printing routine used throughout debugging code: it
+ * walks the entries of any duck-typed `Mat` exposing
+ * `ElementType`, `ring()`, `numRows()`, `numColumns()`, and
+ * `entry(r, c)` and writes the result through the wrapped-line
+ * helpers in `text-io.hpp`. Both `DMat<R>` and `SMat<R>` satisfy
+ * the contract.
+ *
+ * Other entries in the file include iteration utilities that skip
+ * zero entries, validation predicates such as `isSquareMatrix`
+ * and `isUpperTriangular`, and the conversion helpers a few
+ * higher-level routines need to move between matrix flavours.
+ *
+ * @see buffer.hpp
+ * @see dmat.hpp
+ * @see smat.hpp
+ */
+
 // Functions for all mutable matrices, or that don't fit in
 // mat-elem-ops, mat-arith, or mat-linalg
 
