@@ -10,22 +10,26 @@
  * `ConcreteRing<RingType>` is a `Ring` subclass that owns a
  * `std::unique_ptr<RingType>` to a concrete aring (`ARingZZ`,
  * `ARingZZpFlint`, ...) and implements every `Ring` virtual by
- * forwarding to the aring's inline method. Because the wrapper is
- * itself a template parameterised on `RingType`, the compiler inlines
- * the forwarding calls --- so the only virtual-dispatch cost lives at
- * the outer `Ring*` boundary; once inside `ConcreteRing<R>`, all
- * arithmetic is direct calls to the aring's hot path. The
- * `COERCE_RING(RingType, R)` macro is a `dynamic_cast` shortcut
- * downcasting an opaque `Ring*` to the concrete aring when a caller
- * knows the underlying type.
+ * forwarding to the aring's inline method. Because the wrapper
+ * is itself a template parameterised on `RingType`, the compiler
+ * inlines the forwarding calls --- so the only virtual-dispatch
+ * cost lives at the outer `Ring*` boundary; once inside
+ * `ConcreteRing<R>`, all arithmetic is direct calls to the
+ * aring's hot path. The `COERCE_RING(RingType, R)` macro at the
+ * top is a thin `dynamic_cast<const RingType*>(R)` alias kept
+ * for cases where a caller already knows the runtime ring type.
  *
- * This file is the single piece that lets the legacy and aring ring
- * APIs coexist permanently: every aring becomes a usable
- * `Ring*` for older engine code without losing the performance of
- * inlined arithmetic in templated hot paths. `aring-translate.hpp` is
- * the companion for cross-ring coercion, and `aring-wrap.hpp` covers
- * the inverse direction. The `displayArithmeticCalls` static flag at
- * the top is a debug toggle for per-op logging.
+ * This file is the single piece that lets the legacy and aring
+ * ring APIs coexist permanently: every aring becomes a usable
+ * `Ring*` for older engine code without losing the performance
+ * of inlined arithmetic in templated hot paths.
+ * `aring-translate.hpp` is the companion for cross-ring
+ * coercion, and `aring-wrap.hpp` is the element-level
+ * counterpart (`RElementWrap<RingType>` wraps an aring value the
+ * same way `ConcreteRing<RingType>` wraps an aring). The
+ * `displayArithmeticCalls` flag (defaults to `false`) is a
+ * compile-time debug toggle that, when enabled, has every
+ * forwarded `Ring` virtual `fprintf(stderr, "calling ...\n")`.
  *
  * @see aring.hpp
  * @see aring-translate.hpp
