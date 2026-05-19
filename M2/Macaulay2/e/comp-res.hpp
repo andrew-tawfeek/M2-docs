@@ -3,6 +3,36 @@
 #ifndef _comp_res_hpp_
 #define _comp_res_hpp_
 
+/**
+ * @file comp-res.hpp
+ * @brief `ResolutionComputation` --- abstract base for every free-resolution algorithm in the engine.
+ *
+ * `ResolutionComputation` is the resolution-side mirror of
+ * `GBComputation`: a `Computation` subclass that adds the
+ * resolution-specific virtuals `get_free(level)`,
+ * `get_matrix(level)` (the differential `F_level -> F_{level - 1}`),
+ * `get_betti(type)` (Betti table with `type` selecting `minimal`,
+ * `total`, `graded`, ...), and `complete_thru_degree`. Concrete
+ * subclasses span the engine's resolution algorithms ---
+ * `res_comp`, `res2_comp`, `ResolutionComputationA2`,
+ * `EschreyerComputation`, `F4ResComputation` in
+ * `schreyer-resolution/`, and `NCResComputation` --- each keeping
+ * its own internal layout.
+ *
+ * The factory `ResolutionComputation::choose_res(...)` selects an
+ * implementation from M2's `Strategy =>` option; older strategies
+ * remain alive primarily for regression and the occasional small
+ * input on which they still win. Per-degree state lives on the heap
+ * so a typical `Strategy => N, DegreeLimit => k` workflow can
+ * inspect Betti numbers, decide whether to continue, and resume by
+ * relaxing the limit and calling `start_computation` again.
+ *
+ * @see comp.hpp
+ * @see comp-gb.hpp
+ * @see Eschreyer.hpp
+ * @see betti.hpp
+ */
+
 #include "comp.hpp"
 class buffer;
 
