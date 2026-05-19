@@ -3,6 +3,30 @@
 #ifndef _mutable_mat_defs_hpp_
 #define _mutable_mat_defs_hpp_
 
+/**
+ * @file mutablemat-defs.hpp
+ * @brief `MutableMat<Mat>` --- the templated bridge from `DMat` / `SMat` to the abstract `MutableMatrix`.
+ *
+ * Declares `MutableMat<Mat>` (a `MutableMatrix` subclass owning a
+ * `Mat`, where `Mat` is one of `DMat<R>` or `SMat<R>`) and the
+ * templated `isDense<MT>` predicate. The wrapper implements every
+ * `MutableMatrix` virtual by forwarding to the wrapped templated
+ * implementation, so the outer interface stays uniform while the
+ * inner-loop arithmetic stays fully inlined --- the same wrap-
+ * templated-implementation-in-a-virtual-base pattern that
+ * `aring-glue.hpp`'s `ConcreteRing<R>` uses for rings.
+ *
+ * The companion `mutablemat-imp.hpp` carries the heavy template
+ * bodies (which would otherwise drag SLP and NAG includes into
+ * every consumer); a translation unit that needs only the
+ * declarations pulls in this file via the `mutablemat.hpp`
+ * umbrella and leaves the implementation for instantiation sites.
+ *
+ * @see mutablemat.hpp
+ * @see mutablemat-imp.hpp
+ * @see mat.hpp
+ */
+
 #include <iostream>
 #include "mat.hpp"
 
