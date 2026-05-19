@@ -1,18 +1,25 @@
 /**
  * @file overflow-test.cpp
- * @brief Standalone microbenchmark for the `safe::` primitives declared in `overflow.hpp`.
+ * @brief Standalone microbenchmark and overflow-trip harness for the `safe::` primitives in `overflow.hpp`.
  *
  * Not part of the engine library --- a separately-compiled
- * binary developers reach for when measuring the per-call cost
- * of `safe::add`, `safe::mult`, `safe::sub`, and friends in the
- * single-digit-nanosecond range. The `outer x inner` macros pin
- * a fixed iteration budget, the test deliberately uses simple
- * inputs so the compiler cannot fold the work away, and the
- * preserved `#if 0` block records the developer's loop-overhead
- * timings from a previous run (a single `x = 1` ran in 4.5ns,
- * pair of assignments in 8.9ns, confirming that the bench's
- * loop overhead is negligible relative to the safe-arithmetic
- * call cost).
+ * binary (`make DEPENDS=no overflow-test`) developers reach for
+ * to confirm overflow detection and measure the per-call cost
+ * of `safe::add`, `safe::mult`, `safe::sub`, `safe::div`,
+ * `safe::minus`, and `safe::ov` (sub-nanosecond-per-iteration on
+ * modern hardware). `main` has two modes: with a command-line
+ * argument in `{sub, add, mult, div, minus, throw}` it deliberately
+ * passes overflowing operands (`safe::add(INT_MAX, 1)`, etc.) and
+ * exits with the expected fatal error, so the developer can
+ * verify each detector individually; with no argument it runs a
+ * hot loop of `outer * inner * roll = 20000 * 5000 * 100 = 10^10`
+ * iterations of a chosen `stmt` macro --- the preserved
+ * `#if 0` block holds the developer's previous timing
+ * comparisons (`y = j + x` vs `y = safe::add(j, x)` at 10^10
+ * reps, etc.) and the bare-`x = 1` loop-overhead measurements
+ * (single assignment 4.488s for 5*10^9 reps ≈ 0.9ns each, pair
+ * 8.973s ≈ 1.8ns per pair) that quantify how much of the
+ * per-iteration cost is overflow checking versus loop overhead.
  *
  * Build with optimisation but no LTO so call sites stay
  * distinct; no engine state is involved.
