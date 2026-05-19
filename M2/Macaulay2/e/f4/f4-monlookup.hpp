@@ -3,6 +3,33 @@
 #ifndef _f4monlookup_h_
 #define _f4monlookup_h_
 
+/**
+ * @file f4/f4-monlookup.hpp
+ * @brief `F4MonomialLookupTableT<Key>` --- trie-structured leading-monomial divisor index.
+ *
+ * Declares the templated `F4MonomialLookupTableT<Key>` --- an
+ * explicit monomial-ideal trie used by F4 to answer "does any
+ * leading monomial divide this target?" in time proportional to
+ * the path through the tree rather than the basis size. Each
+ * `mi_node` performs a `(var, exp)` test with `left` / `right`
+ * children for the match / no-match branches and a `header`
+ * back-pointer for fast traversal; leaves carry the user
+ * `Key` (typically a basis index) in a tagged union with the
+ * downward link `down` used by internal nodes. Inserting a
+ * leading monomial extends the tree along its varpower path;
+ * looking up a target walks the tree picking the "matches"
+ * branch whenever the target's exponent dominates the node's.
+ *
+ * Specialised for the F4 inner loop's encoded monomial
+ * vocabulary (`moninfo.hpp`, `varpower-monomial.hpp`,
+ * `ntuple-monomial.hpp`); the equivalent top-of-engine path is
+ * `montable.hpp`'s lex-sorted leading-monomial list.
+ *
+ * @see moninfo.hpp
+ * @see varpower-monomial.hpp
+ * @see ntuple-monomial.hpp
+ */
+
 #include "f4/moninfo.hpp"            // for MonomialInfo (ptr only), const_p...
 #include "f4/ntuple-monomial.hpp"    // for const_ntuple_monomial, ntuple_word
 #include "f4/varpower-monomial.hpp"  // for const_varpower_monomial, varpowe...
