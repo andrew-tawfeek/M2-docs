@@ -1,27 +1,34 @@
 /**
  * @file BasicPolyList.hpp
- * @brief Ring-agnostic polynomial-list transport type plus its streaming collector.
+ * @brief Ring-agnostic polynomial-list transport type plus its streaming collector and emitter.
  *
- * `BasicPolyList` is a `std::vector<BasicPoly>` that acts as the **hub
- * format** between M2-side `Matrix` values, the F4 Groebner-basis
- * engine in `gb-f4/`, file-format readers (msolve, raw text), and the
- * `BasicPolyListParser`. The type carries no ring reference, so each
- * pairwise conversion only needs to talk to this hub --- three paths
- * instead of the six a fully pairwise scheme would require. Coefficient
- * support currently inherits `BasicPoly`'s `mpz_class`-only
- * restriction; GF(p^n), QQ, fraction fields, and recursive polynomial
- * coefficients are TODOs.
+ * `BasicPolyList` is a `std::vector<BasicPoly>` that acts as the
+ * hub format between M2-side `Matrix` values, the F4
+ * Groebner-basis engine in `gb-f4/`, file-format readers (msolve,
+ * raw text), and the `BasicPolyListParser`. The type carries no
+ * ring reference, which keeps each conversion as a single
+ * `BasicPolyList`-to-other transcript rather than every pair
+ * needing its own translator. Coefficient support currently
+ * inherits `BasicPoly`'s `mpz_class`-only restriction; `GF(p^n)`,
+ * `QQ`, fraction fields, and recursive polynomial coefficients
+ * are flagged TODOs in the in-source comment.
  *
- * `BasicPolyListStreamCollector` builds a `BasicPolyList` from a
- * sequence of `idealBegin` / `appendPolynomialBegin` / term events,
- * letting large lists be assembled without pre-allocating the whole
- * structure. The companion `toMatrix(FreeModule*, BasicPolyList)`
- * function streams the other direction into a `MatrixStream` to
- * produce an M2 `Matrix`.
+ * Two helpers wire `BasicPolyList` into the stream protocol from
+ * `PolynomialStream.hpp`: `BasicPolyListStreamCollector` is the
+ * **consumer** --- it builds a `BasicPolyList` from a sequence of
+ * `idealBegin` / `appendPolynomialBegin` / term events; the
+ * template `toStream<S>(Fs, str)` is the dual **producer** ---
+ * it walks a `BasicPolyList` and emits the same event sequence
+ * into any `S`. `toMatrix(FreeModule*, BasicPolyList)` composes
+ * `toStream` with a `MatrixStream` (`matrix-stream.hpp`) to
+ * produce an M2 `Matrix`. The free `bytesUsed`,
+ * `basicPolyListFromString`, and `basicPolyListFromFile` helpers
+ * round out the API.
  *
  * @see BasicPoly.hpp
  * @see PolynomialStream.hpp
  * @see BasicPolyListParser.hpp
+ * @see matrix-stream.hpp
  */
 
 // BasicPolyList is a vector of polynomials (with components)
