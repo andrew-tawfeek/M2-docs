@@ -9,27 +9,42 @@
  *
  * Declares the compact alternative `res-moninfo.hpp` keeps in
  * the codebase for swap-in benchmarking against the production
- * dense layout. Each monomial is encoded as `[length, hash,
- * component, weight_1, ..., weight_r, v, ..., v_d]` where the
- * tail is a non-increasing list of variable indices whose
- * repetition rate encodes the exponent --- so a monomial
- * `x^2 y z^5` with `nvars = 3` records `[8, hash, comp, 0, 0,
- * 1, 2, 2, 2, 2, 2]` rather than the full-length dense
- * exponent vector. Memory is `O(total_degree)` per monomial
- * rather than `O(nvars)`, which wins big for rings with many
- * variables and low-support monomials.
+ * dense layout. Each monomial is encoded as
+ * `[length, hash, component, weight_1, ..., weight_{mNumWeights},
+ * v_1, v_2, ..., v_d]` (slot 0 is the total array length so
+ * `monomial_size(m) = *m`); the variable tail is a
+ * non-increasing list `v_1 >= v_2 >= ... >= v_d >= 0` where each
+ * variable index is repeated `e_i` times. So a monomial
+ * `x^2 y z^5` with `nvars = 3` (`x=0, y=1, z=2`, no weight
+ * slots) records the 11-slot array `[11, hash, comp, 2, 2, 2,
+ * 2, 2, 1, 0, 0]` (`from_expvector` iterates `i` from
+ * `nvars-1` down to `0` to build it). Memory is
+ * `O(total_degree)` per monomial rather than `O(nvars)`, which
+ * wins big for rings with many variables and low-support
+ * monomials.
  *
- * `hashfcn` carries the per-variable random hash word and
- * `mask` clamps the combined value into a `res_monomial_word`;
- * leading weight slots front-load comparison so the order test
- * can short-circuit before walking the variable suffix. The
- * `SkewMultiplication` base supplies the sign-aware
- * multiplication needed for anti-commuting (exterior-style)
- * variables. The class exposes the same `mult` / `divide` /
- * `monomial_size` / `compare_grevlex` / `compare_schreyer` /
- * `to_expvector` surface as `ResMonoidDense`, which is what
- * lets the typedef switch in `res-moninfo.hpp` swap
- * implementations with no call-site changes.
+ * Hashing is the additive Steel trick:
+ * `from_expvector` accumulates `hash += hashfcn[i]` once per
+ * unit of `e[i]`, so `hash(m) = sum_i hashfcn[i] * e_i` and
+ * `mult` updates hashes by addition. The class-level `mask` is
+ * **not** part of the hash --- it is used only by
+ * `check_monomial` to AND-detect overflow in stored slots.
+ * Leading weight slots front-load comparison so the order test
+ * can short-circuit before walking the variable suffix. Skew
+ * multiplication lives in `skew_vars` /
+ * `skew_mult_sign`, both of which take a
+ * `SkewMultiplication*` by parameter; the class does not own
+ * or inherit one, and `mult` is plain commutative.
+ *
+ * The class exposes the same `mult` / `divide` /
+ * `monomial_size` / `compare_schreyer` / `to_expvector` /
+ * `from_expvector` / `from_varpower_monomial` surface as
+ * `ResMonoidDense`, plus a **live** `compare_grevlex` (the
+ * dense twin has its `compare_grevlex` `#if 0`-d out, so
+ * switching the typedef in `res-moninfo.hpp` materially
+ * changes which grevlex comparator the rest of the resolution
+ * sees). A bank of `mutable unsigned long ncalls_*` counters
+ * records every operation for the home-grown profiler.
  *
  * @see res-moninfo.hpp
  * @see res-moninfo-dense.hpp
