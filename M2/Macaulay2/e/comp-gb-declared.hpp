@@ -3,6 +3,32 @@
 #ifndef _comp_gb_declared_hpp_
 #define _comp_gb_declared_hpp_
 
+/**
+ * @file comp-gb-declared.hpp
+ * @brief `GBDeclared` --- a user-asserted Groebner basis the engine accepts without computing.
+ *
+ * `GBDeclared` is the `GBComputation` subclass produced by M2's
+ * `forceGB`. The caller supplies the original generators `m0`, a
+ * claimed reduced GB `gb`, the change-of-basis matrix expressing
+ * `gb` in terms of `m0`, and a claimed syzygy module `syz0`; the
+ * engine stores them and treats `gb` as the GB without verification.
+ * Every subsequent `%`, `//`, or `quotient` runs against the
+ * declared basis at the speed of an already-computed GB. The trust
+ * model is explicit: a wrong declaration produces wrong downstream
+ * answers --- the point of `forceGB` is exactly to skip the check.
+ *
+ * Typical uses are GBs imported from external solvers (msolve,
+ * OSCAR, Singular) when the user does not want to recompute,
+ * theoretically known bases where the proof is on paper, and
+ * caching long GB runs to disk for later reload. The internal
+ * `ReducedGB *G` keeps the trusted basis in the engine's standard
+ * reduced-GB form.
+ *
+ * @see comp-gb.hpp
+ * @see comp-gb-proxy.hpp
+ * @see reducedgb.hpp
+ */
+
 #include "comp-gb.hpp"
 #include "reducedgb.hpp"
 
