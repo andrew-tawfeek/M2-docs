@@ -1,6 +1,35 @@
 #ifndef _aring_h_
 #  define _aring_h_
 
+/**
+ * @file interface/aring.h
+ * @brief Engine-boundary C API for constructing `aring`-backed coefficient rings.
+ *
+ * Declares the `extern "C"` `rawARing*` factories the M2
+ * interpreter calls (via the generated `d/engine.dd` bindings)
+ * whenever the user asks for one of the `aring`-family coefficient
+ * rings: prime fields (`rawARingZZp`), the native and FLINT-
+ * backed Galois fields (`rawARingGaloisField`,
+ * `rawARingGaloisFieldFlintBig`, `rawARingGaloisFieldFlintZech`,
+ * `rawARingGaloisField1`), arbitrary-precision real and complex
+ * fields, and the FLINT-accelerated `ZZ` / `QQ` variants. Each
+ * function returns a `Ring*` wrapping the appropriate `aring`
+ * instance or null on a domain error so the interpreter can
+ * report it back to the user.
+ *
+ * The dual `class` / `typedef struct` declarations of `Ring` and
+ * `RingElement` let this header compile cleanly both from C++
+ * translation units and from the C side of the
+ * generated-`.dd`-to-`.c` pipeline. The `/* connected */`
+ * comments mark which entries already have a matching `d/`
+ * binding; adding a new `aring` requires declaring it here,
+ * implementing in `aring.cpp`, and wiring the M2-side `.dd`
+ * binding.
+ *
+ * @see aring.cpp
+ * @see engine-includes.hpp
+ */
+
 #  include "engine-includes.hpp"
 
 // TODO: fix this
