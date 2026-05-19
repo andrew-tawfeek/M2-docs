@@ -17,14 +17,20 @@
  * by `get_ARing()`, so callers on the legacy side can hand the
  * aring view to code that prefers it.
  *
- * Three integer rings coexist today: `RingZZ` (this file, GMP),
- * `M2::ARingZZGMP` (GMP via the aring framework, `aring-zz-gmp.hpp`),
- * and `M2::ARingZZ` (FLINT via the aring framework,
- * `aring-zz-flint.hpp` --- this is what `ring.cpp::makeIntegerRing`
- * actually instantiates). The two `mask_mpz_cmp_si` /
- * `mask_mpq_cmp_si` wrapper functions at the top of the header
- * exist purely to silence GMP's old-style-cast warnings, as the
- * adjacent in-source comment notes.
+ * Three integer rings coexist today: `RingZZ` (this file, GMP) ---
+ * which is what `ring.cpp::makeIntegerRing` actually returns as
+ * `new RingZZ` --- plus the two aring siblings `M2::ARingZZGMP`
+ * (GMP via the aring framework, `aring-zz-gmp.hpp`) and
+ * `M2::ARingZZ` (FLINT via the aring framework,
+ * `aring-zz-flint.hpp`). `RingZZ` itself holds an
+ * `ARingZZGMP *coeffR` (exposed by `get_ARing()`) and uses it
+ * via `RingZZ::makeMutableMatrix` to build `MutableMat<DMat<
+ * ARingZZGMP>>` / `MutableMat<SMat<ARingZZGMP>>` for mutable
+ * matrices; the FLINT-backed `ARingZZ` is used directly by the
+ * dense linear-algebra path via `DMat<ARingZZ>` (alias `DMatZZ`).
+ * The two `mask_mpz_cmp_si` / `mask_mpq_cmp_si` wrapper functions
+ * at the top of the header exist purely to silence GMP's
+ * old-style-cast warnings, as the adjacent in-source comment notes.
  *
  * @see aring-zz-flint.hpp
  * @see aring-zz-gmp.hpp
