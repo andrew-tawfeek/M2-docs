@@ -5,26 +5,28 @@
 
 /**
  * @file interreduce.hpp
- * @brief `Interreducer` --- inter-reduction of a list of `gbvector*` elements over a `GBRing`.
+ * @brief `Interreducer` --- skeleton class for inter-reducing a list of `gbvector*` elements (currently unused).
  *
- * Declares `Interreducer`, the helper that brings a collection of
- * `gbvector*` polynomials into a head-reduced state: for every
- * pair `(f_i, f_j)` whose leading terms divide one another, the
- * smaller-pivot cancellation is applied until no further leading-
- * term reduction is possible. The class stores its working
- * `GBRing*`, `FreeModule*`, and the live `VECTOR(gbvector*)` it
- * is updating in place. Two atomic reduction primitives drive the
- * loop: `cancelLT(f, g)` cancels the leading term of `f` using
- * `g` and returns the number of reductions performed, and
- * `reduceTail(f, g)` keeps going until no term of `f` is
- * divisible by `lt(g)`. `showElem` / `show` are debug printers
- * that dump the first `nterms` of each element.
+ * Declares `Interreducer`, the intended helper for bringing a
+ * collection of `gbvector*` polynomials into a head-reduced
+ * state by applying smaller-pivot cancellation between any
+ * pair `(f_i, f_j)` whose leading terms divide each other. The
+ * class stores its working `GBRing* R`, `FreeModule* F`, and
+ * the live `VECTOR(gbvector*) G`. The declared reduction
+ * primitives are `cancelLT(f, g)` (cancel `lt(f)` using `g`,
+ * returning the reduction count), `reduceTail(f, g)` (keep
+ * going until no term of `f` is divisible by `lt(g)`), plus
+ * the index-flavoured `reduceLT(f, i)` / `reduceTail(f, i)`
+ * that reduce by every element of `G` except entry `i`;
+ * `showElem` / `show` are debug printers.
  *
- * Inter-reduction is a stable building block reused across the
- * engine: the default GB algorithm in `gb-default.hpp` calls into
- * it at finalisation, `reducedgb.hpp` uses it as part of
- * canonicalising the reduced GB, and `forceGB` runs it to drag a
- * user-supplied basis into shape.
+ * **Caveat:** this is orphan scaffolding. The constructor in
+ * `interreduce.cpp` is a `(void) R0; (void) F0; (void) elems0;`
+ * stub that does not initialise any field, and no other engine
+ * translation unit references `Interreducer` --- a grep of
+ * `*.cpp` / `*.hpp` finds only the declaration and the empty
+ * `.cpp`. The class exists as a planned API surface but is not
+ * wired into any GB driver today.
  *
  * @see gbring.hpp
  * @see reducedgb.hpp
