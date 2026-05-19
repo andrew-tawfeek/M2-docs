@@ -5,26 +5,34 @@
 
 /**
  * @file aring-translate.hpp
- * @brief Cross-ring coercion templates between any two `aring` rings.
+ * @brief Cross-ring coercion templates (`mypromote` / `mylift` / `get_from_*`) between any two `aring` rings.
  *
- * Declares templated `translate<SourceRing, TargetRing>(...)`
- * routines that convert values from one aring to another at compile-
- * time-resolved speed: `Z -> Q` (place integer over 1), `Q -> RR`
- * (MPFR divide), `Z/p -> Z` (lift to canonical representative),
- * `Z -> Z/p` (reduce), and the other pairs that make algebraic sense.
- * Unsupported pairs --- e.g. `RR -> Z`, which has no canonical answer
- * --- are deliberately left unspecialised so a call instantiates to a
- * compile-time error instead of a silent default. Because each
- * aring's own header knows only about itself, this file pulls in
- * **every** `aring-*.hpp` so the specialisations have access to both
- * source and target types.
+ * Declares the templated cross-ring coercion routines:
+ * `mypromote<RingR, RingS>(R, S, fR, result_fS)` for the
+ * forward direction `R -> S` (e.g. `Q -> RR` via
+ * `S.set_from_mpq`, `Z -> Z/p`), `mylift<RingR, RingS>` for the
+ * reverse `S -> R` (e.g. `Z/p -> Z` lifting to a canonical
+ * representative), and the `get_from_*` family
+ * (`get_from_BigReal`, `get_from_BigComplex`,
+ * `get_from_Interval`, `get_from_ComplexInterval`,
+ * `get_from_double`, `get_from_complex_double`) that injects an
+ * external M2 numeric type into an aring element. Each generic
+ * template body returns `false` to signal "this pair is
+ * unsupported"; the supported pairs (`ARingQQ -> ARingRR /
+ * ARingRRR / ARingRRi / ARingCC`, the various
+ * `BigReal/Complex/Interval -> ARing*`, ...) are added as
+ * `inline` overload-resolution specialisations further down.
+ * Because each aring's own header knows only about itself,
+ * this file pulls in *every* `aring-*.hpp` so the
+ * specialisations have access to both source and target types.
  *
  * Together with `aring-glue.hpp` this file completes the aring
- * integration story: `aring-glue.hpp` is the vertical bridge (aring
- * up to the legacy `Ring*` API) and `aring-translate.hpp` is the
- * horizontal bridge (aring across to another aring). Heavy callers
- * are the `promote` / `lift` paths in `aring.hpp`, cross-ring
- * `RingElement` operations, and `RingMap` application.
+ * integration story: `aring-glue.hpp` is the vertical bridge
+ * (aring up to the legacy `Ring*` API) and `aring-translate.hpp`
+ * is the horizontal bridge (aring across to another aring).
+ * The `promote` / `lift` paths in the legacy `Ring` machinery
+ * funnel through these templates whenever the source and target
+ * rings are both aring-backed.
  *
  * @see aring.hpp
  * @see aring-glue.hpp
