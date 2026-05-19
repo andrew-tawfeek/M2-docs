@@ -2,6 +2,36 @@
 #ifndef _frac_hh_
 #define _frac_hh_
 
+/**
+ * @file frac.hpp
+ * @brief `FractionField` --- field of fractions of an integral domain, with on-the-fly normalisation.
+ *
+ * Declares `FractionField` (a `Ring` subclass) along with its
+ * value type `frac_elem`, a `(numer, denom)` pair of
+ * `ring_elem`s. Construction wraps a base ring `R_` that the
+ * caller asserts is an integral domain; the engine does not
+ * verify this, so a non-domain input produces silent garbage and
+ * the M2-side wrapper is responsible for the check. Every
+ * arithmetic op (`a/b + c/d = (ad + bc)/bd`, similarly for
+ * multiplication) is followed by a `simplify` pass that
+ * normalises the denominator's sign / leading coefficient so that
+ * `2/3` and `4/6` compare equal.
+ *
+ * When the base is `ZZ[x_1, ..., x_n]` or `(Z/p)[x_1, ..., x_n]`
+ * the `use_gcd_simplify` flag turns on an explicit GCD reduction
+ * that puts fractions into canonical form; other domains fall
+ * back to a weaker normalisation that still preserves equality
+ * but may leave common factors in place. The base must currently
+ * be a `PolyRingFlat`; iterated `frac(frac(R))` works only
+ * because the engine flattens first, an artefact the header
+ * comment flags as removable once fractions themselves become
+ * flat.
+ *
+ * @see localring.hpp
+ * @see qring.hpp
+ * @see polyring.hpp
+ */
+
 #include "monoid.hpp"
 #include "ring.hpp"
 #include "polyring.hpp"
