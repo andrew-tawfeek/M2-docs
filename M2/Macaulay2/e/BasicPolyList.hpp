@@ -1,3 +1,29 @@
+/**
+ * @file BasicPolyList.hpp
+ * @brief Ring-agnostic polynomial-list transport type plus its streaming collector.
+ *
+ * `BasicPolyList` is a `std::vector<BasicPoly>` that acts as the **hub
+ * format** between M2-side `Matrix` values, the F4 Groebner-basis
+ * engine in `gb-f4/`, file-format readers (msolve, raw text), and the
+ * `BasicPolyListParser`. The type carries no ring reference, so each
+ * pairwise conversion only needs to talk to this hub --- three paths
+ * instead of the six a fully pairwise scheme would require. Coefficient
+ * support currently inherits `BasicPoly`'s `mpz_class`-only
+ * restriction; GF(p^n), QQ, fraction fields, and recursive polynomial
+ * coefficients are TODOs.
+ *
+ * `BasicPolyListStreamCollector` builds a `BasicPolyList` from a
+ * sequence of `idealBegin` / `appendPolynomialBegin` / term events,
+ * letting large lists be assembled without pre-allocating the whole
+ * structure. The companion `toMatrix(FreeModule*, BasicPolyList)`
+ * function streams the other direction into a `MatrixStream` to
+ * produce an M2 `Matrix`.
+ *
+ * @see BasicPoly.hpp
+ * @see PolynomialStream.hpp
+ * @see BasicPolyListParser.hpp
+ */
+
 // BasicPolyList is a vector of polynomials (with components)
 // which we can easily translate to and from other polynomial and matrix types.
 // This class really doesn't require any ring.
