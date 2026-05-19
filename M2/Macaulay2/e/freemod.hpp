@@ -3,6 +3,36 @@
 #ifndef _FreeModule_hh_
 #define _FreeModule_hh_
 
+/**
+ * @file freemod.hpp
+ * @brief `FreeModule` --- finite-rank free module `R^n`, the type-level anchor for every `Matrix`.
+ *
+ * Declares `FreeModule`, an `EngineObject` that holds its base
+ * ring, its rank `n`, a degree vector for each generator (entries
+ * in the ring's degree monoid), and optionally a `SchreyerOrder`.
+ * Every `Matrix` stores pointers to a source and target
+ * `FreeModule`, so this class is what gives matrix shapes their
+ * static guarantees --- degree compatibility and base-ring
+ * agreement are checked through these pointers. The class is
+ * intentionally immutable: every transformation (`sub_space`,
+ * `direct_sum`, ...) returns a fresh `FreeModule`.
+ *
+ * When a Schreyer order is installed, the standard
+ * `compare(e_i * m, e_j * m')` first compares
+ * `m_{i} * m` against `m_{j} * m'` using the stored leading
+ * monomials of the inducing generators and then tiebreaks by
+ * index. This is what lets a syzygy module remember the order
+ * structure of the resolution step it came from --- essential for
+ * keeping leading-term arithmetic local to a homological degree
+ * in `schreyer-resolution/`. The standalone `#undef FreeModule`
+ * at the top of the header defuses a stray MinGW macro of the
+ * same name.
+ *
+ * @see ring.hpp
+ * @see schorder.hpp
+ * @see matrix.hpp
+ */
+
 #include "ring.hpp"
 #include "schorder.hpp"
 
