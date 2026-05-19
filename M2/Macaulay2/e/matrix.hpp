@@ -3,6 +3,37 @@
 #ifndef _matrix_hh_
 #define _matrix_hh_
 
+/**
+ * @file matrix.hpp
+ * @brief `Matrix` --- the engine's immutable homomorphism `F -> G` between free modules.
+ *
+ * Declares `Matrix`, an `EngineObject` whose entries are stored
+ * as one `vec` per column over the target free module. State
+ * comprises the source and target `FreeModule*`s, a monoid
+ * `mDegreeShift` applied uniformly to every entry's degree (used
+ * by graded computations), and the column array. `Matrix` is
+ * immutable by design --- every "modifying" operation returns a
+ * fresh instance --- which is what lets the engine share matrices
+ * safely across threads and memoise derived data like bases and
+ * kernels.
+ *
+ * Construction goes through `MatrixConstructor`
+ * (`matrix-con.hpp`): the actual constructor is private and the
+ * builder is the only friend allowed to call it, so a matrix
+ * leaves the constructor only after degree-compatibility
+ * validation. Routine matrix operations (`add`, `subtract`,
+ * `mult`, `negate`, `transpose`, `submatrix`, `direct_sum`,
+ * `tensor`, `lead_term`, `homogenize`, ...) live alongside in
+ * `matrix.cpp`; specialised operations are split into
+ * `matrix-kbasis.cpp`, `matrix-ncbasis.cpp`, `matrix-sort.cpp`,
+ * `matrix-stream.cpp`, and `matrix-symm.cpp`. Mutable matrix
+ * arithmetic lives in `mutablemat.hpp` instead.
+ *
+ * @see freemod.hpp
+ * @see matrix-con.hpp
+ * @see mutablemat.hpp
+ */
+
 #include "monoid.hpp"
 #include "freemod.hpp"
 #include "monideal.hpp"
