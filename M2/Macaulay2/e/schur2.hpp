@@ -3,6 +3,32 @@
 #ifndef _Schurring2_hh_
 #define _Schurring2_hh_
 
+/**
+ * @file schur2.hpp
+ * @brief `SchurRing2` --- refactored Schur ring with length-prefixed partitions and broader operation set.
+ *
+ * Declares `SchurRing2`, the second-generation Schur-function
+ * ring that supersedes `schur.hpp`'s `SchurRing`. Partitions
+ * carry an explicit length prefix in the
+ * `[n + 1, a_1, ..., a_n]` `schur_partition` layout (with parts
+ * non-increasing but possibly negative, enabling computation
+ * over the virtual Schur ring of formal partitions), and the
+ * companion `tableau2` is the matching Young-tableau scratch
+ * record. Multiplication still goes through Littlewood-
+ * Richardson enumeration; the broader operation set covers
+ * plethysm and Frobenius characteristic alongside the
+ * standard product.
+ *
+ * The original `SchurRing` remains in tree because some
+ * combinatorial packages still target it. New Schur work should
+ * target `SchurRing2`; the geometric accumulator used by its
+ * multiplication is `schur-poly-heap.hpp`.
+ *
+ * @see schur.hpp
+ * @see schur-poly-heap.hpp
+ * @see poly.hpp
+ */
+
 #include <vector>
 #include "poly.hpp"
 
