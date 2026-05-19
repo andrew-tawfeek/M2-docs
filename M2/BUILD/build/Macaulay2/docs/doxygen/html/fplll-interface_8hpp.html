@@ -92,7 +92,7 @@ $(function(){initNavTree('fplll-interface_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Engine-side wrapper around the external <a href="https://github.com/fplll/fplll">fplll</a> lattice-reduction library.  
+<p>Engine-side wrapper around the external fplll lattice-reduction library.  
 <a href="#details">More...</a></p>
 
 <p><a href="fplll-interface_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -102,12 +102,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a6fa10c7ce9eb0ef319d1831ff8409e73" id="r_a6fa10c7ce9eb0ef319d1831ff8409e73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fplll-interface_8hpp_a6fa10c7ce9eb0ef319d1831ff8409e73.html#a6fa10c7ce9eb0ef319d1831ff8409e73">fp_LLL</a> (<a class="el" href="class_mutable_matrix.html">MutableMatrix</a> *M, <a class="el" href="class_mutable_matrix.html">MutableMatrix</a> *U, <a class="el" href="classint.html">int</a> strategy)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Engine-side wrapper around the external <a href="https://github.com/fplll/fplll">fplll</a> lattice-reduction library. </p>
-<p>Declares a single entry point, <span class="tt">fp_LLL(M, U, strategy)</span>: <span class="tt">M</span> holds the lattice basis (rows are the basis vectors) and is reduced in place; <span class="tt">U</span>, if non-null, receives the unimodular transformation expressing the new basis in terms of the original; <span class="tt">strategy</span> picks an algorithm flavour (<span class="tt">0</span> = LLL, <span class="tt">1</span> = BKZ, etc.). Returns <span class="tt">true</span> on success.</p>
-<p>The implementation in <span class="tt"><a class="el" href="fplll-interface_8cpp.html">fplll-interface.cpp</a></span> is gated behind <span class="tt">#ifdef HAVE_FPLLL</span>; when fplll is not installed at configure time the function returns <span class="tt">false</span> so callers do not need their own <span class="tt">#ifdef</span>. <a class="el" href="namespace_m2.html">M2</a>'s <span class="tt">LLL</span> user-facing routine dispatches between this path, the NTL-backed <span class="tt">LLLglue.cpp</span>, and the slower pure-M2 fallback in <span class="tt"><a class="el" href="_l_l_l_8hpp.html" title="Lenstra-Lenstra-Lovász integer lattice basis reduction, in place on a MutableMatrix.">LLL.hpp</a></span>; this wrapper is typically the fastest when available.</p>
+<div class="textblock"><p>Engine-side wrapper around the external fplll lattice-reduction library. </p>
+<p>Declares a single entry point, <span class="tt">fp_LLL(M, U, strategy)</span>: <span class="tt">M</span> holds the lattice basis with one basis vector per column and is reduced in place. The current implementation asserts <span class="tt">U == NULL</span> and ignores <span class="tt">strategy</span>; internally it always configures fplll with <span class="tt">delta = 0.99</span>, <span class="tt">eta = 0.51</span>, and <span class="tt">LM_WRAPPER</span> &mdash; the wrapper that picks an LLL variant automatically based on the input size. Returns <span class="tt">true</span> on success and reports the underlying <span class="tt">RED_*</span> error on Babai or LLL failure.</p>
+<p>The whole body of <span class="tt"><a class="el" href="fplll-interface_8cpp.html">fplll-interface.cpp</a></span> is gated behind <span class="tt">#ifdef HAVE_FPLLL</span>; when fplll is not configured in, the function raises <span class="tt"><a class="el" href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR</a>("fplll is not available ...")</span> and returns <span class="tt">0</span> so callers don't have to write their own <span class="tt">#ifdef</span>. The other in-tree LLL backends are <span class="tt"><a class="el" href="_l_l_l_8hpp.html" title="Lenstra-Lenstra-Lovász integer lattice basis reduction, in place on a MutableMatrix.">LLL.hpp</a></span> (<span class="tt"><a class="el" href="class_l_l_loperations.html">LLLoperations</a></span>, the pure-engine implementation) and <span class="tt"><a class="el" href="ntl-interface_8hpp.html" title="Engine bridge into NTL — type conversions and the NTL-backed LLL entry point.">ntl-interface.hpp</a><a class="el" href="ntl-interface_8cpp_afec2461b7c83ab4c3a27c84a45ea6327.html#afec2461b7c83ab4c3a27c84a45ea6327">ntl_LLL</a></span> (NTL); the top-level <a class="el" href="namespace_m2.html">M2</a> <span class="tt">LLL</span> routine chooses between them.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="mat_8hpp.html" title="MutableMatrix — abstract base of every mutable matrix the engine hands across the boundary.">mat.hpp</a> </dd>
 <dd>
-<a class="el" href="_l_l_l_8hpp.html" title="Lenstra-Lenstra-Lovász integer lattice basis reduction, in place on a MutableMatrix.">LLL.hpp</a> </dd></dl>
+<a class="el" href="_l_l_l_8hpp.html" title="Lenstra-Lenstra-Lovász integer lattice basis reduction, in place on a MutableMatrix.">LLL.hpp</a> </dd>
+<dd>
+<a class="el" href="ntl-interface_8hpp.html" title="Engine bridge into NTL — type conversions and the NTL-backed LLL entry point.">ntl-interface.hpp</a> </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="fplll-interface_8hpp_source.html">fplll-interface.hpp</a>.</p>
 </div></div><!-- contents -->
