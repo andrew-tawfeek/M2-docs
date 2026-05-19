@@ -91,6 +91,9 @@ $(function(){initNavTree('aring_8h.html','',''); });
   <div class="headertitle"><div class="title">aring.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-boundary C API for constructing <span class="tt">aring</span>-backed coefficient rings.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 </div>
 <p><a href="aring_8h_source.html">Go to the source code of this file.</a></p>
@@ -113,7 +116,16 @@ Functions</h2></td></tr>
 <tr class="memitem:a986b73e6c3e51714d3406c75df23900b" id="r_a986b73e6c3e51714d3406c75df23900b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ring.html">Ring</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aring_8h_a986b73e6c3e51714d3406c75df23900b.html#a986b73e6c3e51714d3406c75df23900b">rawARingQQFlint</a> ()</td></tr>
 <tr class="memitem:ab66a6eb2d52fda1e042e8e02e44e78d2" id="r_ab66a6eb2d52fda1e042e8e02e44e78d2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ring.html">Ring</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aring_8h_ab66a6eb2d52fda1e042e8e02e44e78d2.html#ab66a6eb2d52fda1e042e8e02e44e78d2">rawARingZZpFlint</a> (unsigned long <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-boundary C API for constructing <span class="tt">aring</span>-backed coefficient rings. </p>
+<p>Declares the <span class="tt">extern "C"</span> <span class="tt">rawARing*</span> factories the <a class="el" href="namespace_m2.html">M2</a> interpreter calls (via the generated <span class="tt">d/engine.dd</span> bindings) whenever the user asks for one of the <span class="tt">aring</span>-family coefficient rings: prime fields (<span class="tt"><a class="el" href="aring_8h_aaf8402bed83dad90c95ae993cb5bb751.html#aaf8402bed83dad90c95ae993cb5bb751">rawARingZZp</a></span>), the native and FLINT- backed Galois fields (<span class="tt"><a class="el" href="aring_8h_a40418e40ffb8a725b9127e44fa9b0dea.html#a40418e40ffb8a725b9127e44fa9b0dea">rawARingGaloisField</a></span>, <span class="tt"><a class="el" href="aring_8h_a3c880fd1023b49698d2b2e814b9fec28.html#a3c880fd1023b49698d2b2e814b9fec28">rawARingGaloisFieldFlintBig</a></span>, <span class="tt"><a class="el" href="aring_8h_af41b488843c2981a81ad3b8f8336ac6c.html#af41b488843c2981a81ad3b8f8336ac6c">rawARingGaloisFieldFlintZech</a></span>, <span class="tt"><a class="el" href="aring_8h_a3f72ccce41b736a72febcf271fa1f7ed.html#a3f72ccce41b736a72febcf271fa1f7ed">rawARingGaloisField1</a></span>), arbitrary-precision real and complex fields, and the FLINT-accelerated <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span> / <span class="tt"><a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a></span> variants. Each function returns a <span class="tt">Ring*</span> wrapping the appropriate <span class="tt">aring</span> instance or null on a domain error so the interpreter can report it back to the user.</p>
+<p>The dual <span class="tt">class</span> / <span class="tt">typedef struct</span> declarations of <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> and <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> let this header compile cleanly both from C++ translation units and from the C side of the generated-<span class="tt">.dd</span>-to-<span class="tt">.c</span> pipeline. The <span class="tt">/* connected */</span> comments mark which entries already have a matching <span class="tt">d/</span> binding; adding a new <span class="tt">aring</span> requires declaring it here, implementing in <span class="tt">aring.cpp</span>, and wiring the M2-side <span class="tt">.dd</span> binding.</p>
+<dl class="section see"><dt>See also</dt><dd>aring.cpp </dd>
+<dd>
+<a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="aring_8h_source.html">aring.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

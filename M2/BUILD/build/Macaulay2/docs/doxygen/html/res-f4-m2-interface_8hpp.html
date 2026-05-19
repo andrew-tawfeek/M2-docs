@@ -91,6 +91,9 @@ $(function(){initNavTree('res-f4-m2-interface_8hpp.html','',''); });
   <div class="headertitle"><div class="title">res-f4-m2-interface.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Conversion layer between engine <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> / <span class="tt">vec</span> types and the F4-resolution internal types.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 </div>
@@ -100,7 +103,20 @@ $(function(){initNavTree('res-f4-m2-interface_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:ResF4toM2Interface" id="r_ResF4toM2Interface"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_res_f4to_m2_interface.html">ResF4toM2Interface</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Conversion layer between engine <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> / <span class="tt">vec</span> types and the F4-resolution internal types. </p>
+<p>Declares <span class="tt"><a class="el" href="class_res_f4to_m2_interface.html">ResF4toM2Interface</a></span>, a static-only helper class that crosses the boundary between the user-facing <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> / <span class="tt">vec</span> / <span class="tt"><a class="el" href="class_free_module.html">FreeModule</a></span> / <span class="tt"><a class="el" href="class_polynomial_ring.html">PolynomialRing</a></span> vocabulary and the resolution-tuned <span class="tt"><a class="el" href="class_res_polynomial.html">ResPolynomial</a></span> / <span class="tt"><a class="el" href="class_res_poly_ring.html">ResPolyRing</a></span> / <span class="tt"><a class="el" href="class_schreyer_frame.html">SchreyerFrame</a></span> vocabulary. <span class="tt">from_M2_vec</span> translates an input <span class="tt">vec</span> (sparse <span class="tt">(component, coeff)</span> list over the <a class="el" href="namespace_m2.html">M2</a> ring) into a <span class="tt"><a class="el" href="class_res_polynomial.html">ResPolynomial</a></span>; <span class="tt">to_M2_vec</span>, <span class="tt">to_M2_freemodule</span>, <span class="tt">to_M2_matrix</span>, and the two <span class="tt">to_M2_MutableMatrix</span> variants walk back, including a variant that returns a dense matrix over a <span class="tt">ZZ/p</span> coefficient ring for a specific <span class="tt">(level, degree)</span> Macaulay submatrix. <span class="tt">setDegreeZeroMap</span> extracts the degree-zero part of a level for the minimal-Betti accelerator.</p>
+<p><span class="tt"><a class="el" href="class_f4_res_computation.html">F4ResComputation</a></span> translates inputs once at startup and outputs once on demand, so the conversion cost lives entirely at the boundaries and never inside the inner reduction loop. Counterpart to <span class="tt"><a class="el" href="f4-m2-interface_8hpp.html" title="F4toM2Interface — static translators between engine vec / Matrix and F4&#39;s GBF4Polynomial.">f4/f4-m2-interface.hpp</a></span> on the GB side.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-poly-ring_8hpp.html" title="ResPolyRing and ResPolynomial — resolution-tuned polynomial-ring view and value type.">res-poly-ring.hpp</a> </dd>
+<dd>
+<a class="el" href="res-schreyer-frame_8hpp.html" title="SchreyerFrame — in-progress representation of a free resolution organised by (level,...">res-schreyer-frame.hpp</a> </dd>
+<dd>
+<a class="el" href="res-f4-computation_8hpp.html" title="F4ResComputation — top-level Schreyer-frame F4 free-resolution driver.">res-f4-computation.hpp</a> </dd>
+<dd>
+<a class="el" href="f4-m2-interface_8hpp.html" title="F4toM2Interface — static translators between engine vec / Matrix and F4&#39;s GBF4Polynomial.">f4/f4-m2-interface.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="res-f4-m2-interface_8hpp_source.html">res-f4-m2-interface.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

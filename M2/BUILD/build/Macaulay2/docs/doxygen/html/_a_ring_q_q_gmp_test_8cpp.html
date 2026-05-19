@@ -91,6 +91,9 @@ $(function(){initNavTree('_a_ring_q_q_gmp_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">ARingQQGmpTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for the GMP-backed <span class="tt"><a class="el" href="class_m2_1_1_a_ring_q_q_g_m_p.html" title="wrapper for the gmp mpq_t integer representation">M2::ARingQQGMP</a></span> rational aring.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -112,7 +115,20 @@ Functions</h2></td></tr>
 <tr class="memitem:aee253a397521297ca3228946640fa8a3" id="r_aee253a397521297ca3228946640fa8a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_ring_q_q_gmp_test_8cpp_aee253a397521297ca3228946640fa8a3.html#aee253a397521297ca3228946640fa8a3">TEST</a> (ARingQQGMP, display)</td></tr>
 <tr class="memitem:aa904752f11ec9737b3139b9fecc0f02e" id="r_aa904752f11ec9737b3139b9fecc0f02e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_ring_q_q_gmp_test_8cpp_aa904752f11ec9737b3139b9fecc0f02e.html#aa904752f11ec9737b3139b9fecc0f02e">TEST</a> (ARingQQGMP, arithmetic)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for the GMP-backed <span class="tt"><a class="el" href="class_m2_1_1_a_ring_q_q_g_m_p.html" title="wrapper for the gmp mpq_t integer representation">M2::ARingQQGMP</a></span> rational aring. </p>
+<p>Plugs <span class="tt"><a class="el" href="class_m2_1_1_a_ring_q_q_g_m_p.html" title="wrapper for the gmp mpq_t integer representation">M2::ARingQQGMP</a></span> into the shared <span class="tt"><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a></span> harness via the <span class="tt"><a class="el" href="_a_ring_test_8hpp_abfba126d094aba21386022c26fbc3b85.html#abfba126d094aba21386022c26fbc3b85">getElement</a>&lt;<a class="el" href="class_m2_1_1_a_ring_q_q_g_m_p.html" title="wrapper for the gmp mpq_t integer representation">M2::ARingQQGMP</a>&gt;</span> specialisation, which uses the deterministic <span class="tt">[-25, 24]</span> integer prefix for the first 50 trials and delegates to <span class="tt">R.random(result)</span> for the rest &mdash; so the random source is the ring's own <span class="tt">mpq_t</span> draw rather than a separately-seeded RNG. <span class="tt"><a class="el" href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a></span> then runs arithmetic, equality, inverse, and stream round-trips against the GMP-canonicalised representation.</p>
+<p>Paired with <span class="tt"><a class="el" href="_a_ring_q_q_flint_test_8cpp.html" title="gtest coverage for the FLINT-backed M2::ARingQQFlint rational aring.">ARingQQFlintTest.cpp</a></span> (same operations over FLINT <span class="tt">fmpq_t</span>); cross-backend agreement between the two is the regression guard the <span class="tt">file-aring-zz-tests</span> family depends on. A historic catch on the GMP side was a rounding subtlety in <span class="tt">invert(0)</span> that only the cross-check surfaced.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-qq-gmp_8hpp.html" title="M2::ARingQQGMP — arbitrary-precision rationals backed straight by GMP mpq_t.">aring-qq-gmp.hpp</a> </dd>
+<dd>
+<a class="el" href="_a_ring_q_q_flint_test_8cpp.html" title="gtest coverage for the FLINT-backed M2::ARingQQFlint rational aring.">ARingQQFlintTest.cpp</a> </dd>
+<dd>
+<a class="el" href="_a_ring_z_z_test_8cpp.html" title="gtest coverage for the FLINT-backed M2::ARingZZ integer aring.">ARingZZTest.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_a_ring_q_q_gmp_test_8cpp_source.html">ARingQQGmpTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

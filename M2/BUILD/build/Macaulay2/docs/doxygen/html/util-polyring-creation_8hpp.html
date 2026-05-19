@@ -91,6 +91,9 @@ $(function(){initNavTree('util-polyring-creation_8hpp.html','',''); });
   <div class="headertitle"><div class="title">util-polyring-creation.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>One-line helpers for building degree monoids and polynomial rings inside gtest cases.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;gtest/gtest.h&gt;</code><br />
@@ -113,7 +116,21 @@ Functions</h2></td></tr>
 <tr class="memitem:aba322ad2a0a2ec495cc9562af90e6623" id="r_aba322ad2a0a2ec495cc9562af90e6623"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_polynomial_ring.html">PolynomialRing</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util-polyring-creation_8hpp_aba322ad2a0a2ec495cc9562af90e6623.html#aba322ad2a0a2ec495cc9562af90e6623">simplePolynomialRing</a> (const <a class="el" href="class_ring.html">Ring</a> *kk, const std::vector&lt; std::string &gt; &amp;names, <a class="el" href="struct_monomial_ordering.html">MonomialOrdering</a> *monorder)</td></tr>
 <tr class="memitem:a45a0a96d3ec0b0086be66a86120dd5a9" id="r_a45a0a96d3ec0b0086be66a86120dd5a9"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_polynomial_ring.html">PolynomialRing</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util-polyring-creation_8hpp_a45a0a96d3ec0b0086be66a86120dd5a9.html#a45a0a96d3ec0b0086be66a86120dd5a9">simplePolynomialRing</a> (<a class="el" href="classint.html">int</a> <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, const std::vector&lt; std::string &gt; &amp;names)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>One-line helpers for building degree monoids and polynomial rings inside gtest cases. </p>
+<p>Declares <span class="tt">degreeMonoid(names)</span> and the two overloads of <span class="tt">degreeRing(...)</span> (variable-name list or fixed <span class="tt">ndegrees</span>) that wrap the engine-side boilerplate of constructing a degree monoid; plus <span class="tt">simplePolynomialRing(kk, names,
+monorder)</span> and its variant <span class="tt">simplePolynomialRing(p, names)</span> which builds a <span class="tt">Z/p</span> GRevLex polynomial ring with all degree-1 variables. Tests pull these in to replace ~10 lines of monomial-order / monoid / ring plumbing per fixture.</p>
+<p>Heavily used by <span class="tt"><a class="el" href="_new_f4_test_8cpp.html" title="gtest coverage for the refactored F4 engine&#39;s hash table, lookup table, and PolynomialList.">NewF4Test.cpp</a></span>, <span class="tt"><a class="el" href="_n_c_groebner_test_8cpp.html" title="gtest smoke tests covering the non-commutative GB pipeline end-to-end.">NCGroebnerTest.cpp</a></span>, <span class="tt"><a class="el" href="_matrix_i_o_test_8cpp.html" title="gtest coverage for BasicPoly / BasicPolyList round-trips and msolve-format benchmark ingestion.">MatrixIOTest.cpp</a></span>, and <span class="tt"><a class="el" href="_poly_ring_test_8cpp.html" title="gtest coverage for MonomialOrdering, Monoid, and PolynomialRing construction.">PolyRingTest.cpp</a></span>. Companion to the <span class="tt">.cpp</span> implementation file under the same <span class="tt">file-test-harness</span> markdown family.</p>
+<dl class="section see"><dt>See also</dt><dd>polyring.hpp </dd>
+<dd>
+<a class="el" href="monoid_8hpp.html" title="Monoid — variable count, naming, grading, and monomial order of a polynomial ring.">monoid.hpp</a> </dd>
+<dd>
+<a class="el" href="monomial-ordering_8h.html" title="Engine-boundary C API for assembling block-level MonomialOrderings from declarative pieces.">interface/monomial-ordering.h</a> </dd>
+<dd>
+<a class="el" href="_new_f4_test_8cpp.html" title="gtest coverage for the refactored F4 engine&#39;s hash table, lookup table, and PolynomialList.">NewF4Test.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="util-polyring-creation_8hpp_source.html">util-polyring-creation.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

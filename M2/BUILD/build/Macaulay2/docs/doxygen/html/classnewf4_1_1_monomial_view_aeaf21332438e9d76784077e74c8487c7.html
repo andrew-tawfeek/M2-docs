@@ -115,30 +115,30 @@ $(function(){initNavTree('classnewf4_1_1_monomial_view_aeaf21332438e9d76784077e7
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_monomial_view_8hpp_source.html#l00050">50</a> of file <a class="el" href="_monomial_view_8hpp_source.html">MonomialView.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>  {</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span> (divisor.size() &gt; divisee.size()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keyword">auto</span> divisorIt = divisor.begin();</div>
-<div class="line"><span class="lineno">   55</span>    <span class="keyword">auto</span> diviseeIt = divisee.begin();</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keyword">auto</span> divisorEnd = divisor.end();</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keyword">auto</span> diviseeEnd = divisee.end();</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">while</span> (divisorIt != divisorEnd)</div>
-<div class="line"><span class="lineno">   59</span>    {</div>
-<div class="line"><span class="lineno">   60</span>      <span class="keyword">auto</span> divisorVar = divisorIt.var();</div>
-<div class="line"><span class="lineno">   61</span>      <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
-<div class="line"><span class="lineno">   62</span>      {</div>
-<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">if</span> (diviseeIt == diviseeEnd) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">if</span> (diviseeIt.var() &gt; divisorVar) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">if</span> (diviseeIt.var() == divisorVar) <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   66</span>        ++diviseeIt;</div>
-<div class="line"><span class="lineno">   67</span>      }</div>
-<div class="line"><span class="lineno">   68</span>      <span class="comment">// at this point, both diviseeIt.var() and divisorIt.var() are equal</span></div>
-<div class="line"><span class="lineno">   69</span>      <span class="keywordflow">if</span> (divisorIt.power() &gt; diviseeIt.power()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   70</span>      ++divisorIt;</div>
-<div class="line"><span class="lineno">   71</span>      ++diviseeIt;</div>
-<div class="line"><span class="lineno">   72</span>    }</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   74</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="_monomial_view_8hpp_source.html#l00084">84</a> of file <a class="el" href="_monomial_view_8hpp_source.html">MonomialView.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>  {</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> (divisor.size() &gt; divisee.size()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keyword">auto</span> divisorIt = divisor.begin();</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keyword">auto</span> diviseeIt = divisee.begin();</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keyword">auto</span> divisorEnd = divisor.end();</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keyword">auto</span> diviseeEnd = divisee.end();</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">while</span> (divisorIt != divisorEnd)</div>
+<div class="line"><span class="lineno">   93</span>    {</div>
+<div class="line"><span class="lineno">   94</span>      <span class="keyword">auto</span> divisorVar = divisorIt.var();</div>
+<div class="line"><span class="lineno">   95</span>      <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><span class="lineno">   96</span>      {</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">if</span> (diviseeIt == diviseeEnd) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">if</span> (diviseeIt.var() &gt; divisorVar) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (diviseeIt.var() == divisorVar) <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  100</span>        ++diviseeIt;</div>
+<div class="line"><span class="lineno">  101</span>      }</div>
+<div class="line"><span class="lineno">  102</span>      <span class="comment">// at this point, both diviseeIt.var() and divisorIt.var() are equal</span></div>
+<div class="line"><span class="lineno">  103</span>      <span class="keywordflow">if</span> (divisorIt.power() &gt; diviseeIt.power()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  104</span>      ++divisorIt;</div>
+<div class="line"><span class="lineno">  105</span>      ++diviseeIt;</div>
+<div class="line"><span class="lineno">  106</span>    }</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  108</span>  }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classnewf4_1_1_monomial_view_a713ad7180edaecbd813181327d9f4273.html#a713ad7180edaecbd813181327d9f4273">begin()</a>, <a class="el" href="classnewf4_1_1_monomial_view_a8cc3f7e15991947a17025d991516b041.html#a8cc3f7e15991947a17025d991516b041">end()</a>, <a class="el" href="classnewf4_1_1_monomial_view_a260339f96a3fd3e92d179b10751ea671.html#a260339f96a3fd3e92d179b10751ea671">MonomialView()</a>, and <a class="el" href="classnewf4_1_1_monomial_view_ac5b8196f5540c82dc210c7fae05a27db.html#ac5b8196f5540c82dc210c7fae05a27db">size()</a>.</p>
 

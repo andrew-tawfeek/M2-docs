@@ -92,6 +92,9 @@ $(function(){initNavTree('res-memblock_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_res_memory_block.html">ResMemoryBlock</a>&lt;<a class="el" href="struct_t.html">T</a>, NSLAB&gt;</span> &mdash; resolution-side templated slab bump allocator.  
+<a href="#details">More...</a></p>
+
 <p><a href="res-memblock_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -99,7 +102,20 @@ Classes</h2></td></tr>
 <tr class="memitem:ResMemoryBlock_3C_20T_2C_20NSLAB_20_3E" id="r_ResMemoryBlock_3C_20T_2C_20NSLAB_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_res_memory_block.html">ResMemoryBlock&lt; T, NSLAB &gt;</a></td></tr>
 <tr class="memitem:ResMemoryBlock_3C_20T_2C_20NSLAB_20_3E_3A_3Aslab" id="r_ResMemoryBlock_3C_20T_2C_20NSLAB_20_3E_3A_3Aslab"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_res_memory_block_1_1slab.html">ResMemoryBlock&lt; T, NSLAB &gt;::slab</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_res_memory_block.html">ResMemoryBlock</a>&lt;<a class="el" href="struct_t.html">T</a>, NSLAB&gt;</span> &mdash; resolution-side templated slab bump allocator. </p>
+<p>Declares and defines the per-type slab allocator the F4 resolution loop uses for transient monomial, polynomial-term, and frame-metadata buffers. A linked list of slab records each holds <span class="tt">NSLAB</span> <span class="tt"><a class="el" href="struct_t.html">T</a></span>s (defaulted to <span class="tt">4092</span> so the slab lands near 16 KB for typical <span class="tt"><a class="el" href="struct_t.html">T</a></span> and stays L1-resident); <span class="tt">allocate(n)</span> / <span class="tt">reserve(n)</span> + <span class="tt">intern(n)</span> return the next <span class="tt">n</span> <span class="tt"><a class="el" href="struct_t.html">T</a></span>s from the current slab, allocating and chaining a new one on overflow, and <span class="tt">reset()</span> rewinds the cursor without freeing the chain so a whole degree's worth of transient payload can be bulk-discarded with no per-allocation cost.</p>
+<p>Direct twin of <span class="tt"><a class="el" href="memblock_8hpp.html" title="F4MemoryBlock&lt;T, NSLAB&gt; — F4&#39;s templated slab bump allocator.">f4/memblock.hpp</a></span> on the GB side; both pre- date the newer <span class="tt"><a class="el" href="class_memory_block.html">MemoryBlock</a></span> (memtailor <span class="tt">Arena</span> wrapper) used by <span class="tt">gb-f4/</span> and <span class="tt">NCAlgebras/</span>. The resolution copy lives separately because <span class="tt"><a class="el" href="class_f4_memory_block.html">F4MemoryBlock</a></span> is parameterised differently (no <span class="tt"><a class="el" href="structour__new__delete.html">our_new_delete</a></span> base, no atomic-pool flag), and the F4 / resolution paths intentionally evolve independently for now.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="memblock_8hpp.html" title="F4MemoryBlock&lt;T, NSLAB&gt; — F4&#39;s templated slab bump allocator.">f4/memblock.hpp</a> </dd>
+<dd>
+<a class="el" href="_memory_block_8hpp.html" title="Bump-pointer arena allocator for transient inner-loop allocations.">MemoryBlock.hpp</a> </dd>
+<dd>
+<a class="el" href="res-f4_8hpp.html" title="F4Res — F4-style matrix-reduction worker over a SchreyerFrame.">res-f4.hpp</a> </dd>
+<dd>
+<a class="el" href="res-poly-ring_8hpp.html" title="ResPolyRing and ResPolynomial — resolution-tuned polynomial-ring view and value type.">res-poly-ring.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="res-memblock_8hpp_source.html">res-memblock.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

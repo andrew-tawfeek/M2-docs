@@ -91,6 +91,9 @@ $(function(){initNavTree('_polynomial_list_8hpp.html','',''); });
   <div class="headertitle"><div class="title">PolynomialList.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Hash-table-keyed polynomial storage for the new F4.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_vector_arithmetic_8hpp_source.html">../VectorArithmetic.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_basic_poly_list_8hpp_source.html">../BasicPolyList.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_monomial_hash_table_8hpp_source.html">MonomialHashTable.hpp</a>&quot;</code><br />
@@ -116,7 +119,22 @@ Functions</h2></td></tr>
 <tr class="memitem:ab0f2bf6487cec9e3f6f82435f2b15246" id="r_ab0f2bf6487cec9e3f6f82435f2b15246"><td class="memTemplParams" colspan="2">template&lt;typename S&gt; </td></tr>
 <tr class="memitem:ab0f2bf6487cec9e3f6f82435f2b15246 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenewf4_ab0f2bf6487cec9e3f6f82435f2b15246.html#ab0f2bf6487cec9e3f6f82435f2b15246">newf4::toStream</a> (const <a class="el" href="classnewf4_1_1_polynomial_list.html">PolynomialList</a> &amp;Fs, S &amp;str)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Hash-table-keyed polynomial storage for the new F4. </p>
+<p>Declares the container and value type the refactored F4 uses for inputs, intermediates, and basis elements. <span class="tt">PolynomialList</span> owns a <span class="tt">std::vector&lt;<a class="el" href="class_polynomial.html">Polynomial</a>&gt;</span> together with non-owning references to a shared <span class="tt"><a class="el" href="class_monomial_hash_table.html">MonomialHashTable</a></span> and <span class="tt"><a class="el" href="class_vector_arithmetic.html">VectorArithmetic</a></span>; the shared table means each <span class="tt"><a class="el" href="class_polynomial.html">Polynomial</a></span> reduces to three small parallel arrays &mdash; an <span class="tt"><a class="el" href="class_element_array.html">ElementArray</a></span> of coefficients (sized and decoded through <span class="tt"><a class="el" href="class_vector_arithmetic.html">VectorArithmetic</a></span>), a vector of <span class="tt">MonomialIndex</span> keys into the table, and a vector of <span class="tt"><a class="el" href="res-schreyer-frame_8hpp_a46aff60fe9e7b02cb075b491f6e3af7b.html#a46aff60fe9e7b02cb075b491f6e3af7b">ComponentIndex</a></span> slots for free-module components. The list and its hash table must share a lifetime; deleting the table invalidates every polynomial in the list.</p>
+<p>The nested templated <span class="tt">PolynomialIterator</span> exposes per-term <span class="tt">coeff()</span> / <span class="tt">monom()</span> / <span class="tt"><a class="el" href="group__comp.html">Computations</a></span> accessors that decode the vector-arithmetic and hash-table indirections behind the scenes. <span class="tt">PolynomialListStreamCollector</span> implements the mathicgb-style <span class="tt">appendTermBegin</span> / <span class="tt">appendExponent</span> / <span class="tt">appendTermDone</span> stream surface so a <span class="tt">BasicPolyListParser</span> (and the legacy <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> ingestion path) can feed terms in without an intermediate buffer; the free <span class="tt"><a class="el" href="_basic_poly_list_8hpp_af386f45b20b0d5ca8f9f9ccce4246526.html#af386f45b20b0d5ca8f9f9ccce4246526">toStream</a></span> writes a list back out the same way.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_monomial_hash_table_8hpp.html" title="newf4::MonomialHashFunction and the new-F4 monomial-to-index hash table.">MonomialHashTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_types_8hpp.html" title="Typed integer vocabulary for namespace newf4 (indices, monomial words, hashes, masks).">MonomialTypes.hpp</a> </dd>
+<dd>
+<a class="el" href="_vector_arithmetic_8hpp.html" title="Coefficient-ring-erased arithmetic dispatcher used by F4, GB, and resolution code.">VectorArithmetic.hpp</a> </dd>
+<dd>
+Basis.hpp </dd>
+<dd>
+<a class="el" href="_g_b_f4_computation_8hpp.html" title="newf4::GBF4Computation — top-level driver for the refactored F4 Gröbner-basis engine.">GBF4Computation.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_polynomial_list_8hpp_source.html">PolynomialList.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

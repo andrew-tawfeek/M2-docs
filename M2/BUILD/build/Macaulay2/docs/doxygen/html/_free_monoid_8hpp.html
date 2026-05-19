@@ -91,6 +91,9 @@ $(function(){initNavTree('_free_monoid_8hpp.html','',''); });
   <div class="headertitle"><div class="title">FreeMonoid.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_free_monoid.html">FreeMonoid</a></span> &mdash; monoid of length-prefixed non-commutative words with weight-vector prefix.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
 <code>#include &quot;polyring.hpp&quot;</code><br />
@@ -115,7 +118,21 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a1c76d065abe956469a7d667196128c98" id="r_a1c76d065abe956469a7d667196128c98"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_free_monoid_8hpp_a1c76d065abe956469a7d667196128c98.html#a1c76d065abe956469a7d667196128c98">operator&lt;&lt;</a> (std::ostream &amp;o, <a class="el" href="class_free_monoid_logger.html">FreeMonoidLogger</a> a)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_free_monoid.html">FreeMonoid</a></span> &mdash; monoid of length-prefixed non-commutative words with weight-vector prefix. </p>
+<p>Declares the word-side counterpart of the commutative <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span>: a non-commutative monomial is a sequence of variable indices <span class="tt">[v_1, v_2, ..., v_s]</span>, and <span class="tt"><a class="el" href="class_free_monoid.html">FreeMonoid</a></span> stores it in the packed form <span class="tt">[total length] wt_0 ... wt_{r-1}
+w_0 ... w_s</span> &mdash; a leading length so the word can be <span class="tt">memcpy</span>ed, <span class="tt">r</span> weight values used to short-circuit comparison, and the indices themselves. Multiplication is plain concatenation: no reordering, no normalisation, since the algebra is free. The intended comparison is weight-first then lexicographic, matching the "leading word" convention of the non-commutative Gröbner literature; the in-file TODOs track wiring the weight values through the front end so compare can use them consistently.</p>
+<p>The companion <span class="tt"><a class="el" href="class_free_monoid_logger.html">FreeMonoidLogger</a></span> at the top of the header is a debug helper that counts monomial compares; it is normally compiled out and exists so the developers of <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> / <span class="tt"><a class="el" href="class_n_c_f4.html">NCF4</a></span> can profile the cost of the word-ordering kernel.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_word_8hpp.html" title="Word and WordWithData — non-owning views over the flat-int encoding of a non-commutative word.">Word.hpp</a> </dd>
+<dd>
+<a class="el" href="_free_algebra_8hpp.html" title="FreeAlgebra — the free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
+<dd>
+<a class="el" href="_polynomial_8hpp.html" title="Modern Monom / Poly value types shared by NC algebras and the refactored F4.">Polynomial.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

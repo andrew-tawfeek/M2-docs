@@ -91,6 +91,9 @@ $(function(){initNavTree('res-f4-monlookup_8hpp.html','',''); });
   <div class="headertitle"><div class="title">res-f4-monlookup.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_res_f4_monomial_lookup_table_t.html">ResF4MonomialLookupTableT</a>&lt;Key&gt;</span> &mdash; tree-structured leading-term index for the F4 resolution.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="res-moninfo_8hpp_source.html">schreyer-resolution/res-moninfo.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="res-monomial-types_8hpp_source.html">schreyer-resolution/res-monomial-types.hpp</a>&quot;</code><br />
@@ -106,7 +109,20 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a0c59b42d866993a88d45b0725cc88335" id="r_a0c59b42d866993a88d45b0725cc88335"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="res-f4-monlookup_8hpp_a0c59b42d866993a88d45b0725cc88335.html#a0c59b42d866993a88d45b0725cc88335">minimalize_res_varpower_monomials</a> (const <a class="el" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR</a>(<a class="el" href="res-monomial-types_8hpp_a184f0cb454f74a5f8e8a0a16136ae244.html#a184f0cb454f74a5f8e8a0a16136ae244">res_varpower_monomial</a>) &amp;elems, <a class="el" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR</a>(<a class="el" href="classint.html">int</a>) &amp;result_minimals, <a class="el" href="classstash.html">stash</a> *mi_stash=nullptr)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_res_f4_monomial_lookup_table_t.html">ResF4MonomialLookupTableT</a>&lt;Key&gt;</span> &mdash; tree-structured leading-term index for the F4 resolution. </p>
+<p>Declares the resolution counterpart of <span class="tt"><a class="el" href="f4-monlookup_8hpp.html" title="F4MonomialLookupTableT&lt;Key&gt; — trie-structured leading-monomial divisor index.">f4-monlookup.hpp</a></span>: a templated Janet-style binary tree over <span class="tt">res_*_monomial</span> encodings, parameterised on the <span class="tt">Key</span> payload returned by lookups so the same code base can index basis-element indices, <span class="tt">(level, index)</span> pairs, or any other identifier the caller needs. Each <span class="tt">mi_node</span> stores a <span class="tt">(var, exp)</span> test, left and right children inside a doubly-linked sibling list under a <span class="tt">header</span>, and either descends to a child node or terminates at a leaf carrying the <span class="tt">Key</span>. <span class="tt">insert(monomial, key)</span> walks the tree splitting on the encoded variable exponents, while <span class="tt">find_divisor(monomial)</span> reports any payload whose stored monomial divides the query &mdash; the standard divisor lookup the F4 reducer-selection step depends on.</p>
+<p>The class duplicates the older <span class="tt"><a class="el" href="f4-monlookup_8hpp.html" title="F4MonomialLookupTableT&lt;Key&gt; — trie-structured leading-monomial divisor index.">f4-monlookup.hpp</a></span> pattern by design: the resolution side standardises on the <span class="tt">res_*</span> monomial typedefs from <span class="tt"><a class="el" href="res-monomial-types_8hpp.html" title="Typed-monomial vocabulary shared by ResMonoid, ResPolyRing, SchreyerFrame, and F4Res.">res-monomial-types.hpp</a></span> and carries a richer <span class="tt">Key</span> than F4's plain <span class="tt"><a class="el" href="classint.html">int</a></span>. A future cleanup may collapse them, but keeping the trees separate today lets each evolve at its own pace without coupling the F4 and resolution code paths.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-moninfo_8hpp.html" title="ResMonoid dispatcher — single switch between ResMonoidDense and ResMonoidSparse.">res-moninfo.hpp</a> </dd>
+<dd>
+<a class="el" href="res-monomial-types_8hpp.html" title="Typed-monomial vocabulary shared by ResMonoid, ResPolyRing, SchreyerFrame, and F4Res.">res-monomial-types.hpp</a> </dd>
+<dd>
+<a class="el" href="res-schreyer-frame_8hpp.html" title="SchreyerFrame — in-progress representation of a free resolution organised by (level,...">res-schreyer-frame.hpp</a> </dd>
+<dd>
+<a class="el" href="f4-monlookup_8hpp.html" title="F4MonomialLookupTableT&lt;Key&gt; — trie-structured leading-monomial divisor index.">f4/f4-monlookup.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="res-f4-monlookup_8hpp_source.html">res-f4-monlookup.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

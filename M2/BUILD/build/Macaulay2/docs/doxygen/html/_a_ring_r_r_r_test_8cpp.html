@@ -91,6 +91,9 @@ $(function(){initNavTree('_a_ring_r_r_r_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">ARingRRRTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for the MPFR-backed <span class="tt"><a class="el" href="class_m2_1_1_a_ring_r_r_r.html">M2::ARingRRR</a></span> arbitrary-precision real aring.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -117,7 +120,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a94c69c0a1cdced90e531b137c9851966" id="r_a94c69c0a1cdced90e531b137c9851966"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_ring_r_r_r_test_8cpp_a94c69c0a1cdced90e531b137c9851966.html#a94c69c0a1cdced90e531b137c9851966">TEST</a> (ARingRRR, axioms)</td></tr>
 <tr class="memitem:ab45d598ba21c2df4d86fb793fb6941f0" id="r_ab45d598ba21c2df4d86fb793fb6941f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_ring_r_r_r_test_8cpp_ab45d598ba21c2df4d86fb793fb6941f0.html#ab45d598ba21c2df4d86fb793fb6941f0">TEST</a> (ARingRRR, power_and_invert)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for the MPFR-backed <span class="tt"><a class="el" href="class_m2_1_1_a_ring_r_r_r.html">M2::ARingRRR</a></span> arbitrary-precision real aring. </p>
+<p>Drives <span class="tt"><a class="el" href="class_m2_1_1_a_ring_r_r_r.html">M2::ARingRRR</a></span> through the shared <span class="tt"><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a></span> harness with a precision-aware <span class="tt"><a class="el" href="_a_ring_r_r_r_test_8cpp_ad13d860fe89cbae1b111be5b4973ddf1.html#ad13d860fe89cbae1b111be5b4973ddf1">almostEqual</a></span> that builds the epsilon directly as an <span class="tt">mpfr_t</span> via <span class="tt">mpfr_set_ui_2exp(epsilon, 1, -nbits)</span> &mdash; so the tolerance scales with the ring's <span class="tt">get_precision()</span> rather than being pinned to 53 bits. <span class="tt"><a class="el" href="_a_ring_test_8hpp_abfba126d094aba21386022c26fbc3b85.html#abfba126d094aba21386022c26fbc3b85">getElement</a>&lt;<a class="el" href="class_m2_1_1_a_ring_r_r_r.html">M2::ARingRRR</a>&gt;</span> and <span class="tt"><a class="el" href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a></span> then exercise arithmetic, equality, inverses, and stream round-trips at the full configured precision; the suite also serves as the cross-backend agreement check that the 53-bit <span class="tt">ARingRR</span> stays within <span class="tt">2^-50</span> of an <span class="tt">ARingRRR</span> configured at 53 bits.</p>
+<p>Sibling files <span class="tt"><a class="el" href="_a_ring_r_r_test_8cpp.html" title="gtest coverage for the 53-bit double-backed M2::ARingRR real-number aring.">ARingRRTest.cpp</a></span>, <span class="tt"><a class="el" href="_a_ring_r_ri_test_8cpp.html" title="gtest coverage for the MPFI-backed M2::ARingRRi real-interval aring.">ARingRRiTest.cpp</a></span>, <span class="tt"><a class="el" href="_a_ring_c_c_test_8cpp.html" title="gtest coverage for the complex&lt;double&gt;-backed M2::ARingCC complex aring.">ARingCCTest.cpp</a></span>, and <span class="tt"><a class="el" href="_a_ring_c_c_c_test_8cpp.html" title="gtest coverage for the MPC-backed M2::ARingCCC arbitrary-precision complex aring.">ARingCCCTest.cpp</a></span> (covered by the same <span class="tt">file-aring-real-complex-tests</span> markdown) follow the same template against <span class="tt">double</span>, MPFI intervals, and MPC complex backends. Each carries its own <span class="tt"><a class="el" href="_a_ring_r_r_r_test_8cpp_ad13d860fe89cbae1b111be5b4973ddf1.html#ad13d860fe89cbae1b111be5b4973ddf1">almostEqual</a></span> scaled to the underlying representation.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-_r_r_r_8hpp.html" title="M2::ARingRRR — arbitrary-precision real numbers backed by MPFR.">aring-RRR.hpp</a> </dd>
+<dd>
+<a class="el" href="_a_ring_r_r_test_8cpp.html" title="gtest coverage for the 53-bit double-backed M2::ARingRR real-number aring.">ARingRRTest.cpp</a> </dd>
+<dd>
+<a class="el" href="_a_ring_c_c_c_test_8cpp.html" title="gtest coverage for the MPC-backed M2::ARingCCC arbitrary-precision complex aring.">ARingCCCTest.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_a_ring_r_r_r_test_8cpp_source.html">ARingRRRTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('_macaulay2_2e_2gb-f4_2_s_pairs_8hpp.html','',''); });
   <div class="headertitle"><div class="title">SPairs.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="structnewf4_1_1_s_pair.html">newf4::SPair</a></span> / <span class="tt">SPairSet</span> &mdash; typed S-pair queue grouped by degree and S-pair flavour.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_monomial_types_8hpp_source.html">MonomialTypes.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_monomial_view_8hpp_source.html">MonomialView.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_macaulay2_2e_2gb-f4_2_basis_8hpp_source.html">Basis.hpp</a>&quot;</code><br />
@@ -116,7 +119,23 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacenewf4_a608e9c0414cad32f86a5c5863679612b.html#a608e9c0414cad32f86a5c5863679612ba4804dc3c133b11589338a62893ae614c">newf4::Gen</a>
  }</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="structnewf4_1_1_s_pair.html">newf4::SPair</a></span> / <span class="tt">SPairSet</span> &mdash; typed S-pair queue grouped by degree and S-pair flavour. </p>
+<p>Declares the per-pair record and the queue the refactored F4 uses to schedule the matrix it builds each degree. <span class="tt">SPair</span> tags each entry with an <span class="tt"><a class="el" href="f4-types_8hpp_ae9790f5914af2c375b70fb21b924cf42.html#ae9790f5914af2c375b70fb21b924cf42">SPairType</a></span> &mdash; <span class="tt">SPair</span> between two basis elements, <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> between a basis element and a ring- relation generator (for GB over a quotient), <span class="tt">Exterior</span> for the <span class="tt">var * lead = 0</span> cancellations exterior algebras require, or <span class="tt">Gen</span> for an original input still pending insertion &mdash; and carries the basis indices, the LCM's <span class="tt">MonomialIndex</span> into the S-pair monomial hash table, and the cached degree of the LCM. <span class="tt">SPairSet::updatePairs(basis, which)</span> is the workhorse: given the newly added basis element, it produces every pair that element generates (per its type), prunes by the standard Buchberger / Faugère criteria, and inserts the survivors.</p>
+<p>The interior storage is a <span class="tt">std::map&lt;(degree, <a class="el" href="f4-types_8hpp_ae9790f5914af2c375b70fb21b924cf42.html#ae9790f5914af2c375b70fb21b924cf42">SPairType</a>),
+vector&lt;SPair&gt;&gt;</span> so the driver can pop the next degree's work in one chunk via <span class="tt">getNextDegree</span>, and so <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> / <span class="tt">Exterior</span> pairs sort ahead of plain <span class="tt">SPair</span> / <span class="tt">Gen</span> pairs at the same degree (the standard ordering of "lighter" reductions first). The header is part of the long-running F4 refactor noted in <span class="tt">TODO-refactor-f4</span>, so the surface continues to evolve &mdash; in particular the planned two-stage "pre-S-pair / S-pair" split (sketched in the in-file comments) is not yet wired up.</p>
+<dl class="section see"><dt>See also</dt><dd>Basis.hpp </dd>
+<dd>
+<a class="el" href="_monomial_view_8hpp.html" title="newf4::MonomialView — non-owning view over a [length, var_1, e_1, ...]-encoded monomial.">MonomialView.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_types_8hpp.html" title="Typed integer vocabulary for namespace newf4 (indices, monomial words, hashes, masks).">MonomialTypes.hpp</a> </dd>
+<dd>
+<a class="el" href="_macaulay_matrix_8hpp.html" title="newf4::MacaulayMatrix — batched matrix of S-polynomials and tail-reducers (refactor stub).">MacaulayMatrix.hpp</a> </dd>
+<dd>
+<a class="el" href="_g_b_f4_computation_8hpp.html" title="newf4::GBF4Computation — top-level driver for the refactored F4 Gröbner-basis engine.">GBF4Computation.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_macaulay2_2e_2gb-f4_2_s_pairs_8hpp_source.html">SPairs.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -107,37 +107,37 @@ $(function(){initNavTree('_ring_z_z_test_8cpp_a4348e2d069e01adc5945bb8ce9e0412f.
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_ring_z_z_test_8cpp_source.html#l00063">63</a> of file <a class="el" href="_ring_z_z_test_8cpp_source.html">RingZZTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>{</div>
-<div class="line"><span class="lineno">   65</span>  mpz_t a;</div>
-<div class="line"><span class="lineno">   66</span>  mpz_init(a);</div>
-<div class="line"><span class="lineno">   67</span>  <span class="keywordtype">long</span> minint = std::numeric_limits&lt;int&gt;::min();</div>
-<div class="line"><span class="lineno">   68</span>  <span class="keywordtype">long</span> maxint = std::numeric_limits&lt;int&gt;::max();</div>
-<div class="line"><span class="lineno">   69</span>  <span class="keywordtype">long</span> i = minint - 5;</div>
-<div class="line"><span class="lineno">   70</span>  <span class="keywordflow">while</span> (i &lt; maxint + 5)</div>
-<div class="line"><span class="lineno">   71</span>    {</div>
-<div class="line"><span class="lineno">   72</span>      mpz_set_si(a, i);</div>
-<div class="line"><span class="lineno">   73</span>      <span class="keyword">auto</span> b = <a class="code hl_function" href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si</a>(a);</div>
-<div class="line"><span class="lineno">   74</span>      <span class="comment">//      std::cout &lt;&lt; &quot;(min,max)=&quot; &lt;&lt; minint &lt;&lt; &quot;,&quot; &lt;&lt; maxint</span></div>
-<div class="line"><span class="lineno">   75</span>      <span class="comment">//                &lt;&lt; &quot; &quot; &lt;&lt; &quot;i=&quot; &lt;&lt; i</span></div>
-<div class="line"><span class="lineno">   76</span>      <span class="comment">//                &lt;&lt; &quot; ok=&quot; &lt;&lt; b.first &lt;&lt; &quot; result=&quot; &lt;&lt; b.second &lt;&lt;</span></div>
-<div class="line"><span class="lineno">   77</span>      <span class="comment">//                std::endl;</span></div>
-<div class="line"><span class="lineno">   78</span>      <span class="keywordflow">if</span> (i &gt;= minint and i &lt;= maxint)</div>
-<div class="line"><span class="lineno">   79</span>        {</div>
-<div class="line"><span class="lineno">   80</span>          EXPECT_TRUE(b.first);</div>
-<div class="line"><span class="lineno">   81</span>          EXPECT_EQ(b.second, i);</div>
-<div class="line"><span class="lineno">   82</span>        }</div>
-<div class="line"><span class="lineno">   83</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   84</span>        {</div>
-<div class="line"><span class="lineno">   85</span>          EXPECT_FALSE(b.first);</div>
-<div class="line"><span class="lineno">   86</span>        }</div>
-<div class="line"><span class="lineno">   87</span>      <span class="keywordflow">if</span> (i == minint + 5)</div>
-<div class="line"><span class="lineno">   88</span>        i = maxint - 5;</div>
-<div class="line"><span class="lineno">   89</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   90</span>        ++i;</div>
-<div class="line"><span class="lineno">   91</span>    }</div>
-<div class="line"><span class="lineno">   92</span>  mpz_clear(a);</div>
-<div class="line"><span class="lineno">   93</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_ring_z_z_test_8cpp_source.html#l00093">93</a> of file <a class="el" href="_ring_z_z_test_8cpp_source.html">RingZZTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
+<div class="line"><span class="lineno">   95</span>  mpz_t a;</div>
+<div class="line"><span class="lineno">   96</span>  mpz_init(a);</div>
+<div class="line"><span class="lineno">   97</span>  <span class="keywordtype">long</span> minint = std::numeric_limits&lt;int&gt;::min();</div>
+<div class="line"><span class="lineno">   98</span>  <span class="keywordtype">long</span> maxint = std::numeric_limits&lt;int&gt;::max();</div>
+<div class="line"><span class="lineno">   99</span>  <span class="keywordtype">long</span> i = minint - 5;</div>
+<div class="line"><span class="lineno">  100</span>  <span class="keywordflow">while</span> (i &lt; maxint + 5)</div>
+<div class="line"><span class="lineno">  101</span>    {</div>
+<div class="line"><span class="lineno">  102</span>      mpz_set_si(a, i);</div>
+<div class="line"><span class="lineno">  103</span>      <span class="keyword">auto</span> b = <a class="code hl_function" href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si</a>(a);</div>
+<div class="line"><span class="lineno">  104</span>      <span class="comment">//      std::cout &lt;&lt; &quot;(min,max)=&quot; &lt;&lt; minint &lt;&lt; &quot;,&quot; &lt;&lt; maxint</span></div>
+<div class="line"><span class="lineno">  105</span>      <span class="comment">//                &lt;&lt; &quot; &quot; &lt;&lt; &quot;i=&quot; &lt;&lt; i</span></div>
+<div class="line"><span class="lineno">  106</span>      <span class="comment">//                &lt;&lt; &quot; ok=&quot; &lt;&lt; b.first &lt;&lt; &quot; result=&quot; &lt;&lt; b.second &lt;&lt;</span></div>
+<div class="line"><span class="lineno">  107</span>      <span class="comment">//                std::endl;</span></div>
+<div class="line"><span class="lineno">  108</span>      <span class="keywordflow">if</span> (i &gt;= minint and i &lt;= maxint)</div>
+<div class="line"><span class="lineno">  109</span>        {</div>
+<div class="line"><span class="lineno">  110</span>          EXPECT_TRUE(b.first);</div>
+<div class="line"><span class="lineno">  111</span>          EXPECT_EQ(b.second, i);</div>
+<div class="line"><span class="lineno">  112</span>        }</div>
+<div class="line"><span class="lineno">  113</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  114</span>        {</div>
+<div class="line"><span class="lineno">  115</span>          EXPECT_FALSE(b.first);</div>
+<div class="line"><span class="lineno">  116</span>        }</div>
+<div class="line"><span class="lineno">  117</span>      <span class="keywordflow">if</span> (i == minint + 5)</div>
+<div class="line"><span class="lineno">  118</span>        i = maxint - 5;</div>
+<div class="line"><span class="lineno">  119</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  120</span>        ++i;</div>
+<div class="line"><span class="lineno">  121</span>    }</div>
+<div class="line"><span class="lineno">  122</span>  mpz_clear(a);</div>
+<div class="line"><span class="lineno">  123</span>}</div>
 <div class="ttc" id="aclass_ring_z_z_a93f60c7348caad7f332820b455fb3735_html_a93f60c7348caad7f332820b455fb3735"><div class="ttname"><a href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si</a></div><div class="ttdeci">static std::pair&lt; bool, int &gt; get_si(mpz_srcptr n)</div><div class="ttdef"><b>Definition</b> <a href="_z_z_8cpp_source.html#l00046">ZZ.cpp:46</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_ring_z_z_a93f60c7348caad7f332820b455fb3735.html#a93f60c7348caad7f332820b455fb3735">RingZZ::get_si()</a>.</p>

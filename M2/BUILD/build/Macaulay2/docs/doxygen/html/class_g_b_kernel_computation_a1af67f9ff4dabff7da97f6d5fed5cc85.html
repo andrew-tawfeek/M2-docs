@@ -111,31 +111,31 @@ $(function(){initNavTree('class_g_b_kernel_computation_a1af67f9ff4dabff7da97f6d5
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_eschreyer_8cpp_source.html#l00129">129</a> of file <a class="el" href="_eschreyer_8cpp_source.html">Eschreyer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  130</span>{</div>
-<div class="line"><span class="lineno">  131</span>  <span class="keyword">const</span> gc_vector&lt;gbvector*&gt; &amp;g = m-&gt;<a class="code hl_variable" href="struct_g_b_matrix_a9c32aada63157ee3f787e6c0f9bcdbd8.html#a9c32aada63157ee3f787e6c0f9bcdbd8">elems</a>;</div>
-<div class="line"><span class="lineno">  132</span>  <span class="keywordtype">int</span> i;</div>
-<div class="line"><span class="lineno">  133</span>  <span class="keywordtype">int</span> *components = <a class="code hl_define" href="newdelete_8hpp_a2b649d56ac729e3aeea956a89d0c03ea.html#a2b649d56ac729e3aeea956a89d0c03ea">newarray_atomic_clear</a>(<span class="keywordtype">int</span>, <a class="code hl_variable" href="class_g_b_kernel_computation_a3b53c4bcb44045c1762b256dad6fcf2b.html#a3b53c4bcb44045c1762b256dad6fcf2b">F</a>-&gt;rank());</div>
-<div class="line"><span class="lineno">  134</span>  <span class="keywordflow">for</span> (i = 0; i &lt; g.size(); i++)</div>
-<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span> (g[i] != <span class="keyword">nullptr</span>) components[g[i]-&gt;comp - 1]++;</div>
-<div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>  <span class="keywordflow">for</span> (i = 0; i &lt; g.size(); i++)</div>
-<div class="line"><span class="lineno">  138</span>    {</div>
-<div class="line"><span class="lineno">  139</span>      gbvector head;</div>
-<div class="line"><span class="lineno">  140</span>      gbvector *last = &amp;head;</div>
-<div class="line"><span class="lineno">  141</span>      <span class="keywordflow">for</span> (gbvector *v = g[i]; v != <span class="keyword">nullptr</span>; v = v-&gt;next)</div>
-<div class="line"><span class="lineno">  142</span>        <span class="keywordflow">if</span> (components[v-&gt;comp - 1] &gt; 0)</div>
-<div class="line"><span class="lineno">  143</span>          {</div>
-<div class="line"><span class="lineno">  144</span>            gbvector *t = <a class="code hl_variable" href="class_g_b_kernel_computation_ab348061f9d852f7c65ecd8e5bc5a2631.html#ab348061f9d852f7c65ecd8e5bc5a2631">GR</a>-&gt;gbvector_copy_term(v);</div>
-<div class="line"><span class="lineno">  145</span>            last-&gt;<a class="code hl_variable" href="structgbvector_a3cc2bd9a347521ac3e6d6d89de1a3a26.html#a3cc2bd9a347521ac3e6d6d89de1a3a26">next</a> = t;</div>
-<div class="line"><span class="lineno">  146</span>            last = t;</div>
-<div class="line"><span class="lineno">  147</span>          }</div>
-<div class="line"><span class="lineno">  148</span>      last-&gt;<a class="code hl_variable" href="structgbvector_a3cc2bd9a347521ac3e6d6d89de1a3a26.html#a3cc2bd9a347521ac3e6d6d89de1a3a26">next</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  149</span>      <a class="code hl_variable" href="class_g_b_kernel_computation_acb1a7e3d947c0305a2e32d4459632b9d.html#acb1a7e3d947c0305a2e32d4459632b9d">gb</a>.push_back(head.<a class="code hl_variable" href="structgbvector_a3cc2bd9a347521ac3e6d6d89de1a3a26.html#a3cc2bd9a347521ac3e6d6d89de1a3a26">next</a>);</div>
-<div class="line"><span class="lineno">  150</span>    }</div>
-<div class="line"><span class="lineno">  151</span>  <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code hl_variable" href="class_g_b_kernel_computation_a3b53c4bcb44045c1762b256dad6fcf2b.html#a3b53c4bcb44045c1762b256dad6fcf2b">F</a>-&gt;rank(); i++) <a class="code hl_variable" href="class_g_b_kernel_computation_af3ba812d316bdebc9890bc241b19c0cc.html#af3ba812d316bdebc9890bc241b19c0cc">mi</a>.push_back(<span class="keyword">new</span> MonomialIdeal(<a class="code hl_variable" href="class_g_b_kernel_computation_ab7fb4137c6f819a244787f57658fdb55.html#ab7fb4137c6f819a244787f57658fdb55">R</a>));</div>
-<div class="line"><span class="lineno">  152</span>  <a class="code hl_function" href="m2-mem_8cpp_a1c6306973edadb50294a656e3927fcba.html#a1c6306973edadb50294a656e3927fcba">freemem</a>(components);</div>
-<div class="line"><span class="lineno">  153</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_eschreyer_8cpp_source.html#l00156">156</a> of file <a class="el" href="_eschreyer_8cpp_source.html">Eschreyer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  157</span>{</div>
+<div class="line"><span class="lineno">  158</span>  <span class="keyword">const</span> gc_vector&lt;gbvector*&gt; &amp;g = m-&gt;<a class="code hl_variable" href="struct_g_b_matrix_a9c32aada63157ee3f787e6c0f9bcdbd8.html#a9c32aada63157ee3f787e6c0f9bcdbd8">elems</a>;</div>
+<div class="line"><span class="lineno">  159</span>  <span class="keywordtype">int</span> i;</div>
+<div class="line"><span class="lineno">  160</span>  <span class="keywordtype">int</span> *components = <a class="code hl_define" href="newdelete_8hpp_a2b649d56ac729e3aeea956a89d0c03ea.html#a2b649d56ac729e3aeea956a89d0c03ea">newarray_atomic_clear</a>(<span class="keywordtype">int</span>, <a class="code hl_variable" href="class_g_b_kernel_computation_a3b53c4bcb44045c1762b256dad6fcf2b.html#a3b53c4bcb44045c1762b256dad6fcf2b">F</a>-&gt;rank());</div>
+<div class="line"><span class="lineno">  161</span>  <span class="keywordflow">for</span> (i = 0; i &lt; g.size(); i++)</div>
+<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">if</span> (g[i] != <span class="keyword">nullptr</span>) components[g[i]-&gt;comp - 1]++;</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>  <span class="keywordflow">for</span> (i = 0; i &lt; g.size(); i++)</div>
+<div class="line"><span class="lineno">  165</span>    {</div>
+<div class="line"><span class="lineno">  166</span>      gbvector head;</div>
+<div class="line"><span class="lineno">  167</span>      gbvector *last = &amp;head;</div>
+<div class="line"><span class="lineno">  168</span>      <span class="keywordflow">for</span> (gbvector *v = g[i]; v != <span class="keyword">nullptr</span>; v = v-&gt;next)</div>
+<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">if</span> (components[v-&gt;comp - 1] &gt; 0)</div>
+<div class="line"><span class="lineno">  170</span>          {</div>
+<div class="line"><span class="lineno">  171</span>            gbvector *t = <a class="code hl_variable" href="class_g_b_kernel_computation_ab348061f9d852f7c65ecd8e5bc5a2631.html#ab348061f9d852f7c65ecd8e5bc5a2631">GR</a>-&gt;gbvector_copy_term(v);</div>
+<div class="line"><span class="lineno">  172</span>            last-&gt;<a class="code hl_variable" href="structgbvector_a3cc2bd9a347521ac3e6d6d89de1a3a26.html#a3cc2bd9a347521ac3e6d6d89de1a3a26">next</a> = t;</div>
+<div class="line"><span class="lineno">  173</span>            last = t;</div>
+<div class="line"><span class="lineno">  174</span>          }</div>
+<div class="line"><span class="lineno">  175</span>      last-&gt;<a class="code hl_variable" href="structgbvector_a3cc2bd9a347521ac3e6d6d89de1a3a26.html#a3cc2bd9a347521ac3e6d6d89de1a3a26">next</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  176</span>      <a class="code hl_variable" href="class_g_b_kernel_computation_acb1a7e3d947c0305a2e32d4459632b9d.html#acb1a7e3d947c0305a2e32d4459632b9d">gb</a>.push_back(head.<a class="code hl_variable" href="structgbvector_a3cc2bd9a347521ac3e6d6d89de1a3a26.html#a3cc2bd9a347521ac3e6d6d89de1a3a26">next</a>);</div>
+<div class="line"><span class="lineno">  177</span>    }</div>
+<div class="line"><span class="lineno">  178</span>  <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code hl_variable" href="class_g_b_kernel_computation_a3b53c4bcb44045c1762b256dad6fcf2b.html#a3b53c4bcb44045c1762b256dad6fcf2b">F</a>-&gt;rank(); i++) <a class="code hl_variable" href="class_g_b_kernel_computation_af3ba812d316bdebc9890bc241b19c0cc.html#af3ba812d316bdebc9890bc241b19c0cc">mi</a>.push_back(<span class="keyword">new</span> MonomialIdeal(<a class="code hl_variable" href="class_g_b_kernel_computation_ab7fb4137c6f819a244787f57658fdb55.html#ab7fb4137c6f819a244787f57658fdb55">R</a>));</div>
+<div class="line"><span class="lineno">  179</span>  <a class="code hl_function" href="m2-mem_8cpp_a1c6306973edadb50294a656e3927fcba.html#a1c6306973edadb50294a656e3927fcba">freemem</a>(components);</div>
+<div class="line"><span class="lineno">  180</span>}</div>
 <div class="ttc" id="aclass_g_b_kernel_computation_a3b53c4bcb44045c1762b256dad6fcf2b_html_a3b53c4bcb44045c1762b256dad6fcf2b"><div class="ttname"><a href="class_g_b_kernel_computation_a3b53c4bcb44045c1762b256dad6fcf2b.html#a3b53c4bcb44045c1762b256dad6fcf2b">GBKernelComputation::F</a></div><div class="ttdeci">const FreeModule * F</div><div class="ttdef"><b>Definition</b> <a href="_eschreyer_8hpp_source.html#l00061">Eschreyer.hpp:61</a></div></div>
 <div class="ttc" id="aclass_g_b_kernel_computation_ab348061f9d852f7c65ecd8e5bc5a2631_html_ab348061f9d852f7c65ecd8e5bc5a2631"><div class="ttname"><a href="class_g_b_kernel_computation_ab348061f9d852f7c65ecd8e5bc5a2631.html#ab348061f9d852f7c65ecd8e5bc5a2631">GBKernelComputation::GR</a></div><div class="ttdeci">GBRing * GR</div><div class="ttdef"><b>Definition</b> <a href="_eschreyer_8hpp_source.html#l00057">Eschreyer.hpp:57</a></div></div>
 <div class="ttc" id="aclass_g_b_kernel_computation_ab7fb4137c6f819a244787f57658fdb55_html_ab7fb4137c6f819a244787f57658fdb55"><div class="ttname"><a href="class_g_b_kernel_computation_ab7fb4137c6f819a244787f57658fdb55.html#ab7fb4137c6f819a244787f57658fdb55">GBKernelComputation::R</a></div><div class="ttdeci">const PolynomialRing * R</div><div class="ttdef"><b>Definition</b> <a href="_eschreyer_8hpp_source.html#l00055">Eschreyer.hpp:55</a></div></div>

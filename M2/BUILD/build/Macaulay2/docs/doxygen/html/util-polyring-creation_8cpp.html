@@ -91,6 +91,9 @@ $(function(){initNavTree('util-polyring-creation_8cpp.html','',''); });
   <div class="headertitle"><div class="title">util-polyring-creation.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of the test-side polynomial-ring builders declared in <span class="tt"><a class="el" href="util-polyring-creation_8hpp.html" title="One-line helpers for building degree monoids and polynomial rings inside gtest cases.">util-polyring-creation.hpp</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="util-polyring-creation_8hpp_source.html">util-polyring-creation.hpp</a>&quot;</code><br />
 </div>
 <p><a href="util-polyring-creation_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -103,7 +106,20 @@ Functions</h2></td></tr>
 <tr class="memitem:aba322ad2a0a2ec495cc9562af90e6623" id="r_aba322ad2a0a2ec495cc9562af90e6623"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_polynomial_ring.html">PolynomialRing</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util-polyring-creation_8cpp_aba322ad2a0a2ec495cc9562af90e6623.html#aba322ad2a0a2ec495cc9562af90e6623">simplePolynomialRing</a> (const <a class="el" href="class_ring.html">Ring</a> *kk, const std::vector&lt; std::string &gt; &amp;names, <a class="el" href="struct_monomial_ordering.html">MonomialOrdering</a> *monorder)</td></tr>
 <tr class="memitem:a45a0a96d3ec0b0086be66a86120dd5a9" id="r_a45a0a96d3ec0b0086be66a86120dd5a9"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_polynomial_ring.html">PolynomialRing</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="util-polyring-creation_8cpp_a45a0a96d3ec0b0086be66a86120dd5a9.html#a45a0a96d3ec0b0086be66a86120dd5a9">simplePolynomialRing</a> (<a class="el" href="classint.html">int</a> <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, const std::vector&lt; std::string &gt; &amp;names)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of the test-side polynomial-ring builders declared in <span class="tt"><a class="el" href="util-polyring-creation_8hpp.html" title="One-line helpers for building degree monoids and polynomial rings inside gtest cases.">util-polyring-creation.hpp</a></span>. </p>
+<p>Defines <span class="tt">degreeMonoid(names)</span> (a <span class="tt"><a class="el" href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">MonomialOrderings::join</a></span> of negative-weight, GroupLex, and PositionUp blocks fed through <span class="tt"><a class="el" href="class_mono_monoid_ac593d9ad0c78a92a75a1fd06f8a0a21a.html#ac593d9ad0c78a92a75a1fd06f8a0a21a">Monoid::create</a></span> against the trivial degree polynomial ring), the two <span class="tt">degreeRing(...)</span> overloads (variable-name list and fixed <span class="tt">ndegrees == 1</span>), and the two <span class="tt">simplePolynomialRing(...)</span> variants that wire a coefficient ring, monoid, and <span class="tt"><a class="el" href="struct_monomial_ordering.html">MonomialOrdering</a></span> into the engine's <span class="tt"><a class="el" href="class_poly_ring_a218143d3bc8b7eab9f73e37d4e3b9890.html#a218143d3bc8b7eab9f73e37d4e3b9890">PolyRing::create</a></span>. The <span class="tt">Z/p</span> GRevLex shortcut at the bottom gives F4 tests one-liner ring construction.</p>
+<p>Companion to the header it implements and to the other harness files (<span class="tt">testMain.cpp</span>, <span class="tt"><a class="el" href="from_stream_8cpp.html" title="Per-ring fromStream specialisations shared across the legacy Ring*Test.cpp suite.">fromStream.cpp</a></span>, <span class="tt"><a class="el" href="_m2-cpp-replacement_8cpp.html" title="Single-symbol stub for system_interrupted() so the gtest binary links without the M2 interpreter.">M2-cpp-replacement.cpp</a></span>) under the <span class="tt">file-test-harness</span> markdown family.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="util-polyring-creation_8hpp.html" title="One-line helpers for building degree monoids and polynomial rings inside gtest cases.">util-polyring-creation.hpp</a> </dd>
+<dd>
+polyring.hpp </dd>
+<dd>
+<a class="el" href="monoid_8hpp.html" title="Monoid — variable count, naming, grading, and monomial order of a polynomial ring.">monoid.hpp</a> </dd>
+<dd>
+<a class="el" href="monomial-ordering_8h.html" title="Engine-boundary C API for assembling block-level MonomialOrderings from declarative pieces.">interface/monomial-ordering.h</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="util-polyring-creation_8cpp_source.html">util-polyring-creation.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

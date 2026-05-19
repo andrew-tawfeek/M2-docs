@@ -91,6 +91,9 @@ $(function(){initNavTree('_word_8hpp.html','',''); });
   <div class="headertitle"><div class="title">Word.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_word.html">Word</a></span> and <span class="tt"><a class="el" href="class_word_with_data.html">WordWithData</a></span> &mdash; non-owning views over the flat-int encoding of a non-commutative word.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iosfwd&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div>
@@ -106,7 +109,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a2fdcf5230f1369a3c523f74f1b5138d4" id="r_a2fdcf5230f1369a3c523f74f1b5138d4"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_word_8hpp_a2fdcf5230f1369a3c523f74f1b5138d4.html#a2fdcf5230f1369a3c523f74f1b5138d4">operator&lt;&lt;</a> (std::ostream &amp;o, const <a class="el" href="class_word.html">Word</a> &amp;w)</td></tr>
 <tr class="memitem:a9793ecb541d9fff8dc18605eaff42882" id="r_a9793ecb541d9fff8dc18605eaff42882"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_word_8hpp_a9793ecb541d9fff8dc18605eaff42882.html#a9793ecb541d9fff8dc18605eaff42882">operator&lt;&lt;</a> (std::ostream &amp;o, const <a class="el" href="class_word_with_data.html">WordWithData</a> &amp;w)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_word.html">Word</a></span> and <span class="tt"><a class="el" href="class_word_with_data.html">WordWithData</a></span> &mdash; non-owning views over the flat-int encoding of a non-commutative word. </p>
+<p>Declares the NC-side lightweight view that every word-table, suffix-tree, overlap, and reduction routine passes around. <span class="tt"><a class="el" href="class_word.html">Word</a></span> carries <span class="tt">mBegin</span> / <span class="tt">mEnd</span> pointers plus a cached size into a raw <span class="tt"><a class="el" href="classint.html">int</a>[]</span> of variable indices <span class="tt">[v_1, ..., v_k]</span> &mdash; with no length or weight prefix, since <span class="tt"><a class="el" href="class_free_monoid.html">FreeMonoid</a></span> already stores those separately. The class never allocates; the underlying buffer normally lives in a <span class="tt"><a class="el" href="class_memory_block.html">MemoryBlock</a></span> or in a <span class="tt">std::vector&lt;<a class="el" href="classint.html">int</a>&gt;</span> that outlives the <span class="tt"><a class="el" href="class_word.html">Word</a></span>. <span class="tt">init</span> lets one <span class="tt"><a class="el" href="class_word.html">Word</a></span> instance be rebound across many buffers in a tight loop without reconstruction; the <span class="tt">std::vector&lt;<a class="el" href="classint.html">int</a>&gt;</span> constructor is <span class="tt">explicit</span> and exists for unit tests where the lifetime is obvious.</p>
+<p><span class="tt"><a class="el" href="class_word_with_data.html">WordWithData</a></span> decorates a <span class="tt"><a class="el" href="class_word.html">Word</a></span> with <span class="tt">mEcartDegree</span> and <span class="tt">mHeftDegree</span> so the word-table sort and divisibility checks over a homogenised system can compare by ecart degree before walking the variable indices. Equality on <span class="tt"><a class="el" href="class_word_with_data.html">WordWithData</a></span> deliberately ignores heft degree but respects ecart degree, matching the divisibility convention used by <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span>'s reducer-selection step. Commutative counterpart is <span class="tt">gb-f4/MonomialView</span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_free_monoid_8hpp.html" title="FreeMonoid — monoid of length-prefixed non-commutative words with weight-vector prefix.">FreeMonoid.hpp</a> </dd>
+<dd>
+<a class="el" href="_word_table_8hpp.html" title="WordTable — production leading-word index for non-commutative Gröbner basis lookup.">WordTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_suffix_tree_8hpp.html" title="SuffixTreeNode — experimental generalised suffix tree for non-commutative leading-word lookup.">SuffixTree.hpp</a> </dd>
+<dd>
+<a class="el" href="_overlap_table_8hpp.html" title="OverlapTable — degree-sorted queue of pending word overlaps for non-commutative GB drivers.">OverlapTable.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_word_8hpp_source.html">Word.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

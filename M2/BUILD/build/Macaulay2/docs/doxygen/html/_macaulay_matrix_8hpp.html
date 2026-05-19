@@ -91,6 +91,9 @@ $(function(){initNavTree('_macaulay_matrix_8hpp.html','',''); });
   <div class="headertitle"><div class="title">MacaulayMatrix.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="classnewf4_1_1_macaulay_matrix.html">newf4::MacaulayMatrix</a></span> &mdash; batched matrix of S-polynomials and tail-reducers (refactor stub).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_monomial_hash_table_8hpp_source.html">MonomialHashTable.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_macaulay_matrix_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -105,7 +108,20 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:newf4" id="r_newf4"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenewf4.html">newf4</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="classnewf4_1_1_macaulay_matrix.html">newf4::MacaulayMatrix</a></span> &mdash; batched matrix of S-polynomials and tail-reducers (refactor stub). </p>
+<p>Declares the F4-side Macaulay matrix the new GB engine row-reduces once per degree: rows are S-polynomials together with selected basis tail-reducers, columns are the monomials appearing in any row sorted by the monomial order, and entries are sparse coefficients drawn from the <span class="tt"><a class="el" href="class_vector_arithmetic.html">VectorArithmetic</a></span> backend. Each echelon row whose leading column is new is promoted to a basis element; the matrix is then discarded and the driver advances to the next degree. This is the batching that makes F4 fast &mdash; instead of reducing one S-polynomial at a time, every pair of the current degree shares its tail- reduction work through the matrix.</p>
+<p>Header is intentionally minimal at this point in the refactor (the <span class="tt">Row</span> / <span class="tt">Column</span> structs are placeholders, and only the <span class="tt">mMonomials</span> column-index table is populated); see the <span class="tt">TODO-refactor-f4</span> note in this subdir for the planned API. The mature counterpart in <span class="tt">f4/</span> still lives next door.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_monomial_hash_table_8hpp.html" title="newf4::MonomialHashFunction and the new-F4 monomial-to-index hash table.">MonomialHashTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_g_b_f4_computation_8hpp.html" title="newf4::GBF4Computation — top-level driver for the refactored F4 Gröbner-basis engine.">GBF4Computation.hpp</a> </dd>
+<dd>
+SPairs.hpp </dd>
+<dd>
+Basis.hpp </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_macaulay_matrix_8hpp_source.html">MacaulayMatrix.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

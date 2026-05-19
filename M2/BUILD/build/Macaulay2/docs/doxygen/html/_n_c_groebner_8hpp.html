@@ -91,6 +91,9 @@ $(function(){initNavTree('_n_c_groebner_8hpp.html','',''); });
   <div class="headertitle"><div class="title">NCGroebner.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> &mdash; Buchberger-style two-sided Gröbner basis driver over a <span class="tt"><a class="el" href="class_free_algebra.html">FreeAlgebra</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_n_c_reduction_8hpp_source.html">NCAlgebras/NCReduction.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_overlap_table_8hpp_source.html">NCAlgebras/OverlapTable.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_word_table_8hpp_source.html">NCAlgebras/WordTable.hpp</a>&quot;</code><br />
@@ -111,7 +114,24 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ac43f4cec100e3f7ec6c9e6d3506f1e27" id="r_ac43f4cec100e3f7ec6c9e6d3506f1e27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_c_groebner_8hpp_ac43f4cec100e3f7ec6c9e6d3506f1e27.html#ac43f4cec100e3f7ec6c9e6d3506f1e27">tryOutMathicCode</a> ()</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> &mdash; Buchberger-style two-sided Gröbner basis driver over a <span class="tt"><a class="el" href="class_free_algebra.html">FreeAlgebra</a></span>. </p>
+<p>Declares the non-commutative analogue of <span class="tt"><a class="el" href="classgb_a.html" title="The default Groebner basis computation class.">gbA</a></span>: given a list of input polynomials in a <span class="tt"><a class="el" href="class_free_algebra.html">FreeAlgebra</a></span>, the class drives a Buchberger-style loop where the role of S-pairs is taken by "overlaps" &mdash; pairs of basis words whose suffix and prefix match. An <span class="tt"><a class="el" href="class_overlap_table.html">OverlapTable</a></span> schedules the queue, a <span class="tt"><a class="el" href="class_word_table.html">WordTable</a></span> (with an experimental <span class="tt"><a class="el" href="class_suffix_tree.html">SuffixTree</a></span> alternative) indexes leading words for divisor lookup, and the reduction step uses <span class="tt">NCReduction</span>'s <span class="tt"><a class="el" href="class_polynomial_heap.html">PolynomialHeap</a></span> (a min-heap that fuses many tail-polynomial subtractions, analogous to the commutative engine's <span class="tt"><a class="el" href="classgbvector_heap.html">gbvectorHeap</a></span>). <span class="tt">computeHomogeneous</span> and <span class="tt">computeInhomogeneous</span> carry the sugar-degree variants the <span class="tt">compute(softDegreeLimit)</span> entry dispatches between.</p>
+<p>Non-commutative two-sided GBs need not terminate, so construction takes a <span class="tt">hardDegreeLimit</span> and the algorithm stops respecting it; the resulting (partial) basis is still usable for normal-form work up to that degree. The <span class="tt"><a class="el" href="_n_c_groebner_8hpp_ac43f4cec100e3f7ec6c9e6d3506f1e27.html#ac43f4cec100e3f7ec6c9e6d3506f1e27">tryOutMathicCode</a></span> free function is a benchmark hook for an experimental mathic integration and is not part of the production API.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_free_algebra_8hpp.html" title="FreeAlgebra — the free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a> </dd>
+<dd>
+<a class="el" href="_word_table_8hpp.html" title="WordTable — production leading-word index for non-commutative Gröbner basis lookup.">WordTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_suffix_tree_8hpp.html" title="SuffixTreeNode — experimental generalised suffix tree for non-commutative leading-word lookup.">SuffixTree.hpp</a> </dd>
+<dd>
+<a class="el" href="_overlap_table_8hpp.html" title="OverlapTable — degree-sorted queue of pending word overlaps for non-commutative GB drivers.">OverlapTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_reduction_8hpp.html" title="PolynomialHeap abstract interface — batched-subtraction heap for non-commutative reduction.">NCReduction.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_f4_8hpp.html" title="NCF4 — non-commutative F4 Gröbner-basis driver building a per-degree Macaulay matrix.">NCF4.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_n_c_groebner_8hpp_source.html">NCGroebner.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

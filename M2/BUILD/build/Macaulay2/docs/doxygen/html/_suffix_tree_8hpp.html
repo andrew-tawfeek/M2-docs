@@ -91,6 +91,9 @@ $(function(){initNavTree('_suffix_tree_8hpp.html','',''); });
   <div class="headertitle"><div class="title">SuffixTree.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_suffix_tree_node.html">SuffixTreeNode</a></span> &mdash; experimental generalised suffix tree for non-commutative leading-word lookup.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_word_8hpp_source.html">NCAlgebras/Word.hpp</a>&quot;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
@@ -121,7 +124,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a6e2e2fd9444395255def7acce0e49de3" id="r_a6e2e2fd9444395255def7acce0e49de3"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_suffix_tree_8hpp_a6e2e2fd9444395255def7acce0e49de3.html#a6e2e2fd9444395255def7acce0e49de3">operator&lt;&lt;</a> (std::ostream &amp;o, const <a class="el" href="class_suffix_tree_node.html">SuffixTreeNode</a> &amp;suffixTreeNode)</td></tr>
 <tr class="memitem:a77f80e2d20bd2400bffac6249e235dba" id="r_a77f80e2d20bd2400bffac6249e235dba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_suffix_tree_8hpp_a77f80e2d20bd2400bffac6249e235dba.html#a77f80e2d20bd2400bffac6249e235dba">outputLabel</a> (std::ostream &amp;o, const <a class="el" href="_suffix_tree_8hpp_aedfa8385fd11881894fce29fc3023f1d.html#aedfa8385fd11881894fce29fc3023f1d">Label</a> &amp;vec)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_suffix_tree_node.html">SuffixTreeNode</a></span> &mdash; experimental generalised suffix tree for non-commutative leading-word lookup. </p>
+<p>Declares the alternative leading-word index for <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> and <span class="tt"><a class="el" href="class_n_c_f4.html">NCF4</a></span>. A generalised suffix tree of the basis's leading words gives <span class="tt">O(|target|)</span> subword and substring queries regardless of basis size, where the production <span class="tt"><a class="el" href="class_word_table.html">WordTable</a></span> pays <span class="tt">O(|target| * |basis|)</span>. Each node stores an arc label (<span class="tt"><a class="el" href="_suffix_tree_8hpp_aedfa8385fd11881894fce29fc3023f1d.html#aedfa8385fd11881894fce29fc3023f1d">Label</a> = std::vector&lt;<a class="el" href="classint.html">int</a>&gt;</span> of variable indices), the cumulative label from the root, child pointers keyed by next- int (<span class="tt">std::map&lt;<a class="el" href="_suffix_tree_8hpp_aedfa8385fd11881894fce29fc3023f1d.html#aedfa8385fd11881894fce29fc3023f1d">Label</a>, SuffixTreeNode*&gt;</span>), Ukkonen's suffix link, and the <span class="tt">mIsFullPattern</span> / <span class="tt">mPatternLeafCount</span> flags that mark whether a node terminates one of the inserted basis words and how many descendant leaves it covers.</p>
+<p>The <span class="tt"><a class="el" href="_suffix_tree_8hpp_a6137b15715e0fc6d08b1936ca1f48e85.html#a6137b15715e0fc6d08b1936ca1f48e85">Overlap</a></span> tuple is shared with <span class="tt"><a class="el" href="class_word_table.html">WordTable</a></span> so consumers see the same return type whichever index is active. <span class="tt"><a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a></span> is staged to swap the two indices via toggled <span class="tt">using</span> declarations; in production the <span class="tt"><a class="el" href="class_word_table.html">WordTable</a></span> path is used, with this header benchmarked on dense NC inputs where its constant-factor edge tends to win.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_word_8hpp.html" title="Word and WordWithData — non-owning views over the flat-int encoding of a non-commutative word.">Word.hpp</a> </dd>
+<dd>
+<a class="el" href="_word_table_8hpp.html" title="WordTable — production leading-word index for non-commutative Gröbner basis lookup.">WordTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_f4_8hpp.html" title="NCF4 — non-commutative F4 Gröbner-basis driver building a per-degree Macaulay matrix.">NCF4.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_suffix_tree_8hpp_source.html">SuffixTree.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

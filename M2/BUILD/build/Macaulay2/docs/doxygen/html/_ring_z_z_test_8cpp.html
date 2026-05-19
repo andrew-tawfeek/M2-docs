@@ -91,6 +91,9 @@ $(function(){initNavTree('_ring_z_z_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">RingZZTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for the legacy <span class="tt"><a class="el" href="class_ring_z_z.html">RingZZ</a></span> integer ring (<span class="tt"><a class="el" href="gauss_8cpp_a5ad190417a478c3f15fa01ef9ee9bac9.html#a5ad190417a478c3f15fa01ef9ee9bac9">globalZZ</a></span>).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_ring_test_8hpp_source.html">RingTest.hpp</a>&quot;</code><br />
 <code>#include &lt;limits&gt;</code><br />
 </div>
@@ -120,7 +123,20 @@ Variables</h2></td></tr>
 <tr class="memitem:ad0567c6eee54391dd7269b9266ceb582" id="r_ad0567c6eee54391dd7269b9266ceb582"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_z_z_test_8cpp_ad0567c6eee54391dd7269b9266ceb582.html#ad0567c6eee54391dd7269b9266ceb582">maxH_initialized</a> = false</td></tr>
 <tr class="memitem:aef064bdeb92d8d03e80797afcdb666e0" id="r_aef064bdeb92d8d03e80797afcdb666e0"><td class="memItemLeft" align="right" valign="top">static mpz_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_z_z_test_8cpp_aef064bdeb92d8d03e80797afcdb666e0.html#aef064bdeb92d8d03e80797afcdb666e0">maxH</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for the legacy <span class="tt"><a class="el" href="class_ring_z_z.html">RingZZ</a></span> integer ring (<span class="tt"><a class="el" href="gauss_8cpp_a5ad190417a478c3f15fa01ef9ee9bac9.html#a5ad190417a478c3f15fa01ef9ee9bac9">globalZZ</a></span>). </p>
+<p>Specialises <span class="tt"><a class="el" href="_ring_test_8hpp.html" title="Shared gtest fixture for the legacy Ring-based Ring*Test.cpp suite.">RingTest.hpp</a></span>'s <span class="tt"><a class="el" href="_a_ring_test_8hpp_abfba126d094aba21386022c26fbc3b85.html#abfba126d094aba21386022c26fbc3b85">getElement</a>&lt;<a class="el" href="class_ring_z_z.html">RingZZ</a>&gt;</span> over the engine's global integer ring: indices <span class="tt">&lt; 50</span> give the deterministic <span class="tt">[-25, 24]</span> prefix, and the remaining trials draw a <span class="tt"><a class="el" href="m2-types_8h_a8a5e1d7abe325f6446ab419df1e1dc31.html#a8a5e1d7abe325f6446ab419df1e1dc31">gmp_ZZ</a></span> bounded by <span class="tt"><a class="el" href="_ring_z_z_test_8cpp_aef064bdeb92d8d03e80797afcdb666e0.html#aef064bdeb92d8d03e80797afcdb666e0">maxH</a> = 10^11</span> from <span class="tt"><a class="el" href="random_8cpp_ac0944224ddc5f22acd4a9c9532de3f5c.html#ac0944224ddc5f22acd4a9c9532de3f5c">rawRandomInteger</a></span>. The static <span class="tt"><a class="el" href="_ring_z_z_test_8cpp_ad0567c6eee54391dd7269b9266ceb582.html#ad0567c6eee54391dd7269b9266ceb582">maxH_initialized</a></span> flag keeps the bound <span class="tt">mpz_t</span> shared across calls so its allocation is a one-time cost. The standard arithmetic / equality / <span class="tt">from_long</span> / <span class="tt">from_int</span> tests then run against the legacy <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> API and assert <span class="tt"><a class="el" href="gauss_8cpp_a5ad190417a478c3f15fa01ef9ee9bac9.html#a5ad190417a478c3f15fa01ef9ee9bac9">globalZZ</a></span> reports the expected <span class="tt">COEFF_ZZ</span> kind, <span class="tt">is_ZZ()</span>, and <span class="tt">"<a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a>"</span> print name.</p>
+<p>Sibling files <span class="tt"><a class="el" href="_ring_z_zp_test_8cpp.html" title="gtest coverage for the legacy Z_mod ring (modular arithmetic via ring_elem).">RingZZpTest.cpp</a></span>, <span class="tt"><a class="el" href="_ring_q_q_test_8cpp.html" title="gtest coverage for the legacy RingQQ rational ring (globalQQ).">RingQQTest.cpp</a></span>, <span class="tt"><a class="el" href="_ring_r_r_r_test_8cpp.html" title="gtest coverage for the legacy RingRRR — ConcreteRing&lt;M2::ARingRRR&gt; glued back into the ring_elem API.">RingRRRTest.cpp</a></span>, <span class="tt"><a class="el" href="_ring_c_c_c_test_8cpp.html" title="gtest coverage for the legacy RingCCC — ConcreteRing&lt;M2::ARingCCC&gt; glued back into the ring_elem API.">RingCCCTest.cpp</a></span>, and <span class="tt"><a class="el" href="_ring_tower_test_8cpp.html" title="gtest coverage for Tower — iterated polynomial-extension rings used by tower-style finite fields.">RingTowerTest.cpp</a></span> (all covered by the same <span class="tt">file-ring-tests</span> markdown) exercise the corresponding legacy backends and the <span class="tt"><a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a></span> <span class="tt">ConcreteRing&lt;...&gt;</span> wrapper that bridges the modern aring rings into the legacy <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> API the interpreter still calls through.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_ring_test_8hpp.html" title="Shared gtest fixture for the legacy Ring-based Ring*Test.cpp suite.">RingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="_z_z_8hpp.html" title="Legacy Ring-based integer ring (GMP mpz_t values).">ZZ.hpp</a> </dd>
+<dd>
+<a class="el" href="random_8h.html" title="Engine-boundary C API for the engine&#39;s PRNG and rational / real / complex random draws.">interface/random.h</a> </dd>
+<dd>
+<a class="el" href="_a_ring_z_z_test_8cpp.html" title="gtest coverage for the FLINT-backed M2::ARingZZ integer aring.">ARingZZTest.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_ring_z_z_test_8cpp_source.html">RingZZTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

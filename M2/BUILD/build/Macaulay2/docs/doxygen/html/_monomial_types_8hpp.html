@@ -91,6 +91,9 @@ $(function(){initNavTree('_monomial_types_8hpp.html','',''); });
   <div class="headertitle"><div class="title">MonomialTypes.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Typed integer vocabulary for <span class="tt">namespace <a class="el" href="namespacenewf4.html">newf4</a></span> (indices, monomial words, hashes, masks).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 </div>
 <p><a href="_monomial_types_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -108,7 +111,20 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a31d40ce79f2399c9bf4f0c3846f6e04a" id="r_a31d40ce79f2399c9bf4f0c3846f6e04a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenewf4_a31d40ce79f2399c9bf4f0c3846f6e04a.html#a31d40ce79f2399c9bf4f0c3846f6e04a">newf4::HashInt</a> = uint64_t</td></tr>
 <tr class="memitem:afd3339ebe18e9dc2d4e025b6ca053ec6" id="r_afd3339ebe18e9dc2d4e025b6ca053ec6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenewf4_afd3339ebe18e9dc2d4e025b6ca053ec6.html#afd3339ebe18e9dc2d4e025b6ca053ec6">newf4::MonomialMask</a> = uint64_t</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Typed integer vocabulary for <span class="tt">namespace <a class="el" href="namespacenewf4.html">newf4</a></span> (indices, monomial words, hashes, masks). </p>
+<p>Declares the strongly-named integer aliases the rest of <span class="tt">gb-f4/</span> uses in place of bare <span class="tt"><a class="el" href="classint.html">int</a></span>: <span class="tt">Index</span> numbers GB basis elements; <span class="tt">MonomialIndex</span> keys into the <span class="tt"><a class="el" href="class_monomial_hash_table.html">MonomialHashTable</a></span> with <span class="tt">0</span> reserved as the "undefined" sentinel; <span class="tt">MonomialInt</span> is one word of the encoded monomial stream and also the type used for cached degrees; <span class="tt"><a class="el" href="res-schreyer-frame_8hpp_a46aff60fe9e7b02cb075b491f6e3af7b.html#a46aff60fe9e7b02cb075b491f6e3af7b">ComponentIndex</a></span> numbers free-module components; <span class="tt">HashInt</span> is the 64-bit hash returned by <span class="tt">MonomialHashFunction</span>; and <span class="tt">MonomialMask</span> is the 64-bit bitset <span class="tt"><a class="el" href="f4-types_8hpp_a26f8bf3ae452faf485404829038ffe26.html#a26f8bf3ae452faf485404829038ffe26">MonomialLookupTable</a></span> uses for cheap divisibility pre-tests.</p>
+<p>All six aliases compile to <span class="tt">int32_t</span> or <span class="tt">uint64_t</span>, but the distinct C++ names let the compiler reject calls that mix a <span class="tt">MonomialIndex</span> with an <span class="tt">Index</span> &mdash; bugs that would silently misbehave with raw ints. Every other header in <span class="tt">gb-f4/</span> ultimately includes this one.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_monomial_hash_table_8hpp.html" title="newf4::MonomialHashFunction and the new-F4 monomial-to-index hash table.">MonomialHashTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_lookup_table_8hpp.html" title="newf4::MonomialLookupTable — divisibility-aware leading-term index for the new F4.">MonomialLookupTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_view_8hpp.html" title="newf4::MonomialView — non-owning view over a [length, var_1, e_1, ...]-encoded monomial.">MonomialView.hpp</a> </dd>
+<dd>
+<a class="el" href="_polynomial_list_8hpp.html" title="Hash-table-keyed polynomial storage for the new F4.">PolynomialList.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_monomial_types_8hpp_source.html">MonomialTypes.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

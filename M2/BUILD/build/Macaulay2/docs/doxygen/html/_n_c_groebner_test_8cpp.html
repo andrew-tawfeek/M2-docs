@@ -91,6 +91,9 @@ $(function(){initNavTree('_n_c_groebner_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">NCGroebnerTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest smoke tests covering the non-commutative GB pipeline end-to-end.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;gtest/gtest.h&gt;</code><br />
@@ -144,7 +147,22 @@ Variables</h2></td></tr>
 <tr class="memitem:afc7beab2062a3e55b9e5d0bc5f14649f" id="r_afc7beab2062a3e55b9e5d0bc5f14649f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classint.html">int</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_c_groebner_test_8cpp_afc7beab2062a3e55b9e5d0bc5f14649f.html#afc7beab2062a3e55b9e5d0bc5f14649f">monom3</a> {1, 0, 1, 0}</td></tr>
 <tr class="memitem:ad7ff07a5d062e08684d658ddd7ebe35e" id="r_ad7ff07a5d062e08684d658ddd7ebe35e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classint.html">int</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_c_groebner_test_8cpp_ad7ff07a5d062e08684d658ddd7ebe35e.html#ad7ff07a5d062e08684d658ddd7ebe35e">word</a> {2, 0, 1, 2, 2, 1, 0, 1, 0}</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest smoke tests covering the non-commutative GB pipeline end-to-end. </p>
+<p>Exercises every layer of <span class="tt">NCAlgebras/</span> together: builds <span class="tt"><a class="el" href="class_free_algebra.html">FreeAlgebra</a></span> and <span class="tt"><a class="el" href="class_free_algebra_quotient.html">FreeAlgebraQuotient</a></span> rings via <span class="tt">util-polyring-creation</span>, inserts and queries <span class="tt"><a class="el" href="class_word_table.html">WordTable</a></span> and <span class="tt"><a class="el" href="class_suffix_tree.html">SuffixTree</a></span> against hand-rolled word inputs, fills <span class="tt"><a class="el" href="class_overlap_table.html">OverlapTable</a></span> with critical pairs, runs <span class="tt">NCReduction</span> and <span class="tt"><a class="el" href="class_n_c_groebner_a4f211fa97e62be3908b157c557fbb57e.html#a4f211fa97e62be3908b157c557fbb57e">NCGroebner::compute</a></span> to a degree cap, and asserts the resulting GB matches the expected size or shape. Also covers <span class="tt"><a class="el" href="class_memory_block.html">MemoryBlock</a></span> directly: a thousand-allocation loop with pseudo-random sizes that catches arena bugs before the GB tests would exhibit them.</p>
+<p>The suffix-tree coverage is the load-bearing part: missed overlaps would silently truncate a GB, so the test file is heavy on construction and factor-search assertions (<span class="tt">SuffixTree.constructionMatches</span> and friends). <a class="el" href="eigen_8cpp_a2e69a5d02487e4de06ca13a64bae2759.html#a2e69a5d02487e4de06ca13a64bae2759">Real</a> test names include <span class="tt"><a class="el" href="class_overlap_table_a2752843e8d338897f2e21987ac79dc3d.html#a2752843e8d338897f2e21987ac79dc3d">OverlapTable.insert</a></span>, <span class="tt">NCGroebner.commutator</span>, and the per-stage smoke tests &mdash; they constitute the regression net the <span class="tt">AssociativeAlgebras</span> package depends on.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCAlgebras/NCGroebner.hpp</a> </dd>
+<dd>
+<a class="el" href="_suffix_tree_8hpp.html" title="SuffixTreeNode — experimental generalised suffix tree for non-commutative leading-word lookup.">NCAlgebras/SuffixTree.hpp</a> </dd>
+<dd>
+<a class="el" href="_overlap_table_8hpp.html" title="OverlapTable — degree-sorted queue of pending word overlaps for non-commutative GB drivers.">NCAlgebras/OverlapTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_reduction_8hpp.html" title="PolynomialHeap abstract interface — batched-subtraction heap for non-commutative reduction.">NCAlgebras/NCReduction.hpp</a> </dd>
+<dd>
+<a class="el" href="util-polyring-creation_8hpp.html" title="One-line helpers for building degree monoids and polynomial rings inside gtest cases.">util-polyring-creation.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_n_c_groebner_test_8cpp_source.html">NCGroebnerTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

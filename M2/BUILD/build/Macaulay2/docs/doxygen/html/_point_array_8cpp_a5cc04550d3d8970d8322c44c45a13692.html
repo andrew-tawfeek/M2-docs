@@ -107,19 +107,19 @@ $(function(){initNavTree('_point_array_8cpp_a5cc04550d3d8970d8322c44c45a13692.ht
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_point_array_8cpp_source.html#l00019">19</a> of file <a class="el" href="_point_array_8cpp_source.html">PointArray.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>{</div>
-<div class="line"><span class="lineno">   21</span>  <a class="code hl_class" href="class_point_array.html">PointArray</a> q(0.0001, 4);</div>
-<div class="line"><span class="lineno">   22</span>  EXPECT_EQ(q.lookup_or_append({1, 0, .54344, .80331}), 0);</div>
-<div class="line"><span class="lineno">   23</span>  EXPECT_EQ(q.lookup_or_append({1, 0, -.25281, 1.032}), 1);</div>
-<div class="line"><span class="lineno">   24</span>  <a class="code hl_class" href="class_point_array.html">PointArray</a> <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>(0.001, 2);</div>
-<div class="line"><span class="lineno">   25</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup({0.1, -0.1}), -1);</div>
-<div class="line"><span class="lineno">   26</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup_or_append({0.1, -0.1}), 0);</div>
-<div class="line"><span class="lineno">   27</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup_or_append({0.1, -0.1}), 0);</div>
-<div class="line"><span class="lineno">   28</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup_or_append({0.1, -0.2}), 1);</div>
-<div class="line"><span class="lineno">   29</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup({0.1, -0.10001}), 0);</div>
-<div class="line"><span class="lineno">   30</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup_or_append({0.1, -0.10001}), 0);</div>
-<div class="line"><span class="lineno">   31</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_point_array_8cpp_source.html#l00044">44</a> of file <a class="el" href="_point_array_8cpp_source.html">PointArray.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
+<div class="line"><span class="lineno">   46</span>  <a class="code hl_class" href="class_point_array.html">PointArray</a> q(0.0001, 4);</div>
+<div class="line"><span class="lineno">   47</span>  EXPECT_EQ(q.lookup_or_append({1, 0, .54344, .80331}), 0);</div>
+<div class="line"><span class="lineno">   48</span>  EXPECT_EQ(q.lookup_or_append({1, 0, -.25281, 1.032}), 1);</div>
+<div class="line"><span class="lineno">   49</span>  <a class="code hl_class" href="class_point_array.html">PointArray</a> <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>(0.001, 2);</div>
+<div class="line"><span class="lineno">   50</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup({0.1, -0.1}), -1);</div>
+<div class="line"><span class="lineno">   51</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup_or_append({0.1, -0.1}), 0);</div>
+<div class="line"><span class="lineno">   52</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup_or_append({0.1, -0.1}), 0);</div>
+<div class="line"><span class="lineno">   53</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup_or_append({0.1, -0.2}), 1);</div>
+<div class="line"><span class="lineno">   54</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup({0.1, -0.10001}), 0);</div>
+<div class="line"><span class="lineno">   55</span>  EXPECT_EQ(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>.lookup_or_append({0.1, -0.10001}), 0);</div>
+<div class="line"><span class="lineno">   56</span>}</div>
 <div class="ttc" id="aclass_point_array_html"><div class="ttname"><a href="class_point_array.html">PointArray</a></div><div class="ttdef"><b>Definition</b> <a href="_n_a_g_8hpp_source.html#l00079">NAG.hpp:80</a></div></div>
 <div class="ttc" id="agodbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552_html_a533391314665d6bf1b5575e9a9cd8552"><div class="ttname"><a href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></div><div class="ttdeci">int p</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00034">godboltTest.cpp:34</a></div></div>
 </div><!-- fragment -->

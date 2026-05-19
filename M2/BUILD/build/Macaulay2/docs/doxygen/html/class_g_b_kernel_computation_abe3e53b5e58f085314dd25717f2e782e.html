@@ -103,17 +103,17 @@ $(function(){initNavTree('class_g_b_kernel_computation_abe3e53b5e58f085314dd2571
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_eschreyer_8cpp_source.html#l00100">100</a> of file <a class="el" href="_eschreyer_8cpp_source.html">Eschreyer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>{</div>
-<div class="line"><span class="lineno">  102</span>  <span class="comment">// Make the Schreyer free module H.</span></div>
-<div class="line"><span class="lineno">  103</span>  GBMatrix *<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <span class="keyword">new</span> GBMatrix(<a class="code hl_variable" href="class_g_b_kernel_computation_a7048fdc3c9db1c7c62cde30012c1e441.html#a7048fdc3c9db1c7c62cde30012c1e441">G</a>);</div>
-<div class="line"><span class="lineno">  104</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_g_b_kernel_computation_a63e48d385f584b3654cdcfad797ba007.html#a63e48d385f584b3654cdcfad797ba007">syzygies</a>.size(); i++)</div>
-<div class="line"><span class="lineno">  105</span>    {</div>
-<div class="line"><span class="lineno">  106</span>      <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;append(<a class="code hl_variable" href="class_g_b_kernel_computation_a63e48d385f584b3654cdcfad797ba007.html#a63e48d385f584b3654cdcfad797ba007">syzygies</a>[i]);</div>
-<div class="line"><span class="lineno">  107</span>      <a class="code hl_variable" href="class_g_b_kernel_computation_a63e48d385f584b3654cdcfad797ba007.html#a63e48d385f584b3654cdcfad797ba007">syzygies</a>[i] = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  108</span>    }</div>
-<div class="line"><span class="lineno">  109</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
-<div class="line"><span class="lineno">  110</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_eschreyer_8cpp_source.html#l00127">127</a> of file <a class="el" href="_eschreyer_8cpp_source.html">Eschreyer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>{</div>
+<div class="line"><span class="lineno">  129</span>  <span class="comment">// Make the Schreyer free module H.</span></div>
+<div class="line"><span class="lineno">  130</span>  GBMatrix *<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <span class="keyword">new</span> GBMatrix(<a class="code hl_variable" href="class_g_b_kernel_computation_a7048fdc3c9db1c7c62cde30012c1e441.html#a7048fdc3c9db1c7c62cde30012c1e441">G</a>);</div>
+<div class="line"><span class="lineno">  131</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="class_g_b_kernel_computation_a63e48d385f584b3654cdcfad797ba007.html#a63e48d385f584b3654cdcfad797ba007">syzygies</a>.size(); i++)</div>
+<div class="line"><span class="lineno">  132</span>    {</div>
+<div class="line"><span class="lineno">  133</span>      <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;append(<a class="code hl_variable" href="class_g_b_kernel_computation_a63e48d385f584b3654cdcfad797ba007.html#a63e48d385f584b3654cdcfad797ba007">syzygies</a>[i]);</div>
+<div class="line"><span class="lineno">  134</span>      <a class="code hl_variable" href="class_g_b_kernel_computation_a63e48d385f584b3654cdcfad797ba007.html#a63e48d385f584b3654cdcfad797ba007">syzygies</a>[i] = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  135</span>    }</div>
+<div class="line"><span class="lineno">  136</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
+<div class="line"><span class="lineno">  137</span>}</div>
 <div class="ttc" id="aclass_g_b_kernel_computation_a63e48d385f584b3654cdcfad797ba007_html_a63e48d385f584b3654cdcfad797ba007"><div class="ttname"><a href="class_g_b_kernel_computation_a63e48d385f584b3654cdcfad797ba007.html#a63e48d385f584b3654cdcfad797ba007">GBKernelComputation::syzygies</a></div><div class="ttdeci">gc_vector&lt; gbvector * &gt; syzygies</div><div class="ttdef"><b>Definition</b> <a href="_eschreyer_8hpp_source.html#l00067">Eschreyer.hpp:67</a></div></div>
 <div class="ttc" id="aclass_g_b_kernel_computation_a7048fdc3c9db1c7c62cde30012c1e441_html_a7048fdc3c9db1c7c62cde30012c1e441"><div class="ttname"><a href="class_g_b_kernel_computation_a7048fdc3c9db1c7c62cde30012c1e441.html#a7048fdc3c9db1c7c62cde30012c1e441">GBKernelComputation::G</a></div><div class="ttdeci">const FreeModule * G</div><div class="ttdef"><b>Definition</b> <a href="_eschreyer_8hpp_source.html#l00062">Eschreyer.hpp:62</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>

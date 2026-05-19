@@ -91,6 +91,9 @@ $(function(){initNavTree('_n_c_f4_8hpp.html','',''); });
   <div class="headertitle"><div class="title">NCF4.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_n_c_f4.html">NCF4</a></span> &mdash; non-commutative F4 Gröbner-basis driver building a per-degree Macaulay matrix.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="m2tbb_8hpp_source.html">m2tbb.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_free_monoid_8hpp_source.html">NCAlgebras/FreeMonoid.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_memory_block_8hpp_source.html">MemoryBlock.hpp</a>&quot;</code><br />
@@ -121,7 +124,24 @@ Classes</h2></td></tr>
 <tr class="memitem:NCF4_3A_3AColumn" id="r_NCF4_3A_3AColumn"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_c_f4_1_1_column.html">NCF4::Column</a></td></tr>
 <tr class="memitem:NCF4_3A_3ANCF4Stats" id="r_NCF4_3A_3ANCF4Stats"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_c_f4_1_1_n_c_f4_stats.html">NCF4::NCF4Stats</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_n_c_f4.html">NCF4</a></span> &mdash; non-commutative F4 Gröbner-basis driver building a per-degree Macaulay matrix. </p>
+<p>Declares the F4-style alternative to the one-overlap-at-a-time <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> reduction loop. Each iteration collects every overlap of the current degree from an <span class="tt"><a class="el" href="class_overlap_table.html">OverlapTable</a></span>, assembles a Macaulay matrix whose rows are the overlap polynomials plus their tail-reducers (drawn from the running basis, the inputs, and previously-built reducer rows &mdash; the three <span class="tt">PreRow</span> flavours <span class="tt">ReducerPreRow</span> / <span class="tt">OverlapPreRow</span> / <span class="tt">PreviousReducerPreRow</span>) and whose columns are the distinct monomials seen in any row sorted by the non-commutative monomial order, then row-reduces the whole matrix via the shared <span class="tt"><a class="el" href="class_vector_arithmetic.html">VectorArithmetic</a></span> backend. Echelon rows whose leading column was not already a basis-element leading column become new GB elements; their overlaps feed the next degree.</p>
+<p>Memory for monomials and packed words is owned by an internal <span class="tt"><a class="el" href="class_memory_block.html">MemoryBlock</a></span>; word divisibility uses <span class="tt"><a class="el" href="class_word_table.html">WordTable</a></span> or the experimental <span class="tt"><a class="el" href="class_suffix_tree.html">SuffixTree</a></span>. <span class="tt"><a class="el" href="m2tbb_8hpp.html" title="Engine TBB shim — single point of inclusion for every parallel primitive.">m2tbb.hpp</a></span> is pulled in so the row-arithmetic kernels can parallelise across TBB threads. For dense inputs with many shared suffixes this batched approach is dramatically faster than <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span>'s Buchberger loop; for sparse inputs the per-row overhead dominates and the dispatcher prefers the older path.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
+<dd>
+<a class="el" href="_free_algebra_8hpp.html" title="FreeAlgebra — the free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a> </dd>
+<dd>
+<a class="el" href="_overlap_table_8hpp.html" title="OverlapTable — degree-sorted queue of pending word overlaps for non-commutative GB drivers.">OverlapTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_word_table_8hpp.html" title="WordTable — production leading-word index for non-commutative Gröbner basis lookup.">WordTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_suffix_tree_8hpp.html" title="SuffixTreeNode — experimental generalised suffix tree for non-commutative leading-word lookup.">SuffixTree.hpp</a> </dd>
+<dd>
+<a class="el" href="_vector_arithmetic_8hpp.html" title="Coefficient-ring-erased arithmetic dispatcher used by F4, GB, and resolution code.">VectorArithmetic.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_n_c_f4_8hpp_source.html">NCF4.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

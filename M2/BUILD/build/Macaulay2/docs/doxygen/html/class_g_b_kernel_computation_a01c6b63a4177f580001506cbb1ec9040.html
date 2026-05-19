@@ -120,41 +120,41 @@ $(function(){initNavTree('class_g_b_kernel_computation_a01c6b63a4177f580001506cb
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_eschreyer_8cpp_source.html#l00260">260</a> of file <a class="el" href="_eschreyer_8cpp_source.html">Eschreyer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  263</span>{</div>
-<div class="line"><span class="lineno">  264</span>  <span class="comment">// Find all the possible matches, use some criterion for finding the best...</span></div>
-<div class="line"><span class="lineno">  265</span>  <a class="code hl_typedef" href="newdelete_8hpp_a372d8395e2d40d72e37f3f32375dd58a.html#a372d8395e2d40d72e37f3f32375dd58a">gc_vector&lt;Bag*&gt;</a> bb;</div>
-<div class="line"><span class="lineno">  266</span>  this_mi-&gt;find_all_divisors(exp, bb);</div>
-<div class="line"><span class="lineno">  267</span>  <span class="keywordtype">int</span> ndivisors = bb.size();</div>
-<div class="line"><span class="lineno">  268</span>  <span class="keywordflow">if</span> (ndivisors == 0) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  269</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = bb[0]-&gt;basis_elem();</div>
-<div class="line"><span class="lineno">  270</span>  <span class="comment">// Now search through, and find the best one.  If only one, just return it.</span></div>
-<div class="line"><span class="lineno">  271</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a> &gt;= 5)</div>
-<div class="line"><span class="lineno">  272</span>    <span class="keywordflow">if</span> (this_mi-&gt;size() &gt; 1)</div>
-<div class="line"><span class="lineno">  273</span>      {</div>
-<div class="line"><span class="lineno">  274</span>        buffer o;</div>
-<div class="line"><span class="lineno">  275</span>        o &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; this_mi-&gt;<a class="code hl_function" href="classbuffer_a176460b25accf169a4a4f30f081a0fa4.html#a176460b25accf169a4a4f30f081a0fa4">size</a>() &lt;&lt; <span class="stringliteral">&quot;.&quot;</span> &lt;&lt; ndivisors &lt;&lt; <span class="stringliteral">&quot;:&quot;</span>;</div>
-<div class="line"><span class="lineno">  276</span>        <a class="code hl_function" href="text-io_8cpp_a5bd0b57b7653fb12e1dcaa8c4d09ce4e.html#a5bd0b57b7653fb12e1dcaa8c4d09ce4e">emit</a>(o.<a class="code hl_function" href="classbuffer_a39972fb7c929bb9e42ed60cddbc1109f.html#a39972fb7c929bb9e42ed60cddbc1109f">str</a>());</div>
-<div class="line"><span class="lineno">  277</span>      }</div>
-<div class="line"><span class="lineno">  278</span>  <span class="keywordflow">if</span> (ndivisors == 1)</div>
-<div class="line"><span class="lineno">  279</span>    {</div>
-<div class="line"><span class="lineno">  280</span>      <span class="keywordflow">if</span> (this_mi-&gt;size() == 1)</div>
-<div class="line"><span class="lineno">  281</span>        <a class="code hl_variable" href="class_g_b_kernel_computation_a82a7299b2882f4c404441041a7c8bc5b.html#a82a7299b2882f4c404441041a7c8bc5b">n_ones</a>++;</div>
-<div class="line"><span class="lineno">  282</span>      <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  283</span>        <a class="code hl_variable" href="class_g_b_kernel_computation_a23c872b492e7ed0e1a70e066d0d07ff7.html#a23c872b492e7ed0e1a70e066d0d07ff7">n_unique</a>++;</div>
-<div class="line"><span class="lineno">  284</span>      <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  285</span>    }</div>
-<div class="line"><span class="lineno">  286</span>  <a class="code hl_variable" href="class_g_b_kernel_computation_a37f0158d20b279a15ed85bd51343255a.html#a37f0158d20b279a15ed85bd51343255a">n_others</a>++;</div>
-<div class="line"><span class="lineno">  287</span> </div>
-<div class="line"><span class="lineno">  288</span>  <span class="keywordtype">int</span> lowest = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
-<div class="line"><span class="lineno">  289</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; ndivisors; i++)</div>
-<div class="line"><span class="lineno">  290</span>    {</div>
-<div class="line"><span class="lineno">  291</span>      <span class="keywordtype">int</span> <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = bb[i]-&gt;basis_elem();</div>
-<div class="line"><span class="lineno">  292</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> &lt; lowest) lowest = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>;</div>
-<div class="line"><span class="lineno">  293</span>    }</div>
-<div class="line"><span class="lineno">  294</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = lowest;</div>
-<div class="line"><span class="lineno">  295</span>  <span class="keywordflow">return</span> ndivisors;</div>
-<div class="line"><span class="lineno">  296</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_eschreyer_8cpp_source.html#l00287">287</a> of file <a class="el" href="_eschreyer_8cpp_source.html">Eschreyer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  290</span>{</div>
+<div class="line"><span class="lineno">  291</span>  <span class="comment">// Find all the possible matches, use some criterion for finding the best...</span></div>
+<div class="line"><span class="lineno">  292</span>  <a class="code hl_typedef" href="newdelete_8hpp_a372d8395e2d40d72e37f3f32375dd58a.html#a372d8395e2d40d72e37f3f32375dd58a">gc_vector&lt;Bag*&gt;</a> bb;</div>
+<div class="line"><span class="lineno">  293</span>  this_mi-&gt;find_all_divisors(exp, bb);</div>
+<div class="line"><span class="lineno">  294</span>  <span class="keywordtype">int</span> ndivisors = bb.size();</div>
+<div class="line"><span class="lineno">  295</span>  <span class="keywordflow">if</span> (ndivisors == 0) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  296</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = bb[0]-&gt;basis_elem();</div>
+<div class="line"><span class="lineno">  297</span>  <span class="comment">// Now search through, and find the best one.  If only one, just return it.</span></div>
+<div class="line"><span class="lineno">  298</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a> &gt;= 5)</div>
+<div class="line"><span class="lineno">  299</span>    <span class="keywordflow">if</span> (this_mi-&gt;size() &gt; 1)</div>
+<div class="line"><span class="lineno">  300</span>      {</div>
+<div class="line"><span class="lineno">  301</span>        buffer o;</div>
+<div class="line"><span class="lineno">  302</span>        o &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; this_mi-&gt;<a class="code hl_function" href="classbuffer_a176460b25accf169a4a4f30f081a0fa4.html#a176460b25accf169a4a4f30f081a0fa4">size</a>() &lt;&lt; <span class="stringliteral">&quot;.&quot;</span> &lt;&lt; ndivisors &lt;&lt; <span class="stringliteral">&quot;:&quot;</span>;</div>
+<div class="line"><span class="lineno">  303</span>        <a class="code hl_function" href="text-io_8cpp_a5bd0b57b7653fb12e1dcaa8c4d09ce4e.html#a5bd0b57b7653fb12e1dcaa8c4d09ce4e">emit</a>(o.<a class="code hl_function" href="classbuffer_a39972fb7c929bb9e42ed60cddbc1109f.html#a39972fb7c929bb9e42ed60cddbc1109f">str</a>());</div>
+<div class="line"><span class="lineno">  304</span>      }</div>
+<div class="line"><span class="lineno">  305</span>  <span class="keywordflow">if</span> (ndivisors == 1)</div>
+<div class="line"><span class="lineno">  306</span>    {</div>
+<div class="line"><span class="lineno">  307</span>      <span class="keywordflow">if</span> (this_mi-&gt;size() == 1)</div>
+<div class="line"><span class="lineno">  308</span>        <a class="code hl_variable" href="class_g_b_kernel_computation_a82a7299b2882f4c404441041a7c8bc5b.html#a82a7299b2882f4c404441041a7c8bc5b">n_ones</a>++;</div>
+<div class="line"><span class="lineno">  309</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  310</span>        <a class="code hl_variable" href="class_g_b_kernel_computation_a23c872b492e7ed0e1a70e066d0d07ff7.html#a23c872b492e7ed0e1a70e066d0d07ff7">n_unique</a>++;</div>
+<div class="line"><span class="lineno">  311</span>      <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  312</span>    }</div>
+<div class="line"><span class="lineno">  313</span>  <a class="code hl_variable" href="class_g_b_kernel_computation_a37f0158d20b279a15ed85bd51343255a.html#a37f0158d20b279a15ed85bd51343255a">n_others</a>++;</div>
+<div class="line"><span class="lineno">  314</span> </div>
+<div class="line"><span class="lineno">  315</span>  <span class="keywordtype">int</span> lowest = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
+<div class="line"><span class="lineno">  316</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; ndivisors; i++)</div>
+<div class="line"><span class="lineno">  317</span>    {</div>
+<div class="line"><span class="lineno">  318</span>      <span class="keywordtype">int</span> <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = bb[i]-&gt;basis_elem();</div>
+<div class="line"><span class="lineno">  319</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> &lt; lowest) lowest = <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>;</div>
+<div class="line"><span class="lineno">  320</span>    }</div>
+<div class="line"><span class="lineno">  321</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = lowest;</div>
+<div class="line"><span class="lineno">  322</span>  <span class="keywordflow">return</span> ndivisors;</div>
+<div class="line"><span class="lineno">  323</span>}</div>
 <div class="ttc" id="aclass_g_b_kernel_computation_a23c872b492e7ed0e1a70e066d0d07ff7_html_a23c872b492e7ed0e1a70e066d0d07ff7"><div class="ttname"><a href="class_g_b_kernel_computation_a23c872b492e7ed0e1a70e066d0d07ff7.html#a23c872b492e7ed0e1a70e066d0d07ff7">GBKernelComputation::n_unique</a></div><div class="ttdeci">int n_unique</div><div class="ttdef"><b>Definition</b> <a href="_eschreyer_8hpp_source.html#l00074">Eschreyer.hpp:74</a></div></div>
 <div class="ttc" id="aclass_g_b_kernel_computation_a37f0158d20b279a15ed85bd51343255a_html_a37f0158d20b279a15ed85bd51343255a"><div class="ttname"><a href="class_g_b_kernel_computation_a37f0158d20b279a15ed85bd51343255a.html#a37f0158d20b279a15ed85bd51343255a">GBKernelComputation::n_others</a></div><div class="ttdeci">int n_others</div><div class="ttdef"><b>Definition</b> <a href="_eschreyer_8hpp_source.html#l00075">Eschreyer.hpp:75</a></div></div>
 <div class="ttc" id="aclass_g_b_kernel_computation_a82a7299b2882f4c404441041a7c8bc5b_html_a82a7299b2882f4c404441041a7c8bc5b"><div class="ttname"><a href="class_g_b_kernel_computation_a82a7299b2882f4c404441041a7c8bc5b.html#a82a7299b2882f4c404441041a7c8bc5b">GBKernelComputation::n_ones</a></div><div class="ttdeci">int n_ones</div><div class="ttdef"><b>Definition</b> <a href="_eschreyer_8hpp_source.html#l00073">Eschreyer.hpp:73</a></div></div>

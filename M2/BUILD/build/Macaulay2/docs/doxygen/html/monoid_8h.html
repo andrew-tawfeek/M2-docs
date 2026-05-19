@@ -91,6 +91,9 @@ $(function(){initNavTree('monoid_8h.html','',''); });
   <div class="headertitle"><div class="title">monoid.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-boundary C API for constructing and inspecting <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span> objects.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 </div>
 <p><a href="monoid_8h_source.html">Go to the source code of this file.</a></p>
@@ -108,7 +111,19 @@ Functions</h2></td></tr>
 <tr class="memitem:afce107e088038057d54d39bb41ce2983" id="r_afce107e088038057d54d39bb41ce2983"><td class="memItemLeft" align="right" valign="top">M2_string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monoid_8h_afce107e088038057d54d39bb41ce2983.html#afce107e088038057d54d39bb41ce2983">rawMonoidToString</a> (const <a class="el" href="class_monoid.html">Monoid</a> *M)</td></tr>
 <tr class="memitem:a326b784be579ca32c1c3036dff09a034" id="r_a326b784be579ca32c1c3036dff09a034"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m2__arrayint.html">M2_arrayint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monoid_8h_a326b784be579ca32c1c3036dff09a034.html#a326b784be579ca32c1c3036dff09a034">to_degree_vector</a> (const <a class="el" href="class_monoid.html">Monoid</a> *M, <a class="el" href="imonorder_8hpp_a478c7f9d1b96319cce705c05e567cc29.html#a478c7f9d1b96319cce705c05e567cc29">const_monomial</a> d)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-boundary C API for constructing and inspecting <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span> objects. </p>
+<p>Declares the <span class="tt">extern "C"</span> entry points the <a class="el" href="namespace_m2.html">M2</a> interpreter calls to build the monoid of monomials underneath every polynomial ring. <span class="tt"><a class="el" href="monoid_8h_ab533a98afff59d85fb9e9983f310be21.html#ab533a98afff59d85fb9e9983f310be21">rawTrivialMonoid()</a></span> returns the cached single-instance trivial monoid; <span class="tt">rawMonoid(mo, deg_ring,
+names, degrees, heftvec)</span> is the workhorse constructor that takes a <span class="tt"><a class="el" href="struct_monomial_ordering.html">MonomialOrdering</a></span>, a degree-monoid pointer (<span class="tt">deg_ring</span>), the variable names, a flat degree vector, and a heft vector, and returns a fresh <span class="tt">Monoid*</span> or null if the inputs are inconsistent. <span class="tt"><a class="el" href="monoid_8h_a44118102607ad8a956a613d271298a64.html#a44118102607ad8a956a613d271298a64">rawMonoidNumberOfBlocks</a></span>, <span class="tt"><a class="el" href="monoid_8h_a80ebc88245eaf5b9dfa7ff2ed4eb6998.html#a80ebc88245eaf5b9dfa7ff2ed4eb6998">rawMonoidHash</a></span>, <span class="tt"><a class="el" href="monoid_8h_afce107e088038057d54d39bb41ce2983.html#afce107e088038057d54d39bb41ce2983">rawMonoidToString</a></span>, and the helper <span class="tt"><a class="el" href="monoid_8h_a326b784be579ca32c1c3036dff09a034.html#a326b784be579ca32c1c3036dff09a034">to_degree_vector</a></span> cover the per-monoid read accessors the interpreter needs after construction.</p>
+<p>The <span class="tt"><a class="el" href="imonorder_8hpp_a13d3bdee365b150ed6cbd411d3a30490.html#a13d3bdee365b150ed6cbd411d3a30490">deg_t</a> = int32_t</span> and <span class="tt"><a class="el" href="monoid_8h_a25e745854bb9731fa5256456333e014c.html#a25e745854bb9731fa5256456333e014c">const_monomial</a></span> typedefs declared here are the engine-wide format for degree slots and packed monomials passed back through this surface. The recursive <span class="tt">deg_ring</span> argument is what makes multi-degrees expressible: the degrees of a <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span> live in another <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span>, with the trivial monoid as the base case &mdash; <a class="el" href="namespace_m2.html">M2</a> builds the chain by calling <span class="tt"><a class="el" href="monoid_8h_a5ec0ab102d303c96abb95f24d65d89ca.html#a5ec0ab102d303c96abb95f24d65d89ca">rawMonoid</a></span> repeatedly.</p>
+<dl class="section see"><dt>See also</dt><dd>monoid.cpp </dd>
+<dd>
+<a class="el" href="monomial-ordering_8h.html" title="Engine-boundary C API for assembling block-level MonomialOrderings from declarative pieces.">monomial-ordering.h</a> </dd>
+<dd>
+<a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="monoid_8h_source.html">monoid.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

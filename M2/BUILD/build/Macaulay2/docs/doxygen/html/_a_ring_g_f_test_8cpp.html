@@ -91,6 +91,9 @@ $(function(){initNavTree('_a_ring_g_f_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">ARingGFTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for the FLINT-backed Galois-field aring (<span class="tt">ARingGFFlintBig</span>).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -117,7 +120,20 @@ Variables</h2></td></tr>
 <tr class="memitem:a1c55f6f647edc8dbf7eb1db9da27f11b" id="r_a1c55f6f647edc8dbf7eb1db9da27f11b"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a> = 200</td></tr>
 <tr class="memitem:a8473be401a9c86562e601c60479a2f19" id="r_a8473be401a9c86562e601c60479a2f19"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_ring_g_f_test_8cpp_a8473be401a9c86562e601c60479a2f19.html#a8473be401a9c86562e601c60479a2f19">randomVals</a> [<a class="el" href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a>]</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for the FLINT-backed Galois-field aring (<span class="tt">ARingGFFlintBig</span>). </p>
+<p>Drives the <span class="tt"><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a></span> element generator against <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big.html">M2::ARingGFFlintBig</a></span> (and adjacent FLINT-GF flavours) through the shared <span class="tt"><a class="el" href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a></span> battery: arithmetic, equality, inverses, negation, and stream round-trips. A 200-entry hardcoded <span class="tt"><a class="el" href="_a_ring_g_f_test_8cpp_a8473be401a9c86562e601c60479a2f19.html#a8473be401a9c86562e601c60479a2f19">randomVals</a></span> array supplies the test inputs deterministically, so a flaky RNG can never cause a spurious CI failure &mdash; the exact values don't matter so long as they span the field, and pre-baking them at file-write time also avoids depending on the <a class="el" href="namespace_m2.html">M2</a> random subsystem inside a test of the <a class="el" href="namespace_m2.html">M2</a> ring stack.</p>
+<p>The companion <span class="tt"><a class="el" href="_givaro_test_8cpp.html" title="Adapted-upstream Givaro smoke test exercising modular, montgomery, gfq, gfqext templates.">GivaroTest.cpp</a></span> (covered by the same <span class="tt">file-aring-gf-tests</span> markdown) smoke-tests the upstream Givaro library when it is linked in, so this file focuses on the FLINT-backed path. The engine ships several <a class="el" href="class_g_f.html">GF</a> implementations side by side (FLINT-Big / FLINT / <a class="el" href="namespace_m2.html">M2</a> native / Givaro / table) for different size regimes; each gets its own <span class="tt">ARing*GFTest</span> to isolate backend bugs.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-gf-flint_8hpp.html" title="M2::ARingGFFlint — small GF(p^k) via FLINT Zech-logarithm tables.">aring-gf-flint.hpp</a> </dd>
+<dd>
+<a class="el" href="_givaro_test_8cpp.html" title="Adapted-upstream Givaro smoke test exercising modular, montgomery, gfq, gfqext templates.">GivaroTest.cpp</a> </dd>
+<dd>
+<a class="el" href="_a_ring_z_zp_test_8cpp.html" title="gtest coverage for M2::ARingZZp (and indirectly the FFPACK-backed variant).">ARingZZpTest.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_a_ring_g_f_test_8cpp_source.html">ARingGFTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

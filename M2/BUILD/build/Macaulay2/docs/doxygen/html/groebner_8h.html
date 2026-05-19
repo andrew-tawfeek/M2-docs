@@ -91,6 +91,9 @@ $(function(){initNavTree('groebner_8h.html','',''); });
   <div class="headertitle"><div class="title">groebner.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-boundary C API for Gröbner basis, resolution, and Hilbert-series computations.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="computation_8h_source.html">interface/computation.h</a>&quot;</code><br />
 </div>
@@ -140,7 +143,20 @@ Functions</h2></td></tr>
 <tr class="memitem:aa5782b7b0eb0165bc64fa302e8241b12" id="r_aa5782b7b0eb0165bc64fa302e8241b12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="groebner_8h_aa5782b7b0eb0165bc64fa302e8241b12.html#aa5782b7b0eb0165bc64fa302e8241b12">rawDisplayMatrixStream</a> (const <a class="el" href="class_matrix.html">Matrix</a> *inputMatrix)</td></tr>
 <tr class="memitem:af7090707a9d7e4e18b9a20ded35c73a7" id="r_af7090707a9d7e4e18b9a20ded35c73a7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_matrix.html">Matrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="groebner_8h_af7090707a9d7e4e18b9a20ded35c73a7.html#af7090707a9d7e4e18b9a20ded35c73a7">rawMGB</a> (const <a class="el" href="class_matrix.html">Matrix</a> *input, <a class="el" href="classint.html">int</a> reducer, <a class="el" href="classint.html">int</a> spairGroupSize, <a class="el" href="classint.html">int</a> nthreads, M2_string logging)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-boundary C API for Gröbner basis, resolution, and Hilbert-series computations. </p>
+<p>Declares the <span class="tt">extern "C"</span> factories the <a class="el" href="namespace_m2.html">M2</a> interpreter calls to start, drive, and inspect every long-running ideal-theory computation in the engine. <span class="tt"><a class="el" href="groebner_8h_a702d31d4ad313b6766a5efff65eae8e2.html#a702d31d4ad313b6766a5efff65eae8e2">IM2_GB_make</a></span> builds a <span class="tt">GBComputation*</span> &mdash; the <span class="tt"><a class="el" href="class_computation.html">Computation</a></span> typedef hides the C++ class &mdash; and the <span class="tt">IM2_res_make*</span> family builds a <span class="tt">ResolutionComputation*</span>; subsequent calls pull results out (<span class="tt"><a class="el" href="groebner_8h_a8068132cc3e9aaffbcb1c49da85f0d71.html#a8068132cc3e9aaffbcb1c49da85f0d71">rawGBGetMatrix</a></span>, <span class="tt"><a class="el" href="groebner_8h_ab4b7062bf8cd7f88812939f4b2eba5fc.html#ab4b7062bf8cd7f88812939f4b2eba5fc">rawGBChangeOfBasis</a></span>, <span class="tt"><a class="el" href="groebner_8h_aa039b9a161201b6eff23177d041d0e65.html#aa039b9a161201b6eff23177d041d0e65">rawGBSyzygies</a></span>, <span class="tt"><a class="el" href="groebner_8h_a7846e77d9fece647c569fe77a1b1dd41.html#a7846e77d9fece647c569fe77a1b1dd41">rawGBGetLeadTerms</a></span>, <span class="tt"><a class="el" href="groebner_8h_a0cf6f3e55c08ef590b0f732b2fc70388.html#a0cf6f3e55c08ef590b0f732b2fc70388">rawGBMinimalGenerators</a></span>, <span class="tt"><a class="el" href="groebner_8h_ae9f04cbcbe5be5705d7a44a44b93d496.html#ae9f04cbcbe5be5705d7a44a44b93d496">rawMinimalBetti</a></span>). <span class="tt"><a class="el" href="groebner_8h_a03ff5e5f21668e4bcd827c4d774c1c71.html#a03ff5e5f21668e4bcd827c4d774c1c71">IM2_Matrix_Hilbert</a></span> and <span class="tt"><a class="el" href="groebner_8h_a766af2266e8e2931e7508625194ba000.html#a766af2266e8e2931e7508625194ba000">rawKernelOfGB</a></span> cover the GB-adjacent operations (Hilbert numerator on <span class="tt">coker leadterms</span>, Schreyer-induced kernel) that have no <a class="el" href="class_computation.html">Computation</a> surface of their own.</p>
+<p>This header is the source of truth for what <span class="tt"><a class="el" href="groebner_8cpp.html">groebner.cpp</a></span> exports &mdash; the historic flat <span class="tt"><a class="el" href="engine_8h.html" title="Legacy umbrella header that re-exports the full engine public surface.">engine.h</a></span> may still carry stale prototypes. Implementation dispatches through <span class="tt"><a class="el" href="class_g_b_computation_aaff7a8f858cded7550f977b4bf34f01b.html#aaff7a8f858cded7550f977b4bf34f01b">GBComputation::choose_gb</a></span> and <span class="tt"><a class="el" href="class_resolution_computation_a82fed2e40d74698d0de21c9237e64c9e.html#a82fed2e40d74698d0de21c9237e64c9e">ResolutionComputation::choose_res</a></span> so the interpreter never sees algorithm selection; it just gets back an opaque pointer it polls via the shared <span class="tt"><a class="el" href="computation_8h.html" title="ComputationStatusCode and StopConditions — engine-to-interpreter vocabulary for long-running computat...">computation.h</a></span> enums.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="groebner_8cpp.html">groebner.cpp</a> </dd>
+<dd>
+<a class="el" href="computation_8h.html" title="ComputationStatusCode and StopConditions — engine-to-interpreter vocabulary for long-running computat...">computation.h</a> </dd>
+<dd>
+<a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd>
+<dd>
+<a class="el" href="comp-res_8hpp.html" title="ResolutionComputation — abstract base for every free-resolution algorithm in the engine.">comp-res.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="groebner_8h_source.html">groebner.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

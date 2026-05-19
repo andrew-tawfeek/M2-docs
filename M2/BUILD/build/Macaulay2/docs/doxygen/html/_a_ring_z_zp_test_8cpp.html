@@ -91,6 +91,9 @@ $(function(){initNavTree('_a_ring_z_zp_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">ARingZZpTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for <span class="tt"><a class="el" href="class_m2_1_1_a_ring_z_zp.html">M2::ARingZZp</a></span> (and indirectly the FFPACK-backed variant).  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -148,7 +151,20 @@ Variables</h2></td></tr>
 <tr class="memitem:ad0567c6eee54391dd7269b9266ceb582" id="r_ad0567c6eee54391dd7269b9266ceb582"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_ring_z_zp_test_8cpp_ad0567c6eee54391dd7269b9266ceb582.html#ad0567c6eee54391dd7269b9266ceb582">maxH_initialized</a> = false</td></tr>
 <tr class="memitem:aef064bdeb92d8d03e80797afcdb666e0" id="r_aef064bdeb92d8d03e80797afcdb666e0"><td class="memItemLeft" align="right" valign="top">static mpz_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_ring_z_zp_test_8cpp_aef064bdeb92d8d03e80797afcdb666e0.html#aef064bdeb92d8d03e80797afcdb666e0">maxH</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for <span class="tt"><a class="el" href="class_m2_1_1_a_ring_z_zp.html">M2::ARingZZp</a></span> (and indirectly the FFPACK-backed variant). </p>
+<p>Specialises <span class="tt"><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a></span>'s <span class="tt"><a class="el" href="_a_ring_test_8hpp_abfba126d094aba21386022c26fbc3b85.html#abfba126d094aba21386022c26fbc3b85">getElement</a>&lt;<a class="el" href="class_m2_1_1_a_ring_z_zp.html">M2::ARingZZp</a>&gt;</span> with the deterministic <span class="tt">[-25, 24]</span> prefix followed by random <span class="tt"><a class="el" href="m2-types_8h_a8a5e1d7abe325f6446ab419df1e1dc31.html#a8a5e1d7abe325f6446ab419df1e1dc31">gmp_ZZ</a></span> draws, and hosts the file-scoped <span class="tt"><a class="el" href="_a_ring_z_zp_test_8cpp_adfe77515ed98688c60398f5759f528e8.html#adfe77515ed98688c60398f5759f528e8">getRandomInteger()</a></span> definition that the whole <span class="tt">ARingZZ*</span> test family pulls in via <span class="tt">extern</span>. The bound <span class="tt"><a class="el" href="_a_ring_z_zp_test_8cpp_aef064bdeb92d8d03e80797afcdb666e0.html#aef064bdeb92d8d03e80797afcdb666e0">maxH</a> = 10^11</span> keeps the random draws human-readable in failure messages while still covering the interesting paths in modular reduction. <span class="tt"><a class="el" href="aring-zzp-ffpack_8hpp.html" title="M2::ARingZZpFFPACK — Z/p via FFLAS-FFPACK&#39;s Modular&lt;double&gt; field.">aring-zzp-ffpack.hpp</a></span> gets included alongside <span class="tt"><a class="el" href="aring-zzp_8hpp.html" title="M2::ARingZZp — portable Z/p for small primes via log/exp/Zech tables.">aring-zzp.hpp</a></span> so a build with FFPACK exercises that backend in the same test run.</p>
+<p>Sibling files <span class="tt"><a class="el" href="_a_ring_z_z_test_8cpp.html" title="gtest coverage for the FLINT-backed M2::ARingZZ integer aring.">ARingZZTest.cpp</a></span>, <span class="tt"><a class="el" href="_a_ring_q_q_gmp_test_8cpp.html" title="gtest coverage for the GMP-backed M2::ARingQQGMP rational aring.">ARingQQGmpTest.cpp</a></span>, and <span class="tt"><a class="el" href="_a_ring_q_q_flint_test_8cpp.html" title="gtest coverage for the FLINT-backed M2::ARingQQFlint rational aring.">ARingQQFlintTest.cpp</a></span> (covered by the same <span class="tt">file-aring-zz-tests</span> markdown) share this random source so the integer / modular / rational suites stay reproducible relative to each other.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-zzp_8hpp.html" title="M2::ARingZZp — portable Z/p for small primes via log/exp/Zech tables.">aring-zzp.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-zzp-ffpack_8hpp.html" title="M2::ARingZZpFFPACK — Z/p via FFLAS-FFPACK&#39;s Modular&lt;double&gt; field.">aring-zzp-ffpack.hpp</a> </dd>
+<dd>
+<a class="el" href="_a_ring_z_z_test_8cpp.html" title="gtest coverage for the FLINT-backed M2::ARingZZ integer aring.">ARingZZTest.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_a_ring_z_zp_test_8cpp_source.html">ARingZZpTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

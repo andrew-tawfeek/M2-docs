@@ -91,6 +91,9 @@ $(function(){initNavTree('_monomial_view_8hpp.html','',''); });
   <div class="headertitle"><div class="title">MonomialView.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="classnewf4_1_1_monomial_view.html">newf4::MonomialView</a></span> &mdash; non-owning view over a <span class="tt">[length, var_1, e_1, ...]</span>-encoded monomial.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_memory_block_8hpp_source.html">../MemoryBlock.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_monomial_types_8hpp_source.html">MonomialTypes.hpp</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -108,7 +111,21 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:newf4" id="r_newf4"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenewf4.html">newf4</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="classnewf4_1_1_monomial_view.html">newf4::MonomialView</a></span> &mdash; non-owning view over a <span class="tt">[length, var_1, e_1, ...]</span>-encoded monomial. </p>
+<p>Declares the lightweight pointer-with-helpers type the new F4 passes around to refer to a monomial without copying its encoded <span class="tt">MonomialInt</span> payload. The encoding is <span class="tt">mData[0] =
+total length</span>, followed by alternating <span class="tt">(var, power)</span> pairs over only the variables with positive exponent; equality is a single <span class="tt">std::memcmp</span> of the tail, divisibility (<span class="tt">monomialDivides</span>) is a single linear walk over the sparse pairs, and <span class="tt">simpleDegree</span> is just the sum of powers. Three constructors cover the two non-allocating cases (over a raw pointer or a <span class="tt">std::vector</span>) plus the allocating one that copies into a caller-supplied <span class="tt"><a class="el" href="class_memory_block.html">MemoryBlock</a></span>; the <span class="tt">combine</span> / <span class="tt">lcm</span> / <span class="tt">product</span> / <span class="tt">quotient</span> static helpers all route their result into a <span class="tt"><a class="el" href="class_memory_block.html">MemoryBlock</a></span> so the view returned points at fresh storage with predictable lifetime.</p>
+<p>The class deliberately does not own its bytes: the same encoded monomial gets referenced from <span class="tt"><a class="el" href="class_monomial_hash_table.html">MonomialHashTable</a></span> entries, polynomial-list rows, and S-pair LCM slots, and the arena is reset at the end of each F4 step so every view is invalidated together. The nested templated <span class="tt">MonomialIterator</span> advances two <span class="tt">MonomialInt</span>s per <span class="tt">++</span> and exposes <span class="tt">var()</span> / <span class="tt">power()</span> accessors so callers can read the sparse encoding without indexing arithmetic.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_memory_block_8hpp.html" title="Bump-pointer arena allocator for transient inner-loop allocations.">MemoryBlock.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_types_8hpp.html" title="Typed integer vocabulary for namespace newf4 (indices, monomial words, hashes, masks).">MonomialTypes.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_hash_table_8hpp.html" title="newf4::MonomialHashFunction and the new-F4 monomial-to-index hash table.">MonomialHashTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_lookup_table_8hpp.html" title="newf4::MonomialLookupTable — divisibility-aware leading-term index for the new F4.">MonomialLookupTable.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_monomial_view_8hpp_source.html">MonomialView.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

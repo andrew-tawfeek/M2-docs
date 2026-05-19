@@ -91,6 +91,9 @@ $(function(){initNavTree('mutable-matrix_8h.html','',''); });
   <div class="headertitle"><div class="title">mutable-matrix.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-boundary C API for the engine's in-place <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span>, including dense linear algebra.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 </div>
 <p><a href="mutable-matrix_8h_source.html">Go to the source code of this file.</a></p>
@@ -170,7 +173,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ae3274dc975e0691417ca8ef8e3f6eb3b" id="r_ae3274dc975e0691417ca8ef8e3f6eb3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="m2-types_8h_a6eccee6b0e1f76f43c18bdd9c422b8fb.html#a6eccee6b0e1f76f43c18bdd9c422b8fb">gmp_RRorNull</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mutable-matrix_8h_ae3274dc975e0691417ca8ef8e3f6eb3b.html#ae3274dc975e0691417ca8ef8e3f6eb3b">rawRingElementNorm</a> (<a class="el" href="m2-types_8h_a06f1f4d2dc6e969bdad2001e9fecfc41.html#a06f1f4d2dc6e969bdad2001e9fecfc41">gmp_RR</a> <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, const <a class="el" href="class_ring_element.html">RingElement</a> *f)</td></tr>
 <tr class="memitem:a81f5e67888cf51e7fd85b03dcd24562c" id="r_a81f5e67888cf51e7fd85b03dcd24562c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="m2-types_8h_a6eccee6b0e1f76f43c18bdd9c422b8fb.html#a6eccee6b0e1f76f43c18bdd9c422b8fb">gmp_RRorNull</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mutable-matrix_8h_a81f5e67888cf51e7fd85b03dcd24562c.html#a81f5e67888cf51e7fd85b03dcd24562c">rawMutableMatrixNorm</a> (<a class="el" href="m2-types_8h_a06f1f4d2dc6e969bdad2001e9fecfc41.html#a06f1f4d2dc6e969bdad2001e9fecfc41">gmp_RR</a> <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, const <a class="el" href="class_mutable_matrix.html">MutableMatrix</a> *M)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-boundary C API for the engine's in-place <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span>, including dense linear algebra. </p>
+<p>Declares the <span class="tt">extern "C"</span> entry points the <a class="el" href="namespace_m2.html">M2</a> interpreter routes to the engine's mutable matrix type. Construction (<span class="tt"><a class="el" href="mutable-matrix_8h_af32aef9bf254f6cfea628a4bd9850648.html#af32aef9bf254f6cfea628a4bd9850648">IM2_MutableMatrix_make</a></span>, <span class="tt"><a class="el" href="mutable-matrix_8h_a3ed4883131ae15bdb73d0e6502caa11e.html#a3ed4883131ae15bdb73d0e6502caa11e">IM2_MutableMatrix_identity</a></span>, <span class="tt"><a class="el" href="mutable-matrix_8h_a0558cfef09edf6238896a3d9d043eedb.html#a0558cfef09edf6238896a3d9d043eedb">IM2_MutableMatrix_from_matrix</a></span>, with <span class="tt">prefer_dense</span> choosing dense vs. sparse storage) is paired with the standard read-only queries (<span class="tt"><a class="el" href="mutable-matrix_8h_a4cf33d0e9b44e706f8dd62ea0cc3fbb6.html#a4cf33d0e9b44e706f8dd62ea0cc3fbb6">IM2_MutableMatrix_to_matrix</a></span> snapshots back into an immutable <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span>, plus dimension, entry, ring, and string accessors); in-place mutation covers single-entry set, row / column swap, scale, and elementary row / column operations; and the linear-algebra surface exposes <span class="tt"><a class="el" href="mutable-matrix_8h_ad822a8a52f53e6ee9276283db93ad9ee.html#ad822a8a52f53e6ee9276283db93ad9ee">rawLU</a></span>, <span class="tt">rawSolve</span>, <span class="tt">rawInverse</span>, <span class="tt">rawDeterminant</span>, <span class="tt">rawRank</span>, <span class="tt">rawNullSpace</span>, <span class="tt">rawRowReduce</span>, fraction-free LU, LLL, and the LAPACK / Arb fast-path entries for RR / CC.</p>
+<p>Each linear-algebra entry dispatches inside the engine through the templated <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;R&gt;</span> family to the fastest available back end &mdash; FFLAS-FFPACK for Z/p, FLINT for <a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a> / <a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a> / <a class="el" href="class_g_f.html">GF</a>, MPFR / Arb for arbitrary-precision real / complex, generic otherwise &mdash; so the interpreter never picks the algorithm itself. The mutable / immutable boundary is the standard "snapshot" model: an immutable <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> is copied in, the algorithm rewrites the mutable buffer, and the caller converts back if it wants an immutable result.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mutable-matrix_8cpp.html">mutable-matrix.cpp</a> </dd>
+<dd>
+<a class="el" href="matrix_8h.html" title="Engine-boundary C API for constructing, transforming, and inspecting immutable Matrix objects.">matrix.h</a> </dd>
+<dd>
+<a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="mutable-matrix_8h_source.html">mutable-matrix.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

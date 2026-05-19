@@ -91,6 +91,9 @@ $(function(){initNavTree('res-moninfo_8hpp.html','',''); });
   <div class="headertitle"><div class="title">res-moninfo.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> dispatcher &mdash; single switch between <span class="tt"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></span> and <span class="tt"><a class="el" href="class_res_monoid_sparse.html">ResMonoidSparse</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="res-moninfo-dense_8hpp_source.html">schreyer-resolution/res-moninfo-dense.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="res-moninfo-sparse_8hpp_source.html">schreyer-resolution/res-moninfo-sparse.hpp</a>&quot;</code><br />
 </div>
@@ -100,7 +103,20 @@ $(function(){initNavTree('res-moninfo_8hpp.html','',''); });
 Typedefs</h2></td></tr>
 <tr class="memitem:a7bc93e1c6a618d8b5a83f61057c445dd" id="r_a7bc93e1c6a618d8b5a83f61057c445dd"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a> = <a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> dispatcher &mdash; single switch between <span class="tt"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></span> and <span class="tt"><a class="el" href="class_res_monoid_sparse.html">ResMonoidSparse</a></span>. </p>
+<p>Pulls in both monomial-layout implementations the F4 resolution uses and aliases <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> to the active one (<span class="tt"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></span> in production, <span class="tt"><a class="el" href="class_res_monoid_sparse.html">ResMonoidSparse</a></span> kept available behind a commented-out <span class="tt">using</span>). The dense layout stores each monomial as a length-<span class="tt">nvars</span> exponent vector and wins for dense monomials or small variable counts; the sparse layout stores <span class="tt">(variable, <a class="el" href="exptable_8h_acbad03742bc161b060402329a67aa889.html#acbad03742bc161b060402329a67aa889">exponent</a>)</span> pairs and wins for low-support monomials in many-variable rings. Both expose the same <span class="tt">monomial_size</span>, <span class="tt"><a class="el" href="geovec_8hpp_a93a6254b3accee4629ec45fc0e4a64cd.html#a93a6254b3accee4629ec45fc0e4a64cd">compare</a></span>, <span class="tt">multiply</span>, and <span class="tt">to_expvector</span> / <span class="tt">from_expvector</span> surface, so switching only requires editing this header.</p>
+<p>The rest of the schreyer-resolution code references <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> through this typedef, which keeps the implementation choice pinned to a single file and lets benchmark-driven swaps stay zero-touch at call sites. Future builds may make the choice configure-time rather than compile-time, but for now the comment is the only mechanism.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-moninfo-dense_8hpp.html" title="ResMonoidDense — dense exponent-vector implementation of the resolution monoid.">res-moninfo-dense.hpp</a> </dd>
+<dd>
+<a class="el" href="res-moninfo-sparse_8hpp.html" title="ResMonoidSparse — sparse-multiset encoding alternative to ResMonoidDense.">res-moninfo-sparse.hpp</a> </dd>
+<dd>
+<a class="el" href="res-poly-ring_8hpp.html" title="ResPolyRing and ResPolynomial — resolution-tuned polynomial-ring view and value type.">res-poly-ring.hpp</a> </dd>
+<dd>
+<a class="el" href="res-schreyer-frame_8hpp.html" title="SchreyerFrame — in-progress representation of a free resolution organised by (level,...">res-schreyer-frame.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="res-moninfo_8hpp_source.html">res-moninfo.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

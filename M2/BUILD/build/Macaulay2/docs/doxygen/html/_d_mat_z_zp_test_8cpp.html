@@ -91,6 +91,9 @@ $(function(){initNavTree('_d_mat_z_zp_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">DMatZZpTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="class_m2_1_1_a_ring_z_zp.html">M2::ARingZZp</a>&gt;</span> &mdash; dense matrices over <span class="tt">Z/p</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;gtest/gtest.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="_d_mat_test_8hpp_source.html">DMatTest.hpp</a>&quot;</code><br />
@@ -104,7 +107,20 @@ Functions</h2></td></tr>
 <tr class="memitem:ac9ac63b64ef8455534937f799624b796" id="r_ac9ac63b64ef8455534937f799624b796"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_d_mat_z_zp_test_8cpp_ac9ac63b64ef8455534937f799624b796.html#ac9ac63b64ef8455534937f799624b796">TEST</a> (<a class="el" href="group__matrices_gaeda989d4916eae3fbd1a28018fc78a85.html#gaeda989d4916eae3fbd1a28018fc78a85">DMatZZp</a>, create)</td></tr>
 <tr class="memitem:af7deaf0d121c308a384849aa0dd03cca" id="r_af7deaf0d121c308a384849aa0dd03cca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_d_mat_z_zp_test_8cpp_af7deaf0d121c308a384849aa0dd03cca.html#af7deaf0d121c308a384849aa0dd03cca">TEST</a> (<a class="el" href="group__matrices_gaeda989d4916eae3fbd1a28018fc78a85.html#gaeda989d4916eae3fbd1a28018fc78a85">DMatZZp</a>, <a class="el" href="mat-arith_8hpp_af3525d02f3098a60b9e93c66531abd6f.html#af3525d02f3098a60b9e93c66531abd6f">submatrix</a>)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="class_m2_1_1_a_ring_z_zp.html">M2::ARingZZp</a>&gt;</span> &mdash; dense matrices over <span class="tt">Z/p</span>. </p>
+<p>Hosts the <span class="tt">TEST(DMatZZp, *)</span> battery that builds <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;<a class="el" href="class_m2_1_1_a_ring_z_zp.html">M2::ARingZZp</a>&gt;</span> instances at small prime moduli (101 in the smoke test) and exercises the dense-matrix surface: construction with <span class="tt">(ring, rows, cols)</span>, single-entry get / set round-trips through <span class="tt">M.entry(i, j)</span>, submatrix extraction, matrix-matrix arithmetic, transpose, and row-reduction / rank queries. <span class="tt"><a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a></span> is pulled in alongside the <span class="tt">ARingZZp</span> header so the legacy <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> surface the F4 engine routes through is exercised in the same pass.</p>
+<p>Companion files <span class="tt"><a class="el" href="_matrix_i_o_test_8cpp.html" title="gtest coverage for BasicPoly / BasicPolyList round-trips and msolve-format benchmark ingestion.">MatrixIOTest.cpp</a></span> and <span class="tt"><a class="el" href="_poly_ring_test_8cpp.html" title="gtest coverage for MonomialOrdering, Monoid, and PolynomialRing construction.">PolyRingTest.cpp</a></span> (same <span class="tt">file-dmat-matrix-tests</span> markdown) cover the matrix / polynomial-list I/O machinery and the polynomial-ring constructors <span class="tt"><a class="el" href="class_d_mat.html">DMat</a></span>-based code sits on top of. The fast <span class="tt">Z/p</span> linear-algebra path that the F4 GB engine depends on flows through the routines smoke-tested here.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_d_mat_test_8hpp.html" title="Convention placeholder header that pulls in dmat.hpp for the dense-matrix test suite.">DMatTest.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-zzp_8hpp.html" title="M2::ARingZZp — portable Z/p for small primes via log/exp/Zech tables.">aring-zzp.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-glue_8hpp.html" title="ConcreteRing&lt;RingType&gt; — the templated bridge between aring and the legacy Ring API.">aring-glue.hpp</a> </dd>
+<dd>
+<a class="el" href="_new_f4_test_8cpp.html" title="gtest coverage for the refactored F4 engine&#39;s hash table, lookup table, and PolynomialList.">NewF4Test.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_d_mat_z_zp_test_8cpp_source.html">DMatZZpTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

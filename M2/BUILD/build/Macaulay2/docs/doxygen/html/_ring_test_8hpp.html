@@ -91,6 +91,9 @@ $(function(){initNavTree('_ring_test_8hpp.html','',''); });
   <div class="headertitle"><div class="title">RingTest.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Shared gtest fixture for the legacy <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>-based <span class="tt">Ring*Test.cpp</span> suite.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -141,7 +144,22 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:ab9f6640fa3295a21ee90492443d792ac" id="r_ab9f6640fa3295a21ee90492443d792ac"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_ring_test_8hpp_ab9f6640fa3295a21ee90492443d792ac.html#ab9f6640fa3295a21ee90492443d792ac">ntrials</a> = 100</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Shared gtest fixture for the legacy <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>-based <span class="tt">Ring*Test.cpp</span> suite. </p>
+<p>Declares the harness the legacy-ring tests share: the primary <span class="tt"><a class="el" href="_ring_test_8hpp_a3754c0f58d4e2d757d4c68d373cbac4b.html#a3754c0f58d4e2d757d4c68d373cbac4b">getElement</a>&lt;RingType&gt;(R, index)</span> function template (specialised per ring in the corresponding <span class="tt">Ring*Test.cpp</span>) that returns a <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> rather than a typed <span class="tt">ElementType</span>, the <span class="tt"><a class="el" href="_ring_test_8hpp_a8b21b151847791794532fa994ff1b78a.html#a8b21b151847791794532fa994ff1b78a">fromStream</a></span> parsers for deserialising elements through the engine's <span class="tt">istream</span> plumbing, and the <span class="tt">ringName(R)</span> helper that drives a <span class="tt"><a class="el" href="classbuffer.html">buffer</a></span> through <span class="tt">R.text_out</span> so test failure messages name the ring under test. <span class="tt"><a class="el" href="_ring_test_8hpp_ab9f6640fa3295a21ee90492443d792ac.html#ab9f6640fa3295a21ee90492443d792ac">ntrials</a> = 100</span> is deliberately smaller than the <span class="tt">aring</span> suite's <span class="tt">1000</span> because each legacy call dispatches through virtual <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> methods and is correspondingly slower.</p>
+<p>Mirrors <span class="tt"><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a></span> for the older <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> / tagged-pointer interface that still powers most user-facing polynomial rings and crosses the C boundary to the interpreter. Both fixtures coexist because both ring hierarchies stay live.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="random_8h.html" title="Engine-boundary C API for the engine&#39;s PRNG and rational / real / complex random draws.">interface/random.h</a> </dd>
+<dd>
+<a class="el" href="_z_z_8hpp.html" title="Legacy Ring-based integer ring (GMP mpz_t values).">ZZ.hpp</a> </dd>
+<dd>
+<a class="el" href="_ring_z_z_test_8cpp.html" title="gtest coverage for the legacy RingZZ integer ring (globalZZ).">RingZZTest.cpp</a> </dd>
+<dd>
+<a class="el" href="_ring_z_zp_test_8cpp.html" title="gtest coverage for the legacy Z_mod ring (modular arithmetic via ring_elem).">RingZZpTest.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_ring_test_8hpp_source.html">RingTest.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

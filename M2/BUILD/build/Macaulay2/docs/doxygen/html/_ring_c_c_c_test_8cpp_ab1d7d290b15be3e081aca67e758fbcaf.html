@@ -117,22 +117,22 @@ $(function(){initNavTree('_ring_c_c_c_test_8cpp_ab1d7d290b15be3e081aca67e758fbca
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_ring_c_c_c_test_8cpp_source.html#l00010">10</a> of file <a class="el" href="_ring_c_c_c_test_8cpp_source.html">RingCCCTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
-<div class="line"><span class="lineno">   12</span>  mpfr_t epsilon;</div>
-<div class="line"><span class="lineno">   13</span>  mpfr_init2(epsilon, 100);</div>
-<div class="line"><span class="lineno">   14</span>  mpfr_set_ui_2exp(epsilon, 1, -nbits, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">   15</span> </div>
-<div class="line"><span class="lineno">   16</span>  <a class="code hl_union" href="unionring__elem.html">ring_elem</a> f = R-&gt;<a class="code hl_function" href="class_m2_1_1_concrete_ring_a7076438fa686b590d07322a644039952.html#a7076438fa686b590d07322a644039952">subtract</a>(a, b);</div>
-<div class="line"><span class="lineno">   17</span>  <span class="keyword">auto</span> f1 = <a class="code hl_define" href="ringelem_8hpp_a077ed2ed9749aaaf0966997a1c7b7e8d.html#a077ed2ed9749aaaf0966997a1c7b7e8d">BIGCC_RE</a>(f);</div>
-<div class="line"><span class="lineno">   18</span>  <span class="keywordtype">bool</span> re_is_zero = (mpfr_cmpabs(f1, epsilon) &lt; 0);</div>
-<div class="line"><span class="lineno">   19</span>  <span class="keyword">auto</span> f2 = <a class="code hl_define" href="ringelem_8hpp_af9bac62e2d632a9591e4db48aaa8ebd6.html#af9bac62e2d632a9591e4db48aaa8ebd6">BIGCC_IM</a>(f);</div>
-<div class="line"><span class="lineno">   20</span>  <span class="keywordtype">bool</span> im_is_zero = (mpfr_cmpabs(f2, epsilon) &lt; 0);</div>
-<div class="line"><span class="lineno">   21</span> </div>
-<div class="line"><span class="lineno">   22</span>  <span class="keywordtype">bool</span> ret = re_is_zero &amp;&amp; im_is_zero;</div>
-<div class="line"><span class="lineno">   23</span>  mpfr_clear(epsilon);</div>
-<div class="line"><span class="lineno">   24</span>  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><span class="lineno">   25</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_ring_c_c_c_test_8cpp_source.html#l00037">37</a> of file <a class="el" href="_ring_c_c_c_test_8cpp_source.html">RingCCCTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
+<div class="line"><span class="lineno">   39</span>  mpfr_t epsilon;</div>
+<div class="line"><span class="lineno">   40</span>  mpfr_init2(epsilon, 100);</div>
+<div class="line"><span class="lineno">   41</span>  mpfr_set_ui_2exp(epsilon, 1, -nbits, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>  <a class="code hl_union" href="unionring__elem.html">ring_elem</a> f = R-&gt;<a class="code hl_function" href="class_m2_1_1_concrete_ring_a7076438fa686b590d07322a644039952.html#a7076438fa686b590d07322a644039952">subtract</a>(a, b);</div>
+<div class="line"><span class="lineno">   44</span>  <span class="keyword">auto</span> f1 = <a class="code hl_define" href="ringelem_8hpp_a077ed2ed9749aaaf0966997a1c7b7e8d.html#a077ed2ed9749aaaf0966997a1c7b7e8d">BIGCC_RE</a>(f);</div>
+<div class="line"><span class="lineno">   45</span>  <span class="keywordtype">bool</span> re_is_zero = (mpfr_cmpabs(f1, epsilon) &lt; 0);</div>
+<div class="line"><span class="lineno">   46</span>  <span class="keyword">auto</span> f2 = <a class="code hl_define" href="ringelem_8hpp_af9bac62e2d632a9591e4db48aaa8ebd6.html#af9bac62e2d632a9591e4db48aaa8ebd6">BIGCC_IM</a>(f);</div>
+<div class="line"><span class="lineno">   47</span>  <span class="keywordtype">bool</span> im_is_zero = (mpfr_cmpabs(f2, epsilon) &lt; 0);</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>  <span class="keywordtype">bool</span> ret = re_is_zero &amp;&amp; im_is_zero;</div>
+<div class="line"><span class="lineno">   50</span>  mpfr_clear(epsilon);</div>
+<div class="line"><span class="lineno">   51</span>  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><span class="lineno">   52</span>}</div>
 <div class="ttc" id="aclass_m2_1_1_concrete_ring_a7076438fa686b590d07322a644039952_html_a7076438fa686b590d07322a644039952"><div class="ttname"><a href="class_m2_1_1_concrete_ring_a7076438fa686b590d07322a644039952.html#a7076438fa686b590d07322a644039952">M2::ConcreteRing::subtract</a></div><div class="ttdeci">virtual ring_elem subtract(const ring_elem f, const ring_elem g) const</div><div class="ttdef"><b>Definition</b> <a href="aring-glue_8hpp_source.html#l00331">aring-glue.hpp:331</a></div></div>
 <div class="ttc" id="aringelem_8hpp_a077ed2ed9749aaaf0966997a1c7b7e8d_html_a077ed2ed9749aaaf0966997a1c7b7e8d"><div class="ttname"><a href="ringelem_8hpp_a077ed2ed9749aaaf0966997a1c7b7e8d.html#a077ed2ed9749aaaf0966997a1c7b7e8d">BIGCC_RE</a></div><div class="ttdeci">#define BIGCC_RE(f)</div><div class="ttdef"><b>Definition</b> <a href="ringelem_8hpp_source.html#l00186">ringelem.hpp:186</a></div></div>
 <div class="ttc" id="aringelem_8hpp_af9bac62e2d632a9591e4db48aaa8ebd6_html_af9bac62e2d632a9591e4db48aaa8ebd6"><div class="ttname"><a href="ringelem_8hpp_af9bac62e2d632a9591e4db48aaa8ebd6.html#af9bac62e2d632a9591e4db48aaa8ebd6">BIGCC_IM</a></div><div class="ttdeci">#define BIGCC_IM(f)</div><div class="ttdef"><b>Definition</b> <a href="ringelem_8hpp_source.html#l00185">ringelem.hpp:185</a></div></div>

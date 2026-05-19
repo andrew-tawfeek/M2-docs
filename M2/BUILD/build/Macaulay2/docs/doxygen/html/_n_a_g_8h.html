@@ -91,6 +91,9 @@ $(function(){initNavTree('_n_a_g_8h.html','',''); });
   <div class="headertitle"><div class="title">NAG.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-boundary C API for the Numerical Algebraic Geometry subsystem.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_n_a_g_8h_source.html">Go to the source code of this file.</a></p>
@@ -142,7 +145,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ac99f2d47c42b8b21de1df63f1d1f4a0e" id="r_ac99f2d47c42b8b21de1df63f1d1f4a0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_a_g_8h_ac99f2d47c42b8b21de1df63f1d1f4a0e.html#ac99f2d47c42b8b21de1df63f1d1f4a0e">rawPointArrayLookup</a> (<a class="el" href="class_m2_point_array.html">M2PointArray</a> *pa, const <a class="el" href="class_mutable_matrix.html">MutableMatrix</a> *M, <a class="el" href="classint.html">int</a> col)</td></tr>
 <tr class="memitem:aba6ca03513982aa1ab6911a31764ab8e" id="r_aba6ca03513982aa1ab6911a31764ab8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_a_g_8h_aba6ca03513982aa1ab6911a31764ab8e.html#aba6ca03513982aa1ab6911a31764ab8e">rawPointArrayLookupOrAppend</a> (<a class="el" href="class_m2_point_array.html">M2PointArray</a> *pa, const <a class="el" href="class_mutable_matrix.html">MutableMatrix</a> *M, <a class="el" href="classint.html">int</a> col)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-boundary C API for the Numerical Algebraic Geometry subsystem. </p>
+<p>Declares the <span class="tt">extern "C"</span> entry points that the <a class="el" href="namespace_m2.html">M2</a> interpreter (via <span class="tt">NumericalAlgebraicGeometry</span>, <span class="tt">MonodromySolver</span>, and related packages) uses to drive homotopy continuation, witness- set construction, and SLP-based polynomial evaluation. Six opaque handle types (<span class="tt"><a class="el" href="class_m2_s_l_program.html">M2SLProgram</a></span>, <span class="tt"><a class="el" href="class_m2_s_l_evaluator.html">M2SLEvaluator</a></span>, <span class="tt"><a class="el" href="class_straight_line_program.html">StraightLineProgram</a></span>, <span class="tt"><a class="el" href="class_m2_homotopy.html">M2Homotopy</a></span>, <span class="tt"><a class="el" href="class_path_tracker.html">PathTracker</a></span>, <span class="tt"><a class="el" href="class_m2_point_array.html">M2PointArray</a></span>) hide the C++ classes behind C-callable structs so the front end can pass them around without seeing their layout; the same names resolve to the real classes when compiled as C++.</p>
+<p>The functions cover the full NAG workflow &mdash; <span class="tt"><a class="el" href="_n_a_g_8h_a81f7578b090f800f9eada7520fc9760b.html#a81f7578b090f800f9eada7520fc9760b">rawSLProgram</a></span> / <span class="tt"><a class="el" href="_n_a_g_8h_a3926f642308e1748c0970d7086b892a1.html#a3926f642308e1748c0970d7086b892a1">rawSLP</a></span> build a straight-line program, <span class="tt"><a class="el" href="_n_a_g_8h_a81ac7e0201bb7802a0dc956db02f278a.html#a81ac7e0201bb7802a0dc956db02f278a">rawSLEvaluator</a></span> and <span class="tt"><a class="el" href="_n_a_g_8h_acc3eb9d5811ed55457d6d8207b775e58.html#acc3eb9d5811ed55457d6d8207b775e58">rawCompiledSLEvaluator</a></span> wrap it for evaluation, <span class="tt"><a class="el" href="_n_a_g_8h_ac3db72a9b8a8b83a49bfc791afb1c591.html#ac3db72a9b8a8b83a49bfc791afb1c591">rawHomotopy</a></span> / <span class="tt"><a class="el" href="_n_a_g_8h_a98a7624bd4a82845ec3b95f67652d7e0.html#a98a7624bd4a82845ec3b95f67652d7e0">rawHomotopyTrack</a></span> run continuation, <span class="tt">rawPathTracker*</span> does explicit step-size-controlled tracking, and <span class="tt">rawPointArray*</span> manages collections of numerical solutions. Each handle also has a <span class="tt">*Hash</span> / <span class="tt">*ToString</span> pair the interpreter uses for printing and equality.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_n_a_g_8cpp.html">NAG.cpp</a> </dd>
+<dd>
+<a class="el" href="_s_l_p_8hpp.html" title="Public umbrella header for the straight-line-program evaluator used by NAG.">SLP.hpp</a> </dd>
+<dd>
+<a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_n_a_g_8h_source.html">NAG.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

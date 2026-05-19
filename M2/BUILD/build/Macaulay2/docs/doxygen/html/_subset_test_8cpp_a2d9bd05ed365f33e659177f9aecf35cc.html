@@ -107,24 +107,24 @@ $(function(){initNavTree('_subset_test_8cpp_a2d9bd05ed365f33e659177f9aecf35cc.ht
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_subset_test_8cpp_source.html#l00158">158</a> of file <a class="el" href="_subset_test_8cpp_source.html">SubsetTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  159</span>{</div>
-<div class="line"><span class="lineno">  160</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> n = 7;</div>
-<div class="line"><span class="lineno">  161</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = 3;</div>
-<div class="line"><span class="lineno">  162</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> q = 2;</div>
-<div class="line"><span class="lineno">  163</span>  <a class="code hl_class" href="class_subsets.html">Subsets</a> C(n, std::max(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, q));</div>
-<div class="line"><span class="lineno">  164</span> </div>
-<div class="line"><span class="lineno">  165</span>  <a class="code hl_typedef" href="comb_8hpp_a3dbc1effdceb64fb669cf05c4776eec3.html#a3dbc1effdceb64fb669cf05c4776eec3">Subset</a> b(q, 0);</div>
-<div class="line"><span class="lineno">  166</span> </div>
-<div class="line"><span class="lineno">  167</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; 21; i++)</div>
-<div class="line"><span class="lineno">  168</span>    {</div>
-<div class="line"><span class="lineno">  169</span>      C.decode(i, b);</div>
-<div class="line"><span class="lineno">  170</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;i=&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; set=&quot;</span>;</div>
-<div class="line"><span class="lineno">  171</span>      <a class="code hl_function" href="class_subsets_ae80021fd53ac087bde55fe9ac360f114.html#ae80021fd53ac087bde55fe9ac360f114">Subsets::show</a>(std::cout, b);</div>
-<div class="line"><span class="lineno">  172</span>      std::cout &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  173</span>      EXPECT_TRUE(C.isValid(b));</div>
-<div class="line"><span class="lineno">  174</span>    }</div>
-<div class="line"><span class="lineno">  175</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_subset_test_8cpp_source.html#l00184">184</a> of file <a class="el" href="_subset_test_8cpp_source.html">SubsetTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  185</span>{</div>
+<div class="line"><span class="lineno">  186</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> n = 7;</div>
+<div class="line"><span class="lineno">  187</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = 3;</div>
+<div class="line"><span class="lineno">  188</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> q = 2;</div>
+<div class="line"><span class="lineno">  189</span>  <a class="code hl_class" href="class_subsets.html">Subsets</a> C(n, std::max(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, q));</div>
+<div class="line"><span class="lineno">  190</span> </div>
+<div class="line"><span class="lineno">  191</span>  <a class="code hl_typedef" href="comb_8hpp_a3dbc1effdceb64fb669cf05c4776eec3.html#a3dbc1effdceb64fb669cf05c4776eec3">Subset</a> b(q, 0);</div>
+<div class="line"><span class="lineno">  192</span> </div>
+<div class="line"><span class="lineno">  193</span>  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; 21; i++)</div>
+<div class="line"><span class="lineno">  194</span>    {</div>
+<div class="line"><span class="lineno">  195</span>      C.decode(i, b);</div>
+<div class="line"><span class="lineno">  196</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;i=&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; set=&quot;</span>;</div>
+<div class="line"><span class="lineno">  197</span>      <a class="code hl_function" href="class_subsets_ae80021fd53ac087bde55fe9ac360f114.html#ae80021fd53ac087bde55fe9ac360f114">Subsets::show</a>(std::cout, b);</div>
+<div class="line"><span class="lineno">  198</span>      std::cout &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  199</span>      EXPECT_TRUE(C.isValid(b));</div>
+<div class="line"><span class="lineno">  200</span>    }</div>
+<div class="line"><span class="lineno">  201</span>}</div>
 <div class="ttc" id="aclass_subsets_ae80021fd53ac087bde55fe9ac360f114_html_ae80021fd53ac087bde55fe9ac360f114"><div class="ttname"><a href="class_subsets_ae80021fd53ac087bde55fe9ac360f114.html#ae80021fd53ac087bde55fe9ac360f114">Subsets::show</a></div><div class="ttdeci">static void show(std::ostream &amp;o, const Subset &amp;a)</div><div class="ttdef"><b>Definition</b> <a href="comb_8cpp_source.html#l00203">comb.cpp:203</a></div></div>
 <div class="ttc" id="aclass_subsets_html"><div class="ttname"><a href="class_subsets.html">Subsets</a></div><div class="ttdef"><b>Definition</b> <a href="comb_8hpp_source.html#l00055">comb.hpp:56</a></div></div>
 <div class="ttc" id="acomb_8hpp_a3dbc1effdceb64fb669cf05c4776eec3_html_a3dbc1effdceb64fb669cf05c4776eec3"><div class="ttname"><a href="comb_8hpp_a3dbc1effdceb64fb669cf05c4776eec3.html#a3dbc1effdceb64fb669cf05c4776eec3">Subset</a></div><div class="ttdeci">std::vector&lt; size_t &gt; Subset</div><div class="ttdef"><b>Definition</b> <a href="comb_8hpp_source.html#l00053">comb.hpp:53</a></div></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('nc-res-computation_8hpp.html','',''); });
   <div class="headertitle"><div class="title">nc-res-computation.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_n_c_res_computation.html">NCResComputation</a></span> &mdash; free-resolution driver for modules over a <span class="tt"><a class="el" href="class_free_algebra_quotient.html">FreeAlgebraQuotient</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="comp-res_8hpp_source.html">comp-res.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_free_algebra_quotient_8hpp_source.html">NCAlgebras/FreeAlgebraQuotient.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&quot;</code><br />
@@ -106,7 +109,22 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a3bc5710b3c92daa99accb62d40ee61db" id="r_a3bc5710b3c92daa99accb62d40ee61db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_resolution_computation.html">ResolutionComputation</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nc-res-computation_8hpp_a3bc5710b3c92daa99accb62d40ee61db.html#a3bc5710b3c92daa99accb62d40ee61db">createNCRes</a> (const <a class="el" href="class_matrix.html">Matrix</a> *m, <a class="el" href="classint.html">int</a> max_level, <a class="el" href="classint.html">int</a> strategy)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_n_c_res_computation.html">NCResComputation</a></span> &mdash; free-resolution driver for modules over a <span class="tt"><a class="el" href="class_free_algebra_quotient.html">FreeAlgebraQuotient</a></span>. </p>
+<p>Declares the non-commutative counterpart of <span class="tt"><a class="el" href="class_f4_res_computation.html">F4ResComputation</a></span>: a <span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> subclass that computes a free resolution of a right module presented by its Gröbner basis over a <span class="tt"><a class="el" href="class_free_algebra_quotient.html">FreeAlgebraQuotient</a></span> ring. The constructor is private; the friend factory <span class="tt">createNCRes(M,
+max_level, strategy)</span> is the only entry point, and the input matrix must already be a (partial) GB of the module being resolved. The class deliberately ignores every stop condition inherited from <span class="tt"><a class="el" href="class_computation.html">Computation</a></span> except <span class="tt">length_limit</span> and <span class="tt">degree_limit</span>, since non-commutative resolutions are exploratory and the user mainly wants a bound on how deep to dig before reporting a Betti table.</p>
+<p>The expected per-level loop is sketched in the long comment block at the bottom of the header: build levels 0 / 1 from the input module, fill in syzygies degree-by-degree using F4-style overlap reduction against both the ring's GB and the earlier-level frame, and store each <span class="tt">(free module,
+differential)</span> pair as the resolution grows. The <span class="tt">#if 0</span> sketches <span class="tt">NCSchreyerResolution</span> / <span class="tt">Level</span> / <span class="tt">Element</span> / <span class="tt">ModulePoly</span> types that the in-progress implementation is expected to grow into. <span class="tt">notes.txt</span> in this subdir tracks the still-open design questions.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp-res_8hpp.html" title="ResolutionComputation — abstract base for every free-resolution algorithm in the engine.">comp-res.hpp</a> </dd>
+<dd>
+<a class="el" href="_free_algebra_quotient_8hpp.html" title="A FreeAlgebra modulo a two-sided ideal carried by an embedded NCGroebner.">FreeAlgebraQuotient.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
+<dd>
+<a class="el" href="res-f4-computation_8hpp.html" title="F4ResComputation — top-level Schreyer-frame F4 free-resolution driver.">schreyer-resolution/res-f4-computation.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="nc-res-computation_8hpp_source.html">nc-res-computation.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

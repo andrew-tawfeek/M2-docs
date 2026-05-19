@@ -107,24 +107,24 @@ $(function(){initNavTree('_a_ring_q_q_flint_test_8cpp_a77c6d97232fe4632e6cb65882
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_ring_q_q_flint_test_8cpp_source.html#l00030">30</a> of file <a class="el" href="_a_ring_q_q_flint_test_8cpp_source.html">ARingQQFlintTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
-<div class="line"><span class="lineno">   32</span>  <a class="code hl_class" href="class_m2_1_1_a_ring_q_q_flint.html">M2::ARingQQFlint</a> R;</div>
-<div class="line"><span class="lineno">   33</span> </div>
-<div class="line"><span class="lineno">   34</span>  <a class="code hl_typedef" href="class_m2_1_1_a_ring_q_q_flint_a4914eebb41efa48fcd7b0a35ba063432.html#a4914eebb41efa48fcd7b0a35ba063432">M2::ARingQQFlint::ElementType</a> a;</div>
-<div class="line"><span class="lineno">   35</span>  <a class="code hl_class" href="classbuffer.html">buffer</a> o;</div>
-<div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span>  <a class="code hl_class" href="class_a_ring_element_generator.html">ARingElementGenerator&lt;M2::ARingQQFlint&gt;</a> gen(R);</div>
-<div class="line"><span class="lineno">   38</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_q_q_flint_a0fc61684e64b1a62b9b854cbfa681778.html#a0fc61684e64b1a62b9b854cbfa681778">init</a>(a);</div>
-<div class="line"><span class="lineno">   39</span>  gen.nextElement(a);</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>  EXPECT_EQ(<a class="code hl_function" href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a>(R), <span class="stringliteral">&quot;QQFlint&quot;</span>);</div>
-<div class="line"><span class="lineno">   42</span>  EXPECT_EQ(R.<a class="code hl_function" href="class_m2_1_1_a_ring_q_q_flint_a8c0b1c7b1d68fa2dbca2a9df8afb386f.html#a8c0b1c7b1d68fa2dbca2a9df8afb386f">cardinality</a>(), <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(-1));</div>
-<div class="line"><span class="lineno">   43</span>  EXPECT_EQ(R.<a class="code hl_function" href="class_m2_1_1_a_ring_q_q_flint_ab5a643e00aeff890557a1bc7d92204db.html#ab5a643e00aeff890557a1bc7d92204db">characteristic</a>(), 0);</div>
-<div class="line"><span class="lineno">   44</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_q_q_flint_a66e70610ab1fe775e7f6501fb28c593c.html#a66e70610ab1fe775e7f6501fb28c593c">clear</a>(a);</div>
-<div class="line"><span class="lineno">   45</span>}</div>
-<div class="ttc" id="a_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807_html_aed865d319365c090f84bd7fd38400807"><div class="ttname"><a href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a></div><div class="ttdeci">std::string ringName(const T &amp;R)</div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00087">ARingTest.hpp:87</a></div></div>
-<div class="ttc" id="aclass_a_ring_element_generator_html"><div class="ttname"><a href="class_a_ring_element_generator.html">ARingElementGenerator</a></div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00016">ARingTest.hpp:17</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_a_ring_q_q_flint_test_8cpp_source.html#l00057">57</a> of file <a class="el" href="_a_ring_q_q_flint_test_8cpp_source.html">ARingQQFlintTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
+<div class="line"><span class="lineno">   59</span>  <a class="code hl_class" href="class_m2_1_1_a_ring_q_q_flint.html">M2::ARingQQFlint</a> R;</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>  <a class="code hl_typedef" href="class_m2_1_1_a_ring_q_q_flint_a4914eebb41efa48fcd7b0a35ba063432.html#a4914eebb41efa48fcd7b0a35ba063432">M2::ARingQQFlint::ElementType</a> a;</div>
+<div class="line"><span class="lineno">   62</span>  <a class="code hl_class" href="classbuffer.html">buffer</a> o;</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>  <a class="code hl_class" href="class_a_ring_element_generator.html">ARingElementGenerator&lt;M2::ARingQQFlint&gt;</a> gen(R);</div>
+<div class="line"><span class="lineno">   65</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_q_q_flint_a0fc61684e64b1a62b9b854cbfa681778.html#a0fc61684e64b1a62b9b854cbfa681778">init</a>(a);</div>
+<div class="line"><span class="lineno">   66</span>  gen.nextElement(a);</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>  EXPECT_EQ(<a class="code hl_function" href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a>(R), <span class="stringliteral">&quot;QQFlint&quot;</span>);</div>
+<div class="line"><span class="lineno">   69</span>  EXPECT_EQ(R.<a class="code hl_function" href="class_m2_1_1_a_ring_q_q_flint_a8c0b1c7b1d68fa2dbca2a9df8afb386f.html#a8c0b1c7b1d68fa2dbca2a9df8afb386f">cardinality</a>(), <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(-1));</div>
+<div class="line"><span class="lineno">   70</span>  EXPECT_EQ(R.<a class="code hl_function" href="class_m2_1_1_a_ring_q_q_flint_ab5a643e00aeff890557a1bc7d92204db.html#ab5a643e00aeff890557a1bc7d92204db">characteristic</a>(), 0);</div>
+<div class="line"><span class="lineno">   71</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_q_q_flint_a66e70610ab1fe775e7f6501fb28c593c.html#a66e70610ab1fe775e7f6501fb28c593c">clear</a>(a);</div>
+<div class="line"><span class="lineno">   72</span>}</div>
+<div class="ttc" id="a_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807_html_aed865d319365c090f84bd7fd38400807"><div class="ttname"><a href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a></div><div class="ttdeci">std::string ringName(const T &amp;R)</div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00114">ARingTest.hpp:114</a></div></div>
+<div class="ttc" id="aclass_a_ring_element_generator_html"><div class="ttname"><a href="class_a_ring_element_generator.html">ARingElementGenerator</a></div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00043">ARingTest.hpp:44</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_q_q_flint_a0fc61684e64b1a62b9b854cbfa681778_html_a0fc61684e64b1a62b9b854cbfa681778"><div class="ttname"><a href="class_m2_1_1_a_ring_q_q_flint_a0fc61684e64b1a62b9b854cbfa681778.html#a0fc61684e64b1a62b9b854cbfa681778">M2::ARingQQFlint::init</a></div><div class="ttdeci">void init(ElementType &amp;result) const</div><div class="ttdef"><b>Definition</b> <a href="aring-qq-flint_8hpp_source.html#l00122">aring-qq-flint.hpp:122</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_q_q_flint_a4914eebb41efa48fcd7b0a35ba063432_html_a4914eebb41efa48fcd7b0a35ba063432"><div class="ttname"><a href="class_m2_1_1_a_ring_q_q_flint_a4914eebb41efa48fcd7b0a35ba063432.html#a4914eebb41efa48fcd7b0a35ba063432">M2::ARingQQFlint::ElementType</a></div><div class="ttdeci">fmpq ElementType</div><div class="ttdef"><b>Definition</b> <a href="aring-qq-flint_8hpp_source.html#l00067">aring-qq-flint.hpp:67</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_q_q_flint_a66e70610ab1fe775e7f6501fb28c593c_html_a66e70610ab1fe775e7f6501fb28c593c"><div class="ttname"><a href="class_m2_1_1_a_ring_q_q_flint_a66e70610ab1fe775e7f6501fb28c593c.html#a66e70610ab1fe775e7f6501fb28c593c">M2::ARingQQFlint::clear</a></div><div class="ttdeci">static void clear(ElementType &amp;result)</div><div class="ttdef"><b>Definition</b> <a href="aring-qq-flint_8hpp_source.html#l00123">aring-qq-flint.hpp:123</a></div></div>

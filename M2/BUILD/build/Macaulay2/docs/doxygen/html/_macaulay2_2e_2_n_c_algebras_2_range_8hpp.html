@@ -91,6 +91,9 @@ $(function(){initNavTree('_macaulay2_2e_2_n_c_algebras_2_range_8hpp.html','','')
   <div class="headertitle"><div class="title">Range.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Home-rolled <span class="tt">std::span</span> substitute and zipped-range view for the NC engines.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -104,7 +107,20 @@ Classes</h2></td></tr>
 <tr class="memitem:ConstZipIterator_3C_20U_2C_20T_20_3E" id="r_ConstZipIterator_3C_20U_2C_20T_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_const_zip_iterator.html">ConstZipIterator&lt; U, T &gt;</a></td></tr>
 <tr class="memitem:PairRange_3C_20U_2C_20T_20_3E" id="r_PairRange_3C_20U_2C_20T_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pair_range.html">PairRange&lt; U, T &gt;</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Home-rolled <span class="tt">std::span</span> substitute and zipped-range view for the NC engines. </p>
+<p>Declares the engine's C++17 stand-in for <span class="tt">std::span</span>. <span class="tt"><a class="el" href="class_range.html">Range</a>&lt;<a class="el" href="struct_t.html">T</a>&gt;</span> is a pair of <span class="tt">T*</span>s representing <span class="tt">[first, last)</span> with <span class="tt"><a class="el" href="ringelem_8cpp_a7dc3f254421434195d252afe59ba8dac.html#a7dc3f254421434195d252afe59ba8dac">begin()</a></span> / <span class="tt"><a class="el" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end()</a></span> accessors so it works in range-<span class="tt">for</span>, plus constructors for raw pointer pairs, <span class="tt">std::pair&lt;T*, T*&gt;</span> (the natural output of <span class="tt"><a class="el" href="class_memory_block_abfac6dbe4c86a0abd31c1d6db282ff35.html#abfac6dbe4c86a0abd31c1d6db282ff35">MemoryBlock::allocateArray</a>&lt;<a class="el" href="struct_t.html">T</a>&gt;</span>), <span class="tt">std::vector&lt;<a class="el" href="struct_t.html">T</a>&gt;</span>, the engine's <span class="tt"><a class="el" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR(T)</a></span> macro, and the const-widening cross-type copy from <span class="tt"><a class="el" href="class_range.html">Range</a>&lt;S&gt;</span>. <span class="tt"><a class="el" href="class_pair_range.html">PairRange</a>&lt;U, <a class="el" href="struct_t.html">T</a>&gt;</span> couples two equal-sized ranges and exposes <span class="tt"><a class="el" href="class_zip_iterator.html">ZipIterator</a></span> / <span class="tt"><a class="el" href="class_const_zip_iterator.html">ConstZipIterator</a></span> so a caller can walk monomials and coefficients (or any other parallel arrays) in a single loop without indexing arithmetic.</p>
+<p>Consumed by <span class="tt"><a class="el" href="class_n_c_f4.html">NCF4</a></span> and <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> for monomial / coefficient row payloads and by <span class="tt"><a class="el" href="class_free_algebra.html">FreeAlgebra</a></span> whenever multiplication yields a fresh stretch of arena-allocated terms. Bounds checking is intentionally omitted &mdash; the type stays exactly as fast as raw pointers in the inner loop.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_memory_block_8hpp.html" title="Bump-pointer arena allocator for transient inner-loop allocations.">MemoryBlock.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_f4_8hpp.html" title="NCF4 — non-commutative F4 Gröbner-basis driver building a per-degree Macaulay matrix.">NCF4.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
+<dd>
+<a class="el" href="_free_algebra_8hpp.html" title="FreeAlgebra — the free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_macaulay2_2e_2_n_c_algebras_2_range_8hpp_source.html">Range.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

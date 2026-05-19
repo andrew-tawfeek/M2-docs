@@ -107,30 +107,30 @@ $(function(){initNavTree('_matrix_i_o_test_8cpp_a6dbffd1cde7c0bc901d2491de59666c
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_i_o_test_8cpp_source.html#l00045">45</a> of file <a class="el" href="_matrix_i_o_test_8cpp_source.html">MatrixIOTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span>{</div>
-<div class="line"><span class="lineno">   47</span>  std::vector&lt;std::string&gt; varnames = {<span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;y&quot;</span>, <span class="stringliteral">&quot;z&quot;</span>};</div>
-<div class="line"><span class="lineno">   48</span>  EXPECT_THROW(<a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*w-2&quot;</span>, varnames), <a class="code hl_struct" href="structparsing__error.html">parsing_error</a>);</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   50</span>    <a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*w-2&quot;</span>, varnames);</div>
-<div class="line"><span class="lineno">   51</span>  } <span class="keywordflow">catch</span> (<a class="code hl_struct" href="structparsing__error.html">parsing_error</a>&amp; e) {</div>
-<div class="line"><span class="lineno">   52</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;expected parse error: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   53</span>  }</div>
-<div class="line"><span class="lineno">   54</span>  </div>
-<div class="line"><span class="lineno">   55</span>  EXPECT_THROW(<a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*-2&quot;</span>, varnames), <a class="code hl_struct" href="structparsing__error.html">parsing_error</a>);</div>
-<div class="line"><span class="lineno">   56</span>  <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   57</span>    <a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*-2&quot;</span>, varnames);</div>
-<div class="line"><span class="lineno">   58</span>  } <span class="keywordflow">catch</span> (<a class="code hl_struct" href="structparsing__error.html">parsing_error</a>&amp; e) {</div>
-<div class="line"><span class="lineno">   59</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;expected parse error: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   60</span>  }</div>
-<div class="line"><span class="lineno">   61</span>  </div>
-<div class="line"><span class="lineno">   62</span>  EXPECT_THROW(<a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*x^*y-2&quot;</span>, varnames), <a class="code hl_struct" href="structparsing__error.html">parsing_error</a>);</div>
-<div class="line"><span class="lineno">   63</span>  <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   64</span>    <a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*x^*y-2&quot;</span>, varnames);</div>
-<div class="line"><span class="lineno">   65</span>  } <span class="keywordflow">catch</span> (<a class="code hl_struct" href="structparsing__error.html">parsing_error</a>&amp; e) {</div>
-<div class="line"><span class="lineno">   66</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;expected parse error: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   67</span>  }</div>
-<div class="line"><span class="lineno">   68</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_matrix_i_o_test_8cpp_source.html#l00072">72</a> of file <a class="el" href="_matrix_i_o_test_8cpp_source.html">MatrixIOTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>{</div>
+<div class="line"><span class="lineno">   74</span>  std::vector&lt;std::string&gt; varnames = {<span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;y&quot;</span>, <span class="stringliteral">&quot;z&quot;</span>};</div>
+<div class="line"><span class="lineno">   75</span>  EXPECT_THROW(<a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*w-2&quot;</span>, varnames), <a class="code hl_struct" href="structparsing__error.html">parsing_error</a>);</div>
+<div class="line"><span class="lineno">   76</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   77</span>    <a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*w-2&quot;</span>, varnames);</div>
+<div class="line"><span class="lineno">   78</span>  } <span class="keywordflow">catch</span> (<a class="code hl_struct" href="structparsing__error.html">parsing_error</a>&amp; e) {</div>
+<div class="line"><span class="lineno">   79</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;expected parse error: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   80</span>  }</div>
+<div class="line"><span class="lineno">   81</span>  </div>
+<div class="line"><span class="lineno">   82</span>  EXPECT_THROW(<a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*-2&quot;</span>, varnames), <a class="code hl_struct" href="structparsing__error.html">parsing_error</a>);</div>
+<div class="line"><span class="lineno">   83</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   84</span>    <a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*-2&quot;</span>, varnames);</div>
+<div class="line"><span class="lineno">   85</span>  } <span class="keywordflow">catch</span> (<a class="code hl_struct" href="structparsing__error.html">parsing_error</a>&amp; e) {</div>
+<div class="line"><span class="lineno">   86</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;expected parse error: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   87</span>  }</div>
+<div class="line"><span class="lineno">   88</span>  </div>
+<div class="line"><span class="lineno">   89</span>  EXPECT_THROW(<a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*x^*y-2&quot;</span>, varnames), <a class="code hl_struct" href="structparsing__error.html">parsing_error</a>);</div>
+<div class="line"><span class="lineno">   90</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   91</span>    <a class="code hl_function" href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a>(<span class="stringliteral">&quot;3*x^*y-2&quot;</span>, varnames);</div>
+<div class="line"><span class="lineno">   92</span>  } <span class="keywordflow">catch</span> (<a class="code hl_struct" href="structparsing__error.html">parsing_error</a>&amp; e) {</div>
+<div class="line"><span class="lineno">   93</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;expected parse error: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   94</span>  }</div>
+<div class="line"><span class="lineno">   95</span>}</div>
 <div class="ttc" id="a_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25_html_a7b5e7f0c92fe134001e8c8dbea436a25"><div class="ttname"><a href="_basic_poly_8hpp_a7b5e7f0c92fe134001e8c8dbea436a25.html#a7b5e7f0c92fe134001e8c8dbea436a25">parseBasicPoly</a></div><div class="ttdeci">BasicPoly parseBasicPoly(std::string poly, std::vector&lt; std::string &gt; varnames)</div><div class="ttdef"><b>Definition</b> <a href="_basic_poly_list_parser_8cpp_source.html#l00233">BasicPolyListParser.cpp:233</a></div></div>
 <div class="ttc" id="astructparsing__error_html"><div class="ttname"><a href="structparsing__error.html">parsing_error</a></div><div class="ttdef"><b>Definition</b> <a href="_basic_poly_8hpp_source.html#l00080">BasicPoly.hpp:81</a></div></div>
 </div><!-- fragment -->

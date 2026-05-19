@@ -91,6 +91,9 @@ $(function(){initNavTree('_new_f4_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">NewF4Test.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for the refactored F4 engine's hash table, lookup table, and <span class="tt">PolynomialList</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;bitset&gt;</code><br />
@@ -115,7 +118,23 @@ Functions</h2></td></tr>
 <tr class="memitem:a81e1774b7822e16338b9b58e1407fbb5" id="r_a81e1774b7822e16338b9b58e1407fbb5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_new_f4_test_8cpp_a81e1774b7822e16338b9b58e1407fbb5.html#a81e1774b7822e16338b9b58e1407fbb5">TEST</a> (NewF4MonomialLookupTable, monomialDivides)</td></tr>
 <tr class="memitem:a3acddebfd667dc54d9793914fa3ffb0b" id="r_a3acddebfd667dc54d9793914fa3ffb0b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_new_f4_test_8cpp_a3acddebfd667dc54d9793914fa3ffb0b.html#a3acddebfd667dc54d9793914fa3ffb0b">TEST</a> (NewF4MonomialLookupTable, monomialOperations)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for the refactored F4 engine's hash table, lookup table, and <span class="tt">PolynomialList</span>. </p>
+<p>Hosts the <span class="tt">TEST(NewF4, *)</span> battery exercising <span class="tt">gb-f4/</span>'s monomial-side infrastructure: <span class="tt">HashTableStats</span> accumulation, <span class="tt"><a class="el" href="class_monomial_hash_table.html">MonomialHashTable</a></span> insertion / lookup / resize (with same- monomial-same-ID invariants the F4 reduction depends on for correctness), <span class="tt"><a class="el" href="f4-types_8hpp_a26f8bf3ae452faf485404829038ffe26.html#a26f8bf3ae452faf485404829038ffe26">MonomialLookupTable</a></span> divisibility queries, and <span class="tt">PolynomialList</span> construction via <span class="tt">BasicPolyListParser</span> round-trips. <span class="tt"><a class="el" href="class_vector_arithmetic.html">VectorArithmetic</a></span> primitives get smoke-tested here too so the matrix-row arithmetic that consumes the hash- table indices is validated in the same pass.</p>
+<p>Every test is named under the <span class="tt">NewF4</span> gtest suite so the developer recipe at the top of the file &mdash; <span class="tt">M2-unit-tests
+--gtest_filter="*F4*"</span> &mdash; runs the whole set in isolation. <a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a> construction goes through <span class="tt">util-polyring-creation</span> to keep individual tests focused on the F4-side assertions.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_monomial_hash_table_8hpp.html" title="newf4::MonomialHashFunction and the new-F4 monomial-to-index hash table.">gb-f4/MonomialHashTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_lookup_table_8hpp.html" title="newf4::MonomialLookupTable — divisibility-aware leading-term index for the new F4.">gb-f4/MonomialLookupTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_polynomial_list_8hpp.html" title="Hash-table-keyed polynomial storage for the new F4.">gb-f4/PolynomialList.hpp</a> </dd>
+<dd>
+<a class="el" href="_vector_arithmetic_8hpp.html" title="Coefficient-ring-erased arithmetic dispatcher used by F4, GB, and resolution code.">VectorArithmetic.hpp</a> </dd>
+<dd>
+<a class="el" href="util-polyring-creation_8hpp.html" title="One-line helpers for building degree monoids and polynomial rings inside gtest cases.">util-polyring-creation.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_new_f4_test_8cpp_source.html">NewF4Test.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

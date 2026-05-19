@@ -91,6 +91,9 @@ $(function(){initNavTree('_res_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">ResTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for <span class="tt"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></span> &mdash; the dense-exponent monoid used by the F4 resolution.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -113,7 +116,20 @@ Functions</h2></td></tr>
 <tr class="memitem:abe29c18d1c7d70bb9004399dfb464675" id="r_abe29c18d1c7d70bb9004399dfb464675"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_res_test_8cpp_abe29c18d1c7d70bb9004399dfb464675.html#abe29c18d1c7d70bb9004399dfb464675">TEST</a> (<a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a>, outOfRange)</td></tr>
 <tr class="memitem:a8c74bc5e2f424bb42b85719e1e24360f" id="r_a8c74bc5e2f424bb42b85719e1e24360f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_res_test_8cpp_a8c74bc5e2f424bb42b85719e1e24360f.html#a8c74bc5e2f424bb42b85719e1e24360f">TEST</a> (<a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a>, encodeBoundary)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for <span class="tt"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></span> &mdash; the dense-exponent monoid used by the F4 resolution. </p>
+<p>Hosts the <span class="tt">TEST(ResMonoidDense, *)</span> battery that builds <span class="tt"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></span> instances under different weight, heft, and ordering combinations (<span class="tt">GRevLex</span>, <span class="tt">Weights</span>, <span class="tt">Lex</span>) and asserts construction, variable counts, monomial encoding / decoding, multiplication via <span class="tt">mult</span>, and the per-ordering <span class="tt"><a class="el" href="geovec_8hpp_a93a6254b3accee4629ec45fc0e4a64cd.html#a93a6254b3accee4629ec45fc0e4a64cd">compare</a></span> semantics behave correctly. The monomial-storage pattern &mdash; pre-allocate a <span class="tt">std::vector&lt;<a class="el" href="res-monomial-types_8hpp_a519813b4b46a3b9a9de16c4845d0609c.html#a519813b4b46a3b9a9de16c4845d0609c">res_monomial_word</a>&gt;</span> and let <span class="tt">from_expvector</span> / <span class="tt">to_expvector</span> round-trip through it &mdash; is exactly how the production <span class="tt"><a class="el" href="class_schreyer_frame.html">SchreyerFrame</a></span> lays out level monomials, so the tests double as living documentation of the expected workflow.</p>
+<p>End-to-end resolution coverage lives in the M2-level test suite where Gröbner inputs are easier to express; this file intentionally pins down only the monoid building block so a regression in <span class="tt"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></span> surfaces here instead of as a cryptic miscompare three layers up.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-moninfo_8hpp.html" title="ResMonoid dispatcher — single switch between ResMonoidDense and ResMonoidSparse.">schreyer-resolution/res-moninfo.hpp</a> </dd>
+<dd>
+<a class="el" href="res-moninfo-dense_8hpp.html" title="ResMonoidDense — dense exponent-vector implementation of the resolution monoid.">schreyer-resolution/res-moninfo-dense.hpp</a> </dd>
+<dd>
+<a class="el" href="res-poly-ring_8hpp.html" title="ResPolyRing and ResPolynomial — resolution-tuned polynomial-ring view and value type.">schreyer-resolution/res-poly-ring.hpp</a> </dd>
+<dd>
+<a class="el" href="_monoid_test_8cpp.html" title="gtest coverage for Monoid construction and the ExponentVector exponent-array primitives.">MonoidTest.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_res_test_8cpp_source.html">ResTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

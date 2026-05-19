@@ -91,6 +91,9 @@ $(function(){initNavTree('cra_8h.html','',''); });
   <div class="headertitle"><div class="title">cra.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-boundary C API for Chinese-remainder lifting and rational reconstruction.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 </div>
 <p><a href="cra_8h_source.html">Go to the source code of this file.</a></p>
@@ -102,7 +105,16 @@ Functions</h2></td></tr>
 <tr class="memitem:a5327cd55a5ef849a4d37224af92eb314" id="r_a5327cd55a5ef849a4d37224af92eb314"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ring_element.html">RingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cra_8h_a5327cd55a5ef849a4d37224af92eb314.html#a5327cd55a5ef849a4d37224af92eb314">rawRingElementRatConversion</a> (const <a class="el" href="class_ring_element.html">RingElement</a> *f, mpz_srcptr m, const <a class="el" href="class_ring.html">Ring</a> *RQ)</td></tr>
 <tr class="memitem:a967f03939281af0574fb1be295c76f2a" id="r_a967f03939281af0574fb1be295c76f2a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_matrix.html">Matrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cra_8h_a967f03939281af0574fb1be295c76f2a.html#a967f03939281af0574fb1be295c76f2a">rawMatrixRatConversion</a> (const <a class="el" href="class_matrix.html">Matrix</a> *f, mpz_srcptr m, const <a class="el" href="class_ring.html">Ring</a> *RQ)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-boundary C API for Chinese-remainder lifting and rational reconstruction. </p>
+<p>Declares the <span class="tt">extern "C"</span> entry points the <a class="el" href="namespace_m2.html">M2</a> interpreter calls to combine modular results from independent prime-field computations and lift them back to characteristic 0: <span class="tt"><a class="el" href="cra_8h_a4a142b1a7d66686e67683201b033416b.html#a4a142b1a7d66686e67683201b033416b">rawRingElementCRA</a></span> / <span class="tt"><a class="el" href="cra_8h_af191e53206907c91e484720af0cf1086.html#af191e53206907c91e484720af0cf1086">rawMatrixCRA</a></span> merge two CRT residues with moduli <span class="tt">m</span> and <span class="tt">n</span> into a single residue mod <span class="tt">m*n</span>, and <span class="tt"><a class="el" href="cra_8h_a5327cd55a5ef849a4d37224af92eb314.html#a5327cd55a5ef849a4d37224af92eb314">rawRingElementRatConversion</a></span> / <span class="tt"><a class="el" href="cra_8h_a967f03939281af0574fb1be295c76f2a.html#a967f03939281af0574fb1be295c76f2a">rawMatrixRatConversion</a></span> run rational reconstruction &mdash; recovering the unique <span class="tt">a/b</span> with <span class="tt">|a|, |b| &lt;= sqrt(m)/2</span> &mdash; against a target <span class="tt">RQ</span> polynomial ring whose coefficients are <span class="tt"><a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a></span>. The moduli arrive as GMP <span class="tt">mpz_srcptr</span> so the front end can pass arbitrarily large primes (or products of primes) without an extra conversion.</p>
+<p>Heavily used by the modular-F4 path and by rational resolutions / Hilbert-function computations that run the same algorithm modulo many primes in parallel and reconstruct afterwards. The dual <span class="tt">class</span> / <span class="tt">typedef struct</span> declarations of <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span>, <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>, and <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> keep the header usable from both C++ and the generated-C side of the <span class="tt">.dd</span> pipeline.</p>
+<dl class="section see"><dt>See also</dt><dd>cra.cpp </dd>
+<dd>
+<a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="cra_8h_source.html">cra.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -115,39 +115,39 @@ $(function(){initNavTree('class_res_monoid_sparse_a623965fb45cd0b1a99f50ab89738d
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="res-moninfo-sparse_8hpp_source.html#l00186">186</a> of file <a class="el" href="res-moninfo-sparse_8hpp_source.html">res-moninfo-sparse.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  188</span>  {</div>
-<div class="line"><span class="lineno">  189</span>    <span class="comment">// &#39;result&#39; must have enough space allocated</span></div>
-<div class="line"><span class="lineno">  190</span>    <a class="code hl_variable" href="class_res_monoid_sparse_a73607c1469bd9be3ec7b5f5fde8853e1.html#a73607c1469bd9be3ec7b5f5fde8853e1">ncalls_to_varpower</a>++;</div>
-<div class="line"><span class="lineno">  191</span>    <span class="keywordtype">int</span> len = 0;</div>
-<div class="line"><span class="lineno">  192</span>    <a class="code hl_typedef" href="res-monomial-types_8hpp_aeafae28e221cfed9648e85c2b97a56a3.html#aeafae28e221cfed9648e85c2b97a56a3">res_varpower_word</a>* r = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> + 1;</div>
-<div class="line"><span class="lineno">  193</span> </div>
-<div class="line"><span class="lineno">  194</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a> != *m)  <span class="comment">// ie, m != 1.</span></div>
-<div class="line"><span class="lineno">  195</span>      {</div>
-<div class="line"><span class="lineno">  196</span>        <span class="keywordtype">int</span> currentvar = m[<a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>];</div>
-<div class="line"><span class="lineno">  197</span>        <span class="keywordtype">int</span> deg = 1;</div>
-<div class="line"><span class="lineno">  198</span>        <span class="keyword">const</span> <span class="keywordtype">int</span>* mend = m + *m;</div>
-<div class="line"><span class="lineno">  199</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = m + <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a> + 1; <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> != mend; ++<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>)</div>
-<div class="line"><span class="lineno">  200</span>          {</div>
-<div class="line"><span class="lineno">  201</span>            <span class="keywordflow">if</span> (*<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> == currentvar)</div>
-<div class="line"><span class="lineno">  202</span>              deg++;</div>
-<div class="line"><span class="lineno">  203</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  204</span>              {</div>
-<div class="line"><span class="lineno">  205</span>                *r++ = currentvar;</div>
-<div class="line"><span class="lineno">  206</span>                *r++ = deg;</div>
-<div class="line"><span class="lineno">  207</span>                len++;</div>
-<div class="line"><span class="lineno">  208</span>                currentvar = *<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>;</div>
-<div class="line"><span class="lineno">  209</span>                deg = 1;</div>
-<div class="line"><span class="lineno">  210</span>              }</div>
-<div class="line"><span class="lineno">  211</span>          }</div>
-<div class="line"><span class="lineno">  212</span>      }</div>
-<div class="line"><span class="lineno">  213</span>    <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>[0] = len;</div>
-<div class="line"><span class="lineno">  214</span>  }</div>
-<div class="ttc" id="aclass_res_monoid_sparse_a73607c1469bd9be3ec7b5f5fde8853e1_html_a73607c1469bd9be3ec7b5f5fde8853e1"><div class="ttname"><a href="class_res_monoid_sparse_a73607c1469bd9be3ec7b5f5fde8853e1.html#a73607c1469bd9be3ec7b5f5fde8853e1">ResMonoidSparse::ncalls_to_varpower</a></div><div class="ttdeci">unsigned long ncalls_to_varpower</div><div class="ttdef"><b>Definition</b> <a href="res-moninfo-sparse_8hpp_source.html#l00048">res-moninfo-sparse.hpp:48</a></div></div>
-<div class="ttc" id="aclass_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f_html_ae74ccb6358dca8261f2b0c9d0cb4fc5f"><div class="ttname"><a href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">ResMonoidSparse::mFirstVar</a></div><div class="ttdeci">int mFirstVar</div><div class="ttdef"><b>Definition</b> <a href="res-moninfo-sparse_8hpp_source.html#l00033">res-moninfo-sparse.hpp:33</a></div></div>
+<p class="definition">Definition at line <a class="el" href="res-moninfo-sparse_8hpp_source.html#l00221">221</a> of file <a class="el" href="res-moninfo-sparse_8hpp_source.html">res-moninfo-sparse.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  223</span>  {</div>
+<div class="line"><span class="lineno">  224</span>    <span class="comment">// &#39;result&#39; must have enough space allocated</span></div>
+<div class="line"><span class="lineno">  225</span>    <a class="code hl_variable" href="class_res_monoid_sparse_a73607c1469bd9be3ec7b5f5fde8853e1.html#a73607c1469bd9be3ec7b5f5fde8853e1">ncalls_to_varpower</a>++;</div>
+<div class="line"><span class="lineno">  226</span>    <span class="keywordtype">int</span> len = 0;</div>
+<div class="line"><span class="lineno">  227</span>    <a class="code hl_typedef" href="res-monomial-types_8hpp_aeafae28e221cfed9648e85c2b97a56a3.html#aeafae28e221cfed9648e85c2b97a56a3">res_varpower_word</a>* r = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> + 1;</div>
+<div class="line"><span class="lineno">  228</span> </div>
+<div class="line"><span class="lineno">  229</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a> != *m)  <span class="comment">// ie, m != 1.</span></div>
+<div class="line"><span class="lineno">  230</span>      {</div>
+<div class="line"><span class="lineno">  231</span>        <span class="keywordtype">int</span> currentvar = m[<a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>];</div>
+<div class="line"><span class="lineno">  232</span>        <span class="keywordtype">int</span> deg = 1;</div>
+<div class="line"><span class="lineno">  233</span>        <span class="keyword">const</span> <span class="keywordtype">int</span>* mend = m + *m;</div>
+<div class="line"><span class="lineno">  234</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> = m + <a class="code hl_variable" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a> + 1; <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> != mend; ++<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>)</div>
+<div class="line"><span class="lineno">  235</span>          {</div>
+<div class="line"><span class="lineno">  236</span>            <span class="keywordflow">if</span> (*<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> == currentvar)</div>
+<div class="line"><span class="lineno">  237</span>              deg++;</div>
+<div class="line"><span class="lineno">  238</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  239</span>              {</div>
+<div class="line"><span class="lineno">  240</span>                *r++ = currentvar;</div>
+<div class="line"><span class="lineno">  241</span>                *r++ = deg;</div>
+<div class="line"><span class="lineno">  242</span>                len++;</div>
+<div class="line"><span class="lineno">  243</span>                currentvar = *<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>;</div>
+<div class="line"><span class="lineno">  244</span>                deg = 1;</div>
+<div class="line"><span class="lineno">  245</span>              }</div>
+<div class="line"><span class="lineno">  246</span>          }</div>
+<div class="line"><span class="lineno">  247</span>      }</div>
+<div class="line"><span class="lineno">  248</span>    <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>[0] = len;</div>
+<div class="line"><span class="lineno">  249</span>  }</div>
+<div class="ttc" id="aclass_res_monoid_sparse_a73607c1469bd9be3ec7b5f5fde8853e1_html_a73607c1469bd9be3ec7b5f5fde8853e1"><div class="ttname"><a href="class_res_monoid_sparse_a73607c1469bd9be3ec7b5f5fde8853e1.html#a73607c1469bd9be3ec7b5f5fde8853e1">ResMonoidSparse::ncalls_to_varpower</a></div><div class="ttdeci">unsigned long ncalls_to_varpower</div><div class="ttdef"><b>Definition</b> <a href="res-moninfo-sparse_8hpp_source.html#l00083">res-moninfo-sparse.hpp:83</a></div></div>
+<div class="ttc" id="aclass_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f_html_ae74ccb6358dca8261f2b0c9d0cb4fc5f"><div class="ttname"><a href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">ResMonoidSparse::mFirstVar</a></div><div class="ttdeci">int mFirstVar</div><div class="ttdef"><b>Definition</b> <a href="res-moninfo-sparse_8hpp_source.html#l00068">res-moninfo-sparse.hpp:68</a></div></div>
 <div class="ttc" id="agodbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552_html_a533391314665d6bf1b5575e9a9cd8552"><div class="ttname"><a href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></div><div class="ttdeci">int p</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00034">godboltTest.cpp:34</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
-<div class="ttc" id="ares-monomial-types_8hpp_aeafae28e221cfed9648e85c2b97a56a3_html_aeafae28e221cfed9648e85c2b97a56a3"><div class="ttname"><a href="res-monomial-types_8hpp_aeafae28e221cfed9648e85c2b97a56a3.html#aeafae28e221cfed9648e85c2b97a56a3">res_varpower_word</a></div><div class="ttdeci">res_varpower_monomials::Exponent res_varpower_word</div><div class="ttdef"><b>Definition</b> <a href="res-monomial-types_8hpp_source.html#l00027">res-monomial-types.hpp:27</a></div></div>
+<div class="ttc" id="ares-monomial-types_8hpp_aeafae28e221cfed9648e85c2b97a56a3_html_aeafae28e221cfed9648e85c2b97a56a3"><div class="ttname"><a href="res-monomial-types_8hpp_aeafae28e221cfed9648e85c2b97a56a3.html#aeafae28e221cfed9648e85c2b97a56a3">res_varpower_word</a></div><div class="ttdeci">res_varpower_monomials::Exponent res_varpower_word</div><div class="ttdef"><b>Definition</b> <a href="res-monomial-types_8hpp_source.html#l00057">res-monomial-types.hpp:57</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_res_monoid_sparse_ae74ccb6358dca8261f2b0c9d0cb4fc5f.html#ae74ccb6358dca8261f2b0c9d0cb4fc5f">mFirstVar</a>, <a class="el" href="class_res_monoid_sparse_a73607c1469bd9be3ec7b5f5fde8853e1.html#a73607c1469bd9be3ec7b5f5fde8853e1">ncalls_to_varpower</a>, <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, and <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result()</a>.</p>
 

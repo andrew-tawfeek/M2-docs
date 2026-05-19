@@ -91,6 +91,9 @@ $(function(){initNavTree('_monomial_lookup_table_8hpp.html','',''); });
   <div class="headertitle"><div class="title">MonomialLookupTable.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="classnewf4_1_1_monomial_lookup_table.html">newf4::MonomialLookupTable</a></span> &mdash; divisibility-aware leading-term index for the new F4.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_monomial_types_8hpp_source.html">MonomialTypes.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_monomial_view_8hpp_source.html">MonomialView.hpp</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -108,7 +111,22 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:newf4" id="r_newf4"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenewf4.html">newf4</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="classnewf4_1_1_monomial_lookup_table.html">newf4::MonomialLookupTable</a></span> &mdash; divisibility-aware leading-term index for the new F4. </p>
+<p>Declares the lookup structure that lets the refactored F4 answer "does some basis leading monomial divide this target?" without scanning every basis element. Each <span class="tt"><a class="el" href="class_monomial_info.html">MonomialInfo</a></span> entry caches an <span class="tt">mIsUsed</span> flag, the monomial's simple degree, a <span class="tt">MonomialMask</span> (one bit per variable set iff the exponent is positive), an offset into the encoded-monomial pool, and the <span class="tt">mValue</span> index of the owning polynomial. <span class="tt"><a class="el" href="franzi-gb_8cpp_a4830bc0186c91553f896bf52fb2e9d2c.html#a4830bc0186c91553f896bf52fb2e9d2c">findDivisor</a></span>, <span class="tt">findAllDivisors</span>, and <span class="tt">findAllDivisees</span> pre-filter by <span class="tt">maskDivides</span> (bitwise subset) and <span class="tt">simpleDegree</span> before running the exact exponent-vector test, which is what makes the linear walk affordable.</p>
+<p>Soft-delete is the maintenance strategy: when a basis element is subsumed, <span class="tt">retire(monIndex)</span> just flips its <span class="tt">mIsUsed</span> bit to false; the structure tolerates many tombstones before <span class="tt">compactify()</span> reshuffles the storage. Complements <span class="tt"><a class="el" href="class_monomial_hash_table.html">MonomialHashTable</a></span> (which keys by exact equality) and acts as the new-F4 successor to the legacy <span class="tt"><a class="el" href="montable_8hpp.html" title="MonomialTable — leading-monomial divisor index used by the GB reducer.">montable.hpp</a></span> / mathic- trait-based path.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_monomial_hash_table_8hpp.html" title="newf4::MonomialHashFunction and the new-F4 monomial-to-index hash table.">MonomialHashTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_view_8hpp.html" title="newf4::MonomialView — non-owning view over a [length, var_1, e_1, ...]-encoded monomial.">MonomialView.hpp</a> </dd>
+<dd>
+<a class="el" href="_monomial_types_8hpp.html" title="Typed integer vocabulary for namespace newf4 (indices, monomial words, hashes, masks).">MonomialTypes.hpp</a> </dd>
+<dd>
+<a class="el" href="_g_b_f4_computation_8hpp.html" title="newf4::GBF4Computation — top-level driver for the refactored F4 Gröbner-basis engine.">GBF4Computation.hpp</a> </dd>
+<dd>
+SPairs.hpp </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_monomial_lookup_table_8hpp_source.html">MonomialLookupTable.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

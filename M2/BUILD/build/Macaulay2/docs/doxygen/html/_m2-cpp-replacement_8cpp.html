@@ -92,13 +92,27 @@ $(function(){initNavTree('_m2-cpp-replacement_8cpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
+<p>Single-symbol stub for <span class="tt"><a class="el" href="_m2-cpp-replacement_8cpp_a5035d07c37876dc3b866e1d4457ff390.html#a5035d07c37876dc3b866e1d4457ff390">system_interrupted()</a></span> so the gtest binary links without the <a class="el" href="namespace_m2.html">M2</a> interpreter.  
+<a href="#details">More...</a></p>
+
 <p><a href="_m2-cpp-replacement_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5035d07c37876dc3b866e1d4457ff390" id="r_a5035d07c37876dc3b866e1d4457ff390"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m2-cpp-replacement_8cpp_a5035d07c37876dc3b866e1d4457ff390.html#a5035d07c37876dc3b866e1d4457ff390">system_interrupted</a> ()</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Single-symbol stub for <span class="tt"><a class="el" href="_m2-cpp-replacement_8cpp_a5035d07c37876dc3b866e1d4457ff390.html#a5035d07c37876dc3b866e1d4457ff390">system_interrupted()</a></span> so the gtest binary links without the <a class="el" href="namespace_m2.html">M2</a> interpreter. </p>
+<p>Hosts one line: <span class="tt"><a class="el" href="classbool.html">bool</a> <a class="el" href="_m2-cpp-replacement_8cpp_a5035d07c37876dc3b866e1d4457ff390.html#a5035d07c37876dc3b866e1d4457ff390">system_interrupted()</a> { <a class="el" href="m2-mem_8cpp_acc4ce1649a2cfffb5cbc82ee8231a249.html#acc4ce1649a2cfffb5cbc82ee8231a249">return</a> false; }</span>. The engine calls this hook from inner loops to honour Ctrl+C arriving through the interpreter's <span class="tt">interrupts.d</span>; the <span class="tt">M2-unit-tests</span> binary does not link the interpreter, so the symbol would otherwise be undefined. The stub always reports "not interrupted," which is the correct answer for an automated test run: tests should never time out from a fake Ctrl+C.</p>
+<p>The fact that a single one-line replacement is enough to build the engine for testing demonstrates how cleanly the engine / interpreter boundary is drawn &mdash; everything else the test binary needs is satisfied by the regular engine libraries. Companion to <span class="tt">testMain.cpp</span>, <span class="tt"><a class="el" href="from_stream_8cpp.html" title="Per-ring fromStream specialisations shared across the legacy Ring*Test.cpp suite.">fromStream.cpp</a></span>, and <span class="tt">util-polyring-creation.{cpp,hpp}</span> in the <span class="tt">file-test-harness</span> family.</p>
+<dl class="section see"><dt>See also</dt><dd>testMain.cpp </dd>
+<dd>
+<a class="el" href="from_stream_8cpp.html" title="Per-ring fromStream specialisations shared across the legacy Ring*Test.cpp suite.">fromStream.cpp</a> </dd>
+<dd>
+<a class="el" href="util-polyring-creation_8hpp.html" title="One-line helpers for building degree monoids and polynomial rings inside gtest cases.">util-polyring-creation.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_m2-cpp-replacement_8cpp_source.html">M2-cpp-replacement.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

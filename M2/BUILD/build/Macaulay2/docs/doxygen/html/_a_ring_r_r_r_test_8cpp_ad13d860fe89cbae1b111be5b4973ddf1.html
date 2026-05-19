@@ -117,21 +117,21 @@ $(function(){initNavTree('_a_ring_r_r_r_test_8cpp_ad13d860fe89cbae1b111be5b4973d
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_ring_r_r_r_test_8cpp_source.html#l00014">14</a> of file <a class="el" href="_a_ring_r_r_r_test_8cpp_source.html">ARingRRRTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
-<div class="line"><span class="lineno">   19</span>  mpfr_t epsilon;</div>
-<div class="line"><span class="lineno">   20</span>  mpfr_init2(epsilon, R.<a class="code hl_function" href="class_m2_1_1_a_ring_r_r_r_adf7ab19bb8ed5decb51e9b0885e69e94.html#adf7ab19bb8ed5decb51e9b0885e69e94">get_precision</a>());</div>
-<div class="line"><span class="lineno">   21</span>  mpfr_set_ui_2exp(epsilon, 1, -nbits, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>  <a class="code hl_typedef" href="class_m2_1_1_a_ring_r_r_r_aa47716308a33493ab12c0b87b48151e4.html#aa47716308a33493ab12c0b87b48151e4">M2::ARingRRR::ElementType</a> c;</div>
-<div class="line"><span class="lineno">   24</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_r_r_r_aaa73e55e9bdd5efc2ca08d177dff12a3.html#aaa73e55e9bdd5efc2ca08d177dff12a3">init</a>(c);</div>
-<div class="line"><span class="lineno">   25</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_r_r_r_a70728317fbfd7428068c61c33e8538f4.html#a70728317fbfd7428068c61c33e8538f4">subtract</a>(c, a, b);</div>
-<div class="line"><span class="lineno">   26</span>  <span class="keywordtype">bool</span> ret = mpfr_cmpabs(&amp;c, epsilon) &lt; 0;</div>
-<div class="line"><span class="lineno">   27</span> </div>
-<div class="line"><span class="lineno">   28</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_r_r_r_a7d1263ac04cb00121d3cc051516f37ac.html#a7d1263ac04cb00121d3cc051516f37ac">clear</a>(c);</div>
-<div class="line"><span class="lineno">   29</span>  mpfr_clear(epsilon);</div>
-<div class="line"><span class="lineno">   30</span>  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><span class="lineno">   31</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_a_ring_r_r_r_test_8cpp_source.html#l00043">43</a> of file <a class="el" href="_a_ring_r_r_r_test_8cpp_source.html">ARingRRRTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>{</div>
+<div class="line"><span class="lineno">   48</span>  mpfr_t epsilon;</div>
+<div class="line"><span class="lineno">   49</span>  mpfr_init2(epsilon, R.<a class="code hl_function" href="class_m2_1_1_a_ring_r_r_r_adf7ab19bb8ed5decb51e9b0885e69e94.html#adf7ab19bb8ed5decb51e9b0885e69e94">get_precision</a>());</div>
+<div class="line"><span class="lineno">   50</span>  mpfr_set_ui_2exp(epsilon, 1, -nbits, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>  <a class="code hl_typedef" href="class_m2_1_1_a_ring_r_r_r_aa47716308a33493ab12c0b87b48151e4.html#aa47716308a33493ab12c0b87b48151e4">M2::ARingRRR::ElementType</a> c;</div>
+<div class="line"><span class="lineno">   53</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_r_r_r_aaa73e55e9bdd5efc2ca08d177dff12a3.html#aaa73e55e9bdd5efc2ca08d177dff12a3">init</a>(c);</div>
+<div class="line"><span class="lineno">   54</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_r_r_r_a70728317fbfd7428068c61c33e8538f4.html#a70728317fbfd7428068c61c33e8538f4">subtract</a>(c, a, b);</div>
+<div class="line"><span class="lineno">   55</span>  <span class="keywordtype">bool</span> ret = mpfr_cmpabs(&amp;c, epsilon) &lt; 0;</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  R.<a class="code hl_function" href="class_m2_1_1_a_ring_r_r_r_a7d1263ac04cb00121d3cc051516f37ac.html#a7d1263ac04cb00121d3cc051516f37ac">clear</a>(c);</div>
+<div class="line"><span class="lineno">   58</span>  mpfr_clear(epsilon);</div>
+<div class="line"><span class="lineno">   59</span>  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><span class="lineno">   60</span>}</div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_r_r_r_a70728317fbfd7428068c61c33e8538f4_html_a70728317fbfd7428068c61c33e8538f4"><div class="ttname"><a href="class_m2_1_1_a_ring_r_r_r_a70728317fbfd7428068c61c33e8538f4.html#a70728317fbfd7428068c61c33e8538f4">M2::ARingRRR::subtract</a></div><div class="ttdeci">void subtract(ElementType &amp;result, const ElementType &amp;a, const ElementType &amp;b) const</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_r_r_8hpp_source.html#l00198">aring-RRR.hpp:198</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_r_r_r_a7d1263ac04cb00121d3cc051516f37ac_html_a7d1263ac04cb00121d3cc051516f37ac"><div class="ttname"><a href="class_m2_1_1_a_ring_r_r_r_a7d1263ac04cb00121d3cc051516f37ac.html#a7d1263ac04cb00121d3cc051516f37ac">M2::ARingRRR::clear</a></div><div class="ttdeci">static void clear(ElementType &amp;result)</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_r_r_8hpp_source.html#l00133">aring-RRR.hpp:133</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_r_r_r_aa47716308a33493ab12c0b87b48151e4_html_aa47716308a33493ab12c0b87b48151e4"><div class="ttname"><a href="class_m2_1_1_a_ring_r_r_r_aa47716308a33493ab12c0b87b48151e4.html#aa47716308a33493ab12c0b87b48151e4">M2::ARingRRR::ElementType</a></div><div class="ttdeci">elem ElementType</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_r_r_8hpp_source.html#l00056">aring-RRR.hpp:56</a></div></div>

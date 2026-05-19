@@ -91,6 +91,9 @@ $(function(){initNavTree('_macaulay2_2e_2unit-tests_2test_main_8cpp.html','','')
   <div class="headertitle"><div class="title">testMain.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="franzi-brp-test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a></span> of the <span class="tt">M2-unit-tests</span> binary &mdash; boots the engine, then runs gtest.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;gtest/gtest.h&gt;</code><br />
 <code>#include &lt;M2/gc-include.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="engine_8h_source.html">engine.h</a>&gt;</code><br />
@@ -101,7 +104,20 @@ $(function(){initNavTree('_macaulay2_2e_2unit-tests_2test_main_8cpp.html','','')
 Functions</h2></td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627" id="r_a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_macaulay2_2e_2unit-tests_2test_main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (<a class="el" href="classint.html">int</a> argc, char **argv)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="franzi-brp-test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a></span> of the <span class="tt">M2-unit-tests</span> binary &mdash; boots the engine, then runs gtest. </p>
+<p>Three calls in strict order: <span class="tt"><a class="el" href="engine_8cpp_a36005f06d3616501a8afcfd538dd55b2.html#a36005f06d3616501a8afcfd538dd55b2">IM2_initialize()</a></span> brings up the engine's static state (global rings, monoid prefab tables, the bdwgc collector, FLINT / MPFR singletons) so every subsequent test sees a live engine; <span class="tt">InitGoogleTest</span> parses gtest's <span class="tt">--gtest_filter</span> / <span class="tt">--gtest_repeat</span> and similar flags out of <span class="tt">argv</span>; <span class="tt">RUN_ALL_TESTS</span> dispatches to gtest's actual driver and returns its summary status as the process exit code. The ordering is load-bearing &mdash; engine calls during test setup would crash on uninitialised globals if <span class="tt"><a class="el" href="engine_8cpp_a36005f06d3616501a8afcfd538dd55b2.html#a36005f06d3616501a8afcfd538dd55b2">IM2_initialize</a></span> ran last.</p>
+<p>The companion harness files (<span class="tt"><a class="el" href="_m2-cpp-replacement_8cpp.html" title="Single-symbol stub for system_interrupted() so the gtest binary links without the M2 interpreter.">M2-cpp-replacement.cpp</a></span> stubs out <span class="tt"><a class="el" href="interrupted_8cpp_a5035d07c37876dc3b866e1d4457ff390.html#a5035d07c37876dc3b866e1d4457ff390">system_interrupted</a></span>, <span class="tt"><a class="el" href="from_stream_8cpp.html" title="Per-ring fromStream specialisations shared across the legacy Ring*Test.cpp suite.">fromStream.cpp</a></span> carries per-ring stream-parser specialisations, <span class="tt">util-polyring-creation.*</span> gives tests one-line polynomial-ring builders) are all covered by the same <span class="tt">file-test-harness</span> markdown.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="engine_8h.html" title="Legacy umbrella header that re-exports the full engine public surface.">engine.h</a> </dd>
+<dd>
+<a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="_ring_test_8hpp.html" title="Shared gtest fixture for the legacy Ring-based Ring*Test.cpp suite.">RingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="util-polyring-creation_8hpp.html" title="One-line helpers for building degree monoids and polynomial rings inside gtest cases.">util-polyring-creation.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_macaulay2_2e_2unit-tests_2test_main_8cpp_source.html">testMain.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

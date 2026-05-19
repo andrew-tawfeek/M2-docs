@@ -91,6 +91,9 @@ $(function(){initNavTree('_matrix_i_o_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">MatrixIOTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for <span class="tt"><a class="el" href="class_basic_poly.html">BasicPoly</a></span> / <span class="tt"><a class="el" href="_basic_poly_list_8hpp_a24fbc5f5eec7472cd3ee08f9f323741e.html#a24fbc5f5eec7472cd3ee08f9f323741e">BasicPolyList</a></span> round-trips and msolve-format benchmark ingestion.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;gtest/gtest.h&gt;</code><br />
@@ -115,7 +118,20 @@ Functions</h2></td></tr>
 <tr class="memitem:aaa4eb102d8d7b24ef9ca41e6ab01573e" id="r_aaa4eb102d8d7b24ef9ca41e6ab01573e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_matrix_i_o_test_8cpp_aaa4eb102d8d7b24ef9ca41e6ab01573e.html#aaa4eb102d8d7b24ef9ca41e6ab01573e">TEST</a> (MatrixIO, readMsolve)</td></tr>
 <tr class="memitem:a4f80a3ada2cdc86bf1dd1de214aa521a" id="r_a4f80a3ada2cdc86bf1dd1de214aa521a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_matrix_i_o_test_8cpp_a4f80a3ada2cdc86bf1dd1de214aa521a.html#a4f80a3ada2cdc86bf1dd1de214aa521a">TEST</a> (MatrixIO, readPolys)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for <span class="tt"><a class="el" href="class_basic_poly.html">BasicPoly</a></span> / <span class="tt"><a class="el" href="_basic_poly_list_8hpp_a24fbc5f5eec7472cd3ee08f9f323741e.html#a24fbc5f5eec7472cd3ee08f9f323741e">BasicPolyList</a></span> round-trips and msolve-format benchmark ingestion. </p>
+<p>Hosts the <span class="tt">TEST(MatrixIO, *)</span> battery covering polynomial I/O: <span class="tt">parseBasicPoly(polyStr, varnames)</span> round-trips through <span class="tt"><a class="el" href="monomial-ordering_8cpp_a2df59f2ce4ad9361c691ca93d9108955.html#a2df59f2ce4ad9361c691ca93d9108955">toString</a></span>, <span class="tt"><a class="el" href="_basic_poly_list_8cpp_adabb67be5dcfa3ec3f3aa6c970288b33.html#adabb67be5dcfa3ec3f3aa6c970288b33">bytesUsed</a></span> reports the expected storage size, and <span class="tt">BasicPolyListParser</span> ingests the msolve-format benchmark inputs (<span class="tt">13*x^2*y - x*y - 2</span> and similar) the new-F4 path consumes. The Benchmark tests sit behind a hardcoded <span class="tt"><a class="el" href="_matrix_i_o_test_8cpp_a072f38f1fc94e342bb7bebd6f79d5fca.html#a072f38f1fc94e342bb7bebd6f79d5fca">EXAMPLE_DIR</a></span> developer path because the msolve files are too large to ship with the engine; the comment block at the top marks them as opt-in rather than CI-default.</p>
+<p>Companion files <span class="tt"><a class="el" href="_d_mat_z_zp_test_8cpp.html" title="gtest coverage for DMat&lt;M2::ARingZZp&gt; — dense matrices over Z/p.">DMatZZpTest.cpp</a></span> and <span class="tt"><a class="el" href="_poly_ring_test_8cpp.html" title="gtest coverage for MonomialOrdering, Monoid, and PolynomialRing construction.">PolyRingTest.cpp</a></span> (under the same <span class="tt">file-dmat-matrix-tests</span> markdown) cover dense-matrix linear algebra and polynomial-ring construction respectively; this file pins down the parser and serializer surface those tests &mdash; and the user-facing F4 entry &mdash; sit on top of.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_basic_poly_list_parser_8hpp.html" title="Parsers from text (string or file) into a BasicPolyList, including Msolve input format.">BasicPolyListParser.hpp</a> </dd>
+<dd>
+<a class="el" href="_polynomial_list_8hpp.html" title="Hash-table-keyed polynomial storage for the new F4.">gb-f4/PolynomialList.hpp</a> </dd>
+<dd>
+<a class="el" href="_g_b_f4_interface_8hpp.html" title="newf4::GBF4Interface and createGBF4Interface — legacy-to-new F4 adapter at the engine boundary.">gb-f4/GBF4Interface.hpp</a> </dd>
+<dd>
+<a class="el" href="_new_f4_test_8cpp.html" title="gtest coverage for the refactored F4 engine&#39;s hash table, lookup table, and PolynomialList.">NewF4Test.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_matrix_i_o_test_8cpp_source.html">MatrixIOTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

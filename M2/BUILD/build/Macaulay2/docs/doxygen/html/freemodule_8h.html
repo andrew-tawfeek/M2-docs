@@ -91,6 +91,9 @@ $(function(){initNavTree('freemodule_8h.html','',''); });
   <div class="headertitle"><div class="title">freemodule.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-boundary C API for constructing and querying <span class="tt"><a class="el" href="class_free_module.html">FreeModule</a></span>s.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 </div>
 <p><a href="freemodule_8h_source.html">Go to the source code of this file.</a></p>
@@ -115,7 +118,16 @@ Functions</h2></td></tr>
 <tr class="memitem:a6132d6f253a167d914c807320832e841" id="r_a6132d6f253a167d914c807320832e841"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_free_module.html">FreeModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freemodule_8h_a6132d6f253a167d914c807320832e841.html#a6132d6f253a167d914c807320832e841">IM2_FreeModule_submodule</a> (const <a class="el" href="class_free_module.html">FreeModule</a> *F, <a class="el" href="class_m2__arrayint.html">M2_arrayint</a> selection)</td></tr>
 <tr class="memitem:a9affbd8fd470e4a6a9460bb99f72ea5b" id="r_a9affbd8fd470e4a6a9460bb99f72ea5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="m2-types_8h_a071c143092bff3ecfb25de7581dfba58.html#a071c143092bff3ecfb25de7581dfba58">M2_arrayintOrNull</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="freemodule_8h_a9affbd8fd470e4a6a9460bb99f72ea5b.html#a9affbd8fd470e4a6a9460bb99f72ea5b">rawFreeModuleSelectByDegrees</a> (const <a class="el" href="class_free_module.html">FreeModule</a> *F, <a class="el" href="class_m2__arrayint.html">M2_arrayint</a> lo, <a class="el" href="class_m2__arrayint.html">M2_arrayint</a> hi)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-boundary C API for constructing and querying <span class="tt"><a class="el" href="class_free_module.html">FreeModule</a></span>s. </p>
+<p>Declares the <span class="tt">extern "C"</span> entry points the <a class="el" href="namespace_m2.html">M2</a> interpreter calls to build graded free modules over a given <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> and to inspect them once built. Construction comes in plain (<span class="tt">IM2_FreeModule_make(R, rank)</span>) and graded (<span class="tt">IM2_FreeModule_make_degs(R, degs)</span>) flavours; the combinators <span class="tt">rawDirectSum</span>, <span class="tt">rawTensor</span>, <span class="tt">rawDual</span>, <span class="tt">rawSymm</span>, <span class="tt">rawExterior</span>, and <span class="tt">rawSubmoduleOfFree</span> produce derived free modules from existing ones; and the accessors <span class="tt"><a class="el" href="freemodule_8h_a0155b380ddfe3c30b0ec590cff658795.html#a0155b380ddfe3c30b0ec590cff658795">IM2_FreeModule_ring</a></span>, <span class="tt"><a class="el" href="freemodule_8h_a928ff5ceb166d149d0c03eb7ebd0cce1.html#a928ff5ceb166d149d0c03eb7ebd0cce1">IM2_FreeModule_rank</a></span>, and the various <span class="tt">rawDegrees</span> / <span class="tt">rawGetSchreyer</span> variants expose the underlying state. Schreyer-order setup goes through its own <span class="tt">rawSchreyerSource</span> / <span class="tt">rawSchreyerOrder</span> entries.</p>
+<p><span class="tt"><a class="el" href="class_free_module.html">FreeModule</a></span>s are immutable once returned, so every "modify" operation builds a fresh object. The header documents one outstanding limitation in a TODO: the Schreyer orders produced by sum / tensor / symm / exterior / submodule currently ignore tie-breaker information, and the engine does not yet intern free modules per ring.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="freemodule_8cpp.html">freemodule.cpp</a> </dd>
+<dd>
+<a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="freemodule_8h_source.html">freemodule.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

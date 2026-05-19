@@ -91,6 +91,9 @@ $(function(){initNavTree('_overlap_table_8hpp.html','',''); });
   <div class="headertitle"><div class="title">OverlapTable.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_overlap_table.html">OverlapTable</a></span> &mdash; degree-sorted queue of pending word overlaps for non-commutative GB drivers.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>&quot;</code><br />
 <code>#include &lt;deque&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
@@ -114,7 +117,21 @@ Functions</h2></td></tr>
 <tr class="memitem:abaf0138d659b5863e9156f9fe994dbad" id="r_abaf0138d659b5863e9156f9fe994dbad"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_overlap_table_8hpp_abaf0138d659b5863e9156f9fe994dbad.html#abaf0138d659b5863e9156f9fe994dbad">operator&lt;&lt;</a> (std::ostream &amp;ostr, const <a class="el" href="class_overlap_table.html">OverlapTable</a> &amp;overlapTable)</td></tr>
 <tr class="memitem:a8e3015e5faf9d0c884c15a2d88237dac" id="r_a8e3015e5faf9d0c884c15a2d88237dac"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_overlap_table_8hpp_a8e3015e5faf9d0c884c15a2d88237dac.html#a8e3015e5faf9d0c884c15a2d88237dac">operator&lt;&lt;</a> (std::ostream &amp;o, <a class="el" href="_overlap_table_8hpp_a6137b15715e0fc6d08b1936ca1f48e85.html#a6137b15715e0fc6d08b1936ca1f48e85">Overlap</a> &amp;a) -&gt; std::ostream &amp;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_overlap_table.html">OverlapTable</a></span> &mdash; degree-sorted queue of pending word overlaps for non-commutative GB drivers. </p>
+<p>Declares the non-commutative analogue of the commutative <span class="tt">SPair</span> set: an <span class="tt"><a class="el" href="_overlap_table_8hpp_a6137b15715e0fc6d08b1936ca1f48e85.html#a6137b15715e0fc6d08b1936ca1f48e85">Overlap</a></span> is <span class="tt">(i, j, k, processed)</span> recording that a suffix of basis word <span class="tt">i</span> matches a prefix of basis word <span class="tt">k</span> starting at position <span class="tt">j</span> in <span class="tt">i</span>, and the <span class="tt">processed</span> flag marks whether the corresponding S-polynomial has been computed yet. The container is a <span class="tt">std::map&lt;(degree, processed),
+std::deque&lt;<a class="el" href="_overlap_table_8hpp_a6137b15715e0fc6d08b1936ca1f48e85.html#a6137b15715e0fc6d08b1936ca1f48e85">Overlap</a>&gt;&gt;</span>, which lets <span class="tt">nextDegreeOverlaps</span> pop an entire degree's worth of pending pairs in one go, while <span class="tt">insert(deg, isGenerator, o)</span> appends new overlaps as the basis grows. <span class="tt">removeLowestDegree</span> advances the cursor; <span class="tt">isFinished(topDegree)</span> is the termination test the <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> / <span class="tt"><a class="el" href="class_n_c_f4.html">NCF4</a></span> outer loop uses.</p>
+<p>Each Buchberger-style pair in the commutative case becomes potentially many overlaps in the NC case, since a leading word can overlap a partner at every suffix-prefix match position. Pruning consults the cached <span class="tt">ConstPolyList*</span> for subsumption tests &mdash; the structure stores polynomial pointers so the chain-criterion analogue can read the actual leading words rather than just their indices.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_word_table_8hpp.html" title="WordTable — production leading-word index for non-commutative Gröbner basis lookup.">WordTable.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_f4_8hpp.html" title="NCF4 — non-commutative F4 Gröbner-basis driver building a per-degree Macaulay matrix.">NCF4.hpp</a> </dd>
+<dd>
+<a class="el" href="_polynomial_8hpp.html" title="Modern Monom / Poly value types shared by NC algebras and the refactored F4.">Polynomial.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_overlap_table_8hpp_source.html">OverlapTable.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

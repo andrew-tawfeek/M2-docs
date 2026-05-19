@@ -105,29 +105,29 @@ template&lt;typename RT&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_ring_z_zp_test_8cpp_source.html#l00046">46</a> of file <a class="el" href="_a_ring_z_zp_test_8cpp_source.html">ARingZZpTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>{</div>
-<div class="line"><span class="lineno">   48</span>  <span class="keywordtype">long</span> top1 = (R.characteristic() &gt; 10000 ? 10000 : R.characteristic());</div>
-<div class="line"><span class="lineno">   49</span>  <span class="keywordtype">long</span> bottom2 = (R.characteristic() &gt; 10000 ? R.characteristic() - 10000 : 0);</div>
-<div class="line"><span class="lineno">   50</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> i = 0; i &lt; top1; i++)</div>
-<div class="line"><span class="lineno">   51</span>    {</div>
-<div class="line"><span class="lineno">   52</span>      <span class="keyword">typename</span> RT::ElementType a;</div>
-<div class="line"><span class="lineno">   53</span>      R.init(a);</div>
-<div class="line"><span class="lineno">   54</span>      R.set_from_long(a, i);</div>
-<div class="line"><span class="lineno">   55</span>      <span class="keywordtype">long</span> b = R.coerceToLongInteger(a);</div>
-<div class="line"><span class="lineno">   56</span>      <span class="keywordflow">if</span> (b &lt; 0) b += R.characteristic();</div>
-<div class="line"><span class="lineno">   57</span>      EXPECT_EQ(b, i);</div>
-<div class="line"><span class="lineno">   58</span>    }</div>
-<div class="line"><span class="lineno">   59</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> i = bottom2; i &lt; R.characteristic(); i++)</div>
-<div class="line"><span class="lineno">   60</span>    {</div>
-<div class="line"><span class="lineno">   61</span>      <span class="keyword">typename</span> RT::ElementType a;</div>
-<div class="line"><span class="lineno">   62</span>      R.init(a);</div>
-<div class="line"><span class="lineno">   63</span>      R.set_from_long(a, i);</div>
-<div class="line"><span class="lineno">   64</span>      <span class="keywordtype">long</span> b = R.coerceToLongInteger(a);</div>
-<div class="line"><span class="lineno">   65</span>      <span class="keywordflow">if</span> (b &lt; 0) b += R.characteristic();</div>
-<div class="line"><span class="lineno">   66</span>      EXPECT_EQ(b, i);</div>
-<div class="line"><span class="lineno">   67</span>    }</div>
-<div class="line"><span class="lineno">   68</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_a_ring_z_zp_test_8cpp_source.html#l00072">72</a> of file <a class="el" href="_a_ring_z_zp_test_8cpp_source.html">ARingZZpTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>{</div>
+<div class="line"><span class="lineno">   74</span>  <span class="keywordtype">long</span> top1 = (R.characteristic() &gt; 10000 ? 10000 : R.characteristic());</div>
+<div class="line"><span class="lineno">   75</span>  <span class="keywordtype">long</span> bottom2 = (R.characteristic() &gt; 10000 ? R.characteristic() - 10000 : 0);</div>
+<div class="line"><span class="lineno">   76</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> i = 0; i &lt; top1; i++)</div>
+<div class="line"><span class="lineno">   77</span>    {</div>
+<div class="line"><span class="lineno">   78</span>      <span class="keyword">typename</span> RT::ElementType a;</div>
+<div class="line"><span class="lineno">   79</span>      R.init(a);</div>
+<div class="line"><span class="lineno">   80</span>      R.set_from_long(a, i);</div>
+<div class="line"><span class="lineno">   81</span>      <span class="keywordtype">long</span> b = R.coerceToLongInteger(a);</div>
+<div class="line"><span class="lineno">   82</span>      <span class="keywordflow">if</span> (b &lt; 0) b += R.characteristic();</div>
+<div class="line"><span class="lineno">   83</span>      EXPECT_EQ(b, i);</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   85</span>  <span class="keywordflow">for</span> (<span class="keywordtype">long</span> i = bottom2; i &lt; R.characteristic(); i++)</div>
+<div class="line"><span class="lineno">   86</span>    {</div>
+<div class="line"><span class="lineno">   87</span>      <span class="keyword">typename</span> RT::ElementType a;</div>
+<div class="line"><span class="lineno">   88</span>      R.init(a);</div>
+<div class="line"><span class="lineno">   89</span>      R.set_from_long(a, i);</div>
+<div class="line"><span class="lineno">   90</span>      <span class="keywordtype">long</span> b = R.coerceToLongInteger(a);</div>
+<div class="line"><span class="lineno">   91</span>      <span class="keywordflow">if</span> (b &lt; 0) b += R.characteristic();</div>
+<div class="line"><span class="lineno">   92</span>      EXPECT_EQ(b, i);</div>
+<div class="line"><span class="lineno">   93</span>    }</div>
+<div class="line"><span class="lineno">   94</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="_a_ring_z_zp_test_8cpp_a8a06ae80d86821b1b05f458bf57ceae1.html#a8a06ae80d86821b1b05f458bf57ceae1">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_a08c7017ea22d98143ab4bc0a652faa16.html#a08c7017ea22d98143ab4bc0a652faa16">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_ac9c4d22e884dd9e42bba65d305e95f5d.html#ac9c4d22e884dd9e42bba65d305e95f5d">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_ad63a50695024ab6443397289f604f0b9.html#ad63a50695024ab6443397289f604f0b9">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_a14ea51fbe69a5f0bbea9bb8a39d214fb.html#a14ea51fbe69a5f0bbea9bb8a39d214fb">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_abbc0139382c3f51ebbd1274c6f19b76b.html#abbc0139382c3f51ebbd1274c6f19b76b">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_af4d3625c013414e16b2946dc5f4d3783.html#af4d3625c013414e16b2946dc5f4d3783">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_ac1b3438da6e3e2b26207be3f9ecdae2a.html#ac1b3438da6e3e2b26207be3f9ecdae2a">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_aa4e4abfce3d09ae810f19e37b658bc8a.html#aa4e4abfce3d09ae810f19e37b658bc8a">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_a393f8d71bb88b538c8760611ea1b9c91.html#a393f8d71bb88b538c8760611ea1b9c91">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_a3a39481e8f5debc6c899cc34a309477e.html#a3a39481e8f5debc6c899cc34a309477e">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_ad99083caf21bd27515d2a551ee6cade2.html#ad99083caf21bd27515d2a551ee6cade2">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_a106f1267ee2cd13dc33846167c9a2c43.html#a106f1267ee2cd13dc33846167c9a2c43">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_a9ccb5728ee1677bc1564211ea76e1218.html#a9ccb5728ee1677bc1564211ea76e1218">TEST()</a>, <a class="el" href="_a_ring_z_zp_test_8cpp_a19edf3af22eb1fc2513cb28d073397ce.html#a19edf3af22eb1fc2513cb28d073397ce">TEST()</a>, and <a class="el" href="_a_ring_z_zp_test_8cpp_a1720874fafb3437f646b5cebaaf13028.html#a1720874fafb3437f646b5cebaaf13028">TEST()</a>.</p>
 

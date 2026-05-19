@@ -107,9 +107,9 @@ Macros</h2></td></tr>
 <div class="textblock"><p>Engine TBB shim &mdash; single point of inclusion for every parallel primitive. </p>
 <p>Brings in <span class="tt"><a class="el" href="mtbb_8hpp.html">mathicgb/mtbb.hpp</a></span> after consulting <span class="tt">M2/config.h</span> for the configure-time <span class="tt"><a class="el" href="mtbb_8hpp_a781665ad4e25185f593a1689aed1e704.html#a781665ad4e25185f593a1689aed1e704">WITH_TBB</a></span> flag. When TBB is not available the header defines <span class="tt"><a class="el" href="m2tbb_8hpp_ab836e47429fb1a5d9e5a02faf06d596d.html#ab836e47429fb1a5d9e5a02faf06d596d">MATHICGB_NO_TBB</a></span>, which makes mathicgb's abstractions (parallel <span class="tt">for</span>, atomic counters, mutexes, flow-graph nodes) compile down to no-op serial code. Engine code that wants parallelism must include this header rather than <span class="tt">&lt;tbb/...&gt;</span> directly so that flipping <span class="tt"><a class="el" href="mtbb_8hpp_a781665ad4e25185f593a1689aed1e704.html#a781665ad4e25185f593a1689aed1e704">WITH_TBB</a></span> at configure time is the only change required.</p>
 <p>Primary consumers are <span class="tt">schreyer-resolution/</span> (Schreyer-frame scheduling and the dep-graph), <span class="tt">NCAlgebras/NCF4</span> (parallel row reduction), and any future engine path that wants to opt in.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-schreyer-frame_8hpp.html">schreyer-resolution/res-schreyer-frame.hpp</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="res-schreyer-frame_8hpp.html" title="SchreyerFrame — in-progress representation of a free resolution organised by (level,...">schreyer-resolution/res-schreyer-frame.hpp</a> </dd>
 <dd>
-<a class="el" href="_n_c_f4_8hpp.html">NCAlgebras/NCF4.hpp</a> </dd></dl>
+<a class="el" href="_n_c_f4_8hpp.html" title="NCF4 — non-commutative F4 Gröbner-basis driver building a per-degree Macaulay matrix.">NCAlgebras/NCF4.hpp</a> </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="m2tbb_8hpp_source.html">m2tbb.hpp</a>.</p>
 </div></div><!-- contents -->

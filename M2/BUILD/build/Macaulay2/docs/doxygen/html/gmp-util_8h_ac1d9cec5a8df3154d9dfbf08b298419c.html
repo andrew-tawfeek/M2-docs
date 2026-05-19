@@ -112,17 +112,17 @@ $(function(){initNavTree('gmp-util_8h_ac1d9cec5a8df3154d9dfbf08b298419c.html',''
 </div><div class="memdoc">
 <p>Multiprecision arithmetic allocation utility routines </p>
 
-<p class="definition">Definition at line <a class="el" href="gmp-util_8h_source.html#l00014">14</a> of file <a class="el" href="gmp-util_8h_source.html">gmp-util.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>{ </div>
-<div class="line"><span class="lineno">   16</span>  <span class="keywordtype">int</span> _s = _z-&gt;_mp_size;</div>
-<div class="line"><span class="lineno">   17</span>  <span class="keywordtype">int</span> _as = (_s&gt;0)?_s:-_s;</div>
-<div class="line"><span class="lineno">   18</span>  mp_limb_t *_p = (mp_limb_t*) <a class="code hl_function" href="m2-mem_8cpp_ad570aa88b4e5fd3b499f00c231407f19.html#ad570aa88b4e5fd3b499f00c231407f19">getmem_atomic</a>(_as*<span class="keyword">sizeof</span>(mp_limb_t));</div>
-<div class="line"><span class="lineno">   19</span>  memcpy(_p,_z-&gt;_mp_d,_as*<span class="keyword">sizeof</span>(mp_limb_t));</div>
-<div class="line"><span class="lineno">   20</span>  mpz_clear(_z);</div>
-<div class="line"><span class="lineno">   21</span>  _z-&gt;_mp_d = _p;</div>
-<div class="line"><span class="lineno">   22</span>  _z-&gt;_mp_size = _s;</div>
-<div class="line"><span class="lineno">   23</span>  _z-&gt;_mp_alloc = _as;</div>
-<div class="line"><span class="lineno">   24</span>}</div>
+<p class="definition">Definition at line <a class="el" href="gmp-util_8h_source.html#l00043">43</a> of file <a class="el" href="gmp-util_8h_source.html">gmp-util.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>{ </div>
+<div class="line"><span class="lineno">   45</span>  <span class="keywordtype">int</span> _s = _z-&gt;_mp_size;</div>
+<div class="line"><span class="lineno">   46</span>  <span class="keywordtype">int</span> _as = (_s&gt;0)?_s:-_s;</div>
+<div class="line"><span class="lineno">   47</span>  mp_limb_t *_p = (mp_limb_t*) <a class="code hl_function" href="m2-mem_8cpp_ad570aa88b4e5fd3b499f00c231407f19.html#ad570aa88b4e5fd3b499f00c231407f19">getmem_atomic</a>(_as*<span class="keyword">sizeof</span>(mp_limb_t));</div>
+<div class="line"><span class="lineno">   48</span>  memcpy(_p,_z-&gt;_mp_d,_as*<span class="keyword">sizeof</span>(mp_limb_t));</div>
+<div class="line"><span class="lineno">   49</span>  mpz_clear(_z);</div>
+<div class="line"><span class="lineno">   50</span>  _z-&gt;_mp_d = _p;</div>
+<div class="line"><span class="lineno">   51</span>  _z-&gt;_mp_size = _s;</div>
+<div class="line"><span class="lineno">   52</span>  _z-&gt;_mp_alloc = _as;</div>
+<div class="line"><span class="lineno">   53</span>}</div>
 <div class="ttc" id="am2-mem_8cpp_ad570aa88b4e5fd3b499f00c231407f19_html_ad570aa88b4e5fd3b499f00c231407f19"><div class="ttname"><a href="m2-mem_8cpp_ad570aa88b4e5fd3b499f00c231407f19.html#ad570aa88b4e5fd3b499f00c231407f19">getmem_atomic</a></div><div class="ttdeci">char * getmem_atomic(size_t n)</div><div class="ttdef"><b>Definition</b> <a href="m2-mem_8cpp_source.html#l00135">m2-mem.cpp:135</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="m2-mem_8cpp_ad570aa88b4e5fd3b499f00c231407f19.html#ad570aa88b4e5fd3b499f00c231407f19">getmem_atomic()</a>.</p>

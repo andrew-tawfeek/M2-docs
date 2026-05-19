@@ -91,23 +91,25 @@ $(function(){initNavTree('_macaulay2_2e_2unit-tests_2test_main_8cpp_source.html'
   <div class="headertitle"><div class="title">testMain.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_macaulay2_2e_2unit-tests_2test_main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;gtest/gtest.h&gt;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;M2/gc-include.h&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="engine_8h.html">engine.h</a>&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="}">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="_macaulay2_2e_2unit-tests_2test_main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627.html#a3c04138a5bfe5d72780bb7e82a18e627">    5</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="franzi-brp-test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  <a class="code hl_function" href="engine_8cpp_a36005f06d3616501a8afcfd538dd55b2.html#a36005f06d3616501a8afcfd538dd55b2">IM2_initialize</a>();</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  ::testing::InitGoogleTest(&amp;argc, argv);</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="keywordflow">return</span> RUN_ALL_TESTS();</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>}</div>
+<a href="_macaulay2_2e_2unit-tests_2test_main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;gtest/gtest.h&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;M2/gc-include.h&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;<a class="code" href="engine_8h.html">engine.h</a>&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="_macaulay2_2e_2unit-tests_2test_main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627.html#a3c04138a5bfe5d72780bb7e82a18e627">   32</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="franzi-brp-test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <a class="code hl_function" href="engine_8cpp_a36005f06d3616501a8afcfd538dd55b2.html#a36005f06d3616501a8afcfd538dd55b2">IM2_initialize</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  ::testing::InitGoogleTest(&amp;argc, argv);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keywordflow">return</span> RUN_ALL_TESTS();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
 </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Local Variables:</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// compile-command: &quot;make -C $M2BUILDDIR/Macaulay2/e/unit-tests check  &quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// indent-tabs-mode: nil</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// End:</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// Local Variables:</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// compile-command: &quot;make -C $M2BUILDDIR/Macaulay2/e/unit-tests check  &quot;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// indent-tabs-mode: nil</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">// End:</span></div>
 <div class="ttc" id="aengine_8cpp_a36005f06d3616501a8afcfd538dd55b2_html_a36005f06d3616501a8afcfd538dd55b2"><div class="ttname"><a href="engine_8cpp_a36005f06d3616501a8afcfd538dd55b2.html#a36005f06d3616501a8afcfd538dd55b2">IM2_initialize</a></div><div class="ttdeci">void IM2_initialize()</div><div class="ttdef"><b>Definition</b> <a href="engine_8cpp_source.html#l00069">engine.cpp:69</a></div></div>
 <div class="ttc" id="aengine_8h_html"><div class="ttname"><a href="engine_8h.html">engine.h</a></div><div class="ttdoc">Legacy umbrella header that re-exports the full engine public surface.</div></div>
 <div class="ttc" id="afranzi-brp-test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="franzi-brp-test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition</b> <a href="franzi-brp-test_8cpp_source.html#l00376">franzi-brp-test.cpp:376</a></div></div>

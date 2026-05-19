@@ -91,6 +91,9 @@ $(function(){initNavTree('cone_8h.html','',''); });
   <div class="headertitle"><div class="title">cone.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-boundary C API for rational polyhedral cone operations.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 </div>
 <p><a href="cone_8h_source.html">Go to the source code of this file.</a></p>
@@ -100,7 +103,16 @@ Functions</h2></td></tr>
 <tr class="memitem:a85d9df0cdaa2f82929c6a6ef63a4cb23" id="r_a85d9df0cdaa2f82929c6a6ef63a4cb23"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_matrix.html">Matrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cone_8h_a85d9df0cdaa2f82929c6a6ef63a4cb23.html#a85d9df0cdaa2f82929c6a6ef63a4cb23">rawFourierMotzkin</a> (const <a class="el" href="class_matrix.html">Matrix</a> *C)</td></tr>
 <tr class="memitem:a4f62829885001872593d8165b13c798f" id="r_a4f62829885001872593d8165b13c798f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_matrix.html">Matrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cone_8h_a4f62829885001872593d8165b13c798f.html#a4f62829885001872593d8165b13c798f">rawHilbertBasis</a> (const <a class="el" href="class_matrix.html">Matrix</a> *C)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-boundary C API for rational polyhedral cone operations. </p>
+<p>Declares the two <span class="tt">extern "C"</span> entry points the <a class="el" href="namespace_m2.html">M2</a> interpreter uses for cone work: <span class="tt">rawFourierMotzkin(C)</span>, which dualises a cone between facet-inequality and ray-generator representations via Fourier-Motzkin elimination, and <span class="tt">rawHilbertBasis(C)</span>, which returns the Hilbert basis (minimal generators of the semigroup of lattice points in the cone) via Normaliz. Cones are passed in and out as <span class="tt">Matrix*</span> whose columns are the relevant rays or facets, so only <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> needs to be forward- declared at the C boundary.</p>
+<p>Consumed by the <span class="tt">Polyhedra</span>, <span class="tt">Normaliz</span>, and toric-geometry <a class="el" href="namespace_m2.html">M2</a> packages. When Normaliz is unavailable on the build machine the functions return null and the <a class="el" href="namespace_m2.html">M2</a> layer surfaces a "feature not available" error.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="cone_8cpp.html">cone.cpp</a> </dd>
+<dd>
+<a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="cone_8h_source.html">cone.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

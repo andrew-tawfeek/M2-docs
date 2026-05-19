@@ -91,6 +91,9 @@ $(function(){initNavTree('_a_ring_test_8hpp.html','',''); });
   <div class="headertitle"><div class="title">ARingTest.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Shared gtest harness for the <span class="tt">ARing*Test.cpp</span> suite.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="random_8h_source.html">interface/random.h</a>&quot;</code><br />
 </div>
 <p><a href="_a_ring_test_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -136,7 +139,20 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:ab9f6640fa3295a21ee90492443d792ac" id="r_ab9f6640fa3295a21ee90492443d792ac"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_ring_test_8hpp_ab9f6640fa3295a21ee90492443d792ac.html#ab9f6640fa3295a21ee90492443d792ac">ntrials</a> = 1000</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Shared gtest harness for the <span class="tt">ARing*Test.cpp</span> suite. </p>
+<p>Declares the per-ring testing surface: the primary <span class="tt"><a class="el" href="_a_ring_test_8hpp_abfba126d094aba21386022c26fbc3b85.html#abfba126d094aba21386022c26fbc3b85">getElement</a>&lt;RingType&gt;(R, index, <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>)</span> function template (each <span class="tt">ARing*Test.cpp</span> provides its ring's specialisation), the <span class="tt"><a class="el" href="class_a_ring_element_generator.html">ARingElementGenerator</a>&lt;RingType&gt;</span> wrapper handing out one element per <span class="tt">nextElement</span> call, the <span class="tt"><a class="el" href="_a_ring_test_8hpp_a8b21b151847791794532fa994ff1b78a.html#a8b21b151847791794532fa994ff1b78a">fromStream</a></span> parser, and the <span class="tt"><a class="el" href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a>&lt;<a class="el" href="struct_t.html">T</a>&gt;(R)</span> driver that runs the standard arithmetic / equality / inverse / negation checks over the generator's output. <span class="tt"><a class="el" href="_a_ring_test_8hpp_ab9f6640fa3295a21ee90492443d792ac.html#ab9f6640fa3295a21ee90492443d792ac">ntrials</a> = 1000</span> fixes how many random elements each test exercises; the commented <span class="tt">1000000</span> line records the prior experiment that swamped the CI box.</p>
+<p>Element indices <span class="tt">&lt; 50</span> get a deterministic prefix (<span class="tt">set_from_long(<a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>, index - 25)</span> and friends) so zero, plus / minus one, and small integers are always exercised before the random fuzz kicks in. Companion to <span class="tt"><a class="el" href="_ring_test_8hpp.html" title="Shared gtest fixture for the legacy Ring-based Ring*Test.cpp suite.">RingTest.hpp</a></span> for the legacy <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>-hierarchy tests.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_ring_test_8hpp.html" title="Shared gtest fixture for the legacy Ring-based Ring*Test.cpp suite.">RingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="random_8h.html" title="Engine-boundary C API for the engine&#39;s PRNG and rational / real / complex random draws.">interface/random.h</a> </dd>
+<dd>
+<a class="el" href="_a_ring_z_z_test_8cpp.html" title="gtest coverage for the FLINT-backed M2::ARingZZ integer aring.">ARingZZTest.cpp</a> </dd>
+<dd>
+<a class="el" href="_a_ring_g_f_test_8cpp.html" title="gtest coverage for the FLINT-backed Galois-field aring (ARingGFFlintBig).">ARingGFTest.cpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_a_ring_test_8hpp_source.html">ARingTest.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -103,31 +103,31 @@ $(function(){initNavTree('util-polyring-creation_8hpp_a02552d796198f37d8ba1a54ed
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="util-polyring-creation_8cpp_source.html#l00003">3</a> of file <a class="el" href="util-polyring-creation_8cpp_source.html">util-polyring-creation.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    4</span>{</div>
-<div class="line"><span class="lineno">    5</span>  std::vector&lt;int&gt; wts;</div>
-<div class="line"><span class="lineno">    6</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;names.size(); i++)</div>
-<div class="line"><span class="lineno">    7</span>    wts.push_back(-1);</div>
-<div class="line"><span class="lineno">    8</span>  <a class="code hl_struct" href="struct_monomial_ordering.html">MonomialOrdering</a>* mo = <a class="code hl_function" href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">MonomialOrderings::join</a></div>
-<div class="line"><span class="lineno">    9</span>    ({</div>
-<div class="line"><span class="lineno">   10</span>      <a class="code hl_function" href="class_monomial_orderings_a167bb8dc2dd397a80f998ea0d038ba32.html#a167bb8dc2dd397a80f998ea0d038ba32">MonomialOrderings::Weights</a>(wts),</div>
-<div class="line"><span class="lineno">   11</span>      <a class="code hl_function" href="class_monomial_orderings_aa22efe83cb447575b3ecea0a8268f631.html#aa22efe83cb447575b3ecea0a8268f631">MonomialOrderings::GroupLex</a>(names.size()),</div>
-<div class="line"><span class="lineno">   12</span>      <a class="code hl_function" href="class_monomial_orderings_a58dcc054ebaeb7498afc5afb260c30ed.html#a58dcc054ebaeb7498afc5afb260c30ed">MonomialOrderings::PositionUp</a>()</div>
-<div class="line"><span class="lineno">   13</span>    });</div>
-<div class="line"><span class="lineno">   14</span> </div>
-<div class="line"><span class="lineno">   15</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_mono_monoid_ac593d9ad0c78a92a75a1fd06f8a0a21a.html#ac593d9ad0c78a92a75a1fd06f8a0a21a">Monoid::create</a>(mo,</div>
-<div class="line"><span class="lineno">   16</span>                        <a class="code hl_function" href="interface_2ring_8cpp_aa64388fb211f8ec009abea83e79cd935.html#aa64388fb211f8ec009abea83e79cd935">IM2_Ring_trivial_polyring</a>()-&gt;cast_to_PolynomialRing(),</div>
-<div class="line"><span class="lineno">   17</span>                        names,</div>
-<div class="line"><span class="lineno">   18</span>                        {},</div>
-<div class="line"><span class="lineno">   19</span>                        {});</div>
-<div class="line"><span class="lineno">   20</span>}</div>
+<p class="definition">Definition at line <a class="el" href="util-polyring-creation_8cpp_source.html#l00028">28</a> of file <a class="el" href="util-polyring-creation_8cpp_source.html">util-polyring-creation.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>{</div>
+<div class="line"><span class="lineno">   30</span>  std::vector&lt;int&gt; wts;</div>
+<div class="line"><span class="lineno">   31</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;names.size(); i++)</div>
+<div class="line"><span class="lineno">   32</span>    wts.push_back(-1);</div>
+<div class="line"><span class="lineno">   33</span>  <a class="code hl_struct" href="struct_monomial_ordering.html">MonomialOrdering</a>* mo = <a class="code hl_function" href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">MonomialOrderings::join</a></div>
+<div class="line"><span class="lineno">   34</span>    ({</div>
+<div class="line"><span class="lineno">   35</span>      <a class="code hl_function" href="class_monomial_orderings_a167bb8dc2dd397a80f998ea0d038ba32.html#a167bb8dc2dd397a80f998ea0d038ba32">MonomialOrderings::Weights</a>(wts),</div>
+<div class="line"><span class="lineno">   36</span>      <a class="code hl_function" href="class_monomial_orderings_aa22efe83cb447575b3ecea0a8268f631.html#aa22efe83cb447575b3ecea0a8268f631">MonomialOrderings::GroupLex</a>(names.size()),</div>
+<div class="line"><span class="lineno">   37</span>      <a class="code hl_function" href="class_monomial_orderings_a58dcc054ebaeb7498afc5afb260c30ed.html#a58dcc054ebaeb7498afc5afb260c30ed">MonomialOrderings::PositionUp</a>()</div>
+<div class="line"><span class="lineno">   38</span>    });</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="class_mono_monoid_ac593d9ad0c78a92a75a1fd06f8a0a21a.html#ac593d9ad0c78a92a75a1fd06f8a0a21a">Monoid::create</a>(mo,</div>
+<div class="line"><span class="lineno">   41</span>                        <a class="code hl_function" href="interface_2ring_8cpp_aa64388fb211f8ec009abea83e79cd935.html#aa64388fb211f8ec009abea83e79cd935">IM2_Ring_trivial_polyring</a>()-&gt;cast_to_PolynomialRing(),</div>
+<div class="line"><span class="lineno">   42</span>                        names,</div>
+<div class="line"><span class="lineno">   43</span>                        {},</div>
+<div class="line"><span class="lineno">   44</span>                        {});</div>
+<div class="line"><span class="lineno">   45</span>}</div>
 <div class="ttc" id="aclass_mono_monoid_ac593d9ad0c78a92a75a1fd06f8a0a21a_html_ac593d9ad0c78a92a75a1fd06f8a0a21a"><div class="ttname"><a href="class_mono_monoid_ac593d9ad0c78a92a75a1fd06f8a0a21a.html#ac593d9ad0c78a92a75a1fd06f8a0a21a">MonoMonoid&lt; exponent &gt;::create</a></div><div class="ttdeci">static MonoMonoid create(const MonoMonoid&lt; E2, HC2, SH2, SO2 &gt; &amp;monoid)</div><div class="ttdef"><b>Definition</b> <a href="_mono_monoid_8hpp_source.html#l00396">MonoMonoid.hpp:396</a></div></div>
 <div class="ttc" id="aclass_monomial_orderings_a167bb8dc2dd397a80f998ea0d038ba32_html_a167bb8dc2dd397a80f998ea0d038ba32"><div class="ttname"><a href="class_monomial_orderings_a167bb8dc2dd397a80f998ea0d038ba32.html#a167bb8dc2dd397a80f998ea0d038ba32">MonomialOrderings::Weights</a></div><div class="ttdeci">static MonomialOrdering * Weights(const std::vector&lt; int &gt; &amp;wts)</div><div class="ttdef"><b>Definition</b> <a href="monomial-ordering_8cpp_source.html#l00138">monomial-ordering.cpp:138</a></div></div>
 <div class="ttc" id="aclass_monomial_orderings_a58dcc054ebaeb7498afc5afb260c30ed_html_a58dcc054ebaeb7498afc5afb260c30ed"><div class="ttname"><a href="class_monomial_orderings_a58dcc054ebaeb7498afc5afb260c30ed.html#a58dcc054ebaeb7498afc5afb260c30ed">MonomialOrderings::PositionUp</a></div><div class="ttdeci">static MonomialOrdering * PositionUp()</div><div class="ttdef"><b>Definition</b> <a href="monomial-ordering_8cpp_source.html#l00153">monomial-ordering.cpp:153</a></div></div>
 <div class="ttc" id="aclass_monomial_orderings_aa22efe83cb447575b3ecea0a8268f631_html_aa22efe83cb447575b3ecea0a8268f631"><div class="ttname"><a href="class_monomial_orderings_aa22efe83cb447575b3ecea0a8268f631.html#aa22efe83cb447575b3ecea0a8268f631">MonomialOrderings::GroupLex</a></div><div class="ttdeci">static MonomialOrdering * GroupLex(int nvars)</div><div class="ttdef"><b>Definition</b> <a href="monomial-ordering_8cpp_source.html#l00145">monomial-ordering.cpp:145</a></div></div>
 <div class="ttc" id="aclass_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2_html_aeac24bb39d682a1ae9b85e7a40d903a2"><div class="ttname"><a href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">MonomialOrderings::join</a></div><div class="ttdeci">static MonomialOrdering * join(const std::vector&lt; MonomialOrdering * &gt; &amp;M)</div><div class="ttdef"><b>Definition</b> <a href="monomial-ordering_8cpp_source.html#l00206">monomial-ordering.cpp:206</a></div></div>
 <div class="ttc" id="ainterface_2ring_8cpp_aa64388fb211f8ec009abea83e79cd935_html_aa64388fb211f8ec009abea83e79cd935"><div class="ttname"><a href="interface_2ring_8cpp_aa64388fb211f8ec009abea83e79cd935.html#aa64388fb211f8ec009abea83e79cd935">IM2_Ring_trivial_polyring</a></div><div class="ttdeci">const Ring * IM2_Ring_trivial_polyring()</div><div class="ttdef"><b>Definition</b> <a href="interface_2ring_8cpp_source.html#l00114">ring.cpp:114</a></div></div>
-<div class="ttc" id="astruct_monomial_ordering_html"><div class="ttname"><a href="struct_monomial_ordering.html">MonomialOrdering</a></div><div class="ttdef"><b>Definition</b> <a href="monomial-ordering_8h_source.html#l00038">monomial-ordering.h:39</a></div></div>
+<div class="ttc" id="astruct_monomial_ordering_html"><div class="ttname"><a href="struct_monomial_ordering.html">MonomialOrdering</a></div><div class="ttdef"><b>Definition</b> <a href="monomial-ordering_8h_source.html#l00070">monomial-ordering.h:71</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_mono_monoid_ac593d9ad0c78a92a75a1fd06f8a0a21a.html#ac593d9ad0c78a92a75a1fd06f8a0a21a">MonoMonoid&lt; exponent &gt;::create()</a>, <a class="el" href="class_monomial_orderings_aa22efe83cb447575b3ecea0a8268f631.html#aa22efe83cb447575b3ecea0a8268f631">MonomialOrderings::GroupLex()</a>, <a class="el" href="interface_2ring_8cpp_aa64388fb211f8ec009abea83e79cd935.html#aa64388fb211f8ec009abea83e79cd935">IM2_Ring_trivial_polyring()</a>, <a class="el" href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">MonomialOrderings::join()</a>, <a class="el" href="class_monomial_orderings_a58dcc054ebaeb7498afc5afb260c30ed.html#a58dcc054ebaeb7498afc5afb260c30ed">MonomialOrderings::PositionUp()</a>, and <a class="el" href="class_monomial_orderings_a167bb8dc2dd397a80f998ea0d038ba32.html#a167bb8dc2dd397a80f998ea0d038ba32">MonomialOrderings::Weights()</a>.</p>
 

@@ -107,109 +107,109 @@ $(function(){initNavTree('_n_c_groebner_test_8cpp_a00c9e6091933592c76e0a46c29759
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_n_c_groebner_test_8cpp_source.html#l00651">651</a> of file <a class="el" href="_n_c_groebner_test_8cpp_source.html">NCGroebnerTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  652</span>{</div>
-<div class="line"><span class="lineno">  653</span>  <span class="comment">// X,Y Z are the 3 variables</span></div>
-<div class="line"><span class="lineno">  654</span><span class="preprocessor">#if 0  </span></div>
-<div class="line"><span class="lineno">  655</span>  mons = {{Z, X}, {Z, Y}, {Z, Z}, {Y, Y, X}, {Y, Y, Z},</div>
-<div class="line"><span class="lineno">  656</span>            {Y, X, Y, Y}, {Y, Y, Y, Y}, {Y, X, Y, X, X},</div>
-<div class="line"><span class="lineno">  657</span>            {Y, X, Y, X, Y}, {Y, X, Y, X, Z},</div>
-<div class="line"><span class="lineno">  658</span>            {Y, X, X, Y, X, X}, {Y, X, X, Y, X, Z},</div>
-<div class="line"><span class="lineno">  659</span>          {Y, X, X, Y, Y, Y}}</div>
-<div class="line"><span class="lineno">  660</span><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="lineno">  661</span>          </div>
-<div class="line"><span class="lineno">  662</span>  std::vector&lt;int&gt; m0 {2,0};  <span class="comment">// ZX</span></div>
-<div class="line"><span class="lineno">  663</span>  std::vector&lt;int&gt; m1 {2,1};  <span class="comment">// ZY</span></div>
-<div class="line"><span class="lineno">  664</span>  std::vector&lt;int&gt; m2 {2,2};  <span class="comment">// ZZ</span></div>
-<div class="line"><span class="lineno">  665</span>  std::vector&lt;int&gt; m3 {1,1,0};  <span class="comment">// YYX</span></div>
-<div class="line"><span class="lineno">  666</span>  std::vector&lt;int&gt; m4 {1,1,2};  <span class="comment">// YYZ</span></div>
-<div class="line"><span class="lineno">  667</span>  std::vector&lt;int&gt; m5 {1,0,1,1};  <span class="comment">// YXYY</span></div>
-<div class="line"><span class="lineno">  668</span>  std::vector&lt;int&gt; m6 {1,1,1,1};  <span class="comment">// YYYY</span></div>
-<div class="line"><span class="lineno">  669</span>  std::vector&lt;int&gt; m7 {1,0,1,0,0};  <span class="comment">// YXYXX</span></div>
-<div class="line"><span class="lineno">  670</span>  std::vector&lt;int&gt; m8 {1,0,1,0,1};  <span class="comment">// YXYXY</span></div>
-<div class="line"><span class="lineno">  671</span>  std::vector&lt;int&gt; m9 {1,0,1,0,2};  <span class="comment">// YXYXZ</span></div>
-<div class="line"><span class="lineno">  672</span>  std::vector&lt;int&gt; m10 {1,0,0,1,0,0};  <span class="comment">// YXXYXX</span></div>
-<div class="line"><span class="lineno">  673</span>  std::vector&lt;int&gt; m11 {1,0,0,1,0,2};  <span class="comment">// YXXYXZ</span></div>
-<div class="line"><span class="lineno">  674</span>  std::vector&lt;int&gt; m12 {1,0,0,1,1,1};  <span class="comment">// YXXYYY</span></div>
-<div class="line"><span class="lineno">  675</span> </div>
-<div class="line"><span class="lineno">  676</span>  std::vector&lt;Overlap&gt; overlaps;</div>
-<div class="line"><span class="lineno">  677</span>  std::vector&lt;std::pair&lt;int,int&gt;&gt; matches;</div>
-<div class="line"><span class="lineno">  678</span>  </div>
-<div class="line"><span class="lineno">  679</span>  <a class="code hl_class" href="class_word_table.html">WordTable</a> W;</div>
-<div class="line"><span class="lineno">  680</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m0), overlaps);</div>
-<div class="line"><span class="lineno">  681</span>  EXPECT_EQ(0, overlaps.size());</div>
-<div class="line"><span class="lineno">  682</span> </div>
-<div class="line"><span class="lineno">  683</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m1), overlaps);</div>
-<div class="line"><span class="lineno">  684</span>  EXPECT_EQ(0, overlaps.size());</div>
-<div class="line"><span class="lineno">  685</span> </div>
-<div class="line"><span class="lineno">  686</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m2), overlaps);</div>
-<div class="line"><span class="lineno">  687</span>  std::vector&lt;Overlap&gt; ans {</div>
-<div class="line"><span class="lineno">  688</span>      std::make_tuple(2,1,0,<span class="keyword">true</span>),</div>
-<div class="line"><span class="lineno">  689</span>      std::make_tuple(2,1,1,<span class="keyword">true</span>),</div>
-<div class="line"><span class="lineno">  690</span>      std::make_tuple(2,1,2,<span class="keyword">true</span>)</div>
-<div class="line"><span class="lineno">  691</span>      };</div>
-<div class="line"><span class="lineno">  692</span>  std::sort(ans.begin(),ans.end());</div>
-<div class="line"><span class="lineno">  693</span>  std::sort(overlaps.begin(),overlaps.end());</div>
-<div class="line"><span class="lineno">  694</span>  </div>
-<div class="line"><span class="lineno">  695</span>  EXPECT_EQ(overlaps, ans);</div>
-<div class="line"><span class="lineno">  696</span>  overlaps.clear();</div>
-<div class="line"><span class="lineno">  697</span>  W.<a class="code hl_function" href="class_word_table_aa09193cb49a9800f27df34d0167e950e.html#aa09193cb49a9800f27df34d0167e950e">leftOverlaps</a>(overlaps);</div>
-<div class="line"><span class="lineno">  698</span>  EXPECT_EQ(0, overlaps.size());</div>
-<div class="line"><span class="lineno">  699</span> </div>
-<div class="line"><span class="lineno">  700</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m3));</div>
-<div class="line"><span class="lineno">  701</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m4));</div>
-<div class="line"><span class="lineno">  702</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m5));</div>
-<div class="line"><span class="lineno">  703</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m6));</div>
-<div class="line"><span class="lineno">  704</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m7));</div>
-<div class="line"><span class="lineno">  705</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m8));</div>
-<div class="line"><span class="lineno">  706</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m9));</div>
-<div class="line"><span class="lineno">  707</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m10));</div>
-<div class="line"><span class="lineno">  708</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m11));</div>
-<div class="line"><span class="lineno">  709</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m12));</div>
-<div class="line"><span class="lineno">  710</span> </div>
-<div class="line"><span class="lineno">  711</span>  matches.clear();</div>
-<div class="line"><span class="lineno">  712</span>  W.<a class="code hl_function" href="class_word_table_a1aa542a443bc036ed7acae78c0c9acc6.html#a1aa542a443bc036ed7acae78c0c9acc6">superwords</a>(<a class="code hl_class" href="class_word.html">Word</a>(std::vector&lt;int&gt; {1, 1}), matches);</div>
-<div class="line"><span class="lineno">  713</span>  std::vector&lt;std::pair&lt;int,int&gt;&gt; ans2</div>
-<div class="line"><span class="lineno">  714</span>    {</div>
-<div class="line"><span class="lineno">  715</span>     std::make_pair(3,0),</div>
-<div class="line"><span class="lineno">  716</span>     std::make_pair(4,0),</div>
-<div class="line"><span class="lineno">  717</span>     std::make_pair(5,2),</div>
-<div class="line"><span class="lineno">  718</span>     std::make_pair(6,0),</div>
-<div class="line"><span class="lineno">  719</span>     std::make_pair(6,1),</div>
-<div class="line"><span class="lineno">  720</span>     std::make_pair(6,2),</div>
-<div class="line"><span class="lineno">  721</span>     std::make_pair(12,3),</div>
-<div class="line"><span class="lineno">  722</span>     std::make_pair(12,4)</div>
-<div class="line"><span class="lineno">  723</span>    };</div>
-<div class="line"><span class="lineno">  724</span>  std::sort(ans2.begin(),ans2.end());</div>
-<div class="line"><span class="lineno">  725</span>  std::sort(matches.begin(),matches.end());</div>
-<div class="line"><span class="lineno">  726</span>  EXPECT_EQ(ans2, matches);</div>
-<div class="line"><span class="lineno">  727</span> </div>
-<div class="line"><span class="lineno">  728</span>  matches.clear();</div>
-<div class="line"><span class="lineno">  729</span>  EXPECT_TRUE(W.<a class="code hl_function" href="class_word_table_a9dd6f959a23863217989f1948960ad82.html#a9dd6f959a23863217989f1948960ad82">isNontrivialSuperword</a>(<a class="code hl_class" href="class_word.html">Word</a>(std::vector&lt;int&gt; {1,2,1,1,2,1,1}), 6, 6));</div>
-<div class="line"><span class="lineno">  730</span>  EXPECT_TRUE(W.<a class="code hl_function" href="class_word_table_a9dd6f959a23863217989f1948960ad82.html#a9dd6f959a23863217989f1948960ad82">isNontrivialSuperword</a>(<a class="code hl_class" href="class_word.html">Word</a>(std::vector&lt;int&gt; {1,1,2,1,1,2,1,1,2}), 4, 4));</div>
-<div class="line"><span class="lineno">  731</span>  </div>
-<div class="line"><span class="lineno">  732</span>  matches.clear();</div>
-<div class="line"><span class="lineno">  733</span>  W.<a class="code hl_function" href="class_word_table_a7a60e3ce3292910ef1367b6aec3c6049.html#a7a60e3ce3292910ef1367b6aec3c6049">subwords</a>(<a class="code hl_class" href="class_word.html">Word</a>(std::vector&lt;int&gt; {2,2,0,1,1,0,1,0,1,1}), matches); <span class="comment">// ZZXYYXYXYY</span></div>
-<div class="line"><span class="lineno">  734</span>  std::vector&lt;std::pair&lt;int,int&gt;&gt; ans3</div>
-<div class="line"><span class="lineno">  735</span>    {</div>
-<div class="line"><span class="lineno">  736</span>     {0,1},</div>
-<div class="line"><span class="lineno">  737</span>     {2,0},</div>
-<div class="line"><span class="lineno">  738</span>     {3,3},</div>
-<div class="line"><span class="lineno">  739</span>     {5,6},</div>
-<div class="line"><span class="lineno">  740</span>     {8,4}</div>
-<div class="line"><span class="lineno">  741</span>    };</div>
-<div class="line"><span class="lineno">  742</span>  std::sort(ans3.begin(),ans3.end());</div>
-<div class="line"><span class="lineno">  743</span>  std::sort(matches.begin(),matches.end());</div>
-<div class="line"><span class="lineno">  744</span>  EXPECT_EQ(ans3, matches);</div>
-<div class="line"><span class="lineno">  745</span> </div>
-<div class="line"><span class="lineno">  746</span>}</div>
-<div class="ttc" id="aclass_word_html"><div class="ttname"><a href="class_word.html">Word</a></div><div class="ttdef"><b>Definition</b> <a href="_word_8hpp_source.html#l00007">Word.hpp:8</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_n_c_groebner_test_8cpp_source.html#l00681">681</a> of file <a class="el" href="_n_c_groebner_test_8cpp_source.html">NCGroebnerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  682</span>{</div>
+<div class="line"><span class="lineno">  683</span>  <span class="comment">// X,Y Z are the 3 variables</span></div>
+<div class="line"><span class="lineno">  684</span><span class="preprocessor">#if 0  </span></div>
+<div class="line"><span class="lineno">  685</span>  mons = {{Z, X}, {Z, Y}, {Z, Z}, {Y, Y, X}, {Y, Y, Z},</div>
+<div class="line"><span class="lineno">  686</span>            {Y, X, Y, Y}, {Y, Y, Y, Y}, {Y, X, Y, X, X},</div>
+<div class="line"><span class="lineno">  687</span>            {Y, X, Y, X, Y}, {Y, X, Y, X, Z},</div>
+<div class="line"><span class="lineno">  688</span>            {Y, X, X, Y, X, X}, {Y, X, X, Y, X, Z},</div>
+<div class="line"><span class="lineno">  689</span>          {Y, X, X, Y, Y, Y}}</div>
+<div class="line"><span class="lineno">  690</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">  691</span>          </div>
+<div class="line"><span class="lineno">  692</span>  std::vector&lt;int&gt; m0 {2,0};  <span class="comment">// ZX</span></div>
+<div class="line"><span class="lineno">  693</span>  std::vector&lt;int&gt; m1 {2,1};  <span class="comment">// ZY</span></div>
+<div class="line"><span class="lineno">  694</span>  std::vector&lt;int&gt; m2 {2,2};  <span class="comment">// ZZ</span></div>
+<div class="line"><span class="lineno">  695</span>  std::vector&lt;int&gt; m3 {1,1,0};  <span class="comment">// YYX</span></div>
+<div class="line"><span class="lineno">  696</span>  std::vector&lt;int&gt; m4 {1,1,2};  <span class="comment">// YYZ</span></div>
+<div class="line"><span class="lineno">  697</span>  std::vector&lt;int&gt; m5 {1,0,1,1};  <span class="comment">// YXYY</span></div>
+<div class="line"><span class="lineno">  698</span>  std::vector&lt;int&gt; m6 {1,1,1,1};  <span class="comment">// YYYY</span></div>
+<div class="line"><span class="lineno">  699</span>  std::vector&lt;int&gt; m7 {1,0,1,0,0};  <span class="comment">// YXYXX</span></div>
+<div class="line"><span class="lineno">  700</span>  std::vector&lt;int&gt; m8 {1,0,1,0,1};  <span class="comment">// YXYXY</span></div>
+<div class="line"><span class="lineno">  701</span>  std::vector&lt;int&gt; m9 {1,0,1,0,2};  <span class="comment">// YXYXZ</span></div>
+<div class="line"><span class="lineno">  702</span>  std::vector&lt;int&gt; m10 {1,0,0,1,0,0};  <span class="comment">// YXXYXX</span></div>
+<div class="line"><span class="lineno">  703</span>  std::vector&lt;int&gt; m11 {1,0,0,1,0,2};  <span class="comment">// YXXYXZ</span></div>
+<div class="line"><span class="lineno">  704</span>  std::vector&lt;int&gt; m12 {1,0,0,1,1,1};  <span class="comment">// YXXYYY</span></div>
+<div class="line"><span class="lineno">  705</span> </div>
+<div class="line"><span class="lineno">  706</span>  std::vector&lt;Overlap&gt; overlaps;</div>
+<div class="line"><span class="lineno">  707</span>  std::vector&lt;std::pair&lt;int,int&gt;&gt; matches;</div>
+<div class="line"><span class="lineno">  708</span>  </div>
+<div class="line"><span class="lineno">  709</span>  <a class="code hl_class" href="class_word_table.html">WordTable</a> W;</div>
+<div class="line"><span class="lineno">  710</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m0), overlaps);</div>
+<div class="line"><span class="lineno">  711</span>  EXPECT_EQ(0, overlaps.size());</div>
+<div class="line"><span class="lineno">  712</span> </div>
+<div class="line"><span class="lineno">  713</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m1), overlaps);</div>
+<div class="line"><span class="lineno">  714</span>  EXPECT_EQ(0, overlaps.size());</div>
+<div class="line"><span class="lineno">  715</span> </div>
+<div class="line"><span class="lineno">  716</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m2), overlaps);</div>
+<div class="line"><span class="lineno">  717</span>  std::vector&lt;Overlap&gt; ans {</div>
+<div class="line"><span class="lineno">  718</span>      std::make_tuple(2,1,0,<span class="keyword">true</span>),</div>
+<div class="line"><span class="lineno">  719</span>      std::make_tuple(2,1,1,<span class="keyword">true</span>),</div>
+<div class="line"><span class="lineno">  720</span>      std::make_tuple(2,1,2,<span class="keyword">true</span>)</div>
+<div class="line"><span class="lineno">  721</span>      };</div>
+<div class="line"><span class="lineno">  722</span>  std::sort(ans.begin(),ans.end());</div>
+<div class="line"><span class="lineno">  723</span>  std::sort(overlaps.begin(),overlaps.end());</div>
+<div class="line"><span class="lineno">  724</span>  </div>
+<div class="line"><span class="lineno">  725</span>  EXPECT_EQ(overlaps, ans);</div>
+<div class="line"><span class="lineno">  726</span>  overlaps.clear();</div>
+<div class="line"><span class="lineno">  727</span>  W.<a class="code hl_function" href="class_word_table_aa09193cb49a9800f27df34d0167e950e.html#aa09193cb49a9800f27df34d0167e950e">leftOverlaps</a>(overlaps);</div>
+<div class="line"><span class="lineno">  728</span>  EXPECT_EQ(0, overlaps.size());</div>
+<div class="line"><span class="lineno">  729</span> </div>
+<div class="line"><span class="lineno">  730</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m3));</div>
+<div class="line"><span class="lineno">  731</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m4));</div>
+<div class="line"><span class="lineno">  732</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m5));</div>
+<div class="line"><span class="lineno">  733</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m6));</div>
+<div class="line"><span class="lineno">  734</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m7));</div>
+<div class="line"><span class="lineno">  735</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m8));</div>
+<div class="line"><span class="lineno">  736</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m9));</div>
+<div class="line"><span class="lineno">  737</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m10));</div>
+<div class="line"><span class="lineno">  738</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m11));</div>
+<div class="line"><span class="lineno">  739</span>  W.<a class="code hl_function" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">insert</a>(<a class="code hl_class" href="class_word.html">Word</a>(m12));</div>
+<div class="line"><span class="lineno">  740</span> </div>
+<div class="line"><span class="lineno">  741</span>  matches.clear();</div>
+<div class="line"><span class="lineno">  742</span>  W.<a class="code hl_function" href="class_word_table_a1aa542a443bc036ed7acae78c0c9acc6.html#a1aa542a443bc036ed7acae78c0c9acc6">superwords</a>(<a class="code hl_class" href="class_word.html">Word</a>(std::vector&lt;int&gt; {1, 1}), matches);</div>
+<div class="line"><span class="lineno">  743</span>  std::vector&lt;std::pair&lt;int,int&gt;&gt; ans2</div>
+<div class="line"><span class="lineno">  744</span>    {</div>
+<div class="line"><span class="lineno">  745</span>     std::make_pair(3,0),</div>
+<div class="line"><span class="lineno">  746</span>     std::make_pair(4,0),</div>
+<div class="line"><span class="lineno">  747</span>     std::make_pair(5,2),</div>
+<div class="line"><span class="lineno">  748</span>     std::make_pair(6,0),</div>
+<div class="line"><span class="lineno">  749</span>     std::make_pair(6,1),</div>
+<div class="line"><span class="lineno">  750</span>     std::make_pair(6,2),</div>
+<div class="line"><span class="lineno">  751</span>     std::make_pair(12,3),</div>
+<div class="line"><span class="lineno">  752</span>     std::make_pair(12,4)</div>
+<div class="line"><span class="lineno">  753</span>    };</div>
+<div class="line"><span class="lineno">  754</span>  std::sort(ans2.begin(),ans2.end());</div>
+<div class="line"><span class="lineno">  755</span>  std::sort(matches.begin(),matches.end());</div>
+<div class="line"><span class="lineno">  756</span>  EXPECT_EQ(ans2, matches);</div>
+<div class="line"><span class="lineno">  757</span> </div>
+<div class="line"><span class="lineno">  758</span>  matches.clear();</div>
+<div class="line"><span class="lineno">  759</span>  EXPECT_TRUE(W.<a class="code hl_function" href="class_word_table_a9dd6f959a23863217989f1948960ad82.html#a9dd6f959a23863217989f1948960ad82">isNontrivialSuperword</a>(<a class="code hl_class" href="class_word.html">Word</a>(std::vector&lt;int&gt; {1,2,1,1,2,1,1}), 6, 6));</div>
+<div class="line"><span class="lineno">  760</span>  EXPECT_TRUE(W.<a class="code hl_function" href="class_word_table_a9dd6f959a23863217989f1948960ad82.html#a9dd6f959a23863217989f1948960ad82">isNontrivialSuperword</a>(<a class="code hl_class" href="class_word.html">Word</a>(std::vector&lt;int&gt; {1,1,2,1,1,2,1,1,2}), 4, 4));</div>
+<div class="line"><span class="lineno">  761</span>  </div>
+<div class="line"><span class="lineno">  762</span>  matches.clear();</div>
+<div class="line"><span class="lineno">  763</span>  W.<a class="code hl_function" href="class_word_table_a7a60e3ce3292910ef1367b6aec3c6049.html#a7a60e3ce3292910ef1367b6aec3c6049">subwords</a>(<a class="code hl_class" href="class_word.html">Word</a>(std::vector&lt;int&gt; {2,2,0,1,1,0,1,0,1,1}), matches); <span class="comment">// ZZXYYXYXYY</span></div>
+<div class="line"><span class="lineno">  764</span>  std::vector&lt;std::pair&lt;int,int&gt;&gt; ans3</div>
+<div class="line"><span class="lineno">  765</span>    {</div>
+<div class="line"><span class="lineno">  766</span>     {0,1},</div>
+<div class="line"><span class="lineno">  767</span>     {2,0},</div>
+<div class="line"><span class="lineno">  768</span>     {3,3},</div>
+<div class="line"><span class="lineno">  769</span>     {5,6},</div>
+<div class="line"><span class="lineno">  770</span>     {8,4}</div>
+<div class="line"><span class="lineno">  771</span>    };</div>
+<div class="line"><span class="lineno">  772</span>  std::sort(ans3.begin(),ans3.end());</div>
+<div class="line"><span class="lineno">  773</span>  std::sort(matches.begin(),matches.end());</div>
+<div class="line"><span class="lineno">  774</span>  EXPECT_EQ(ans3, matches);</div>
+<div class="line"><span class="lineno">  775</span> </div>
+<div class="line"><span class="lineno">  776</span>}</div>
+<div class="ttc" id="aclass_word_html"><div class="ttname"><a href="class_word.html">Word</a></div><div class="ttdef"><b>Definition</b> <a href="_word_8hpp_source.html#l00039">Word.hpp:40</a></div></div>
 <div class="ttc" id="aclass_word_table_a1aa542a443bc036ed7acae78c0c9acc6_html_a1aa542a443bc036ed7acae78c0c9acc6"><div class="ttname"><a href="class_word_table_a1aa542a443bc036ed7acae78c0c9acc6.html#a1aa542a443bc036ed7acae78c0c9acc6">WordTable::superwords</a></div><div class="ttdeci">void superwords(Word word, std::vector&lt; std::pair&lt; int, int &gt; &gt; &amp;output) const</div><div class="ttdef"><b>Definition</b> <a href="_word_table_8cpp_source.html#l00176">WordTable.cpp:176</a></div></div>
 <div class="ttc" id="aclass_word_table_a7a60e3ce3292910ef1367b6aec3c6049_html_a7a60e3ce3292910ef1367b6aec3c6049"><div class="ttname"><a href="class_word_table_a7a60e3ce3292910ef1367b6aec3c6049.html#a7a60e3ce3292910ef1367b6aec3c6049">WordTable::subwords</a></div><div class="ttdeci">void subwords(Word word, std::vector&lt; std::pair&lt; int, int &gt; &gt; &amp;output) const</div><div class="ttdef"><b>Definition</b> <a href="_word_table_8cpp_source.html#l00118">WordTable.cpp:118</a></div></div>
 <div class="ttc" id="aclass_word_table_a9dd6f959a23863217989f1948960ad82_html_a9dd6f959a23863217989f1948960ad82"><div class="ttname"><a href="class_word_table_a9dd6f959a23863217989f1948960ad82.html#a9dd6f959a23863217989f1948960ad82">WordTable::isNontrivialSuperword</a></div><div class="ttdeci">auto isNontrivialSuperword(Word word, int index1, int index2) const -&gt; bool</div><div class="ttdef"><b>Definition</b> <a href="_word_table_8cpp_source.html#l00191">WordTable.cpp:191</a></div></div>
 <div class="ttc" id="aclass_word_table_aa09193cb49a9800f27df34d0167e950e_html_aa09193cb49a9800f27df34d0167e950e"><div class="ttname"><a href="class_word_table_aa09193cb49a9800f27df34d0167e950e.html#aa09193cb49a9800f27df34d0167e950e">WordTable::leftOverlaps</a></div><div class="ttdeci">void leftOverlaps(std::vector&lt; Overlap &gt; &amp;newLeftOverlaps) const</div><div class="ttdef"><b>Definition</b> <a href="_word_table_8cpp_source.html#l00227">WordTable.cpp:227</a></div></div>
 <div class="ttc" id="aclass_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59_html_adb6e3da530bf9ae6ef66bd6b7645cb59"><div class="ttname"><a href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">WordTable::insert</a></div><div class="ttdeci">size_t insert(Word w)</div><div class="ttdef"><b>Definition</b> <a href="_word_table_8cpp_source.html#l00017">WordTable.cpp:17</a></div></div>
-<div class="ttc" id="aclass_word_table_html"><div class="ttname"><a href="class_word_table.html">WordTable</a></div><div class="ttdef"><b>Definition</b> <a href="_word_table_8hpp_source.html#l00027">WordTable.hpp:28</a></div></div>
+<div class="ttc" id="aclass_word_table_html"><div class="ttname"><a href="class_word_table.html">WordTable</a></div><div class="ttdef"><b>Definition</b> <a href="_word_table_8hpp_source.html#l00059">WordTable.hpp:60</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_word_table_adb6e3da530bf9ae6ef66bd6b7645cb59.html#adb6e3da530bf9ae6ef66bd6b7645cb59">WordTable::insert()</a>, <a class="el" href="class_word_table_a9dd6f959a23863217989f1948960ad82.html#a9dd6f959a23863217989f1948960ad82">WordTable::isNontrivialSuperword()</a>, <a class="el" href="class_word_table_aa09193cb49a9800f27df34d0167e950e.html#aa09193cb49a9800f27df34d0167e950e">WordTable::leftOverlaps()</a>, <a class="el" href="class_word_table_a7a60e3ce3292910ef1367b6aec3c6049.html#a7a60e3ce3292910ef1367b6aec3c6049">WordTable::subwords()</a>, and <a class="el" href="class_word_table_a1aa542a443bc036ed7acae78c0c9acc6.html#a1aa542a443bc036ed7acae78c0c9acc6">WordTable::superwords()</a>.</p>
 

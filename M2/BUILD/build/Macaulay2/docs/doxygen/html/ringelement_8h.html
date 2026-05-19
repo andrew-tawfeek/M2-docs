@@ -91,6 +91,9 @@ $(function(){initNavTree('ringelement_8h.html','',''); });
   <div class="headertitle"><div class="title">ringelement.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Engine-boundary C API for constructing, querying, and operating on <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> values.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 </div>
 <p><a href="ringelement_8h_source.html">Go to the source code of this file.</a></p>
@@ -157,7 +160,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a5527a491a4e46acaae7fa909ee59a5b8" id="r_a5527a491a4e46acaae7fa909ee59a5b8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_matrix.html">Matrix</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ringelement_8h_a5527a491a4e46acaae7fa909ee59a5b8.html#a5527a491a4e46acaae7fa909ee59a5b8">rawHomogenizeMatrix</a> (const <a class="el" href="class_matrix.html">Matrix</a> *a, const <a class="el" href="class_matrix.html">Matrix</a> *b, const <a class="el" href="class_matrix.html">Matrix</a> *c)</td></tr>
 <tr class="memitem:a5ea9c59713bed6bb4684531819bdd7d6" id="r_a5ea9c59713bed6bb4684531819bdd7d6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ring_element.html">RingElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ringelement_8h_a5ea9c59713bed6bb4684531819bdd7d6.html#a5ea9c59713bed6bb4684531819bdd7d6">rawTowerTranslatePoly</a> (const <a class="el" href="class_ring.html">Ring</a> *newRing, const <a class="el" href="class_ring_element.html">RingElement</a> *F)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Engine-boundary C API for constructing, querying, and operating on <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> values. </p>
+<p>Declares the <span class="tt">extern "C"</span> entry points that cover the full life cycle of a <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span>. Construction goes through the scalar coercions (<span class="tt"><a class="el" href="ringelement_8h_a430dce4d80322af8cfa8179f7d6bbea9.html#a430dce4d80322af8cfa8179f7d6bbea9">IM2_RingElement_from_Integer</a></span>, <span class="tt">_from_rational</span>, <span class="tt">_from_BigReal</span>, <span class="tt">_from_BigComplex</span>) plus the generator-and-power factory <span class="tt">IM2_RingElement_from_var</span> / <span class="tt"><a class="el" href="ringelement_8h_a0b291882fbb398b121040b5a1b9ec844.html#a0b291882fbb398b121040b5a1b9ec844">IM2_RingElement_term</a></span>; arithmetic exposes <span class="tt">IM2_RingElement_plus</span>, <span class="tt">_minus</span>, <span class="tt">_times</span>, <span class="tt">_negate</span>, <span class="tt">_divide</span>, and <span class="tt">_power</span>; projection / decomposition cover <span class="tt">_lead_coefficient</span>, <span class="tt">_lead_monomial</span>, <span class="tt">_terms</span>, <span class="tt">_get_coefficient(f, m)</span>, and the homogeneous / degree introspection; and promotion / lift (<span class="tt">rawPromote</span>, <span class="tt">rawLift</span>) move an element between compatible super- and sub-rings while preserving its mathematical value.</p>
+<p>Every entry point reads the <span class="tt">Ring*</span> off the input and forwards through it &mdash; <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> carries no algorithmic logic of its own. The opaque <span class="tt"><a class="el" href="class_engine_monomial.html">EngineMonomial</a></span> type passed to <span class="tt">_get_coefficient</span> is the single-monomial handle the interpreter uses elsewhere in <span class="tt">interface/</span>, so the same vocabulary covers polynomials, monomial ideals, and ring elements.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="ringelement_8cpp.html">ringelement.cpp</a> </dd>
+<dd>
+<a class="el" href="ring_8h.html" title="Engine-boundary C API for the legacy Ring hierarchy — coefficient, polynomial, and composite rings.">ring.h</a> </dd>
+<dd>
+<a class="el" href="ringmap_8h.html" title="Engine-boundary C API for constructing and evaluating RingMap homomorphisms.">ringmap.h</a> </dd>
+<dd>
+<a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="ringelement_8h_source.html">ringelement.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

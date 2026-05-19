@@ -91,6 +91,9 @@ $(function(){initNavTree('_eschreyer_8cpp.html','',''); });
   <div class="headertitle"><div class="title">Eschreyer.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of <span class="tt"><a class="el" href="struct_g_b_matrix.html">GBMatrix</a></span> and <span class="tt"><a class="el" href="class_g_b_kernel_computation.html">GBKernelComputation</a></span> &mdash; the polynomial-at-a-time syzygy engine.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="monoid_8hpp_source.html">monoid.hpp</a>&quot;</code><br />
@@ -99,7 +102,19 @@ $(function(){initNavTree('_eschreyer_8cpp.html','',''); });
 <code>#include &quot;<a class="el" href="matrix-con_8hpp_source.html">matrix-con.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_eschreyer_8cpp_source.html">Go to the source code of this file.</a></p>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of <span class="tt"><a class="el" href="struct_g_b_matrix.html">GBMatrix</a></span> and <span class="tt"><a class="el" href="class_g_b_kernel_computation.html">GBKernelComputation</a></span> &mdash; the polynomial-at-a-time syzygy engine. </p>
+<p>Two halves: the <span class="tt"><a class="el" href="struct_g_b_matrix.html">GBMatrix</a></span> constructors and <span class="tt">to_matrix</span> conversion that wrap a column collection of <span class="tt">gbvector*</span>s (translating to and from the engine's standard <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> / <span class="tt"><a class="el" href="class_free_module.html">FreeModule</a></span> pair via <span class="tt">R-&gt;translate_gbvector_from_vec</span>); and the <span class="tt"><a class="el" href="class_g_b_kernel_computation.html">GBKernelComputation</a></span> driver that walks each input column through a head-reduction loop (subtracting <span class="tt">(lt(f)/lt(g_i)) *
+g_i</span> and tracking the multiplier as a syzygy basis element) followed by an optional tail-reduction pass. The output <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span> syzygies form the kernel of the input matrix modulo the supplied Gröbner basis.</p>
+<p>Walks polynomials term-by-term through the <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span> linked- list representation; the newer <span class="tt">schreyer-resolution/</span> family batches the same work into Macaulay matrices and wins on large inputs. This file stays in the engine for paths that have not yet migrated; new resolution work targets the matrix-based engine.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_eschreyer_8hpp.html" title="Older Schreyer-style kernel computation, predecessor of schreyer-resolution/.">Eschreyer.hpp</a> </dd>
+<dd>
+<a class="el" href="gbring_8hpp.html" title="GBRing and gbvector — the GB-tuned polynomial-ring view used by classical Buchberger code.">gbring.hpp</a> </dd>
+<dd>
+<a class="el" href="res-f4_8hpp.html" title="F4Res — F4-style matrix-reduction worker over a SchreyerFrame.">schreyer-resolution/res-f4.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_eschreyer_8cpp_source.html">Eschreyer.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

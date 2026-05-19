@@ -91,6 +91,9 @@ $(function(){initNavTree('computation_8h.html','',''); });
   <div class="headertitle"><div class="title">computation.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="computation_8h_aed0217a90e756a9ee4da649f09850213.html#aed0217a90e756a9ee4da649f09850213">ComputationStatusCode</a></span> and <span class="tt"><a class="el" href="struct_stop_conditions.html">StopConditions</a></span> &mdash; engine-to-interpreter vocabulary for long-running computations.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 </div>
 <p><a href="computation_8h_source.html">Go to the source code of this file.</a></p>
@@ -137,7 +140,19 @@ Enumerations</h2></td></tr>
 <tr class="memitem:ab04d15a450e22a6b1998085954f290cc" id="r_ab04d15a450e22a6b1998085954f290cc"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="computation_8h_ab04d15a450e22a6b1998085954f290cc.html#ab04d15a450e22a6b1998085954f290cc">gbTraceValues</a> { <a class="el" href="computation_8h_ab04d15a450e22a6b1998085954f290cc.html#ab04d15a450e22a6b1998085954f290cca1483ff17ba34b6d23b7aee39163e174b">PRINT_SPAIR_TRACKING</a> = 1024
  }</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="computation_8h_aed0217a90e756a9ee4da649f09850213.html#aed0217a90e756a9ee4da649f09850213">ComputationStatusCode</a></span> and <span class="tt"><a class="el" href="struct_stop_conditions.html">StopConditions</a></span> &mdash; engine-to-interpreter vocabulary for long-running computations. </p>
+<p>Declares the C-side enum the interpreter switches on after every <span class="tt">start_computation()</span> call (<span class="tt"><a class="el" href="computation_8h_aed0217a90e756a9ee4da649f09850213.html#aed0217a90e756a9ee4da649f09850213a45f992597e767ffedbba1563ebfa6045">COMP_DONE</a></span>, <span class="tt"><a class="el" href="computation_8h_aed0217a90e756a9ee4da649f09850213.html#aed0217a90e756a9ee4da649f09850213af7f83acff45b8cb3944b17a21c048b06">COMP_INTERRUPTED</a></span>, <span class="tt"><a class="el" href="computation_8h_aed0217a90e756a9ee4da649f09850213.html#aed0217a90e756a9ee4da649f09850213aa8fd27b9f6feb410aa637234ce776867">COMP_DONE_DEGREE_LIMIT</a></span>, <span class="tt"><a class="el" href="computation_8h_aed0217a90e756a9ee4da649f09850213.html#aed0217a90e756a9ee4da649f09850213a88338e9edde9eae323cc404963b068ee">COMP_DONE_GB_LIMIT</a></span>, ...) and the <span class="tt"><a class="el" href="struct_stop_conditions.html">StopConditions</a></span> struct the interpreter populates to tell a <span class="tt"><a class="el" href="class_computation.html">Computation</a></span> when to pause: <span class="tt">always_stop</span>, <span class="tt">stop_after_degree</span> / <span class="tt">degree_limit</span>, <span class="tt">basis_element_limit</span>, <span class="tt">syzygy_limit</span>, <span class="tt">pair_limit</span>, <span class="tt">codim_limit</span>, <span class="tt">subring_limit</span>, <span class="tt">length_limit</span>, and <span class="tt">just_min_gens</span>. Concrete computation classes (GB, resolution, Hilbert, ...) build their own interface headers on this vocabulary.</p>
+<p>The enum is the single source of truth for the engine/M2 boundary, and the header carries an explicit "Keep this enum
+in sync with RawStatusCodes in Macaulay2/m2/gb.m2" comment &mdash; adding a value here without updating the M2-side mirror silently breaks status reporting. Intentionally minimal so the generated-C side of the <span class="tt">.dd</span> pipeline stays light.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="comp-gb_8hpp.html" title="GBComputation — abstract base of every Groebner-basis algorithm in the engine.">comp-gb.hpp</a> </dd>
+<dd>
+<a class="el" href="comp-res_8hpp.html" title="ResolutionComputation — abstract base for every free-resolution algorithm in the engine.">comp-res.hpp</a> </dd>
+<dd>
+<a class="el" href="engine-includes_8hpp.html" title="Engine-wide include prelude — a single point of truth for portability shims.">engine-includes.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="computation_8h_source.html">computation.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

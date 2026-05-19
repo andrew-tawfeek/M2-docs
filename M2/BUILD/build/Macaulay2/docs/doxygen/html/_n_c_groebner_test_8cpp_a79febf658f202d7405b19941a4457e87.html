@@ -107,30 +107,30 @@ $(function(){initNavTree('_n_c_groebner_test_8cpp_a79febf658f202d7405b19941a4457
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_n_c_groebner_test_8cpp_source.html#l00212">212</a> of file <a class="el" href="_n_c_groebner_test_8cpp_source.html">NCGroebnerTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  213</span>{</div>
-<div class="line"><span class="lineno">  214</span>  <span class="keyword">auto</span> mo1 = <a class="code hl_function" href="class_monomial_orderings_ab700dfacdf5317b25b7670c4232527a8.html#ab700dfacdf5317b25b7670c4232527a8">MonomialOrderings::Lex</a>(5);</div>
-<div class="line"><span class="lineno">  215</span>  <span class="keyword">auto</span> mo2 = <a class="code hl_function" href="class_monomial_orderings_aa22efe83cb447575b3ecea0a8268f631.html#aa22efe83cb447575b3ecea0a8268f631">MonomialOrderings::GroupLex</a>(4);</div>
-<div class="line"><span class="lineno">  216</span>  <span class="keyword">auto</span> mo3 = <a class="code hl_function" href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">MonomialOrderings::join</a>({mo1, mo2});</div>
-<div class="line"><span class="lineno">  217</span>  std::string answer3 { <span class="stringliteral">&quot;MonomialOrder =&gt; {\n    Lex =&gt; 5,\n    GroupLex =&gt; 4\n    }&quot;</span> };</div>
-<div class="line"><span class="lineno">  218</span>  EXPECT_EQ(answer3, <a class="code hl_function" href="class_monomial_orderings_adcbc87f98f3e76ff28eb33f4a3fefb05.html#adcbc87f98f3e76ff28eb33f4a3fefb05">MonomialOrderings::toString</a>(mo3));</div>
-<div class="line"><span class="lineno">  219</span>  EXPECT_EQ(9, <a class="code hl_function" href="monomial-ordering_8cpp_aee840111a46c83f2fff0b6931b66383d.html#aee840111a46c83f2fff0b6931b66383d">rawNumberOfVariables</a>(mo3));</div>
-<div class="line"><span class="lineno">  220</span>  EXPECT_TRUE(<a class="code hl_function" href="monomial-ordering_8cpp_a0b0166086490e9be3935cc6899afa2e5.html#a0b0166086490e9be3935cc6899afa2e5">moIsLex</a>(mo1));</div>
-<div class="line"><span class="lineno">  221</span> </div>
-<div class="line"><span class="lineno">  222</span>  <span class="keyword">auto</span> mo4 = <a class="code hl_function" href="class_monomial_orderings_a603e630de63149b99d5c4f599fa7b1df.html#a603e630de63149b99d5c4f599fa7b1df">MonomialOrderings::GRevLex</a>({3,2,5,7});</div>
-<div class="line"><span class="lineno">  223</span>  EXPECT_TRUE(<a class="code hl_function" href="monomial-ordering_8cpp_a50cf4fa94ab7aebdd3196d27a3406389.html#a50cf4fa94ab7aebdd3196d27a3406389">moIsGRevLex</a>(mo4));</div>
-<div class="line"><span class="lineno">  224</span>  <span class="keyword">auto</span> mo5 = <a class="code hl_function" href="class_monomial_orderings_a095c9057cb5b961499b84bbc771ea842.html#a095c9057cb5b961499b84bbc771ea842">MonomialOrderings::GRevLex2</a>({1,1,1,1});</div>
-<div class="line"><span class="lineno">  225</span>  EXPECT_TRUE(<a class="code hl_function" href="monomial-ordering_8cpp_a50cf4fa94ab7aebdd3196d27a3406389.html#a50cf4fa94ab7aebdd3196d27a3406389">moIsGRevLex</a>(mo5));</div>
-<div class="line"><span class="lineno">  226</span>  <span class="keyword">auto</span> mo6 {</div>
-<div class="line"><span class="lineno">  227</span>    <a class="code hl_function" href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">MonomialOrderings::join</a>(</div>
-<div class="line"><span class="lineno">  228</span>    {</div>
-<div class="line"><span class="lineno">  229</span>     <a class="code hl_function" href="class_monomial_orderings_a603e630de63149b99d5c4f599fa7b1df.html#a603e630de63149b99d5c4f599fa7b1df">MonomialOrderings::GRevLex</a>(3),</div>
-<div class="line"><span class="lineno">  230</span>     <a class="code hl_function" href="class_monomial_orderings_a095c9057cb5b961499b84bbc771ea842.html#a095c9057cb5b961499b84bbc771ea842">MonomialOrderings::GRevLex2</a>(4),</div>
-<div class="line"><span class="lineno">  231</span>     <a class="code hl_function" href="class_monomial_orderings_a9a5d7d75ef6fd16b96ec638995657323.html#a9a5d7d75ef6fd16b96ec638995657323">MonomialOrderings::GRevLex4</a>(5),</div>
-<div class="line"><span class="lineno">  232</span>     <a class="code hl_function" href="class_monomial_orderings_aa22efe83cb447575b3ecea0a8268f631.html#aa22efe83cb447575b3ecea0a8268f631">MonomialOrderings::GroupLex</a>(3)</div>
-<div class="line"><span class="lineno">  233</span>    })};</div>
-<div class="line"><span class="lineno">  234</span>  (void)mo6;<span class="comment">//force a use, suppress a warning</span></div>
-<div class="line"><span class="lineno">  235</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_n_c_groebner_test_8cpp_source.html#l00242">242</a> of file <a class="el" href="_n_c_groebner_test_8cpp_source.html">NCGroebnerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  243</span>{</div>
+<div class="line"><span class="lineno">  244</span>  <span class="keyword">auto</span> mo1 = <a class="code hl_function" href="class_monomial_orderings_ab700dfacdf5317b25b7670c4232527a8.html#ab700dfacdf5317b25b7670c4232527a8">MonomialOrderings::Lex</a>(5);</div>
+<div class="line"><span class="lineno">  245</span>  <span class="keyword">auto</span> mo2 = <a class="code hl_function" href="class_monomial_orderings_aa22efe83cb447575b3ecea0a8268f631.html#aa22efe83cb447575b3ecea0a8268f631">MonomialOrderings::GroupLex</a>(4);</div>
+<div class="line"><span class="lineno">  246</span>  <span class="keyword">auto</span> mo3 = <a class="code hl_function" href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">MonomialOrderings::join</a>({mo1, mo2});</div>
+<div class="line"><span class="lineno">  247</span>  std::string answer3 { <span class="stringliteral">&quot;MonomialOrder =&gt; {\n    Lex =&gt; 5,\n    GroupLex =&gt; 4\n    }&quot;</span> };</div>
+<div class="line"><span class="lineno">  248</span>  EXPECT_EQ(answer3, <a class="code hl_function" href="class_monomial_orderings_adcbc87f98f3e76ff28eb33f4a3fefb05.html#adcbc87f98f3e76ff28eb33f4a3fefb05">MonomialOrderings::toString</a>(mo3));</div>
+<div class="line"><span class="lineno">  249</span>  EXPECT_EQ(9, <a class="code hl_function" href="monomial-ordering_8cpp_aee840111a46c83f2fff0b6931b66383d.html#aee840111a46c83f2fff0b6931b66383d">rawNumberOfVariables</a>(mo3));</div>
+<div class="line"><span class="lineno">  250</span>  EXPECT_TRUE(<a class="code hl_function" href="monomial-ordering_8cpp_a0b0166086490e9be3935cc6899afa2e5.html#a0b0166086490e9be3935cc6899afa2e5">moIsLex</a>(mo1));</div>
+<div class="line"><span class="lineno">  251</span> </div>
+<div class="line"><span class="lineno">  252</span>  <span class="keyword">auto</span> mo4 = <a class="code hl_function" href="class_monomial_orderings_a603e630de63149b99d5c4f599fa7b1df.html#a603e630de63149b99d5c4f599fa7b1df">MonomialOrderings::GRevLex</a>({3,2,5,7});</div>
+<div class="line"><span class="lineno">  253</span>  EXPECT_TRUE(<a class="code hl_function" href="monomial-ordering_8cpp_a50cf4fa94ab7aebdd3196d27a3406389.html#a50cf4fa94ab7aebdd3196d27a3406389">moIsGRevLex</a>(mo4));</div>
+<div class="line"><span class="lineno">  254</span>  <span class="keyword">auto</span> mo5 = <a class="code hl_function" href="class_monomial_orderings_a095c9057cb5b961499b84bbc771ea842.html#a095c9057cb5b961499b84bbc771ea842">MonomialOrderings::GRevLex2</a>({1,1,1,1});</div>
+<div class="line"><span class="lineno">  255</span>  EXPECT_TRUE(<a class="code hl_function" href="monomial-ordering_8cpp_a50cf4fa94ab7aebdd3196d27a3406389.html#a50cf4fa94ab7aebdd3196d27a3406389">moIsGRevLex</a>(mo5));</div>
+<div class="line"><span class="lineno">  256</span>  <span class="keyword">auto</span> mo6 {</div>
+<div class="line"><span class="lineno">  257</span>    <a class="code hl_function" href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">MonomialOrderings::join</a>(</div>
+<div class="line"><span class="lineno">  258</span>    {</div>
+<div class="line"><span class="lineno">  259</span>     <a class="code hl_function" href="class_monomial_orderings_a603e630de63149b99d5c4f599fa7b1df.html#a603e630de63149b99d5c4f599fa7b1df">MonomialOrderings::GRevLex</a>(3),</div>
+<div class="line"><span class="lineno">  260</span>     <a class="code hl_function" href="class_monomial_orderings_a095c9057cb5b961499b84bbc771ea842.html#a095c9057cb5b961499b84bbc771ea842">MonomialOrderings::GRevLex2</a>(4),</div>
+<div class="line"><span class="lineno">  261</span>     <a class="code hl_function" href="class_monomial_orderings_a9a5d7d75ef6fd16b96ec638995657323.html#a9a5d7d75ef6fd16b96ec638995657323">MonomialOrderings::GRevLex4</a>(5),</div>
+<div class="line"><span class="lineno">  262</span>     <a class="code hl_function" href="class_monomial_orderings_aa22efe83cb447575b3ecea0a8268f631.html#aa22efe83cb447575b3ecea0a8268f631">MonomialOrderings::GroupLex</a>(3)</div>
+<div class="line"><span class="lineno">  263</span>    })};</div>
+<div class="line"><span class="lineno">  264</span>  (void)mo6;<span class="comment">//force a use, suppress a warning</span></div>
+<div class="line"><span class="lineno">  265</span>}</div>
 <div class="ttc" id="aclass_monomial_orderings_a095c9057cb5b961499b84bbc771ea842_html_a095c9057cb5b961499b84bbc771ea842"><div class="ttname"><a href="class_monomial_orderings_a095c9057cb5b961499b84bbc771ea842.html#a095c9057cb5b961499b84bbc771ea842">MonomialOrderings::GRevLex2</a></div><div class="ttdeci">static MonomialOrdering * GRevLex2(int nvars)</div><div class="ttdef"><b>Definition</b> <a href="monomial-ordering_8cpp_source.html#l00110">monomial-ordering.cpp:110</a></div></div>
 <div class="ttc" id="aclass_monomial_orderings_a603e630de63149b99d5c4f599fa7b1df_html_a603e630de63149b99d5c4f599fa7b1df"><div class="ttname"><a href="class_monomial_orderings_a603e630de63149b99d5c4f599fa7b1df.html#a603e630de63149b99d5c4f599fa7b1df">MonomialOrderings::GRevLex</a></div><div class="ttdeci">static MonomialOrdering * GRevLex(int nvars)</div><div class="ttdef"><b>Definition</b> <a href="monomial-ordering_8cpp_source.html#l00104">monomial-ordering.cpp:104</a></div></div>
 <div class="ttc" id="aclass_monomial_orderings_a9a5d7d75ef6fd16b96ec638995657323_html_a9a5d7d75ef6fd16b96ec638995657323"><div class="ttname"><a href="class_monomial_orderings_a9a5d7d75ef6fd16b96ec638995657323.html#a9a5d7d75ef6fd16b96ec638995657323">MonomialOrderings::GRevLex4</a></div><div class="ttdeci">static MonomialOrdering * GRevLex4(int nvars)</div><div class="ttdef"><b>Definition</b> <a href="monomial-ordering_8cpp_source.html#l00116">monomial-ordering.cpp:116</a></div></div>

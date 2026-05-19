@@ -107,25 +107,25 @@ $(function(){initNavTree('_a_ring_z_zp_test_8cpp_acddeca67113b328c0590668461217f
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_ring_z_zp_test_8cpp_source.html#l00164">164</a> of file <a class="el" href="_a_ring_z_zp_test_8cpp_source.html">ARingZZpTest.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  165</span>{</div>
-<div class="line"><span class="lineno">  166</span>  <a class="code hl_class" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k.html">M2::ARingZZpFFPACK</a> R(101);</div>
-<div class="line"><span class="lineno">  167</span> </div>
-<div class="line"><span class="lineno">  168</span>  EXPECT_EQ(<a class="code hl_function" href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a>(R), <span class="stringliteral">&quot;ZZpFPACK(101,1)&quot;</span>);</div>
-<div class="line"><span class="lineno">  169</span>  <a class="code hl_function" href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a>(R);</div>
-<div class="line"><span class="lineno">  170</span> </div>
-<div class="line"><span class="lineno">  171</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;max modulus for ffpack zzp: &quot;</span></div>
-<div class="line"><span class="lineno">  172</span>            &lt;&lt; <a class="code hl_function" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_ac56e09851ba1bc32569731b816f92c7f.html#ac56e09851ba1bc32569731b816f92c7f">M2::ARingZZpFFPACK::getMaxModulus</a>() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  173</span> </div>
-<div class="line"><span class="lineno">  174</span>  <a class="code hl_typedef" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_accaf1bd40bf4c6970206a8c1a4a71047.html#accaf1bd40bf4c6970206a8c1a4a71047">M2::ARingZZpFFPACK::ElementType</a> a;</div>
-<div class="line"><span class="lineno">  175</span>  R.init(a);</div>
-<div class="line"><span class="lineno">  176</span>  R.set_from_long(a, 99);</div>
-<div class="line"><span class="lineno">  177</span>  R.set_from_long(a, 101);</div>
-<div class="line"><span class="lineno">  178</span>  R.set_from_long(a, 103);</div>
-<div class="line"><span class="lineno">  179</span>  R.clear(a);</div>
-<div class="line"><span class="lineno">  180</span>}</div>
-<div class="ttc" id="a_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d_html_ad04b41a127aac065327bfdbfd39db31d"><div class="ttname"><a href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a></div><div class="ttdeci">void testSomeMore(const T &amp;R)</div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00036">ARingTest.hpp:36</a></div></div>
-<div class="ttc" id="a_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807_html_aed865d319365c090f84bd7fd38400807"><div class="ttname"><a href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a></div><div class="ttdeci">std::string ringName(const T &amp;R)</div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00087">ARingTest.hpp:87</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_a_ring_z_zp_test_8cpp_source.html#l00190">190</a> of file <a class="el" href="_a_ring_z_zp_test_8cpp_source.html">ARingZZpTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>{</div>
+<div class="line"><span class="lineno">  192</span>  <a class="code hl_class" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k.html">M2::ARingZZpFFPACK</a> R(101);</div>
+<div class="line"><span class="lineno">  193</span> </div>
+<div class="line"><span class="lineno">  194</span>  EXPECT_EQ(<a class="code hl_function" href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a>(R), <span class="stringliteral">&quot;ZZpFPACK(101,1)&quot;</span>);</div>
+<div class="line"><span class="lineno">  195</span>  <a class="code hl_function" href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a>(R);</div>
+<div class="line"><span class="lineno">  196</span> </div>
+<div class="line"><span class="lineno">  197</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;max modulus for ffpack zzp: &quot;</span></div>
+<div class="line"><span class="lineno">  198</span>            &lt;&lt; <a class="code hl_function" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_ac56e09851ba1bc32569731b816f92c7f.html#ac56e09851ba1bc32569731b816f92c7f">M2::ARingZZpFFPACK::getMaxModulus</a>() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>  <a class="code hl_typedef" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_accaf1bd40bf4c6970206a8c1a4a71047.html#accaf1bd40bf4c6970206a8c1a4a71047">M2::ARingZZpFFPACK::ElementType</a> a;</div>
+<div class="line"><span class="lineno">  201</span>  R.init(a);</div>
+<div class="line"><span class="lineno">  202</span>  R.set_from_long(a, 99);</div>
+<div class="line"><span class="lineno">  203</span>  R.set_from_long(a, 101);</div>
+<div class="line"><span class="lineno">  204</span>  R.set_from_long(a, 103);</div>
+<div class="line"><span class="lineno">  205</span>  R.clear(a);</div>
+<div class="line"><span class="lineno">  206</span>}</div>
+<div class="ttc" id="a_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d_html_ad04b41a127aac065327bfdbfd39db31d"><div class="ttname"><a href="_a_ring_test_8hpp_ad04b41a127aac065327bfdbfd39db31d.html#ad04b41a127aac065327bfdbfd39db31d">testSomeMore</a></div><div class="ttdeci">void testSomeMore(const T &amp;R)</div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00063">ARingTest.hpp:63</a></div></div>
+<div class="ttc" id="a_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807_html_aed865d319365c090f84bd7fd38400807"><div class="ttname"><a href="_a_ring_test_8hpp_aed865d319365c090f84bd7fd38400807.html#aed865d319365c090f84bd7fd38400807">ringName</a></div><div class="ttdeci">std::string ringName(const T &amp;R)</div><div class="ttdef"><b>Definition</b> <a href="_a_ring_test_8hpp_source.html#l00114">ARingTest.hpp:114</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_ac56e09851ba1bc32569731b816f92c7f_html_ac56e09851ba1bc32569731b816f92c7f"><div class="ttname"><a href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_ac56e09851ba1bc32569731b816f92c7f.html#ac56e09851ba1bc32569731b816f92c7f">M2::ARingZZpFFPACK::getMaxModulus</a></div><div class="ttdeci">static double getMaxModulus()</div><div class="ttdef"><b>Definition</b> <a href="aring-zzp-ffpack_8hpp_source.html#l00265">aring-zzp-ffpack.hpp:265</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_accaf1bd40bf4c6970206a8c1a4a71047_html_accaf1bd40bf4c6970206a8c1a4a71047"><div class="ttname"><a href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_accaf1bd40bf4c6970206a8c1a4a71047.html#accaf1bd40bf4c6970206a8c1a4a71047">M2::ARingZZpFFPACK::ElementType</a></div><div class="ttdeci">FieldType::Element ElementType</div><div class="ttdef"><b>Definition</b> <a href="aring-zzp-ffpack_8hpp_source.html#l00071">aring-zzp-ffpack.hpp:71</a></div></div>
 <div class="ttc" id="aclass_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_html"><div class="ttname"><a href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k.html">M2::ARingZZpFFPACK</a></div><div class="ttdoc">wrapper for the FFPACK::ModularBalanced&lt;double&gt; field implementation</div><div class="ttdef"><b>Definition</b> <a href="aring-zzp-ffpack_8hpp_source.html#l00059">aring-zzp-ffpack.hpp:60</a></div></div>

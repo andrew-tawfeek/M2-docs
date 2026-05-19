@@ -91,6 +91,9 @@ $(function(){initNavTree('_monoid_test_8cpp.html','',''); });
   <div class="headertitle"><div class="title">MonoidTest.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>gtest coverage for <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span> construction and the <span class="tt"><a class="el" href="class_exponent_vector.html">ExponentVector</a></span> exponent-array primitives.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;gtest/gtest.h&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
@@ -104,7 +107,21 @@ $(function(){initNavTree('_monoid_test_8cpp.html','',''); });
 Functions</h2></td></tr>
 <tr class="memitem:a5daa3fcba18a37c51a93a35146bb619c" id="r_a5daa3fcba18a37c51a93a35146bb619c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_monoid_test_8cpp_a5daa3fcba18a37c51a93a35146bb619c.html#a5daa3fcba18a37c51a93a35146bb619c">TEST</a> (<a class="el" href="class_exponent_vector.html">ExponentVector</a>, All)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>gtest coverage for <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span> construction and the <span class="tt"><a class="el" href="class_exponent_vector.html">ExponentVector</a></span> exponent-array primitives. </p>
+<p>Hosts the <span class="tt"><a class="el" href="_monoid_test_8cpp_a5daa3fcba18a37c51a93a35146bb619c.html#a5daa3fcba18a37c51a93a35146bb619c">TEST(ExponentVector, All)</a></span> battery that exercises the raw <span class="tt"><a class="el" href="_exponent_vector_8hpp_aec09fab2f897ff3d8346961f38331d12.html#aec09fab2f897ff3d8346961f38331d12">exponents_t</a></span> (<span class="tt">int*</span>) primitives every polynomial multiplication in the engine sits on top of: <span class="tt">copy</span>, <span class="tt">equal</span>, <span class="tt">simple_degree</span>, <span class="tt">one</span> / <span class="tt">is_one</span>, <span class="tt">mult</span>, <span class="tt">power</span>, <span class="tt">divides</span>, <span class="tt">divide</span>, <span class="tt">gcd</span>, <span class="tt">lcm</span>, and the <span class="tt">hash</span> used by <span class="tt"><a class="el" href="class_monomial_hash_table.html">MonomialHashTable</a></span>. The companion <span class="tt"><a class="el" href="class_monoid.html">Monoid</a></span> tests build monoids under Lex, GRevLex, and weight-vector orderings, sanity-check <span class="tt"><a class="el" href="geovec_8hpp_a93a6254b3accee4629ec45fc0e4a64cd.html#a93a6254b3accee4629ec45fc0e4a64cd">compare</a></span>, and validate heft-vector / term-degree computation against hand-rolled expectations.</p>
+<p>Subtle bugs in these primitives surface several layers up as "F4 returns the wrong GB" or "Hilbert function is off by
+one"; catching them here keeps the failure local. Exponents are stored as raw <span class="tt">int*</span> rather than <span class="tt">std::vector&lt;<a class="el" href="classint.html">int</a>&gt;</span> so the F4 inner loop can read entries with a single load, which is why the tests use the pre-allocated <span class="tt"><a class="el" href="classint.html">int</a>[3]</span> stack arrays and pass them through <span class="tt">static_cast&lt;<a class="el" href="_exponent_vector_8hpp_aec09fab2f897ff3d8346961f38331d12.html#aec09fab2f897ff3d8346961f38331d12">exponents_t</a>&gt;</span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_exponent_vector_8hpp.html" title="Dense exponent-vector template [e_0, ..., e_{nvars-1}] for monomial operations.">ExponentVector.hpp</a> </dd>
+<dd>
+<a class="el" href="monoid_8hpp.html" title="Monoid — variable count, naming, grading, and monomial order of a polynomial ring.">monoid.hpp</a> </dd>
+<dd>
+<a class="el" href="_a_ring_test_8hpp.html" title="Shared gtest harness for the ARing*Test.cpp suite.">ARingTest.hpp</a> </dd>
+<dd>
+<a class="el" href="f4_8hpp.html" title="F4GB — the inner-loop Faugère F4 Groebner-basis algorithm.">f4/f4.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_monoid_test_8cpp_source.html">MonoidTest.cpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

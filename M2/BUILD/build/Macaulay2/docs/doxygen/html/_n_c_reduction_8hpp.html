@@ -91,6 +91,9 @@ $(function(){initNavTree('_n_c_reduction_8hpp.html','',''); });
   <div class="headertitle"><div class="title">NCReduction.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_polynomial_heap.html">PolynomialHeap</a></span> abstract interface &mdash; batched-subtraction heap for non-commutative reduction.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
 <code>#include &lt;iosfwd&gt;</code><br />
@@ -123,7 +126,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a570cff221fa38a699b324c73a6d321e2" id="r_a570cff221fa38a699b324c73a6d321e2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_c_reduction_8hpp_a570cff221fa38a699b324c73a6d321e2.html#a570cff221fa38a699b324c73a6d321e2">getHeapName</a> (<a class="el" href="_n_c_reduction_8hpp_a3323bceff3e6a898901853c6a56f223a.html#a3323bceff3e6a898901853c6a56f223a">HeapType</a> type)</td></tr>
 <tr class="memitem:a2e421eefe57dc2c65d280c738270775f" id="r_a2e421eefe57dc2c65d280c738270775f"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_polynomial_heap.html">PolynomialHeap</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_c_reduction_8hpp_a2e421eefe57dc2c65d280c738270775f.html#a2e421eefe57dc2c65d280c738270775f">makePolynomialHeap</a> (<a class="el" href="_n_c_reduction_8hpp_a3323bceff3e6a898901853c6a56f223a.html#a3323bceff3e6a898901853c6a56f223a">HeapType</a> type, const <a class="el" href="class_free_algebra.html">FreeAlgebra</a> &amp;F)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_polynomial_heap.html">PolynomialHeap</a></span> abstract interface &mdash; batched-subtraction heap for non-commutative reduction. </p>
+<p>Declares the pure-virtual surface every <span class="tt"><a class="el" href="class_n_c_groebner.html">NCGroebner</a></span> / <span class="tt"><a class="el" href="class_n_c_f4.html">NCF4</a></span> reduction uses to combine many tail-polynomial subtractions into a single <span class="tt">O(n log k)</span> pipeline rather than a quadratic term-by-term merge. <span class="tt">addPolynomial(poly)</span> and <span class="tt">addPolynomial(coeff, left, right, poly)</span> queue a polynomial (or its left-coeff-right scaling) for subtraction; <span class="tt">viewLeadTerm</span> / <span class="tt">removeLeadTerm</span> give the running result's current leading term and pop it; <span class="tt">value()</span> materialises the accumulated polynomial when reduction is complete. The <span class="tt"><a class="el" href="_n_c_reduction_8hpp_a3323bceff3e6a898901853c6a56f223a.html#a3323bceff3e6a898901853c6a56f223a">HeapType</a></span> enum selects between concrete implementations (<span class="tt">Trivial</span>, <span class="tt">Map</span>, <span class="tt">PriorityQueue</span>, the various geobucket / tournament-tree / dedup variants) which <span class="tt"><a class="el" href="_n_c_reduction_8hpp_a2e421eefe57dc2c65d280c738270775f.html#a2e421eefe57dc2c65d280c738270775f">makePolynomialHeap</a></span> instantiates &mdash; kept side-by-side for benchmarking against each other.</p>
+<p>Non-commutative analogue of the commutative engine's <span class="tt"><a class="el" href="classgbvector_heap.html">gbvectorHeap</a></span>. <span class="tt">getHeapType(strategy)</span> maps the user-facing <span class="tt">Strategy =&gt;</span> integer onto a concrete <span class="tt"><a class="el" href="_n_c_reduction_8hpp_a3323bceff3e6a898901853c6a56f223a.html#a3323bceff3e6a898901853c6a56f223a">HeapType</a></span>, and <span class="tt">getName()</span> on a live heap reports which one is active so profile output is unambiguous.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_polynomial_8hpp.html" title="Modern Monom / Poly value types shared by NC algebras and the refactored F4.">Polynomial.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_groebner_8hpp.html" title="NCGroebner — Buchberger-style two-sided Gröbner basis driver over a FreeAlgebra.">NCGroebner.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_c_f4_8hpp.html" title="NCF4 — non-commutative F4 Gröbner-basis driver building a per-degree Macaulay matrix.">NCF4.hpp</a> </dd>
+<dd>
+<a class="el" href="_free_algebra_8hpp.html" title="FreeAlgebra — the free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_n_c_reduction_8hpp_source.html">NCReduction.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
