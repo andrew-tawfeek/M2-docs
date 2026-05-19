@@ -9,23 +9,25 @@
  *
  * Declares `Matrix`, an `EngineObject` whose entries are stored
  * as one `vec` per column over the target free module. State
- * comprises the source and target `FreeModule*`s, a monoid
- * `mDegreeShift` applied uniformly to every entry's degree (used
- * by graded computations), and the column array. `Matrix` is
- * immutable by design --- every "modifying" operation returns a
- * fresh instance --- which is what lets the engine share matrices
- * safely across threads and memoise derived data like bases and
- * kernels.
+ * comprises the target and source `FreeModule*`s, a single
+ * `monomial mDegreeShift` in the degree monoid applied
+ * uniformly to every entry's degree (used by graded
+ * computations), and the column array `gc_vector<vec>
+ * mEntries`. `Matrix` is immutable by design --- every
+ * "modifying" operation returns a fresh instance --- which is
+ * what lets the engine share matrices safely and memoise
+ * derived data like bases and kernels.
  *
  * Construction goes through `MatrixConstructor`
- * (`matrix-con.hpp`): the actual constructor is private and the
- * builder is the only friend allowed to call it, so a matrix
- * leaves the constructor only after degree-compatibility
- * validation. Routine matrix operations (`add`, `subtract`,
- * `mult`, `negate`, `transpose`, `submatrix`, `direct_sum`,
- * `tensor`, `lead_term`, `homogenize`, ...) live alongside in
- * `matrix.cpp`; specialised operations are split into
- * `matrix-kbasis.cpp`, `matrix-ncbasis.cpp`, `matrix-sort.cpp`,
+ * (`matrix-con.hpp`): the actual constructor is private,
+ * called only by the builder (`FreeModule` also `friend`s the
+ * class for its own internal needs), so matrices reach the
+ * outside world only after degree-compatibility validation.
+ * Routine matrix operations (`add`, `subtract`, `mult`,
+ * `negate`, `transpose`, `submatrix`, `direct_sum`, `tensor`,
+ * `lead_term`, `homogenize`, ...) live in `matrix.cpp`;
+ * specialised operations are split into `matrix-kbasis.cpp`,
+ * `matrix-ncbasis.cpp`, `matrix-sort.cpp`,
  * `matrix-stream.cpp`, and `matrix-symm.cpp`. Mutable matrix
  * arithmetic lives in `mutablemat.hpp` instead.
  *
