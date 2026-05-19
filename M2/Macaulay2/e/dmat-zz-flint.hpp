@@ -3,6 +3,33 @@
 #ifndef _dmat_zz_flint_hpp_
 #define _dmat_zz_flint_hpp_
 
+/**
+ * @file dmat-zz-flint.hpp
+ * @brief `DMat<M2::ARingZZ>` --- dense integer matrices stored in FLINT `fmpz_mat_t`.
+ *
+ * Specialises the dense-matrix template for the FLINT integer
+ * aring. The matrix lives as a single `fmpz_mat_t` (a FLINT-managed
+ * `fmpz` array with small-value inlining inherited from `ARingZZ`),
+ * and every operation dispatches into FLINT's matrix routines:
+ * element access via `fmpz_mat_entry`, arithmetic via
+ * `fmpz_mat_add` / `fmpz_mat_mul`, and the heavy work --- rank,
+ * determinant, LU, inverse, null-space --- via `fmpz_mat_rank`,
+ * `fmpz_mat_det`, `fmpz_mat_solve`, `fmpz_mat_inv`, and
+ * `fmpz_mat_nullspace`. The hand-tuned FLINT implementations
+ * typically win over the generic templated path by an order or two
+ * of magnitude on large integer matrices.
+ *
+ * Constructors call `fmpz_mat_init` with the right dimensions and
+ * the destructor calls `fmpz_mat_clear`; move semantics swap the
+ * underlying storage because copying an `fmpz_mat_t` is expensive.
+ * `M2/gc-include.h` must precede the FLINT include so allocations
+ * route through bdwgc.
+ *
+ * @see dmat.hpp
+ * @see aring-zz-flint.hpp
+ * @see LLL.hpp
+ */
+
 #include <assert.h>            // for assert
 #include <utility>             // for swap
 #include "aring-zz-flint.hpp"  // for ARingZZ
