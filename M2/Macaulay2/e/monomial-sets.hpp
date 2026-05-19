@@ -5,22 +5,39 @@
 
 /**
  * @file monomial-sets.hpp
- * @brief `FixedSizeMonomialSet<NWords>` / `VariableSizeMonomialSet` --- hash-backed monomial sets.
+ * @brief `MonomialSetFixedSize` / `MonomialSetVarSize` / `MonomialCollection*` / `MonomialMemorySpace` --- monomial-interning helpers.
  *
- * Declares two `std::unordered_set`-backed containers plus the
- * `MonomialMemorySpace` arena they share. `FixedSizeMonomialSet`
- * stores monomials of exactly `NWords` ints; `VariableSizeMonomialSet`
- * uses the first int as a length prefix so each value spans
- * `[m, m + *m)`. Both treat the monomial as an opaque contiguous
- * int sequence: hashing and equality consider every entry (and the
- * length, for the variable case), so `[3, 4, 5]` and `[5, 4, 5]`
- * collide under neither set even though they share leading data.
+ * Declares a five-class kit for interning monomials stored as
+ * contiguous `int` sequences. `MonomialMemorySpace` wraps a
+ * `memt::Arena` (memtailor) and hands out bump-pointer ranges
+ * via `alloc(int size)`; allocations can be popped LIFO
+ * (`popLastAlloc`) or shrunk (`shrinkLastAlloc`), and the entire
+ * arena is freed in one shot at destruction. The `Set`
+ * variants --- `MonomialSetFixedSize` (constructor takes the
+ * `int` size, **not** a `<NWords>` template parameter) and
+ * `MonomialSetVarSize` (treats `*m` as a length prefix so the
+ * monomial spans `[m, m + *m)`) --- wrap a
+ * `std::unordered_set<const int*, ...>` and do no allocation
+ * themselves; the caller owns the storage. The `Collection`
+ * variants (`MonomialCollectionFixedSize` / `MonomialCollectionVarSize`)
+ * compose a `Set` with their own `MonomialMemorySpace` and
+ * implement the intern-or-pop pattern (`findOrInsert` copies
+ * the monomial into the arena, looks it up, and pops the
+ * allocation if a duplicate is already present).
  *
- * Monomials live in a `memtailor` arena (the `MonomialMemorySpace`
- * wraps it), so insertion is bump-pointer cheap and the set frees
- * its entire contents in one shot when destroyed. Consumers are
- * the new commutative `gb-f4/MonomialHashTable` pattern and the
- * mid-refactor `monomial-collection.hpp` used by `M2FreeAlgebra`.
+ * The included `MonomialHashAndEqFixedSize` /
+ * `MonomialHashAndEqVarSize` functors implement equality
+ * correctly via `std::equal`, but their `operator()` for
+ * hashing is currently a `// TODO: do something good here.`
+ * stub that returns `0` --- so the underlying
+ * `std::unordered_set` degenerates to a single bucket and
+ * comparisons fall through to the equality functor. This
+ * matches the comment in `monomial-collection.hpp` ("improve
+ * the hash function"); both files are mid-refactor scaffolding.
+ * The only active consumer in the engine is
+ * `schreyer-resolution/res-f4.hpp`, which holds a
+ * `MonomialMemorySpace mMonomSpace2` (the arena alone --- it
+ * does not use the `Set` / `Collection` classes here).
  *
  * @see monomial-collection.hpp
  * @see MemoryBlock.hpp
