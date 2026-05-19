@@ -22,8 +22,7 @@
  * Mirrors `ARingTest.hpp` for the older `ring_elem` /
  * tagged-pointer interface that still powers most user-facing
  * polynomial rings and crosses the C boundary to the
- * interpreter. Both fixtures coexist because both ring
- * hierarchies stay live.
+ * interpreter.
  *
  * @see ARingTest.hpp
  * @see interface/random.h
