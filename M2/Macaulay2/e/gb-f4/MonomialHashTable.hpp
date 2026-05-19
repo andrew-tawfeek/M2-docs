@@ -8,14 +8,15 @@
  *
  * Declares the self-contained monomial-canonicalisation surface
  * for the refactored F4. `MonomialHashFunction` keeps a vector
- * of precomputed random 64-bit constants `c_i` (one per
- * variable, modulo a table size, lazily extended as variable
- * counts grow) and folds a `MonomialView` into a single
- * `HashInt` by summing `c_i * e_i` over the sparse `(var,
- * power)` pairs. The constants are baked in so identical inputs
- * across runs produce identical hash sequences --- this is the
- * determinism the engine relies on to reproduce
- * floating-point-sensitive output.
+ * of precomputed random 64-bit constants `c_i` (one slot per
+ * variable, indexed `i.var() % 64` to fit a fixed table; a TODO
+ * in the source notes that out-of-range variables should grow
+ * the table) and folds a `MonomialView` into a single `HashInt`
+ * by summing `c_i * e_i` over the sparse `(var, power)` pairs.
+ * The constants are baked in so identical inputs across runs
+ * produce identical hash sequences --- this is the determinism
+ * the engine relies on to reproduce floating-point-sensitive
+ * output.
  *
  * The accompanying `MonomialHashTable` class stores monomial
  * data in a `MemoryBlock` and keeps an open-addressed
