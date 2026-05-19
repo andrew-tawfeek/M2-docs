@@ -115,22 +115,22 @@ $(function(){initNavTree('class_m2_1_1_a_ring_c_ci_a12c4898c96d2cf51c05f71ff4f33
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aring-_c_ci_8hpp_source.html#l00303">303</a> of file <a class="el" href="aring-_c_ci_8hpp_source.html">aring-CCi.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  305</span>  {</div>
-<div class="line"><span class="lineno">  306</span>    mpfi_t norm, temp;</div>
-<div class="line"><span class="lineno">  307</span>    mpfi_init2(norm,<a class="code hl_function" href="class_m2_1_1_a_ring_c_ci_a0ef6c915ede0e487ec09d018286bf24e.html#a0ef6c915ede0e487ec09d018286bf24e">get_precision</a>());</div>
-<div class="line"><span class="lineno">  308</span>    mpfi_init2(temp,<a class="code hl_function" href="class_m2_1_1_a_ring_c_ci_a0ef6c915ede0e487ec09d018286bf24e.html#a0ef6c915ede0e487ec09d018286bf24e">get_precision</a>());</div>
-<div class="line"><span class="lineno">  309</span>    mpfi_set(norm,&amp;a.re);</div>
-<div class="line"><span class="lineno">  310</span>    mpfi_mul(norm,norm,norm);</div>
-<div class="line"><span class="lineno">  311</span>    mpfi_set(temp,&amp;a.im);</div>
-<div class="line"><span class="lineno">  312</span>    mpfi_mul(temp,temp,temp);</div>
-<div class="line"><span class="lineno">  313</span>    mpfi_add(norm,norm,temp);</div>
-<div class="line"><span class="lineno">  314</span>    mpfi_set(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re,&amp;a.re);</div>
-<div class="line"><span class="lineno">  315</span>    mpfi_mul_si(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im,&amp;a.im,-1);</div>
-<div class="line"><span class="lineno">  316</span>    mpfi_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re,&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re,norm);</div>
-<div class="line"><span class="lineno">  317</span>    mpfi_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im,&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im,norm);</div>
-<div class="line"><span class="lineno">  318</span>  }</div>
-<div class="ttc" id="aclass_m2_1_1_a_ring_c_ci_a0ef6c915ede0e487ec09d018286bf24e_html_a0ef6c915ede0e487ec09d018286bf24e"><div class="ttname"><a href="class_m2_1_1_a_ring_c_ci_a0ef6c915ede0e487ec09d018286bf24e.html#a0ef6c915ede0e487ec09d018286bf24e">M2::ARingCCi::get_precision</a></div><div class="ttdeci">unsigned long get_precision() const</div><div class="ttdef"><b>Definition</b> <a href="aring-_c_ci_8hpp_source.html#l00067">aring-CCi.hpp:67</a></div></div>
+<p class="definition">Definition at line <a class="el" href="aring-_c_ci_8hpp_source.html#l00310">310</a> of file <a class="el" href="aring-_c_ci_8hpp_source.html">aring-CCi.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  312</span>  {</div>
+<div class="line"><span class="lineno">  313</span>    mpfi_t norm, temp;</div>
+<div class="line"><span class="lineno">  314</span>    mpfi_init2(norm,<a class="code hl_function" href="class_m2_1_1_a_ring_c_ci_a0ef6c915ede0e487ec09d018286bf24e.html#a0ef6c915ede0e487ec09d018286bf24e">get_precision</a>());</div>
+<div class="line"><span class="lineno">  315</span>    mpfi_init2(temp,<a class="code hl_function" href="class_m2_1_1_a_ring_c_ci_a0ef6c915ede0e487ec09d018286bf24e.html#a0ef6c915ede0e487ec09d018286bf24e">get_precision</a>());</div>
+<div class="line"><span class="lineno">  316</span>    mpfi_set(norm,&amp;a.re);</div>
+<div class="line"><span class="lineno">  317</span>    mpfi_mul(norm,norm,norm);</div>
+<div class="line"><span class="lineno">  318</span>    mpfi_set(temp,&amp;a.im);</div>
+<div class="line"><span class="lineno">  319</span>    mpfi_mul(temp,temp,temp);</div>
+<div class="line"><span class="lineno">  320</span>    mpfi_add(norm,norm,temp);</div>
+<div class="line"><span class="lineno">  321</span>    mpfi_set(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re,&amp;a.re);</div>
+<div class="line"><span class="lineno">  322</span>    mpfi_mul_si(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im,&amp;a.im,-1);</div>
+<div class="line"><span class="lineno">  323</span>    mpfi_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re,&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re,norm);</div>
+<div class="line"><span class="lineno">  324</span>    mpfi_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im,&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im,norm);</div>
+<div class="line"><span class="lineno">  325</span>  }</div>
+<div class="ttc" id="aclass_m2_1_1_a_ring_c_ci_a0ef6c915ede0e487ec09d018286bf24e_html_a0ef6c915ede0e487ec09d018286bf24e"><div class="ttname"><a href="class_m2_1_1_a_ring_c_ci_a0ef6c915ede0e487ec09d018286bf24e.html#a0ef6c915ede0e487ec09d018286bf24e">M2::ARingCCi::get_precision</a></div><div class="ttdeci">unsigned long get_precision() const</div><div class="ttdef"><b>Definition</b> <a href="aring-_c_ci_8hpp_source.html#l00074">aring-CCi.hpp:74</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_m2_1_1_a_ring_c_ci_a0ef6c915ede0e487ec09d018286bf24e.html#a0ef6c915ede0e487ec09d018286bf24e">get_precision()</a>, and <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result()</a>.</p>

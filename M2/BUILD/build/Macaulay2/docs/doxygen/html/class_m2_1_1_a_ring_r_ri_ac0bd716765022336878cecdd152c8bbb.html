@@ -120,36 +120,36 @@ $(function(){initNavTree('class_m2_1_1_a_ring_r_ri_ac0bd716765022336878cecdd152c
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aring-_r_ri_8hpp_source.html#l00253">253</a> of file <a class="el" href="aring-_r_ri_8hpp_source.html">aring-RRi.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  254</span>  {</div>
-<div class="line"><span class="lineno">  255</span>    <span class="keywordflow">if</span> (n &gt;= 2)</div>
-<div class="line"><span class="lineno">  256</span>      {</div>
-<div class="line"><span class="lineno">  257</span>          <span class="keywordflow">if</span> (n%2 == 0)</div>
-<div class="line"><span class="lineno">  258</span>          {</div>
-<div class="line"><span class="lineno">  259</span>              <a class="code hl_typedef" href="class_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef.html#a86a415cc3939d4c69e0faab511f8ddef">ElementType</a> b;</div>
-<div class="line"><span class="lineno">  260</span>              <a class="code hl_function" href="class_m2_1_1_a_ring_r_ri_a40220f1bb2babe60dd9738846dd33070.html#a40220f1bb2babe60dd9738846dd33070">init</a>(b);</div>
-<div class="line"><span class="lineno">  261</span>              <a class="code hl_function" href="#ac0bd716765022336878cecdd152c8bbb">power</a>(b,a,n/2);</div>
-<div class="line"><span class="lineno">  262</span>              <a class="code hl_function" href="class_m2_1_1_a_ring_r_ri_adcd8974d31ea38b70ceafb48a9da1a60.html#adcd8974d31ea38b70ceafb48a9da1a60">mult</a>(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>,b,b);</div>
-<div class="line"><span class="lineno">  263</span>          }</div>
-<div class="line"><span class="lineno">  264</span>          <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  265</span>          {</div>
-<div class="line"><span class="lineno">  266</span>              <a class="code hl_typedef" href="class_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef.html#a86a415cc3939d4c69e0faab511f8ddef">ElementType</a> b;</div>
-<div class="line"><span class="lineno">  267</span>              <a class="code hl_function" href="class_m2_1_1_a_ring_r_ri_a40220f1bb2babe60dd9738846dd33070.html#a40220f1bb2babe60dd9738846dd33070">init</a>(b);</div>
-<div class="line"><span class="lineno">  268</span>              <a class="code hl_function" href="#ac0bd716765022336878cecdd152c8bbb">power</a>(b,a,n-1);</div>
-<div class="line"><span class="lineno">  269</span>              <a class="code hl_function" href="class_m2_1_1_a_ring_r_ri_adcd8974d31ea38b70ceafb48a9da1a60.html#adcd8974d31ea38b70ceafb48a9da1a60">mult</a>(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>,a,b);</div>
-<div class="line"><span class="lineno">  270</span>          }</div>
-<div class="line"><span class="lineno">  271</span>      }</div>
-<div class="line"><span class="lineno">  272</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n == 1)</div>
-<div class="line"><span class="lineno">  273</span>      mpfi_set(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>,&amp;a);</div>
-<div class="line"><span class="lineno">  274</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n == 0)</div>
-<div class="line"><span class="lineno">  275</span>      mpfi_set_si(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>,1);</div>
-<div class="line"><span class="lineno">  276</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n&lt;0)</div>
-<div class="line"><span class="lineno">  277</span>        <span class="keywordflow">throw</span> 20;</div>
-<div class="line"><span class="lineno">  278</span>  }</div>
-<div class="ttc" id="aclass_m2_1_1_a_ring_r_ri_a40220f1bb2babe60dd9738846dd33070_html_a40220f1bb2babe60dd9738846dd33070"><div class="ttname"><a href="class_m2_1_1_a_ring_r_ri_a40220f1bb2babe60dd9738846dd33070.html#a40220f1bb2babe60dd9738846dd33070">M2::ARingRRi::init</a></div><div class="ttdeci">void init(ElementType &amp;result) const</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_ri_8hpp_source.html#l00126">aring-RRi.hpp:126</a></div></div>
-<div class="ttc" id="aclass_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef_html_a86a415cc3939d4c69e0faab511f8ddef"><div class="ttname"><a href="class_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef.html#a86a415cc3939d4c69e0faab511f8ddef">M2::ARingRRi::ElementType</a></div><div class="ttdeci">elem ElementType</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_ri_8hpp_source.html#l00057">aring-RRi.hpp:57</a></div></div>
-<div class="ttc" id="aclass_m2_1_1_a_ring_r_ri_ac0bd716765022336878cecdd152c8bbb_html_ac0bd716765022336878cecdd152c8bbb"><div class="ttname"><a href="#ac0bd716765022336878cecdd152c8bbb">M2::ARingRRi::power</a></div><div class="ttdeci">void power(ElementType &amp;result, const ElementType &amp;a, int n) const</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_ri_8hpp_source.html#l00253">aring-RRi.hpp:253</a></div></div>
-<div class="ttc" id="aclass_m2_1_1_a_ring_r_ri_adcd8974d31ea38b70ceafb48a9da1a60_html_adcd8974d31ea38b70ceafb48a9da1a60"><div class="ttname"><a href="class_m2_1_1_a_ring_r_ri_adcd8974d31ea38b70ceafb48a9da1a60.html#adcd8974d31ea38b70ceafb48a9da1a60">M2::ARingRRi::mult</a></div><div class="ttdeci">void mult(ElementType &amp;result, const ElementType &amp;a, const ElementType &amp;b) const</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_ri_8hpp_source.html#l00239">aring-RRi.hpp:239</a></div></div>
+<p class="definition">Definition at line <a class="el" href="aring-_r_ri_8hpp_source.html#l00259">259</a> of file <a class="el" href="aring-_r_ri_8hpp_source.html">aring-RRi.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  260</span>  {</div>
+<div class="line"><span class="lineno">  261</span>    <span class="keywordflow">if</span> (n &gt;= 2)</div>
+<div class="line"><span class="lineno">  262</span>      {</div>
+<div class="line"><span class="lineno">  263</span>          <span class="keywordflow">if</span> (n%2 == 0)</div>
+<div class="line"><span class="lineno">  264</span>          {</div>
+<div class="line"><span class="lineno">  265</span>              <a class="code hl_typedef" href="class_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef.html#a86a415cc3939d4c69e0faab511f8ddef">ElementType</a> b;</div>
+<div class="line"><span class="lineno">  266</span>              <a class="code hl_function" href="class_m2_1_1_a_ring_r_ri_a40220f1bb2babe60dd9738846dd33070.html#a40220f1bb2babe60dd9738846dd33070">init</a>(b);</div>
+<div class="line"><span class="lineno">  267</span>              <a class="code hl_function" href="#ac0bd716765022336878cecdd152c8bbb">power</a>(b,a,n/2);</div>
+<div class="line"><span class="lineno">  268</span>              <a class="code hl_function" href="class_m2_1_1_a_ring_r_ri_adcd8974d31ea38b70ceafb48a9da1a60.html#adcd8974d31ea38b70ceafb48a9da1a60">mult</a>(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>,b,b);</div>
+<div class="line"><span class="lineno">  269</span>          }</div>
+<div class="line"><span class="lineno">  270</span>          <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  271</span>          {</div>
+<div class="line"><span class="lineno">  272</span>              <a class="code hl_typedef" href="class_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef.html#a86a415cc3939d4c69e0faab511f8ddef">ElementType</a> b;</div>
+<div class="line"><span class="lineno">  273</span>              <a class="code hl_function" href="class_m2_1_1_a_ring_r_ri_a40220f1bb2babe60dd9738846dd33070.html#a40220f1bb2babe60dd9738846dd33070">init</a>(b);</div>
+<div class="line"><span class="lineno">  274</span>              <a class="code hl_function" href="#ac0bd716765022336878cecdd152c8bbb">power</a>(b,a,n-1);</div>
+<div class="line"><span class="lineno">  275</span>              <a class="code hl_function" href="class_m2_1_1_a_ring_r_ri_adcd8974d31ea38b70ceafb48a9da1a60.html#adcd8974d31ea38b70ceafb48a9da1a60">mult</a>(<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>,a,b);</div>
+<div class="line"><span class="lineno">  276</span>          }</div>
+<div class="line"><span class="lineno">  277</span>      }</div>
+<div class="line"><span class="lineno">  278</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n == 1)</div>
+<div class="line"><span class="lineno">  279</span>      mpfi_set(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>,&amp;a);</div>
+<div class="line"><span class="lineno">  280</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n == 0)</div>
+<div class="line"><span class="lineno">  281</span>      mpfi_set_si(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>,1);</div>
+<div class="line"><span class="lineno">  282</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n&lt;0)</div>
+<div class="line"><span class="lineno">  283</span>        <span class="keywordflow">throw</span> 20;</div>
+<div class="line"><span class="lineno">  284</span>  }</div>
+<div class="ttc" id="aclass_m2_1_1_a_ring_r_ri_a40220f1bb2babe60dd9738846dd33070_html_a40220f1bb2babe60dd9738846dd33070"><div class="ttname"><a href="class_m2_1_1_a_ring_r_ri_a40220f1bb2babe60dd9738846dd33070.html#a40220f1bb2babe60dd9738846dd33070">M2::ARingRRi::init</a></div><div class="ttdeci">void init(ElementType &amp;result) const</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_ri_8hpp_source.html#l00132">aring-RRi.hpp:132</a></div></div>
+<div class="ttc" id="aclass_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef_html_a86a415cc3939d4c69e0faab511f8ddef"><div class="ttname"><a href="class_m2_1_1_a_ring_r_ri_a86a415cc3939d4c69e0faab511f8ddef.html#a86a415cc3939d4c69e0faab511f8ddef">M2::ARingRRi::ElementType</a></div><div class="ttdeci">elem ElementType</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_ri_8hpp_source.html#l00063">aring-RRi.hpp:63</a></div></div>
+<div class="ttc" id="aclass_m2_1_1_a_ring_r_ri_ac0bd716765022336878cecdd152c8bbb_html_ac0bd716765022336878cecdd152c8bbb"><div class="ttname"><a href="#ac0bd716765022336878cecdd152c8bbb">M2::ARingRRi::power</a></div><div class="ttdeci">void power(ElementType &amp;result, const ElementType &amp;a, int n) const</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_ri_8hpp_source.html#l00259">aring-RRi.hpp:259</a></div></div>
+<div class="ttc" id="aclass_m2_1_1_a_ring_r_ri_adcd8974d31ea38b70ceafb48a9da1a60_html_adcd8974d31ea38b70ceafb48a9da1a60"><div class="ttname"><a href="class_m2_1_1_a_ring_r_ri_adcd8974d31ea38b70ceafb48a9da1a60.html#adcd8974d31ea38b70ceafb48a9da1a60">M2::ARingRRi::mult</a></div><div class="ttdeci">void mult(ElementType &amp;result, const ElementType &amp;a, const ElementType &amp;b) const</div><div class="ttdef"><b>Definition</b> <a href="aring-_r_ri_8hpp_source.html#l00245">aring-RRi.hpp:245</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_m2_1_1_a_ring_r_ri_a40220f1bb2babe60dd9738846dd33070.html#a40220f1bb2babe60dd9738846dd33070">init()</a>, <a class="el" href="class_m2_1_1_a_ring_r_ri_adcd8974d31ea38b70ceafb48a9da1a60.html#adcd8974d31ea38b70ceafb48a9da1a60">mult()</a>, <a class="el" href="#ac0bd716765022336878cecdd152c8bbb">power()</a>, and <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result()</a>.</p>

@@ -119,17 +119,17 @@ template&lt;typename RingType&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aring-glue_8hpp_source.html#l00898">898</a> of file <a class="el" href="aring-glue_8hpp_source.html">aring-glue.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  902</span>{</div>
-<div class="line"><span class="lineno">  903</span>  <span class="keywordflow">if</span> (Rg == <a class="code hl_variable" href="gauss_8cpp_a5ad190417a478c3f15fa01ef9ee9bac9.html#a5ad190417a478c3f15fa01ef9ee9bac9">globalZZ</a>)</div>
-<div class="line"><span class="lineno">  904</span>    {</div>
-<div class="line"><span class="lineno">  905</span>      <span class="keyword">typename</span> RingType::Element a(R);</div>
-<div class="line"><span class="lineno">  906</span>      R.from_ring_elem(a, f);</div>
-<div class="line"><span class="lineno">  907</span>      <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = Rg-&gt;<a class="code hl_function" href="class_ring_a6f6b08df2379200116484876c4fd2d87.html#a6f6b08df2379200116484876c4fd2d87">from_long</a>(R.coerceToLongInteger(a));</div>
-<div class="line"><span class="lineno">  908</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  909</span>    }</div>
-<div class="line"><span class="lineno">  910</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  911</span>}</div>
+<p class="definition">Definition at line <a class="el" href="aring-glue_8hpp_source.html#l00902">902</a> of file <a class="el" href="aring-glue_8hpp_source.html">aring-glue.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  906</span>{</div>
+<div class="line"><span class="lineno">  907</span>  <span class="keywordflow">if</span> (Rg == <a class="code hl_variable" href="gauss_8cpp_a5ad190417a478c3f15fa01ef9ee9bac9.html#a5ad190417a478c3f15fa01ef9ee9bac9">globalZZ</a>)</div>
+<div class="line"><span class="lineno">  908</span>    {</div>
+<div class="line"><span class="lineno">  909</span>      <span class="keyword">typename</span> RingType::Element a(R);</div>
+<div class="line"><span class="lineno">  910</span>      R.from_ring_elem(a, f);</div>
+<div class="line"><span class="lineno">  911</span>      <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = Rg-&gt;<a class="code hl_function" href="class_ring_a6f6b08df2379200116484876c4fd2d87.html#a6f6b08df2379200116484876c4fd2d87">from_long</a>(R.coerceToLongInteger(a));</div>
+<div class="line"><span class="lineno">  912</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  913</span>    }</div>
+<div class="line"><span class="lineno">  914</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  915</span>}</div>
 <div class="ttc" id="aclass_ring_a6f6b08df2379200116484876c4fd2d87_html_a6f6b08df2379200116484876c4fd2d87"><div class="ttname"><a href="class_ring_a6f6b08df2379200116484876c4fd2d87.html#a6f6b08df2379200116484876c4fd2d87">Ring::from_long</a></div><div class="ttdeci">virtual ring_elem from_long(long n) const =0</div></div>
 <div class="ttc" id="agauss_8cpp_a5ad190417a478c3f15fa01ef9ee9bac9_html_a5ad190417a478c3f15fa01ef9ee9bac9"><div class="ttname"><a href="gauss_8cpp_a5ad190417a478c3f15fa01ef9ee9bac9.html#a5ad190417a478c3f15fa01ef9ee9bac9">globalZZ</a></div><div class="ttdeci">RingZZ * globalZZ</div><div class="ttdef"><b>Definition</b> <a href="relem_8cpp_source.html#l00013">relem.cpp:13</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>

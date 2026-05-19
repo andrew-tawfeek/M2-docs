@@ -120,27 +120,27 @@ $(function(){initNavTree('class_m2_1_1_a_ring_g_f_m2_a3013c84538a4b947093b4686f5
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aring-m2-gf_8hpp_source.html#l00314">314</a> of file <a class="el" href="aring-m2-gf_8hpp_source.html">aring-m2-gf.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  315</span>  {</div>
-<div class="line"><span class="lineno">  316</span>    <span class="keywordflow">if</span> (a != 0)</div>
-<div class="line"><span class="lineno">  317</span>      {</div>
-<div class="line"><span class="lineno">  318</span>        <span class="keywordtype">long</span> order1 = <span class="keyword">static_cast&lt;</span><span class="keywordtype">long</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">mGF</a>.orderMinusOne());</div>
-<div class="line"><span class="lineno">  319</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="class_m2_1_1_a_ring_g_f_m2_a2458fbc75625163f4b7817dd2980b220.html#a2458fbc75625163f4b7817dd2980b220">elem</a><span class="keyword">&gt;</span>((a * n) % order1);</div>
-<div class="line"><span class="lineno">  320</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> &lt;= 0) <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> += <a class="code hl_variable" href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">mGF</a>.orderMinusOne();</div>
-<div class="line"><span class="lineno">  321</span>      }</div>
-<div class="line"><span class="lineno">  322</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  323</span>      {</div>
-<div class="line"><span class="lineno">  324</span>        <span class="comment">// a is the zero element</span></div>
-<div class="line"><span class="lineno">  325</span>        <span class="keywordflow">if</span> (n &gt; 0)</div>
-<div class="line"><span class="lineno">  326</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = 0;</div>
-<div class="line"><span class="lineno">  327</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n == 0)</div>
-<div class="line"><span class="lineno">  328</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">mGF</a>.one();</div>
-<div class="line"><span class="lineno">  329</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  330</span>          <span class="keywordflow">throw</span> exc::division_by_zero_error();</div>
-<div class="line"><span class="lineno">  331</span>      }</div>
-<div class="line"><span class="lineno">  332</span>  }</div>
-<div class="ttc" id="aclass_m2_1_1_a_ring_g_f_m2_a2458fbc75625163f4b7817dd2980b220_html_a2458fbc75625163f4b7817dd2980b220"><div class="ttname"><a href="class_m2_1_1_a_ring_g_f_m2_a2458fbc75625163f4b7817dd2980b220.html#a2458fbc75625163f4b7817dd2980b220">M2::ARingGFM2::elem</a></div><div class="ttdeci">int elem</div><div class="ttdef"><b>Definition</b> <a href="aring-m2-gf_8hpp_source.html#l00110">aring-m2-gf.hpp:110</a></div></div>
-<div class="ttc" id="aclass_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0_html_aaa049cb6d074cc0702a691766283f9e0"><div class="ttname"><a href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">M2::ARingGFM2::mGF</a></div><div class="ttdeci">GaloisFieldTable mGF</div><div class="ttdef"><b>Definition</b> <a href="aring-m2-gf_8hpp_source.html#l00129">aring-m2-gf.hpp:129</a></div></div>
+<p class="definition">Definition at line <a class="el" href="aring-m2-gf_8hpp_source.html#l00319">319</a> of file <a class="el" href="aring-m2-gf_8hpp_source.html">aring-m2-gf.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  320</span>  {</div>
+<div class="line"><span class="lineno">  321</span>    <span class="keywordflow">if</span> (a != 0)</div>
+<div class="line"><span class="lineno">  322</span>      {</div>
+<div class="line"><span class="lineno">  323</span>        <span class="keywordtype">long</span> order1 = <span class="keyword">static_cast&lt;</span><span class="keywordtype">long</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">mGF</a>.orderMinusOne());</div>
+<div class="line"><span class="lineno">  324</span>        <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="class_m2_1_1_a_ring_g_f_m2_a2458fbc75625163f4b7817dd2980b220.html#a2458fbc75625163f4b7817dd2980b220">elem</a><span class="keyword">&gt;</span>((a * n) % order1);</div>
+<div class="line"><span class="lineno">  325</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> &lt;= 0) <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> += <a class="code hl_variable" href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">mGF</a>.orderMinusOne();</div>
+<div class="line"><span class="lineno">  326</span>      }</div>
+<div class="line"><span class="lineno">  327</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  328</span>      {</div>
+<div class="line"><span class="lineno">  329</span>        <span class="comment">// a is the zero element</span></div>
+<div class="line"><span class="lineno">  330</span>        <span class="keywordflow">if</span> (n &gt; 0)</div>
+<div class="line"><span class="lineno">  331</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = 0;</div>
+<div class="line"><span class="lineno">  332</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (n == 0)</div>
+<div class="line"><span class="lineno">  333</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">mGF</a>.one();</div>
+<div class="line"><span class="lineno">  334</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  335</span>          <span class="keywordflow">throw</span> exc::division_by_zero_error();</div>
+<div class="line"><span class="lineno">  336</span>      }</div>
+<div class="line"><span class="lineno">  337</span>  }</div>
+<div class="ttc" id="aclass_m2_1_1_a_ring_g_f_m2_a2458fbc75625163f4b7817dd2980b220_html_a2458fbc75625163f4b7817dd2980b220"><div class="ttname"><a href="class_m2_1_1_a_ring_g_f_m2_a2458fbc75625163f4b7817dd2980b220.html#a2458fbc75625163f4b7817dd2980b220">M2::ARingGFM2::elem</a></div><div class="ttdeci">int elem</div><div class="ttdef"><b>Definition</b> <a href="aring-m2-gf_8hpp_source.html#l00115">aring-m2-gf.hpp:115</a></div></div>
+<div class="ttc" id="aclass_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0_html_aaa049cb6d074cc0702a691766283f9e0"><div class="ttname"><a href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">M2::ARingGFM2::mGF</a></div><div class="ttdeci">GaloisFieldTable mGF</div><div class="ttdef"><b>Definition</b> <a href="aring-m2-gf_8hpp_source.html#l00134">aring-m2-gf.hpp:134</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">mGF</a>, and <a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result()</a>.</p>

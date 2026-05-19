@@ -115,45 +115,45 @@ $(function(){initNavTree('class_m2_1_1_a_ring_c_c_c_af357b08918b7936450ecc681cae
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aring-_c_c_c_8hpp_source.html#l00224">224</a> of file <a class="el" href="aring-_c_c_c_8hpp_source.html">aring-CCC.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  226</span>  {</div>
-<div class="line"><span class="lineno">  227</span>    mpfr_t <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, denom;</div>
-<div class="line"><span class="lineno">  228</span>    mpfr_init2(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, <a class="code hl_function" href="class_m2_1_1_a_ring_c_c_c_a6ca36f68691d04e4535212cbb3a963cf.html#a6ca36f68691d04e4535212cbb3a963cf">get_precision</a>());</div>
-<div class="line"><span class="lineno">  229</span>    mpfr_init2(denom, <a class="code hl_function" href="class_m2_1_1_a_ring_c_c_c_a6ca36f68691d04e4535212cbb3a963cf.html#a6ca36f68691d04e4535212cbb3a963cf">get_precision</a>());</div>
-<div class="line"><span class="lineno">  230</span> </div>
-<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span> (mpfr_cmpabs(&amp;a.re, &amp;a.im) &gt;= 0)</div>
-<div class="line"><span class="lineno">  232</span>      {</div>
-<div class="line"><span class="lineno">  233</span>        <span class="comment">// double p = &amp;a.im/&amp;a.re;</span></div>
-<div class="line"><span class="lineno">  234</span>        <span class="comment">// double denom = &amp;a.re + p * &amp;a.im;</span></div>
-<div class="line"><span class="lineno">  235</span>        <span class="comment">// &amp;result.re = 1.0/denom;</span></div>
-<div class="line"><span class="lineno">  236</span>        <span class="comment">// &amp;result.im = - p/denom;</span></div>
-<div class="line"><span class="lineno">  237</span> </div>
-<div class="line"><span class="lineno">  238</span>        mpfr_div(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, &amp;a.im, &amp;a.re, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  239</span>        mpfr_mul(denom, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, &amp;a.im, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  240</span>        mpfr_add(denom, denom, &amp;a.re, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  241</span>        mpfr_si_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re, 1, denom, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  242</span>        mpfr_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, denom, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  243</span>        mpfr_neg(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, &amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  244</span>      }</div>
-<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  246</span>      {</div>
-<div class="line"><span class="lineno">  247</span>        <span class="comment">// double p = &amp;a.re/&amp;a.im;</span></div>
-<div class="line"><span class="lineno">  248</span>        <span class="comment">// double denom = &amp;a.im + p * &amp;a.re;</span></div>
-<div class="line"><span class="lineno">  249</span>        <span class="comment">// &amp;result.re = p/denom;</span></div>
-<div class="line"><span class="lineno">  250</span>        <span class="comment">// &amp;result.im = -1.0/denom;</span></div>
-<div class="line"><span class="lineno">  251</span> </div>
-<div class="line"><span class="lineno">  252</span>        mpfr_div(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, &amp;a.re, &amp;a.im, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  253</span>        mpfr_mul(denom, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, &amp;a.re, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  254</span>        mpfr_add(denom, denom, &amp;a.im, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  255</span>        mpfr_si_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, 1, denom, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  256</span>        mpfr_neg(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, &amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  257</span>        mpfr_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, denom, MPFR_RNDN);</div>
-<div class="line"><span class="lineno">  258</span>      }</div>
-<div class="line"><span class="lineno">  259</span> </div>
-<div class="line"><span class="lineno">  260</span>    mpfr_clear(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>);</div>
-<div class="line"><span class="lineno">  261</span>    mpfr_clear(denom);</div>
-<div class="line"><span class="lineno">  262</span>  }</div>
-<div class="ttc" id="aclass_m2_1_1_a_ring_c_c_c_a6ca36f68691d04e4535212cbb3a963cf_html_a6ca36f68691d04e4535212cbb3a963cf"><div class="ttname"><a href="class_m2_1_1_a_ring_c_c_c_a6ca36f68691d04e4535212cbb3a963cf.html#a6ca36f68691d04e4535212cbb3a963cf">M2::ARingCCC::get_precision</a></div><div class="ttdeci">unsigned long get_precision() const</div><div class="ttdef"><b>Definition</b> <a href="aring-_c_c_c_8hpp_source.html#l00067">aring-CCC.hpp:67</a></div></div>
+<p class="definition">Definition at line <a class="el" href="aring-_c_c_c_8hpp_source.html#l00233">233</a> of file <a class="el" href="aring-_c_c_c_8hpp_source.html">aring-CCC.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>  {</div>
+<div class="line"><span class="lineno">  236</span>    mpfr_t <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, denom;</div>
+<div class="line"><span class="lineno">  237</span>    mpfr_init2(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, <a class="code hl_function" href="class_m2_1_1_a_ring_c_c_c_a6ca36f68691d04e4535212cbb3a963cf.html#a6ca36f68691d04e4535212cbb3a963cf">get_precision</a>());</div>
+<div class="line"><span class="lineno">  238</span>    mpfr_init2(denom, <a class="code hl_function" href="class_m2_1_1_a_ring_c_c_c_a6ca36f68691d04e4535212cbb3a963cf.html#a6ca36f68691d04e4535212cbb3a963cf">get_precision</a>());</div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>    <span class="keywordflow">if</span> (mpfr_cmpabs(&amp;a.re, &amp;a.im) &gt;= 0)</div>
+<div class="line"><span class="lineno">  241</span>      {</div>
+<div class="line"><span class="lineno">  242</span>        <span class="comment">// double p = &amp;a.im/&amp;a.re;</span></div>
+<div class="line"><span class="lineno">  243</span>        <span class="comment">// double denom = &amp;a.re + p * &amp;a.im;</span></div>
+<div class="line"><span class="lineno">  244</span>        <span class="comment">// &amp;result.re = 1.0/denom;</span></div>
+<div class="line"><span class="lineno">  245</span>        <span class="comment">// &amp;result.im = - p/denom;</span></div>
+<div class="line"><span class="lineno">  246</span> </div>
+<div class="line"><span class="lineno">  247</span>        mpfr_div(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, &amp;a.im, &amp;a.re, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  248</span>        mpfr_mul(denom, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, &amp;a.im, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  249</span>        mpfr_add(denom, denom, &amp;a.re, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  250</span>        mpfr_si_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re, 1, denom, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  251</span>        mpfr_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, denom, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  252</span>        mpfr_neg(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, &amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  253</span>      }</div>
+<div class="line"><span class="lineno">  254</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  255</span>      {</div>
+<div class="line"><span class="lineno">  256</span>        <span class="comment">// double p = &amp;a.re/&amp;a.im;</span></div>
+<div class="line"><span class="lineno">  257</span>        <span class="comment">// double denom = &amp;a.im + p * &amp;a.re;</span></div>
+<div class="line"><span class="lineno">  258</span>        <span class="comment">// &amp;result.re = p/denom;</span></div>
+<div class="line"><span class="lineno">  259</span>        <span class="comment">// &amp;result.im = -1.0/denom;</span></div>
+<div class="line"><span class="lineno">  260</span> </div>
+<div class="line"><span class="lineno">  261</span>        mpfr_div(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, &amp;a.re, &amp;a.im, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  262</span>        mpfr_mul(denom, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, &amp;a.re, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  263</span>        mpfr_add(denom, denom, &amp;a.im, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  264</span>        mpfr_si_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, 1, denom, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  265</span>        mpfr_neg(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, &amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.im, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  266</span>        mpfr_div(&amp;<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>.re, <a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>, denom, MPFR_RNDN);</div>
+<div class="line"><span class="lineno">  267</span>      }</div>
+<div class="line"><span class="lineno">  268</span> </div>
+<div class="line"><span class="lineno">  269</span>    mpfr_clear(<a class="code hl_variable" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>);</div>
+<div class="line"><span class="lineno">  270</span>    mpfr_clear(denom);</div>
+<div class="line"><span class="lineno">  271</span>  }</div>
+<div class="ttc" id="aclass_m2_1_1_a_ring_c_c_c_a6ca36f68691d04e4535212cbb3a963cf_html_a6ca36f68691d04e4535212cbb3a963cf"><div class="ttname"><a href="class_m2_1_1_a_ring_c_c_c_a6ca36f68691d04e4535212cbb3a963cf.html#a6ca36f68691d04e4535212cbb3a963cf">M2::ARingCCC::get_precision</a></div><div class="ttdeci">unsigned long get_precision() const</div><div class="ttdef"><b>Definition</b> <a href="aring-_c_c_c_8hpp_source.html#l00076">aring-CCC.hpp:76</a></div></div>
 <div class="ttc" id="agodbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552_html_a533391314665d6bf1b5575e9a9cd8552"><div class="ttname"><a href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></div><div class="ttdeci">int p</div><div class="ttdef"><b>Definition</b> <a href="godbolt_test_8cpp_source.html#l00034">godboltTest.cpp:34</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 </div><!-- fragment -->
