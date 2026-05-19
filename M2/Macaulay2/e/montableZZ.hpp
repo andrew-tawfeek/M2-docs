@@ -5,22 +5,27 @@
  * @file montableZZ.hpp
  * @brief `MonomialTableZZ` --- coefficient-aware leading-monomial index for `ZZ`-coefficient Groebner bases.
  *
- * The `Z`-coefficient counterpart of `montable.hpp`. It carries
- * the same lex-ordered list of `(monomial pointer, basis-index)`
- * entries (the monomial bytes still belong to the owning
- * polynomial, with any trailing sugar coordinates ignored) but
- * extends every divisibility query with a leading-coefficient
- * test: over `Z` a basis element only reduces a target when its
- * leading coefficient divides the target's, so the index returns
- * candidates that pass both checks. The lex order on monomials
- * still lets the scan prune --- once the first-variable exponent
- * exceeds the query's, no later entry can match.
+ * The `ZZ`-coefficient counterpart of `montable.hpp`. Each
+ * `mon_term` carries a doubly-linked-list pair (`_next` /
+ * `_prev`), the borrowed exponent pointer `_lead` (whose bytes
+ * belong to the owning polynomial; trailing sugar coordinates
+ * are ignored), a precomputed bitmask `_mask`, a basis index
+ * `_val`, and a leading-coefficient pointer `_coeff` (also
+ * borrowed). The terms are kept in lex order on monomials per
+ * the in-source comment; over `ZZ` a basis element only
+ * reduces a target when its leading coefficient divides the
+ * target's, so the API splits divisibility queries into
+ * monomial-only and coefficient-aware variants.
  *
- * Operations are `insert`, `find_divisor`, `find_divisors`, and
- * `remove`, mirroring the field-coefficient version but threaded
- * through an extra `ring_elem` for the leading coefficient.
- * Primary consumer is the `Z`-coefficient path in
- * `gb-default.hpp`.
+ * Public methods: `insert(coeff, exp, comp, id)`,
+ * `is_weak_member` (submodule containment) and `is_strong_member`
+ * (divisibility), `find_smallest_coeff_divisor`,
+ * `find_term_divisors` / `find_monomial_divisors` (each
+ * returning up to `max` matches into a `VECTOR(mon_term*)`),
+ * `find_exact` / `find_exact_monomial`, `change_coefficient`,
+ * and the static `find_weak_generators` / `find_strong_generators`
+ * minimisers. Primary consumer is the `ZZ`-coefficient path in
+ * `gb-default.hpp` (`gbA::lookupZZ`).
  *
  * @see montable.hpp
  * @see gb-default.hpp
