@@ -18,14 +18,19 @@
  * implementation maintains a per-component list head in `_head`
  * and a `_last_match` cache to speed repeated queries.
  *
- * Public operations: `insert(exp, comp, id)`, `find_divisor`,
+ * Public operations: `make(nvars)` (the actual constructor),
+ * `insert(exp, comp, id)`, `find_divisor`,
  * `find_divisors(max, exp, comp, *result)`, and
  * `find_exact(exp, comp)`. The static `make_minimal` and
- * `minimalize` helpers compute a minimal subset of a list of
- * generators by lead monomial. The coefficient-aware
- * `ZZ`-coefficient analogue lives in `montableZZ.hpp`, where
- * the divisibility test additionally checks that a candidate's
- * leading coefficient divides the reducee's.
+ * `minimalize` helpers (defined at `montable.cpp:367` and `:297`)
+ * read as if they compute a minimal subset by lead monomial,
+ * but they are declared `private` with no `friend` access and
+ * no internal self-calls --- nothing in the engine can reach
+ * them, so they are effectively dead scaffolding kept around in
+ * the header. The coefficient-aware `ZZ`-coefficient analogue
+ * lives in `montableZZ.hpp`, where the divisibility test
+ * additionally checks that a candidate's leading coefficient
+ * divides the reducee's.
  *
  * @see montableZZ.hpp
  * @see gb-default.hpp
