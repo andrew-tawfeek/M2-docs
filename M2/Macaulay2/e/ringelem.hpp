@@ -3,6 +3,32 @@
 #ifndef _ringelem_hh_
 #define _ringelem_hh_
 
+/**
+ * @file ringelem.hpp
+ * @brief `ring_elem` --- the universal value type carried by every `Ring*` in the engine.
+ *
+ * Declares the `ring_elem` union plus the GMP/MPFR/MPFI const
+ * and mutable pointer aliases (`ZZ`, `ZZmutable`, `QQ`,
+ * `QQmutable`, `RRRelement`, `RRRmutable`, `RRielement`,
+ * `RRimutable`) and the inline `cc_struct` / `cc_doubles_struct`
+ * complex-number record types. The aliases exist so engine
+ * function signatures can make const-ness explicit (`void
+ * foo(ZZ a, ZZmutable result)` reads more clearly than its
+ * `mpz_srcptr` / `mpz_ptr` expansion) and so a single
+ * search-and-replace can flip the underlying GMP / MPFR / MPFI
+ * type if that surface ever changes.
+ *
+ * `ring_elem` is the value the `Ring`-virtual API trafficks in
+ * everywhere; each `Ring` subclass knows how to interpret the
+ * union (small integer inline, `mpz_ptr` for big values,
+ * polynomial pointer for `PolyRing`, ...). This header is
+ * pulled in by essentially every translation unit that touches
+ * algebra; keep new additions narrow.
+ *
+ * @see ring.hpp
+ * @see relem.hpp
+ */
+
 #include "M2/math-include.h"  // for mpfi_srcptr, mpfr_srcptr, mpq_srcptr
 #include "monoid.hpp"         // for monomial
 #include "newdelete.hpp"      // for our_new_delete
