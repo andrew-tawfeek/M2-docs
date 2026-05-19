@@ -1,5 +1,39 @@
 #pragma once
 
+/**
+ * @file gb-f4/GBF4Computation.hpp
+ * @brief `newf4::GBF4Computation` --- top-level driver for the refactored F4 Gröbner-basis engine.
+ *
+ * Declares the class that owns all of the new F4's state: a
+ * `MonomialHashTable` for basis monomials and a separate one for
+ * S-pair LCMs, a `PolynomialList` of original inputs, a `Basis`
+ * holding the evolving GB and its `GBPolyStatus` flags, a
+ * `MonomialLookupTable` for fast divisor queries, an `SPairSet`
+ * of pending overlaps, a `MacaulayMatrix` reused each degree, and
+ * a reference to the user-selected `VectorArithmetic` backend
+ * (`Zp`, `QQ` reconstruction, etc.). `initializeWithMatrix` and
+ * `initializeWithBasicPolyList` are the two ingestion entry
+ * points; the degree-by-degree main loop is exposed through the
+ * inherited `GBComputation` interface.
+ *
+ * Modern counterpart of the legacy `f4/f4-computation.hpp`: same
+ * algorithmic shape (per-degree S-pair selection, build the
+ * Macaulay matrix, row-reduce, promote new pivots to the basis,
+ * prune subsumed S-pairs), but each concern lives in its own
+ * class instead of being interleaved. All `gb-f4/` classes live
+ * inside `namespace newf4` so their names don't collide with the
+ * older F4. The `Strategy` enum, forward-declared here, picks
+ * between variant choices (buffer sizes, parallelism, monomial
+ * layout) and is defined in the `.cpp`.
+ *
+ * @see Basis.hpp
+ * @see MacaulayMatrix.hpp
+ * @see MonomialHashTable.hpp
+ * @see MonomialLookupTable.hpp
+ * @see PolynomialList.hpp
+ * @see SPairs.hpp
+ */
+
 #include "Basis.hpp"
 #include "MacaulayMatrix.hpp"
 #include "MonomialHashTable.hpp"
