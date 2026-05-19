@@ -3,6 +3,33 @@
 #ifndef _aring_gf_flint_hpp_
 #define _aring_gf_flint_hpp_
 
+/**
+ * @file aring-gf-flint.hpp
+ * @brief `M2::ARingGFFlint` --- small `GF(p^k)` via FLINT Zech-logarithm tables.
+ *
+ * `ARingGFFlint` represents a Galois field `GF(q)` of small order via
+ * FLINT's `fq_zech_*` interface. The element type is a `ulong` Zech
+ * log index of a chosen primitive root, so every operation reduces to
+ * O(1) integer arithmetic on indices: multiplication becomes
+ * `(i + j) mod (q - 1)`, addition `i + Zech(j - i)` via a
+ * precomputed Zech table. One machine word per field element and no
+ * per-call allocations make this the fastest representation when the
+ * Zech table fits in memory --- in practice `q` up to roughly
+ * `2^16`.
+ *
+ * The construction-time dispatcher consults FLINT's
+ * `fq_zech_ctx_init_modulus` and falls through to
+ * `aring-gf-flint-big.hpp` (polynomial-quotient via `fq_nmod_*`) for
+ * larger extensions. The native `aring-m2-gf.hpp` path provides the
+ * same algebra without a FLINT dependency, and `GF.hpp` is the
+ * legacy table-based class.
+ *
+ * @see aring-gf-flint-big.hpp
+ * @see aring-m2-gf.hpp
+ * @see GF.hpp
+ * @see aring.hpp
+ */
+
 #include <vector>
 
 // The following needs to be included before any flint files are included.
