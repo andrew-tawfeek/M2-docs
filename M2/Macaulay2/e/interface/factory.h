@@ -19,11 +19,9 @@
  * arbitrary-precision numerical roots of univariate polynomials
  * via MPSolve.
  *
- * The dual `class` / `typedef struct` declarations of `Matrix`
- * and `RingElement` keep the header usable from both C++ and
- * the generated-C side of the `.dd` pipeline. If Factory or
- * MPSolve is absent at build time, the corresponding entries
- * return null and the M2 layer reports "feature not available."
+ * If Factory or MPSolve is absent at build time the
+ * corresponding entries return null and the M2 layer reports
+ * "feature not available."
  *
  * @see factory.cpp
  * @see flint.h
