@@ -1,6 +1,31 @@
 #ifndef __montableZZ_h
 #define __montableZZ_h
 
+/**
+ * @file montableZZ.hpp
+ * @brief `MonomialTableZZ` --- coefficient-aware leading-monomial index for `ZZ`-coefficient Groebner bases.
+ *
+ * The `Z`-coefficient counterpart of `montable.hpp`. It carries
+ * the same lex-ordered list of `(monomial pointer, basis-index)`
+ * entries (the monomial bytes still belong to the owning
+ * polynomial, with any trailing sugar coordinates ignored) but
+ * extends every divisibility query with a leading-coefficient
+ * test: over `Z` a basis element only reduces a target when its
+ * leading coefficient divides the target's, so the index returns
+ * candidates that pass both checks. The lex order on monomials
+ * still lets the scan prune --- once the first-variable exponent
+ * exceeds the query's, no later entry can match.
+ *
+ * Operations are `insert`, `find_divisor`, `find_divisors`, and
+ * `remove`, mirroring the field-coefficient version but threaded
+ * through an extra `ring_elem` for the leading coefficient.
+ * Primary consumer is the `Z`-coefficient path in
+ * `gb-default.hpp`.
+ *
+ * @see montable.hpp
+ * @see gb-default.hpp
+ */
+
 #include <vector>
 #include <memory>
 #include <algorithm>
