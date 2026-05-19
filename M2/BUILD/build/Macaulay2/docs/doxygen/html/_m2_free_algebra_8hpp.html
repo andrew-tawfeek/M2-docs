@@ -91,6 +91,9 @@ $(function(){initNavTree('_m2_free_algebra_8hpp.html','',''); });
   <div class="headertitle"><div class="title">M2FreeAlgebra.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>-shaped wrapper that exposes a non-commutative <span class="tt"><a class="el" href="class_free_algebra.html">FreeAlgebra</a></span> to the rest of the engine.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;M2/math-include.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
@@ -113,7 +116,20 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a4a116dabef5fc374f622bd0cc144d700" id="r_a4a116dabef5fc374f622bd0cc144d700"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_polynomial_8hpp_ade64611ddd0168ea1239a00cdf89d6df.html#ade64611ddd0168ea1239a00cdf89d6df">PolyList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m2_free_algebra_8hpp_a4a116dabef5fc374f622bd0cc144d700.html#a4a116dabef5fc374f622bd0cc144d700">copyPolyVector</a> (const <a class="el" href="class_m2_free_algebra_or_quotient.html">M2FreeAlgebraOrQuotient</a> *A, const <a class="el" href="_polynomial_8hpp_ade64611ddd0168ea1239a00cdf89d6df.html#ade64611ddd0168ea1239a00cdf89d6df">PolyList</a> &amp;polys)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>-shaped wrapper that exposes a non-commutative <span class="tt"><a class="el" href="class_free_algebra.html">FreeAlgebra</a></span> to the rest of the engine. </p>
+<p>The non-commutative implementation in <span class="tt"><a class="el" href="_free_algebra_8hpp.html">NCAlgebras/FreeAlgebra.hpp</a></span> deliberately does not inherit from <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> &mdash; it wants clean templates and no virtual-dispatch overhead. But matrices, modules, resolutions, <span class="tt"><a class="el" href="class_computation.html">Computation</a></span>s, and <span class="tt"><a class="el" href="class_ring_map.html">RingMap</a></span> construction all want a <span class="tt">Ring*</span>. <span class="tt"><a class="el" href="class_m2_free_algebra.html">M2FreeAlgebra</a></span> reconciles the two: it owns a <span class="tt">std::unique_ptr&lt;<a class="el" href="class_free_algebra.html">FreeAlgebra</a>&gt;</span> and forwards every <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> virtual call to the wrapped instance, so the non-commutative ring slots transparently into <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span> / <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> / <span class="tt"><a class="el" href="class_ring_element.html">RingElement</a></span> slots and can serve as the coefficient ring in a layered construction.</p>
+<p>The value type stored in <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> is the shared <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> from <span class="tt"><a class="el" href="_polynomial_8hpp.html" title="Modern Monom / Poly value types shared by NC algebras and the refactored F4.">Polynomial.hpp</a></span>. This wrap-a-templated-implementation-in-a-<span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> pattern mirrors <span class="tt"><a class="el" href="aring-glue_8hpp.html">aring-glue.hpp</a></span>'s <span class="tt">ConcreteRing&lt;R&gt;</span> for the aring family. The quotient counterpart is <span class="tt"><a class="el" href="class_m2_free_algebra_quotient.html">M2FreeAlgebraQuotient</a></span>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_free_algebra_8hpp.html">NCAlgebras/FreeAlgebra.hpp</a> </dd>
+<dd>
+<a class="el" href="_polynomial_8hpp.html" title="Modern Monom / Poly value types shared by NC algebras and the refactored F4.">Polynomial.hpp</a> </dd>
+<dd>
+<a class="el" href="aring-glue_8hpp.html">aring-glue.hpp</a> </dd>
+<dd>
+<a class="el" href="_m2_free_algebra_quotient_8hpp.html" title="Ring-shaped façade around a non-commutative quotient algebra.">M2FreeAlgebraQuotient.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_m2_free_algebra_8hpp_source.html">M2FreeAlgebra.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('_polynomial_8hpp.html','',''); });
   <div class="headertitle"><div class="title">Polynomial.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Modern <span class="tt"><a class="el" href="struct_monom.html">Monom</a></span> / <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> value types shared by NC algebras and the refactored F4.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="newdelete_8hpp_source.html">newdelete.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="style_8hpp_source.html">style.hpp</a>&quot;</code><br />
@@ -124,7 +127,16 @@ Functions</h2></td></tr>
 <tr class="memitem:aeee8ed3853f30ec2ec7dc18210e5cc8f" id="r_aeee8ed3853f30ec2ec7dc18210e5cc8f"><td class="memTemplParams" colspan="2">template&lt;typename <a class="el" href="struct_t.html">T</a>&gt; </td></tr>
 <tr class="memitem:aeee8ed3853f30ec2ec7dc18210e5cc8f template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_polynomial_8hpp_aeee8ed3853f30ec2ec7dc18210e5cc8f.html#aeee8ed3853f30ec2ec7dc18210e5cc8f">appendModuleMonomToMonom</a> (const <a class="el" href="class_module_monom.html">ModuleMonom</a> &amp;a, <a class="el" href="classint.html">int</a> &amp;comp, <a class="el" href="struct_t.html">T</a> &amp;inserter)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Modern <span class="tt"><a class="el" href="struct_monom.html">Monom</a></span> / <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> value types shared by NC algebras and the refactored F4. </p>
+<p><span class="tt"><a class="el" href="struct_monom.html">Monom</a></span> is an array-of-ints encoding of a non-commutative word with a degree prefix: <span class="tt">[length, degree, var_1, ..., var_n]</span> where <span class="tt">length = n + 2</span>. The length-field-first layout lets a single pointer walk past a monomial without external context. <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> pairs a column-store of <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> coefficients with a parallel column-store of monomial offsets into a shared int pool, which is the cache-friendly shape that matrix-style F4 operations want.</p>
+<p>This is the modern counterpart to the legacy <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span> in <span class="tt"><a class="el" href="gbring_8hpp.html">gbring.hpp</a></span> &mdash; they coexist by design: <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span> is an intrusive linked list optimised for term-by-term sorted merging in the classical Buchberger inner loop, while <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> wins for the batch operations of F4 and the resolution code. Primary consumers are <span class="tt">NCAlgebras/</span> and <span class="tt">gb-f4/</span>; <span class="tt">schreyer-resolution/</span> carries a resolution-specialised variant.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="gbring_8hpp.html">gbring.hpp</a> </dd>
+<dd>
+<a class="el" href="_free_algebra_8hpp.html">NCAlgebras/FreeAlgebra.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -91,6 +91,9 @@ $(function(){initNavTree('_basic_poly_8hpp.html','',''); });
   <div class="headertitle"><div class="title">BasicPoly.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Minimal, portable polynomial value type used where heavier engine types would be overkill.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="exceptions_8hpp_source.html">exceptions.hpp</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;iosfwd&gt;</code><br />
@@ -113,7 +116,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a8ef11cc15535d7f1788ed83c0cd24c96" id="r_a8ef11cc15535d7f1788ed83c0cd24c96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_basic_poly_8hpp_a8ef11cc15535d7f1788ed83c0cd24c96.html#a8ef11cc15535d7f1788ed83c0cd24c96">parseBasicPoly</a> (const std::string_view &amp;str, const <a class="el" href="class_identifier_hash.html">IdentifierHash</a> &amp;idenHash, <a class="el" href="class_basic_poly.html">BasicPoly</a> &amp;<a class="el" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>)</td></tr>
 <tr class="memdesc:a8ef11cc15535d7f1788ed83c0cd24c96"><td class="mdescLeft">&#160;</td><td class="mdescRight">This version is a potentially faster alternative when reading many polynomials.  <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Minimal, portable polynomial value type used where heavier engine types would be overkill. </p>
+<p><span class="tt"><a class="el" href="class_basic_poly.html">BasicPoly</a></span> stores a polynomial as three parallel <span class="tt">std::vector</span>s: <span class="tt">mCoefficients</span> (one <span class="tt">mpz_class</span> per term), <span class="tt">mComponents</span> (one <span class="tt"><a class="el" href="classint.html">int</a></span> per term naming the free-module component, or empty as shorthand for "all components are zero"), and <span class="tt">mMonomials</span> (a flat concatenation of varpower-encoded monomials, each prefixed by its own length so the array can be walked sequentially). The type carries no reference to a specific ring or monomial layout, which makes it the right vehicle for serialisation, parser-fed test inputs, and the streaming constructors of newer Groebner-basis code (notably <span class="tt">gb-f4</span>).</p>
+<p>Coefficients are currently restricted to <span class="tt">mpz_class</span>; extending this to <a class="el" href="class_g_f.html">GF(p^n)</a>, <a class="el" href="ringelem_8hpp_a845589cbe81fb92f0ca26c8b911f8f38.html#a845589cbe81fb92f0ca26c8b911f8f38">QQ</a>, fraction fields, or polynomial coefficients is on the TODO list. Companion types <span class="tt"><a class="el" href="_basic_poly_list_8hpp_a24fbc5f5eec7472cd3ee08f9f323741e.html#a24fbc5f5eec7472cd3ee08f9f323741e">BasicPolyList</a></span> (a <span class="tt">std::vector&lt;<a class="el" href="class_basic_poly.html">BasicPoly</a>&gt;</span> with convenience methods) and <span class="tt">BasicPolyListParser</span> (reads the simple line-per-polynomial text format used by tests) live alongside.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_polynomial_8hpp.html" title="Modern Monom / Poly value types shared by NC algebras and the refactored F4.">Polynomial.hpp</a> </dd>
+<dd>
+<a class="el" href="gbring_8hpp.html">gbring.hpp</a> </dd>
+<dd>
+<a class="el" href="_basic_poly_list_8hpp.html" title="Ring-agnostic polynomial-list transport type plus its streaming collector.">BasicPolyList.hpp</a> </dd>
+<dd>
+<a class="el" href="_basic_poly_list_parser_8hpp.html" title="Parsers from text (string or file) into a BasicPolyList, including Msolve input format.">BasicPolyListParser.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_basic_poly_8hpp_source.html">BasicPoly.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

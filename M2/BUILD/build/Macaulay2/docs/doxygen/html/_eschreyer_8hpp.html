@@ -91,6 +91,9 @@ $(function(){initNavTree('_eschreyer_8hpp.html','',''); });
   <div class="headertitle"><div class="title">Eschreyer.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Older Schreyer-style kernel computation, predecessor of <span class="tt">schreyer-resolution/</span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="schorder_8hpp_source.html">schorder.hpp</a>&quot;</code><br />
@@ -105,7 +108,18 @@ Classes</h2></td></tr>
 <tr class="memitem:GBMatrix" id="r_GBMatrix"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_g_b_matrix.html">GBMatrix</a></td></tr>
 <tr class="memitem:GBKernelComputation" id="r_GBKernelComputation"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_b_kernel_computation.html">GBKernelComputation</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Older Schreyer-style kernel computation, predecessor of <span class="tt">schreyer-resolution/</span>. </p>
+<p>Declares <span class="tt"><a class="el" href="class_g_b_kernel_computation.html">GBKernelComputation</a></span> &mdash; a <span class="tt"><a class="el" href="class_computation.html">Computation</a></span> subclass that, given a matrix <span class="tt">f : F -&gt; <a class="el" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a></span> whose columns are a Groebner basis of <span class="tt">im(f)</span>, produces the kernel <span class="tt">K</span> of <span class="tt">f</span> as a set of generators which are themselves a Groebner basis under the Schreyer order on <span class="tt">F</span> induced by <span class="tt">(f, lt(f_1), ..., lt(f_n))</span>. That structural guarantee is what makes the routine useful for iterated free resolutions: the kernel is in the right form to feed straight into the next step.</p>
+<p>Also declares the lightweight <span class="tt"><a class="el" href="struct_g_b_matrix.html">GBMatrix</a></span> &mdash; a matrix whose columns are owned <span class="tt">gbvector*</span> rather than opaque <span class="tt">vec</span> values, so the inner loop sidesteps a <span class="tt"><a class="el" href="class_matrix.html">Matrix</a> -&gt; <a class="el" href="structgbvector.html">gbvector</a></span> conversion every iteration. The newer <span class="tt">schreyer-resolution/</span> implementation reduces a whole degree at once via F4 and is faster on most inputs; this older single-row reduction is retained for regression testing and the rare small-example case where it still wins.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="gbring_8hpp.html">gbring.hpp</a> </dd>
+<dd>
+<a class="el" href="schorder_8hpp.html">schorder.hpp</a> </dd>
+<dd>
+<a class="el" href="comp_8hpp.html">comp.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

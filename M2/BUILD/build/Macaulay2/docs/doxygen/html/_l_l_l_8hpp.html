@@ -91,6 +91,9 @@ $(function(){initNavTree('_l_l_l_8hpp.html','',''); });
   <div class="headertitle"><div class="title">LLL.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Lenstra-Lenstra-Lovász integer lattice basis reduction, in place on a <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span>.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="mat_8hpp_source.html">mat.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="relem_8hpp_source.html">relem.hpp</a>&quot;</code><br />
 </div>
@@ -100,7 +103,16 @@ $(function(){initNavTree('_l_l_l_8hpp.html','',''); });
 Classes</h2></td></tr>
 <tr class="memitem:LLLoperations" id="r_LLLoperations"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_l_loperations.html">LLLoperations</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Lenstra-Lenstra-Lovász integer lattice basis reduction, in place on a <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span>. </p>
+<p>Declares <span class="tt"><a class="el" href="class_l_l_loperations.html">LLLoperations</a></span>, a static-only collection that runs the classical Lenstra-Lenstra-Lovász (1982) algorithm on the columns of a <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> over <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span>. The output is an LLL-reduced basis of the same lattice: each Gram-Schmidt projection coefficient is bounded by <span class="tt">1/2</span> and consecutive squared GS lengths satisfy the Lovász condition with parameter <span class="tt">α = alphaTop/alphaBottom</span>. Closer to <span class="tt">1</span> means stronger reduction and slower runtime.</p>
+<p>The class is intentionally objectless &mdash; <span class="tt">REDI</span> is the size-reduction step, <span class="tt">Lovasz</span> is the swap-condition check, and the outer loop coordinates them while a companion <span class="tt">lambda</span> matrix carries the rational Gram-Schmidt coefficients. Reduction happens in place, which is why the routines work on <span class="tt"><a class="el" href="class_mutable_matrix.html">MutableMatrix</a></span> rather than the immutable <span class="tt"><a class="el" href="class_matrix.html">Matrix</a></span>. The engine uses this for lattice cryptography experiments, short-integer-relation hunts, and as preprocessing for integer programming.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mat_8hpp.html">mat.hpp</a> </dd>
+<dd>
+<a class="el" href="mutable-matrix_8h.html">interface/mutable-matrix.h</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_l_l_l_8hpp_source.html">LLL.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

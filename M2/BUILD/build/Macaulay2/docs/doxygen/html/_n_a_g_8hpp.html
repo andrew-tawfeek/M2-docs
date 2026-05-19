@@ -91,6 +91,9 @@ $(function(){initNavTree('_n_a_g_8hpp.html','',''); });
   <div class="headertitle"><div class="title">NAG.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Numerical Algebraic Geometry entry point: homotopy continuation, witness sets, monodromy.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="engine-includes_8hpp_source.html">engine-includes.hpp</a>&quot;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
@@ -175,7 +178,22 @@ Functions</h2></td></tr>
 <tr class="memitem:aa49ea4bd7747cc3dc1c587fca105f763" id="r_aa49ea4bd7747cc3dc1c587fca105f763"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_a_g_8hpp_aa49ea4bd7747cc3dc1c587fca105f763.html#aa49ea4bd7747cc3dc1c587fca105f763">degree_ring_elem</a> (const <a class="el" href="class_poly_ring.html">PolyRing</a> *R, <a class="el" href="unionring__elem.html">ring_elem</a> re)</td></tr>
 <tr class="memitem:a57a1757bf25b18bed36f72e924c0bc5b" id="r_a57a1757bf25b18bed36f72e924c0bc5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_n_a_g_8hpp_a57a1757bf25b18bed36f72e924c0bc5b.html#a57a1757bf25b18bed36f72e924c0bc5b">print_complex_matrix</a> (<a class="el" href="classint.html">int</a> size, const double *A)</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Numerical Algebraic Geometry entry point: homotopy continuation, witness sets, monodromy. </p>
+<p>NAG complements the engine's symbolic Groebner-basis / resolution machinery by working over <span class="tt">RR</span> or <span class="tt">CC</span>. Given a polynomial system <span class="tt">F : C^n -&gt; C^m</span>, the routines declared here track solutions of <span class="tt">F = 0</span> as the system deforms continuously from a known start system (predictor-corrector continuation), assemble witness sets (representative points on each component, tagged by dimension), and run monodromy loops over small homotopies to discover the irreducible components.</p>
+<p><a class="el" href="class_polynomial.html">Polynomial</a> evaluation at every continuation step goes through a straight-line program compiled once from the input system; the <a class="el" href="class_s_l_p.html">SLP</a> machinery lives in <span class="tt"><a class="el" href="_s_l_p_8hpp.html">SLP.hpp</a></span>, <span class="tt"><a class="el" href="_s_l_p-defs_8hpp.html">SLP-defs.hpp</a></span>, and <span class="tt"><a class="el" href="_s_l_p-imp_8hpp.html">SLP-imp.hpp</a></span>. Because NAG values are numerical (FLINT/MPFR/Arb-backed) rather than garbage-collected <a class="el" href="namespace_m2.html">M2</a> objects, this header is unusually liberal with STL containers compared to the rest of the engine. Originally contributed by Anton Leykin; large portions are in the public domain.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_s_l_p_8hpp.html">SLP.hpp</a> </dd>
+<dd>
+<a class="el" href="_s_l_p-defs_8hpp.html">SLP-defs.hpp</a> </dd>
+<dd>
+<a class="el" href="_s_l_p-imp_8hpp.html">SLP-imp.hpp</a> </dd>
+<dd>
+<a class="el" href="_n_a_g_8h.html">interface/NAG.h</a> </dd>
+<dd>
+<a class="el" href="aring-_c_c_8hpp.html">aring-CC.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_n_a_g_8hpp_source.html">NAG.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

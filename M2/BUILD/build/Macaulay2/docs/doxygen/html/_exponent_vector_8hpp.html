@@ -91,6 +91,9 @@ $(function(){initNavTree('_exponent_vector_8hpp.html','',''); });
   <div class="headertitle"><div class="title">ExponentVector.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Dense exponent-vector template <span class="tt">[e_0, ..., e_{nvars-1}]</span> for monomial operations.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;type_traits&gt;</code><br />
@@ -112,7 +115,16 @@ Typedefs</h2></td></tr>
 <tr class="memitem:aec09fab2f897ff3d8346961f38331d12" id="r_aec09fab2f897ff3d8346961f38331d12"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_exponent_vector_8hpp_aec09fab2f897ff3d8346961f38331d12.html#aec09fab2f897ff3d8346961f38331d12">exponents_t</a> = <a class="el" href="class_exponent_vector_ad99f1f24f7a14bdc93dc6d5db5068c59.html#ad99f1f24f7a14bdc93dc6d5db5068c59">exponents::Exponents</a></td></tr>
 <tr class="memitem:a21989b3e062e85cbe627cf36cf1bb395" id="r_a21989b3e062e85cbe627cf36cf1bb395"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_exponent_vector_8hpp_a21989b3e062e85cbe627cf36cf1bb395.html#a21989b3e062e85cbe627cf36cf1bb395">const_exponents</a> = <a class="el" href="class_exponent_vector_ad01ecd3f63da19ad4eb93d3326ad66b2.html#ad01ecd3f63da19ad4eb93d3326ad66b2">exponents::ConstExponents</a></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Dense exponent-vector template <span class="tt">[e_0, ..., e_{nvars-1}]</span> for monomial operations. </p>
+<p><span class="tt"><a class="el" href="class_exponent_vector.html">ExponentVector</a>&lt;ExponentT, overflowChecked&gt;</span> is the engine's dense monomial encoding &mdash; a fixed-length array indexed by variable position, with no in-band length prefix (callers carry <span class="tt">nvars</span> separately). The first template parameter selects the exponent type (typically <span class="tt"><a class="el" href="classint.html">int</a></span>, <span class="tt">int32_t</span>, or <span class="tt">int64_t</span>); the second toggles checked arithmetic via <span class="tt"><a class="el" href="overflow_8hpp.html">overflow.hpp</a></span> helpers. The template provides the per-monomial operations the engine needs in a single place &mdash; <span class="tt">multiply</span>, <span class="tt">divide</span>, <span class="tt">divides</span>, <span class="tt"><a class="el" href="geovec_8hpp_a93a6254b3accee4629ec45fc0e4a64cd.html#a93a6254b3accee4629ec45fc0e4a64cd">compare</a></span>, <span class="tt">hash</span> &mdash; and is specialised by <span class="tt"><a class="el" href="ntuple-monomial_8hpp.html">f4/ntuple-monomial.hpp</a></span> and the resolution code in <span class="tt">schreyer-resolution/</span>.</p>
+<p>Dense storage is the right choice when variable count is small and support is dense; the sparse counterpart <span class="tt"><a class="el" href="_exponent_list_8hpp.html" title="Variable-length sparse (variable, exponent) encoding of monomials.">ExponentList.hpp</a></span> dominates when support is small relative to many ambient variables. Inner loops that have already bounded exponent magnitude can instantiate with <span class="tt">overflowChecked = false</span> to skip the safe-add / safe-mul wrappers.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_exponent_list_8hpp.html" title="Variable-length sparse (variable, exponent) encoding of monomials.">ExponentList.hpp</a> </dd>
+<dd>
+<a class="el" href="overflow_8hpp.html">overflow.hpp</a> </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="_exponent_vector_8hpp_source.html">ExponentVector.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
