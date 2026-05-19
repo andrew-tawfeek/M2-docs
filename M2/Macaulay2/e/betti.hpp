@@ -7,20 +7,25 @@
  * @file betti.hpp
  * @brief `BettiDisplay` --- engine-side container and renderer for the Betti table of a free resolution.
  *
- * `BettiDisplay` holds the graded Betti numbers `beta_{i,j} = rank
- * (F_i)_j` produced when an engine `ResolutionComputation` finishes:
- * row index is the internal degree `j - i`, column index is the
- * homological degree `i`. The class itself is intentionally just a
- * 2-D `int` array with bounds plus printing helpers --- the actual
- * mathematics (which entries are non-zero and what they equal) is
- * done by the resolution code that fills the table. Small per-table
- * allocations route through `memtailor` so resolutions of large
- * monomial ideals (hundreds of rows/columns) stay cheap.
+ * `BettiDisplay` holds the graded Betti numbers produced when an
+ * engine `ResolutionComputation` finishes: `entry(deg, lev)`
+ * reads or writes the count at degree `deg` and homological
+ * level `lev`, with absolute bounds `mLoDegree`, `mHiDegree`,
+ * `mHiLength`. The class is intentionally just a 2-D `int` array
+ * (`new int[]` / `delete[]`) with bounds plus printing helpers
+ * --- the actual mathematics (which entries are non-zero and
+ * what they equal) is done by the resolution code that fills
+ * the table.
  *
- * Rendering supports three modes: the plain text layout returned by
- * M2's `betti` function, an HTML form for `installPackage`-generated
- * documentation, and a LaTeX form for `latex`. Format selection
- * happens at print time through the engine's `buffer` machinery.
+ * `getBetti()` flattens the table into an `M2_arrayint` of the
+ * form `[lo, hi, len, values...]` (with the visible degree and
+ * level windows trimmed to where non-zero entries occur), and
+ * `displayBetti(buffer&)` writes the standard M2 plain-text
+ * Betti diagram --- column totals, a `[grand total]` header,
+ * `-` for zero entries --- to a `buffer`. The `BettiHashAndEq`
+ * functor at the bottom of the header is a `(int*, int)`-keyed
+ * hash/equality pair used by resolution code that indexes
+ * Betti-style contributions in `std::unordered_*` containers.
  *
  * @see buffer.hpp
  */
