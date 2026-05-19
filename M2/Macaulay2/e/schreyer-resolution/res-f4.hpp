@@ -5,29 +5,27 @@
 
 /**
  * @file schreyer-resolution/res-f4.hpp
- * @brief `F4Res` --- F4-style matrix-reduction worker over a `SchreyerFrame`.
+ * @brief F4-style matrix-reduction worker over a `SchreyerFrame`.
  *
- * Declares the per-cell algorithm class that the
- * `F4ResComputation` driver invokes to advance the resolution
- * one `(level, degree)` step at a time. `construct(lev,
- * degree)` reads the frame's pending syzygies for that cell,
- * collects the matching tail-reducers from lower levels and
- * earlier degrees, builds a Macaulay matrix whose rows are the
- * payloads and whose columns are the union of their monomials
- * sorted by Schreyer order, row-reduces via the shared
- * `VectorArithmetic` backend, and writes the new echelon-row
- * syzygies back into the frame. `processMonomialProduct`,
- * `findDivisor`, and the `Row` payload (`mLeadTerm` /
- * `mComponents` / `mCoeffs`) are the internals that wire the
+ * Declares the per-cell algorithm class `F4ResComputation`
+ * invokes to advance the resolution one `(level, degree)` step
+ * at a time. `construct(lev, degree)` reads the frame's pending
+ * syzygies, collects matching tail-reducers from lower levels
+ * and earlier degrees, builds a Macaulay matrix whose rows are
+ * those payloads and whose columns are the union of their
+ * monomials sorted by Schreyer order, row-reduces via the
+ * shared `VectorArithmetic` backend, and writes the new
+ * echelon-row syzygies back into the frame.
+ * `processMonomialProduct`, `findDivisor`, and the `Row`
+ * payload (`mLeadTerm` / `mComponents` / `mCoeffs`) wire the
  * column-enumeration and reducer-selection plumbing.
  *
- * `F4Res` is a worker, not a state container: it holds a
- * reference to its `SchreyerFrame`, never owns it, so the frame
- * can outlive any single reduction call and the parallel
- * `DependencyGraph` scheduler can spin up an `F4Res` per cell.
- * The `friend class ResColumnsSorter` line gives the column-
+ * `F4Res` holds a reference to its `SchreyerFrame` rather than
+ * owning it, so the frame outlives any single reduction and the
+ * parallel `DependencyGraph` scheduler can spin up an `F4Res`
+ * per cell. `friend class ResColumnsSorter` gives the column-
  * sorting helper access to the inner column-index map. Sibling
- * of the GB-side `f4/f4.hpp`.
+ * of `f4/f4.hpp`.
  *
  * @see res-schreyer-frame.hpp
  * @see res-f4-computation.hpp
