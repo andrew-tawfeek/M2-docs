@@ -4,25 +4,32 @@
 
 /**
  * @file int-bag.hpp
- * @brief `int_bag` --- minimal `(payload, varpower monomial)` carrier shared by monomial-ideal code.
+ * @brief `int_bag` / `Bag` --- minimal `(payload, varpower monomial)` carrier shared by monomial-ideal code.
  *
- * Declares `int_bag`, a small GC-managed class pairing a
- * `gc_vector<int>` varpower monomial with a payload `union` of
- * either an `int` (typically a basis index) or a `void *` (typically
- * a `gbvector*` or `Nterm*`). Callers know which arm of the union
- * applies at each call site; there is no runtime tag. Constructors
- * cover the obvious cases (default, from index alone, from pointer
- * alone, from either plus a pre-built varpower vector, plus copy
- * constructors) and the only mutator of substance is `monom()` for
- * editing the underlying monomial in place.
+ * Declares `int_bag` (aliased as `Bag` at the bottom --- most
+ * engine code refers to it under the alias), a small GC-managed
+ * class pairing a `gc_vector<int>` varpower monomial with a
+ * payload `union` of either an `int` (`b_elem`, typically a
+ * basis index) or a `void*` (`b_ptr`, typically a `gbvector*`
+ * or `Nterm*`). Callers know which arm of the union applies at
+ * each call site; there is no runtime tag. Five constructors
+ * cover the cases --- default, `int b`, `void* b`, `(int b,
+ * varpower)`, and `(void* b, varpower)`, plus copy constructors
+ * from reference and pointer. The accessors expose both arms
+ * (`basis_elem()` / `basis_ptr()`) plus the monomial via the
+ * paired `monom()` / `vector()` overloads (returning the same
+ * `gc_vector<int>&` either way --- `monom()` carries the
+ * varpower-encoded monomial, the `vector()` alias is the same
+ * underlying buffer).
  *
- * The class survives from an older era of engine code that wanted
- * a single concrete type for ferrying `(payload, monomial)` pairs
- * --- primarily through `MonomialIdeal` build helpers and
- * monomial-ideal minimal-prime recursion. Newer engine code prefers
- * `std::pair` over varpower or the strongly-typed indices from
- * `gb-f4/`; removing `int_bag` would touch many call sites and is
- * not yet on the critical path.
+ * The class survives from an older era of engine code that
+ * wanted a single concrete type for ferrying `(payload,
+ * monomial)` pairs --- primarily through `MonomialIdeal` build
+ * helpers (`Nmi_node` leaves carry `Bag*` payloads) and
+ * monomial-ideal minimal-prime recursion. Newer engine code
+ * prefers `std::pair` over varpower or the strongly-typed
+ * indices from `gb-f4/`; removing `int_bag` would touch many
+ * call sites and is not yet on the critical path.
  *
  * @see ExponentList.hpp
  * @see monideal.hpp
