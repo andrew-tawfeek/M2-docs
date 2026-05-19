@@ -1,6 +1,31 @@
 #ifndef __vector_arithmetic_hpp__
 #define __vector_arithmetic_hpp__
 
+/**
+ * @file VectorArithmetic.hpp
+ * @brief Coefficient-ring-erased arithmetic dispatcher used by F4, GB, and resolution code.
+ *
+ * `VectorArithmetic` is the engine's abstract dispatcher for the
+ * inner loop shared across F4-style code paths --- the
+ * `accumulator[col] += coeff * scaling` operation that runs billions
+ * of times. A single templated entry point hides the concrete
+ * coefficient ring (`Z/p` via FFLAS, `Z/p` / `QQ` / `GF` via FLINT,
+ * `RR` via MPFR, ...) behind one interface; dispatch happens via a
+ * `std::variant` over ring types plus `std::visit`, after which the
+ * call sees a `ConcreteRing<R>` and the native add/multiply inlines.
+ *
+ * The point of the indirection is cross-ring reuse: `f4/`,
+ * `gb-f4/`, `schreyer-resolution/`, and `NCAlgebras/NCF4` all hit
+ * the dispatcher rather than coding against any particular ring, so
+ * teaching the engine a new coefficient backend is a matter of
+ * implementing it as an `aring`, registering it in this dispatcher's
+ * variant, and exposing the construction through `interface/aring.h`
+ * --- with no changes inside the F4 / resolution loops themselves.
+ *
+ * @see aring.hpp
+ * @see aring-glue.hpp
+ */
+
 // #include <utility>                  // for swap
 // #include <assert.h>                 // for assert
 // #include <stddef.h>                 // for size_t
