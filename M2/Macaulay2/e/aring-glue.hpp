@@ -28,15 +28,16 @@
  * `ConcreteRing<ARingZZpFlint>::create(p)` is a one-liner.
  * `aring-translate.hpp` is the companion for cross-ring
  * coercion (`mypromote` / `mylift`); on the element-handle side
- * each aring carries its own `RingType::Element` (an
- * `ElementImpl<R>` subclass exposed via the typedef on line 67)
- * --- the abandoned `RElementWrap<RingType>` /
- * `AConcreteRing<RingType>` scaffolding in `aring-wrap.hpp` was
- * a never-completed alternative design, not the production
- * element-level counterpart. The `displayArithmeticCalls` flag
- * (defaults to `false`) is a compile-time debug toggle that,
- * when enabled, has every forwarded `Ring` virtual
- * `fprintf(stderr, "calling ...\n")`.
+ * the class re-exposes both `RingType::ElementType` and
+ * `RingType::Element` as nested typedefs so callers can grab
+ * either the raw scalar or the resource-managing wrapper. The
+ * abandoned `RElementWrap<RingType>` / `AConcreteRing<RingType>`
+ * scaffolding in `aring-wrap.hpp` was a never-completed
+ * alternative design, not the production element-level
+ * counterpart. The `displayArithmeticCalls` flag (defaults to
+ * `false`) is a file-static compile-time debug toggle that,
+ * when flipped to `true` and recompiled, has every forwarded
+ * `Ring` virtual `fprintf(stderr, "calling <op>\n")`.
  *
  * @see aring.hpp
  * @see aring-translate.hpp
