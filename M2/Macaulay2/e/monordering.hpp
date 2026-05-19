@@ -7,21 +7,28 @@
  * @file monordering.hpp
  * @brief `MonomialOrderings` --- C++ factories for the declarative `MonomialOrdering` blocks.
  *
- * Declares the static-only `MonomialOrderings` namespace whose
- * members build single `MonomialOrdering` blocks (`Lex` / `Lex2`
- * / `Lex4`, `GRevLex` / `GRevLex2` / `GRevLex4` with or without a
- * weight vector, `RevLex`, `Weights`, `GroupLex`, ...) and compose
- * them (`product`, `join`) into the multi-block orderings the user
- * actually writes. The accompanying `toString` renders an ordering
- * back to the textual form M2 displays. Each factory validates the
- * variable counts and weight-vector lengths it is given.
+ * Declares the static-only `MonomialOrderings` class whose
+ * members build single `MonomialOrdering` blocks (`Lex` /
+ * `Lex2` / `Lex4`, `GRevLex` / `GRevLex2` / `GRevLex4` with or
+ * without a weight vector --- plus a packed
+ * `GRevLex(wts, packing)` overload --- `RevLex`, `Weights`,
+ * `GroupLex`, `GroupRevLex`, and the component-ordering
+ * markers `PositionUp` / `PositionDown`), and compose them
+ * (`product`, `join`) into the multi-block orderings the user
+ * actually writes. `toString` renders an ordering back to the
+ * textual form M2 displays. The free function
+ * `monomialOrderingToMatrix` (defined in
+ * `interface/monomial-ordering.cpp`) flattens an ordering into
+ * an integer matrix together with `base_is_revlex` and
+ * component-direction / row-position metadata --- the form
+ * downstream code uses when it needs the order as data.
  *
- * This is the user-facing **declarative** side of the monomial-
- * order story --- what the user types and what M2 serialises ---
- * paired with the operational `MonomialOrder` produced by
- * `imonorder.hpp`. A `Monoid` constructor consumes the
- * declarative output of these factories once at ring construction
- * and walks the encoded form thereafter.
+ * This is the user-facing declarative side of the
+ * monomial-order story --- what the user types and what M2
+ * serialises --- paired with the operational `MonomialOrder`
+ * produced by `imonorder.hpp`. A `Monoid` constructor consumes
+ * the declarative output of these factories once at ring
+ * construction and walks the encoded form thereafter.
  *
  * @see imonorder.hpp
  * @see monoid.hpp
