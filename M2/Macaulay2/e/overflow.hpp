@@ -1,6 +1,33 @@
 #ifndef _overflow_h_
 #define _overflow_h_
 
+/**
+ * @file overflow.hpp
+ * @brief Overflow-checked integer arithmetic for monomial exponents and degree sums.
+ *
+ * Provides the `safe::` arithmetic helpers (`add`, `mult`,
+ * `sub`, `sub_pos`, ...) that every monomial-arithmetic path in
+ * the engine routes through. Exponents are stored as `int32_t`;
+ * a silent wraparound in `e + e'` would not just produce a wrong
+ * answer but would put the result *below* either input, breaking
+ * the monomial-order invariant and potentially making a Groebner
+ * basis loop forever or reduce to a non-zero canonical form.
+ * Each helper performs the operation, checks the bound, and
+ * throws `exc::overflow_exception` when the bound fails.
+ *
+ * The header detects `__has_builtin(__builtin_add_overflow)` and
+ * friends to use the compiler intrinsics where available (one
+ * branch on the carry flag); the fallback path is a couple of
+ * comparisons. Heavy callers include every `aring-*`, every GB
+ * variant, the resolution engines, `monoid.hpp`, `imonorder.hpp`,
+ * `montable.hpp`, `gbring.hpp`, and the skew / weyl / solvable
+ * algebra layers --- essentially every file that does monomial
+ * arithmetic.
+ *
+ * @see exceptions.hpp
+ * @see imonorder.hpp
+ */
+
 #ifdef SIGNAL_ERROR
 #error SIGNAL_ERROR
 #endif
