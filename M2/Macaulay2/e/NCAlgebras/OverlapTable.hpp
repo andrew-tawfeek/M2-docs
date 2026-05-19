@@ -6,25 +6,32 @@
  * @brief `OverlapTable` --- degree-sorted queue of pending word overlaps for non-commutative GB drivers.
  *
  * Declares the non-commutative analogue of the commutative
- * `SPair` set: an `Overlap` is `(i, j, k, processed)` recording
- * that a suffix of basis word `i` matches a prefix of basis word
- * `k` starting at position `j` in `i`, and the `processed` flag
- * marks whether the corresponding S-polynomial has been computed
- * yet. The container is a `std::map<(degree, processed),
- * std::deque<Overlap>>`, which lets `nextDegreeOverlaps` pop an
- * entire degree's worth of pending pairs in one go, while
- * `insert(deg, isGenerator, o)` appends new overlaps as the
- * basis grows. `removeLowestDegree` advances the cursor;
- * `isFinished(topDegree)` is the termination test the
- * `NCGroebner` / `NCF4` outer loop uses.
+ * `SPair` set. An `Overlap = std::tuple<int, int, int, bool>`
+ * is `(i, j, k, computed)` recording that a suffix of basis
+ * word `i` matches a prefix of basis word `k` starting at
+ * position `j` in `i`; the trailing `bool` flags whether the
+ * corresponding S-polynomial has been computed yet. The
+ * container is `OverlapMap =
+ * std::map<std::pair<int, bool>, std::deque<Overlap>>` where
+ * the **key bool is `isGenerator`** (distinguishing overlaps
+ * coming from original input generators from overlaps derived
+ * from basis-element pairs) --- not the per-`Overlap`
+ * `computed` flag. `nextDegreeOverlaps` pops the lowest-degree
+ * `std::deque` in one go, `insert(deg, isGenerator, o)`
+ * appends, `removeLowestDegree` advances the cursor (with an
+ * in-source TODO flagging a logic bug in the inhomogeneous
+ * case), and `isFinished()` / `isFinished(topDegree)` are the
+ * termination tests the `NCGroebner` / `NCF4` outer loop uses.
  *
  * Each Buchberger-style pair in the commutative case becomes
  * potentially many overlaps in the NC case, since a leading
  * word can overlap a partner at every suffix-prefix match
- * position. Pruning consults the cached `ConstPolyList*` for
- * subsumption tests --- the structure stores polynomial
- * pointers so the chain-criterion analogue can read the actual
- * leading words rather than just their indices.
+ * position. The class also stores a bare `ConstPolyList*
+ * mPolyList` (received via the second constructor) for
+ * callers that need to consult the actual polynomial data
+ * --- the only method in this header that exposes overlap
+ * metadata is `overlapWordLength`; the chain-criterion-style
+ * pruning lives outside this class.
  *
  * @see WordTable.hpp
  * @see NCGroebner.hpp
