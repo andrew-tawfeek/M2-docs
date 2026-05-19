@@ -8,24 +8,30 @@
  * @file mutablecomplex.hpp
  * @brief `MutableComplex` --- in-place chain complex of `MutableMatrix` differentials.
  *
- * Declares `MutableComplex`, an `EngineObject` carrying a
- * sequence of `MutableMatrix*` differentials chained together
- * with their source / target `FreeModule`s and a working degree
- * map. The class wraps the bookkeeping that keeps the
- * composition-equals-zero invariant true under row and column
- * operations: editing one differential automatically propagates
- * the matching column or row update to its neighbour, and
- * degree propagation through composition is handled centrally
- * instead of by each caller. The constructor accepts a
- * `VECTOR(MutableMatrix*)` and infers ring, local-ring, and
- * polynomial-ring context from the first matrix.
+ * Declares `MutableComplex`, a `MutableEngineObject` subclass
+ * carrying a sequence of `MutableMatrix*` differentials chained
+ * together with a parallel `mBetti` vector of dimensions and
+ * cached `mRing` / `mLocalRing` / `mPolynomialRing` pointers.
+ * The constructor accepts a `VECTOR(MutableMatrix*)` and infers
+ * the ring contexts from the first matrix (`get_ring` /
+ * `cast_to_LocalRing` / `cast_to_PolynomialRing`). The `prune_*`
+ * family is the working API: `prune_unit(iter, flags)` removes
+ * one unit entry and propagates the corresponding row / column
+ * update to the neighbouring differential to preserve the
+ * composition-zero invariant; `prune_matrix(n, flags)` reduces
+ * one matrix's worth of units; `prune_complex(nsteps, flags)`
+ * runs the same pass across the whole complex; and
+ * `prune_betti` / `prune_morphisms` extract the new dimensions
+ * / the reduction morphisms after pruning. The nested
+ * `iterator` class walks `(matrix_index, (row, col))` positions
+ * and `next_unit` / `find_unit` / `list_units` locate
+ * unit-pivot entries to prune.
  *
  * Typical workflows construct a `MutableComplex` from an
  * existing resolution (`comp-res.hpp`) and reduce it to a
- * minimal form by sequential row/column eliminations, or compute
- * a Smith-normal-form-like canonicalisation across the whole
- * complex. The TODO at the top of the header flags the open
- * question of templating over sparse vs. dense `MutableMatrix`.
+ * minimal form by sequential unit pruning. The TODO at the top
+ * of the header flags the open question of templating over
+ * sparse vs. dense `MutableMatrix`.
  *
  * @see mat.hpp
  * @see comp-res.hpp
