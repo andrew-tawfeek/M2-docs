@@ -8,26 +8,28 @@
  * @brief `PolynomialRing` --- abstract polynomial-ring base, the engine's most-reused class.
  *
  * Declares the abstract `PolynomialRing` (`R[x_1, ..., x_n]`)
- * along with its forward-declared subclasses: `PolyRingFlat`
- * (intermediate that asserts the coefficient ring is not itself
- * polynomial), the commutative `PolyRing`, the
- * skew-commutative / exterior `PolyRingSkew`, the
- * `PolyRingWeyl` for Weyl algebras, the non-commutative
- * `PolyRingNC`, and `PolyQuotient` for `R / I`. Per-flavour
- * dispatch happens through the `is_skew_`, `is_weyl_`,
- * `is_solvable_` flags on the base (cheap branch in hot paths)
- * and through virtuals where the divergence is broader.
+ * and the intermediate `PolyRingFlat` further down in the same
+ * file --- the latter asserts that the coefficient ring is not
+ * itself polynomial, and is what the concrete commutative
+ * `PolyRing` (`poly.hpp`) and the quotient `PolyRingQuotient`
+ * (`polyquotient.hpp`) inherit from. The forward declarations
+ * for `PolyRingSkew` / `PolyRingWeyl` / `PolyRingNC` /
+ * `PolyQuotient` near the top of the file are vestigial: skew,
+ * Weyl, and solvable-algebra behaviour is selected by the
+ * `is_skew_`, `is_weyl_`, `is_solvable_` flags on `PolyRing`
+ * (cheap branches in hot paths) and the corresponding
+ * polynomial code in `skewpoly.cpp` / `weylalg.cpp`, not by
+ * dedicated subclasses with those names.
  *
- * The base carries the monoid (`Monoid*`, see `monoid.hpp`) and
- * the coefficient ring (`Ring*`, typically an aring wrapper), a
- * graded-ring flag, and the `SkewMultiplication` configuration
- * used when same-variable multiplications collapse to zero in
- * exterior-like rings. A small friend graph (`GBRing`,
- * `GBRingSkew`, `GBComputation`) reaches into the encoded
- * monomial layout without going through virtual calls --- the
- * tight-loop performance lever. Construction happens through
- * factories in `polyring.cpp` and the M2-side `enginering.m2`;
- * direct construction is rare.
+ * The base carries the monoid (`Monoid*`, see `monoid.hpp`)
+ * and the coefficient ring (`Ring*`, typically an aring
+ * wrapper), a graded-ring flag, a `QRingInfo *qinfo_` for
+ * quotient bookkeeping, and the `SkewMultiplication`
+ * configuration used when same-variable multiplications
+ * collapse to zero in exterior-like rings. A small friend
+ * graph (`GBRing`, `GBRingSkew`, `GBComputation`) reaches into
+ * the encoded monomial layout without going through virtual
+ * calls --- the tight-loop performance lever.
  *
  * @see poly.hpp
  * @see polyquotient.hpp
