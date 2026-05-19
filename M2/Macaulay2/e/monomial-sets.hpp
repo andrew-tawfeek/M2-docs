@@ -3,6 +3,29 @@
 #ifndef _monomial_sets_hpp_
 #define _monomial_sets_hpp_
 
+/**
+ * @file monomial-sets.hpp
+ * @brief `FixedSizeMonomialSet<NWords>` / `VariableSizeMonomialSet` --- hash-backed monomial sets.
+ *
+ * Declares two `std::unordered_set`-backed containers plus the
+ * `MonomialMemorySpace` arena they share. `FixedSizeMonomialSet`
+ * stores monomials of exactly `NWords` ints; `VariableSizeMonomialSet`
+ * uses the first int as a length prefix so each value spans
+ * `[m, m + *m)`. Both treat the monomial as an opaque contiguous
+ * int sequence: hashing and equality consider every entry (and the
+ * length, for the variable case), so `[3, 4, 5]` and `[5, 4, 5]`
+ * collide under neither set even though they share leading data.
+ *
+ * Monomials live in a `memtailor` arena (the `MonomialMemorySpace`
+ * wraps it), so insertion is bump-pointer cheap and the set frees
+ * its entire contents in one shot when destroyed. Consumers are
+ * the new commutative `gb-f4/MonomialHashTable` pattern and the
+ * mid-refactor `monomial-collection.hpp` used by `M2FreeAlgebra`.
+ *
+ * @see monomial-collection.hpp
+ * @see MemoryBlock.hpp
+ */
+
 // This file contains classes for keeping sets of monomials.
 // There are two types of monomials:
 //  a. fixed size (and that size is passed in as a parameter)
