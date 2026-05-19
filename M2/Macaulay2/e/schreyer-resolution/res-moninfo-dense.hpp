@@ -25,11 +25,12 @@
  * Wins for rings with few variables or dense exponents (cache-
  * friendly inner loops, predictable layout); the sparse twin
  * `res-moninfo-sparse.hpp` wins on the opposite end. Both
- * expose identical `mult` / `compare` / `divides` / `hash` /
- * `degree` / `to_exponents` surfaces, which is what lets
- * `res-moninfo.hpp` swap implementations with a single typedef
- * edit. The per-call counters at the bottom of the class are
- * the engine's home-grown profiler hooks.
+ * expose identical `mult` / `divide` / `monomial_size` /
+ * `compare_grevlex` / `compare_schreyer` / `to_expvector`
+ * surfaces, which is what lets `res-moninfo.hpp` swap
+ * implementations with a single typedef edit. The per-call
+ * `ncalls_*` counters at the bottom of the class are the
+ * engine's home-grown profiler hooks.
  *
  * @see res-moninfo.hpp
  * @see res-moninfo-sparse.hpp
