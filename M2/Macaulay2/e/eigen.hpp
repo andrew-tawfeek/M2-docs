@@ -1,6 +1,34 @@
 #ifndef __eigen_hpp_
 #define __eigen_hpp_
 
+/**
+ * @file eigen.hpp
+ * @brief `EigenM2` namespace --- SVD / eigenvalues / eigenvectors over `DMat<R>` for `RR`, `CC`, `RRR`, `CCC`.
+ *
+ * Declares aliases `LMatrixRR`, `LMatrixCC`, `LMatrixRRR`,
+ * `LMatrixCCC` over the four `DMat<R>` instantiations the engine
+ * cares about for numerical linear algebra, then a namespace
+ * `EigenM2` of free-function wrappers --- `SVD`,
+ * `SVD_divide_conquer`, `eigenvalues`, `eigenvectors`, ... ---
+ * with LAPACK-style signatures that operate on those `DMat`
+ * pointers. Each routine returns `bool` so the engine can surface
+ * convergence failures to the M2 user.
+ *
+ * The actual numerical work is split: hardware-precision `RR` /
+ * `CC` matrices go through LAPACK (`lapack.hpp`); MPFR-precision
+ * `RRR` / `CCC` matrices route through the Eigen3 template library,
+ * which supports arbitrary scalar types at the cost of speed.
+ * Interval rings `RRi` / `CCi` are not yet plumbed through here.
+ * NAG (`NAG.hpp`) reaches into these routines for Jacobian
+ * eigenvalue queries during continuation, and the M2-side `SVD`,
+ * `eigenvalues`, `eigenvectors`, `LUdecomposition` built-ins
+ * forward through them.
+ *
+ * @see lapack.hpp
+ * @see dmat.hpp
+ * @see NAG.hpp
+ */
+
 #include "dmat.hpp"
 #include "aring-RR.hpp"
 #include "aring-CC.hpp"
