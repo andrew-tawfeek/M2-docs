@@ -10,6 +10,32 @@
 #ifndef BIBASIS_QSET_HPP
 #define BIBASIS_QSET_HPP
 
+/**
+ * @file bibasis/qset.hpp
+ * @brief `BIBasis::QSet<MonomType>` --- prolongation work-queue sorted by leading monomial.
+ *
+ * Declares and defines the pending-work container that drives the
+ * involutive engine's outer loop. Holds an owned
+ * `std::list<Triple*>` kept sorted descending by leading monomial
+ * via `Triple::Compare`, so `Get()` always returns the heaviest
+ * pending prolongation --- the standard normal-strategy choice
+ * that keeps the working basis small. `Insert(...)` accepts
+ * either a list of polynomials (wrapping each in a fresh
+ * `Triple`) or pre-built triples and merges them into the sort.
+ * `DeleteDescendants(ancestor)` walks the queue and discards
+ * every triple whose recorded `Ancestor` matches; the driver
+ * calls this whenever a new basis element makes a chunk of
+ * scheduled work obsolete.
+ *
+ * `Empty()` is the algorithm's termination test: when no
+ * prolongations remain, the intermediate basis stored in `TSet`
+ * is involutive.
+ *
+ * @see triple.hpp
+ * @see tset.hpp
+ * @see involutive.hpp
+ */
+
 #include <list>
 #include <algorithm>
 #include "triple.hpp"
