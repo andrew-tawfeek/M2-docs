@@ -1,24 +1,29 @@
 /**
  * @file fplll-interface.hpp
- * @brief Engine-side wrapper around the external [fplll](https://github.com/fplll/fplll) lattice-reduction library.
+ * @brief Engine-side wrapper around the external fplll lattice-reduction library.
  *
  * Declares a single entry point, `fp_LLL(M, U, strategy)`: `M`
- * holds the lattice basis (rows are the basis vectors) and is
- * reduced in place; `U`, if non-null, receives the unimodular
- * transformation expressing the new basis in terms of the original;
- * `strategy` picks an algorithm flavour (`0` = LLL, `1` = BKZ,
- * etc.). Returns `true` on success.
+ * holds the lattice basis with one basis vector per column and
+ * is reduced in place. The current implementation asserts
+ * `U == NULL` and ignores `strategy`; internally it always
+ * configures fplll with `delta = 0.99`, `eta = 0.51`, and
+ * `LM_WRAPPER` --- the wrapper that picks an LLL variant
+ * automatically based on the input size. Returns `true` on
+ * success and reports the underlying `RED_*` error on Babai or
+ * LLL failure.
  *
- * The implementation in `fplll-interface.cpp` is gated behind
- * `#ifdef HAVE_FPLLL`; when fplll is not installed at configure
- * time the function returns `false` so callers do not need their
- * own `#ifdef`. M2's `LLL` user-facing routine dispatches between
- * this path, the NTL-backed `LLLglue.cpp`, and the slower pure-M2
- * fallback in `LLL.hpp`; this wrapper is typically the fastest
- * when available.
+ * The whole body of `fplll-interface.cpp` is gated behind
+ * `#ifdef HAVE_FPLLL`; when fplll is not configured in, the
+ * function raises `ERROR("fplll is not available ...")` and
+ * returns `0` so callers don't have to write their own
+ * `#ifdef`. The other in-tree LLL backends are `LLL.hpp`
+ * (`LLLoperations`, the pure-engine implementation) and
+ * `ntl-interface.hpp::ntl_LLL` (NTL); the top-level M2 `LLL`
+ * routine chooses between them.
  *
  * @see mat.hpp
  * @see LLL.hpp
+ * @see ntl-interface.hpp
  */
 
 class MutableMatrix;
