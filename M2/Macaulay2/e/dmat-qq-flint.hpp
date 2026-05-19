@@ -5,28 +5,30 @@
 
 /**
  * @file dmat-qq-flint.hpp
- * @brief `DMat<M2::ARingQQFlint>` --- dense rational matrices stored in FLINT `fmpq_mat_t`.
+ * @brief `DMat<M2::ARingQQFlint>` --- dense rational matrices stored in a FLINT `fmpq_mat_t`.
  *
  * Specialises the dense-matrix template for the FLINT rational
- * aring. Each entry is an `fmpq_t` (a pair of `fmpz`s sharing the
- * small-value-inlined representation of `ARingZZ`), so the typical
- * "small numerator over small denominator" rationals stay in
- * registers and only blow up to a heap-allocated `mpq_t` when the
- * values grow. Arithmetic routes to FLINT's `fmpq_mat_*` family ---
- * `fmpq_mat_add`, `fmpq_mat_mul`, `fmpq_mat_neg`, `fmpq_mat_rank`,
- * `fmpq_mat_solve`, `fmpq_mat_inv`, `fmpq_mat_det` --- giving
- * cache-aware blocked algorithms over the whole matrix instead of
- * the generic per-element loop the unspecialised template would
- * walk.
+ * aring. Storage is a single `fmpq_mat_t mArray` whose entries
+ * are `fmpq` cells (the small-value-inlined pair of `fmpz`s
+ * shared with `ARingZZ`), so the typical "small numerator over
+ * small denominator" rationals stay inline and only widen to a
+ * heap-allocated representation when the values blow up. The
+ * class exposes the standard `DMat` shape (`ring()`,
+ * `numRows`, `numColumns`, `entry(r, c)`, `resize`, `swap`)
+ * plus a raw `fmpq_mat()` accessor and the `unsafeArray()`
+ * direct-pointer hook for consumers that need to hand the
+ * underlying `fmpq` buffer back to FLINT.
  *
- * The header is part of the `dmat.hpp` umbrella include and is
- * never delivered to the front-end directly (the legacy file
- * comment flags this). Conversion helpers between this
- * representation, the engine's `Matrix` type, and the older
- * `ARingQQGMP` path live in the companion
- * `dmat-qq-interface-flint.hpp`. As always for FLINT-backed files,
- * `M2/gc-include.h` precedes the FLINT include so allocations
- * route through bdwgc.
+ * Arithmetic on `DMat<ARingQQFlint>` is *not* defined in this
+ * header --- consumers (most prominently
+ * `dmat-lu-qq.hpp::DMatLinAlg<ARingQQ>` once it copies through
+ * `FlintQQMat`) reach into `fmpq_mat()` and call the FLINT
+ * `fmpq_mat_*` / `fmpz_mat_*` routines directly. The
+ * in-source comment marks the class "should *not* go to the
+ * front end" --- it is part of the `dmat.hpp` umbrella include
+ * only. As always for FLINT-backed files, `M2/gc-include.h`
+ * precedes the FLINT include so allocations route through
+ * bdwgc.
  *
  * @see dmat.hpp
  * @see dmat-qq-interface-flint.hpp
