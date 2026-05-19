@@ -3,6 +3,31 @@
 #ifndef _LLL_hpp_
 #define _LLL_hpp_
 
+/**
+ * @file LLL.hpp
+ * @brief Lenstra-Lenstra-Lovász integer lattice basis reduction, in place on a `MutableMatrix`.
+ *
+ * Declares `LLLoperations`, a static-only collection that runs the
+ * classical Lenstra-Lenstra-Lovász (1982) algorithm on the columns of
+ * a `MutableMatrix` over `ZZ`. The output is an LLL-reduced basis of
+ * the same lattice: each Gram-Schmidt projection coefficient is
+ * bounded by `1/2` and consecutive squared GS lengths satisfy the
+ * Lovász condition with parameter `α = alphaTop/alphaBottom`. Closer
+ * to `1` means stronger reduction and slower runtime.
+ *
+ * The class is intentionally objectless --- `REDI` is the
+ * size-reduction step, `Lovasz` is the swap-condition check, and the
+ * outer loop coordinates them while a companion `lambda` matrix
+ * carries the rational Gram-Schmidt coefficients. Reduction happens
+ * in place, which is why the routines work on `MutableMatrix` rather
+ * than the immutable `Matrix`. The engine uses this for lattice
+ * cryptography experiments, short-integer-relation hunts, and as
+ * preprocessing for integer programming.
+ *
+ * @see mat.hpp
+ * @see interface/mutable-matrix.h
+ */
+
 #include "mat.hpp"
 #include "relem.hpp"
 
