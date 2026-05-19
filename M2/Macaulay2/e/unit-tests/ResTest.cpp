@@ -4,23 +4,21 @@
  * @file unit-tests/ResTest.cpp
  * @brief gtest coverage for `ResMonoidDense` --- the dense-exponent monoid used by the F4 resolution.
  *
- * Hosts the `TEST(ResMonoidDense, *)` battery that builds
- * `ResMonoidDense` instances under different weight, heft, and
- * ordering combinations (`GRevLex`, `Weights`, `Lex`) and
- * asserts construction, variable counts, monomial encoding /
- * decoding, multiplication via `mult`, and the per-ordering
- * `compare` semantics behave correctly. The monomial-storage
- * pattern --- pre-allocate a `std::vector<res_monomial_word>`
- * and let `from_expvector` / `to_expvector` round-trip through
- * it --- is exactly how the production `SchreyerFrame` lays out
- * level monomials, so the tests double as living documentation
- * of the expected workflow.
+ * Hosts `TEST(ResMonoidDense, create)` and `TEST(ResMonoidDense,
+ * encodeDecode)`, which build `ResMonoidDense` instances under
+ * different weight, heft, and ordering combinations (`GRevLex`,
+ * `Weights`, `Lex`) and assert construction, variable counts,
+ * monomial encoding / decoding via `from_expvector` /
+ * `to_expvector`, multiplication via `mult`, and the per-ordering
+ * `compare` semantics behave correctly. The pre-allocated
+ * `std::vector<res_monomial_word>` storage pattern used in the
+ * tests matches the round-trip surface `ResPolyRing` and
+ * `SchreyerFrame` consume.
  *
  * End-to-end resolution coverage lives in the M2-level test
- * suite where Gröbner inputs are easier to express; this file
- * intentionally pins down only the monoid building block so a
- * regression in `ResMonoidDense` surfaces here instead of as a
- * cryptic miscompare three layers up.
+ * suite; this file intentionally pins down only the monoid
+ * building block so a regression in `ResMonoidDense` surfaces
+ * here instead of as a cryptic miscompare three layers up.
  *
  * @see schreyer-resolution/res-moninfo.hpp
  * @see schreyer-resolution/res-moninfo-dense.hpp
