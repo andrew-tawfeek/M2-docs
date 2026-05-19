@@ -1,6 +1,35 @@
 #ifndef _m2_free_algebra_quotient_hpp_
 #define _m2_free_algebra_quotient_hpp_
 
+/**
+ * @file M2FreeAlgebraQuotient.hpp
+ * @brief `Ring`-shaped façade around a non-commutative quotient algebra.
+ *
+ * `M2FreeAlgebraQuotient` packages a
+ * `NCAlgebras/FreeAlgebraQuotient` --- a free associative algebra
+ * modulo a two-sided ideal --- in a `Ring`-derived wrapper so the rest
+ * of the engine (`Matrix`, `MutableMatrix`, resolutions, `RingMap`)
+ * can treat the quotient like any other ring. It is the quotient
+ * counterpart of `M2FreeAlgebra`; the quotient state (the
+ * non-commutative Groebner basis of the defining ideal) is owned by
+ * the wrapped `FreeAlgebraQuotient`.
+ *
+ * Multiplication first runs the ambient free-algebra product (word
+ * concatenation lifted to polynomials) and then reduces modulo the
+ * stored GB via `NCAlgebras/NCGroebner.hpp` --- this normal-form step
+ * is what distinguishes quotient arithmetic from the ambient free
+ * algebra and is what makes the quotient finite over many fields
+ * where the ambient algebra is not. Because non-commutative two-sided
+ * GBs need not be finite, the quotient is in general only computed
+ * up to a chosen degree limit; operations on longer words may not
+ * fully simplify.
+ *
+ * @see M2FreeAlgebra.hpp
+ * @see NCAlgebras/FreeAlgebraQuotient.hpp
+ * @see NCAlgebras/NCGroebner.hpp
+ * @see qring.hpp
+ */
+
 #include "engine-includes.hpp"
 
 #include <memory>
