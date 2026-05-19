@@ -1,3 +1,27 @@
+/**
+ * @file matrix-sort.cpp
+ * @brief `MatrixSorter` --- compute the column permutation that sorts a `Matrix` by degree / leading term.
+ *
+ * Defines `MatrixSorter`, the helper class M2's `sort(M)` and
+ * `mingens(M)` reach into. It carries parallel per-column arrays
+ * (`sort_vals`, `sort_vecs`, `sort_degs`) plus two ascending
+ * flags that flip the direction of the degree comparison and the
+ * ring-order comparison; the comparator returns `LT` / `EQ` /
+ * `GT` via the standard style convention by walking degrees
+ * first, then leading monomials. The sorter does not mutate the
+ * input matrix --- it computes a permutation `M2_arrayint result`
+ * and hands that back, so the same permutation can be applied
+ * uniformly to a basis, its change-of-basis matrix, and its
+ * syzygies in lockstep.
+ *
+ * Used by the M2-level `sort` and `mingens` operations and by
+ * any engine path that needs columns in degree/leading-term order
+ * before further processing.
+ *
+ * @see matrix.hpp
+ * @see style.hpp
+ */
+
 #include "matrix.hpp"
 
 class MatrixSorter
