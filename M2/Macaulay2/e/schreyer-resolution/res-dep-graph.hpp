@@ -7,18 +7,20 @@
  *
  * Declares the parallel scheduler the F4 resolution driver uses
  * to run multiple homological degrees concurrently while
- * respecting the dependency that cell `(level,
- * slanted_degree)` requires both `(level + 1, slanted_degree)`
- * and `(level, slanted_degree - 1)` to have completed first.
- * Each cell is a `Node` carrying a `mFillAndReduceNode`,
- * `mRankNode`, and optional `mMinimalBettiNode`, all
- * `tbb::flow::continue_node<continue_msg>` so a node fires once
- * all its predecessors have. `addVertex` / `addFillMatrixEdge`
- * / `addMinimalBettiEdge` wire the graph, `startComputation`
- * triggers the root, and `waitForCompletion` blocks on the
- * whole frontier. The free function `makeDependencyGraph(G,
- * nlevels, nslanted_degrees, doMinimalBetti)` constructs the
- * standard layout.
+ * respecting the fill-matrix dependency that cell `(level,
+ * slanted_degree)` requires both `(level - 1, slanted_degree)`
+ * and `(level, slanted_degree - 1)` to have completed first; the
+ * minimal-Betti pass adds an extra edge from `(level + 1,
+ * slanted_degree - 1)`'s rank node into the current cell's
+ * Betti node. Each cell is a `Node` carrying a
+ * `mFillAndReduceNode`, `mRankNode`, and optional
+ * `mMinimalBettiNode`, all `tbb::flow::continue_node<continue_msg>`
+ * so a node fires once all its predecessors have. `addVertex`
+ * / `addFillMatrixEdge` / `addMinimalBettiEdge` wire the
+ * graph, `startComputation` triggers the root, and
+ * `waitForCompletion` blocks on the whole frontier. The free
+ * function `makeDependencyGraph(G, nlevels, nslanted_degrees,
+ * doMinimalBetti)` constructs the standard layout.
  *
  * The 2-D grid is linearised via `getIndex(lev, sldeg, nlevels,
  * nslanted_degrees) = lev + sldeg * nlevels`, with the matching
