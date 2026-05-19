@@ -3,6 +3,28 @@
 #ifndef _betti_hpp_
 #define _betti_hpp_
 
+/**
+ * @file betti.hpp
+ * @brief `BettiDisplay` --- engine-side container and renderer for the Betti table of a free resolution.
+ *
+ * `BettiDisplay` holds the graded Betti numbers `beta_{i,j} = rank
+ * (F_i)_j` produced when an engine `ResolutionComputation` finishes:
+ * row index is the internal degree `j - i`, column index is the
+ * homological degree `i`. The class itself is intentionally just a
+ * 2-D `int` array with bounds plus printing helpers --- the actual
+ * mathematics (which entries are non-zero and what they equal) is
+ * done by the resolution code that fills the table. Small per-table
+ * allocations route through `memtailor` so resolutions of large
+ * monomial ideals (hundreds of rows/columns) stay cheap.
+ *
+ * Rendering supports three modes: the plain text layout returned by
+ * M2's `betti` function, an HTML form for `installPackage`-generated
+ * documentation, and a LaTeX form for `latex`. Format selection
+ * happens at print time through the engine's `buffer` machinery.
+ *
+ * @see buffer.hpp
+ */
+
 #include "buffer.hpp"
 
 #include "memtailor.h"
