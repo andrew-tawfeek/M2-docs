@@ -1,5 +1,33 @@
 #ifndef __dpoly_h_
 #define __dpoly_h_
+
+/**
+ * @file dpoly.hpp
+ * @brief Native univariate polynomial arithmetic over QQ extensions and finite fields.
+ *
+ * Provides the GCD machinery the engine needs for algebraic
+ * extension construction and modular factorisation paths: a
+ * "monic GCD mod p" over a finite extension field, and a modular
+ * GCD over `QQ` (lift the computation to many `Z/p`, then CRT
+ * back). The structures hang off `TowerPolynomial` plus the
+ * `Tower` and `DPolyTraverser` types declared alongside.
+ * Multivariate and function-field extensions are planned but not
+ * yet implemented; the in-file comment block flags that explicitly.
+ *
+ * The point of having this code alongside Factory
+ * (`interface/factory.h`) is twofold: it gives the engine a
+ * dependency-free path that still works when Factory is
+ * unavailable, and it provides an end-to-end-debuggable native
+ * implementation that aring layers can reach into. Primary
+ * consumers are `aring-m2-gf.hpp` (minimal-polynomial work in
+ * native GF construction) and `aring-tower.hpp` (one of these
+ * lives at each level of a tower of extensions).
+ *
+ * @see aring-m2-gf.hpp
+ * @see aring-tower.hpp
+ * @see ExponentVector.hpp
+ */
+
 // Code for univariate polynomials over algebraic extensions of QQ
 // and over finite fields
 
