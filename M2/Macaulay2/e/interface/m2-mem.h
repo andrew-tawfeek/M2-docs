@@ -8,24 +8,24 @@
  * Declares the small `extern "C"` allocator family every engine
  * translation unit and every generated-C `.dd` glue file calls
  * to allocate memory: `getmem` for pointer-bearing GC blocks,
- * `getmem_atomic` for pointer-free blocks the collector can skip
- * scanning, the `*_clear` variants that zero-initialise, plus
- * `freemem` / `freememlen` for explicit deletion when the caller
- * knows the lifetime. Implementations sit on top of bdwgc
- * (`GC_malloc` / `GC_malloc_atomic` / ...), so a future GC swap
- * only has to retarget this layer.
+ * `getmem_atomic` for pointer-free blocks the collector can
+ * skip scanning, the `*_clear` variants that zero-initialise,
+ * plus `freemem` / `freememlen` for explicit deletion when the
+ * caller knows the lifetime. Implementations sit on top of
+ * bdwgc (`GC_malloc` / `GC_malloc_atomic` / ...), so a future
+ * GC swap only has to retarget this layer.
  *
  * In non-`NDEBUG` builds the `trap*` group (`trapaddr`,
- * `trapcount`, `trapchk`, `badBlock`) gives the engine a
- * lightweight allocation breakpoint: setting `trapaddr` to a
- * pointer of interest, or arming `trapset` / `trapcount` to
- * count down to the *N*-th allocation, makes the next matching
- * `getmem` invoke the (empty) `trap()` function so a debugger
- * can intercept it. The header also brings in Valgrind's
- * function-wrap shims so the GC allocations are visible to a
- * `memcheck` run, and `getmem*arraytype` / `getmem*structtype`
- * macros at the bottom centralise the size-of-pointee idiom that
- * appears throughout the engine.
+ * `trapcount`, `trapchk`, `badBlock`) gives a lightweight
+ * allocation breakpoint: setting `trapaddr` to a pointer of
+ * interest, or arming `trapset` / `trapcount` to count down to
+ * the *N*-th allocation, makes the next matching `getmem`
+ * invoke the (empty) `trap()` function so a debugger can
+ * intercept it. The header also brings in Valgrind's
+ * function-wrap shims so GC allocations are visible to
+ * `memcheck`, and the `getmem*arraytype` / `getmem*structtype`
+ * macros at the bottom centralise the `sizeof` arithmetic for
+ * length-prefixed arrays and pointee-sized struct allocations.
  *
  * @see m2-mem.cpp
  * @see gmp-util.h
