@@ -17,15 +17,20 @@
  * target's, so the API splits divisibility queries into
  * monomial-only and coefficient-aware variants.
  *
- * Public methods: `insert(coeff, exp, comp, id)`,
- * `is_weak_member` (submodule containment) and `is_strong_member`
- * (divisibility), `find_smallest_coeff_divisor`,
- * `find_term_divisors` / `find_monomial_divisors` (each
- * returning up to `max` matches into a `VECTOR(mon_term*)`),
- * `find_exact` / `find_exact_monomial`, `change_coefficient`,
- * and the static `find_weak_generators` / `find_strong_generators`
- * minimisers. Primary consumer is the `ZZ`-coefficient path in
- * `gb-default.hpp` (`gbA::lookupZZ`).
+ * Public methods: `make(nvars)` (the constructor),
+ * `insert(coeff, exp, comp, id)`, `is_weak_member` (submodule
+ * containment) and `is_strong_member` (divisibility),
+ * `find_smallest_coeff_divisor`, `find_term_divisors` /
+ * `find_monomial_divisors` (each returning up to `max` matches
+ * into a `VECTOR(mon_term*)`), `find_exact` /
+ * `find_exact_monomial`, `change_coefficient`, and the static
+ * `find_weak_generators` / `find_strong_generators` minimisers.
+ * Primary consumer is the `ZZ`-coefficient path in `gb-default.hpp`,
+ * which holds two pointers of this type --- the basis index
+ * `lookupZZ` and the quotient-ring index `ringtableZZ` (only one
+ * non-null at a time) --- and calls the static
+ * `find_weak_generators` to minimise the input generators
+ * before the GB loop starts.
  *
  * @see montable.hpp
  * @see gb-default.hpp
