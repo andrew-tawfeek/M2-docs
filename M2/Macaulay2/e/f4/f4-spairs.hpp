@@ -7,26 +7,33 @@
  * @brief `F4SPairSet` --- priority-queue + pruning logic for F4 S-pairs.
  *
  * Declares `F4SPairSet`, the structure that manages the S-pair
- * worklist for the F4 inner loop: a
- * `std::priority_queue<size_t, std::vector<size_t>, SPairCompare>`
- * indexing into a parallel vector of `spair` records, ordered
- * by `SPairCompare` (degree first, lcm as tiebreaker),
- * combined with chain-criterion pruning. `make_spair(type, deg,
- * i, j)` allocates a new pair from an internal `F4MemoryBlock`
- * bump arena --- the lcm field is allocated but not
- * initialised, leaving that to the caller. After a new basis
- * element joins, `pair_not_needed(p, m)` tests one pair
- * against the chain criterion and `remove_unneeded_pairs()`
- * sweeps the queue for every pair the new element subsumes.
- * Without these prunes the queue would grow quadratically in
- * basis size for any Buchberger-style workload.
+ * worklist for the F4 inner loop. The pair records live in
+ * `std::vector<spair> mSPairs`; an
+ * `std::priority_queue<size_t, std::vector<size_t>, SPairCompare>
+ * mSPairQueue` holds indices into that vector and `SPairCompare`
+ * orders them lowest-degree-first, breaking ties by the spair's
+ * `i` field (one of the two GB indices that form the pair ---
+ * not the lcm). `make_spair(type, deg, i, j)` pushes a new
+ * `spair` onto `mSPairs` and bump-allocates space for its lcm
+ * monomial out of `MemoryBlock mSPairLCMs`; the lcm slot is
+ * allocated correctly sized but **not initialised**, so the
+ * caller must fill it. Construction of new pairs runs through
+ * `pre_spair` (allocated from `F4MemoryBlock<pre_spair> PS`)
+ * with a varpower scratch arena
+ * `F4MemoryBlock<varpower_word> VP`.
  *
- * The bump-arena allocation means transient pairs and their
- * lcm monomials can be discarded en masse at the end of each
- * generation without per-allocation overhead. The `spair`
- * struct itself lives in `f4-types.hpp`; the classical
+ * After a new basis element joins, `pair_not_needed(p, m)`
+ * tests one pair against the chain criterion and
+ * `remove_unneeded_pairs()` sweeps the queue for every pair
+ * the new element subsumes (returning the count, accumulated
+ * into `nsaved_unneeded`). Without these prunes the queue
+ * would grow quadratically in basis size for any
+ * Buchberger-style workload. The `spair` struct and
+ * `SPairCompare` itself live in `f4-types.hpp`; the classical
  * `spair.hpp` counterpart powers `gbA` and friends rather than
- * F4.
+ * F4. When compiled `WITH_TBB` the constructor takes the
+ * shared `mtbb::task_arena&` so pair construction can run on
+ * the same scheduler `F4GB` uses for Gauss.
  *
  * @see f4.hpp
  * @see f4-types.hpp
