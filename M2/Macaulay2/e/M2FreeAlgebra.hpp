@@ -1,6 +1,31 @@
 #ifndef _m2_free_algebra_hpp_
 #define _m2_free_algebra_hpp_
 
+/**
+ * @file M2FreeAlgebra.hpp
+ * @brief `Ring`-shaped wrapper that exposes a non-commutative `FreeAlgebra` to the rest of the engine.
+ *
+ * The non-commutative implementation in `NCAlgebras/FreeAlgebra.hpp`
+ * deliberately does not inherit from `Ring` --- it wants clean
+ * templates and no virtual-dispatch overhead. But matrices, modules,
+ * resolutions, `Computation`s, and `RingMap` construction all want a
+ * `Ring*`. `M2FreeAlgebra` reconciles the two: it owns a
+ * `std::unique_ptr<FreeAlgebra>` and forwards every `Ring` virtual call
+ * to the wrapped instance, so the non-commutative ring slots
+ * transparently into `Matrix` / `MutableMatrix` / `RingElement` slots
+ * and can serve as the coefficient ring in a layered construction.
+ *
+ * The value type stored in `ring_elem` is the shared `Poly` from
+ * `Polynomial.hpp`. This wrap-a-templated-implementation-in-a-`Ring`
+ * pattern mirrors `aring-glue.hpp`'s `ConcreteRing<R>` for the aring
+ * family. The quotient counterpart is `M2FreeAlgebraQuotient`.
+ *
+ * @see NCAlgebras/FreeAlgebra.hpp
+ * @see Polynomial.hpp
+ * @see aring-glue.hpp
+ * @see M2FreeAlgebraQuotient.hpp
+ */
+
 #include <M2/math-include.h>
 #include "engine-includes.hpp"
 
