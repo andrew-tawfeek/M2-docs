@@ -25,11 +25,11 @@
  * can short-circuit before walking the variable suffix. The
  * `SkewMultiplication` base supplies the sign-aware
  * multiplication needed for anti-commuting (exterior-style)
- * variables. The class exposes the same `mult` / `compare` /
- * `divides` / `hash` / `degree` / `to_exponents` surface as
- * `ResMonoidDense`, which is what lets the typedef switch in
- * `res-moninfo.hpp` swap implementations with no call-site
- * changes.
+ * variables. The class exposes the same `mult` / `divide` /
+ * `monomial_size` / `compare_grevlex` / `compare_schreyer` /
+ * `to_expvector` surface as `ResMonoidDense`, which is what
+ * lets the typedef switch in `res-moninfo.hpp` swap
+ * implementations with no call-site changes.
  *
  * @see res-moninfo.hpp
  * @see res-moninfo-dense.hpp
