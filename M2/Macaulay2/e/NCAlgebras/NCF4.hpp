@@ -7,26 +7,36 @@
  *
  * Declares the F4-style alternative to the one-overlap-at-a-time
  * `NCGroebner` reduction loop. Each iteration collects every
- * overlap of the current degree from an `OverlapTable`, assembles
- * a Macaulay matrix whose rows are the overlap polynomials plus
- * their tail-reducers (drawn from the running basis, the inputs,
- * and previously-built reducer rows --- the three `PreRow`
- * flavours `ReducerPreRow` / `OverlapPreRow` /
+ * overlap of the current degree from `OverlapTable mOverlapTable`,
+ * assembles a Macaulay matrix whose rows are the overlap
+ * polynomials plus their tail-reducers (drawn from
+ * `mGroebner`, the original inputs `mInput`, and
+ * previously-built reducer rows --- corresponding to the three
+ * `PreRowType` flavours `ReducerPreRow` / `OverlapPreRow` /
  * `PreviousReducerPreRow`) and whose columns are the distinct
  * monomials seen in any row sorted by the non-commutative
- * monomial order, then row-reduces the whole matrix via the
- * shared `VectorArithmetic` backend. Echelon rows whose leading
- * column was not already a basis-element leading column become
- * new GB elements; their overlaps feed the next degree.
+ * monomial order, then row-reduces the whole matrix via
+ * `mVectorArithmetic`. Echelon rows whose leading column was
+ * not already a basis-element leading column become new GB
+ * elements (added to `mGroebner`); their overlaps feed the next
+ * degree. Two `RowsVector` matrices (`mRows`/`mPreviousRows`)
+ * and a third `mOverlaps` track current vs prior cohorts so
+ * `PreviousReducerPreRow` references can be resolved without
+ * rebuilding from scratch.
  *
- * Memory for monomials and packed words is owned by an internal
- * `MemoryBlock`; word divisibility uses `WordTable` or the
- * experimental `SuffixTree`. `m2tbb.hpp` is pulled in so the
- * row-arithmetic kernels can parallelise across TBB threads.
- * For dense inputs with many shared suffixes this batched
- * approach is dramatically faster than `NCGroebner`'s
- * Buchberger loop; for sparse inputs the per-row overhead
- * dominates and the dispatcher prefers the older path.
+ * Monomial / word storage is owned by an internal pair of
+ * `MemoryBlock`s (`mMonomialSpace` / `mPreviousMonomialSpace`).
+ * Word divisibility uses the live `WordTable` (the
+ * commented-out `SuffixTree mWordTable;` alternative remains
+ * available as a swap-in experiment). `m2tbb.hpp` is included
+ * for the column-monomial `mtbb::unordered_map MonomialHash`,
+ * the `PreRowFeeder = mtbb::feeder<PreRow>` worker queue, and a
+ * held `mtbb::task_arena mScheduler` ready for the parallel
+ * matrix-build path; the explicit comment "only used in
+ * parallelBuildF4Matrix, which is currently not used" flags
+ * that the parallel build is dormant scaffolding, and the
+ * `concurrent_vector` row / column container choices are
+ * commented out in favour of `std::vector` for now.
  *
  * @see NCGroebner.hpp
  * @see FreeAlgebra.hpp
