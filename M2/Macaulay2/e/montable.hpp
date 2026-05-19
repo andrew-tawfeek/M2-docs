@@ -1,6 +1,33 @@
 #ifndef __montable_h
 #define __montable_h
 
+/**
+ * @file montable.hpp
+ * @brief `MonomialTable` --- leading-monomial divisor index used by the GB reducer.
+ *
+ * Declares `MonomialTable`, the data structure GB code queries
+ * thousands of times per reduction: given a monomial `m`, find
+ * a basis element whose leading monomial divides `m`. Entries
+ * are kept in lex-increasing order so the divisibility scan can
+ * prune as soon as a candidate's first-variable exponent exceeds
+ * the query's. The table stores `(monomial pointer, basis-index)`
+ * pairs and does not own its monomials --- the owning polynomial
+ * remains responsible for the underlying exponent vector, which
+ * may carry trailing entries (sugar homogenisation) that the
+ * table simply ignores.
+ *
+ * Operations are `insert(exp, value)`, `find_divisor(exp)`,
+ * `find_divisors(exp, out)`, and `remove(exp)`. The
+ * coefficient-aware ZZ-coefficient analogue lives in
+ * `montableZZ.hpp`, where the divisibility test must additionally
+ * check that a candidate's leading coefficient divides the
+ * reducee's.
+ *
+ * @see montableZZ.hpp
+ * @see gb-default.hpp
+ * @see ExponentVector.hpp
+ */
+
 #include "mem.hpp"
 #include <vector>
 #include <memory>
