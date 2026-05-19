@@ -5,6 +5,35 @@
 #ifndef _nag_
 #define _nag_
 
+/**
+ * @file NAG.hpp
+ * @brief Numerical Algebraic Geometry entry point: homotopy continuation, witness sets, monodromy.
+ *
+ * NAG complements the engine's symbolic Groebner-basis / resolution
+ * machinery by working over `RR` or `CC`. Given a polynomial system
+ * `F : C^n -> C^m`, the routines declared here track solutions of
+ * `F = 0` as the system deforms continuously from a known start system
+ * (predictor-corrector continuation), assemble witness sets
+ * (representative points on each component, tagged by dimension), and
+ * run monodromy loops over small homotopies to discover the
+ * irreducible components.
+ *
+ * Polynomial evaluation at every continuation step goes through a
+ * straight-line program compiled once from the input system; the SLP
+ * machinery lives in `SLP.hpp`, `SLP-defs.hpp`, and `SLP-imp.hpp`.
+ * Because NAG values are numerical (FLINT/MPFR/Arb-backed) rather than
+ * garbage-collected M2 objects, this header is unusually liberal with
+ * STL containers compared to the rest of the engine. Originally
+ * contributed by Anton Leykin; large portions are in the public
+ * domain.
+ *
+ * @see SLP.hpp
+ * @see SLP-defs.hpp
+ * @see SLP-imp.hpp
+ * @see interface/NAG.h
+ * @see aring-CC.hpp
+ */
+
 #include "engine-includes.hpp"
 
 #include <algorithm>
