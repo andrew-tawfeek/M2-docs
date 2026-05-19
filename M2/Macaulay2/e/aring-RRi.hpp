@@ -3,6 +3,32 @@
 #ifndef _aring_RRi_hpp_
 #define _aring_RRi_hpp_
 
+/**
+ * @file aring-RRi.hpp
+ * @brief `M2::ARingRRi` --- certified real intervals `[a, b]` with MPFR endpoints, MPFI arithmetic.
+ *
+ * `ARingRRi` represents a real value as a closed interval `[a, b]`
+ * whose endpoints are MPFR floats and whose enclosure is guaranteed
+ * to contain the mathematical result. The class is a
+ * `SimpleARing<ARingRRi>` layered on top of `ARingRRR` for the
+ * endpoint format, with all arithmetic routed through MPFI
+ * (`mpfi_add`, `mpfi_mul`, ...) so outward rounding is handled
+ * automatically: `[a,b] + [c,d] -> [a+c, b+d]` with the result
+ * widened to the next representable bounds, and analogous
+ * sign-cased formulas for multiplication and division.
+ *
+ * Each instance carries a per-endpoint precision; distinct
+ * precisions form distinct rings. The certification comes at the
+ * cost of wider error bars than point MPFR arithmetic --- the right
+ * trade for root isolation, certified NAG bounds, and validation of
+ * approximate solutions. The complex counterpart is `ARingCCi`.
+ *
+ * @see aring-RRR.hpp
+ * @see aring-RR.hpp
+ * @see aring-CCi.hpp
+ * @see aring.hpp
+ */
+
 #include <iostream>
 
 #include <mpfi.h>
