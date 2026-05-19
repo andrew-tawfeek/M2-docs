@@ -1,6 +1,30 @@
 #ifndef _polynomial_hpp_
 #define _polynomial_hpp_
 
+/**
+ * @file Polynomial.hpp
+ * @brief Modern `Monom` / `Poly` value types shared by NC algebras and the refactored F4.
+ *
+ * `Monom` is an array-of-ints encoding of a non-commutative word with
+ * a degree prefix: `[length, degree, var_1, ..., var_n]` where
+ * `length = n + 2`. The length-field-first layout lets a single
+ * pointer walk past a monomial without external context. `Poly`
+ * pairs a column-store of `ring_elem` coefficients with a parallel
+ * column-store of monomial offsets into a shared int pool, which is
+ * the cache-friendly shape that matrix-style F4 operations want.
+ *
+ * This is the modern counterpart to the legacy `gbvector` in
+ * `gbring.hpp` --- they coexist by design: `gbvector` is an
+ * intrusive linked list optimised for term-by-term sorted merging
+ * in the classical Buchberger inner loop, while `Poly` wins for the
+ * batch operations of F4 and the resolution code. Primary consumers
+ * are `NCAlgebras/` and `gb-f4/`; `schreyer-resolution/` carries a
+ * resolution-specialised variant.
+ *
+ * @see gbring.hpp
+ * @see NCAlgebras/FreeAlgebra.hpp
+ */
+
 #include "newdelete.hpp"  // for our_new_delete
 #include "ringelem.hpp"   // for ring_elem
 #include "style.hpp"      // for GT, LT, EQ
