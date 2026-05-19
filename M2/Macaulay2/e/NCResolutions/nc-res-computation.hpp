@@ -3,6 +3,40 @@
 #ifndef _nc_res_computation_hpp_
 #define _nc_res_computation_hpp_
 
+/**
+ * @file NCResolutions/nc-res-computation.hpp
+ * @brief `NCResComputation` --- free-resolution driver for modules over a `FreeAlgebraQuotient`.
+ *
+ * Declares the non-commutative counterpart of
+ * `F4ResComputation`: a `ResolutionComputation` subclass that
+ * computes a free resolution of a right module presented by its
+ * Gröbner basis over a `FreeAlgebraQuotient` ring. The
+ * constructor is private; the friend factory `createNCRes(M,
+ * max_level, strategy)` is the only entry point, and the input
+ * matrix must already be a (partial) GB of the module being
+ * resolved. The class deliberately ignores every stop condition
+ * inherited from `Computation` except `length_limit` and
+ * `degree_limit`, since non-commutative resolutions are
+ * exploratory and the user mainly wants a bound on how deep to
+ * dig before reporting a Betti table.
+ *
+ * The expected per-level loop is sketched in the long comment
+ * block at the bottom of the header: build levels 0 / 1 from
+ * the input module, fill in syzygies degree-by-degree using
+ * F4-style overlap reduction against both the ring's GB and the
+ * earlier-level frame, and store each `(free module,
+ * differential)` pair as the resolution grows. The `#if 0`
+ * sketches `NCSchreyerResolution` / `Level` / `Element` /
+ * `ModulePoly` types that the in-progress implementation is
+ * expected to grow into. `notes.txt` in this subdir tracks the
+ * still-open design questions.
+ *
+ * @see comp-res.hpp
+ * @see FreeAlgebraQuotient.hpp
+ * @see NCGroebner.hpp
+ * @see schreyer-resolution/res-f4-computation.hpp
+ */
+
 #include "comp-res.hpp"
 #include "NCAlgebras/FreeAlgebraQuotient.hpp"
 #include "matrix.hpp"
