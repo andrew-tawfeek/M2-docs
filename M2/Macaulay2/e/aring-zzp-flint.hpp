@@ -3,6 +3,34 @@
 #ifndef _aring_zzp_flint_hpp_
 #define _aring_zzp_flint_hpp_
 
+/**
+ * @file aring-zzp-flint.hpp
+ * @brief `M2::ARingZZpFlint` --- `Z/p` via FLINT's `nmod_t` (Barrett-style fast reduction).
+ *
+ * `ARingZZpFlint` stores a `Z/p` value as a single `mp_limb_t`
+ * reduced representative in `[0, p)`. FLINT's `nmod_t` carries the
+ * modulus `n` together with a precomputed reciprocal `ninv` so each
+ * `nmod_add`, `nmod_mul`, `nmod_neg`, and `nmod_div` skips integer
+ * division in favour of Barrett-style multiply-and-shift. For primes
+ * up to roughly `2^63` this is materially faster than the log/exp
+ * table approach in `aring-zzp.hpp` and is the standard choice for
+ * small-to-medium primes whenever FFLAS-FFPACK is not in play.
+ *
+ * The FLINT-include dance is the usual one: `M2/gc-include.h` first
+ * so allocations route through bdwgc, diagnostic pragmas wrapped
+ * around FLINT's own headers. `HAVE_FLINT_NMOD_H` accommodates the
+ * FLINT release that split `nmod_*` out of `flint.h` into its own
+ * `nmod.h` --- `configure` decides which path applies. Primary
+ * consumers are `dmat-zzp-flint.hpp`, the F4 GB engines (when
+ * `Strategy =>` selects FLINT), and several resolution paths;
+ * `aring-zzp-ffpack.hpp` tends to win for very small primes via
+ * BLAS dispatch.
+ *
+ * @see aring-zzp.hpp
+ * @see aring-zzp-ffpack.hpp
+ * @see aring.hpp
+ */
+
 #include "interface/random.h"
 #include "aring.hpp"
 #include "buffer.hpp"
