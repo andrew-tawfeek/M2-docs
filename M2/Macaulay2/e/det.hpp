@@ -10,21 +10,24 @@
  * Declares `DetComputation` and the three integer strategy
  * constants the caller selects between: `DET_BAREISS`,
  * `DET_COFACTOR`, and `DET_DYNAMIC`. Bareiss is the fraction-free
- * Gaussian variant --- preserves integer pivots through cancellation
- * and is the right choice for matrices over `ZZ` or integer
- * polynomial rings because no `frac` field is required and
- * coefficient growth stays bounded. Cofactor is Laplace expansion
- * with per-submatrix row/column selection along the densest-zero
- * line; it dominates on very sparse matrices where most cofactors
- * vanish. Dynamic is the memoised variant: it caches submatrix
- * minors so that requests for many minors of varied sizes share
- * work. The user-facing `det` / `minors` functions in
- * `m2/matrix2.m2` map their `Strategy =>` option onto these three.
+ * Gaussian variant --- requires the coefficient ring to be a
+ * domain (the in-source comment annotates it "fraction free,
+ * DOMAINS only") and keeps the intermediate pivots integral by
+ * carrying the previous pivot through the divisions. Cofactor
+ * is a straight recursive Laplace expansion along the last row
+ * of each submatrix, skipping zero entries; it is the natural
+ * fallback over rings where Bareiss division does not apply
+ * (inexact fields, quotient rings). Dynamic is the memoised
+ * variant: it caches submatrix minors in nested `std::map`s
+ * keyed by row/column index sets so that minor-list queries of
+ * many sizes share work. The user-facing `det` / `minors`
+ * functions defined in `m2/multilin.m2` map their `Strategy =>`
+ * option onto these three constants.
  *
  * Entry points operate on a `Matrix` and return either a
  * `RingElement` (the determinant of a square submatrix) or a
- * `Matrix` of minors. Regression coverage of the three strategies
- * lives in `unit-tests/`.
+ * `Matrix` collecting minors (or an exterior power when the
+ * `do_exterior` flag is set).
  *
  * @see matrix.hpp
  * @see matrix-con.hpp
