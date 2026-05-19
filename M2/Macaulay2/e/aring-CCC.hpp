@@ -3,6 +3,33 @@
 #ifndef _aring_CCC_hpp_
 #define _aring_CCC_hpp_
 
+/**
+ * @file aring-CCC.hpp
+ * @brief `M2::ARingCCC` --- arbitrary-precision complex numbers (pair of MPFR floats).
+ *
+ * `ARingCCC` is the complex counterpart to `ARingRRR`: a
+ * `SimpleARing<ARingCCC>` whose element type is a pair of MPFR floats
+ * with mantissa precision chosen at construction. Arithmetic
+ * evaluates the standard formulas `(a+bi) +/- (c+di)`,
+ * `(a+bi)(c+di) = (ac-bd) + (ad+bc)i`, `1/(a+bi) = (a-bi)/(a^2+b^2)`,
+ * and `|a+bi| = sqrt(a^2+b^2)` component-wise via `mpfr_add` /
+ * `mpfr_mul` / `mpfr_sqrt` under round-to-nearest-ties-even.
+ *
+ * The header pulls in `interface/gmp-util.h` for
+ * `mpfr_reallocate_limbs` (moves the mantissa from MPFR's heap onto
+ * the GC heap) and `moveTo_gmpCC` (bundles two MPFRs into the
+ * interpreter's GC-managed complex type), plus
+ * `interface/random.h` for `randomMpfr`. Primary consumers are
+ * high-precision NAG homotopy continuation and any numerical linear
+ * algebra over `CC_n` for `n != 53`.
+ *
+ * @see aring-RRR.hpp
+ * @see aring-CC.hpp
+ * @see aring-CCi.hpp
+ * @see aring.hpp
+ * @see NAG.hpp
+ */
+
 #include "interface/gmp-util.h"  // for mpfr_reallocate_limbs, moveTo_gmpCC
 #include "interface/random.h"    // for randomMpfr
 
