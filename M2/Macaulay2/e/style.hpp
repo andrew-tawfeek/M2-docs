@@ -2,6 +2,30 @@
 #ifndef _style_hh_
 #define _style_hh_
 
+/**
+ * @file style.hpp
+ * @brief Engine-wide stylistic constants: `LT` / `EQ` / `GT` codes, `INTSIZE`, `GEOHEAP_SIZE`.
+ *
+ * Pulls together the boilerplate every engine translation unit
+ * needs. Comparison-result codes (`LT = -1`, `EQ = 0`, `GT = 1`,
+ * `INCOMPARABLE = 2`, `EXCEPTION = -2`) are the integer return
+ * convention for every `compare` in the codebase --- the
+ * partial-order code `INCOMPARABLE` is what monomial orderings
+ * over a free module with "position up" components return when
+ * two elements lack any order relation. `INTSIZE(a)` is the
+ * standard `static_cast<int>((a).size())` shortcut that avoids
+ * the signed/unsigned warnings produced by mixing
+ * `std::vector::size()` with engine `int` indices.
+ *
+ * `GEOHEAP_SIZE = 15` is the engine-wide depth of every
+ * size-doubling geometric heap (polynomial, vector, resolution-
+ * vector accumulators); the matching `heap_size[GEOHEAP_SIZE]`
+ * capacity table lives in `engine.cpp`.
+ *
+ * @see engine.cpp
+ * @see geobucket.hpp
+ */
+
 #include "newdelete.hpp"
 #include "engine-includes.hpp"
 
