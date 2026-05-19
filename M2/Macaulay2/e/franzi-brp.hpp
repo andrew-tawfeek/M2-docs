@@ -7,22 +7,27 @@
  * Declares `brMonomial = unsigned long`, the bit-set encoding of a
  * monomial in `F_2[x_1, ..., x_n] / (x_i^2 - x_i)`: bit `i` is set
  * iff variable `x_i` appears. Multiplication of monomials is
- * bitwise OR (idempotent exponents), coprimality is `(a & b) == 0`,
- * and S-polynomial reduction works by XOR of supporting bit-sets,
- * so each monomial op reduces to one or two machine instructions.
- * The encoding caps the engine at 64 variables, which is plenty
- * for the cryptographic and coding-theory inputs that motivate it.
+ * bitwise OR (idempotent exponents) and divisibility of `a` by `b`
+ * is `(a | b) == a`; the coprimality test in `isRelativelyPrime`
+ * is the bit-twiddling equivalent of `(a & b) == 0`. The
+ * polynomial type `BRP` stores its terms as a sorted
+ * `std::list<brMonomial>` and adds in F_2 by walking the two
+ * lists and dropping any monomial that appears in both. The
+ * `brMonomial` encoding caps the engine at 64 variables ---
+ * `rawGbBoolean` errors out for larger inputs.
  *
  * The companion files in the `franzi-*` family (`franzi-brp.cpp`,
  * `franzi-brp-test.cpp`, `franzi-gb.cpp`, `franzi-interface.cpp`)
- * carry the polynomial representation, a standalone test driver,
- * the Buchberger-style GB algorithm, and the M2 adapter that
- * plugs the engine into the standard `GBComputation` dispatcher.
- * The `// addition is not const` banner in this header is
- * deliberate: `+=` mutates the left operand for speed, which is a
- * pitfall for the engine's `const`-careful code elsewhere. The
- * sibling `bibasis/` directory offers an alternative
- * (variable-unbounded, Janet-basis) Boolean GB engine.
+ * carry the polynomial-level operations, a standalone test
+ * driver, the Buchberger-style GB algorithm, and the
+ * `extern "C"` entry point `rawGbBoolean` --- which sits outside
+ * the standard `comp-gb.cpp` GB dispatcher and is reached via its
+ * own M2-level top-level call. The `// addition is not const`
+ * banner in this header is deliberate: `+=` mutates the left
+ * operand for speed, a pitfall for the engine's `const`-careful
+ * code elsewhere. The sibling `bibasis/` directory offers an
+ * alternative (variable-unbounded, involutive-basis) Boolean GB
+ * engine.
  *
  * @see comp-gb.hpp
  */
