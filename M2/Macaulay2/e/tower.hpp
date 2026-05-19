@@ -2,6 +2,31 @@
 #ifndef _tower_hpp_
 #define _tower_hpp_
 
+/**
+ * @file tower.hpp
+ * @brief Legacy `Tower` --- `Ring`-derived iterated extension of `Z/p` (pre-aring).
+ *
+ * Declares `Tower`, the original engine class for an iterated
+ * finite extension `L_0 = Z/p`, `L_i = L_{i-1}[t_i] / f_i(t_i)`.
+ * Each instance carries its `level` in the chain (0 is the base
+ * `Z/p`), the variable count `nvars`, the user-supplied variable
+ * names, and a `DRing *D` pointing at the level's polynomial-
+ * representation back-end --- elements are polynomials in the
+ * current level's variable with coefficients drawn from the
+ * level below. `Tower` inherits directly from `Ring` and
+ * dispatches arithmetic through virtuals, which is the reason
+ * the modern `aring-tower.hpp` (a `SimpleARing<ARingTower>`
+ * CRTP class with inlined operations) was written.
+ *
+ * Kept in tree because legacy callers and regression tests
+ * still construct it; new tower work should target the aring
+ * path.
+ *
+ * @see aring-tower.hpp
+ * @see ring.hpp
+ * @see dpoly.hpp
+ */
+
 #include "relem.hpp"
 
 class RingMap;
