@@ -55,7 +55,20 @@ class gbvector;
 class GBRing;
 
 /**
- * \ingroup ringinfo
+ * @brief Bookkeeping helper holding the defining ideal of a polynomial-ring
+ * quotient `R / I` in the two representations the engine reduces against.
+ *
+ * @details Stores the quotient generators twice: as `Nterm*` for `ring_elem`
+ * reduction (`normal_form`) and as `gbvector*` for GB-tuned
+ * reduction (`gbvector_normal_form`), kept in sync by
+ * `appendQuotientElement`. This base class is a virtual shell ---
+ * its `normal_form` / `gbvector_normal_form` bodies are no-ops and
+ * its `get_quotient_*` accessors return `nullptr`. Concrete reduction
+ * lives in the three subclass branches `QRingInfo_field_basic`,
+ * `QRingInfo_field_QQ`, and `QRingInfo_ZZ`. A `QRingInfo` is not
+ * itself a `Ring`; it is the data hung off `PolyRingQuotient`.
+ *
+ * @ingroup ringinfo
  */
 class QRingInfo : public our_new_delete
 {
@@ -117,7 +130,16 @@ class QRingInfo : public our_new_delete
 };
 
 /**
- * \ingroup ringinfo
+ * @brief `QRingInfo` partial specialisation that adds the field-coefficient
+ * reduction tables: a `MonomialIdeal` for divisibility queries and a
+ * `MonomialTable` indexed by `quotient_ideal` slot.
+ *
+ * @details Exposes the tables through `get_quotient_monomials` /
+ * `get_quotient_MonomialTable` but leaves `normal_form` itself
+ * unimplemented --- that is provided by the two concrete subclasses
+ * `QRingInfo_field_basic` and `QRingInfo_field_QQ`.
+ *
+ * @ingroup ringinfo
  */
 class QRingInfo_field : public QRingInfo
 {
@@ -141,7 +163,14 @@ class QRingInfo_field : public QRingInfo
 };
 
 /**
- * \ingroup ringinfo
+ * @brief `QRingInfo_field` specialisation for basic-field coefficients
+ * (everything except `QQ`).
+ *
+ * @details Implements `normal_form` and `gbvector_normal_form` via
+ * `reduce_lead_term_basic_field`, which expects field arithmetic
+ * with no denominator tracking.
+ *
+ * @ingroup ringinfo
  */
 class QRingInfo_field_basic : public QRingInfo_field
 {
@@ -158,7 +187,15 @@ class QRingInfo_field_basic : public QRingInfo_field
 };
 
 /**
- * \ingroup ringinfo
+ * @brief `QRingInfo_field` specialisation for `QQ` coefficients, which need
+ * denominator tracking through reductions.
+ *
+ * @details Implements `normal_form` and `gbvector_normal_form` plus the
+ * three-argument `gbvector_normal_form(F, f, use_denom, denom)`
+ * overload that accumulates the cleared denominator. The reduction
+ * itself goes through `reduce_lead_term_QQ`.
+ *
+ * @ingroup ringinfo
  */
 class QRingInfo_field_QQ : public QRingInfo_field
 {
@@ -180,7 +217,16 @@ class QRingInfo_field_QQ : public QRingInfo_field
 };
 
 /**
- * \ingroup ringinfo
+ * @brief `QRingInfo` specialisation for quotients of polynomial rings over `ZZ`.
+ *
+ * @details Replaces the field-side `MonomialTable` with a `MonomialTableZZ`
+ * and tracks the `is_ZZ_quotient_` / `ZZ_quotient_value_` pair so
+ * that if the defining ideal contains a non-zero integer, coefficient
+ * reductions can be short-circuited modulo that integer.
+ * `reduce_lead_term_ZZ` drives both `normal_form` and
+ * `gbvector_normal_form`.
+ *
+ * @ingroup ringinfo
  */
 class QRingInfo_ZZ : public QRingInfo
 {
