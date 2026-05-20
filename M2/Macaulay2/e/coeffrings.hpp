@@ -44,7 +44,20 @@ class Z_mod;
 #include "ZZ.hpp"
 
 /**
- * \ingroup coeffrings
+ * @brief Discrete-log `Z/p` adapter that represents non-zero residues by
+ * their exponent index relative to a generator.
+ *
+ * @details Holds two size-`p` tables: `exp_table` maps an index `a` to the
+ * residue `g^a mod p` and `log_table` is its inverse. Multiplication
+ * and division on indices become `modulus_add` / `modulus_sub` mod
+ * `p - 1` with no table lookup, and inversion of a non-zero index
+ * `a` is `p - 1 - a`. Addition / subtraction first hop to residues
+ * via `exp_table`, do a modular add/sub, and hop back via
+ * `log_table`. `negate` shifts by `(p - 1) / 2` (the index of -1).
+ * Used for small primes (`2 <= p <= 32749` per `interface/aring.h`)
+ * via the `SimpleARing` CRTP layer.
+ *
+ * @ingroup coeffrings
  */
 class CoefficientRingZZp : public M2::SimpleARing<CoefficientRingZZp>
 {
@@ -222,7 +235,18 @@ class CoefficientRingZZp : public M2::SimpleARing<CoefficientRingZZp>
 };
 
 /**
- * \ingroup coeffrings
+ * @brief Generic `CoefficientRing` adapter that wraps an arbitrary
+ * `const Ring*` and forwards every operation to it.
+ *
+ * @details The catch-all implementation used wherever code expects the
+ * `CoefficientRing` operation surface but talks to a ring without
+ * a faster specialisation. All `add` / `mult` / `subtract` /
+ * `invert` calls delegate to the corresponding `Ring` virtual
+ * methods on `R`, and `Element` / `ElementArray` (defined nested
+ * here) supply the value-semantics wrappers the templated linear
+ * algebra code expects.
+ *
+ * @ingroup coeffrings
  */
 class CoefficientRingR
 {
@@ -234,6 +258,14 @@ class CoefficientRingR
   typedef elem ElementType;
   typedef VECTOR(elem) ElementContainerType;
 
+  /**
+   * @brief Managed scalar value: an `M2::ElementImpl<ring_elem>` that
+   * initialises itself through the parent `CoefficientRingR`.
+   *
+   * @details Holds the wrapped `ring_elem` so callers do not have to call
+   * `init` / `clear` by hand. Constructors initialise to zero or
+   * copy from an existing element via the ring.
+   */
   class Element : public M2::ElementImpl<ElementType>, public our_new_delete
   {
    public:
@@ -244,6 +276,15 @@ class CoefficientRingR
     }
   };
 
+  /**
+   * @brief Fixed-size, owned array of `ElementType`s for the linear-algebra
+   * templates that want a flat buffer they can `operator[]` into.
+   *
+   * @details Allocates via `newarray`, initialises every slot through
+   * `ring.init`, and frees via `freemem` in the destructor. Used as
+   * the per-row storage backing dense matrix code that runs over
+   * `CoefficientRingR`.
+   */
   class ElementArray : public our_new_delete
   {
     ElementType *mData;
