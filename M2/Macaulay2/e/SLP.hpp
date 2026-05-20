@@ -19,8 +19,10 @@
  * shares common subexpressions across outputs and stays cache
  * friendly relative to walking a polynomial AST. Derivatives
  * for Newton-step paths are kept as separately-compiled SLPs
- * for the relevant Jacobian (see `PathTracker`'s `slpHx` /
- * `slpHxt` / `slpHxtH` in `NAG.hpp`), not produced by reverse-mode
+ * for the relevant Jacobian (see `PathTracker`'s `slpH` /
+ * `slpHxt` / `slpHxtH` / `slpHxH` fields in `NAG.hpp` --- the
+ * trailing `|H` variants pair the derivative with the homotopy
+ * for in-step substitution), not produced by reverse-mode
  * autodiff inside the SLP.
  *
  * The implementation is split across three files so the same
