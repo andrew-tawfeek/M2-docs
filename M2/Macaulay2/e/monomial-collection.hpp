@@ -27,9 +27,13 @@
  * in-transition "set of monomials" helper used by `M2FreeAlgebra`
  * and the non-commutative arithmetic paths to track which
  * `Monom` / `ModuleMonom` values have appeared during a
- * multiplication or product. The `Configuration` template
- * parameter supplies the hash function, equality check, and
- * `copyToModuleElement` projection. The API splits insert from
+ * multiplication or product. The live `Configuration` interface
+ * is just `Hash` and `Eq` functor members (the constructor
+ * forwards them as the `std::unordered_set` policies); a
+ * `copyToModuleElement` shape appears in the template's own
+ * comment list (line 240) as a documented eventual addition,
+ * but no Configuration in this header actually defines or uses
+ * it. The API splits insert from
  * lookup: `insert(m, comp)` allocates the encoded
  * `ModuleMonom` in the arena and pushes it onto the
  * insertion-ordered `mElements` vector if new (returning `true`)
