@@ -104,9 +104,19 @@ class GaloisFieldTable
 };
 
 /**
-\ingroup rings
-*/
-
+ * @brief Pure-M2 (no-FLINT) `aring`-style adapter for `GF(p^n)`, using a
+ * discrete-log encoding plus an M2-side primitive table.
+ *
+ * @details Backed by an `M2GFTable` (the file's other class) that owns the
+ * `[exp, log, one_table, primitive_element]` machinery for the
+ * specific extension. Elements are `int` indices; multiplication
+ * and division are integer add / sub mod `p^n - 1`. `ringID =
+ * ring_GFM2`. Selected when FLINT's `ARingGFFlint*` rings are
+ * unavailable or undesirable (e.g. when reproducing legacy
+ * behaviour matters).
+ *
+ * @ingroup rings
+ */
 class ARingGFM2 : public SimpleARing<ARingGFM2>
 {
  public:

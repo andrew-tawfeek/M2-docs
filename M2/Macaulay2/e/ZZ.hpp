@@ -58,8 +58,17 @@ extern "C" inline int mask_mpq_cmp_si(mpq_srcptr x, long int i, long int j)
 }
 
 /**
-    @ingroup rings
-*/
+ * @brief Engine-side ring of integers, backed by GMP `mpz_ptr` elements.
+ *
+ * @details Each non-zero element is a heap-allocated `mpz_struct` handed
+ * out by `new_elem()`; `coeffR` is the matching `ARingZZGMP`
+ * facade used wherever the `aring`-shaped coefficient interface is
+ * expected. The class itself only exposes the `Ring`-level surface
+ * --- `add`, `mult`, `divide`, `gcd`, etc. --- with bodies that
+ * delegate to GMP. Constructed once at startup via `Ring::initZZ()`.
+ *
+ * @ingroup rings
+ */
 class RingZZ : public Ring
 {
   friend class M2::ARingZZGMP;

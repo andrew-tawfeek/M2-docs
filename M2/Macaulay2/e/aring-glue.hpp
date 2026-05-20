@@ -469,6 +469,18 @@ class ConcreteRing : public Ring
 
 };  // class ConcreteRing<RingType>
 
+/**
+ * @brief `Ring`-level `QQ` ring, a thin specialisation of
+ * `ConcreteRing<ARingQQ>` that marks itself with `is_QQ()` and
+ * `coefficient_type() == COEFF_QQ`.
+ *
+ * @details Owns its `ARingQQ` through the `ConcreteRing` base. The static
+ * `create()` factory wires up the zero / one elements, declares
+ * the ring a field, and sets the engine-side characteristic so
+ * the rest of the engine can treat `QQ` exactly like any other
+ * coefficient ring while keeping the `is_QQ()` short-circuit
+ * available for QQ-specific fast paths.
+ */
 class RingQQ : public ConcreteRing<ARingQQ>
 {
  public:

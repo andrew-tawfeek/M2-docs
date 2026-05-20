@@ -38,8 +38,22 @@
  */
 
 /**
-    @ingroup rings
-*/
+ * @brief Engine-side finite field `GF(p^n)` built on top of `(Z/p)[t] / f(t)`
+ * for a primitive element of the resulting field.
+ *
+ * @details Represents non-zero elements by their discrete-logarithm index
+ * relative to a chosen primitive `primitive_element`: index 0
+ * encodes 0, `Q-1` encodes 1, and index `n` encodes
+ * `primitive^n`. `_x_exponent` is the index of the original
+ * generator `t`. Multiplication / division become mod-`Q1` add /
+ * sub on indices; addition uses the precomputed `_one_table` to
+ * resolve `1 + primitive^n`. `_from_int_table` maps small integers
+ * back into indices. Falls back to `Ring` for cases not covered
+ * by the `aring`-style `ARingGFM2` / `ARingGFFlint*`
+ * specialisations.
+ *
+ * @ingroup rings
+ */
 class GF : public Ring
 {
   // int P; // this is defined in class Ring

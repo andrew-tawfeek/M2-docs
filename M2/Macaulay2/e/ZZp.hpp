@@ -41,8 +41,20 @@ class ARingZZp;
  */
 
 /**
-    @ingroup rings
-*/
+ * @brief Engine-side `Z/p` ring for small primes (`p < 32767`), using a
+ * discrete-log (Zech) representation.
+ *
+ * @details Stores non-zero elements as their exponent indices relative to a
+ * primitive root, with `_ZERO = p-1` reserved as the encoding of
+ * 0. Holds two size-`P` tables (`_exp_table`, `_log_table`) for
+ * hop-to-residue / hop-back conversions, and bundles a
+ * `CoefficientRingZZp` and `ARingZZp` facade so the same ring can
+ * appear under either coefficient interface. The `int_to_exp` /
+ * `to_int` helpers convert between the internal index world and
+ * the externally visible residue.
+ *
+ * @ingroup rings
+ */
 class Z_mod : public Ring
 {
   // int P; // this is defined in class Ring

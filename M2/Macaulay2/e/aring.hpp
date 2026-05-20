@@ -194,6 +194,17 @@ class SimpleARing : public RingInterface
   };
 };
 
+/**
+ * @brief Placeholder `aring` used as a default / fallback for code paths
+ * that need an `ARing`-shaped object but no real arithmetic.
+ *
+ * @details Element type is `long` and every operation is a no-op or
+ * trivial. `mOriginalRing` carries the actual `PolynomialRing` the
+ * dummy is standing in for so callers can still locate the "real"
+ * ring for fall-through queries. Appears as a variant alternative
+ * in `VectorArithmetic`'s `std::variant` so templated code that
+ * does not understand a given ring still has a valid instantiation.
+ */
 class DummyRing : public SimpleARing<DummyRing>
 {
  public:
