@@ -67,9 +67,19 @@ class RingElement;
 namespace M2 {
 
 /**
-\ingroup rings
-*/
-
+ * @brief `aring`-style adapter for FLINT's polynomial-quotient representation
+ * of finite fields `GF(p^n)` that are too large for Zech tables.
+ *
+ * @details `ElementType` is `fq_nmod_struct` (an `nmod_poly_struct` modulo
+ * the defining polynomial) and every arithmetic call delegates to
+ * FLINT's `fq_nmod_*` routines through the held `mContext`
+ * (`fq_nmod_ctx_struct*`). Slower per-operation than
+ * `ARingGFFlint` but unconstrained by the Zech-table size, so this
+ * is the fallback for `GF(p^n)` once `p^n` outgrows the small-field
+ * regime. `ringID = ring_GFFlintBig` for `VectorArithmetic` dispatch.
+ *
+ * @ingroup rings
+ */
 class ARingGFFlintBig : public RingInterface
 {
  public:
@@ -119,6 +129,15 @@ class ARingGFFlintBig : public RingInterface
     const fq_nmod_ctx_struct* mContext;
   };
 
+  /**
+   * @brief Fixed-size owned array of `fq_nmod_struct` slots tied to an
+   * `ARingGFFlintBig` for the matching FLINT context.
+   *
+   * @details Each slot is `fq_nmod_init2`-initialised at construction and
+   * `fq_nmod_clear`-released in the destructor, so the array owns
+   * its FLINT-side data. Used as the flat per-row buffer the dense
+   * linear-algebra templates expect.
+   */
   class ElementArray
   {
     const fq_nmod_ctx_struct* mContext;

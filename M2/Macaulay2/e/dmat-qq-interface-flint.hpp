@@ -36,6 +36,19 @@
 // This will become un-needed once DMat<ARingQQ> starts using flint
 // integers/rationals.
 
+/**
+ * @brief RAII wrapper around FLINT's `fmpz_mat_t` for translating dense
+ * `ZZ`-coefficient matrices between the engine and FLINT.
+ *
+ * @details Constructed from a `DMatZZGMP` (or empty with given dimensions),
+ * the wrapper holds an initialised `fmpz_mat_t` for the duration
+ * of its lifetime and frees it via `fmpz_mat_clear` in the
+ * destructor. `to_fmpz_mat` / `from_fmpz_mat` translate entry by
+ * entry via `fmpz_set_mpz` / `fmpz_get_mpz`. Used so FLINT's
+ * matrix routines (HNF, determinant, ...) can run against engine
+ * matrices that store coefficients as GMP `mpz`s --- a stopgap
+ * until `DMat<ARingQQ>` is rebased onto FLINT integers directly.
+ */
 class FlintZZMat
 {
  public:
@@ -82,6 +95,16 @@ class FlintZZMat
   }
 };
 
+/**
+ * @brief RAII wrapper around FLINT's `fmpq_mat_t` for translating dense
+ * `QQ`-coefficient matrices between the engine and FLINT.
+ *
+ * @details Rational counterpart of `FlintZZMat`: bridges
+ * `DMat<M2::ARingQQ>` (GMP-backed) and FLINT's `fmpq_mat_t` via
+ * entrywise translation, frees the FLINT matrix in the destructor,
+ * and exposes `value()` so callers can hand the underlying
+ * `fmpq_mat_struct*` straight to FLINT's matrix routines.
+ */
 class FlintQQMat
 {
  private:

@@ -48,7 +48,21 @@
 
 namespace BIBasis
 {
-    class Monom 
+    /**
+     * @brief Abstract base for the BIBasis boolean-coefficient monomial
+     * types --- a sorted, singly linked list of variable indices.
+     *
+     * @details `Integer` is a 16-bit type because BIBasis caps the number of
+     * variables (`DimIndepend`) at 32k. Subclasses
+     * (`MonomLex`, `MonomDL`, `MonomDRL`) implement the comparison
+     * for their respective monomial orders; the storage layout is
+     * shared in this base. Memory comes from a per-`VarsListNode`
+     * `FastAllocator`, so list insertion is bump-pointer cheap.
+     * `TotalDegree` caches the sum of exponents for fast degree
+     * lookups; in this boolean (square-free) setting that equals
+     * the list length.
+     */
+    class Monom
     {
     public:
         typedef short int Integer;
@@ -60,6 +74,16 @@ namespace BIBasis
         };
 
     protected:
+        /**
+         * @brief Singly linked-list node of a `Monom`'s variable list, with
+         * a per-class slab allocator.
+         *
+         * @details `Value` is the variable index, `Next` chains to the next
+         * variable in increasing order. The static `Allocator`
+         * (a `FastAllocator` shared across all `VarsListNode`s)
+         * supplies fixed-size slots so new/delete avoid the system
+         * heap on the BIBasis inner loop.
+         */
         struct VarsListNode
         {
             Integer Value;
