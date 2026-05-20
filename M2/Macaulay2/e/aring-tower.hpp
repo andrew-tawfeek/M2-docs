@@ -55,6 +55,20 @@ namespace M2 {
  */
 typedef struct ARingPolynomialStruct *ARingPolynomial;
 
+/**
+ * @brief Heap-allocated node of an `ARingTower` polynomial: a dense
+ * `degree`-indexed coefficient array that recurses through tower levels.
+ *
+ * @details `deg` is the polynomial's degree in the current top variable and
+ * `len` is the allocated capacity. The anonymous union picks the
+ * coefficient kind by depth: at the bottom level the coefficients
+ * are `ARingZZpFFPACK::ElementType` values stored in `coeffs`, and
+ * at higher levels each "coefficient" is itself an
+ * `ARingPolynomial` one level down, stored in `polys`. Accessed
+ * through `ARingTower` (the `aring`-shaped sibling of `DRing` in
+ * `dpoly.hpp`), which always carries the current level so the
+ * right union arm is consulted.
+ */
 struct ARingPolynomialStruct
 {
   int deg;
@@ -71,8 +85,21 @@ class DRing;
 
 // TODO: make this a template type, with the base e.g. ZZ/p, ZZ, QQ, etc.
 /**
-\ingroup rings
-*/
+ * @brief `aring`-style coefficient ring for tower polynomial rings
+ * `(Z/p)[x_0][x_1]...[x_{n-1}]` modulo a chain of extensions.
+ *
+ * @details The `aring` analogue of `DRing` (see `dpoly.hpp`): bundles a
+ * base `ARingZZpFFPACK` ring with a list of variable names and a
+ * vector of `extensions` (one tower polynomial per algebraic
+ * level, `nullptr` for transcendental). `ElementType` is
+ * `ARingPolynomial`, and the nested `Element` and `ElementArray`
+ * helpers manage the underlying heap-allocated chains. Hardcoded
+ * to `ARingZZpFFPACK` for now (TODO: template on base ring), and
+ * tagged with `ringID = ring_tower_ZZp` so the engine can
+ * recognise it.
+ *
+ * @ingroup rings
+ */
 class ARingTower : public RingInterface
 {
   friend class ARingTowerEvaluator;
@@ -115,6 +142,15 @@ class ARingTower : public RingInterface
     const ARingTower &R;
   };
 
+  /**
+   * @brief Fixed-size, owned array of `ElementType`s for the linear-algebra
+   * templates that want a flat buffer of tower-polynomial slots.
+   *
+   * @details Backed by a `std::unique_ptr<ElementType[]>`. Slots are
+   * zero-initialised at construction and cleared through
+   * `ARingTower::clear` in the destructor, so the array owns its
+   * tower polynomials.
+   */
   class ElementArray
   {
     const ARingTower &R;
