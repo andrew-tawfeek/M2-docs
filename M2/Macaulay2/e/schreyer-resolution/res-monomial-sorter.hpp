@@ -48,6 +48,18 @@
 #include <utility>                                     // for pair
 #include <vector>                                      // for vector
 
+/**
+ * @brief Strict-weak comparator on integer indices into a `std::vector<int*>`
+ * of monomials, used by the resolution code to sort columns.
+ *
+ * @details Each `mMonoms[i]` is laid out as `[tiebreaker, basecomp,
+ * actual_monomial...]`. `operator()(a, b)` compares the monomial
+ * bodies via `Monoid::compare`, returning the corresponding
+ * `bool`; on `EQ` it falls back to the `tiebreaker` slot. The
+ * static `mNumComparisons` counter records how many comparisons
+ * the sort performed --- handy when profiling a large frame's
+ * column-sort cost.
+ */
 class MonomialSorterObject
 {
 private:
@@ -93,6 +105,18 @@ public:
   long numComparisons() const { return mNumComparisons; }
 };
 
+/**
+ * @brief Sorter that orders `res_packed_monomial`s by their *total* (Schreyer)
+ * monomial, with a stable tiebreaker derived from input order.
+ *
+ * @details Allocates the `[tiebreaker, basecomp, totalmon]` triples inside
+ * its own `memt::Arena` so the sort can run without touching the
+ * caller's monomial storage. `mSchreyerOrder` supplies the
+ * per-component multiplier that turns each `mColumns[i]` into its
+ * total monomial; the result is held in `mMonoms` and the
+ * permutation in `mPositions`. Keeps a `mNumComparisons` counter
+ * for profiling.
+ */
 class ResMonomialSorter
 {
 private:

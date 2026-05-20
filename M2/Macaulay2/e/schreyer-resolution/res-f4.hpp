@@ -61,6 +61,21 @@ class SchreyerFrame;
 
 /////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief F4-style engine that computes one `(level, degree)` slice of a
+ * free resolution into the host `SchreyerFrame`.
+ *
+ * @details `construct(lev, degree)` builds the Macaulay matrix whose rows
+ * are the symbolic reducers for each frame element of that
+ * `(level, degree)` cell, runs `gaussReduce`, and writes the
+ * resulting syzygy polynomials back into the matching
+ * `FrameElement::mSyzygy` slots. The matrix construction
+ * (`processCurrentMonomial` / `processMonomialProduct` /
+ * `loadRow`) and column-sorting passes (`reorderColumns`,
+ * `ResColumnsSorter` friend) live inside this class; the
+ * `debugOutput*` helpers exist for printing the partial state of
+ * the F4 matrix when investigating reduction bugs.
+ */
 class F4Res
 {
   friend class ResColumnsSorter;
@@ -84,6 +99,16 @@ class F4Res
   const ResMonoid& monoid() const { return mRing.monoid(); }
   const ResPolyRing& ring() const { return mRing; }
  private:
+  /**
+   * @brief One row of the Macaulay matrix built by `F4Res::construct`.
+   *
+   * @details `mLeadTerm` is the previous-level monomial that contributed
+   * this row, used after reduction to slot the resulting syzygy
+   * back into the right `FrameElement`. `mComponents` and
+   * `mCoeffs` are parallel arrays: column index and coefficient
+   * for each non-zero entry. `loadRow` populates the arrays;
+   * `gaussReduce` consumes them.
+   */
   struct Row
   {
     res_packed_monomial
