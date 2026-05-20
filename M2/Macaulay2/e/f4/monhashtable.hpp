@@ -43,6 +43,16 @@
 #include "schreyer-resolution/res-moninfo.hpp"         // for ResMonoid
 #include "schreyer-resolution/res-monomial-types.hpp"  // for res_packed_mon...
 
+/**
+ * @brief `MonHashTable` trait for `packed_monomial`s that include the
+ * component coordinate in equality.
+ *
+ * @details `hash_value` mixes the leading two ints of the packed monomial
+ * (the precomputed hash plus the component) so two monomials with
+ * the same exponent vector but different components hash to
+ * different buckets. `is_equal` defers to `MonomialInfo::is_equal`,
+ * which compares both the monomial body and its component.
+ */
 class MonomialsWithComponent
 {
  public:
@@ -55,6 +65,15 @@ class MonomialsWithComponent
   const MonomialInfo& mMonoid;
 };
 
+/**
+ * @brief `MonHashTable` trait for `packed_monomial`s that fold all components
+ * together (used when only the underlying monomial matters).
+ *
+ * @details `hash_value` reads the leading int (the monomial-only hash)
+ * without mixing in the component. `is_equal` delegates to
+ * `MonomialInfo::monomial_part_is_equal`, which compares exponent
+ * vectors and ignores the component slot.
+ */
 class MonomialsIgnoringComponent
 {
  public:
@@ -70,6 +89,16 @@ class MonomialsIgnoringComponent
   const MonomialInfo& mMonoid;
 };
 
+/**
+ * @brief `MonHashTable` trait for the resolution engine's
+ * `res_packed_monomial`s, with components included.
+ *
+ * @details Counterpart of `MonomialsWithComponent` for the F4 resolution
+ * code: combines the per-monomial hash from `ResMonoid::hash_value`
+ * with a `34141 * component` term so two monomials with the same
+ * exponent vector but different components land in different
+ * buckets. Equality goes through `ResMonoid::is_equal`.
+ */
 class ResMonomialsWithComponent
 {
  public:
@@ -85,6 +114,14 @@ class ResMonomialsWithComponent
   const ResMonoid& mMonoid;
 };
 
+/**
+ * @brief `MonHashTable` trait for `res_packed_monomial`s with the
+ * component coordinate folded out.
+ *
+ * @details Resolution counterpart of `MonomialsIgnoringComponent`:
+ * `hash_value` is just the leading int (the monomial-only hash) and
+ * `is_equal` defers to `ResMonoid::monomial_part_is_equal`.
+ */
 class ResMonomialsIgnoringComponent
 {
  public:
