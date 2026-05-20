@@ -45,7 +45,19 @@
 class MatrixConstructor;
 
 /**
- * \ingroup matrices
+ * @brief Engine-side matrix: a map between two free modules, stored as a
+ * column-vector list.
+ *
+ * @details Holds a target `FreeModule` (rows), a source `FreeModule` (columns),
+ * a `mDegreeShift` element of the degree monoid, and a `gc_vector<vec>`
+ * `mEntries` where each `vec` is the sparse linked-list representation
+ * of one column. The class is immutable once exposed to the front end
+ * (its `computeHashValue` pins the hash), so all mutating construction
+ * goes through the helper `MatrixConstructor`. Static `make` / `make_sparse`
+ * factories convert raw `engine_RawRingElementArray` input into a fully
+ * populated `Matrix*`.
+ *
+ * @ingroup matrices
  */
 class Matrix : public EngineObject
 {
@@ -271,6 +283,15 @@ class Matrix : public EngineObject
 
   void text_out(buffer &o) const;
 
+  /**
+   * @brief Reseatable iterator over the non-zero entries of one column of
+   * the matrix.
+   *
+   * @details Constructed in a "no column" state (`col == -1`, `v == nullptr`)
+   * and then `set(col)` aims it at a specific column; `next()`
+   * advances through that column's sparse `vec` list. Read-only by
+   * design --- the matrix itself is immutable.
+   */
   class iterator : public our_new_delete
   {
     const Matrix *M;  // all matrices are immutable
@@ -292,6 +313,15 @@ class Matrix : public EngineObject
     ring_elem entry() { return v->coeff; }
   };
 
+  /**
+   * @brief Standards-style forward iterator over the `vecterm`s of one
+   * column.
+   *
+   * @details Simpler companion to `iterator`: holds a raw `const vecterm*`
+   * cursor, increments it with `operator++`, dereferences with
+   * `operator*`, and ends at `nullptr`. Suitable for range-for over
+   * a single column's terms.
+   */
   class column_iterator
   {
     const vecterm * v;
