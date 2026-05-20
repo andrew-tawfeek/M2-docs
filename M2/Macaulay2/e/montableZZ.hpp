@@ -58,9 +58,30 @@
     Is this really an OK idea?
  */
 
+/**
+ * @brief `MonomialTable` analogue for monomials carrying a `ZZ` coefficient.
+ *
+ * @details Used by the integer-coefficient GB code path to track lead-term
+ * divisibility together with the leading integer coefficient: when
+ * the table is consulted to reduce `coeff * exp` against an entry
+ * `c * lead`, both the exponent-divisibility test and the `c |
+ * coeff` integer-divisibility test are honoured. Otherwise the
+ * data structure matches `MonomialTable`: per-component
+ * doubly-linked lists of `mon_term`s in lex order with a
+ * `_mask`-filtered divisor lookup.
+ */
 class MonomialTableZZ : public our_new_delete
 {
  public:
+  /**
+   * @brief `MonomialTable::mon_term` plus an `_coeff` slot pointing at the
+   * entry's leading `ZZ` coefficient (or `nullptr` for the
+   * coefficient-blind case).
+   *
+   * @details The coefficient itself is owned by whatever stored the entry
+   * (typically a GB element), so the lifetime of `_coeff` must
+   * outlive this `mon_term`.
+   */
   struct mon_term : public our_new_delete
   {
     mon_term *_next;

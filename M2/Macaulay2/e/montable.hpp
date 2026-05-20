@@ -59,6 +59,20 @@
     Is this really an OK idea?
  */
 
+/**
+ * @brief Indexed table of monomials with fast "find a divisor" lookup,
+ * keyed by a free integer `val` per entry.
+ *
+ * @details Stores entries as a per-component doubly-linked list of
+ * `mon_term`s sorted in increasing lex order. Each entry caches a
+ * `_mask` (popcount-style divisibility filter) so divisor searches
+ * can skip most monomials with a single bitwise test. Pure
+ * `(exponents, component) -> val` index --- the exponent vectors
+ * themselves are owned by the caller (the table does not free
+ * them). `MonomialTableZZ` is the companion specialisation when
+ * entries also carry a `ZZ` coefficient and the GB needs to track
+ * leading-term divisibility modulo content.
+ */
 class MonomialTable : public our_new_delete
 {
   static MonomialTable *make_minimal(int nvars,
@@ -75,6 +89,16 @@ class MonomialTable : public our_new_delete
 
   MonomialTable();  // the public must use "make" below
  public:
+  /**
+   * @brief Doubly-linked-list node of a `MonomialTable`'s per-component
+   * monomial list.
+   *
+   * @details `_lead` points to the entry's exponent vector (owned by the
+   * caller, not by the table), `_mask` is the precomputed
+   * divisibility bitmask used to skip non-divisors during search,
+   * and `_val` is the caller-supplied opaque index returned on a
+   * hit.
+   */
   struct mon_term
   {
     mon_term *_next;

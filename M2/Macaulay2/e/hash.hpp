@@ -41,6 +41,18 @@
 #include <cassert>
 #include <M2/gc-include.h>
 
+/**
+ * @brief Base class for engine objects that are immutable once their hash
+ * has been pinned (typically once they cross over to the front end).
+ *
+ * @details Holds a single lazily computed `mHashValue` that defaults to zero
+ * and is filled in by `computeHashValue()` (pure virtual --- every
+ * subclass supplies its own hashing rule). The non-zero invariant
+ * doubles as a "computed yet" flag: `hash()` returns the cached
+ * value, or runs the computation and bumps a zero result to 1 so
+ * the flag still distinguishes uncomputed from "genuinely hashed
+ * to 0".
+ */
 //class EngineObject : public gc
 class EngineObject : public our_new_delete
 {
@@ -65,6 +77,17 @@ class EngineObject : public our_new_delete
   virtual unsigned int computeHashValue() const = 0;
 };
 
+/**
+ * @brief Base class for engine objects that may mutate, so their hash must
+ * be identity-based rather than content-based.
+ *
+ * @details Pulls a fresh integer from the static counter
+ * `mNextMutableHashValue` at construction and keeps it for the
+ * object's whole lifetime, so even after mutation `hash()` still
+ * returns the same value. Inherits from `our_gc_cleanup` so the
+ * GC can run a destructor when the object becomes unreachable
+ * (mutable objects often need to free non-GC resources).
+ */
 class MutableEngineObject : public our_gc_cleanup
 {
  private:
