@@ -12,14 +12,18 @@
  * implementation forwards into for linear solve, LU, QR, SVD,
  * eigenvalue, and least-squares work. Engine callers reach those
  * routines through the static `Lapack` class declared further
- * down: `Lapack::LU`, `solve`, `eigenvalues[_symmetric/_hermitian]`,
- * `eigenvectors[_symmetric/_hermitian]`, `SVD`,
- * `SVD_divide_conquer`, and `least_squares[_deficient]`, each
- * overloaded once for the hardware-precision aliases (`DMatRR` /
- * `DMatCC`) and once for the MPFR-precision aliases (`DMatRRR` /
- * `DMatCCC`); the MPFR overloads copy through `double` /
- * `complex<double>` element by element, so the answer carries
- * hardware precision regardless of the input ring.
+ * down: `LU`, `solve`, `solve_triangular` (real only),
+ * `eigenvalues` / `eigenvectors`, the real-symmetric
+ * `eigenvalues_symmetric` / `eigenvectors_symmetric`, the
+ * complex-hermitian `eigenvalues_hermitian` /
+ * `eigenvectors_hermitian` (separate methods, not a unified
+ * suffix), `SVD` / `SVD_divide_conquer`, `least_squares` /
+ * `least_squares_deficient`, and `QR`, each overloaded once for
+ * the hardware-precision aliases (`DMatRR` / `DMatCC`) and once
+ * for the MPFR-precision aliases (`DMatRRR` / `DMatCCC`); the
+ * MPFR overloads copy through `double` / `complex<double>`
+ * element by element, so the answer carries hardware precision
+ * regardless of the input ring.
  *
  * The library is detected at configure time --- the autotools
  * macro `M2/m4/ax_lapack.m4` resolves to whatever LAPACK build
