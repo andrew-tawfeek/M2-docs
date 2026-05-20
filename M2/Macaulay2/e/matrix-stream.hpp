@@ -69,6 +69,18 @@
     s.idealDone();
 #endif
 
+/**
+ * @brief Streaming consumer that builds an engine `Matrix` from the
+ * mathicgb-style stream callbacks (`idealBegin /
+ * appendPolynomialBegin / appendTermBegin / appendExponent /
+ * appendTermDone / appendPolynomialDone / idealDone`).
+ *
+ * @details Mirrors the `BasicPolyListStreamCollector` shape but produces a
+ * proper engine `Matrix*` over a `PolyRing` instead of a portable
+ * `BasicPolyList`. Used as the bridge between mathicgb's stream
+ * input and the engine's typed matrices --- `value()` returns
+ * `nullptr` until `idealDone()` is called.
+ */
 class MatrixStream
 {
  public:

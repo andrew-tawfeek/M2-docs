@@ -49,6 +49,18 @@ class FreeAlgebra;
 
 extern void tryOutMathicCode();
 
+/**
+ * @brief One-overlap-at-a-time Groebner basis driver for the free associative
+ * algebra (the "Naive" companion to the F4-style `NCF4`).
+ *
+ * @details Keeps the running GB in `mGroebner` (a `PolyList`) with per-element
+ * sugar degrees in `mGroebnerDegrees` (-1 marks a retired entry).
+ * Overlap pairs are tracked in `mOverlapTable`; divisibility queries
+ * use `mWordTable` (with a commented-out `SuffixTree` alternative
+ * available as a swap-in). Reduction goes through the lazily owned
+ * `mHeap` (a `PolynomialHeap`, see `NCReduction.hpp`), letting the
+ * driver pick among the heap backends.
+ */
 class NCGroebner : public our_new_delete
 {
 private:

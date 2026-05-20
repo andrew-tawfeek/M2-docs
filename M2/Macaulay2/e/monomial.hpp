@@ -41,6 +41,17 @@
 #include "engine-includes.hpp"
 #include "buffer.hpp"
 
+/**
+ * @brief Engine-side immutable monomial value type wrapping a varpower-
+ * encoded exponent vector.
+ *
+ * @details Storage is `[2n+1, v_1, e_1, ..., v_n, e_n]` (per
+ * `ExponentList.hpp`): leading length, then alternating variable
+ * indices and exponents. Inherits from `EngineObject` so the
+ * monomial can carry a stable content-based hash once exposed to
+ * the front end. The `TODO` at the top of the file notes a planned
+ * template-based unification with the lower-level varpower routines.
+ */
 // TODO: can this be combined with varpower using templates?
 class EngineMonomial : public EngineObject
 {

@@ -47,6 +47,18 @@ class RingMap;
 class SumCollector;
 class buffer;
 
+/**
+ * @brief Concrete `Ring` wrapper around an owned `FreeAlgebraQuotient`
+ * (the quotient counterpart of `M2FreeAlgebra`).
+ *
+ * @details Holds a reference to the ambient `M2FreeAlgebra` plus a
+ * `std::unique_ptr<FreeAlgebraQuotient>` carrying the
+ * Groebner-basis-defined quotient. `create(F, GB, maxdeg)` is the
+ * factory: it accepts the engine `Matrix* GB` of defining
+ * relations and an optional `maxdeg` cap (`-1` means compute a
+ * complete GB), wires up the underlying `FreeAlgebraQuotient`, and
+ * lifts it into the engine's `Ring` hierarchy.
+ */
 class M2FreeAlgebraQuotient : public M2FreeAlgebraOrQuotient
 {
 private:

@@ -56,9 +56,21 @@ template <class T>
 class MutableMat;
 
 /**
- * \ingroup matrices
+ * @brief Abstract base class for mutable matrices over an arbitrary engine
+ * `Ring`, the in-place counterpart of the immutable `Matrix`.
+ *
+ * @details Defines the pure-virtual operation surface
+ * (`get_entry` / `set_entry` / `row_op` / `column_op` / `addRow` /
+ * `solve` / ...) that engine code reduces against, and lets
+ * `MutableMat<DMat<R>>` and `MutableMat<SMat<R>>` (the dense /
+ * sparse templated subclasses) pick storage. Inherits
+ * `MutableEngineObject` so mutation does not invalidate the
+ * identity-based hash. Used as the run-time type behind the
+ * front end's `MutableMatrix` interface for ring rings other
+ * than the numerical ones handled by LAPACK.
+ *
+ * @ingroup matrices
  */
-
 class MutableMatrix : public MutableEngineObject
 {
  protected:

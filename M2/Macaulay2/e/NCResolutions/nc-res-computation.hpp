@@ -52,6 +52,18 @@
 #include "matrix.hpp"
 #include "matrix-con.hpp"
 
+/**
+ * @brief `ResolutionComputation` subclass that builds a free resolution over
+ * a `FreeAlgebraQuotient` (non-commutative).
+ *
+ * @details Constructor is private; the free function `createNCRes` (declared
+ * friend) instantiates the computation from a GB-presented quotient
+ * matrix, a `max_level` cap on homological degree, and a strategy
+ * flag. The class then plugs into the engine's standard
+ * `ResolutionComputation` driver loop (`start_computation`,
+ * partial-progress accessors, etc.) so non-commutative resolutions
+ * look the same to front-end callers as the commutative ones.
+ */
 class NCResComputation : public ResolutionComputation
 {
  private:

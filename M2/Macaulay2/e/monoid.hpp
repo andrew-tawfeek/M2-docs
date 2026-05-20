@@ -67,6 +67,20 @@ typedef const int *const_monomial;
 // TODO: rename and document all variables
 // (e.g. see NCAlgebras/FreeMonoid.hpp and mathicgb/MonoMonoid.hpp)
 // TODO: make sure monoid is deconstructed and not garbage collected
+/**
+ * @brief Engine-side commutative monomial monoid: variable names, ordering,
+ * multidegree machinery, and monomial encoding/decoding.
+ *
+ * @details Owns the front-end `MonomialOrdering* mo_` plus its compiled
+ * `MonomialOrder* monorder_` form, the variable count and names,
+ * the per-variable multidegrees, the heft vector, and (recursively)
+ * a `mDegreeMonoid` describing how degrees themselves are
+ * structured. Exposes the operations rings reduce against
+ * (`mult`, `divide`, `lcm`, `gcd`, `compare`, `is_one`, plus
+ * encode / decode between exponent vectors and packed monomial
+ * words). The commutative counterpart of `FreeMonoid` in the
+ * NC stack.
+ */
 class Monoid : public MutableEngineObject
 {
   const Monoid *mDegreeMonoid;

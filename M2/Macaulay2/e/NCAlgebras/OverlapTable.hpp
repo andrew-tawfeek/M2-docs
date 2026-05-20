@@ -55,11 +55,24 @@ using Overlap = std::tuple<int,int,int,bool>;
 
 using OverlapMap = std::map<std::pair<int,bool>,std::deque<Overlap>>;
     
+/**
+ * @brief Per-degree FIFO queue of pending overlaps for the NC Groebner
+ * basis driver to process.
+ *
+ * @details `Overlap = (firstIndex, position, secondIndex, computedFlag)`
+ * encodes one prefix/suffix overlap of two `mPolyList` entries;
+ * the table groups entries by `(degree, isGenerator)` in a
+ * `std::map` so the driver can pull all overlaps of the current
+ * degree in one shot via `nextDegreeOverlaps`. `insert` appends
+ * (creating the bucket on demand) and `isFinished` /
+ * `isFinished(topDegree)` ask whether any pending work remains
+ * at or below a degree cap.
+ */
 class OverlapTable
 {
 public:
   friend std::ostream& operator<<(std::ostream& ostr, const OverlapTable& overlapTable);
-  
+
   OverlapTable() : mPolyList(nullptr) {};
   OverlapTable(ConstPolyList* polyList) : mPolyList(polyList) {};
 

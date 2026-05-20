@@ -42,6 +42,21 @@
 class FreeAlgebra;
 class Word;
 
+/**
+ * @brief Abstract interface for accumulating a polynomial as a sum of
+ * `(coeff, left * poly * right)` contributions in the free algebra.
+ *
+ * @details The standard "geobucket"-shaped API used by `NCGroebner` / `NCF4`
+ * reduction loops: `addPolynomial` slots a new contribution in,
+ * `isZero` collapses the heap until either a non-zero lead term is
+ * available or the heap is genuinely empty, `viewLeadTerm` /
+ * `removeLeadTerm` walk the result, and `value()` materialises
+ * everything into a `Poly`. Concrete subclasses
+ * (`TrivialPolynomialHeap`, `MapPolynomialHeap`,
+ * `PriorityQueuePolynomialHeap`, the geobucket-backed
+ * `NaivePolynomialHeap<Queue>`) live in `NCReduction.cpp` and
+ * make different storage / deduplication trade-offs.
+ */
 class PolynomialHeap : public our_new_delete
 {
 public:

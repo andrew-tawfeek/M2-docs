@@ -39,7 +39,18 @@
 class MatrixGenerator;
 
 /**
- * \ingroup matrices
+ * @brief Mutable builder used to assemble an immutable `Matrix` one column
+ * (or one term) at a time.
+ *
+ * @details Held while the matrix is in flux: tracks the target / source
+ * `FreeModule`s, the in-progress column vectors in `entries`, a
+ * shared degree shift `deg`, and the `cols_frozen` flag that
+ * locks the source free module once the caller commits to a
+ * column count. `to_matrix()` (declared further down) snapshots
+ * the current state into a fresh `Matrix*`, after which the
+ * `MatrixConstructor` can be discarded or refilled.
+ *
+ * @ingroup matrices
  */
 class MatrixConstructor
 {
