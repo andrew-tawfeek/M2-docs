@@ -8,13 +8,20 @@
  * @brief `sagbi` --- subduction helpers for canonical-subalgebra (SAGBI) bases.
  *
  * Declares the static-only `sagbi` namespace-class holding the
- * subduction primitives that would drive a native SAGBI engine:
- * given a polynomial `f` in `R` and a candidate subalgebra basis
- * (delivered through a `RingMap phi` plus a `GBComputation J`
- * for the ambient ideal), `subduct` returns an element of the
- * subalgebra whose leading term cancels `f`'s, or zero when no
- * such reduction exists. A second overload performs the same
- * reduction column-wise on a `Matrix`.
+ * subduction primitives that would drive a native SAGBI engine.
+ * Four overloads cover two shapes. The simple
+ * `subduct(numslots, R, f, phi, J)` takes a polynomial `f` in a
+ * single ring `R`, a candidate subalgebra basis delivered through
+ * `RingMap phi`, and a `GBComputation J` for the ambient ideal,
+ * and returns an element of the subalgebra whose leading term
+ * cancels `f`'s (or zero when no such reduction exists); a
+ * matrix overload does the same column-by-column on a `Matrix`.
+ * The two `subduct1(...)` overloads add the two-ring tensor
+ * setup --- a tensor ring `T`, a poly ring `S`, three `RingMap`s
+ * (`inclusionAmbient`, `fullSubstitution`, `substitutionInclusion`),
+ * and two GBs (`gbI` for the subalgebra ideal, `gbReductionIdeal`
+ * for the reduction ideal) --- and are the variant
+ * `interface/groebner.cpp::rawSubduct1` calls.
  *
  * The header flags itself as "not currently functional" --- the
  * in-engine helpers stop short of a complete SAGBI driver, and
