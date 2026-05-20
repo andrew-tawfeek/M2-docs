@@ -40,6 +40,19 @@
 
 ///// Ring Hierarchy ///////////////////////////////////
 
+/**
+ * @brief `PolyRing` subclass for Weyl algebras: polynomial rings with the
+ * `[d_i, x_i] = 1` derivative-variable commutation relations.
+ *
+ * @details Tracks a `_derivative[i]` / `_commutative[i]` index pair so the
+ * ring knows which variables are partial derivatives and which are
+ * the variables they differentiate. Optional homogeneous mode
+ * (`_homogeneous_weyl_algebra`) adds an extra homogenising variable
+ * `_homog_var` used to keep degrees compatible across commutator
+ * expansions. The static `binomtable` / `diffcoeffstable` cache
+ * binomial coefficients and derivative-coefficient products used by
+ * term-by-term multiplication.
+ */
 class WeylAlgebra : public PolyRing
 {
   int _nderivatives;

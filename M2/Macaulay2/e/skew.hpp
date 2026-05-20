@@ -32,6 +32,20 @@
  * @see polyring.hpp
  */
 
+/**
+ * @brief Sign-rule helper used by every ring that has a skew-commutative
+ * subset of variables (exterior factor, full skew ring, ...).
+ *
+ * @details Stores which of the `_n_vars` variables are skew
+ * (`_skew_list[0.._n_skew-1]`, with `_skew_exp[i]` a fast
+ * "is variable `i` skew?" lookup), plus the byte size used to
+ * cache exponent vectors. Hands out the inversion count needed by
+ * the wrapping ring's `mult_by_term1` to decide the sign of a
+ * product, and detects `x_i^2 = 0` collapses on the skew side.
+ * Full polynomial multiplication still lives in the rings that
+ * embed this helper (`SkewPolynomialRing`, `PolyRing` with skew
+ * factors, F4 / resolution code).
+ */
 class SkewMultiplication
 {
  public:

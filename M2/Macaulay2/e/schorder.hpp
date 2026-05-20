@@ -47,6 +47,19 @@
 class GBMatrix;
 class Matrix;
 
+/**
+ * @brief Per-component tie-breaker data for a Schreyer monomial order on a
+ * `FreeModule`.
+ *
+ * @details For each of the `_rank` components, stores a `compare_num` plus
+ * the component's base monomial as a flat
+ * `[compare_num, encoded_monom]` slice of width `_nslots` inside
+ * `_order`. When two `FreeModule` entries with different
+ * components are compared, their monomials get pre-multiplied by
+ * their respective `base_monom`s and then ranked by `compare_num`
+ * --- the standard Schreyer recipe that keeps the resolution's GB
+ * machinery consistent across levels.
+ */
 class SchreyerOrder : public our_new_delete
 {
   const Monoid *M;

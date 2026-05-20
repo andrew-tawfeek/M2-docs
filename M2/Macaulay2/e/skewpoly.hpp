@@ -41,6 +41,18 @@
 
 ///// Ring Hierarchy ///////////////////////////////////
 
+/**
+ * @brief `PolyRing` subclass for skew-commutative (exterior-style)
+ * polynomial rings: the listed `skewvars` anticommute among
+ * themselves and square to zero.
+ *
+ * @details Constructed via `create(K, M, skewvars)` --- `skewvars` is the
+ * array of variable indices that participate in the
+ * anti-commutation. The data needed to apply the sign changes
+ * lives in a `SkewMultiplication` instance attached to the
+ * underlying ring; the `PolyRing` virtuals are overridden to
+ * consult it during monomial multiplication.
+ */
 class SkewPolynomialRing : public PolyRing
 {
   bool initialize_skew(M2_arrayint skewvars);

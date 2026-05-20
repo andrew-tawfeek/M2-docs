@@ -39,6 +39,18 @@ class RingMap;
 
 class DRing;
 
+/**
+ * @brief `Ring` subclass for tower polynomial rings
+ * `(Z/p)[x_0][x_1]...[x_{n-1}]` modulo a chain of algebraic extensions.
+ *
+ * @details Owns a `DRing*` (defined in `dpoly.hpp`) that does the actual
+ * tower-polynomial arithmetic, and lifts it into the engine's
+ * `Ring` hierarchy. `level` is the working tower level and
+ * `nvars` the variable count; `names` carries the textual variable
+ * names for display. Built via `create(charac, names, extensions)`
+ * --- `extensions[i]` is the defining polynomial of the `i`-th
+ * variable over the lower variables (or zero for transcendental).
+ */
 class Tower : public Ring
 {
   friend class TowerEvaluator;

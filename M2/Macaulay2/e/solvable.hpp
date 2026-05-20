@@ -37,6 +37,18 @@
 
 ///// Ring Hierarchy ///////////////////////////////////
 
+/**
+ * @brief `PolyRing` subclass for solvable polynomial algebras (PBW-type
+ * non-commutative rings where each pair of non-commuting variables
+ * satisfies a relation of the form `x_j x_i = c_ij x_i x_j + lower`).
+ *
+ * @details `Q_` is the matrix of `lower` correction terms indexed by
+ * variable pairs --- when `mult_by_term1` would normally commute
+ * `x_j` past `x_i`, the engine looks up `Q_` to add in the
+ * lower-order polynomial that the relation demands. Constructed via
+ * `create(R, Q)` so the relations can be validated against the
+ * ambient `PolynomialRing` before the new ring is exposed.
+ */
 class SolvableAlgebra : public PolyRing
 {
   const Matrix *Q_;

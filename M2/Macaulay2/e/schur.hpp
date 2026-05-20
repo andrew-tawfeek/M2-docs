@@ -62,6 +62,18 @@ class tableau
   void display() const;
 };
 
+/**
+ * @brief `PolyRing` subclass implementing the Schur (symmetric-function)
+ * ring whose monomials are partitions and whose multiplication is
+ * the Littlewood-Richardson rule.
+ *
+ * @details Exponent vectors are interpreted as partitions and converted
+ * back and forth via `to_partition` / `from_partition`. Schur
+ * multiplication uses the skew-tableau recursion `SM()` driven by
+ * `_SMtab` / `_SMfilled` / `_SMcurrent` scratch state, accumulating
+ * the result into `_SMresult`. Used by the engine's symmetric
+ * function code paths to compute products and skew Schur expansions.
+ */
 class SchurRing : public PolyRing
 {
  private:
