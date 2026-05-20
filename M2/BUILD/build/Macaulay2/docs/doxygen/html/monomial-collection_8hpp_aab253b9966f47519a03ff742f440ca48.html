@@ -105,37 +105,37 @@ template&lt;typename <a class="el" href="struct_t.html">T</a>&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="monomial-collection_8hpp_source.html#l00076">76</a> of file <a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
-<div class="line"><span class="lineno">   78</span>  <span class="comment">// basic layout data</span></div>
-<div class="line"><span class="lineno">   79</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;size:            &quot;</span> &lt;&lt; cont.<a class="code hl_variable" href="struct_t_a26e23de58526d847534987d9531aef51.html#a26e23de58526d847534987d9531aef51">size</a>() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   80</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;buckets:         &quot;</span> &lt;&lt; cont.bucket_count() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   81</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;load factor:     &quot;</span> &lt;&lt; cont.load_factor() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   82</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;max load factor: &quot;</span> &lt;&lt; cont.max_load_factor() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>  <span class="comment">// iterator category</span></div>
-<div class="line"><span class="lineno">   85</span>  <span class="keywordflow">if</span> (<span class="keyword">typeid</span>(<span class="keyword">typename</span> std::iterator_traits&lt;typename T::iterator&gt;::iterator_category)</div>
-<div class="line"><span class="lineno">   86</span>      == <span class="keyword">typeid</span>(std::bidirectional_iterator_tag))</div>
-<div class="line"><span class="lineno">   87</span>    {</div>
-<div class="line"><span class="lineno">   88</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;chaining style:  doubly-linked&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   89</span>    }</div>
-<div class="line"><span class="lineno">   90</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   91</span>    {</div>
-<div class="line"><span class="lineno">   92</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;chaining style:  singly-linked&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   93</span>    }</div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>  <span class="comment">// elements per bucket</span></div>
-<div class="line"><span class="lineno">   96</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;data: &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   97</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> idx=0ul; idx != cont.bucket_count(); ++idx)</div>
-<div class="line"><span class="lineno">   98</span>    {</div>
-<div class="line"><span class="lineno">   99</span>      std::cout &lt;&lt; <span class="stringliteral">&quot; b[&quot;</span> &lt;&lt; std::setw(2) &lt;&lt; idx &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
-<div class="line"><span class="lineno">  100</span>      <span class="keywordflow">for</span> (<span class="keyword">auto</span> pos = cont.begin(idx); pos != cont.end(idx); ++pos)</div>
-<div class="line"><span class="lineno">  101</span>        {</div>
-<div class="line"><span class="lineno">  102</span>          std::cout &lt;&lt; *pos &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><span class="lineno">  103</span>        }</div>
-<div class="line"><span class="lineno">  104</span>      std::cout &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  105</span>    }</div>
-<div class="line"><span class="lineno">  106</span>}</div>
+<p class="definition">Definition at line <a class="el" href="monomial-collection_8hpp_source.html#l00084">84</a> of file <a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>{</div>
+<div class="line"><span class="lineno">   86</span>  <span class="comment">// basic layout data</span></div>
+<div class="line"><span class="lineno">   87</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;size:            &quot;</span> &lt;&lt; cont.<a class="code hl_variable" href="struct_t_a26e23de58526d847534987d9531aef51.html#a26e23de58526d847534987d9531aef51">size</a>() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   88</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;buckets:         &quot;</span> &lt;&lt; cont.bucket_count() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   89</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;load factor:     &quot;</span> &lt;&lt; cont.load_factor() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   90</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;max load factor: &quot;</span> &lt;&lt; cont.max_load_factor() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>  <span class="comment">// iterator category</span></div>
+<div class="line"><span class="lineno">   93</span>  <span class="keywordflow">if</span> (<span class="keyword">typeid</span>(<span class="keyword">typename</span> std::iterator_traits&lt;typename T::iterator&gt;::iterator_category)</div>
+<div class="line"><span class="lineno">   94</span>      == <span class="keyword">typeid</span>(std::bidirectional_iterator_tag))</div>
+<div class="line"><span class="lineno">   95</span>    {</div>
+<div class="line"><span class="lineno">   96</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;chaining style:  doubly-linked&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   97</span>    }</div>
+<div class="line"><span class="lineno">   98</span>  <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   99</span>    {</div>
+<div class="line"><span class="lineno">  100</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;chaining style:  singly-linked&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  101</span>    }</div>
+<div class="line"><span class="lineno">  102</span> </div>
+<div class="line"><span class="lineno">  103</span>  <span class="comment">// elements per bucket</span></div>
+<div class="line"><span class="lineno">  104</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;data: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  105</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> idx=0ul; idx != cont.bucket_count(); ++idx)</div>
+<div class="line"><span class="lineno">  106</span>    {</div>
+<div class="line"><span class="lineno">  107</span>      std::cout &lt;&lt; <span class="stringliteral">&quot; b[&quot;</span> &lt;&lt; std::setw(2) &lt;&lt; idx &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span>;</div>
+<div class="line"><span class="lineno">  108</span>      <span class="keywordflow">for</span> (<span class="keyword">auto</span> pos = cont.begin(idx); pos != cont.end(idx); ++pos)</div>
+<div class="line"><span class="lineno">  109</span>        {</div>
+<div class="line"><span class="lineno">  110</span>          std::cout &lt;&lt; *pos &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><span class="lineno">  111</span>        }</div>
+<div class="line"><span class="lineno">  112</span>      std::cout &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  113</span>    }</div>
+<div class="line"><span class="lineno">  114</span>}</div>
 <div class="ttc" id="astruct_t_a26e23de58526d847534987d9531aef51_html_a26e23de58526d847534987d9531aef51"><div class="ttname"><a href="struct_t_a26e23de58526d847534987d9531aef51.html#a26e23de58526d847534987d9531aef51">T::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition</b> <a href="table_8c_source.html#l00016">table.c:16</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="struct_t_a26e23de58526d847534987d9531aef51.html#a26e23de58526d847534987d9531aef51">T::size</a>, and <a class="el" href="table_8c_adec21d234619c8f0afbf0914249837b1.html#adec21d234619c8f0afbf0914249837b1">T</a>.</p>
