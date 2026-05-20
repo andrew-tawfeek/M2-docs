@@ -73,7 +73,20 @@ class GBComputation;
 #include "qring.hpp"
 
 /**
- * \ingroup polynomialrings
+ * @brief Abstract base for the engine's polynomial-ring hierarchy.
+ *
+ * @details Adds polynomial-specific state (graded flag, skew /
+ * Weyl / solvable flags and their auxiliary data, coefficient-type
+ * kind, optional quotient info via `QRingInfo*`) on top of `Ring`,
+ * and exposes the operation surface --- `numerator` / `denominator`,
+ * `lead_*`, `homogenize`, `var`, `diff_term`, GB hooks, ... ---
+ * that the rest of the engine calls without caring whether the
+ * underlying value is stored as a flat `Nterm*` (`PolyRingFlat`),
+ * as a fraction (`PolyRingFraction`), or as a quotient
+ * (`PolyRingQuotient`). Concrete classes pick their representation
+ * and override the virtual methods accordingly.
+ *
+ * @ingroup polynomialrings
  */
 class PolynomialRing : public Ring
 {
@@ -429,7 +442,18 @@ class PolynomialRing : public Ring
 };
 
 /**
- * \ingroup polynomialrings
+ * @brief `PolynomialRing` subclass whose elements are represented as a
+ * single flat `Nterm*` linked list (no fraction / quotient wrapper).
+ *
+ * @details The fast common case --- ordinary polynomial rings over a base
+ * coefficient ring. `numerator(f)` is simply `f.poly_val`, so
+ * polynomial operations get to skip the fraction-extraction
+ * machinery the `PolyRingFraction` path needs.
+ * `cast_to_PolyRingFlat()` is overridden to return `this` so engine
+ * code can identify the flat representation through the standard
+ * RTTI-free cast pattern.
+ *
+ * @ingroup polynomialrings
  */
 class PolyRingFlat : public PolynomialRing
 // The class of polynomial rings implemented as a pointer (single value).
