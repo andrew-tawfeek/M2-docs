@@ -10,13 +10,17 @@
  * whenever the user asks for one of the `aring`-family
  * coefficient rings. Prime fields: `rawARingZZp` (small `p`,
  * `2 <= p <= 32749`) and `rawARingZZpFlint` (`2 <= p <= 2^64-1`).
- * Galois fields: `rawARingGaloisField(p, n)` plus four
- * `prim`-driven variants taking a `RingElement` primitive
- * element --- `rawARingGaloisField1` (M2's own GF code),
- * `rawARingGaloisFieldFlintBig` (FLINT's wordsize-`p` code,
- * no Zech tables), `rawARingGaloisFieldFlintZech` (FLINT
- * with Zech lookup tables), and `rawARingGaloisFieldFromQuotient`
- * (Givaro-backed). FLINT-accelerated rationals/integers:
+ * Galois fields: `rawARingGaloisField(p, n)` (the Givaro path,
+ * which now errors out with "givaro is no longer available") plus
+ * three live `prim`-driven variants taking a `RingElement`
+ * primitive element --- `rawARingGaloisField1` (M2's own GF code),
+ * `rawARingGaloisFieldFlintBig` (FLINT's wordsize-`p` code, no
+ * Zech tables), and `rawARingGaloisFieldFlintZech` (FLINT with
+ * Zech lookup tables). The fourth declaration
+ * `rawARingGaloisFieldFromQuotient` survives in the header but
+ * its body in `aring.cpp` is `#if 0`-d out (also marked for
+ * removal during the givaro removal), so any caller relying on
+ * it will fail at link time. FLINT-accelerated rationals/integers:
  * `rawARingZZFlint`, `rawARingQQFlint`. Iterated extensions:
  * three constructors `rawARingTower1` / `_2` / `_3` for
  * progressively building tower rings from a coefficient
