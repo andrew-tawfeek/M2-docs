@@ -15,7 +15,7 @@ var class_k_basis =
     [ "try_insert_sg", "class_k_basis_af1b948a2af785aaa7783064cbc283fe3.html#af1b948a2af785aaa7783064cbc283fe3", null ],
     [ "value", "class_k_basis_ac6cee5c3cb379f7e37d073c12e084c58.html#ac6cee5c3cb379f7e37d073c12e084c58", null ],
     [ "bottom_matrix", "class_k_basis_a1b5e779363a82440ed0321ef4d6c16de.html#a1b5e779363a82440ed0321ef4d6c16de", null ],
-    [ "computation_type", "class_k_basis_a8418a794617bb32e11eab8a8aa9c50ae.html#a8418a794617bb32e11eab8a8aa9c50ae", null ],
+    [ "computation_type", "class_k_basis_a87477caef42f22ae02a5653fe88104ef.html#a87477caef42f22ae02a5653fe88104ef", null ],
     [ "D", "class_k_basis_a3e82b9e39190607d12765f6909549321.html#a3e82b9e39190607d12765f6909549321", null ],
     [ "do_truncation", "class_k_basis_a5615e3b52fe3dc24428a38114938e669.html#a5615e3b52fe3dc24428a38114938e669", null ],
     [ "hi_degree", "class_k_basis_a7cab72cc888a4c4329b8ffafe98699a2.html#a7cab72cc888a4c4329b8ffafe98699a2", null ],

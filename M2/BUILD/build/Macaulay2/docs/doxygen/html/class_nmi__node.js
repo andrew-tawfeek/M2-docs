@@ -14,7 +14,7 @@ var class_nmi__node =
     [ "header", "class_nmi__node_a65a29bd8f0fdd90bec177633799df680.html#a65a29bd8f0fdd90bec177633799df680", null ],
     [ "left", "class_nmi__node_ae2befbf07282794d61187602fd3092dd.html#ae2befbf07282794d61187602fd3092dd", null ],
     [ "right", "class_nmi__node_afc6cf5fea312d00f38e18facd1588fb5.html#afc6cf5fea312d00f38e18facd1588fb5", null ],
-    [ "tag", "class_nmi__node_a909c75596dfc6e5e9160df8f9506683d.html#a909c75596dfc6e5e9160df8f9506683d", null ],
-    [ "val", "class_nmi__node_a4578b78db9f9d2563376e44549a8685e.html#a4578b78db9f9d2563376e44549a8685e", null ],
+    [ "tag", "class_nmi__node_a143c0d9aa55c24f1b62808ff1e95b43d.html#a143c0d9aa55c24f1b62808ff1e95b43d", null ],
+    [ "val", "class_nmi__node_a89963611987ee2307f76dd827969cf25.html#a89963611987ee2307f76dd827969cf25", null ],
     [ "var", "class_nmi__node_ae09a420bc38824b7a24107684db6544e.html#ae09a420bc38824b7a24107684db6544e", null ]
 ];

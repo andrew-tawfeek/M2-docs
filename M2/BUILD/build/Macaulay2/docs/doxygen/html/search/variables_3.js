@@ -64,7 +64,7 @@ var searchData=
   ['components_61',['components',['../class_free_module_a61d30064a9a71aad7d4ab73bdd85b770.html#a61d30064a9a71aad7d4ab73bdd85b770',1,'FreeModule']]],
   ['comps_62',['comps',['../structsparse__row_aca52b2e2adcd80ec8237169945fa0bca.html#aca52b2e2adcd80ec8237169945fa0bca',1,'sparse_row::comps'],['../structrow__elem_a7c465bf81ecb52a1f67cb7878e90b340.html#a7c465bf81ecb52a1f67cb7878e90b340',1,'row_elem::comps']]],
   ['computation_5fstatus_63',['computation_status',['../class_computation_a16a66d725f6681f25a4b36670818633b.html#a16a66d725f6681f25a4b36670818633b',1,'Computation']]],
-  ['computation_5ftype_64',['computation_type',['../class_k_basis_a8418a794617bb32e11eab8a8aa9c50ae.html#a8418a794617bb32e11eab8a8aa9c50ae',1,'KBasis']]],
+  ['computation_5ftype_64',['computation_type',['../class_k_basis_a87477caef42f22ae02a5653fe88104ef.html#a87477caef42f22ae02a5653fe88104ef',1,'KBasis']]],
   ['computationstatus_65',['computationStatus',['../struct_our_node_a5ee3562ebf415d37402751f321d0cb63.html#a5ee3562ebf415d37402751f321d0cb63',1,'OurNode']]],
   ['compute_5fmonomial_5fres_66',['COMPUTE_MONOMIAL_RES',['../res-a0_8hpp_a5ee89dc0d12ad9092a75e23c8b8bf0f0.html#a5ee89dc0d12ad9092a75e23c8b8bf0f0',1,'res-a0.hpp']]],
   ['compute_5fmonorder_67',['COMPUTE_MONORDER',['../res-a0_8hpp_aa8ea545e242681db7cf3f2f9f240835c.html#aa8ea545e242681db7cf3f2f9f240835c',1,'res-a0.hpp']]],

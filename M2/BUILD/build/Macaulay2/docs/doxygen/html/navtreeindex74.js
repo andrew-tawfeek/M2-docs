@@ -38,7 +38,7 @@ var NAVTREEINDEX74 =
 "matrix_8h_source.html":[7,0,0,0,3,21],
 "matrix_8hpp.html":[7,0,0,0,192],
 "matrix_8hpp_source.html":[7,0,0,0,192],
-"md__2home_2ubuntu_2_m2-docs_2_m2_2_macaulay2_2e_2_r_e_a_d_m_e-monideals.html":[1],
+"md__macaulay2_2e_2_r_e_a_d_m_e-monideals.html":[1],
 "mem_8cpp.html":[7,0,0,0,193],
 "mem_8cpp_a05e4d9829321b3db5b3dced46a697515.html#a05e4d9829321b3db5b3dced46a697515":[7,0,0,0,193,2],
 "mem_8cpp_a4ac3e2b884004fcae0a209537fb483c4.html#a4ac3e2b884004fcae0a209537fb483c4":[7,0,0,0,193,1],

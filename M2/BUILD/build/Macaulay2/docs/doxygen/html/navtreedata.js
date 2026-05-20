@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "Macaulay2 Engine", "index.html", [
     [ "Macaulay2 C++ engine documentation", "index.html", null ],
-    [ "Project: Monomial Lookup tables in the engine", "md__2home_2ubuntu_2_m2-docs_2_m2_2_macaulay2_2e_2_r_e_a_d_m_e-monideals.html", null ],
+    [ "Project: Monomial Lookup tables in the engine", "md__macaulay2_2e_2_r_e_a_d_m_e-monideals.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Jakob todo list", "jakob.html", null ],
     [ "Topics", "topics.html", "topics" ],

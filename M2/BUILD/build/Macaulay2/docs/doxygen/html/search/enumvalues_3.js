@@ -6,5 +6,5 @@ var searchData=
   ['f4_5fspair_5fring_3',['F4_SPAIR_RING',['../f4-types_8hpp_ac1e9e9f028888dfaea8b9111ee735025.html#ac1e9e9f028888dfaea8b9111ee735025afd06329d6a738cc897bb136970891d21',1,'f4-types.hpp']]],
   ['f4_5fspair_5fskew_4',['F4_SPAIR_SKEW',['../f4-types_8hpp_ac1e9e9f028888dfaea8b9111ee735025.html#ac1e9e9f028888dfaea8b9111ee735025a1ab00c90097b871ee1193c0296696748',1,'f4-types.hpp']]],
   ['f4_5fspair_5fspair_5',['F4_SPAIR_SPAIR',['../f4-types_8hpp_ac1e9e9f028888dfaea8b9111ee735025.html#ac1e9e9f028888dfaea8b9111ee735025a87bae1d8702770e61a6e88af3a10ad4a',1,'f4-types.hpp']]],
-  ['frame_6',['Frame',['../class_schreyer_frame_a89a6c467708977d44cf4727e9c771d3b.html#a89a6c467708977d44cf4727e9c771d3ba594dc442df494c72b918045bea0f422c',1,'SchreyerFrame']]]
+  ['frame_6',['Frame',['../class_schreyer_frame_a4b5aa56345b541df4aba5e8e6494a210.html#a4b5aa56345b541df4aba5e8e6494a210a594dc442df494c72b918045bea0f422c',1,'SchreyerFrame']]]
 ];

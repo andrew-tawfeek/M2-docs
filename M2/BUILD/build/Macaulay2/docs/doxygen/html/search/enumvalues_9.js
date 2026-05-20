@@ -4,7 +4,7 @@ var searchData=
   ['makingpoly_1',['MakingPoly',['../structmgbi_1_1_stream_state_checker_1_1_pimpl_a1894dd70767ffab9d9b83ef7682d087d.html#a1894dd70767ffab9d9b83ef7682d087daa2a4497adbc0ac3bc7f52f6847017954',1,'mgbi::StreamStateChecker::Pimpl']]],
   ['makingterm_2',['MakingTerm',['../structmgbi_1_1_stream_state_checker_1_1_pimpl_a1894dd70767ffab9d9b83ef7682d087d.html#a1894dd70767ffab9d9b83ef7682d087dad6d2fb88644a281f36e4fe7914fde542',1,'mgbi::StreamStateChecker::Pimpl']]],
   ['map_3',['Map',['../_n_c_reduction_8hpp_a3323bceff3e6a898901853c6a56f223a.html#a3323bceff3e6a898901853c6a56f223aa46f3ea056caa3126b91f3f70beea068c',1,'NCReduction.hpp']]],
-  ['matrices_4',['Matrices',['../class_schreyer_frame_a89a6c467708977d44cf4727e9c771d3b.html#a89a6c467708977d44cf4727e9c771d3ba0534e6b5579376eda1d407dc8db791cb',1,'SchreyerFrame']]],
+  ['matrices_4',['Matrices',['../class_schreyer_frame_a4b5aa56345b541df4aba5e8e6494a210.html#a4b5aa56345b541df4aba5e8e6494a210a0534e6b5579376eda1d407dc8db791cb',1,'SchreyerFrame']]],
   ['matrixreducer_5',['MatrixReducer',['../classmgb_1_1_groebner_configuration_a8faeb01a22b3c10abd0d8a797788cf28.html#a8faeb01a22b3c10abd0d8a797788cf28a2529451a700215f76e432ea3f4850032',1,'mgb::GroebnerConfiguration']]],
   ['mcopy_6',['MCopy',['../class_s_l_program_a5dcea512aaff0e8dff7653964b1a12e8.html#a5dcea512aaff0e8dff7653964b1a12e8a7b9349f0bf43a064575aa3d8d84cae45',1,'SLProgram']]],
   ['min_5fstep_5ffailed_7',['MIN_STEP_FAILED',['../_s_l_p-imp_8hpp_a801be40a606301461ff812058569ee3b.html#a801be40a606301461ff812058569ee3badb94e0fd59b502e454978d8c134b427c',1,'SLP-imp.hpp']]],

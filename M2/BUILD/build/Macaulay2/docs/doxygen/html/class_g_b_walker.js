@@ -39,6 +39,6 @@ var class_g_b_walker =
     [ "monorder2", "class_g_b_walker_a5ee1e63ed9ca0f6d4ea3728c22188591.html#a5ee1e63ed9ca0f6d4ea3728c22188591", null ],
     [ "next_to_reduce", "class_g_b_walker_a24d16518c6f3c3e22ad619f72247e346.html#a24d16518c6f3c3e22ad619f72247e346", null ],
     [ "R", "class_g_b_walker_ad8709849db165cc26c693e024d542f64.html#ad8709849db165cc26c693e024d542f64", null ],
-    [ "state", "class_g_b_walker_aac2712c055f0ffd12234d5bebe377f84.html#aac2712c055f0ffd12234d5bebe377f84", null ],
+    [ "state", "class_g_b_walker_a931ee8f75795dd8a53f960f6292c8f7d.html#a931ee8f75795dd8a53f960f6292c8f7d", null ],
     [ "ww", "class_g_b_walker_aa33bf94fccac102946c200fee868a2d6.html#aa33bf94fccac102946c200fee868a2d6", null ]
 ];

@@ -127,9 +127,9 @@ var group__gb =
         [ "lcm", "structgb_a_1_1spair_ae7e4e7d73304e53c397bae44a104c30c.html#ae7e4e7d73304e53c397bae44a104c30c", null ],
         [ "lead_of_spoly", "structgb_a_1_1spair_a3131f9edd238fe3875744632137e84d1.html#a3131f9edd238fe3875744632137e84d1", null ],
         [ "next", "structgb_a_1_1spair_a63af054141ecb87ea7628d4bb737d233.html#a63af054141ecb87ea7628d4bb737d233", null ],
-        [ "pair", "structgb_a_1_1spair_a966da2775012880fcf292735a3ac9266.html#a966da2775012880fcf292735a3ac9266", null ],
+        [ "pair", "structgb_a_1_1spair_a9c7776de36c8989d1a095cde75bee7a2.html#a9c7776de36c8989d1a095cde75bee7a2", null ],
         [ "type", "structgb_a_1_1spair_abbad1085113eb96a786b77893d63e4f0.html#abbad1085113eb96a786b77893d63e4f0", null ],
-        [ "x", "structgb_a_1_1spair_a931cb037fffc4817f6951b4b8e0e6fc5.html#a931cb037fffc4817f6951b4b8e0e6fc5", null ]
+        [ "x", "structgb_a_1_1spair_a60abd1025c337bdd81914b844ec06273.html#a60abd1025c337bdd81914b844ec06273", null ]
       ] ],
       [ "SPairSet", "structgb_a_1_1_s_pair_set.html", [
         [ "SPairSet", "structgb_a_1_1_s_pair_set_a35c023b32cf2e089d6af88c354556db4.html#a35c023b32cf2e089d6af88c354556db4", null ],
@@ -555,7 +555,7 @@ var group__gb =
       [ "monorder2", "class_g_b_walker_a5ee1e63ed9ca0f6d4ea3728c22188591.html#a5ee1e63ed9ca0f6d4ea3728c22188591", null ],
       [ "next_to_reduce", "class_g_b_walker_a24d16518c6f3c3e22ad619f72247e346.html#a24d16518c6f3c3e22ad619f72247e346", null ],
       [ "R", "class_g_b_walker_ad8709849db165cc26c693e024d542f64.html#ad8709849db165cc26c693e024d542f64", null ],
-      [ "state", "class_g_b_walker_aac2712c055f0ffd12234d5bebe377f84.html#aac2712c055f0ffd12234d5bebe377f84", null ],
+      [ "state", "class_g_b_walker_a931ee8f75795dd8a53f960f6292c8f7d.html#a931ee8f75795dd8a53f960f6292c8f7d", null ],
       [ "ww", "class_g_b_walker_aa33bf94fccac102946c200fee868a2d6.html#aa33bf94fccac102946c200fee868a2d6", null ]
     ] ],
     [ "HermiteComputation", "class_hermite_computation.html", [
