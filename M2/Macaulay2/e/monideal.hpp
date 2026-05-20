@@ -55,6 +55,17 @@ SparseMonomial: pointer to an array of ints.  First is the length.  [len, v1, e1
 
 #endif
 
+/**
+ * @brief Internal tree node of the `MonomialIdeal` decision tree.
+ *
+ * @details One node per `(variable, exponent)` step along the path from the
+ * root to a stored monomial. `left` / `right` are sibling pointers
+ * inside one variable's exponent list, `header` points back to the
+ * list head, and `val` is either `down` (next-variable list head,
+ * when `tag == node`) or `bag` (the stored monomial's baggage, when
+ * `tag == leaf`). Insertion / lookup walks the tree following
+ * variable indices in increasing order.
+ */
 class Nmi_node : public our_new_delete  // monomial ideal internal node ///
 {
   friend class MonomialIdeal;
@@ -97,6 +108,22 @@ private:
   }
 };
 
+/**
+ * @brief Engine-side monomial ideal: a decision tree of `Nmi_node`s storing
+ * the (typically minimal) generators by variable / exponent path.
+ *
+ * @details The tree representation makes divisibility queries
+ * (`search_expvector`, `search`, `find_all_divisors`) and
+ * minimal-generator maintenance (`insert_w_deletions`) efficient
+ * compared with a flat list. `count` packs two pieces of info: the
+ * low bit records whether this `MonomialIdeal` owns its `mi_stash`
+ * (so the destructor knows whether to free it), and `count / 2` is
+ * the actual number of stored monomials. The ideal is immutable
+ * once exposed to the front end (its `computeHashValue` is called
+ * to pin the hash). Iteration is via the nested `Iterator` class,
+ * with `begin()` / `end()` and `beginAtLast()` for reverse-style
+ * loops.
+ */
 class MonomialIdeal : public EngineObject
 // these objects are immutable once they are sent to the front end (i.e.
 // once their hash code has been set...
@@ -182,6 +209,16 @@ class MonomialIdeal : public EngineObject
   void find_all_divisors(const_exponents exp, VECTOR(Bag *)& b) const;
   // Search. Return a list of all elements which divide 'exp'.
 
+  /**
+   * @brief Bidirectional forward iterator over the `Bag`s stored in a
+   * `MonomialIdeal`.
+   *
+   * @details Walks the `Nmi_node` tree in lex order via `MonomialIdeal::next`
+   * / `prev`. `operator*` returns the `Bag&` at the current leaf;
+   * `operator->` returns the underlying pointer. Equality is by
+   * raw node-pointer comparison, so the end iterator is just the
+   * one with `mPointer == nullptr`.
+   */
   class Iterator {
   private:
     const MonomialIdeal& mMonomialTable;
