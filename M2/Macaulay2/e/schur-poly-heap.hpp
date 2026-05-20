@@ -8,16 +8,17 @@
  * @brief `schur_poly_heap` --- geometric-bucket accumulator specialised for `SchurRing2` polynomials.
  *
  * Declares `schur_poly_heap`, a `GEOHEAP_SIZE` (15)-level
- * size-doubling heap of `ring_elem` slots used by `SchurRing2`
+ * size-quadrupling heap of `ring_elem` slots used by `SchurRing2`
  * multiplication to collect the many `c_{lambda mu}^nu s_nu`
  * intermediate terms produced by Littlewood-Richardson
  * enumeration. `add(p)` drops `p` into the smallest level whose
- * `heap_size[i]` threshold it fits under and cascades on
- * overflow; `value()` flattens the tower into a single
- * canonical sum and resets the heap. Sizing the threshold to
- * each slot's current term count amortises the LR collection
- * away from the quadratic merge a naive term-by-term
- * accumulator would walk.
+ * `heap_size[i]` threshold it fits under (the same `4, 16, 64,
+ * ..., 1073741824` table from `engine.cpp`, each level four
+ * times the previous) and cascades on overflow; `value()`
+ * flattens the tower into a single canonical sum and resets the
+ * heap. Sizing the threshold to each slot's current term count
+ * amortises the LR collection away from the quadratic merge a
+ * naive term-by-term accumulator would walk.
  *
  * The shape mirrors the engine's other geometric heaps
  * (`gbring.hpp`'s `gbvectorHeap`, `geovec.hpp`, `geopoly.hpp`)
