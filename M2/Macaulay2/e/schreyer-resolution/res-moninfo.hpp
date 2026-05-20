@@ -8,11 +8,11 @@
  * @brief `ResMonoid` dispatcher --- single typedef switch between `ResMonoidDense` and `ResMonoidSparse`.
  *
  * Pulls in both monomial-layout implementations the F4
- * resolution uses and aliases `ResMonoid` to the active one
- * (`ResMonoidDense` in production via the live `using` on
- * line 39; `ResMonoidSparse` kept available behind a
- * commented-out `using` on line 40). The dense layout stores
- * each monomial in a fixed `nslots`-word array
+ * resolution uses and aliases `ResMonoid` to the active one ---
+ * `ResMonoidDense` is the live `using` in production, with a
+ * commented-out `using ResMonoid = ResMonoidSparse;` line kept
+ * directly beneath it as the swap-in toggle. The dense layout
+ * stores each monomial in a fixed `nslots`-word array
  * `[hash, component, weights..., exponents_0..exponents_{nvars-1}]`
  * and wins for dense exponents or small variable counts; the
  * sparse layout uses a length-prefixed `(variable, exponent)`
