@@ -39,6 +39,19 @@
 #include <unordered_map>
 #include <utility>
 
+/**
+ * @brief Engine-side Betti table: a `(degree, homological level)` rectangle
+ * of integers.
+ *
+ * @details Storage is a single flat `int* mValues` of size
+ * `(mHiDegree - mLoDegree + 1) * mNLevels`, indexed via
+ * `entry(deg, lev)`. The user-facing bounds (`loDegree` /
+ * `hiDegree` / `length`) are the requested dimensions; the actual
+ * non-zero region may be tighter. `displayBetti` / `output` print
+ * in the conventional triangular layout the front end shows for
+ * `betti` queries, and `getBetti` flattens to an `M2_arrayint` for
+ * the interpreter.
+ */
 class BettiDisplay
 {
  public:
@@ -75,6 +88,16 @@ class BettiDisplay
   int* mValues;
 };
 
+/**
+ * @brief Combined hash + equality functor for `(int*, int)` pairs, used by
+ * the resolution code to key an `unordered_set` on `(monomial,
+ * component)`.
+ *
+ * @details Hash mixes the raw pointer with `13 * comp`; equality is
+ * pointer-and-int equality (the monomials behind the pointers are
+ * already interned, so two equal monomials are guaranteed to share
+ * the same pointer).
+ */
 class BettiHashAndEq
 {
 public:

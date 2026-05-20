@@ -67,6 +67,20 @@ class WordWithData;
 
 using Overlap = std::tuple<int,int,int,bool>;
 
+/**
+ * @brief Index of `Word`s (non-commutative monomials) with subword,
+ * prefix/suffix, and overlap lookup used by the NC Groebner code.
+ *
+ * @details Stores monomials in `mMonomials` and a parallel `mIndices` slot
+ * per entry (-1 marks a retired word the search routines should
+ * skip). The query API exposes the operations the NC GB inner loop
+ * needs --- `subwords` / `subword` (where does each table entry
+ * occur inside `word`?), `isPrefix` / `isSuffix` (single-end
+ * containment), `superwords` (the reverse direction), and
+ * `leftOverlaps` / `rightOverlaps` (suffix-of-X equals prefix-of-Y
+ * pairs that generate new S-pairs). Word storage lives in a
+ * `MemoryBlock` arena so insertions are bump-pointer cheap.
+ */
 class WordTable
 {
   // abstract table class for Word's
@@ -158,6 +172,17 @@ private:
   MemoryBlock mMonomialSpace;
 };
 
+/**
+ * @brief Variant of `WordTable` where each stored monomial carries an
+ * additional ecart-degree datum that gates subword matches.
+ *
+ * @details Same skeleton as `WordTable` (parallel `mMonomials` / `mIndices`
+ * with -1 marking retired entries), but `subword` queries take an
+ * ecart degree into account, skipping entries whose ecart is larger
+ * than the query's. Used by the GB code paths that need
+ * ecart-aware reduction (typically inhomogeneous problems with
+ * sugar / ecart strategies).
+ */
 class WordWithDataTable
 {
   // abstract table class for WordWithData's
