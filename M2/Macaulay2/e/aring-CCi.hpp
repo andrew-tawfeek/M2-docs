@@ -56,8 +56,16 @@ class RingMap;
 
 namespace M2 {
 /**
-\ingroup rings
-*/
+ * @brief `aring`-style adapter for arbitrary-precision complex intervals,
+ * stored as `(MPFI, MPFI)` pairs.
+ *
+ * @details `ElementType` is `cci_struct` --- MPFI intervals for the real
+ * and imaginary components, so arithmetic yields rigorous
+ * containing intervals. `mPrecision` sets the per-bound MPFR
+ * precision. `ringID = ring_CCi`.
+ *
+ * @ingroup rings
+ */
 class ARingCCi : public SimpleARing<ARingCCi>
 {
   // Higher precision real intervals

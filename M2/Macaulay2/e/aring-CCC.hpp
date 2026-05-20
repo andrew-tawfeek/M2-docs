@@ -53,8 +53,16 @@ class RingMap;
 
 namespace M2 {
 /**
-\ingroup rings
-*/
+ * @brief `aring`-style adapter for arbitrary-precision complex numbers,
+ * stored as `(MPFR, MPFR)` pairs.
+ *
+ * @details `ElementType` is `cc_struct` --- two MPFR scalars for the real
+ * and imaginary parts. Holds a companion `ARingRRR mRRR` at the
+ * same working precision so the per-component arithmetic stays
+ * consistent. `ringID = ring_CCC`.
+ *
+ * @ingroup rings
+ */
 class ARingCCC : public SimpleARing<ARingCCC>
 {
   // complex numbers represented as pairs of MPFRs.

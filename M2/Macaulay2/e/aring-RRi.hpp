@@ -50,8 +50,17 @@ class RingMap;
 
 namespace M2 {
 /**
-\ingroup rings
-*/
+ * @brief `aring`-style adapter for arbitrary-precision real intervals,
+ * backed by MPFI.
+ *
+ * @details `ElementType` is `__mpfi_struct` --- a closed interval `[lo, hi]`
+ * of MPFR endpoints, so arithmetic returns rigorous containing
+ * intervals. `mPrecision` sets the per-endpoint MPFR precision;
+ * characteristic is 0. `ringID = ring_RRi`. Forms the real
+ * component of `ARingCCi`.
+ *
+ * @ingroup rings
+ */
 class ARingRRi : public SimpleARing<ARingRRi>
 {
   // Higher precision real intervals

@@ -45,8 +45,15 @@ class RingMap;
 
 namespace M2 {
 /**
-\ingroup rings
-*/
+ * @brief `aring`-style adapter for double-precision real numbers.
+ *
+ * @details `ElementType` is a plain `double`. Fixed precision (53 bits per
+ * `get_precision()`), characteristic 0. `ringID = ring_RR`. Hash
+ * values are derived from the double cast to `unsigned int`. Use
+ * `ARingRRR` instead when arbitrary precision is needed.
+ *
+ * @ingroup rings
+ */
 class ARingRR : public SimpleARing<ARingRR>
 {
   // approximate real numbers, implemented as doubles.

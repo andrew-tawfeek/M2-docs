@@ -52,8 +52,16 @@ class RingMap;
 
 namespace M2 {
 /**
-\ingroup rings
-*/
+ * @brief `aring`-style adapter for arbitrary-precision real numbers, backed
+ * by MPFR.
+ *
+ * @details `ElementType` is `__mpfr_struct`. `mPrecision` (set at
+ * construction) gives the bit precision used for every operation;
+ * characteristic is 0. `ringID = ring_RRR`. Forms the real
+ * component of `ARingCCC`.
+ *
+ * @ingroup rings
+ */
 class ARingRRR : public SimpleARing<ARingRRR>
 {
   // Higher precision real numbers

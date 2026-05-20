@@ -54,8 +54,16 @@ class RingMap;
 namespace M2 {
 
 /**
-\ingroup rings
-*/
+ * @brief `aring`-style adapter for double-precision complex numbers, stored
+ * as `(double, double)` pairs.
+ *
+ * @details `ElementType` is `cc_doubles_struct` --- two IEEE-754 doubles for
+ * the real and imaginary parts. Holds a companion `ARingRR mRR`
+ * for the real-component arithmetic. `ringID = ring_CC`. Use
+ * `ARingCCC` instead when arbitrary precision is needed.
+ *
+ * @ingroup rings
+ */
 class ARingCC : public SimpleARing<ARingCC>
 {
   // approximate real numbers, implemented as doubles.

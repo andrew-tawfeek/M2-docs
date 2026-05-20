@@ -60,8 +60,18 @@ class RingMap;
 
 namespace M2 {
 /**
-\ingroup rings
-*/
+ * @brief `aring`-style adapter for `Z/p` with `p` a word-size prime, backed
+ * by FLINT's `nmod_*` routines.
+ *
+ * @details Elements are residues in `0..p-1`. The largest supported prime
+ * is the largest prime below `2^64`, so this covers basically
+ * every prime that fits in a single `mp_limb_t`. `ringID =
+ * ring_ZZpFlint`. Used wherever `CoefficientRingZZp` would be too
+ * slow at the high end of the small-prime range, or when FLINT's
+ * batched `nmod` primitives buy the inner loop.
+ *
+ * @ingroup rings
+ */
 class ARingZZpFlint : public SimpleARing<ARingZZpFlint>
 {
   // Integers mod p, implemented as

@@ -46,8 +46,19 @@ class RingMap;
 
 namespace M2 {
 /**
-\ingroup rings
-*/
+ * @brief `aring`-style adapter for `Z/p` using a discrete-log (Zech)
+ * representation: every non-zero residue is its index relative to
+ * a primitive generator `a`.
+ *
+ * @details Encoding: `0` means 0, `p-1` means 1, and `1..p-2` are the
+ * exponents of `a^n mod p` covering residues `2..p-1`.
+ * Multiplication / division collapse to integer add / sub mod
+ * `p-1` with no table hit; addition uses precomputed `exp` /
+ * `log` tables. `ringID = ring_ZZp`. The `aring` twin of
+ * `CoefficientRingZZp`.
+ *
+ * @ingroup rings
+ */
 class ARingZZp : public SimpleARing<ARingZZp>
 {
   // Integers mod p, implemented as
