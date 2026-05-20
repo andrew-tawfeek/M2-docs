@@ -72,6 +72,14 @@ class PointArray;
 class PolyRing;
 class SLProgram;
 
+/**
+ * @brief `MutableEngineObject` wrapper that owns a `PointArray` via
+ * `unique_ptr`.
+ *
+ * @details Same pattern as `M2SLProgram` / `M2Homotopy`: the interpreter
+ * holds an opaque `M2PointArray*` while engine code reaches the
+ * underlying clustering structure through `value()`.
+ */
 class M2PointArray : public MutableEngineObject
 {
   std::unique_ptr<PointArray> mPointArray;
@@ -81,6 +89,18 @@ public:
   PointArray& value() { return *mPointArray; }
 };
 
+/**
+ * @brief Container of numerical points equipped with an
+ * \f$\varepsilon\f$-tolerance and a random weight vector used to bucket
+ * approximately equal points.
+ *
+ * @details A point hashes to the integer rounding of
+ * \f$\sum w_i x_i / \varepsilon\f$, so points within `mEpsilon` of each
+ * other land in the same bucket and can be deduplicated. The
+ * `RealVector` `mWeights` either comes from the caller or is filled
+ * by the `(epsilon, n)` constructor with normalised random numbers.
+ * Used by the path-tracker to recognise coincident endpoints.
+ */
 // PointArray
 class PointArray
 {
@@ -433,6 +453,15 @@ double norm2_complex_array(int n,
    i-th input --> i;
    i-th constant --> i + CONST_OFFSET. */
 
+/**
+ * @brief Field-traits tag used as the template parameter of `SLP<Field>` to
+ * pick the `complex` element type.
+ *
+ * @details The only data is the `element_type` typedef --- field operations
+ * (`add`, `mul`, ...) come from free functions on `complex` rather
+ * than methods, so the class itself is empty. Acts as the
+ * non-`ARing` evaluator's field-of-record.
+ */
 class ComplexField
 {
  public:
@@ -560,6 +589,20 @@ class StraightLineProgram : public SLP<ComplexField>
   Matrix* evaluate(const Matrix* vals);
 };
 
+/**
+ * @brief One numerical solution produced by a `PathTracker` run, with the
+ * full per-path diagnostic record.
+ *
+ * @details `x` is the endpoint of the path (an `n`-vector of `complex`s) and
+ * `start_x` is where the path began; `t` is the last value of the
+ * continuation parameter, `cond` the reverse condition number of
+ * the Jacobian Hx at the endpoint, `num_steps` the number of
+ * predictor-corrector steps taken, and `status` (a `SolutionStatus`
+ * enum value defined in `SLP-imp.hpp`) classifies the outcome
+ * (`REGULAR`, `SINGULAR`, `INFINITY_FAILED`, etc.). Owns its
+ * `complex*` buffers; `release()` / the destructor free them via
+ * `freemem`.
+ */
 // enum SolutionStatus { ... defined in SLP-imp.hpp ... };
 struct Solution
 {
@@ -581,6 +624,20 @@ struct Solution
   }
 };
 
+/**
+ * @brief Numerical homotopy-continuation path tracker for systems of
+ * polynomial equations.
+ *
+ * @details Holds two homotopy systems (`H` and the `(S, T)` start/target
+ * pair) plus their precomputed straight-line evaluators
+ * (`slpH`, `slpHxt`, `slpHxtH`, `slpHxH`, `slpS`, `slpSx`, ...),
+ * and tracks each input solution from `S` to `T` via a
+ * predictor-corrector loop. Supports projective tracking
+ * (`is_projective`) with Bombieri-Weyl arc length `bigT` along the
+ * great circle and ProjectiveNewton scaling via `DMforPN`. A
+ * static `catalog[MAX_NUM_PATH_TRACKERS]` lets the interpreter
+ * refer to a tracker by integer ID rather than by raw pointer.
+ */
 class PathTracker : public MutableEngineObject
 {
   static PathTracker* catalog[MAX_NUM_PATH_TRACKERS];
