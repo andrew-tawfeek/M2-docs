@@ -32,6 +32,17 @@
 
 #include "schur2.hpp"
 
+/**
+ * @brief `SchurRing2` subclass implementing the symmetric-group character
+ * ring (the "Schur ring of `S_n`"), with multiplication given by
+ * inner-product convolution rather than Littlewood-Richardson.
+ *
+ * @details Overrides `mult` to compute the symmetric-group analogue: the
+ * coefficient of `s_lambda` in `s_mu * s_nu` is the number of
+ * ways to decompose representations rather than the LR count.
+ * `cast_to_SchurSnRing()` lets engine code distinguish this ring
+ * from the plain `SchurRing2` it inherits from.
+ */
 class SchurSnRing : public SchurRing2
 {
  public:

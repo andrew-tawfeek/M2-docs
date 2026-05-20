@@ -41,6 +41,17 @@ class MatElementaryOps;
 #include "dmat.hpp"
 #include "smat.hpp"
 
+/**
+ * @brief Half-open rectangular submatrix descriptor: `[begin_row, end_row) x
+ * [begin_column, end_column)`.
+ *
+ * @details Constructed as `MatrixWindow(first_row, first_col, nrows, ncols)`
+ * to make caller-side window math read naturally. Used by the
+ * dense / sparse matrix arithmetic templates to restrict an
+ * operation to a rectangular block without materialising a copy.
+ * `sameSize` returns true when two windows have matching
+ * dimensions, the precondition for entrywise add / subtract / copy.
+ */
 // Use below via
 //  MatrixWindow(first_row, first_col, #rows, #columns)
 struct MatrixWindow

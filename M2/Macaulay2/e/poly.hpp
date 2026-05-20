@@ -44,6 +44,18 @@ class GBComputation;
 class ChineseRemainder;
 #include "polyring.hpp"
 
+/**
+ * @brief Concrete `PolyRingFlat` subclass implementing ordinary commutative
+ * polynomial rings `K[x_1, ..., x_n]` with a generic coefficient
+ * ring `K` and monoid `M`.
+ *
+ * @details The default polynomial-ring implementation used by the engine
+ * when no special structure (skew, Weyl, solvable, quotient,
+ * fraction) is involved. Bodies for the `Ring` virtuals are in
+ * `poly.cpp`; the class itself declares the friends needed to
+ * give the term-level helpers, GB drivers, and matrix-stream
+ * code direct access to the linked-list `Nterm` representation.
+ */
 class PolyRing : public PolyRingFlat
 {
   friend class GBRingSkew;

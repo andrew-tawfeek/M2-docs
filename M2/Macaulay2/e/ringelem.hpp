@@ -135,6 +135,18 @@ union ring_elem
   const schur_poly* get_schur_poly() const { return schur_poly_val; }
 };
 
+/**
+ * @brief Singly linked-list node carrying one term of a polynomial-ring
+ * element.
+ *
+ * @details `next` chains to the next term, `coeff` holds the term's
+ * coefficient (in the parent ring's `ring_elem` representation),
+ * and `monom[1]` is a C99-style flexible-array tail holding the
+ * monomial's encoded `int` payload --- the actual length is
+ * determined by the ring's monoid. Polynomial values stored in a
+ * `ring_elem` via the `poly_val` union arm point at the head of a
+ * chain of these.
+ */
 /* Implements a linked list of ring monomials along with coefficients */
 struct Nterm
 {

@@ -37,6 +37,18 @@
 #include <string>
 #include <vector>
 
+/**
+ * @brief Static-method namespace of constructors for the front-end
+ * `MonomialOrdering` value type.
+ *
+ * @details Holds no state --- every method is `static`. Provides factories
+ * for the standard monomial orders (`Lex`, `GRevLex`, `RevLex`,
+ * `Weights`, `Position`, ...), variants with 2-byte and 4-byte
+ * exponent packings (`Lex2` / `Lex4`, `GRevLex2` / `GRevLex4`),
+ * weighted forms, plus the combinators `join` (lex-of-blocks)
+ * and `product` (tensor-product order). `toString(mo)` renders a
+ * `MonomialOrdering*` back to its M2 source form.
+ */
 class MonomialOrderings {
 public:
   static std::string toString(const MonomialOrdering *mo);

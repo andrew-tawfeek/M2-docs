@@ -132,6 +132,18 @@ inline schur_poly::iterator schur_poly::end() const
   return iterator(*this, 1);
 }
 
+/**
+ * @brief Refactored Schur (symmetric-function) ring whose elements are
+ * `schur_poly` sums of partitions over a configurable coefficient
+ * ring.
+ *
+ * @details Replaces the older `SchurRing` (in `schur.hpp`) with a leaner
+ * implementation: partitions are stored in `schur_partition`
+ * sorted form rather than exponent vectors, and `nvars` caps the
+ * partition length (`-1` means no cap, i.e. infinitely many
+ * Schur generators). Multiplication uses the Littlewood-Richardson
+ * rule via `truncate`. Forms the base class for `SchurSnRing`.
+ */
 class SchurRing2 : public Ring
 {
  private:

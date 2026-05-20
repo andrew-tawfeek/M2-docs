@@ -49,7 +49,18 @@ class gbvector;
 struct RingMap;
 
 /**
- * \ingroup polynomialrings
+ * @brief `PolyRingFlat` subclass for quotients `R / I` of a polynomial ring
+ * by an ideal.
+ *
+ * @details Owns the defining ideal data through the inherited `qinfo_`
+ * (`QRingInfo*`, see `qring.hpp`) and adds `normal_form` as the
+ * thin forwarder onto it: every arithmetic result is reduced
+ * modulo the quotient ideal before being returned. The factory
+ * (`make_gb` plus the front-end-side `PolynomialRing::create`
+ * paths) builds the GB of `I` once and reuses it for every
+ * subsequent reduction.
+ *
+ * @ingroup polynomialrings
  */
 class PolyRingQuotient : public PolyRingFlat
 {

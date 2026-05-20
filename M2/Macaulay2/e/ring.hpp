@@ -648,6 +648,18 @@ class Ring : public MutableEngineObject
   ring_elem vec_split_off_content(vec f, vec &result) const;
 };
 
+/**
+ * @brief Abstract incremental accumulator that builds a `ring_elem` from
+ * many `add(f)` calls.
+ *
+ * @details Provides a single-value `getValue()` entry point that finalises
+ * whatever the underlying ring decided to do with the staged
+ * summands (geobucket merge, hash deduplication, polynomial
+ * normalisation, ...). Concrete subclasses include
+ * `SumCollectorFreeAlgebraHeap` (in `FreeAlgebra.hpp`) and the
+ * ring-specific implementations the engine instantiates through
+ * `Ring::make_SumCollector`.
+ */
 class SumCollector : public our_new_delete
 {
  public:

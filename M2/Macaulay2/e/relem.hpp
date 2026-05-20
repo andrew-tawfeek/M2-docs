@@ -46,6 +46,19 @@
 
 class EngineMonomial;
 
+/**
+ * @brief Front-end-visible "ring element" value: an engine `ring_elem`
+ * paired with the `Ring*` that gives it meaning.
+ *
+ * @details The interpreter handles ring elements as opaque
+ * `RingElement*` pointers and asks the engine to do arithmetic
+ * by dispatching through `get_ring()`. Inherits from
+ * `EngineObject` so the hash is content-based (computed via the
+ * ring's `computeHashValue`) and the element is immutable once
+ * exposed to the front end. `make_raw` is the standard factory
+ * the interface layer uses to wrap a freshly produced
+ * `ring_elem`.
+ */
 class RingElement : public EngineObject
 {
   const Ring *R;

@@ -38,6 +38,18 @@
 // are essentially identical.  It could be a static member of StatsAllocator,
 // but then each type T would have a different stats object.
 //
+/**
+ * @brief Process-wide allocation counter used by `StatsAllocator` for
+ * debugging and benchmarking.
+ *
+ * @details All counters (`mNumAllocs`, `mAllocSize`, `mNumDeallocs`,
+ * `mCurrentAllocSize`, `mHighWater`) are `static`, so the logger
+ * tracks every `StatsAllocator`-mediated allocation in the
+ * process at once. `logAlloc` / `logDealloc` are called from the
+ * allocator hooks; `reset()` zeroes everything for a fresh
+ * measurement. Not thread-safe --- intended only for diagnostic
+ * runs.
+ */
 // This class is meant for debugging/benchmark use only.
 // This class is not thread safe.
 //
