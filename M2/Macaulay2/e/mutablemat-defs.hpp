@@ -78,6 +78,14 @@ struct EigenTypes
   typedef RT HermitianEigenvectorType;
 };
 
+/**
+ * @brief `EigenTypes` specialisation for double-precision real matrices.
+ *
+ * @details A general (non-Hermitian) `ARingRR` matrix has complex eigenvalues
+ * and eigenvectors --- both are promoted to `M2::ARingCC`. The
+ * Hermitian path stays real, so `HermitianEigenvalueType` and
+ * `HermitianEigenvectorType` remain `M2::ARingRR`.
+ */
 template <>
 struct EigenTypes<M2::ARingRR>
 {
@@ -87,6 +95,13 @@ struct EigenTypes<M2::ARingRR>
   typedef M2::ARingRR HermitianEigenvectorType;
 };
 
+/**
+ * @brief `EigenTypes` specialisation for double-precision complex matrices.
+ *
+ * @details The general path stays in `M2::ARingCC`. The Hermitian path drops
+ * eigenvalues to `M2::ARingRR` (Hermitian matrices have real
+ * spectrum) while eigenvectors remain `M2::ARingCC`.
+ */
 template <>
 struct EigenTypes<M2::ARingCC>
 {
@@ -96,6 +111,14 @@ struct EigenTypes<M2::ARingCC>
   typedef M2::ARingCC HermitianEigenvectorType;
 };
 
+/**
+ * @brief `EigenTypes` specialisation for arbitrary-precision real (`MPFR`)
+ * matrices.
+ *
+ * @details Same logic as the `M2::ARingRR` specialisation lifted to the
+ * MPFR/MPC rings: general spectra land in `M2::ARingCCC`, Hermitian
+ * spectra stay in `M2::ARingRRR`.
+ */
 template <>
 struct EigenTypes<M2::ARingRRR>
 {
@@ -105,6 +128,14 @@ struct EigenTypes<M2::ARingRRR>
   typedef M2::ARingRRR HermitianEigenvectorType;
 };
 
+/**
+ * @brief `EigenTypes` specialisation for arbitrary-precision complex
+ * (`MPC`) matrices.
+ *
+ * @details General path stays in `M2::ARingCCC`. Hermitian eigenvalues drop
+ * to `M2::ARingRRR` (real); Hermitian eigenvectors remain
+ * `M2::ARingCCC`.
+ */
 template <>
 struct EigenTypes<M2::ARingCCC>
 {
