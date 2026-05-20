@@ -35,6 +35,17 @@
 #include "monoid.hpp"
 #include "comp.hpp"
 
+/**
+ * @brief `gbvector`-side matrix: a target `FreeModule` plus a list of
+ * `gbvector*` columns living in it.
+ *
+ * @details Bridges the `Matrix` world (engine-side, `vec`-based) and the
+ * `GBRing` world (`gbvector`-based, suited to GB inner loops).
+ * Converts back and forth via the `Matrix*` constructor and
+ * `to_matrix()`. `append(f)` grabs ownership of `f`. Used as the
+ * input shape for kernel / syzygy computations like
+ * `GBKernelComputation`.
+ */
 struct GBMatrix : public our_new_delete
 {
   const FreeModule *F;  // target
@@ -47,6 +58,20 @@ struct GBMatrix : public our_new_delete
   Matrix *to_matrix();
 };
 
+/**
+ * @brief Computes the kernel of a Schreyer-encoded `GBMatrix` and returns
+ * the syzygies in a Schreyer-compatible free module.
+ *
+ * @details `F` is the target free module (with Schreyer order `SF`); `G` is
+ * the source for the resulting syzygies (with order `SG`, which
+ * must be a Schreyer order compatible with the input). The
+ * computation builds a `MonomialIdeal` per component from the
+ * stripped GB (`gb`), then walks new pairs (`new_pairs`) and
+ * reduces them (`reduce` / `geo_reduce`) into syzygies stored in
+ * `syzygies`. The `n_ones` / `n_unique` / `n_others` /
+ * `total_reduce_count` counters classify each reduction step for
+ * profiling.
+ */
 class GBKernelComputation : public Computation
 {
   // these three were virtual in class Computation

@@ -37,6 +37,17 @@
 #include <iosfwd>    // for ostream
 #include <vector>    // for vector, vector<>::value_type
 
+/**
+ * @brief Non-owning view of a non-commutative word: `[begin, end)` of `int`
+ * variable indices.
+ *
+ * @details Stores three pointers / lengths (`mBegin`, `mEnd`, `mSize`) into
+ * an externally owned buffer (typically a `MemoryBlock` arena in
+ * `NCF4`). The view is cheap to copy and pass around but the
+ * caller must keep the backing buffer alive for the `Word`'s
+ * lifetime. Equality is elementwise; iteration goes through
+ * `begin()` / `end()` / `operator[]`.
+ */
 class Word
 {
 public:
@@ -79,6 +90,17 @@ private:
 
 std::ostream& operator<<(std::ostream& o, const Word& w);
 
+/**
+ * @brief `Word` plus its ecart degree and heft degree --- the value type
+ * `WordWithDataTable` stores.
+ *
+ * @details `mEcartDegree` records the power of an invisible homogenising
+ * variable so divisibility checks in `WordWithDataTable::subword`
+ * can refuse matches whose ecart is wrong; `mHeftDegree` is the
+ * original heft degree the word entered with, kept for stable
+ * sorting. The underlying word is held by composition (`mWord`)
+ * rather than inheritance.
+ */
 // this class is intended for use in the word table, taking ecart degree (i.e.
 // the power of an 'invisible' homogenizing variable) into consideration when
 // checking divisibility.

@@ -59,6 +59,17 @@ struct Monoid;
 //  typedef ring_elem ElementType;
 //};
 
+/**
+ * @brief Abstract `Ring` subclass that lifts either a `FreeAlgebra` or a
+ * `FreeAlgebraQuotient` into the engine's `Ring` hierarchy.
+ *
+ * @details The common base of `M2FreeAlgebra` (the unquotiented case) and
+ * `M2FreeAlgebraQuotient`. Provides the `Ring` overrides that
+ * dispatch to the underlying `freeAlgebra()` and the type-safe
+ * cast helpers (`toPoly` / `fromPoly` / `appendFromModuleMonom`)
+ * the rest of the engine uses to convert between opaque `ring_elem`
+ * handles and concrete `Poly*` values.
+ */
 class M2FreeAlgebraOrQuotient : public Ring
 {
 public:
@@ -89,6 +100,17 @@ public:
 
 };
 
+/**
+ * @brief Concrete `Ring` wrapper around an owned `FreeAlgebra` (no quotient).
+ *
+ * @details Holds the wrapped algebra via `std::unique_ptr<FreeAlgebra>` and
+ * delegates every `Ring` operation to it. `create()` is the factory
+ * that builds the underlying `FreeAlgebra` from the user-visible
+ * names / degrees / weight vectors / heft vector and hands the
+ * resulting unique pointer in. The companion
+ * `M2FreeAlgebraQuotient` plays the same role for a
+ * `FreeAlgebraQuotient`.
+ */
 class M2FreeAlgebra : public M2FreeAlgebraOrQuotient
 {
 private:

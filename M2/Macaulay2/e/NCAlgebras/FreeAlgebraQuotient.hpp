@@ -55,6 +55,19 @@ class buffer;
 struct Monoid;
 struct RingMap;
 
+/**
+ * @brief Quotient of a `FreeAlgebra` by a Groebner basis up to a fixed
+ * degree bound.
+ *
+ * @details Owns the defining basis through an `NCGroebner` and forwards the
+ * usual ring operations to `mFreeAlgebra`, then runs
+ * `normalizeInPlace` on the result so every output stays in
+ * canonical form modulo the relations. `mMaxdeg` bounds the
+ * degrees up to which the GB is reliable. Note that this class
+ * does NOT inherit from `Ring` --- the engine uses the wrapper
+ * `M2FreeAlgebra` / `M2FreeAlgebraOrQuotient` to lift it into the
+ * `Ring` hierarchy.
+ */
 class FreeAlgebraQuotient : public our_new_delete
 {
 private:
@@ -130,6 +143,16 @@ public:
   SumCollector* make_SumCollector() const;
 };
 
+/**
+ * @brief Owned `Poly` value paired with its `FreeAlgebraQuotient*`,
+ * providing operator-overloaded arithmetic for debugging / scripting.
+ *
+ * @details Quotient counterpart of `FreeAlgebraElement`: the destructor calls
+ * `FreeAlgebraQuotient::clear`, and the arithmetic operators feed
+ * through to the quotient's `add` / `subtract` / `mult` / ...
+ * methods so each result is automatically reduced modulo the
+ * defining ideal.
+ */
 // for debugging purposes
 class FreeAlgebraQuotientElement
 {
