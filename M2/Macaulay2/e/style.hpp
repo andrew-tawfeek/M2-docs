@@ -18,10 +18,12 @@
  * `std::vector::size()` with engine `int` indices.
  *
  * `GEOHEAP_SIZE = 15` is the engine-wide depth of every
- * size-doubling geometric heap (polynomial, vector, resolution-
- * vector accumulators); the matching `heap_size[GEOHEAP_SIZE]`
- * capacity table is defined in `engine.cpp` and declared
- * `extern` here.
+ * size-quadrupling geometric heap (polynomial, vector,
+ * resolution-vector accumulators); the matching
+ * `heap_size[GEOHEAP_SIZE]` capacity table
+ * (`4, 16, 64, ..., 1073741824`, each level four times the
+ * previous) is defined in `engine.cpp` and declared `extern`
+ * here.
  *
  * @see engine.cpp
  * @see geobucket.hpp
