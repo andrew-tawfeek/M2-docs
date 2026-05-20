@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monom_hash.html','','class_monom_hash-members');
 </div><!--header-->
 <div class="contents">
 
+<p>Hash functor on <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> (or <span class="tt"><a class="el" href="class_word.html" title="Non-owning view of a non-commutative word: [begin, end) of int variable indices.">Word</a></span>) suitable for <span class="tt">std::unordered_map</span> / <span class="tt">std::unordered_set</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -100,8 +103,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f1f45998af4b10a7f11c7139ddaa48e" id="r_a1f1f45998af4b10a7f11c7139ddaa48e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monom_hash_a1f1f45998af4b10a7f11c7139ddaa48e.html#a1f1f45998af4b10a7f11c7139ddaa48e">operator()</a> (const <a class="el" href="class_word.html">Word</a> &amp;V) const</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00224">224</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
+<div class="textblock"><p>Hash functor on <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> (or <span class="tt"><a class="el" href="class_word.html" title="Non-owning view of a non-commutative word: [begin, end) of int variable indices.">Word</a></span>) suitable for <span class="tt">std::unordered_map</span> / <span class="tt">std::unordered_set</span>. </p>
+<p>Seeds the hash with the first int (length / first word position), then folds each remaining int in with the boost-style mix <span class="tt">hash ^= i + 0x9e3779b9 + (hash &lt;&lt; 6) + (hash &gt;&gt; 2)</span>. Same algorithm for both <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> and <span class="tt"><a class="el" href="class_word.html" title="Non-owning view of a non-commutative word: [begin, end) of int variable indices.">Word</a></span> overloads. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00265">265</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a></li>
 </ul>

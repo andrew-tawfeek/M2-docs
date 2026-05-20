@@ -92,6 +92,10 @@ $(function(){initNavTree('class_betti_hash_and_eq.html','','class_betti_hash_and
 </div><!--header-->
 <div class="contents">
 
+<p>Combined hash + equality functor for <span class="tt">(int*, <a class="el" href="classint.html">int</a>)</span> pairs, used by the resolution code to key an <span class="tt">unordered_set</span> on <span class="tt">(<a class="el" href="gb-toric_8cpp_a0020cb9370f27f1e0ebd02a704b50a68.html#a0020cb9370f27f1e0ebd02a704b50a68">monomial</a>,
+component)</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="betti_8hpp_source.html">betti.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -104,8 +108,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a46df4747f2adae8f4e29722c948b5802" id="r_a46df4747f2adae8f4e29722c948b5802"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_betti_hash_and_eq_a46df4747f2adae8f4e29722c948b5802.html#a46df4747f2adae8f4e29722c948b5802">operator()</a> (<a class="el" href="class_betti_hash_and_eq_ad3dad2accd88f0d4719f7d0df1d66a6a.html#ad3dad2accd88f0d4719f7d0df1d66a6a">value</a> a, <a class="el" href="class_betti_hash_and_eq_ad3dad2accd88f0d4719f7d0df1d66a6a.html#ad3dad2accd88f0d4719f7d0df1d66a6a">value</a> b) const</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="betti_8hpp_source.html#l00078">78</a> of file <a class="el" href="betti_8hpp_source.html">betti.hpp</a>.</p>
+<div class="textblock"><p>Combined hash + equality functor for <span class="tt">(int*, <a class="el" href="classint.html">int</a>)</span> pairs, used by the resolution code to key an <span class="tt">unordered_set</span> on <span class="tt">(<a class="el" href="gb-toric_8cpp_a0020cb9370f27f1e0ebd02a704b50a68.html#a0020cb9370f27f1e0ebd02a704b50a68">monomial</a>,
+component)</span>. </p>
+<p>Hash mixes the raw pointer with <span class="tt">13 * <a class="el" href="group__comp.html">Computations</a></span>; equality is pointer-and-int equality (the monomials behind the pointers are already interned, so two equal monomials are guaranteed to share the same pointer). </p>
+
+<p class="definition">Definition at line <a class="el" href="betti_8hpp_source.html#l00101">101</a> of file <a class="el" href="betti_8hpp_source.html">betti.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="betti_8hpp_source.html">betti.hpp</a></li>
 </ul>

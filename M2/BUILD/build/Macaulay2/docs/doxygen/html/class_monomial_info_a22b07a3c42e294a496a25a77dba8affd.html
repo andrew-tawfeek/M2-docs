@@ -115,27 +115,27 @@ $(function(){initNavTree('class_monomial_info_a22b07a3c42e294a496a25a77dba8affd.
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="moninfo_8hpp_source.html#l00255">255</a> of file <a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  257</span>  {</div>
-<div class="line"><span class="lineno">  258</span>    <span class="comment">// &#39;result&#39; must have enough space allocated</span></div>
-<div class="line"><span class="lineno">  259</span>    <a class="code hl_variable" href="class_monomial_info_a07c44a7fec80ac37c6a8bdc463fab1af.html#a07c44a7fec80ac37c6a8bdc463fab1af">ncalls_to_varpower</a>++;</div>
-<div class="line"><span class="lineno">  260</span>    <a class="code hl_typedef" href="varpower-monomial_8hpp_ac06516f99c07ceb08dbb3d05a8aed2ec.html#ac06516f99c07ceb08dbb3d05a8aed2ec">varpower_word</a> *t = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> + 1;</div>
-<div class="line"><span class="lineno">  261</span>    <a class="code hl_typedef" href="moninfo_8hpp_a8ebc6aeb2b5443bc5d07ed5cc64b10b6.html#a8ebc6aeb2b5443bc5d07ed5cc64b10b6">const_packed_monomial</a> m1 = m + <a class="code hl_variable" href="class_monomial_info_ab2f231b40b18b614c6d53dfb030200ab.html#ab2f231b40b18b614c6d53dfb030200ab">nslots</a>;</div>
-<div class="line"><span class="lineno">  262</span>    <span class="keywordtype">int</span> len = 0;</div>
-<div class="line"><span class="lineno">  263</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <a class="code hl_variable" href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">nvars</a> - 1; i &gt;= 0; i--)</div>
-<div class="line"><span class="lineno">  264</span>      {</div>
-<div class="line"><span class="lineno">  265</span>        <span class="keywordflow">if</span> (*--m1 &gt; 0)</div>
-<div class="line"><span class="lineno">  266</span>          {</div>
-<div class="line"><span class="lineno">  267</span>            *t++ = i;</div>
-<div class="line"><span class="lineno">  268</span>            *t++ = *m1;</div>
-<div class="line"><span class="lineno">  269</span>            len++;</div>
-<div class="line"><span class="lineno">  270</span>          }</div>
-<div class="line"><span class="lineno">  271</span>      }</div>
-<div class="line"><span class="lineno">  272</span>    *<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = len;</div>
-<div class="line"><span class="lineno">  273</span>  }</div>
-<div class="ttc" id="aclass_monomial_info_a07c44a7fec80ac37c6a8bdc463fab1af_html_a07c44a7fec80ac37c6a8bdc463fab1af"><div class="ttname"><a href="class_monomial_info_a07c44a7fec80ac37c6a8bdc463fab1af.html#a07c44a7fec80ac37c6a8bdc463fab1af">MonomialInfo::ncalls_to_varpower</a></div><div class="ttdeci">unsigned long ncalls_to_varpower</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00120">moninfo.hpp:120</a></div></div>
-<div class="ttc" id="aclass_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6_html_a68e18bb4033baee1ab6a43913f29d3a6"><div class="ttname"><a href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">MonomialInfo::nvars</a></div><div class="ttdeci">int nvars</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00092">moninfo.hpp:92</a></div></div>
-<div class="ttc" id="aclass_monomial_info_ab2f231b40b18b614c6d53dfb030200ab_html_ab2f231b40b18b614c6d53dfb030200ab"><div class="ttname"><a href="class_monomial_info_ab2f231b40b18b614c6d53dfb030200ab.html#ab2f231b40b18b614c6d53dfb030200ab">MonomialInfo::nslots</a></div><div class="ttdeci">int nslots</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00093">moninfo.hpp:93</a></div></div>
+<p class="definition">Definition at line <a class="el" href="moninfo_8hpp_source.html#l00268">268</a> of file <a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  270</span>  {</div>
+<div class="line"><span class="lineno">  271</span>    <span class="comment">// &#39;result&#39; must have enough space allocated</span></div>
+<div class="line"><span class="lineno">  272</span>    <a class="code hl_variable" href="class_monomial_info_a07c44a7fec80ac37c6a8bdc463fab1af.html#a07c44a7fec80ac37c6a8bdc463fab1af">ncalls_to_varpower</a>++;</div>
+<div class="line"><span class="lineno">  273</span>    <a class="code hl_typedef" href="varpower-monomial_8hpp_ac06516f99c07ceb08dbb3d05a8aed2ec.html#ac06516f99c07ceb08dbb3d05a8aed2ec">varpower_word</a> *t = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> + 1;</div>
+<div class="line"><span class="lineno">  274</span>    <a class="code hl_typedef" href="moninfo_8hpp_a8ebc6aeb2b5443bc5d07ed5cc64b10b6.html#a8ebc6aeb2b5443bc5d07ed5cc64b10b6">const_packed_monomial</a> m1 = m + <a class="code hl_variable" href="class_monomial_info_ab2f231b40b18b614c6d53dfb030200ab.html#ab2f231b40b18b614c6d53dfb030200ab">nslots</a>;</div>
+<div class="line"><span class="lineno">  275</span>    <span class="keywordtype">int</span> len = 0;</div>
+<div class="line"><span class="lineno">  276</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <a class="code hl_variable" href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">nvars</a> - 1; i &gt;= 0; i--)</div>
+<div class="line"><span class="lineno">  277</span>      {</div>
+<div class="line"><span class="lineno">  278</span>        <span class="keywordflow">if</span> (*--m1 &gt; 0)</div>
+<div class="line"><span class="lineno">  279</span>          {</div>
+<div class="line"><span class="lineno">  280</span>            *t++ = i;</div>
+<div class="line"><span class="lineno">  281</span>            *t++ = *m1;</div>
+<div class="line"><span class="lineno">  282</span>            len++;</div>
+<div class="line"><span class="lineno">  283</span>          }</div>
+<div class="line"><span class="lineno">  284</span>      }</div>
+<div class="line"><span class="lineno">  285</span>    *<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = len;</div>
+<div class="line"><span class="lineno">  286</span>  }</div>
+<div class="ttc" id="aclass_monomial_info_a07c44a7fec80ac37c6a8bdc463fab1af_html_a07c44a7fec80ac37c6a8bdc463fab1af"><div class="ttname"><a href="class_monomial_info_a07c44a7fec80ac37c6a8bdc463fab1af.html#a07c44a7fec80ac37c6a8bdc463fab1af">MonomialInfo::ncalls_to_varpower</a></div><div class="ttdeci">unsigned long ncalls_to_varpower</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00133">moninfo.hpp:133</a></div></div>
+<div class="ttc" id="aclass_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6_html_a68e18bb4033baee1ab6a43913f29d3a6"><div class="ttname"><a href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">MonomialInfo::nvars</a></div><div class="ttdeci">int nvars</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00105">moninfo.hpp:105</a></div></div>
+<div class="ttc" id="aclass_monomial_info_ab2f231b40b18b614c6d53dfb030200ab_html_ab2f231b40b18b614c6d53dfb030200ab"><div class="ttname"><a href="class_monomial_info_ab2f231b40b18b614c6d53dfb030200ab.html#ab2f231b40b18b614c6d53dfb030200ab">MonomialInfo::nslots</a></div><div class="ttdeci">int nslots</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00106">moninfo.hpp:106</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 <div class="ttc" id="amoninfo_8hpp_a8ebc6aeb2b5443bc5d07ed5cc64b10b6_html_a8ebc6aeb2b5443bc5d07ed5cc64b10b6"><div class="ttname"><a href="moninfo_8hpp_a8ebc6aeb2b5443bc5d07ed5cc64b10b6.html#a8ebc6aeb2b5443bc5d07ed5cc64b10b6">const_packed_monomial</a></div><div class="ttdeci">const monomial_word * const_packed_monomial</div><div class="ttdef"><b>Definition</b> <a href="moninfo_8hpp_source.html#l00077">moninfo.hpp:77</a></div></div>
 <div class="ttc" id="avarpower-monomial_8hpp_ac06516f99c07ceb08dbb3d05a8aed2ec_html_ac06516f99c07ceb08dbb3d05a8aed2ec"><div class="ttname"><a href="varpower-monomial_8hpp_ac06516f99c07ceb08dbb3d05a8aed2ec.html#ac06516f99c07ceb08dbb3d05a8aed2ec">varpower_word</a></div><div class="ttdeci">varpower_monomials::Exponent varpower_word</div><div class="ttdef"><b>Definition</b> <a href="varpower-monomial_8hpp_source.html#l00035">varpower-monomial.hpp:35</a></div></div>

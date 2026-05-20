@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_reduced_g_b___field___local_1_1divisor__info.ht
 </div><!--header-->
 <div class="contents">
 
+<p>Per-element bookkeeping record used by <span class="tt"><a class="el" href="class_reduced_g_b___field___local.html" title="Computation of a reduced GB w.r.t. a local order, over a field.">ReducedGB_Field_Local</a></span> during local-ring GB minimisation.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="reducedgb-field-local_8hpp_source.html">reducedgb-field-local.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -101,8 +104,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a3af273dda9f9009575a403f35f2d48d6" id="r_a3af273dda9f9009575a403f35f2d48d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_reduced_g_b___field___local_1_1divisor__info_a3af273dda9f9009575a403f35f2d48d6.html#a3af273dda9f9009575a403f35f2d48d6">alpha</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="reducedgb-field-local_8hpp_source.html#l00023">23</a> of file <a class="el" href="reducedgb-field-local_8hpp_source.html">reducedgb-field-local.hpp</a>.</p>
+<div class="textblock"><p>Per-element bookkeeping record used by <span class="tt"><a class="el" href="class_reduced_g_b___field___local.html" title="Computation of a reduced GB w.r.t. a local order, over a field.">ReducedGB_Field_Local</a></span> during local-ring GB minimisation. </p>
+<p><span class="tt"><a class="el" href="struct_reduced_g_b___field___local_1_1divisor__info_ad266622b110fc1acde5c050ffd0bc5e4.html#ad266622b110fc1acde5c050ffd0bc5e4">g</a></span> is the <span class="tt">(poly, syzygy)</span> pair, <span class="tt"><a class="el" href="struct_reduced_g_b___field___local_1_1divisor__info_aadaa72b5c54bf5a9cd64a50b0038680f.html#aadaa72b5c54bf5a9cd64a50b0038680f">size</a></span> caches the number of terms (so the minimisation pass can prefer shorter divisors), and <span class="tt"><a class="el" href="struct_reduced_g_b___field___local_1_1divisor__info_a3af273dda9f9009575a403f35f2d48d6.html#a3af273dda9f9009575a403f35f2d48d6">alpha</a></span> records the homogenising shift the local-ring normal-form computation needs to apply when this element is used as a tail-reducer. </p>
+
+<p class="definition">Definition at line <a class="el" href="reducedgb-field-local_8hpp_source.html#l00033">33</a> of file <a class="el" href="reducedgb-field-local_8hpp_source.html">reducedgb-field-local.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="reducedgb-field-local_8hpp_source.html">reducedgb-field-local.hpp</a></li>
 </ul>

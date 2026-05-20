@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_sorter_object.html','','class_monomial_
 </div><!--header-->
 <div class="contents">
 
+<p>Strict-weak comparator on integer indices into a <span class="tt">std::vector&lt;int*&gt;</span> of monomials, used by the resolution code to sort columns.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-monomial-sorter_8hpp_source.html">res-monomial-sorter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -111,8 +114,11 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a9b0cc6d192c59b2949169eca4a2971e5" id="r_a9b0cc6d192c59b2949169eca4a2971e5"><td class="memItemLeft" align="right" valign="top">static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_sorter_object_a9b0cc6d192c59b2949169eca4a2971e5.html#a9b0cc6d192c59b2949169eca4a2971e5">mNumComparisons</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-monomial-sorter_8hpp_source.html#l00051">51</a> of file <a class="el" href="res-monomial-sorter_8hpp_source.html">res-monomial-sorter.hpp</a>.</p>
+<div class="textblock"><p>Strict-weak comparator on integer indices into a <span class="tt">std::vector&lt;int*&gt;</span> of monomials, used by the resolution code to sort columns. </p>
+<p>Each <span class="tt"><a class="el" href="class_monomial_sorter_object_ab6053ba650361723c9acf3676051d348.html#ab6053ba650361723c9acf3676051d348">mMonoms</a>[i]</span> is laid out as <span class="tt">[tiebreaker, basecomp,
+actual_monomial...]</span>. <span class="tt">operator()(a, b)</span> compares the monomial bodies via <span class="tt"><a class="el" href="class_mono_monoid_a48d8666e2c503586cef03ee9bcc18589.html#a48d8666e2c503586cef03ee9bcc18589">Monoid::compare</a></span>, returning the corresponding <span class="tt"><a class="el" href="classbool.html">bool</a></span>; on <span class="tt"><a class="el" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_abaab8d42f075ee8ddc9b70951d3fd6cd.html#abaab8d42f075ee8ddc9b70951d3fd6cd">EQ</a></span> it falls back to the <span class="tt">tiebreaker</span> slot. The static <span class="tt"><a class="el" href="class_monomial_sorter_object_a9b0cc6d192c59b2949169eca4a2971e5.html#a9b0cc6d192c59b2949169eca4a2971e5">mNumComparisons</a></span> counter records how many comparisons the sort performed &mdash; handy when profiling a large frame's column-sort cost. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-monomial-sorter_8hpp_source.html#l00063">63</a> of file <a class="el" href="res-monomial-sorter_8hpp_source.html">res-monomial-sorter.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-monomial-sorter_8hpp_source.html">res-monomial-sorter.hpp</a></li>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-monomial-sorter_8cpp_source.html">res-monomial-sorter.cpp</a></li>

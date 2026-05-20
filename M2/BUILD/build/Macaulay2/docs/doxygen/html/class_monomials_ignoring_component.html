@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomials_ignoring_component.html','','class_mon
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt">MonHashTable</span> trait for <span class="tt"><a class="el" href="moninfo_8hpp_a75641a782b0ba6d753ef03651b07b5c2.html#a75641a782b0ba6d753ef03651b07b5c2">packed_monomial</a></span>s that fold all components together (used when only the underlying monomial matters).  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monhashtable_8hpp_source.html">monhashtable.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -110,8 +113,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aba7315fb633580e7552b8dec75518b9a" id="r_aba7315fb633580e7552b8dec75518b9a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_monomial_info.html">MonomialInfo</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomials_ignoring_component_aba7315fb633580e7552b8dec75518b9a.html#aba7315fb633580e7552b8dec75518b9a">mMonoid</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monhashtable_8hpp_source.html#l00058">58</a> of file <a class="el" href="monhashtable_8hpp_source.html">monhashtable.hpp</a>.</p>
+<div class="textblock"><p><span class="tt">MonHashTable</span> trait for <span class="tt"><a class="el" href="moninfo_8hpp_a75641a782b0ba6d753ef03651b07b5c2.html#a75641a782b0ba6d753ef03651b07b5c2">packed_monomial</a></span>s that fold all components together (used when only the underlying monomial matters). </p>
+<p><span class="tt"><a class="el" href="class_monomials_ignoring_component_a596ddcfae1c6371f56b63332b0d231c9.html#a596ddcfae1c6371f56b63332b0d231c9">hash_value</a></span> reads the leading int (the monomial-only hash) without mixing in the component. <span class="tt"><a class="el" href="class_monomials_ignoring_component_a104ea93944b329d35c821b819531c5da.html#a104ea93944b329d35c821b819531c5da">is_equal</a></span> delegates to <span class="tt"><a class="el" href="class_monomial_info_ac11dc04781f4b589e91e503e8afb5d16.html#ac11dc04781f4b589e91e503e8afb5d16">MonomialInfo::monomial_part_is_equal</a></span>, which compares exponent vectors and ignores the component slot. </p>
+
+<p class="definition">Definition at line <a class="el" href="monhashtable_8hpp_source.html#l00077">77</a> of file <a class="el" href="monhashtable_8hpp_source.html">monhashtable.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/f4/<a class="el" href="monhashtable_8hpp_source.html">monhashtable.hpp</a></li>
 </ul>

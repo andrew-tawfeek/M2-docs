@@ -92,6 +92,9 @@ $(function(){initNavTree('class_columns_sorter.html','','class_columns_sorter-me
 </div><!--header-->
 <div class="contents">
 
+<p>Comparator that orders Macaulay-matrix column indices by the monomial each column represents, using the ambient <span class="tt"><a class="el" href="class_monomial_info.html" title="Per-ring monomial layout / encoding helper used by F4GB.">MonomialInfo</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -120,8 +123,10 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a136349c50dc577574e2472a7f13d0bf2" id="r_a136349c50dc577574e2472a7f13d0bf2"><td class="memItemLeft" align="right" valign="top">static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_columns_sorter_a136349c50dc577574e2472a7f13d0bf2.html#a136349c50dc577574e2472a7f13d0bf2">ncmps0</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="f4-types_8hpp_source.html#l00173">173</a> of file <a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>.</p>
+<div class="textblock"><p>Comparator that orders Macaulay-matrix column indices by the monomial each column represents, using the ambient <span class="tt"><a class="el" href="class_monomial_info.html" title="Per-ring monomial layout / encoding helper used by F4GB.">MonomialInfo</a></span>. </p>
+<p>Fed to <span class="tt">std::sort</span> so the F4 matrix builder can put the columns into the monoid's order before reduction. Keeps two static counters (<span class="tt"><a class="el" href="class_columns_sorter_a3e1bf30c9fae9269c6ccda628222e433.html#a3e1bf30c9fae9269c6ccda628222e433">ncmps</a></span>, <span class="tt"><a class="el" href="class_columns_sorter_a136349c50dc577574e2472a7f13d0bf2.html#a136349c50dc577574e2472a7f13d0bf2">ncmps0</a></span>) to let profiling code report how many comparisons the sort took. </p>
+
+<p class="definition">Definition at line <a class="el" href="f4-types_8hpp_source.html#l00190">190</a> of file <a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/f4/<a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a></li>
 <li>Macaulay2/e/f4/<a class="el" href="f4_8cpp_source.html">f4.cpp</a></li>

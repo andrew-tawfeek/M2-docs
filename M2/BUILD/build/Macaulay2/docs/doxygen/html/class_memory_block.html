@@ -92,6 +92,9 @@ $(function(){initNavTree('class_memory_block.html','','class_memory_block-member
 </div><!--header-->
 <div class="contents">
 
+<p>Thin RAII wrapper around <span class="tt">memtailor::Arena</span> providing bump-pointer array allocation with optional mutex protection.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_memory_block_8hpp_source.html">MemoryBlock.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -115,8 +118,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aabb4a3aebbf9064b0889b67b3ad32794" id="r_aabb4a3aebbf9064b0889b67b3ad32794"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmemt_1_1_arena.html">memt::Arena</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_memory_block_aabb4a3aebbf9064b0889b67b3ad32794.html#aabb4a3aebbf9064b0889b67b3ad32794">mArena</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_memory_block_8hpp_source.html#l00039">39</a> of file <a class="el" href="_memory_block_8hpp_source.html">MemoryBlock.hpp</a>.</p>
+<div class="textblock"><p>Thin RAII wrapper around <span class="tt">memtailor::Arena</span> providing bump-pointer array allocation with optional mutex protection. </p>
+<p>Heap-allocates the underlying <span class="tt"><a class="el" href="classmemt_1_1_arena.html">memt::Arena</a></span> so the wrapper has a stable address (the <span class="tt">std::move</span> overloads are kept commented out as a reminder that move semantics aren't currently supported). <span class="tt"><a class="el" href="class_memory_block_abfac6dbe4c86a0abd31c1d6db282ff35.html#abfac6dbe4c86a0abd31c1d6db282ff35">allocateArray</a>&lt;<a class="el" href="struct_t.html" title="Classic separate-chaining hash table used by the engine&#39;s low-level C code paths.">T</a>&gt;(n)</span> hands out a <span class="tt">[<a class="el" href="ringelem_8cpp_a7dc3f254421434195d252afe59ba8dac.html#a7dc3f254421434195d252afe59ba8dac">begin</a>, <a class="el" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a>)</span> pair pulled from the arena; <span class="tt"><a class="el" href="class_memory_block_a222fccf66e39db9ba573f0a7ad8db4bb.html#a222fccf66e39db9ba573f0a7ad8db4bb">safeAllocateArray</a></span> does the same under a caller-supplied mutex for use from <span class="tt"><a class="el" href="class_n_c_f4.html" title="Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduc...">NCF4</a></span> / <span class="tt"><a class="el" href="class_n_c_groebner.html" title="One-overlap-at-a-time Groebner basis driver for the free associative algebra (the &quot;Naive&quot; companion t...">NCGroebner</a></span> worker threads. The arena is reset by destruction; individual frees are not supported by design. </p>
+
+<p class="definition">Definition at line <a class="el" href="_memory_block_8hpp_source.html#l00052">52</a> of file <a class="el" href="_memory_block_8hpp_source.html">MemoryBlock.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_memory_block_8hpp_source.html">MemoryBlock.hpp</a></li>
 </ul>

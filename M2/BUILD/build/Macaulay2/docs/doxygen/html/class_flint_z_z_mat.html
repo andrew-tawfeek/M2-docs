@@ -92,6 +92,9 @@ $(function(){initNavTree('class_flint_z_z_mat.html','','class_flint_z_z_mat-memb
 </div><!--header-->
 <div class="contents">
 
+<p>RAII wrapper around FLINT's <span class="tt">fmpz_mat_t</span> for translating dense <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span>-coefficient matrices between the engine and FLINT.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dmat-qq-interface-flint_8hpp_source.html">dmat-qq-interface-flint.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -114,8 +117,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae22fbdd74c8a8340e3b82945d8e2e56f" id="r_ae22fbdd74c8a8340e3b82945d8e2e56f"><td class="memItemLeft" align="right" valign="top">fmpz_mat_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flint_z_z_mat_ae22fbdd74c8a8340e3b82945d8e2e56f.html#ae22fbdd74c8a8340e3b82945d8e2e56f">mMatrix</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dmat-qq-interface-flint_8hpp_source.html#l00039">39</a> of file <a class="el" href="dmat-qq-interface-flint_8hpp_source.html">dmat-qq-interface-flint.hpp</a>.</p>
+<div class="textblock"><p>RAII wrapper around FLINT's <span class="tt">fmpz_mat_t</span> for translating dense <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span>-coefficient matrices between the engine and FLINT. </p>
+<p>Constructed from a <span class="tt"><a class="el" href="mat-linalg_8hpp_a114b5da0f74642d3b8aabfaa14ac2a57.html#a114b5da0f74642d3b8aabfaa14ac2a57">DMatZZGMP</a></span> (or empty with given dimensions), the wrapper holds an initialised <span class="tt">fmpz_mat_t</span> for the duration of its lifetime and frees it via <span class="tt">fmpz_mat_clear</span> in the destructor. <span class="tt"><a class="el" href="class_flint_z_z_mat_ac262f1ef748570ba21adcbd24f0b1ea3.html#ac262f1ef748570ba21adcbd24f0b1ea3">to_fmpz_mat</a></span> / <span class="tt"><a class="el" href="class_flint_z_z_mat_acb6c1d00ef4c85cbb7eebc6e2314888f.html#acb6c1d00ef4c85cbb7eebc6e2314888f">from_fmpz_mat</a></span> translate entry by entry via <span class="tt">fmpz_set_mpz</span> / <span class="tt">fmpz_get_mpz</span>. Used so FLINT's matrix routines (HNF, determinant, ...) can run against engine matrices that store coefficients as GMP <span class="tt">mpz</span>s &mdash; a stopgap until <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;ARingQQ&gt;</span> is rebased onto FLINT integers directly. </p>
+
+<p class="definition">Definition at line <a class="el" href="dmat-qq-interface-flint_8hpp_source.html#l00052">52</a> of file <a class="el" href="dmat-qq-interface-flint_8hpp_source.html">dmat-qq-interface-flint.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="dmat-qq-interface-flint_8hpp_source.html">dmat-qq-interface-flint.hpp</a></li>
 </ul>

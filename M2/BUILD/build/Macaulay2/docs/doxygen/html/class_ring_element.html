@@ -92,6 +92,9 @@ $(function(){initNavTree('class_ring_element.html','','class_ring_element-member
 </div><!--header-->
 <div class="contents">
 
+<p>Front-end-visible "ring element" value: an engine <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> paired with the <span class="tt">Ring*</span> that gives it meaning.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="relem_8hpp_source.html">relem.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for RingElement:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for RingElement:</div>
  <div class="center">
   <img src="class_ring_element.png" usemap="#RingElement_map" alt=""/>
   <map id="RingElement_map" name="RingElement_map">
-<area href="class_engine_object.html" alt="EngineObject" shape="rect" coords="0,56,102,80"/>
+<area href="class_engine_object.html" title="Base class for engine objects that are immutable once their hash has been pinned (typically once they..." alt="EngineObject" shape="rect" coords="0,56,102,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,102,24"/>
   </map>
 </div></div>
@@ -174,8 +177,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a7e9369caec8ff5a6f3f33e69f7428f41" id="r_a7e9369caec8ff5a6f3f33e69f7428f41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_element_a7e9369caec8ff5a6f3f33e69f7428f41.html#a7e9369caec8ff5a6f3f33e69f7428f41">val</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="relem_8hpp_source.html#l00049">49</a> of file <a class="el" href="relem_8hpp_source.html">relem.hpp</a>.</p>
+<div class="textblock"><p>Front-end-visible "ring element" value: an engine <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> paired with the <span class="tt">Ring*</span> that gives it meaning. </p>
+<p>The interpreter handles ring elements as opaque <span class="tt">RingElement*</span> pointers and asks the engine to do arithmetic by dispatching through <span class="tt"><a class="el" href="class_ring_element_aeeacf97a0fec2e1e7ea86d9050a84d83.html#aeeacf97a0fec2e1e7ea86d9050a84d83">get_ring()</a></span>. Inherits from <span class="tt"><a class="el" href="class_engine_object.html" title="Base class for engine objects that are immutable once their hash has been pinned (typically once they...">EngineObject</a></span> so the hash is content-based (computed via the ring's <span class="tt"><a class="el" href="class_ring_element_aef0e4f3c9691a5b95e8bc19a11f5ba3d.html#aef0e4f3c9691a5b95e8bc19a11f5ba3d">computeHashValue</a></span>) and the element is immutable once exposed to the front end. <span class="tt"><a class="el" href="class_ring_element_ab978463e39096a4e0d1ecc0720f9acf3.html#ab978463e39096a4e0d1ecc0720f9acf3">make_raw</a></span> is the standard factory the interface layer uses to wrap a freshly produced <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="relem_8hpp_source.html#l00062">62</a> of file <a class="el" href="relem_8hpp_source.html">relem.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="relem_8hpp_source.html">relem.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="relem_8cpp_source.html">relem.cpp</a></li>

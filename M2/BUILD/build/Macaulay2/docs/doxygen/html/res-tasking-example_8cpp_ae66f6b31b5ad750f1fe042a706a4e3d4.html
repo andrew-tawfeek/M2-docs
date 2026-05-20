@@ -103,26 +103,26 @@ $(function(){initNavTree('res-tasking-example_8cpp_ae66f6b31b5ad750f1fe042a706a4
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="res-tasking-example_8cpp_source.html#l00101">101</a> of file <a class="el" href="res-tasking-example_8cpp_source.html">res-tasking-example.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>{</div>
-<div class="line"><span class="lineno">  103</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Hi there, we have &quot;</span> &lt;&lt; tbb::info::default_concurrency()</div>
-<div class="line"><span class="lineno">  104</span>            &lt;&lt;<span class="stringliteral">&quot; thread(s) available.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  105</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> nlevels = 5;</div>
-<div class="line"><span class="lineno">  106</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> nslanted_degrees = 10;</div>
-<div class="line"><span class="lineno">  107</span>  <a class="code hl_function" href="res-tasking-example_8cpp_aaf894ae83579e7e979d0f76b43553376.html#aaf894ae83579e7e979d0f76b43553376">makeDependencyGraph</a>(nlevels,nslanted_degrees);</div>
-<div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>  <a class="code hl_variable" href="res-tasking-example_8cpp_a56e1af971878c87cab120e8708997b11.html#a56e1af971878c87cab120e8708997b11">nodes</a>[0][0]-&gt;try_put(tbb::flow::continue_msg());</div>
-<div class="line"><span class="lineno">  110</span> </div>
-<div class="line"><span class="lineno">  111</span>  <a class="code hl_variable" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a>.wait_for_all();</div>
-<div class="line"><span class="lineno">  112</span>  </div>
-<div class="line"><span class="lineno">  113</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> lev=0; lev&lt;nlevels; ++lev)</div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> sldeg=0; sldeg &lt; nslanted_degrees; ++sldeg)</div>
-<div class="line"><span class="lineno">  115</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;nodes[&quot;</span> &lt;&lt; lev &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; sldeg &lt;&lt; <span class="stringliteral">&quot;] = &quot;</span> &lt;&lt; <a class="code hl_variable" href="res-tasking-example_8cpp_a56e1af971878c87cab120e8708997b11.html#a56e1af971878c87cab120e8708997b11">nodes</a>[lev][sldeg] &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  116</span> </div>
-<div class="line"><span class="lineno">  117</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  118</span>}</div>
+<p class="definition">Definition at line <a class="el" href="res-tasking-example_8cpp_source.html#l00112">112</a> of file <a class="el" href="res-tasking-example_8cpp_source.html">res-tasking-example.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  113</span>{</div>
+<div class="line"><span class="lineno">  114</span>  std::cout &lt;&lt; <span class="stringliteral">&quot;Hi there, we have &quot;</span> &lt;&lt; tbb::info::default_concurrency()</div>
+<div class="line"><span class="lineno">  115</span>            &lt;&lt;<span class="stringliteral">&quot; thread(s) available.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  116</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> nlevels = 5;</div>
+<div class="line"><span class="lineno">  117</span>  <span class="keyword">const</span> <span class="keywordtype">int</span> nslanted_degrees = 10;</div>
+<div class="line"><span class="lineno">  118</span>  <a class="code hl_function" href="res-tasking-example_8cpp_aaf894ae83579e7e979d0f76b43553376.html#aaf894ae83579e7e979d0f76b43553376">makeDependencyGraph</a>(nlevels,nslanted_degrees);</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>  <a class="code hl_variable" href="res-tasking-example_8cpp_a56e1af971878c87cab120e8708997b11.html#a56e1af971878c87cab120e8708997b11">nodes</a>[0][0]-&gt;try_put(tbb::flow::continue_msg());</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>  <a class="code hl_variable" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a>.wait_for_all();</div>
+<div class="line"><span class="lineno">  123</span>  </div>
+<div class="line"><span class="lineno">  124</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> lev=0; lev&lt;nlevels; ++lev)</div>
+<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> sldeg=0; sldeg &lt; nslanted_degrees; ++sldeg)</div>
+<div class="line"><span class="lineno">  126</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;nodes[&quot;</span> &lt;&lt; lev &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; sldeg &lt;&lt; <span class="stringliteral">&quot;] = &quot;</span> &lt;&lt; <a class="code hl_variable" href="res-tasking-example_8cpp_a56e1af971878c87cab120e8708997b11.html#a56e1af971878c87cab120e8708997b11">nodes</a>[lev][sldeg] &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  127</span> </div>
+<div class="line"><span class="lineno">  128</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  129</span>}</div>
 <div class="ttc" id="ares-tasking-example_8cpp_a56e1af971878c87cab120e8708997b11_html_a56e1af971878c87cab120e8708997b11"><div class="ttname"><a href="res-tasking-example_8cpp_a56e1af971878c87cab120e8708997b11.html#a56e1af971878c87cab120e8708997b11">nodes</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; NodePtr &gt; &gt; nodes</div><div class="ttdef"><b>Definition</b> <a href="res-tasking-example_8cpp_source.html#l00045">res-tasking-example.cpp:45</a></div></div>
-<div class="ttc" id="ares-tasking-example_8cpp_aaf894ae83579e7e979d0f76b43553376_html_aaf894ae83579e7e979d0f76b43553376"><div class="ttname"><a href="res-tasking-example_8cpp_aaf894ae83579e7e979d0f76b43553376.html#aaf894ae83579e7e979d0f76b43553376">makeDependencyGraph</a></div><div class="ttdeci">void makeDependencyGraph(int nlevels, int nslanted_degrees)</div><div class="ttdef"><b>Definition</b> <a href="res-tasking-example_8cpp_source.html#l00081">res-tasking-example.cpp:81</a></div></div>
+<div class="ttc" id="ares-tasking-example_8cpp_aaf894ae83579e7e979d0f76b43553376_html_aaf894ae83579e7e979d0f76b43553376"><div class="ttname"><a href="res-tasking-example_8cpp_aaf894ae83579e7e979d0f76b43553376.html#aaf894ae83579e7e979d0f76b43553376">makeDependencyGraph</a></div><div class="ttdeci">void makeDependencyGraph(int nlevels, int nslanted_degrees)</div><div class="ttdef"><b>Definition</b> <a href="res-tasking-example_8cpp_source.html#l00092">res-tasking-example.cpp:92</a></div></div>
 <div class="ttc" id="ares-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903_html_acc0eea0b8cd2df09e6f3c2bade95a903"><div class="ttname"><a href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a></div><div class="ttdeci">tbb::flow::graph G</div><div class="ttdef"><b>Definition</b> <a href="res-tasking-example_8cpp_source.html#l00044">res-tasking-example.cpp:44</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a>, <a class="el" href="res-tasking-example_8cpp_aaf894ae83579e7e979d0f76b43553376.html#aaf894ae83579e7e979d0f76b43553376">makeDependencyGraph()</a>, and <a class="el" href="res-tasking-example_8cpp_a56e1af971878c87cab120e8708997b11.html#a56e1af971878c87cab120e8708997b11">nodes</a>.</p>

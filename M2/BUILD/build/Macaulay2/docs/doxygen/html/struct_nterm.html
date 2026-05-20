@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_nterm.html','','struct_nterm-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Singly linked-list node carrying one term of a polynomial-ring element.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -101,8 +104,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a7d8ae0809fcf1cf7cdb9aa339538e6e7" id="r_a7d8ae0809fcf1cf7cdb9aa339538e6e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_nterm_a7d8ae0809fcf1cf7cdb9aa339538e6e7.html#a7d8ae0809fcf1cf7cdb9aa339538e6e7">monom</a> [1]</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ringelem_8hpp_source.html#l00139">139</a> of file <a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>.</p>
+<div class="textblock"><p>Singly linked-list node carrying one term of a polynomial-ring element. </p>
+<p><span class="tt"><a class="el" href="struct_nterm_a395044af0f071742b5d1fdeb74a9efa2.html#a395044af0f071742b5d1fdeb74a9efa2">next</a></span> chains to the next term, <span class="tt"><a class="el" href="struct_nterm_a3eb9c9daff3bb4f2a8052be2bfea895a.html#a3eb9c9daff3bb4f2a8052be2bfea895a">coeff</a></span> holds the term's coefficient (in the parent ring's <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> representation), and <span class="tt"><a class="el" href="struct_nterm_a7d8ae0809fcf1cf7cdb9aa339538e6e7.html#a7d8ae0809fcf1cf7cdb9aa339538e6e7">monom</a>[1]</span> is a C99-style flexible-array tail holding the monomial's encoded <span class="tt"><a class="el" href="classint.html">int</a></span> payload &mdash; the actual length is determined by the ring's monoid. <a class="el" href="class_polynomial.html">Polynomial</a> values stored in a <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> via the <span class="tt">poly_val</span> union arm point at the head of a chain of these. </p>
+
+<p class="definition">Definition at line <a class="el" href="ringelem_8hpp_source.html#l00151">151</a> of file <a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="ringelem_8hpp_source.html">ringelem.hpp</a></li>
 </ul>

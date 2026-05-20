@@ -115,20 +115,20 @@ $(function(){initNavTree('class_point_array_ac7d936ea67463b0b9ff780aae8acf0da.ht
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_n_a_g_8hpp_source.html#l00094">94</a> of file <a class="el" href="_n_a_g_8hpp_source.html">NAG.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>                                    : <a class="code hl_variable" href="class_point_array_aaa9d7b196dd2c6c0e20bd902678cb773.html#aaa9d7b196dd2c6c0e20bd902678cb773">mEpsilon</a>(epsilon)</div>
-<div class="line"><span class="lineno">   95</span>  {</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> = 0;</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; i++)</div>
-<div class="line"><span class="lineno">   98</span>      {</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordtype">double</span> r = rand();</div>
-<div class="line"><span class="lineno">  100</span>        <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> += r;</div>
-<div class="line"><span class="lineno">  101</span>        <a class="code hl_variable" href="class_point_array_ae9da90b50d3753c811166a3bc6c05f51.html#ae9da90b50d3753c811166a3bc6c05f51">mWeights</a>.push_back(r);</div>
-<div class="line"><span class="lineno">  102</span>      }</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; i++) <a class="code hl_variable" href="class_point_array_ae9da90b50d3753c811166a3bc6c05f51.html#ae9da90b50d3753c811166a3bc6c05f51">mWeights</a>[i] /= <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>;</div>
-<div class="line"><span class="lineno">  104</span>  }</div>
-<div class="ttc" id="aclass_point_array_aaa9d7b196dd2c6c0e20bd902678cb773_html_aaa9d7b196dd2c6c0e20bd902678cb773"><div class="ttname"><a href="class_point_array_aaa9d7b196dd2c6c0e20bd902678cb773.html#aaa9d7b196dd2c6c0e20bd902678cb773">PointArray::mEpsilon</a></div><div class="ttdeci">Weight mEpsilon</div><div class="ttdef"><b>Definition</b> <a href="_n_a_g_8hpp_source.html#l00154">NAG.hpp:154</a></div></div>
-<div class="ttc" id="aclass_point_array_ae9da90b50d3753c811166a3bc6c05f51_html_ae9da90b50d3753c811166a3bc6c05f51"><div class="ttname"><a href="class_point_array_ae9da90b50d3753c811166a3bc6c05f51.html#ae9da90b50d3753c811166a3bc6c05f51">PointArray::mWeights</a></div><div class="ttdeci">RealVector mWeights</div><div class="ttdef"><b>Definition</b> <a href="_n_a_g_8hpp_source.html#l00155">NAG.hpp:155</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_n_a_g_8hpp_source.html#l00114">114</a> of file <a class="el" href="_n_a_g_8hpp_source.html">NAG.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  114</span>                                    : <a class="code hl_variable" href="class_point_array_aaa9d7b196dd2c6c0e20bd902678cb773.html#aaa9d7b196dd2c6c0e20bd902678cb773">mEpsilon</a>(epsilon)</div>
+<div class="line"><span class="lineno">  115</span>  {</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> = 0;</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; i++)</div>
+<div class="line"><span class="lineno">  118</span>      {</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordtype">double</span> r = rand();</div>
+<div class="line"><span class="lineno">  120</span>        <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a> += r;</div>
+<div class="line"><span class="lineno">  121</span>        <a class="code hl_variable" href="class_point_array_ae9da90b50d3753c811166a3bc6c05f51.html#ae9da90b50d3753c811166a3bc6c05f51">mWeights</a>.push_back(r);</div>
+<div class="line"><span class="lineno">  122</span>      }</div>
+<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; i++) <a class="code hl_variable" href="class_point_array_ae9da90b50d3753c811166a3bc6c05f51.html#ae9da90b50d3753c811166a3bc6c05f51">mWeights</a>[i] /= <a class="code hl_variable" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>;</div>
+<div class="line"><span class="lineno">  124</span>  }</div>
+<div class="ttc" id="aclass_point_array_aaa9d7b196dd2c6c0e20bd902678cb773_html_aaa9d7b196dd2c6c0e20bd902678cb773"><div class="ttname"><a href="class_point_array_aaa9d7b196dd2c6c0e20bd902678cb773.html#aaa9d7b196dd2c6c0e20bd902678cb773">PointArray::mEpsilon</a></div><div class="ttdeci">Weight mEpsilon</div><div class="ttdef"><b>Definition</b> <a href="_n_a_g_8hpp_source.html#l00174">NAG.hpp:174</a></div></div>
+<div class="ttc" id="aclass_point_array_ae9da90b50d3753c811166a3bc6c05f51_html_ae9da90b50d3753c811166a3bc6c05f51"><div class="ttname"><a href="class_point_array_ae9da90b50d3753c811166a3bc6c05f51.html#ae9da90b50d3753c811166a3bc6c05f51">PointArray::mWeights</a></div><div class="ttdeci">RealVector mWeights</div><div class="ttdef"><b>Definition</b> <a href="_n_a_g_8hpp_source.html#l00175">NAG.hpp:175</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5_html_a2fc91f4e89bc37f261db820d231da2e5"><div class="ttname"><a href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a></div><div class="ttdeci">void size_t s</div><div class="ttdef"><b>Definition</b> <a href="m2-mem_8cpp_source.html#l00271">m2-mem.cpp:271</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_point_array_aaa9d7b196dd2c6c0e20bd902678cb773.html#aaa9d7b196dd2c6c0e20bd902678cb773">mEpsilon</a>, <a class="el" href="class_point_array_ae9da90b50d3753c811166a3bc6c05f51.html#ae9da90b50d3753c811166a3bc6c05f51">mWeights</a>, and <a class="el" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a>.</p>

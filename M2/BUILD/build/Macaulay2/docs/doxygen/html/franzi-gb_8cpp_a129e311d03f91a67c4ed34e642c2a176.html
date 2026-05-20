@@ -107,32 +107,32 @@ $(function(){initNavTree('franzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176.html'
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00134">134</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  135</span>{</div>
-<div class="line"><span class="lineno">  136</span>  <a class="code hl_typedef" href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a> B;</div>
-<div class="line"><span class="lineno">  137</span>  Pairs::iterator position = B.begin();</div>
-<div class="line"><span class="lineno">  138</span>  IntermediateBasis::const_iterator <a class="code hl_function" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a> = F.end();</div>
-<div class="line"><span class="lineno">  139</span>  <span class="keywordflow">for</span> (IntermediateBasis::const_iterator iter = F.begin(); iter != <a class="code hl_function" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a>; ++iter)</div>
-<div class="line"><span class="lineno">  140</span>    {</div>
-<div class="line"><span class="lineno">  141</span>      <span class="keywordtype">int</span> j = iter-&gt;first;</div>
-<div class="line"><span class="lineno">  142</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = -n; i &lt; 0; i++)</div>
-<div class="line"><span class="lineno">  143</span>        {</div>
-<div class="line"><span class="lineno">  144</span>          <a class="code hl_class" href="class_pair.html">Pair</a> pair = <a class="code hl_class" href="class_pair.html">Pair</a>(i, j, F);</div>
-<div class="line"><span class="lineno">  145</span>          position = B.insert(position, pair);</div>
-<div class="line"><span class="lineno">  146</span>        }</div>
-<div class="line"><span class="lineno">  147</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; j; i++)</div>
-<div class="line"><span class="lineno">  148</span>        {</div>
-<div class="line"><span class="lineno">  149</span>          <a class="code hl_class" href="class_pair.html">Pair</a> pair = <a class="code hl_class" href="class_pair.html">Pair</a>(i, j, F);</div>
-<div class="line"><span class="lineno">  150</span>          <span class="keywordflow">if</span> (pair.good)</div>
-<div class="line"><span class="lineno">  151</span>            {</div>
-<div class="line"><span class="lineno">  152</span>              position = B.insert(position, pair);</div>
-<div class="line"><span class="lineno">  153</span>            }</div>
-<div class="line"><span class="lineno">  154</span>        }</div>
-<div class="line"><span class="lineno">  155</span>    }</div>
-<div class="line"><span class="lineno">  156</span>  <span class="keywordflow">return</span> B;</div>
-<div class="line"><span class="lineno">  157</span>}</div>
-<div class="ttc" id="aclass_pair_html"><div class="ttname"><a href="class_pair.html">Pair</a></div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00012">franzi-gb.cpp:13</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62_html_a8818ff25e637ee7d384c122f52a46d62"><div class="ttname"><a href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a></div><div class="ttdeci">std::set&lt; Pair &gt; Pairs</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00090">franzi-gb.cpp:90</a></div></div>
+<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00155">155</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>{</div>
+<div class="line"><span class="lineno">  157</span>  <a class="code hl_typedef" href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a> B;</div>
+<div class="line"><span class="lineno">  158</span>  Pairs::iterator position = B.begin();</div>
+<div class="line"><span class="lineno">  159</span>  IntermediateBasis::const_iterator <a class="code hl_function" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a> = F.end();</div>
+<div class="line"><span class="lineno">  160</span>  <span class="keywordflow">for</span> (IntermediateBasis::const_iterator iter = F.begin(); iter != <a class="code hl_function" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a>; ++iter)</div>
+<div class="line"><span class="lineno">  161</span>    {</div>
+<div class="line"><span class="lineno">  162</span>      <span class="keywordtype">int</span> j = iter-&gt;first;</div>
+<div class="line"><span class="lineno">  163</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = -n; i &lt; 0; i++)</div>
+<div class="line"><span class="lineno">  164</span>        {</div>
+<div class="line"><span class="lineno">  165</span>          <a class="code hl_class" href="class_pair.html">Pair</a> pair = <a class="code hl_class" href="class_pair.html">Pair</a>(i, j, F);</div>
+<div class="line"><span class="lineno">  166</span>          position = B.insert(position, pair);</div>
+<div class="line"><span class="lineno">  167</span>        }</div>
+<div class="line"><span class="lineno">  168</span>      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; j; i++)</div>
+<div class="line"><span class="lineno">  169</span>        {</div>
+<div class="line"><span class="lineno">  170</span>          <a class="code hl_class" href="class_pair.html">Pair</a> pair = <a class="code hl_class" href="class_pair.html">Pair</a>(i, j, F);</div>
+<div class="line"><span class="lineno">  171</span>          <span class="keywordflow">if</span> (pair.good)</div>
+<div class="line"><span class="lineno">  172</span>            {</div>
+<div class="line"><span class="lineno">  173</span>              position = B.insert(position, pair);</div>
+<div class="line"><span class="lineno">  174</span>            }</div>
+<div class="line"><span class="lineno">  175</span>        }</div>
+<div class="line"><span class="lineno">  176</span>    }</div>
+<div class="line"><span class="lineno">  177</span>  <span class="keywordflow">return</span> B;</div>
+<div class="line"><span class="lineno">  178</span>}</div>
+<div class="ttc" id="aclass_pair_html"><div class="ttname"><a href="class_pair.html">Pair</a></div><div class="ttdoc">S-pair record for the Franzi boolean Groebner basis algorithm.</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00022">franzi-gb.cpp:23</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62_html_a8818ff25e637ee7d384c122f52a46d62"><div class="ttname"><a href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a></div><div class="ttdeci">std::set&lt; Pair &gt; Pairs</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00100">franzi-gb.cpp:100</a></div></div>
 <div class="ttc" id="aringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66_html_a9e12da0d68ca4715109c3198cbe62a66"><div class="ttname"><a href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a></div><div class="ttdeci">TermIterator&lt; Nterm &gt; end(Nterm *)</div><div class="ttdef"><b>Definition</b> <a href="ringelem_8cpp_source.html#l00005">ringelem.cpp:5</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end()</a>.</p>

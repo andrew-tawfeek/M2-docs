@@ -92,6 +92,9 @@ $(function(){initNavTree('class_coefficient_ring_r_1_1_element_array.html','','c
 </div><!--header-->
 <div class="contents">
 
+<p>Fixed-size, owned array of <span class="tt"><a class="el" href="class_coefficient_ring_r_a6bcaa5a3c7d169e85c912a77509ae6a6.html#a6bcaa5a3c7d169e85c912a77509ae6a6">ElementType</a></span>s for the linear-algebra templates that want a flat buffer they can <span class="tt">operator[]</span> into.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CoefficientRingR::ElementArray:</div>
@@ -129,8 +132,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="coeffrings_8hpp_source.html#l00247">247</a> of file <a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a>.</p>
+<div class="textblock"><p>Fixed-size, owned array of <span class="tt"><a class="el" href="class_coefficient_ring_r_a6bcaa5a3c7d169e85c912a77509ae6a6.html#a6bcaa5a3c7d169e85c912a77509ae6a6">ElementType</a></span>s for the linear-algebra templates that want a flat buffer they can <span class="tt">operator[]</span> into. </p>
+<p>Allocates via <span class="tt"><a class="el" href="newdelete_8hpp_a8e45ca33f2628740d647f3bdf832b96d.html#a8e45ca33f2628740d647f3bdf832b96d">newarray</a></span>, initialises every slot through <span class="tt">ring.init</span>, and frees via <span class="tt"><a class="el" href="m2-mem_8cpp_a1c6306973edadb50294a656e3927fcba.html#a1c6306973edadb50294a656e3927fcba">freemem</a></span> in the destructor. Used as the per-row storage backing dense matrix code that runs over <span class="tt"><a class="el" href="class_coefficient_ring_r.html" title="Generic CoefficientRing adapter that wraps an arbitrary const Ring* and forwards every operation to i...">CoefficientRingR</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="coeffrings_8hpp_source.html#l00288">288</a> of file <a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a></li>
 </ul>

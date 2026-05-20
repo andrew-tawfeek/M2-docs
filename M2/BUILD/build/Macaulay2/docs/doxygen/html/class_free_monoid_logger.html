@@ -92,6 +92,9 @@ $(function(){initNavTree('class_free_monoid_logger.html','','class_free_monoid_l
 </div><!--header-->
 <div class="contents">
 
+<p>Static counter for non-commutative monomial comparisons.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -104,8 +107,10 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a5f720e5e0d8b30bc09ecc446543c5a60" id="r_a5f720e5e0d8b30bc09ecc446543c5a60"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_free_monoid_logger_a5f720e5e0d8b30bc09ecc446543c5a60.html#a5f720e5e0d8b30bc09ecc446543c5a60">mCompares</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00056">56</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
+<div class="textblock"><p>Static counter for non-commutative monomial comparisons. </p>
+<p>Bumped each time <span class="tt"><a class="el" href="class_free_monoid_a6fc4850847d2662a28a9c0f9e2254686.html#a6fc4850847d2662a28a9c0f9e2254686">FreeMonoid::compare</a></span> is called; useful when profiling the inner loops of <span class="tt"><a class="el" href="class_n_c_groebner.html" title="One-overlap-at-a-time Groebner basis driver for the free associative algebra (the &quot;Naive&quot; companion t...">NCGroebner</a></span> / <span class="tt"><a class="el" href="class_n_c_f4.html" title="Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduc...">NCF4</a></span>. <span class="tt"><a class="el" href="class_free_monoid_logger_a564154aeb5464147157bb362c3e667f2.html#a564154aeb5464147157bb362c3e667f2">reset()</a></span> zeroes the counter and <span class="tt">operator&lt;&lt;</span> (declared below) pretty-prints the current value. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00064">64</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_monoid_8cpp_source.html">FreeMonoid.cpp</a></li>

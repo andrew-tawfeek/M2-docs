@@ -92,6 +92,9 @@ $(function(){initNavTree('class_res_monomial_sorter.html','','class_res_monomial
 </div><!--header-->
 <div class="contents">
 
+<p>Sorter that orders <span class="tt"><a class="el" href="res-monomial-types_8hpp_af33ca331995cea8124ea3653cfbf069d.html#af33ca331995cea8124ea3653cfbf069d">res_packed_monomial</a></span>s by their <em>total</em> (Schreyer) monomial, with a stable tiebreaker derived from input order.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-monomial-sorter_8hpp_source.html">res-monomial-sorter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -118,8 +121,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a3e785eb500644fa2e22265969abecadd" id="r_a3e785eb500644fa2e22265969abecadd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classint.html">int</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_res_monomial_sorter_a3e785eb500644fa2e22265969abecadd.html#a3e785eb500644fa2e22265969abecadd">mPositions</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-monomial-sorter_8hpp_source.html#l00096">96</a> of file <a class="el" href="res-monomial-sorter_8hpp_source.html">res-monomial-sorter.hpp</a>.</p>
+<div class="textblock"><p>Sorter that orders <span class="tt"><a class="el" href="res-monomial-types_8hpp_af33ca331995cea8124ea3653cfbf069d.html#af33ca331995cea8124ea3653cfbf069d">res_packed_monomial</a></span>s by their <em>total</em> (Schreyer) monomial, with a stable tiebreaker derived from input order. </p>
+<p>Allocates the <span class="tt">[tiebreaker, basecomp, totalmon]</span> triples inside its own <span class="tt"><a class="el" href="classmemt_1_1_arena.html">memt::Arena</a></span> so the sort can run without touching the caller's monomial storage. <span class="tt"><a class="el" href="class_res_monomial_sorter_a29bd397191fdac00972fd688c61f0349.html#a29bd397191fdac00972fd688c61f0349">mSchreyerOrder</a></span> supplies the per-component multiplier that turns each <span class="tt"><a class="el" href="class_res_monomial_sorter_a5fb1ff2f55867249da320f8575a44d00.html#a5fb1ff2f55867249da320f8575a44d00">mColumns</a>[i]</span> into its total monomial; the result is held in <span class="tt"><a class="el" href="class_res_monomial_sorter_a4cf4ab5a27114679762bdf379957cf71.html#a4cf4ab5a27114679762bdf379957cf71">mMonoms</a></span> and the permutation in <span class="tt"><a class="el" href="class_res_monomial_sorter_a3e785eb500644fa2e22265969abecadd.html#a3e785eb500644fa2e22265969abecadd">mPositions</a></span>. Keeps a <span class="tt"><a class="el" href="class_res_monomial_sorter_ad7771f3a973a63654108f59cb87c1f3e.html#ad7771f3a973a63654108f59cb87c1f3e">mNumComparisons</a></span> counter for profiling. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-monomial-sorter_8hpp_source.html#l00120">120</a> of file <a class="el" href="res-monomial-sorter_8hpp_source.html">res-monomial-sorter.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-monomial-sorter_8hpp_source.html">res-monomial-sorter.hpp</a></li>
 </ul>

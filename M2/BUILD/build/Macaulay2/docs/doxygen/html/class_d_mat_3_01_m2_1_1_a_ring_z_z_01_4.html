@@ -92,6 +92,9 @@ $(function(){initNavTree('class_d_mat_3_01_m2_1_1_a_ring_z_z_01_4.html','','clas
 </div><!--header-->
 <div class="contents">
 
+<p>Specialisation of <span class="tt"><a class="el" href="class_d_mat.html">DMat</a></span> for <span class="tt">ARingZZ</span> matrices, backed by FLINT's <span class="tt">fmpz_mat_t</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dmat-zz-flint_8hpp_source.html">dmat-zz-flint.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -129,8 +132,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a38f628377c19730bf5388a467ee7561a" id="r_a38f628377c19730bf5388a467ee7561a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_d_mat_3_01_m2_1_1_a_ring_z_z_01_4_a5a11d32733ff3420e4baa63ce2677d93.html#a5a11d32733ff3420e4baa63ce2677d93">ElementType</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_mat_a38f628377c19730bf5388a467ee7561a.html#a38f628377c19730bf5388a467ee7561a">mRowPointers</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dmat-zz-flint_8hpp_source.html#l00057">57</a> of file <a class="el" href="dmat-zz-flint_8hpp_source.html">dmat-zz-flint.hpp</a>.</p>
+<div class="textblock"><p>Specialisation of <span class="tt"><a class="el" href="class_d_mat.html">DMat</a></span> for <span class="tt">ARingZZ</span> matrices, backed by FLINT's <span class="tt">fmpz_mat_t</span>. </p>
+<p>Wraps an <span class="tt">fmpz_mat_t</span> and dispatches all dense arithmetic to FLINT's <span class="tt">fmpz_mat_*</span> routines. The class header warns that instances must not be exposed to the front end &mdash; the <span class="tt">fmpz_t</span> coefficients are allocated by FLINT, not GC-managed, so the front-end GC could free them out from under the wrapper. </p>
+
+<p class="definition">Definition at line <a class="el" href="dmat-zz-flint_8hpp_source.html#l00067">67</a> of file <a class="el" href="dmat-zz-flint_8hpp_source.html">dmat-zz-flint.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="dmat-zz-flint_8hpp_source.html">dmat-zz-flint.hpp</a></li>
 </ul>

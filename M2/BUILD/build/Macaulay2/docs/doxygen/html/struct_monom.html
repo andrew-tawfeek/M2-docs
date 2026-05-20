@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_monom.html','','struct_monom-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Non-owning view onto a <span class="tt">[length, degree, v1, v2, ..., vn]</span> packed monomial in some externally managed buffer.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -109,8 +112,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae4752c86b4a8dfe5a3a7be51a877e742" id="r_ae4752c86b4a8dfe5a3a7be51a877e742"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classint.html">int</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_monom_ae4752c86b4a8dfe5a3a7be51a877e742.html#ae4752c86b4a8dfe5a3a7be51a877e742">mValue</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_polynomial_8hpp_source.html#l00043">43</a> of file <a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>.</p>
+<div class="textblock"><p>Non-owning view onto a <span class="tt">[length, degree, v1, v2, ..., vn]</span> packed monomial in some externally managed buffer. </p>
+<p>A <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> is just a <span class="tt">const int*</span> cursor; the leading int is the total length (including itself), followed by the degree, then the <span class="tt">n</span> variable indices that spell out the (non-commutative) word. Indexing and <span class="tt"><a class="el" href="struct_monom_a9cb7b2ad287344fbfc6e0f48afe2d7e0.html#a9cb7b2ad287344fbfc6e0f48afe2d7e0">begin()</a></span> / <span class="tt"><a class="el" href="struct_monom_a83d0330247dcd7d494d1cf46695578d0.html#a83d0330247dcd7d494d1cf46695578d0">end()</a></span> give read-only iteration over the whole packed array. The <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> knows nothing about which monoid gave it meaning &mdash; that lives in <span class="tt"><a class="el" href="class_free_monoid.html" title="The free non-commutative monoid on a set of named variables, with monomial ordering and degree / weig...">FreeMonoid</a></span> / <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span>. Weights (added later) extend the format and are not yet reflected in this header comment. </p>
+
+<p class="definition">Definition at line <a class="el" href="_polynomial_8hpp_source.html#l00056">56</a> of file <a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a></li>
 </ul>

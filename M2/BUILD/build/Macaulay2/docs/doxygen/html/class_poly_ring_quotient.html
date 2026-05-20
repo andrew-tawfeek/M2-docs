@@ -92,6 +92,9 @@ $(function(){initNavTree('class_poly_ring_quotient.html','','class_poly_ring_quo
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_poly_ring_flat.html" title="PolynomialRing subclass whose elements are represented as a single flat Nterm* linked list (no fracti...">PolyRingFlat</a></span> subclass for quotients <span class="tt">R / I</span> of a polynomial ring by an ideal.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="polyquotient_8hpp_source.html">polyquotient.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PolyRingQuotient:</div>
@@ -99,10 +102,10 @@ Inheritance diagram for PolyRingQuotient:</div>
  <div class="center">
   <img src="class_poly_ring_quotient.png" usemap="#PolyRingQuotient_map" alt=""/>
   <map id="PolyRingQuotient_map" name="PolyRingQuotient_map">
-<area href="class_poly_ring_flat.html" alt="PolyRingFlat" shape="rect" coords="0,280,133,304"/>
-<area href="class_polynomial_ring.html" alt="PolynomialRing" shape="rect" coords="0,224,133,248"/>
+<area href="class_poly_ring_flat.html" title="PolynomialRing subclass whose elements are represented as a single flat Nterm* linked list (no fracti..." alt="PolyRingFlat" shape="rect" coords="0,280,133,304"/>
+<area href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy." alt="PolynomialRing" shape="rect" coords="0,224,133,248"/>
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -457,8 +460,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="polyquotient_8hpp_source.html#l00054">54</a> of file <a class="el" href="polyquotient_8hpp_source.html">polyquotient.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_poly_ring_flat.html" title="PolynomialRing subclass whose elements are represented as a single flat Nterm* linked list (no fracti...">PolyRingFlat</a></span> subclass for quotients <span class="tt">R / I</span> of a polynomial ring by an ideal. </p>
+<p>Owns the defining ideal data through the inherited <span class="tt"><a class="el" href="class_polynomial_ring_a383cd8766ad4406a58be585965ae307f.html#a383cd8766ad4406a58be585965ae307f">qinfo_</a></span> (<span class="tt">QRingInfo*</span>, see <span class="tt"><a class="el" href="qring_8hpp.html" title="QRingInfo family — bookkeeping plus normal-form machinery attached to a PolyRingQuotient for R / I re...">qring.hpp</a></span>) and adds <span class="tt"><a class="el" href="class_poly_ring_quotient_ad792a456bf2fc8b10996cb40bc966a2e.html#ad792a456bf2fc8b10996cb40bc966a2e">normal_form</a></span> as the thin forwarder onto it: every arithmetic result is reduced modulo the quotient ideal before being returned. The factory (<span class="tt"><a class="el" href="class_poly_ring_quotient_a8507e3d8142c5e828360cd44754f7d49.html#a8507e3d8142c5e828360cd44754f7d49">make_gb</a></span> plus the front-end-side <span class="tt">PolynomialRing::create</span> paths) builds the GB of <span class="tt">I</span> once and reuses it for every subsequent reduction. </p>
+
+<p class="definition">Definition at line <a class="el" href="polyquotient_8hpp_source.html#l00065">65</a> of file <a class="el" href="polyquotient_8hpp_source.html">polyquotient.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="polyquotient_8hpp_source.html">polyquotient.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="polyquotient_8cpp_source.html">polyquotient.cpp</a></li>

@@ -92,7 +92,7 @@ $(function(){initNavTree('res-moninfo-dense_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p><span class="tt"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></span> &mdash; dense exponent-vector implementation of the resolution monoid.  
+<p><span class="tt"><a class="el" href="class_res_monoid_dense.html" title="Dense-format ResMonoid implementation: monomials laid out as fixed-width exponent vectors.">ResMonoidDense</a></span> &mdash; dense exponent-vector implementation of the resolution monoid.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
@@ -105,9 +105,10 @@ $(function(){initNavTree('res-moninfo-dense_8hpp.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ResMonoidDense" id="r_ResMonoidDense"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dense-format <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> implementation: monomials laid out as fixed-width exponent vectors.  <a href="class_res_monoid_dense.html#details">More...</a><br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><span class="tt"><a class="el" href="class_res_monoid_dense.html">ResMonoidDense</a></span> &mdash; dense exponent-vector implementation of the resolution monoid. </p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_res_monoid_dense.html" title="Dense-format ResMonoid implementation: monomials laid out as fixed-width exponent vectors.">ResMonoidDense</a></span> &mdash; dense exponent-vector implementation of the resolution monoid. </p>
 <p>Declares the implementation <span class="tt"><a class="el" href="res-moninfo_8hpp.html" title="ResMonoid dispatcher — single typedef switch between ResMonoidDense and ResMonoidSparse.">res-moninfo.hpp</a></span> currently picks as the production <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span>. Each monomial is encoded as <span class="tt">[hash, component, weight_1, ..., weight_nweights, exp_0, ...,
 exp_{nvars-1}]</span> with <span class="tt">firstvar = 2 + nweights</span> and a fixed <span class="tt">nslots</span> total, so the slot count is the same for every monomial regardless of which variables actually appear &mdash; favouring <span class="tt">O(1)</span> access and short-walk comparison over compactness. Hashing is the additive Steel trick: <span class="tt">from_expvector</span> stores <span class="tt">hash(m) = sum_i hashfcn[i] * e_i</span> (with <span class="tt">hashfcn</span> a per-variable precomputed random word), so <span class="tt">hash(m*n) = hash(m) + hash(n)</span> and <span class="tt">mult</span> updates the hash by a single add. The class-level <span class="tt">mask</span> is <b>not</b> part of the hash &mdash; it is used only by <span class="tt">check_monomial</span> to detect overflow by AND-ing it against each slot. Weight slots front-load the comparison with cached degree contributions, so order tests can short-circuit before walking the exponent suffix. <span class="tt">mult(a, b, result)</span> is commutative: skew handling lives separately in <span class="tt">skew_vars</span> / <span class="tt">skew_mult_sign</span>, which take a <span class="tt">SkewMultiplication*</span> by parameter &mdash; the class does not own or inherit one.</p>
 <p><span class="tt">compare_schreyer(m, n, m0, n0, tie1, tie2)</span> is the live order test; the in-file <span class="tt">compare_grevlex</span> is currently <span class="tt">#if

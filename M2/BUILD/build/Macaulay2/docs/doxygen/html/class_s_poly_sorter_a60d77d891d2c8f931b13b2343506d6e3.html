@@ -115,41 +115,41 @@ $(function(){initNavTree('class_s_poly_sorter_a60d77d891d2c8f931b13b2343506d6e3.
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gb-default_8cpp_source.html#l00734">734</a> of file <a class="el" href="gb-default_8cpp_source.html">gb-default.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  735</span>  {</div>
-<div class="line"><span class="lineno">  736</span>    <span class="comment">// returns: LT if a &lt; b, EQ if a == b, GT if a &gt; b.</span></div>
-<div class="line"><span class="lineno">  737</span>    <span class="comment">/* Compare using degree, then type, then lead term of spoly */</span></div>
-<div class="line"><span class="lineno">  738</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
-<div class="line"><span class="lineno">  739</span>    <span class="keywordtype">int</span> cmp = a-&gt;deg - b-&gt;deg;</div>
-<div class="line"><span class="lineno">  740</span>    <span class="keywordflow">if</span> (cmp &lt; 0)</div>
-<div class="line"><span class="lineno">  741</span>      <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_ab89310b3f2f97e4e9415fc5a51549612.html#ab89310b3f2f97e4e9415fc5a51549612">GT</a>;</div>
-<div class="line"><span class="lineno">  742</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmp &gt; 0)</div>
-<div class="line"><span class="lineno">  743</span>      <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_aaf56b99cbe34023f42ce5b7878c827d8.html#aaf56b99cbe34023f42ce5b7878c827d8">LT</a>;</div>
-<div class="line"><span class="lineno">  744</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  745</span>      {</div>
-<div class="line"><span class="lineno">  746</span>        gbvector *a1 =</div>
-<div class="line"><span class="lineno">  747</span>            (a-&gt;type &gt; <a class="code hl_enumvalue" href="classgb_a_aedd89f6427d510198ec5b4bb752117df.html#aedd89f6427d510198ec5b4bb752117dfab97eca34f55970057b11039e9b24162d">gbA::SPAIR::SPAIR_SKEW</a> ? a-&gt;f() : a-&gt;lead_of_spoly);</div>
-<div class="line"><span class="lineno">  748</span>        gbvector *b1 =</div>
-<div class="line"><span class="lineno">  749</span>            (b-&gt;type &gt; <a class="code hl_enumvalue" href="classgb_a_aedd89f6427d510198ec5b4bb752117df.html#aedd89f6427d510198ec5b4bb752117dfab97eca34f55970057b11039e9b24162d">gbA::SPAIR::SPAIR_SKEW</a> ? b-&gt;f() : b-&gt;lead_of_spoly);</div>
-<div class="line"><span class="lineno">  750</span>        <span class="keywordflow">if</span> (a1 == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  751</span>          {</div>
-<div class="line"><span class="lineno">  752</span>            <span class="keywordflow">if</span> (b1 == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  753</span>              <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_abaab8d42f075ee8ddc9b70951d3fd6cd.html#abaab8d42f075ee8ddc9b70951d3fd6cd">EQ</a>;</div>
-<div class="line"><span class="lineno">  754</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  755</span>              <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_aaf56b99cbe34023f42ce5b7878c827d8.html#aaf56b99cbe34023f42ce5b7878c827d8">LT</a>;</div>
-<div class="line"><span class="lineno">  756</span>          }</div>
-<div class="line"><span class="lineno">  757</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  758</span>          {</div>
-<div class="line"><span class="lineno">  759</span>            <span class="keywordflow">if</span> (!b1)</div>
-<div class="line"><span class="lineno">  760</span>              <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_ab89310b3f2f97e4e9415fc5a51549612.html#ab89310b3f2f97e4e9415fc5a51549612">GT</a>;</div>
-<div class="line"><span class="lineno">  761</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  762</span>              <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="class_s_poly_sorter_aee02eb18cc78a77413fb37a6dc7d3541.html#aee02eb18cc78a77413fb37a6dc7d3541">R</a>-&gt;gbvector_compare(<a class="code hl_variable" href="class_s_poly_sorter_a19fb736763672ca1df2872a10b7689e8.html#a19fb736763672ca1df2872a10b7689e8">F</a>, a1, b1);</div>
-<div class="line"><span class="lineno">  763</span>          }</div>
-<div class="line"><span class="lineno">  764</span>      }</div>
-<div class="line"><span class="lineno">  765</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
-<div class="line"><span class="lineno">  766</span>  }</div>
-<div class="ttc" id="aclass_s_poly_sorter_a19fb736763672ca1df2872a10b7689e8_html_a19fb736763672ca1df2872a10b7689e8"><div class="ttname"><a href="class_s_poly_sorter_a19fb736763672ca1df2872a10b7689e8.html#a19fb736763672ca1df2872a10b7689e8">SPolySorter::F</a></div><div class="ttdeci">const FreeModule * F</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8cpp_source.html#l00730">gb-default.cpp:730</a></div></div>
-<div class="ttc" id="aclass_s_poly_sorter_aee02eb18cc78a77413fb37a6dc7d3541_html_aee02eb18cc78a77413fb37a6dc7d3541"><div class="ttname"><a href="class_s_poly_sorter_aee02eb18cc78a77413fb37a6dc7d3541.html#aee02eb18cc78a77413fb37a6dc7d3541">SPolySorter::R</a></div><div class="ttdeci">GBRing * R</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8cpp_source.html#l00731">gb-default.cpp:731</a></div></div>
+<p class="definition">Definition at line <a class="el" href="gb-default_8cpp_source.html#l00746">746</a> of file <a class="el" href="gb-default_8cpp_source.html">gb-default.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  747</span>  {</div>
+<div class="line"><span class="lineno">  748</span>    <span class="comment">// returns: LT if a &lt; b, EQ if a == b, GT if a &gt; b.</span></div>
+<div class="line"><span class="lineno">  749</span>    <span class="comment">/* Compare using degree, then type, then lead term of spoly */</span></div>
+<div class="line"><span class="lineno">  750</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
+<div class="line"><span class="lineno">  751</span>    <span class="keywordtype">int</span> cmp = a-&gt;deg - b-&gt;deg;</div>
+<div class="line"><span class="lineno">  752</span>    <span class="keywordflow">if</span> (cmp &lt; 0)</div>
+<div class="line"><span class="lineno">  753</span>      <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_ab89310b3f2f97e4e9415fc5a51549612.html#ab89310b3f2f97e4e9415fc5a51549612">GT</a>;</div>
+<div class="line"><span class="lineno">  754</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmp &gt; 0)</div>
+<div class="line"><span class="lineno">  755</span>      <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_aaf56b99cbe34023f42ce5b7878c827d8.html#aaf56b99cbe34023f42ce5b7878c827d8">LT</a>;</div>
+<div class="line"><span class="lineno">  756</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  757</span>      {</div>
+<div class="line"><span class="lineno">  758</span>        gbvector *a1 =</div>
+<div class="line"><span class="lineno">  759</span>            (a-&gt;type &gt; <a class="code hl_enumvalue" href="classgb_a_aedd89f6427d510198ec5b4bb752117df.html#aedd89f6427d510198ec5b4bb752117dfab97eca34f55970057b11039e9b24162d">gbA::SPAIR::SPAIR_SKEW</a> ? a-&gt;f() : a-&gt;lead_of_spoly);</div>
+<div class="line"><span class="lineno">  760</span>        gbvector *b1 =</div>
+<div class="line"><span class="lineno">  761</span>            (b-&gt;type &gt; <a class="code hl_enumvalue" href="classgb_a_aedd89f6427d510198ec5b4bb752117df.html#aedd89f6427d510198ec5b4bb752117dfab97eca34f55970057b11039e9b24162d">gbA::SPAIR::SPAIR_SKEW</a> ? b-&gt;f() : b-&gt;lead_of_spoly);</div>
+<div class="line"><span class="lineno">  762</span>        <span class="keywordflow">if</span> (a1 == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  763</span>          {</div>
+<div class="line"><span class="lineno">  764</span>            <span class="keywordflow">if</span> (b1 == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  765</span>              <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_abaab8d42f075ee8ddc9b70951d3fd6cd.html#abaab8d42f075ee8ddc9b70951d3fd6cd">EQ</a>;</div>
+<div class="line"><span class="lineno">  766</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  767</span>              <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_aaf56b99cbe34023f42ce5b7878c827d8.html#aaf56b99cbe34023f42ce5b7878c827d8">LT</a>;</div>
+<div class="line"><span class="lineno">  768</span>          }</div>
+<div class="line"><span class="lineno">  769</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  770</span>          {</div>
+<div class="line"><span class="lineno">  771</span>            <span class="keywordflow">if</span> (!b1)</div>
+<div class="line"><span class="lineno">  772</span>              <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_define" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_ab89310b3f2f97e4e9415fc5a51549612.html#ab89310b3f2f97e4e9415fc5a51549612">GT</a>;</div>
+<div class="line"><span class="lineno">  773</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  774</span>              <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="class_s_poly_sorter_aee02eb18cc78a77413fb37a6dc7d3541.html#aee02eb18cc78a77413fb37a6dc7d3541">R</a>-&gt;gbvector_compare(<a class="code hl_variable" href="class_s_poly_sorter_a19fb736763672ca1df2872a10b7689e8.html#a19fb736763672ca1df2872a10b7689e8">F</a>, a1, b1);</div>
+<div class="line"><span class="lineno">  775</span>          }</div>
+<div class="line"><span class="lineno">  776</span>      }</div>
+<div class="line"><span class="lineno">  777</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
+<div class="line"><span class="lineno">  778</span>  }</div>
+<div class="ttc" id="aclass_s_poly_sorter_a19fb736763672ca1df2872a10b7689e8_html_a19fb736763672ca1df2872a10b7689e8"><div class="ttname"><a href="class_s_poly_sorter_a19fb736763672ca1df2872a10b7689e8.html#a19fb736763672ca1df2872a10b7689e8">SPolySorter::F</a></div><div class="ttdeci">const FreeModule * F</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8cpp_source.html#l00742">gb-default.cpp:742</a></div></div>
+<div class="ttc" id="aclass_s_poly_sorter_aee02eb18cc78a77413fb37a6dc7d3541_html_aee02eb18cc78a77413fb37a6dc7d3541"><div class="ttname"><a href="class_s_poly_sorter_aee02eb18cc78a77413fb37a6dc7d3541.html#aee02eb18cc78a77413fb37a6dc7d3541">SPolySorter::R</a></div><div class="ttdeci">GBRing * R</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8cpp_source.html#l00743">gb-default.cpp:743</a></div></div>
 <div class="ttc" id="aclassgb_a_aedd89f6427d510198ec5b4bb752117df_html_aedd89f6427d510198ec5b4bb752117dfab97eca34f55970057b11039e9b24162d"><div class="ttname"><a href="classgb_a_aedd89f6427d510198ec5b4bb752117df.html#aedd89f6427d510198ec5b4bb752117dfab97eca34f55970057b11039e9b24162d">gbA::SPAIR_SKEW</a></div><div class="ttdeci">@ SPAIR_SKEW</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8hpp_source.html#l00095">gb-default.hpp:95</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 <div class="ttc" id="asubmodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_aaf56b99cbe34023f42ce5b7878c827d8_html_aaf56b99cbe34023f42ce5b7878c827d8"><div class="ttname"><a href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_aaf56b99cbe34023f42ce5b7878c827d8.html#aaf56b99cbe34023f42ce5b7878c827d8">LT</a></div><div class="ttdeci">#define LT</div><div class="ttdef"><b>Definition</b> <a href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_source.html#l00018">PolyRing.hpp:18</a></div></div>

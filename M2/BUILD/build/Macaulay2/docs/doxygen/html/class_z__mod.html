@@ -92,6 +92,9 @@ $(function(){initNavTree('class_z__mod.html','','class_z__mod-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side <span class="tt">Z/p</span> ring for small primes (<span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> &lt; 32767</span>), using a discrete-log (Zech) representation.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_z_zp_8hpp_source.html">ZZp.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Z_mod:</div>
@@ -100,7 +103,7 @@ Inheritance diagram for Z_mod:</div>
   <img src="class_z__mod.png" usemap="#Z_5Fmod_map" alt=""/>
   <map id="Z_5Fmod_map" name="Z_5Fmod_map">
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -389,8 +392,12 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_z_zp_8hpp_source.html#l00046">46</a> of file <a class="el" href="_z_zp_8hpp_source.html">ZZp.hpp</a>.</p>
+<div class="textblock"><p>Engine-side <span class="tt">Z/p</span> ring for small primes (<span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a> &lt; 32767</span>), using a discrete-log (Zech) representation. </p>
+<p>Stores non-zero elements as their exponent indices relative to a primitive root, with <span class="tt"><a class="el" href="class_z__mod_a4606272220cfc6f2430158d475646aef.html#a4606272220cfc6f2430158d475646aef">_ZERO</a> = p-1</span> reserved as the encoding of</p><ol type="1">
+<li>Holds two size-<span class="tt"><a class="el" href="class_z__mod_a0b33adfbf4a60e90b9f6f732540e7819.html#a0b33adfbf4a60e90b9f6f732540e7819">P</a></span> tables (<span class="tt"><a class="el" href="class_z__mod_ad9f6822fcd89a313d634a493f664609b.html#ad9f6822fcd89a313d634a493f664609b">_exp_table</a></span>, <span class="tt"><a class="el" href="class_z__mod_afb31a069856ae1da42ecfea6277ada5c.html#afb31a069856ae1da42ecfea6277ada5c">_log_table</a></span>) for hop-to-residue / hop-back conversions, and bundles a <span class="tt"><a class="el" href="class_coefficient_ring_z_zp.html" title="Discrete-log Z/p adapter that represents non-zero residues by their exponent index relative to a gene...">CoefficientRingZZp</a></span> and <span class="tt">ARingZZp</span> facade so the same ring can appear under either coefficient interface. The <span class="tt"><a class="el" href="class_z__mod_af2711c7601a25161c1ed4a978f8c82ea.html#af2711c7601a25161c1ed4a978f8c82ea">int_to_exp</a></span> / <span class="tt"><a class="el" href="class_z__mod_a200b18ef983744506d4aa916fb1f4a08.html#a200b18ef983744506d4aa916fb1f4a08">to_int</a></span> helpers convert between the internal index world and the externally visible residue. </li>
+</ol>
+
+<p class="definition">Definition at line <a class="el" href="_z_zp_8hpp_source.html#l00058">58</a> of file <a class="el" href="_z_zp_8hpp_source.html">ZZp.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_z_zp_8hpp_source.html">ZZp.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="mat_8cpp_source.html">mat.cpp</a></li>

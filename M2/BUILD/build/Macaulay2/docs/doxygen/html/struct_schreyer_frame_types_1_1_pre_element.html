@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_schreyer_frame_types_1_1_pre_element.html','','
 </div><!--header-->
 <div class="contents">
 
+<p>Lightweight <span class="tt">(<a class="el" href="varpower-monomial_8hpp_a157ac534e5ec3ea071fa7e5928ad2db5.html#a157ac534e5ec3ea071fa7e5928ad2db5">varpower_monomial</a>, <a class="el" href="struct_schreyer_frame_types_1_1_pre_element_a7d17dcc423a73264094066ec9b8fd66e.html#a7d17dcc423a73264094066ec9b8fd66e">degree</a>)</span> pair used during the pre-sort phase that feeds <span class="tt"><a class="el" href="class_schreyer_frame_a6b0f9a04ba79d8abac92bb6bbeca97c1.html#a6b0f9a04ba79d8abac92bb6bbeca97c1">SchreyerFrame::insertLevelZero</a></span> / <span class="tt">insertLevelOne</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-schreyer-frame_8hpp_source.html">res-schreyer-frame.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -100,8 +103,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a7d17dcc423a73264094066ec9b8fd66e" id="r_a7d17dcc423a73264094066ec9b8fd66e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_schreyer_frame_types_1_1_pre_element_a7d17dcc423a73264094066ec9b8fd66e.html#a7d17dcc423a73264094066ec9b8fd66e">degree</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-schreyer-frame_8hpp_source.html#l00099">99</a> of file <a class="el" href="res-schreyer-frame_8hpp_source.html">res-schreyer-frame.hpp</a>.</p>
+<div class="textblock"><p>Lightweight <span class="tt">(<a class="el" href="varpower-monomial_8hpp_a157ac534e5ec3ea071fa7e5928ad2db5.html#a157ac534e5ec3ea071fa7e5928ad2db5">varpower_monomial</a>, <a class="el" href="struct_schreyer_frame_types_1_1_pre_element_a7d17dcc423a73264094066ec9b8fd66e.html#a7d17dcc423a73264094066ec9b8fd66e">degree</a>)</span> pair used during the pre-sort phase that feeds <span class="tt"><a class="el" href="class_schreyer_frame_a6b0f9a04ba79d8abac92bb6bbeca97c1.html#a6b0f9a04ba79d8abac92bb6bbeca97c1">SchreyerFrame::insertLevelZero</a></span> / <span class="tt">insertLevelOne</span>. </p>
+<p>Smaller than a full <span class="tt"><a class="el" href="struct_schreyer_frame_types_1_1_frame_element.html" title="One generator within a SchreyerFrame::Level.">FrameElement</a></span> &mdash; no descendant slice, no syzygy polynomial &mdash; so the resolution engine can collect and sort the prospective generators before deciding their final <span class="tt"><a class="el" href="res-monomial-types_8hpp_a0ebe4a3f6e95e1de53e835b3db65b784.html#a0ebe4a3f6e95e1de53e835b3db65b784">component_index</a></span> ordering in the frame. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-schreyer-frame_8hpp_source.html#l00120">120</a> of file <a class="el" href="res-schreyer-frame_8hpp_source.html">res-schreyer-frame.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-schreyer-frame_8hpp_source.html">res-schreyer-frame.hpp</a></li>
 </ul>

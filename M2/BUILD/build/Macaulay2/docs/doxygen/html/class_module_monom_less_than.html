@@ -92,6 +92,9 @@ $(function(){initNavTree('class_module_monom_less_than.html','','class_module_mo
 </div><!--header-->
 <div class="contents">
 
+<p>Strict-weak-order comparator on <span class="tt"><a class="el" href="class_module_monom.html" title="Monom extended with a module component, a stored index, and a memoised hash — the value type of IntsS...">ModuleMonom</a></span>, used by <span class="tt"><a class="el" href="class_ints_set_a5cd9bf01c6f5dc112d8391f235bd7857.html#a5cd9bf01c6f5dc112d8391f235bd7857">IntsSet::sort</a></span> to reorder the insertion-ordered <span class="tt">mElements</span> list.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -99,8 +102,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5c5d1a0a1ea66c35d414ee9263035602" id="r_a5c5d1a0a1ea66c35d414ee9263035602"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_module_monom_less_than_a5c5d1a0a1ea66c35d414ee9263035602.html#a5c5d1a0a1ea66c35d414ee9263035602">operator()</a> (const <a class="el" href="class_module_monom.html">ModuleMonom</a> &amp;a, const <a class="el" href="class_module_monom.html">ModuleMonom</a> &amp;b) const</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monomial-collection_8hpp_source.html#l00139">139</a> of file <a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>.</p>
+<div class="textblock"><p>Strict-weak-order comparator on <span class="tt"><a class="el" href="class_module_monom.html" title="Monom extended with a module component, a stored index, and a memoised hash — the value type of IntsS...">ModuleMonom</a></span>, used by <span class="tt"><a class="el" href="class_ints_set_a5cd9bf01c6f5dc112d8391f235bd7857.html#a5cd9bf01c6f5dc112d8391f235bd7857">IntsSet::sort</a></span> to reorder the insertion-ordered <span class="tt">mElements</span> list. </p>
+<p>Defers to <span class="tt"><a class="el" href="class_module_monom_a98f193e3093cc4e3d9bd1386183c2efd.html#a98f193e3093cc4e3d9bd1386183c2efd">ModuleMonom::compare</a></span> and treats anything <span class="tt">&lt;= <a class="el" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_abaab8d42f075ee8ddc9b70951d3fd6cd.html#abaab8d42f075ee8ddc9b70951d3fd6cd">EQ</a></span> as "less than", so equal monomials get a stable position from <span class="tt">std::sort</span>'s tiebreaker rather than from this comparator. </p>
+
+<p class="definition">Definition at line <a class="el" href="monomial-collection_8hpp_source.html#l00147">147</a> of file <a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a></li>
 </ul>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_collection_fixed_size.html','','class_m
 </div><!--header-->
 <div class="contents">
 
+<p>Interning collection that pairs a <span class="tt"><a class="el" href="class_monomial_set_fixed_size.html">MonomialSetFixedSize</a></span> with its own <span class="tt"><a class="el" href="class_monomial_memory_space.html" title="Bump-pointer arena for monomial storage, backed by a memt::Arena.">MonomialMemorySpace</a></span> to own monomial storage.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -110,8 +113,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ab070fbf13f85dc4d2d66e1325c4b538d" id="r_ab070fbf13f85dc4d2d66e1325c4b538d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_monomial_memory_space.html">MonomialMemorySpace</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_collection_fixed_size_ab070fbf13f85dc4d2d66e1325c4b538d.html#ab070fbf13f85dc4d2d66e1325c4b538d">mMonomialMemory</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00226">226</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
+<div class="textblock"><p>Interning collection that pairs a <span class="tt"><a class="el" href="class_monomial_set_fixed_size.html">MonomialSetFixedSize</a></span> with its own <span class="tt"><a class="el" href="class_monomial_memory_space.html" title="Bump-pointer arena for monomial storage, backed by a memt::Arena.">MonomialMemorySpace</a></span> to own monomial storage. </p>
+<p><span class="tt">findOrInsert(monom)</span> copies the caller's monomial into the arena, tries to insert the new pointer into the set, and pops the allocation back off the arena if a duplicate was already present (the "intern-or-pop" pattern). <span class="tt"><a class="el" href="class_monomial_collection_fixed_size_adad51c1e22168ba6f29e9dabee8e1d6f.html#adad51c1e22168ba6f29e9dabee8e1d6f">monomialMemorySpace()</a></span> exposes the arena so callers that allocate first and then insert can do so without an extra copy. </p>
+
+<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00274">274</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a></li>
 </ul>

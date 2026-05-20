@@ -92,6 +92,9 @@ $(function(){initNavTree('class_element_array.html','','class_element_array-memb
 </div><!--header-->
 <div class="contents">
 
+<p>Type-erased owning handle to a dense coefficient vector held by a <span class="tt"><a class="el" href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a>&lt;<a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a>&gt;</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -116,8 +119,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a57608a0725bb8e88f1f5e1b6f2adbaea template"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_element_array_a57608a0725bb8e88f1f5e1b6f2adbaea.html#a57608a0725bb8e88f1f5e1b6f2adbaea">ConcreteVectorArithmetic</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_vector_arithmetic_8hpp_source.html#l00081">81</a> of file <a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>.</p>
+<div class="textblock"><p>Type-erased owning handle to a dense coefficient vector held by a <span class="tt"><a class="el" href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a>&lt;<a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a>&gt;</span>. </p>
+<p>Stores a single <span class="tt">void*</span> whose concrete type is the wrapped ring's <span class="tt">ElementContainerType</span> (e.g. an <span class="tt">std::vector&lt;elem&gt;</span> or an <a class="el" href="class_a_ring.html">ARing</a> concrete array). All payload access is funneled through <span class="tt"><a class="el" href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a></span> &mdash; the friend declaration &mdash; so only the matching arithmetic dispatcher can recover the real pointer. Default-constructed as null; copies are disallowed and moves go through <span class="tt"><a class="el" href="class_element_array_a394e678fb334b143b42102ec2c9c33a7.html#a394e678fb334b143b42102ec2c9c33a7">swap</a></span>, keeping ownership unique. </p>
+
+<p class="definition">Definition at line <a class="el" href="_vector_arithmetic_8hpp_source.html#l00093">93</a> of file <a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a></li>
 </ul>

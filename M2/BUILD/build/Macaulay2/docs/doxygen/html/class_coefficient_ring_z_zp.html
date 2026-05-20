@@ -92,6 +92,9 @@ $(function(){initNavTree('class_coefficient_ring_z_zp.html','','class_coefficien
 </div><!--header-->
 <div class="contents">
 
+<p>Discrete-log <span class="tt">Z/p</span> adapter that represents non-zero residues by their exponent index relative to a generator.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CoefficientRingZZp:</div>
@@ -165,8 +168,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a03219d82b8c233734c9f965375ae0fbd" id="r_a03219d82b8c233734c9f965375ae0fbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_coefficient_ring_z_zp_a03219d82b8c233734c9f965375ae0fbd.html#a03219d82b8c233734c9f965375ae0fbd">exp_table</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="coeffrings_8hpp_source.html#l00049">49</a> of file <a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a>.</p>
+<div class="textblock"><p>Discrete-log <span class="tt">Z/p</span> adapter that represents non-zero residues by their exponent index relative to a generator. </p>
+<p>Holds two size-<span class="tt"><a class="el" href="class_coefficient_ring_z_zp_af698e4348b1d00dc81874d67146fd44b.html#af698e4348b1d00dc81874d67146fd44b">p</a></span> tables: <span class="tt"><a class="el" href="class_coefficient_ring_z_zp_a03219d82b8c233734c9f965375ae0fbd.html#a03219d82b8c233734c9f965375ae0fbd">exp_table</a></span> maps an index <span class="tt">a</span> to the residue <span class="tt">g^a mod <a class="el" href="class_coefficient_ring_z_zp_af698e4348b1d00dc81874d67146fd44b.html#af698e4348b1d00dc81874d67146fd44b">p</a></span> and <span class="tt"><a class="el" href="class_coefficient_ring_z_zp_a58819387755b98ce33cff888e65fabe5.html#a58819387755b98ce33cff888e65fabe5">log_table</a></span> is its inverse. Multiplication and division on indices become <span class="tt"><a class="el" href="class_coefficient_ring_z_zp_a4f8aa8c080e4a22570e3ac178df1aa28.html#a4f8aa8c080e4a22570e3ac178df1aa28">modulus_add</a></span> / <span class="tt"><a class="el" href="class_coefficient_ring_z_zp_aded64fc101068d1840bb2964f09e89bb.html#aded64fc101068d1840bb2964f09e89bb">modulus_sub</a></span> mod <span class="tt"><a class="el" href="class_coefficient_ring_z_zp_af698e4348b1d00dc81874d67146fd44b.html#af698e4348b1d00dc81874d67146fd44b">p</a> - 1</span> with no table lookup, and inversion of a non-zero index <span class="tt">a</span> is <span class="tt"><a class="el" href="class_coefficient_ring_z_zp_af698e4348b1d00dc81874d67146fd44b.html#af698e4348b1d00dc81874d67146fd44b">p</a> - 1 - a</span>. Addition / subtraction first hop to residues via <span class="tt"><a class="el" href="class_coefficient_ring_z_zp_a03219d82b8c233734c9f965375ae0fbd.html#a03219d82b8c233734c9f965375ae0fbd">exp_table</a></span>, do a modular add/sub, and hop back via <span class="tt"><a class="el" href="class_coefficient_ring_z_zp_a58819387755b98ce33cff888e65fabe5.html#a58819387755b98ce33cff888e65fabe5">log_table</a></span>. <span class="tt"><a class="el" href="class_coefficient_ring_z_zp_a2c45e4a06c9f47d76bc021bb4ee8ad97.html#a2c45e4a06c9f47d76bc021bb4ee8ad97">negate</a></span> shifts by <span class="tt">(<a class="el" href="class_coefficient_ring_z_zp_af698e4348b1d00dc81874d67146fd44b.html#af698e4348b1d00dc81874d67146fd44b">p</a> - 1) / 2</span> (the index of -1). Used for small primes (<span class="tt">2 &lt;= <a class="el" href="class_coefficient_ring_z_zp_af698e4348b1d00dc81874d67146fd44b.html#af698e4348b1d00dc81874d67146fd44b">p</a> &lt;= 32749</span> per <span class="tt"><a class="el" href="aring_8h.html" title="Engine-boundary C API for constructing aring-backed coefficient rings.">interface/aring.h</a></span>) via the <span class="tt">SimpleARing</span> CRTP layer. </p>
+
+<p class="definition">Definition at line <a class="el" href="coeffrings_8hpp_source.html#l00062">62</a> of file <a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="coeffrings_8cpp_source.html">coeffrings.cpp</a></li>

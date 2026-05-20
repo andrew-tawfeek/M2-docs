@@ -92,6 +92,9 @@ $(function(){initNavTree('class_ring_z_z.html','','class_ring_z_z-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side ring of integers, backed by GMP <span class="tt">mpz_ptr</span> elements.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_z_z_8hpp_source.html">ZZ.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for RingZZ:</div>
@@ -100,7 +103,7 @@ Inheritance diagram for RingZZ:</div>
   <img src="class_ring_z_z.png" usemap="#RingZZ_map" alt=""/>
   <map id="RingZZ_map" name="RingZZ_map">
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -388,8 +391,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_z_z_8hpp_source.html#l00063">63</a> of file <a class="el" href="_z_z_8hpp_source.html">ZZ.hpp</a>.</p>
+<div class="textblock"><p>Engine-side ring of integers, backed by GMP <span class="tt">mpz_ptr</span> elements. </p>
+<p>Each non-zero element is a heap-allocated <span class="tt">mpz_struct</span> handed out by <span class="tt"><a class="el" href="class_ring_z_z_a8a8bb80c8283c2f727a07c69c6358659.html#a8a8bb80c8283c2f727a07c69c6358659">new_elem()</a></span>; <span class="tt"><a class="el" href="class_ring_z_z_a41126f3fea533a3b013798df1ece4022.html#a41126f3fea533a3b013798df1ece4022">coeffR</a></span> is the matching <span class="tt"><a class="el" href="class_ring_z_z_ad3ff00679a0c4c1d840207a4abed7ced.html#ad3ff00679a0c4c1d840207a4abed7ced">ARingZZGMP</a></span> facade used wherever the <span class="tt">aring</span>-shaped coefficient interface is expected. The class itself only exposes the <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>-level surface &mdash; <span class="tt"><a class="el" href="class_ring_z_z_a047bc59d8b68c815039da1942d89b484.html#a047bc59d8b68c815039da1942d89b484">add</a></span>, <span class="tt"><a class="el" href="class_ring_z_z_ac25c05701852ed5eb92da0388f462617.html#ac25c05701852ed5eb92da0388f462617">mult</a></span>, <span class="tt"><a class="el" href="class_ring_z_z_a911ad66000442550b450f18d647a4050.html#a911ad66000442550b450f18d647a4050">divide</a></span>, <span class="tt"><a class="el" href="class_ring_z_z_aa59c4afe4140ba8a01d8daad2aa98d8a.html#aa59c4afe4140ba8a01d8daad2aa98d8a">gcd</a></span>, etc. &mdash; with bodies that delegate to GMP. Constructed once at startup via <span class="tt">Ring::initZZ()</span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_z_z_8hpp_source.html#l00072">72</a> of file <a class="el" href="_z_z_8hpp_source.html">ZZ.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_z_z_8hpp_source.html">ZZ.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="mat_8cpp_source.html">mat.cpp</a></li>

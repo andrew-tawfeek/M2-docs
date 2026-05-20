@@ -107,37 +107,37 @@ $(function(){initNavTree('class_schreyer_frame_a3fe74dec733d6133718823e53def85bd
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="res-f4-m2-interface_8cpp_source.html#l00678">678</a> of file <a class="el" href="res-f4-m2-interface_8cpp_source.html">res-f4-m2-interface.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  679</span>{</div>
-<div class="line"><span class="lineno">  680</span>  DegreeZeroMapGenerator D(*<span class="keyword">this</span>, slanted_degree, lev);</div>
-<div class="line"><span class="lineno">  681</span>  <span class="keywordtype">long</span> nnonzero = D.numNonzero();</div>
-<div class="line"><span class="lineno">  682</span>  <span class="keywordtype">long</span> <a class="code hl_variable" href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">long</span><span class="keyword">&gt;</span>(D.numRows()) * <span class="keyword">static_cast&lt;</span><span class="keywordtype">long</span><span class="keyword">&gt;</span>(D.numColumns());</div>
-<div class="line"><span class="lineno">  683</span>  <span class="keywordtype">double</span> nnonzeroD = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(nnonzero);</div>
-<div class="line"><span class="lineno">  684</span>  <span class="keywordtype">double</span> nelementsD = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a>);</div>
-<div class="line"><span class="lineno">  685</span>  <span class="keywordtype">double</span> frac_nonzero = (<a class="code hl_variable" href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a> &gt; 0 ? nnonzeroD/nelementsD : 1.0);</div>
-<div class="line"><span class="lineno">  686</span> </div>
-<div class="line"><span class="lineno">  687</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a> &gt;= 2)</div>
-<div class="line"><span class="lineno">  688</span>    {</div>
-<div class="line"><span class="lineno">  689</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;  rank(&quot;</span> &lt;&lt; lev &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; slanted_degree &lt;&lt; <span class="stringliteral">&quot;) size = &quot;</span></div>
-<div class="line"><span class="lineno">  690</span>                &lt;&lt; D.numRows() &lt;&lt; <span class="stringliteral">&quot; x &quot;</span> &lt;&lt; D.numColumns()</div>
-<div class="line"><span class="lineno">  691</span>                &lt;&lt; <span class="stringliteral">&quot; frac non-zero= &quot;</span> &lt;&lt; frac_nonzero &lt;&lt; std::endl &lt;&lt; std::flush;</div>
-<div class="line"><span class="lineno">  692</span>    }</div>
-<div class="line"><span class="lineno">  693</span>  <span class="keywordtype">int</span> rkSparse = -1;</div>
-<div class="line"><span class="lineno">  694</span>  <span class="keywordtype">int</span> rkDense = -1;</div>
-<div class="line"><span class="lineno">  695</span>  <span class="keywordflow">if</span> (frac_nonzero &lt;= .007)</div>
-<div class="line"><span class="lineno">  696</span>    {</div>
-<div class="line"><span class="lineno">  697</span>      rkSparse = <a class="code hl_function" href="class_schreyer_frame_a1a1c594b87e15a4eda3460540aac3b64.html#a1a1c594b87e15a4eda3460540aac3b64">rankUsingSparseMatrix</a>(D);</div>
-<div class="line"><span class="lineno">  698</span>      <span class="keywordflow">return</span> rkSparse;</div>
-<div class="line"><span class="lineno">  699</span>    }</div>
-<div class="line"><span class="lineno">  700</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  701</span>    {</div>
-<div class="line"><span class="lineno">  702</span>      rkDense = <a class="code hl_function" href="class_schreyer_frame_aed05272971b00971de76e0ff864ed92b.html#aed05272971b00971de76e0ff864ed92b">rankUsingDenseMatrix</a>(D);</div>
-<div class="line"><span class="lineno">  703</span>      <span class="keywordflow">return</span> rkDense;</div>
-<div class="line"><span class="lineno">  704</span>    }</div>
-<div class="line"><span class="lineno">  705</span>}</div>
+<p class="definition">Definition at line <a class="el" href="res-f4-m2-interface_8cpp_source.html#l00701">701</a> of file <a class="el" href="res-f4-m2-interface_8cpp_source.html">res-f4-m2-interface.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  702</span>{</div>
+<div class="line"><span class="lineno">  703</span>  DegreeZeroMapGenerator D(*<span class="keyword">this</span>, slanted_degree, lev);</div>
+<div class="line"><span class="lineno">  704</span>  <span class="keywordtype">long</span> nnonzero = D.numNonzero();</div>
+<div class="line"><span class="lineno">  705</span>  <span class="keywordtype">long</span> <a class="code hl_variable" href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a> = <span class="keyword">static_cast&lt;</span><span class="keywordtype">long</span><span class="keyword">&gt;</span>(D.numRows()) * <span class="keyword">static_cast&lt;</span><span class="keywordtype">long</span><span class="keyword">&gt;</span>(D.numColumns());</div>
+<div class="line"><span class="lineno">  706</span>  <span class="keywordtype">double</span> nnonzeroD = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(nnonzero);</div>
+<div class="line"><span class="lineno">  707</span>  <span class="keywordtype">double</span> nelementsD = <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a>);</div>
+<div class="line"><span class="lineno">  708</span>  <span class="keywordtype">double</span> frac_nonzero = (<a class="code hl_variable" href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a> &gt; 0 ? nnonzeroD/nelementsD : 1.0);</div>
+<div class="line"><span class="lineno">  709</span> </div>
+<div class="line"><span class="lineno">  710</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a> &gt;= 2)</div>
+<div class="line"><span class="lineno">  711</span>    {</div>
+<div class="line"><span class="lineno">  712</span>      std::cout &lt;&lt; <span class="stringliteral">&quot;  rank(&quot;</span> &lt;&lt; lev &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; slanted_degree &lt;&lt; <span class="stringliteral">&quot;) size = &quot;</span></div>
+<div class="line"><span class="lineno">  713</span>                &lt;&lt; D.numRows() &lt;&lt; <span class="stringliteral">&quot; x &quot;</span> &lt;&lt; D.numColumns()</div>
+<div class="line"><span class="lineno">  714</span>                &lt;&lt; <span class="stringliteral">&quot; frac non-zero= &quot;</span> &lt;&lt; frac_nonzero &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line"><span class="lineno">  715</span>    }</div>
+<div class="line"><span class="lineno">  716</span>  <span class="keywordtype">int</span> rkSparse = -1;</div>
+<div class="line"><span class="lineno">  717</span>  <span class="keywordtype">int</span> rkDense = -1;</div>
+<div class="line"><span class="lineno">  718</span>  <span class="keywordflow">if</span> (frac_nonzero &lt;= .007)</div>
+<div class="line"><span class="lineno">  719</span>    {</div>
+<div class="line"><span class="lineno">  720</span>      rkSparse = <a class="code hl_function" href="class_schreyer_frame_a1a1c594b87e15a4eda3460540aac3b64.html#a1a1c594b87e15a4eda3460540aac3b64">rankUsingSparseMatrix</a>(D);</div>
+<div class="line"><span class="lineno">  721</span>      <span class="keywordflow">return</span> rkSparse;</div>
+<div class="line"><span class="lineno">  722</span>    }</div>
+<div class="line"><span class="lineno">  723</span>  <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  724</span>    {</div>
+<div class="line"><span class="lineno">  725</span>      rkDense = <a class="code hl_function" href="class_schreyer_frame_aed05272971b00971de76e0ff864ed92b.html#aed05272971b00971de76e0ff864ed92b">rankUsingDenseMatrix</a>(D);</div>
+<div class="line"><span class="lineno">  726</span>      <span class="keywordflow">return</span> rkDense;</div>
+<div class="line"><span class="lineno">  727</span>    }</div>
+<div class="line"><span class="lineno">  728</span>}</div>
 <div class="ttc" id="a_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b_html_a1c55f6f647edc8dbf7eb1db9da27f11b"><div class="ttname"><a href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a></div><div class="ttdeci">static const int nelements</div><div class="ttdef"><b>Definition</b> <a href="_a_ring_g_f_test_8cpp_source.html#l00043">ARingGFTest.cpp:43</a></div></div>
-<div class="ttc" id="aclass_schreyer_frame_a1a1c594b87e15a4eda3460540aac3b64_html_a1a1c594b87e15a4eda3460540aac3b64"><div class="ttname"><a href="class_schreyer_frame_a1a1c594b87e15a4eda3460540aac3b64.html#a1a1c594b87e15a4eda3460540aac3b64">SchreyerFrame::rankUsingSparseMatrix</a></div><div class="ttdeci">int rankUsingSparseMatrix(Gen &amp;D)</div><div class="ttdef"><b>Definition</b> <a href="res-f4-m2-interface_8cpp_source.html#l00580">res-f4-m2-interface.cpp:580</a></div></div>
-<div class="ttc" id="aclass_schreyer_frame_aed05272971b00971de76e0ff864ed92b_html_aed05272971b00971de76e0ff864ed92b"><div class="ttname"><a href="class_schreyer_frame_aed05272971b00971de76e0ff864ed92b.html#aed05272971b00971de76e0ff864ed92b">SchreyerFrame::rankUsingDenseMatrix</a></div><div class="ttdeci">int rankUsingDenseMatrix(Gen &amp;D, bool transposed=true)</div><div class="ttdef"><b>Definition</b> <a href="res-f4-m2-interface_8cpp_source.html#l00613">res-f4-m2-interface.cpp:613</a></div></div>
+<div class="ttc" id="aclass_schreyer_frame_a1a1c594b87e15a4eda3460540aac3b64_html_a1a1c594b87e15a4eda3460540aac3b64"><div class="ttname"><a href="class_schreyer_frame_a1a1c594b87e15a4eda3460540aac3b64.html#a1a1c594b87e15a4eda3460540aac3b64">SchreyerFrame::rankUsingSparseMatrix</a></div><div class="ttdeci">int rankUsingSparseMatrix(Gen &amp;D)</div><div class="ttdef"><b>Definition</b> <a href="res-f4-m2-interface_8cpp_source.html#l00603">res-f4-m2-interface.cpp:603</a></div></div>
+<div class="ttc" id="aclass_schreyer_frame_aed05272971b00971de76e0ff864ed92b_html_aed05272971b00971de76e0ff864ed92b"><div class="ttname"><a href="class_schreyer_frame_aed05272971b00971de76e0ff864ed92b.html#aed05272971b00971de76e0ff864ed92b">SchreyerFrame::rankUsingDenseMatrix</a></div><div class="ttdeci">int rankUsingDenseMatrix(Gen &amp;D, bool transposed=true)</div><div class="ttdef"><b>Definition</b> <a href="res-f4-m2-interface_8cpp_source.html#l00636">res-f4-m2-interface.cpp:636</a></div></div>
 <div class="ttc" id="am2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc_html_aa0f82116567de78d2d8d5cee3a26eebc"><div class="ttname"><a href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a></div><div class="ttdeci">int M2_gbTrace</div><div class="ttdef"><b>Definition</b> <a href="m2-types_8cpp_source.html#l00052">m2-types.cpp:52</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a>, <a class="el" href="_a_ring_g_f_test_8cpp_a1c55f6f647edc8dbf7eb1db9da27f11b.html#a1c55f6f647edc8dbf7eb1db9da27f11b">nelements</a>, <a class="el" href="class_degree_zero_map_generator_ae11767ff94ba3ee8e3c0ddd7db06780b.html#ae11767ff94ba3ee8e3c0ddd7db06780b">DegreeZeroMapGenerator::numColumns()</a>, <a class="el" href="class_degree_zero_map_generator_ac1bd0eab0d9be0dfd192f3de187d8230.html#ac1bd0eab0d9be0dfd192f3de187d8230">DegreeZeroMapGenerator::numNonzero()</a>, <a class="el" href="class_degree_zero_map_generator_abf139108a50b928f562f945b5da5317b.html#abf139108a50b928f562f945b5da5317b">DegreeZeroMapGenerator::numRows()</a>, <a class="el" href="class_schreyer_frame_aed05272971b00971de76e0ff864ed92b.html#aed05272971b00971de76e0ff864ed92b">rankUsingDenseMatrix()</a>, and <a class="el" href="class_schreyer_frame_a1a1c594b87e15a4eda3460540aac3b64.html#a1a1c594b87e15a4eda3460540aac3b64">rankUsingSparseMatrix()</a>.</p>

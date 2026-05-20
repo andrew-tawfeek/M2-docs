@@ -92,6 +92,9 @@ $(function(){initNavTree('class_point_array.html','','class_point_array-members'
 </div><!--header-->
 <div class="contents">
 
+<p>Container of numerical points equipped with an <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\varepsilon$" src="form_0.png"/></picture>-tolerance and a random weight vector used to bucket approximately equal points.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_n_a_g_8hpp_source.html">NAG.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -123,8 +126,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae9da90b50d3753c811166a3bc6c05f51" id="r_ae9da90b50d3753c811166a3bc6c05f51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_point_array_a25855725f62d28b2cd2f5824462a0007.html#a25855725f62d28b2cd2f5824462a0007">RealVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_array_ae9da90b50d3753c811166a3bc6c05f51.html#ae9da90b50d3753c811166a3bc6c05f51">mWeights</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_n_a_g_8hpp_source.html#l00085">85</a> of file <a class="el" href="_n_a_g_8hpp_source.html">NAG.hpp</a>.</p>
+<div class="textblock"><p>Container of numerical points equipped with an <picture><source srcset="form_0_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\varepsilon$" src="form_0.png"/></picture>-tolerance and a random weight vector used to bucket approximately equal points. </p>
+<p>A point hashes to the integer rounding of <picture><source srcset="form_1_dark.png" media="(prefers-color-scheme: dark)"/><img class="formulaInl" alt="$\sum w_i x_i / \varepsilon$" src="form_1.png"/></picture>, so points within <span class="tt"><a class="el" href="class_point_array_aaa9d7b196dd2c6c0e20bd902678cb773.html#aaa9d7b196dd2c6c0e20bd902678cb773">mEpsilon</a></span> of each other land in the same bucket and can be deduplicated. The <span class="tt"><a class="el" href="class_point_array_a25855725f62d28b2cd2f5824462a0007.html#a25855725f62d28b2cd2f5824462a0007">RealVector</a></span> <span class="tt"><a class="el" href="class_point_array_ae9da90b50d3753c811166a3bc6c05f51.html#ae9da90b50d3753c811166a3bc6c05f51">mWeights</a></span> either comes from the caller or is filled by the <span class="tt">(epsilon, n)</span> constructor with normalised random numbers. Used by the path-tracker to recognise coincident endpoints. </p>
+
+<p class="definition">Definition at line <a class="el" href="_n_a_g_8hpp_source.html#l00105">105</a> of file <a class="el" href="_n_a_g_8hpp_source.html">NAG.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_n_a_g_8hpp_source.html">NAG.hpp</a></li>
 </ul>

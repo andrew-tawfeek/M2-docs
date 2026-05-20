@@ -113,17 +113,17 @@ $(function(){initNavTree('class_map_polynomial_heap_a6e639a4460c0949e190bcb90f49
 
 <p>Implements <a class="el" href="class_polynomial_heap_ac213e70a22f90f0c4348f474c81f029f.html#ac213e70a22f90f0c4348f474c81f029f">PolynomialHeap</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00568">568</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  568</span>                        {</div>
-<div class="line"><span class="lineno">  569</span>    <span class="comment">// clear the heap.  The free algebra is kept the same</span></div>
-<div class="line"><span class="lineno">  570</span>    <span class="comment">// but all other aspects are reset.  The MonomialSpace</span></div>
-<div class="line"><span class="lineno">  571</span>    <span class="comment">// has all its data freed to the arena, but is available for</span></div>
-<div class="line"><span class="lineno">  572</span>    <span class="comment">// use without any new allocations for the next computation.</span></div>
-<div class="line"><span class="lineno">  573</span>    <a class="code hl_variable" href="class_map_polynomial_heap_a6caefab191d7665cf5d5974d9e022319.html#a6caefab191d7665cf5d5974d9e022319">mMap</a>.clear();</div>
-<div class="line"><span class="lineno">  574</span>    <a class="code hl_variable" href="class_map_polynomial_heap_a145d443e2a1170ece114b5d920de47d1.html#a145d443e2a1170ece114b5d920de47d1">mMonomialSpace</a>.deallocateAll();</div>
-<div class="line"><span class="lineno">  575</span>  }</div>
-<div class="ttc" id="aclass_map_polynomial_heap_a145d443e2a1170ece114b5d920de47d1_html_a145d443e2a1170ece114b5d920de47d1"><div class="ttname"><a href="class_map_polynomial_heap_a145d443e2a1170ece114b5d920de47d1.html#a145d443e2a1170ece114b5d920de47d1">MapPolynomialHeap::mMonomialSpace</a></div><div class="ttdeci">MemoryBlock mMonomialSpace</div><div class="ttdef"><b>Definition</b> <a href="_n_c_reduction_8cpp_source.html#l00668">NCReduction.cpp:668</a></div></div>
-<div class="ttc" id="aclass_map_polynomial_heap_a6caefab191d7665cf5d5974d9e022319_html_a6caefab191d7665cf5d5974d9e022319"><div class="ttname"><a href="class_map_polynomial_heap_a6caefab191d7665cf5d5974d9e022319.html#a6caefab191d7665cf5d5974d9e022319">MapPolynomialHeap::mMap</a></div><div class="ttdeci">std::map&lt; Monom, ring_elem, MonomEq, gc_allocator&lt; ConstEntry &gt; &gt; mMap</div><div class="ttdef"><b>Definition</b> <a href="_n_c_reduction_8cpp_source.html#l00667">NCReduction.cpp:667</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00623">623</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  623</span>                        {</div>
+<div class="line"><span class="lineno">  624</span>    <span class="comment">// clear the heap.  The free algebra is kept the same</span></div>
+<div class="line"><span class="lineno">  625</span>    <span class="comment">// but all other aspects are reset.  The MonomialSpace</span></div>
+<div class="line"><span class="lineno">  626</span>    <span class="comment">// has all its data freed to the arena, but is available for</span></div>
+<div class="line"><span class="lineno">  627</span>    <span class="comment">// use without any new allocations for the next computation.</span></div>
+<div class="line"><span class="lineno">  628</span>    <a class="code hl_variable" href="class_map_polynomial_heap_a6caefab191d7665cf5d5974d9e022319.html#a6caefab191d7665cf5d5974d9e022319">mMap</a>.clear();</div>
+<div class="line"><span class="lineno">  629</span>    <a class="code hl_variable" href="class_map_polynomial_heap_a145d443e2a1170ece114b5d920de47d1.html#a145d443e2a1170ece114b5d920de47d1">mMonomialSpace</a>.deallocateAll();</div>
+<div class="line"><span class="lineno">  630</span>  }</div>
+<div class="ttc" id="aclass_map_polynomial_heap_a145d443e2a1170ece114b5d920de47d1_html_a145d443e2a1170ece114b5d920de47d1"><div class="ttname"><a href="class_map_polynomial_heap_a145d443e2a1170ece114b5d920de47d1.html#a145d443e2a1170ece114b5d920de47d1">MapPolynomialHeap::mMonomialSpace</a></div><div class="ttdeci">MemoryBlock mMonomialSpace</div><div class="ttdef"><b>Definition</b> <a href="_n_c_reduction_8cpp_source.html#l00723">NCReduction.cpp:723</a></div></div>
+<div class="ttc" id="aclass_map_polynomial_heap_a6caefab191d7665cf5d5974d9e022319_html_a6caefab191d7665cf5d5974d9e022319"><div class="ttname"><a href="class_map_polynomial_heap_a6caefab191d7665cf5d5974d9e022319.html#a6caefab191d7665cf5d5974d9e022319">MapPolynomialHeap::mMap</a></div><div class="ttdeci">std::map&lt; Monom, ring_elem, MonomEq, gc_allocator&lt; ConstEntry &gt; &gt; mMap</div><div class="ttdef"><b>Definition</b> <a href="_n_c_reduction_8cpp_source.html#l00722">NCReduction.cpp:722</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_map_polynomial_heap_a6caefab191d7665cf5d5974d9e022319.html#a6caefab191d7665cf5d5974d9e022319">mMap</a>, and <a class="el" href="class_map_polynomial_heap_a145d443e2a1170ece114b5d920de47d1.html#a145d443e2a1170ece114b5d920de47d1">mMonomialSpace</a>.</p>
 

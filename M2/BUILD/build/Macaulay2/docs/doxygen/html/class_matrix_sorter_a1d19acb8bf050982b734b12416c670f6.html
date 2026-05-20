@@ -115,36 +115,36 @@ $(function(){initNavTree('class_matrix_sorter_a1d19acb8bf050982b734b12416c670f6.
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="matrix-sort_8cpp_source.html#l00063">63</a> of file <a class="el" href="matrix-sort_8cpp_source.html">matrix-sort.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>  {</div>
-<div class="line"><span class="lineno">   65</span>    <span class="keywordtype">int</span> pivot = <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[lo];</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordtype">int</span> i = lo - 1;</div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordtype">int</span> j = hi + 1;</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">for</span> (;;)</div>
-<div class="line"><span class="lineno">   69</span>      {</div>
-<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">do</span></div>
-<div class="line"><span class="lineno">   71</span>          {</div>
-<div class="line"><span class="lineno">   72</span>            j--;</div>
-<div class="line"><span class="lineno">   73</span>          }</div>
-<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">while</span> (<a class="code hl_function" href="class_matrix_sorter_a05e1111a1a6f95a7d0b4478fe927e838.html#a05e1111a1a6f95a7d0b4478fe927e838">sort_compare</a>(<a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[j], pivot) &lt; 0);</div>
-<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">do</span></div>
-<div class="line"><span class="lineno">   76</span>          {</div>
-<div class="line"><span class="lineno">   77</span>            i++;</div>
-<div class="line"><span class="lineno">   78</span>          }</div>
-<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">while</span> (<a class="code hl_function" href="class_matrix_sorter_a05e1111a1a6f95a7d0b4478fe927e838.html#a05e1111a1a6f95a7d0b4478fe927e838">sort_compare</a>(<a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[i], pivot) &gt; 0);</div>
-<div class="line"><span class="lineno">   80</span> </div>
-<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">if</span> (i &lt; j)</div>
+<p class="definition">Definition at line <a class="el" href="matrix-sort_8cpp_source.html#l00074">74</a> of file <a class="el" href="matrix-sort_8cpp_source.html">matrix-sort.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>  {</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordtype">int</span> pivot = <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[lo];</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordtype">int</span> i = lo - 1;</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordtype">int</span> j = hi + 1;</div>
+<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">for</span> (;;)</div>
+<div class="line"><span class="lineno">   80</span>      {</div>
+<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">do</span></div>
 <div class="line"><span class="lineno">   82</span>          {</div>
-<div class="line"><span class="lineno">   83</span>            <span class="keywordtype">int</span> tmp = <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[j];</div>
-<div class="line"><span class="lineno">   84</span>            <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[j] = <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[i];</div>
-<div class="line"><span class="lineno">   85</span>            <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[i] = tmp;</div>
-<div class="line"><span class="lineno">   86</span>          }</div>
-<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   88</span>          <span class="keywordflow">return</span> j;</div>
-<div class="line"><span class="lineno">   89</span>      }</div>
-<div class="line"><span class="lineno">   90</span>  }</div>
-<div class="ttc" id="aclass_matrix_sorter_a05e1111a1a6f95a7d0b4478fe927e838_html_a05e1111a1a6f95a7d0b4478fe927e838"><div class="ttname"><a href="class_matrix_sorter_a05e1111a1a6f95a7d0b4478fe927e838.html#a05e1111a1a6f95a7d0b4478fe927e838">MatrixSorter::sort_compare</a></div><div class="ttdeci">int sort_compare(int i, int j)</div><div class="ttdef"><b>Definition</b> <a href="matrix-sort_8cpp_source.html#l00043">matrix-sort.cpp:43</a></div></div>
-<div class="ttc" id="aclass_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3_html_a7bf36abb9a427514dacc40ba2c9612c3"><div class="ttname"><a href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">MatrixSorter::sort_vals</a></div><div class="ttdeci">int * sort_vals</div><div class="ttdef"><b>Definition</b> <a href="matrix-sort_8cpp_source.html#l00038">matrix-sort.cpp:38</a></div></div>
+<div class="line"><span class="lineno">   83</span>            j--;</div>
+<div class="line"><span class="lineno">   84</span>          }</div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">while</span> (<a class="code hl_function" href="class_matrix_sorter_a05e1111a1a6f95a7d0b4478fe927e838.html#a05e1111a1a6f95a7d0b4478fe927e838">sort_compare</a>(<a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[j], pivot) &lt; 0);</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">do</span></div>
+<div class="line"><span class="lineno">   87</span>          {</div>
+<div class="line"><span class="lineno">   88</span>            i++;</div>
+<div class="line"><span class="lineno">   89</span>          }</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">while</span> (<a class="code hl_function" href="class_matrix_sorter_a05e1111a1a6f95a7d0b4478fe927e838.html#a05e1111a1a6f95a7d0b4478fe927e838">sort_compare</a>(<a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[i], pivot) &gt; 0);</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">if</span> (i &lt; j)</div>
+<div class="line"><span class="lineno">   93</span>          {</div>
+<div class="line"><span class="lineno">   94</span>            <span class="keywordtype">int</span> tmp = <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[j];</div>
+<div class="line"><span class="lineno">   95</span>            <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[j] = <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[i];</div>
+<div class="line"><span class="lineno">   96</span>            <a class="code hl_variable" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>[i] = tmp;</div>
+<div class="line"><span class="lineno">   97</span>          }</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   99</span>          <span class="keywordflow">return</span> j;</div>
+<div class="line"><span class="lineno">  100</span>      }</div>
+<div class="line"><span class="lineno">  101</span>  }</div>
+<div class="ttc" id="aclass_matrix_sorter_a05e1111a1a6f95a7d0b4478fe927e838_html_a05e1111a1a6f95a7d0b4478fe927e838"><div class="ttname"><a href="class_matrix_sorter_a05e1111a1a6f95a7d0b4478fe927e838.html#a05e1111a1a6f95a7d0b4478fe927e838">MatrixSorter::sort_compare</a></div><div class="ttdeci">int sort_compare(int i, int j)</div><div class="ttdef"><b>Definition</b> <a href="matrix-sort_8cpp_source.html#l00054">matrix-sort.cpp:54</a></div></div>
+<div class="ttc" id="aclass_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3_html_a7bf36abb9a427514dacc40ba2c9612c3"><div class="ttname"><a href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">MatrixSorter::sort_vals</a></div><div class="ttdeci">int * sort_vals</div><div class="ttdef"><b>Definition</b> <a href="matrix-sort_8cpp_source.html#l00049">matrix-sort.cpp:49</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_matrix_sorter_a05e1111a1a6f95a7d0b4478fe927e838.html#a05e1111a1a6f95a7d0b4478fe927e838">sort_compare()</a>, and <a class="el" href="class_matrix_sorter_a7bf36abb9a427514dacc40ba2c9612c3.html#a7bf36abb9a427514dacc40ba2c9612c3">sort_vals</a>.</p>
 

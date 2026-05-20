@@ -92,6 +92,9 @@ $(function(){initNavTree('class_n_c_f4.html','','class_n_c_f4-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduces it in bulk.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_n_c_f4_8hpp_source.html">NCF4.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for NCF4:</div>
@@ -106,9 +109,13 @@ Inheritance diagram for NCF4:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:PreRow" id="r_PreRow"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_c_f4_1_1_pre_row.html">PreRow</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Symbolic description of one row before it is materialised in the matrix: a <span class="tt"><a class="el" href="struct_n_c_f4_1_1_pre_row_a2d18e40c2f133ed5062a8d829cc901b2.html#a2d18e40c2f133ed5062a8d829cc901b2">left</a> * (something) * <a class="el" href="struct_n_c_f4_1_1_pre_row_aa3d0d207279ce1f8ef1103f1b8cf1be4.html#aa3d0d207279ce1f8ef1103f1b8cf1be4">right</a></span> triple.  <a href="struct_n_c_f4_1_1_pre_row.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Row" id="r_Row"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_c_f4_1_1_row.html">Row</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A materialised row of the Macaulay matrix: parallel coefficient and monomial arrays.  <a href="struct_n_c_f4_1_1_row.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Column" id="r_Column"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_c_f4_1_1_column.html">Column</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A column of the Macaulay matrix: the monomial that names it plus the row currently acting as its pivot (or -1 if none).  <a href="struct_n_c_f4_1_1_column.html#details">More...</a><br /></td></tr>
 <tr class="memitem:NCF4Stats" id="r_NCF4Stats"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_c_f4_1_1_n_c_f4_stats.html">NCF4Stats</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-thread counters tracking how much work the F4 reduction did.  <a href="struct_n_c_f4_1_1_n_c_f4_stats.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -210,8 +217,11 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_n_c_f4_8hpp_source.html#l00080">80</a> of file <a class="el" href="_n_c_f4_8hpp_source.html">NCF4.hpp</a>.</p>
+<div class="textblock"><p>Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduces it in bulk. </p>
+<p>Replaces the one-overlap-at-a-time <span class="tt"><a class="el" href="class_n_c_groebner.html" title="One-overlap-at-a-time Groebner basis driver for the free associative algebra (the &quot;Naive&quot; companion t...">NCGroebner</a></span> loop with the F4 pattern. Each degree, the driver pulls every overlap of that degree from <span class="tt"><a class="el" href="class_n_c_f4_aedee0280aaa78a6e86185a73afb7b580.html#aedee0280aaa78a6e86185a73afb7b580">mOverlapTable</a></span>, builds rows from the overlaps plus their tail-reducers (drawn from <span class="tt"><a class="el" href="class_n_c_f4_a04c30758d9d3b9b5b4cf58a01debac44.html#a04c30758d9d3b9b5b4cf58a01debac44">mGroebner</a></span>, the original <span class="tt"><a class="el" href="class_n_c_f4_a28a953b4678397c2b34ddc66d73eddfb.html#a28a953b4678397c2b34ddc66d73eddfb">mInput</a></span>, or <span class="tt"><a class="el" href="class_n_c_f4_a992b563e9f6c1d87f74682ad35b103ba.html#a992b563e9f6c1d87f74682ad35b103ba">mRows</a></span> &mdash; the three <span class="tt"><a class="el" href="class_n_c_f4_a51df58acce453ffcd976d4bdfb5e8d40.html#a51df58acce453ffcd976d4bdfb5e8d40">PreRowType</a></span> flavours), labels the columns by the distinct monomials seen, sorts them under the non-commutative monomial order, then echelon-reduces via <span class="tt"><a class="el" href="class_n_c_f4_ac784cba18ff3713905c28f2d1a26d545.html#ac784cba18ff3713905c28f2d1a26d545">mVectorArithmetic</a></span>. Echelon rows whose leading column is new become new GB elements and feed the next degree's overlaps.</p>
+<p><a class="el" href="class_monomial.html">Monomial</a> / word storage is owned by an internal <span class="tt"><a class="el" href="class_memory_block.html" title="Thin RAII wrapper around memtailor::Arena providing bump-pointer array allocation with optional mutex...">MemoryBlock</a></span> pair (<span class="tt"><a class="el" href="class_n_c_f4_ab255efa30560c607d31e6e7963b593d9.html#ab255efa30560c607d31e6e7963b593d9">mMonomialSpace</a></span> / <span class="tt"><a class="el" href="class_n_c_f4_a134f90c0fa0f75406189e26bdb6d73dd.html#a134f90c0fa0f75406189e26bdb6d73dd">mPreviousMonomialSpace</a></span>); divisibility uses <span class="tt"><a class="el" href="class_n_c_f4_ab17b8eaf5f15a34d886f0843ee002f08.html#ab17b8eaf5f15a34d886f0843ee002f08">mWordTable</a></span>. TBB scaffolding (<span class="tt"><a class="el" href="class_n_c_f4_a29aed07e436ffd6d9dcf11de82a4d0e0.html#a29aed07e436ffd6d9dcf11de82a4d0e0">PreRowFeeder</a></span>, <span class="tt"><a class="el" href="class_n_c_f4_ade032087f6da832bdc4a74326d0beeac.html#ade032087f6da832bdc4a74326d0beeac">mScheduler</a></span>) is wired up but the parallel build path is currently dormant. </p>
+
+<p class="definition">Definition at line <a class="el" href="_n_c_f4_8hpp_source.html#l00099">99</a> of file <a class="el" href="_n_c_f4_8hpp_source.html">NCF4.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_n_c_f4_8hpp_source.html">NCF4.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_n_c_f4_8cpp_source.html">NCF4.cpp</a></li>

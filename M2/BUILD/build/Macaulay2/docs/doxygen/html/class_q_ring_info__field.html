@@ -92,6 +92,9 @@ $(function(){initNavTree('class_q_ring_info__field.html','','class_q_ring_info__
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_q_ring_info.html" title="Bookkeeping helper holding the defining ideal of a polynomial-ring quotient R / I in the two represen...">QRingInfo</a></span> partial specialisation that adds the field-coefficient reduction tables: a <span class="tt"><a class="el" href="class_monomial_ideal.html" title="Engine-side monomial ideal: a decision tree of Nmi_nodes storing the (typically minimal) generators b...">MonomialIdeal</a></span> for divisibility queries and a <span class="tt"><a class="el" href="class_monomial_table.html" title="Indexed table of monomials with fast &quot;find a divisor&quot; lookup, keyed by a free integer val per entry.">MonomialTable</a></span> indexed by <span class="tt">quotient_ideal</span> slot.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="qring_8hpp_source.html">qring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for QRingInfo_field:</div>
@@ -99,10 +102,10 @@ Inheritance diagram for QRingInfo_field:</div>
  <div class="center">
   <img src="class_q_ring_info__field.png" usemap="#QRingInfo_5Ffield_map" alt=""/>
   <map id="QRingInfo_5Ffield_map" name="QRingInfo_5Ffield_map">
-<area href="class_q_ring_info.html" alt="QRingInfo" shape="rect" coords="73,56,209,80"/>
+<area href="class_q_ring_info.html" title="Bookkeeping helper holding the defining ideal of a polynomial-ring quotient R / I in the two represen..." alt="QRingInfo" shape="rect" coords="73,56,209,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="73,0,209,24"/>
-<area href="class_q_ring_info__field___q_q.html" alt="QRingInfo_field_QQ" shape="rect" coords="0,168,136,192"/>
-<area href="class_q_ring_info__field__basic.html" alt="QRingInfo_field_basic" shape="rect" coords="146,168,282,192"/>
+<area href="class_q_ring_info__field___q_q.html" title="QRingInfo_field specialisation for QQ coefficients, which need denominator tracking through reduction..." alt="QRingInfo_field_QQ" shape="rect" coords="0,168,136,192"/>
+<area href="class_q_ring_info__field__basic.html" title="QRingInfo_field specialisation for basic-field coefficients (everything except QQ)." alt="QRingInfo_field_basic" shape="rect" coords="146,168,282,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -150,8 +153,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:ac68e10d8c90d9e38d3034f2df78bda4f inherit pro_methods_class_q_ring_info" id="r_ac68e10d8c90d9e38d3034f2df78bda4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_ring_info_ac68e10d8c90d9e38d3034f2df78bda4f.html#ac68e10d8c90d9e38d3034f2df78bda4f">QRingInfo</a> (const <a class="el" href="class_poly_ring.html">PolyRing</a> *<a class="el" href="class_q_ring_info_a5a86c4737078b7522d075b672f31c1ce.html#a5a86c4737078b7522d075b672f31c1ce">R</a>)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="qring_8hpp_source.html#l00122">122</a> of file <a class="el" href="qring_8hpp_source.html">qring.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_q_ring_info.html" title="Bookkeeping helper holding the defining ideal of a polynomial-ring quotient R / I in the two represen...">QRingInfo</a></span> partial specialisation that adds the field-coefficient reduction tables: a <span class="tt"><a class="el" href="class_monomial_ideal.html" title="Engine-side monomial ideal: a decision tree of Nmi_nodes storing the (typically minimal) generators b...">MonomialIdeal</a></span> for divisibility queries and a <span class="tt"><a class="el" href="class_monomial_table.html" title="Indexed table of monomials with fast &quot;find a divisor&quot; lookup, keyed by a free integer val per entry.">MonomialTable</a></span> indexed by <span class="tt">quotient_ideal</span> slot. </p>
+<p>Exposes the tables through <span class="tt"><a class="el" href="class_q_ring_info__field_acbd54d28ef976dd4895924563a0904e9.html#acbd54d28ef976dd4895924563a0904e9">get_quotient_monomials</a></span> / <span class="tt"><a class="el" href="class_q_ring_info__field_a54551da2b02d17acba1722b90168a980.html#a54551da2b02d17acba1722b90168a980">get_quotient_MonomialTable</a></span> but leaves <span class="tt"><a class="el" href="class_q_ring_info_aa24d2e1f02a62b6ecff7fdc2c7497799.html#aa24d2e1f02a62b6ecff7fdc2c7497799">normal_form</a></span> itself unimplemented &mdash; that is provided by the two concrete subclasses <span class="tt"><a class="el" href="class_q_ring_info__field__basic.html" title="QRingInfo_field specialisation for basic-field coefficients (everything except QQ).">QRingInfo_field_basic</a></span> and <span class="tt"><a class="el" href="class_q_ring_info__field___q_q.html" title="QRingInfo_field specialisation for QQ coefficients, which need denominator tracking through reduction...">QRingInfo_field_QQ</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="qring_8hpp_source.html#l00144">144</a> of file <a class="el" href="qring_8hpp_source.html">qring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="qring_8hpp_source.html">qring.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="qring_8cpp_source.html">qring.cpp</a></li>

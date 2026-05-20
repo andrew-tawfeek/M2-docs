@@ -92,6 +92,9 @@ $(function(){initNavTree('class_matrix_1_1iterator.html','','class_matrix_1_1ite
 </div><!--header-->
 <div class="contents">
 
+<p>Reseatable iterator over the non-zero entries of one column of the matrix.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Matrix::iterator:</div>
@@ -131,8 +134,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="matrix_8hpp_source.html#l00274">274</a> of file <a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>.</p>
+<div class="textblock"><p>Reseatable iterator over the non-zero entries of one column of the matrix. </p>
+<p>Constructed in a "no column" state (<span class="tt">col == -1</span>, <span class="tt">v == nullptr</span>) and then <span class="tt">set(col)</span> aims it at a specific column; <span class="tt">next()</span> advances through that column's sparse <span class="tt">vec</span> list. Read-only by design &mdash; the matrix itself is immutable. </p>
+
+<p class="definition">Definition at line <a class="el" href="matrix_8hpp_source.html#l00295">295</a> of file <a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a></li>
 </ul>

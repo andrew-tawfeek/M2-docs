@@ -92,6 +92,9 @@ $(function(){initNavTree('class_q_ring_info.html','','class_q_ring_info-members'
 </div><!--header-->
 <div class="contents">
 
+<p>Bookkeeping helper holding the defining ideal of a polynomial-ring quotient <span class="tt"><a class="el" href="class_q_ring_info_a5a86c4737078b7522d075b672f31c1ce.html#a5a86c4737078b7522d075b672f31c1ce">R</a> / I</span> in the two representations the engine reduces against.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="qring_8hpp_source.html">qring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for QRingInfo:</div>
@@ -100,10 +103,10 @@ Inheritance diagram for QRingInfo:</div>
   <img src="class_q_ring_info.png" usemap="#QRingInfo_map" alt=""/>
   <map id="QRingInfo_map" name="QRingInfo_map">
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="73,0,209,24"/>
-<area href="class_q_ring_info___z_z.html" alt="QRingInfo_ZZ" shape="rect" coords="0,112,136,136"/>
-<area href="class_q_ring_info__field.html" alt="QRingInfo_field" shape="rect" coords="146,112,282,136"/>
-<area href="class_q_ring_info__field___q_q.html" alt="QRingInfo_field_QQ" shape="rect" coords="73,168,209,192"/>
-<area href="class_q_ring_info__field__basic.html" alt="QRingInfo_field_basic" shape="rect" coords="219,168,355,192"/>
+<area href="class_q_ring_info___z_z.html" title="QRingInfo specialisation for quotients of polynomial rings over ZZ." alt="QRingInfo_ZZ" shape="rect" coords="0,112,136,136"/>
+<area href="class_q_ring_info__field.html" title="QRingInfo partial specialisation that adds the field-coefficient reduction tables: a MonomialIdeal fo..." alt="QRingInfo_field" shape="rect" coords="146,112,282,136"/>
+<area href="class_q_ring_info__field___q_q.html" title="QRingInfo_field specialisation for QQ coefficients, which need denominator tracking through reduction..." alt="QRingInfo_field_QQ" shape="rect" coords="73,168,209,192"/>
+<area href="class_q_ring_info__field__basic.html" title="QRingInfo_field specialisation for basic-field coefficients (everything except QQ)." alt="QRingInfo_field_basic" shape="rect" coords="219,168,355,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -152,8 +155,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="qring_8hpp_source.html#l00060">60</a> of file <a class="el" href="qring_8hpp_source.html">qring.hpp</a>.</p>
+<div class="textblock"><p>Bookkeeping helper holding the defining ideal of a polynomial-ring quotient <span class="tt"><a class="el" href="class_q_ring_info_a5a86c4737078b7522d075b672f31c1ce.html#a5a86c4737078b7522d075b672f31c1ce">R</a> / I</span> in the two representations the engine reduces against. </p>
+<p>Stores the quotient generators twice: as <span class="tt">Nterm*</span> for <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> reduction (<span class="tt"><a class="el" href="class_q_ring_info_aa24d2e1f02a62b6ecff7fdc2c7497799.html#aa24d2e1f02a62b6ecff7fdc2c7497799">normal_form</a></span>) and as <span class="tt">gbvector*</span> for GB-tuned reduction (<span class="tt"><a class="el" href="class_q_ring_info_aae10506dfd29b7f2f1b3b9caa67bbf50.html#aae10506dfd29b7f2f1b3b9caa67bbf50">gbvector_normal_form</a></span>), kept in sync by <span class="tt"><a class="el" href="class_q_ring_info_ac71be92fc2cb178481a0fe9975c087b5.html#ac71be92fc2cb178481a0fe9975c087b5">appendQuotientElement</a></span>. This base class is a virtual shell &mdash; its <span class="tt"><a class="el" href="class_q_ring_info_aa24d2e1f02a62b6ecff7fdc2c7497799.html#aa24d2e1f02a62b6ecff7fdc2c7497799">normal_form</a></span> / <span class="tt"><a class="el" href="class_q_ring_info_aae10506dfd29b7f2f1b3b9caa67bbf50.html#aae10506dfd29b7f2f1b3b9caa67bbf50">gbvector_normal_form</a></span> bodies are no-ops and its <span class="tt">get_quotient_*</span> accessors return <span class="tt">nullptr</span>. Concrete reduction lives in the three subclass branches <span class="tt"><a class="el" href="class_q_ring_info__field__basic.html" title="QRingInfo_field specialisation for basic-field coefficients (everything except QQ).">QRingInfo_field_basic</a></span>, <span class="tt"><a class="el" href="class_q_ring_info__field___q_q.html" title="QRingInfo_field specialisation for QQ coefficients, which need denominator tracking through reduction...">QRingInfo_field_QQ</a></span>, and <span class="tt"><a class="el" href="class_q_ring_info___z_z.html" title="QRingInfo specialisation for quotients of polynomial rings over ZZ.">QRingInfo_ZZ</a></span>. A <span class="tt"><a class="el" href="class_q_ring_info.html" title="Bookkeeping helper holding the defining ideal of a polynomial-ring quotient R / I in the two represen...">QRingInfo</a></span> is not itself a <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>; it is the data hung off <span class="tt"><a class="el" href="class_poly_ring_quotient.html" title="PolyRingFlat subclass for quotients R / I of a polynomial ring by an ideal.">PolyRingQuotient</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="qring_8hpp_source.html#l00073">73</a> of file <a class="el" href="qring_8hpp_source.html">qring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="qring_8hpp_source.html">qring.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="qring_8cpp_source.html">qring.cpp</a></li>

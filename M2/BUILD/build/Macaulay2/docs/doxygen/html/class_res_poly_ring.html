@@ -92,6 +92,9 @@ $(function(){initNavTree('class_res_poly_ring.html','','class_res_poly_ring-memb
 </div><!--header-->
 <div class="contents">
 
+<p>The polynomial-ring view the F4 resolution engine reduces against: coefficient arithmetic plus the engine-specific <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-poly-ring_8hpp_source.html">res-poly-ring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ResPolyRing:</div>
@@ -134,8 +137,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-poly-ring_8hpp_source.html#l00084">84</a> of file <a class="el" href="res-poly-ring_8hpp_source.html">res-poly-ring.hpp</a>.</p>
+<div class="textblock"><p>The polynomial-ring view the F4 resolution engine reduces against: coefficient arithmetic plus the engine-specific <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span>. </p>
+<p>Bundles a <span class="tt"><a class="el" href="class_vector_arithmetic.html" title="Runtime dispatcher that hides the concrete coefficient ring behind a std::variant of ConcreteVectorAr...">VectorArithmetic</a></span> (built from <span class="tt">baseRing</span>, usually the base field but not required to be for non-minimal complexes), the <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> that owns monomial layout and order, and the original <span class="tt"><a class="el" href="class_monoid.html" title="Engine-side commutative monomial monoid: variable names, ordering, multidegree machinery,...">Monoid</a></span> for translating back to engine-side polynomials. Optional <span class="tt">SkewMultiplication*</span> enables the skew-commutative resolution path; <span class="tt"><a class="el" href="class_res_poly_ring_a07956f647afb31b1e2b2cf195beb0935.html#a07956f647afb31b1e2b2cf195beb0935">isSkewCommutative()</a></span> reports whether it's set. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-poly-ring_8hpp_source.html#l00109">109</a> of file <a class="el" href="res-poly-ring_8hpp_source.html">res-poly-ring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-poly-ring_8hpp_source.html">res-poly-ring.hpp</a></li>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-poly-ring_8cpp_source.html">res-poly-ring.cpp</a></li>

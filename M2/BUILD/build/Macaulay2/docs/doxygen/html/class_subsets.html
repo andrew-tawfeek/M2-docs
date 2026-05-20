@@ -92,6 +92,9 @@ $(function(){initNavTree('class_subsets.html','','class_subsets-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Bijective integer encoding of <span class="tt">q</span>-subsets of <span class="tt">{0, ..., n-1}</span> via <span class="tt"><a class="el" href="structbinomial.html">binomial(a_0, 1)</a> + <a class="el" href="structbinomial.html">binomial(a_1, 2)</a> + ... + <a class="el" href="structbinomial.html">binomial</a>(a_{q-1}, q)</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="comb_8hpp_source.html">comb.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -123,8 +126,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aeea92cf722643c3523013f5dd1018fef" id="r_aeea92cf722643c3523013f5dd1018fef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_subsets_aeea92cf722643c3523013f5dd1018fef.html#aeea92cf722643c3523013f5dd1018fef">mMaxSubsetSize</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="comb_8hpp_source.html#l00058">58</a> of file <a class="el" href="comb_8hpp_source.html">comb.hpp</a>.</p>
+<div class="textblock"><p>Bijective integer encoding of <span class="tt">q</span>-subsets of <span class="tt">{0, ..., n-1}</span> via <span class="tt"><a class="el" href="structbinomial.html">binomial(a_0, 1)</a> + <a class="el" href="structbinomial.html">binomial(a_1, 2)</a> + ... + <a class="el" href="structbinomial.html">binomial</a>(a_{q-1}, q)</span>. </p>
+<p>Constructed with maximum bounds <span class="tt">(n, <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a>)</span>; supports encoding and decoding of <span class="tt">q</span>-subsets for all <span class="tt">q &lt;= <a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>. The encoding does not depend on <span class="tt">n</span>, so the same index space scales as the underlying set grows. Throws if a result would not fit in <span class="tt"><a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a></span>. Used wherever the engine enumerates exterior-style subsets without allocating an explicit table. </p>
+
+<p class="definition">Definition at line <a class="el" href="comb_8hpp_source.html#l00069">69</a> of file <a class="el" href="comb_8hpp_source.html">comb.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="comb_8hpp_source.html">comb.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="comb_8cpp_source.html">comb.cpp</a></li>

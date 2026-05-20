@@ -92,6 +92,9 @@ $(function(){initNavTree('class_f4_s_pair_set.html','','class_f4_s_pair_set-memb
 </div><!--header-->
 <div class="contents">
 
+<p>S-pair scheduling queue used by <span class="tt"><a class="el" href="class_f4_g_b.html" title="Commutative F4 Groebner-basis driver: degree-by-degree Macaulay matrix construction plus row-reductio...">F4GB</a></span>: collects pairs, deduplicates them, and hands out the next degree's worth on demand.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="f4-spairs_8hpp_source.html">f4-spairs.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -137,8 +140,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aa9718fe33223278cea15c317606dacf6" id="r_aa9718fe33223278cea15c317606dacf6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_f4_s_pair_set_aa9718fe33223278cea15c317606dacf6.html#aa9718fe33223278cea15c317606dacf6">mPrePairsSeconds</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="f4-spairs_8hpp_source.html#l00050">50</a> of file <a class="el" href="f4-spairs_8hpp_source.html">f4-spairs.hpp</a>.</p>
+<div class="textblock"><p>S-pair scheduling queue used by <span class="tt"><a class="el" href="class_f4_g_b.html" title="Commutative F4 Groebner-basis driver: degree-by-degree Macaulay matrix construction plus row-reductio...">F4GB</a></span>: collects pairs, deduplicates them, and hands out the next degree's worth on demand. </p>
+<p>Pre-S-pairs are built from each newly inserted GB element and slotted into the working pool. <span class="tt"><a class="el" href="class_f4_s_pair_set_af908fccb928bb1eed1ab14398893bf56.html#af908fccb928bb1eed1ab14398893bf56">make_spair</a></span> promotes a <span class="tt"><a class="el" href="structpre__spair.html">pre_spair</a></span> into a full <span class="tt"><a class="el" href="structspair.html">spair</a></span> with its LCM and sugar degree. A <span class="tt">std::priority_queue</span> ordered by <span class="tt"><a class="el" href="class_s_pair_compare.html" title="Comparator on indices into an spair table, ordering by sugar degree then by the larger of the two par...">SPairCompare</a></span> keeps the next degree at the top. <span class="tt"><a class="el" href="class_memory_block.html" title="Thin RAII wrapper around memtailor::Arena providing bump-pointer array allocation with optional mutex...">MemoryBlock</a></span>s back the monomial storage so pair construction stays bump-pointer cheap, and the held <span class="tt">mtbb::task_arena&amp;</span> lets the queue share the scheduler <span class="tt"><a class="el" href="class_f4_g_b.html" title="Commutative F4 Groebner-basis driver: degree-by-degree Macaulay matrix construction plus row-reductio...">F4GB</a></span> uses for Gauss elimination. </p>
+
+<p class="definition">Definition at line <a class="el" href="f4-spairs_8hpp_source.html#l00063">63</a> of file <a class="el" href="f4-spairs_8hpp_source.html">f4-spairs.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/f4/<a class="el" href="f4-spairs_8hpp_source.html">f4-spairs.hpp</a></li>
 <li>Macaulay2/e/f4/<a class="el" href="f4-spairs_8cpp_source.html">f4-spairs.cpp</a></li>

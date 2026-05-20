@@ -91,6 +91,9 @@ $(function(){initNavTree('class_entry_config.html','','class_entry_config-member
   <div class="headertitle"><div class="title">EntryConfig Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Comparator (and trivial hash) functor wired into the <span class="tt">std::priority_queue</span> inside <span class="tt"><a class="el" href="class_priority_queue_polynomial_heap.html" title="PolynomialHeap backed by a std::priority_queue of (Monom, ring_elem) entries, with deduplication done...">PriorityQueuePolynomialHeap</a></span>.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -107,8 +110,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a1324ee273dd0e181b75b30ee00707890" id="r_a1324ee273dd0e181b75b30ee00707890"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_free_monoid.html">FreeMonoid</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entry_config_a1324ee273dd0e181b75b30ee00707890.html#a1324ee273dd0e181b75b30ee00707890">mMonoid</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00845">845</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
+<div class="textblock"><p>Comparator (and trivial hash) functor wired into the <span class="tt">std::priority_queue</span> inside <span class="tt"><a class="el" href="class_priority_queue_polynomial_heap.html" title="PolynomialHeap backed by a std::priority_queue of (Monom, ring_elem) entries, with deduplication done...">PriorityQueuePolynomialHeap</a></span>. </p>
+<p><span class="tt">operator()(Entry, Entry)</span> returns true when the first entry's monomial is <span class="tt"><a class="el" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_aaf56b99cbe34023f42ce5b7878c827d8.html#aaf56b99cbe34023f42ce5b7878c827d8">LT</a></span> under the <span class="tt"><a class="el" href="class_free_monoid.html" title="The free non-commutative monoid on a set of named variables, with monomial ordering and degree / weig...">FreeMonoid</a></span>'s ordering &mdash; so the priority queue, which extracts max under its <span class="tt">Compare</span>, yields the largest monomial as the lead term. The <span class="tt">operator()(Monom)</span> overload is a placeholder hash that always returns zero; it exists so the same configuration object can also be used as the hasher in <span class="tt">std::unordered_map&lt;<a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a>, ...&gt;</span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00912">912</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a></li>
 </ul>

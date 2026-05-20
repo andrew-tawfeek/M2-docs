@@ -91,13 +91,16 @@ $(function(){initNavTree('class_tower_evaluator.html','','class_tower_evaluator-
   <div class="headertitle"><div class="title">TowerEvaluator Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_d_poly_traverser.html" title="Visitor base class that walks every term of a TowerPolynomial, calling viewTerm(coeff,...">DPolyTraverser</a></span> subclass that evaluates a tower polynomial under a <span class="tt"><a class="el" href="class_ring_map.html" title="Engine-side ring homomorphism: stores, for each source-ring variable, the target-ring element it maps...">RingMap</a></span>.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for TowerEvaluator:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_tower_evaluator.png" usemap="#TowerEvaluator_map" alt=""/>
   <map id="TowerEvaluator_map" name="TowerEvaluator_map">
-<area href="class_d_poly_traverser.html" alt="DPolyTraverser" shape="rect" coords="0,56,102,80"/>
+<area href="class_d_poly_traverser.html" title="Visitor base class that walks every term of a TowerPolynomial, calling viewTerm(coeff,..." alt="DPolyTraverser" shape="rect" coords="0,56,102,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,102,24"/>
   </map>
 </div></div>
@@ -140,8 +143,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="tower_8cpp_source.html#l00263">263</a> of file <a class="el" href="tower_8cpp_source.html">tower.cpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_d_poly_traverser.html" title="Visitor base class that walks every term of a TowerPolynomial, calling viewTerm(coeff,...">DPolyTraverser</a></span> subclass that evaluates a tower polynomial under a <span class="tt"><a class="el" href="class_ring_map.html" title="Engine-side ring homomorphism: stores, for each source-ring variable, the target-ring element it maps...">RingMap</a></span>. </p>
+<p>Each <span class="tt">viewTerm(coeff, exp)</span> callback translates the exponent vector into a <span class="tt"><a class="el" href="_exponent_list_8hpp_a721373951f1019b322fa624dad2d258c.html#a721373951f1019b322fa624dad2d258c">varpower</a></span> monomial, evaluates <span class="tt"><a class="el" href="class_tower_evaluator_a8a019a0c5e18e493a34091d35dca142e.html#a8a019a0c5e18e493a34091d35dca142e">map</a></span>'s images of the relevant variables, multiplies them with the coefficient (coerced through <span class="tt"><a class="el" href="class_tower_evaluator_a1bf3e3cedbca472216a016efcac8a37e.html#a1bf3e3cedbca472216a016efcac8a37e">K</a></span>), and folds the result into the <span class="tt">SumCollector* <a class="el" href="class_tower_evaluator_a546c1270f89b2f33ab27d136e7973532.html#a546c1270f89b2f33ab27d136e7973532">H</a></span>. After traversal, <span class="tt">H-&gt;<a class="el" href="class_tower_evaluator_af6148322a6167725f542a65a274549b1.html#af6148322a6167725f542a65a274549b1">getValue()</a></span> is the evaluated <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> in the target ring. </p>
+
+<p class="definition">Definition at line <a class="el" href="tower_8cpp_source.html#l00274">274</a> of file <a class="el" href="tower_8cpp_source.html">tower.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="tower_8cpp_source.html">tower.cpp</a></li>
 </ul>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_free_module.html','','class_free_module-members'
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side free module <span class="tt">R^n</span> over a <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="freemod_8hpp_source.html">freemod.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FreeModule:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for FreeModule:</div>
  <div class="center">
   <img src="class_free_module.png" usemap="#FreeModule_map" alt=""/>
   <map id="FreeModule_map" name="FreeModule_map">
-<area href="class_engine_object.html" alt="EngineObject" shape="rect" coords="0,56,102,80"/>
+<area href="class_engine_object.html" title="Base class for engine objects that are immutable once their hash has been pinned (typically once they..." alt="EngineObject" shape="rect" coords="0,56,102,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,102,24"/>
   </map>
 </div></div>
@@ -172,8 +175,10 @@ Friends</h2></td></tr>
 <tr class="memitem:ac2642399f770aa366803c7b60210853f" id="r_ac2642399f770aa366803c7b60210853f"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_free_module_ac2642399f770aa366803c7b60210853f.html#ac2642399f770aa366803c7b60210853f">ResF4toM2Interface</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="freemod_8hpp_source.html#l00050">50</a> of file <a class="el" href="freemod_8hpp_source.html">freemod.hpp</a>.</p>
+<div class="textblock"><p>Engine-side free module <span class="tt">R^n</span> over a <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>. </p>
+<p>Holds the underlying <span class="tt">Ring*</span> plus a <span class="tt"><a class="el" href="class_free_module_a61d30064a9a71aad7d4ab73bdd85b770.html#a61d30064a9a71aad7d4ab73bdd85b770">components</a></span> vector with the multi-degree of each generator; optionally carries a <span class="tt">SchreyerOrder*</span> that pins the per-component tie-breaker data used when the free module participates in a Schreyer resolution. Constructed only through <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>-side factory paths (the constructor is private) so the engine can guarantee the ring / degree pair is consistent before any vectors live in it. </p>
+
+<p class="definition">Definition at line <a class="el" href="freemod_8hpp_source.html#l00061">61</a> of file <a class="el" href="freemod_8hpp_source.html">freemod.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="freemod_8hpp_source.html">freemod.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="freemod_8cpp_source.html">freemod.cpp</a></li>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_1_1_a_ring_tower_1_1_element_array.html','','
 </div><!--header-->
 <div class="contents">
 
+<p>Fixed-size, owned array of <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower_a0b8fb52a03094a0584d37b7741fc1dc7.html#a0b8fb52a03094a0584d37b7741fc1dc7">ElementType</a></span>s for the linear-algebra templates that want a flat buffer of tower-polynomial slots.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -110,8 +113,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8862d287544e2bb647c82fb52e2b7b98" id="r_a8862d287544e2bb647c82fb52e2b7b98"><td class="memItemLeft" align="right" valign="top">const std::unique_ptr&lt; <a class="el" href="class_m2_1_1_a_ring_tower_a0b8fb52a03094a0584d37b7741fc1dc7.html#a0b8fb52a03094a0584d37b7741fc1dc7">ElementType</a>[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_tower_1_1_element_array_a8862d287544e2bb647c82fb52e2b7b98.html#a8862d287544e2bb647c82fb52e2b7b98">mData</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring-tower_8hpp_source.html#l00118">118</a> of file <a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>.</p>
+<div class="textblock"><p>Fixed-size, owned array of <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower_a0b8fb52a03094a0584d37b7741fc1dc7.html#a0b8fb52a03094a0584d37b7741fc1dc7">ElementType</a></span>s for the linear-algebra templates that want a flat buffer of tower-polynomial slots. </p>
+<p>Backed by a <span class="tt">std::unique_ptr&lt;<a class="el" href="class_m2_1_1_a_ring_tower_a0b8fb52a03094a0584d37b7741fc1dc7.html#a0b8fb52a03094a0584d37b7741fc1dc7">ElementType</a>[]&gt;</span>. Slots are zero-initialised at construction and cleared through <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower_a937e9cb9dcbb30e4946fe3c4c57243aa.html#a937e9cb9dcbb30e4946fe3c4c57243aa">ARingTower::clear</a></span> in the destructor, so the array owns its tower polynomials. </p>
+
+<p class="definition">Definition at line <a class="el" href="aring-tower_8hpp_source.html#l00154">154</a> of file <a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a></li>
 </ul>

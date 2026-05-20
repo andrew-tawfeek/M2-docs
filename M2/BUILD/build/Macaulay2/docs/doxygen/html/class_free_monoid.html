@@ -92,6 +92,9 @@ $(function(){initNavTree('class_free_monoid.html','','class_free_monoid-members'
 </div><!--header-->
 <div class="contents">
 
+<p>The free non-commutative monoid on a set of named variables, with monomial ordering and degree / weight machinery.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FreeMonoid:</div>
@@ -176,8 +179,11 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00074">74</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
+<div class="textblock"><p>The free non-commutative monoid on a set of named variables, with monomial ordering and degree / weight machinery. </p>
+<p>Owns the variable names, the multi-degree of each variable, a stack of <span class="tt"><a class="el" href="class_free_monoid_a0350c98234a6afb40fc85a989735432c.html#a0350c98234a6afb40fc85a989735432c">mNumWeights</a></span> weight vectors, and a heft vector. A <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> is laid out as <span class="tt">[length, deg, w_0 ... w_{r-1}, v_0 ...
+v_s]</span> &mdash; length, total degree, weight values, then the word itself. The class exposes the primitives the non-commutative arithmetic engines need: <span class="tt"><a class="el" href="class_free_monoid_a97ca7afd214ec31dc68b6d20b660b8c2.html#a97ca7afd214ec31dc68b6d20b660b8c2">mult</a></span> / <span class="tt"><a class="el" href="class_free_monoid_a2ab5842a16804d6faf929c84f1f2efda.html#a2ab5842a16804d6faf929c84f1f2efda">mult3</a></span>, <span class="tt"><a class="el" href="class_free_monoid_a6fc4850847d2662a28a9c0f9e2254686.html#a6fc4850847d2662a28a9c0f9e2254686">compare</a></span> / <span class="tt"><a class="el" href="class_free_monoid_a08103c830d5ab83087e1bb322bb08d4c.html#a08103c830d5ab83087e1bb322bb08d4c">isEqual</a></span>, conversion between <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span>s, <span class="tt"><a class="el" href="class_word.html" title="Non-owning view of a non-commutative word: [begin, end) of int variable indices.">Word</a></span>s and the engine's <span class="tt"><a class="el" href="class_monomial.html">Monomial</a></span> varpower form, and helpers that allocate left-mid-right products into a <span class="tt"><a class="el" href="class_memory_block.html" title="Thin RAII wrapper around memtailor::Arena providing bump-pointer array allocation with optional mutex...">MemoryBlock</a></span> (the hot path for <span class="tt"><a class="el" href="class_n_c_f4.html" title="Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduc...">NCF4</a></span> row construction). </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00097">97</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_monoid_8cpp_source.html">FreeMonoid.cpp</a></li>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_ideal.html','','class_monomial_ideal-me
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side monomial ideal: a decision tree of <span class="tt"><a class="el" href="class_nmi__node.html" title="Internal tree node of the MonomialIdeal decision tree.">Nmi_node</a></span>s storing the (typically minimal) generators by variable / exponent path.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monideal_8hpp_source.html">monideal.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MonomialIdeal:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for MonomialIdeal:</div>
  <div class="center">
   <img src="class_monomial_ideal.png" usemap="#MonomialIdeal_map" alt=""/>
   <map id="MonomialIdeal_map" name="MonomialIdeal_map">
-<area href="class_engine_object.html" alt="EngineObject" shape="rect" coords="0,56,102,80"/>
+<area href="class_engine_object.html" title="Base class for engine objects that are immutable once their hash has been pinned (typically once they..." alt="EngineObject" shape="rect" coords="0,56,102,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,102,24"/>
   </map>
 </div></div>
@@ -107,6 +110,7 @@ Inheritance diagram for MonomialIdeal:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:Iterator" id="r_Iterator"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_ideal_1_1_iterator.html">Iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bidirectional forward iterator over the <span class="tt"><a class="el" href="int-bag_8hpp_a6c11c4c974bbcebff5c4b81ae6c7e62e.html#a6c11c4c974bbcebff5c4b81ae6c7e62e">Bag</a></span>s stored in a <span class="tt"><a class="el" href="class_monomial_ideal.html" title="Engine-side monomial ideal: a decision tree of Nmi_nodes storing the (typically minimal) generators b...">MonomialIdeal</a></span>.  <a href="class_monomial_ideal_1_1_iterator.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -204,8 +208,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monideal_8hpp_source.html#l00100">100</a> of file <a class="el" href="monideal_8hpp_source.html">monideal.hpp</a>.</p>
+<div class="textblock"><p>Engine-side monomial ideal: a decision tree of <span class="tt"><a class="el" href="class_nmi__node.html" title="Internal tree node of the MonomialIdeal decision tree.">Nmi_node</a></span>s storing the (typically minimal) generators by variable / exponent path. </p>
+<p>The tree representation makes divisibility queries (<span class="tt"><a class="el" href="class_monomial_ideal_a16af5f4af8950976e8d6c3b494d324b4.html#a16af5f4af8950976e8d6c3b494d324b4">search_expvector</a></span>, <span class="tt"><a class="el" href="class_monomial_ideal_a06f47894e71c839629b905326ecd2a26.html#a06f47894e71c839629b905326ecd2a26">search</a></span>, <span class="tt"><a class="el" href="class_monomial_ideal_a786cafa3de19c9a91c182575f0984611.html#a786cafa3de19c9a91c182575f0984611">find_all_divisors</a></span>) and minimal-generator maintenance (<span class="tt"><a class="el" href="class_monomial_ideal_ac4304a266290783a15dd540b5ff13577.html#ac4304a266290783a15dd540b5ff13577">insert_w_deletions</a></span>) efficient compared with a flat list. <span class="tt"><a class="el" href="class_monomial_ideal_a718beec22919e08a40fcaee52f4bc005.html#a718beec22919e08a40fcaee52f4bc005">count</a></span> packs two pieces of info: the low bit records whether this <span class="tt"><a class="el" href="class_monomial_ideal.html" title="Engine-side monomial ideal: a decision tree of Nmi_nodes storing the (typically minimal) generators b...">MonomialIdeal</a></span> owns its <span class="tt"><a class="el" href="class_monomial_ideal_aaa1cba7ca9852bd8e18b5202a75c1399.html#aaa1cba7ca9852bd8e18b5202a75c1399">mi_stash</a></span> (so the destructor knows whether to free it), and <span class="tt"><a class="el" href="class_monomial_ideal_a718beec22919e08a40fcaee52f4bc005.html#a718beec22919e08a40fcaee52f4bc005">count</a> / 2</span> is the actual number of stored monomials. The ideal is immutable once exposed to the front end (its <span class="tt"><a class="el" href="class_monomial_ideal_a0dbae8bc0159110311a46501ee3d2a0f.html#a0dbae8bc0159110311a46501ee3d2a0f">computeHashValue</a></span> is called to pin the hash). Iteration is via the nested <span class="tt"><a class="el" href="class_monomial_ideal_1_1_iterator.html" title="Bidirectional forward iterator over the Bags stored in a MonomialIdeal.">Iterator</a></span> class, with <span class="tt"><a class="el" href="class_monomial_ideal_afba0f6c1667440b2514ead6de383617f.html#afba0f6c1667440b2514ead6de383617f">begin()</a></span> / <span class="tt"><a class="el" href="class_monomial_ideal_ad13aeeffd2276c94403679df19314ba2.html#ad13aeeffd2276c94403679df19314ba2">end()</a></span> and <span class="tt"><a class="el" href="class_monomial_ideal_a68cc018564e00adc4858826bc7128ad0.html#a68cc018564e00adc4858826bc7128ad0">beginAtLast()</a></span> for reverse-style loops. </p>
+
+<p class="definition">Definition at line <a class="el" href="monideal_8hpp_source.html#l00127">127</a> of file <a class="el" href="monideal_8hpp_source.html">monideal.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="monideal_8hpp_source.html">monideal.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="monideal_8cpp_source.html">monideal.cpp</a></li>

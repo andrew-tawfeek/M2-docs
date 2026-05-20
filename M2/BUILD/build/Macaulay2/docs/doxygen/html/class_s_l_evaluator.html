@@ -92,6 +92,9 @@ $(function(){initNavTree('class_s_l_evaluator.html','','class_s_l_evaluator-memb
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base for the <a class="el" href="class_s_l_p.html">SLP</a> evaluator hierarchy.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SLEvaluator:</div>
@@ -125,8 +128,10 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a2138e487dccf06404b11ca7ad63eb89f" id="r_a2138e487dccf06404b11ca7ad63eb89f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_s_l_program_a3854b591082715479b9690e3b24a4b78.html#a3854b591082715479b9690e3b24a4b78">SLProgram::GATE_POSITION</a> &gt;::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_l_evaluator_a2138e487dccf06404b11ca7ad63eb89f.html#a2138e487dccf06404b11ca7ad63eb89f">inputPositionsIt</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_s_l_p-defs_8hpp_source.html#l00159">159</a> of file <a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>.</p>
+<div class="textblock"><p>Abstract base for the <a class="el" href="class_s_l_p.html">SLP</a> evaluator hierarchy. </p>
+<p>Holds an <span class="tt">SLProgram*</span> plus iterators into its gate arrays and declares the pure-virtual interface (<span class="tt"><a class="el" href="class_s_l_evaluator_a1ba1b2c62ac765657c09e9bab3cc38c2.html#a1ba1b2c62ac765657c09e9bab3cc38c2">evaluate</a></span>, <span class="tt"><a class="el" href="class_s_l_evaluator_a4841809208f36e3a4c50bb09b869e6a7.html#a4841809208f36e3a4c50bb09b869e6a7">specialize</a></span>, <span class="tt"><a class="el" href="class_s_l_evaluator_a0dff6157c449c84f695e269341997d60.html#a0dff6157c449c84f695e269341997d60">createHomotopy</a></span>, <span class="tt"><a class="el" href="class_s_l_evaluator_aaa10a6eb4df0c5cbaec90f50aa30396e.html#aaa10a6eb4df0c5cbaec90f50aa30396e">text_out</a></span>) used by interpreter callers. Concrete arithmetic happens in <span class="tt"><a class="el" href="class_s_l_evaluator_concrete.html">SLEvaluatorConcrete</a>&lt;RT&gt;</span>, which carries the <span class="tt">std::vector&lt;RT::ElementType&gt;</span> of node values and (optionally) a compiled function pointer. </p>
+
+<p class="definition">Definition at line <a class="el" href="_s_l_p-defs_8hpp_source.html#l00245">245</a> of file <a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a></li>
 </ul>

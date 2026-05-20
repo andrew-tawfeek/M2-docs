@@ -92,6 +92,9 @@ $(function(){initNavTree('class_mutable_matrix.html','','class_mutable_matrix-me
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base class for mutable matrices over an arbitrary engine <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>, the in-place counterpart of the immutable <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="mat_8hpp_source.html">mat.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MutableMatrix:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for MutableMatrix:</div>
  <div class="center">
   <img src="class_mutable_matrix.png" usemap="#MutableMatrix_map" alt=""/>
   <map id="MutableMatrix_map" name="MutableMatrix_map">
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
 <area href="class_mutable_mat.html" alt="MutableMat&lt; Mat &gt;" shape="rect" coords="0,224,133,248"/>
@@ -210,8 +213,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:af10c54bc94aa2585bfad065df365c6ff" id="r_af10c54bc94aa2585bfad065df365c6ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mutable_matrix_af10c54bc94aa2585bfad065df365c6ff.html#af10c54bc94aa2585bfad065df365c6ff">MutableMatrix</a> ()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="mat_8hpp_source.html#l00062">62</a> of file <a class="el" href="mat_8hpp_source.html">mat.hpp</a>.</p>
+<div class="textblock"><p>Abstract base class for mutable matrices over an arbitrary engine <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>, the in-place counterpart of the immutable <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span>. </p>
+<p>Defines the pure-virtual operation surface (<span class="tt"><a class="el" href="class_mutable_matrix_a56128821c2eb57f3704e59937bd0472e.html#a56128821c2eb57f3704e59937bd0472e">get_entry</a></span> / <span class="tt"><a class="el" href="class_mutable_matrix_af0175fcb3d11970c4de37c3e769f27f6.html#af0175fcb3d11970c4de37c3e769f27f6">set_entry</a></span> / <span class="tt"><a class="el" href="class_mutable_matrix_a2d397c4e502ec7117fc185b9769431d8.html#a2d397c4e502ec7117fc185b9769431d8">row_op</a></span> / <span class="tt"><a class="el" href="class_mutable_matrix_ac2b3de66cc9d5a345d81e3117a03597f.html#ac2b3de66cc9d5a345d81e3117a03597f">column_op</a></span> / <span class="tt">addRow</span> / <span class="tt">solve</span> / ...) that engine code reduces against, and lets <span class="tt"><a class="el" href="class_mutable_mat.html">MutableMat</a>&lt;<a class="el" href="class_d_mat.html">DMat</a>&lt;R&gt;&gt;</span> and <span class="tt"><a class="el" href="class_mutable_mat.html">MutableMat</a>&lt;<a class="el" href="class_s_mat.html">SMat</a>&lt;R&gt;&gt;</span> (the dense / sparse templated subclasses) pick storage. Inherits <span class="tt"><a class="el" href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte...">MutableEngineObject</a></span> so mutation does not invalidate the identity-based hash. Used as the run-time type behind the front end's <span class="tt"><a class="el" href="class_mutable_matrix.html" title="Abstract base class for mutable matrices over an arbitrary engine Ring, the in-place counterpart of t...">MutableMatrix</a></span> interface for ring rings other than the numerical ones handled by LAPACK. </p>
+
+<p class="definition">Definition at line <a class="el" href="mat_8hpp_source.html#l00074">74</a> of file <a class="el" href="mat_8hpp_source.html">mat.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="mat_8hpp_source.html">mat.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="mat_8cpp_source.html">mat.cpp</a></li>

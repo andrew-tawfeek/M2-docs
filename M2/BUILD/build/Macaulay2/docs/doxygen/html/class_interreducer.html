@@ -92,6 +92,9 @@ $(function(){initNavTree('class_interreducer.html','','class_interreducer-member
 </div><!--header-->
 <div class="contents">
 
+<p>Interreduces a list of <span class="tt">gbvector*</span>s in place so that no element's leading term divides any other element's terms.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="interreduce_8hpp_source.html">interreduce.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -114,8 +117,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a07722992e2dabe177e778b2c417d4879" id="r_a07722992e2dabe177e778b2c417d4879"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_free_module.html">FreeModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interreducer_a07722992e2dabe177e778b2c417d4879.html#a07722992e2dabe177e778b2c417d4879">F</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="interreduce_8hpp_source.html#l00038">38</a> of file <a class="el" href="interreduce_8hpp_source.html">interreduce.hpp</a>.</p>
+<div class="textblock"><p>Interreduces a list of <span class="tt">gbvector*</span>s in place so that no element's leading term divides any other element's terms. </p>
+<p>Owns a <span class="tt">GBRing*</span> and a target <span class="tt">FreeModule*</span> plus the working set <span class="tt"><a class="el" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a></span> (a vector of <span class="tt">gbvector*</span>). <span class="tt">cancelLT(f, g)</span> reduces the leading term of <span class="tt">f</span> by <span class="tt">g</span> until they no longer divide; <span class="tt">reduceTail(f, g)</span> does the same to tail terms; the public driver iterates these calls across the whole list. Used as the cleanup pass after a GB computation finishes, before the result is handed back to the front end. </p>
+
+<p class="definition">Definition at line <a class="el" href="interreduce_8hpp_source.html#l00050">50</a> of file <a class="el" href="interreduce_8hpp_source.html">interreduce.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="interreduce_8hpp_source.html">interreduce.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="interreduce_8cpp_source.html">interreduce.cpp</a></li>

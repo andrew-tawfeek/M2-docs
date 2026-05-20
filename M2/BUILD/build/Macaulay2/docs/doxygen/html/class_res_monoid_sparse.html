@@ -92,6 +92,9 @@ $(function(){initNavTree('class_res_monoid_sparse.html','','class_res_monoid_spa
 </div><!--header-->
 <div class="contents">
 
+<p>Sparse / varpower-format <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> implementation: monomials laid out as length-prefixed lists of <span class="tt">(variable, <a class="el" href="exptable_8h_acbad03742bc161b060402329a67aa889.html#acbad03742bc161b060402329a67aa889">exponent</a>)</span> pairs.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-moninfo-sparse_8hpp_source.html">res-moninfo-sparse.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -162,8 +165,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8495606135aa3990f7e2421976beba2f" id="r_a8495606135aa3990f7e2421976beba2f"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_res_monoid_sparse_a8495606135aa3990f7e2421976beba2f.html#a8495606135aa3990f7e2421976beba2f">ncalls_quotient_as_vp</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-moninfo-sparse_8hpp_source.html#l00073">73</a> of file <a class="el" href="res-moninfo-sparse_8hpp_source.html">res-moninfo-sparse.hpp</a>.</p>
+<div class="textblock"><p>Sparse / varpower-format <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> implementation: monomials laid out as length-prefixed lists of <span class="tt">(variable, <a class="el" href="exptable_8h_acbad03742bc161b060402329a67aa889.html#acbad03742bc161b060402329a67aa889">exponent</a>)</span> pairs. </p>
+<p>Each encoded monomial has variable width: <span class="tt">[length, hash, <a class="el" href="group__comp.html">Computations</a>,
+w_1, ..., w_r, v_1, e_1, ..., v_d, e_d]</span>. Encode / decode walk only the non-zero variables, so the representation wins when monomials are typically supported in a small subset of variables; the dense counterpart is <span class="tt"><a class="el" href="class_res_monoid_dense.html" title="Dense-format ResMonoid implementation: monomials laid out as fixed-width exponent vectors.">ResMonoidDense</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-moninfo-sparse_8hpp_source.html#l00083">83</a> of file <a class="el" href="res-moninfo-sparse_8hpp_source.html">res-moninfo-sparse.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-moninfo-sparse_8hpp_source.html">res-moninfo-sparse.hpp</a></li>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-moninfo-sparse_8cpp_source.html">res-moninfo-sparse.cpp</a></li>

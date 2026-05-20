@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_monomial_order__rec.html','','struct_monomial_o
 </div><!--header-->
 <div class="contents">
 
+<p>Internal compiled form of a monomial ordering, derived from a front-end <span class="tt"><a class="el" href="struct_monomial_ordering.html" title="Front-end-side description of a monomial ordering as a list of mon_part blocks.">MonomialOrdering</a></span> by <span class="tt"><a class="el" href="imonorder_8cpp_a569a1b1cac1332509ad69d7153a69256.html#a569a1b1cac1332509ad69d7153a69256">monomialOrderMake</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="imonorder_8hpp_source.html">imonorder.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -107,8 +110,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a7134046c242df50a070b894b8374037b" id="r_a7134046c242df50a070b894b8374037b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_monomial_order__rec_a7134046c242df50a070b894b8374037b.html#a7134046c242df50a070b894b8374037b">is_laurent</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="imonorder_8hpp_source.html#l00056">56</a> of file <a class="el" href="imonorder_8hpp_source.html">imonorder.hpp</a>.</p>
+<div class="textblock"><p>Internal compiled form of a monomial ordering, derived from a front-end <span class="tt"><a class="el" href="struct_monomial_ordering.html" title="Front-end-side description of a monomial ordering as a list of mon_part blocks.">MonomialOrdering</a></span> by <span class="tt"><a class="el" href="imonorder_8cpp_a569a1b1cac1332509ad69d7153a69256.html#a569a1b1cac1332509ad69d7153a69256">monomialOrderMake</a></span>. </p>
+<p>Holds the variable count (<span class="tt"><a class="el" href="struct_monomial_order__rec_ab57899481a9c4781fd449777b4e183b2.html#ab57899481a9c4781fd449777b4e183b2">nvars</a></span>), the encoded monomial word width (<span class="tt"><a class="el" href="struct_monomial_order__rec_a68e168249af609957bc0aa299baf96f9.html#a68e168249af609957bc0aa299baf96f9">nslots</a></span>), the ordered list of <span class="tt"><a class="el" href="structmo__block.html">mo_block</a></span>s that make up the order, the per-variable heuristic degree vector (<span class="tt"><a class="el" href="struct_monomial_order__rec_ab543b3957a9450db41bdde9778fd8321.html#ab543b3957a9450db41bdde9778fd8321">degs</a></span>), and a <span class="tt"><a class="el" href="struct_monomial_order__rec_a7134046c242df50a070b894b8374037b.html#a7134046c242df50a070b894b8374037b">is_laurent</a>[i]</span> flag per variable. <span class="tt"><a class="el" href="struct_monomial_order__rec_aa01970d88f4b9cd3e86b0dcf00c91e8a.html#aa01970d88f4b9cd3e86b0dcf00c91e8a">component_up</a></span> plus the <span class="tt">*_before_component</span> slot counts decide where the component slot sits in the encoded monomial. The companion encode / decode functions translate between actual exponent vectors and the packed monomial words the engine uses for fast comparisons. </p>
+
+<p class="definition">Definition at line <a class="el" href="imonorder_8hpp_source.html#l00070">70</a> of file <a class="el" href="imonorder_8hpp_source.html">imonorder.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="imonorder_8hpp_source.html">imonorder.hpp</a></li>
 </ul>

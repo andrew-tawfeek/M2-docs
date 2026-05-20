@@ -92,6 +92,9 @@ $(function(){initNavTree('class_homotopy.html','','class_homotopy-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base for the predictor-corrector path-tracker hierarchy.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Homotopy:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for Homotopy:</div>
  <div class="center">
   <img src="class_homotopy.png" usemap="#Homotopy_map" alt=""/>
   <map id="Homotopy_map" name="Homotopy_map">
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="371,112,732,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="371,112,732,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="371,56,732,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="371,0,732,24"/>
 <area href="class_homotopy_concrete_3_01_r_t_00_01_fixed_precision_homotopy_algorithm_01_4.html" alt="HomotopyConcrete&lt; RT, FixedPrecisionHomotopyAlgorithm &gt;" shape="rect" coords="0,224,361,248"/>
@@ -134,8 +137,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_s_l_p-defs_8hpp_source.html#l00237">237</a> of file <a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>.</p>
+<div class="textblock"><p>Abstract base for the predictor-corrector path-tracker hierarchy. </p>
+<p>The single virtual entry point <span class="tt"><a class="el" href="class_homotopy_a8cdcc093f711671949312489f2e55134.html#a8cdcc093f711671949312489f2e55134">track()</a></span> walks columns of <span class="tt">inputs</span> (each carrying an initial solution plus the start value of the continuation parameter <span class="tt">t</span> in its last coordinate) toward target values, writing the result into <span class="tt">outputs</span> and per-path status into <span class="tt">output_extras</span>. Implementation lives in <span class="tt"><a class="el" href="class_homotopy_concrete.html">HomotopyConcrete</a>&lt;RT, Algorithm&gt;</span> with <span class="tt">Algorithm</span> chosen by the <span class="tt"><a class="el" href="struct_homotopy_algorithm.html" title="Traits class mapping a coefficient ring RT to its preferred homotopy algorithm tag.">HomotopyAlgorithm</a>&lt;RT&gt;</span> traits class above. </p>
+
+<p class="definition">Definition at line <a class="el" href="_s_l_p-defs_8hpp_source.html#l00334">334</a> of file <a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a></li>
 </ul>

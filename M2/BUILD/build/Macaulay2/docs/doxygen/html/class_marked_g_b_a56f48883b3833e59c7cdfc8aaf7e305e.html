@@ -113,17 +113,17 @@ $(function(){initNavTree('class_marked_g_b_a56f48883b3833e59c7cdfc8aaf7e305e.htm
 
 <p>Reimplemented from <a class="el" href="class_reduced_g_b_a656d5a0a30336fa9c6107d03839b817d.html#a656d5a0a30336fa9c6107d03839b817d">ReducedGB</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="reducedgb-marked_8cpp_source.html#l00263">263</a> of file <a class="el" href="reducedgb-marked_8cpp_source.html">reducedgb-marked.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  264</span>{</div>
-<div class="line"><span class="lineno">  265</span>  MatrixConstructor mat(<a class="code hl_variable" href="class_reduced_g_b_ad565fd513e9b90bad99de07405765b79.html#ad565fd513e9b90bad99de07405765b79">F</a>, 0);</div>
-<div class="line"><span class="lineno">  266</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; polys.size(); i++)</div>
-<div class="line"><span class="lineno">  267</span>    {</div>
-<div class="line"><span class="lineno">  268</span>      gbvector *f =</div>
-<div class="line"><span class="lineno">  269</span>          <a class="code hl_variable" href="class_reduced_g_b_a88515b65250c4e3add7d965800b3b83d.html#a88515b65250c4e3add7d965800b3b83d">R</a>-&gt;gbvector_parallel_lead_terms(w, <a class="code hl_variable" href="class_reduced_g_b_ad565fd513e9b90bad99de07405765b79.html#ad565fd513e9b90bad99de07405765b79">F</a>, <a class="code hl_variable" href="class_marked_g_b_ad749d822584225f27be803e40e722cf1.html#ad749d822584225f27be803e40e722cf1">leadterms</a>[i], polys[i].f);</div>
-<div class="line"><span class="lineno">  270</span>      mat.append(<a class="code hl_variable" href="class_reduced_g_b_a9a69675ed6fa35f9fc767151aec808de.html#a9a69675ed6fa35f9fc767151aec808de">originalR</a>-&gt;translate_gbvector_to_vec(<a class="code hl_variable" href="class_reduced_g_b_ad565fd513e9b90bad99de07405765b79.html#ad565fd513e9b90bad99de07405765b79">F</a>, f));</div>
-<div class="line"><span class="lineno">  271</span>    }</div>
-<div class="line"><span class="lineno">  272</span>  <span class="keywordflow">return</span> mat.to_matrix();</div>
-<div class="line"><span class="lineno">  273</span>}</div>
+<p class="definition">Definition at line <a class="el" href="reducedgb-marked_8cpp_source.html#l00274">274</a> of file <a class="el" href="reducedgb-marked_8cpp_source.html">reducedgb-marked.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  275</span>{</div>
+<div class="line"><span class="lineno">  276</span>  MatrixConstructor mat(<a class="code hl_variable" href="class_reduced_g_b_ad565fd513e9b90bad99de07405765b79.html#ad565fd513e9b90bad99de07405765b79">F</a>, 0);</div>
+<div class="line"><span class="lineno">  277</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; polys.size(); i++)</div>
+<div class="line"><span class="lineno">  278</span>    {</div>
+<div class="line"><span class="lineno">  279</span>      gbvector *f =</div>
+<div class="line"><span class="lineno">  280</span>          <a class="code hl_variable" href="class_reduced_g_b_a88515b65250c4e3add7d965800b3b83d.html#a88515b65250c4e3add7d965800b3b83d">R</a>-&gt;gbvector_parallel_lead_terms(w, <a class="code hl_variable" href="class_reduced_g_b_ad565fd513e9b90bad99de07405765b79.html#ad565fd513e9b90bad99de07405765b79">F</a>, <a class="code hl_variable" href="class_marked_g_b_ad749d822584225f27be803e40e722cf1.html#ad749d822584225f27be803e40e722cf1">leadterms</a>[i], polys[i].f);</div>
+<div class="line"><span class="lineno">  281</span>      mat.append(<a class="code hl_variable" href="class_reduced_g_b_a9a69675ed6fa35f9fc767151aec808de.html#a9a69675ed6fa35f9fc767151aec808de">originalR</a>-&gt;translate_gbvector_to_vec(<a class="code hl_variable" href="class_reduced_g_b_ad565fd513e9b90bad99de07405765b79.html#ad565fd513e9b90bad99de07405765b79">F</a>, f));</div>
+<div class="line"><span class="lineno">  282</span>    }</div>
+<div class="line"><span class="lineno">  283</span>  <span class="keywordflow">return</span> mat.to_matrix();</div>
+<div class="line"><span class="lineno">  284</span>}</div>
 <div class="ttc" id="aclass_marked_g_b_ad749d822584225f27be803e40e722cf1_html_ad749d822584225f27be803e40e722cf1"><div class="ttname"><a href="class_marked_g_b_ad749d822584225f27be803e40e722cf1.html#ad749d822584225f27be803e40e722cf1">MarkedGB::leadterms</a></div><div class="ttdeci">gbvector ** leadterms</div><div class="ttdef"><b>Definition</b> <a href="reducedgb-marked_8hpp_source.html#l00028">reducedgb-marked.hpp:28</a></div></div>
 <div class="ttc" id="aclass_reduced_g_b_a88515b65250c4e3add7d965800b3b83d_html_a88515b65250c4e3add7d965800b3b83d"><div class="ttname"><a href="class_reduced_g_b_a88515b65250c4e3add7d965800b3b83d.html#a88515b65250c4e3add7d965800b3b83d">ReducedGB::R</a></div><div class="ttdeci">GBRing * R</div><div class="ttdef"><b>Definition</b> <a href="reducedgb_8hpp_source.html#l00062">reducedgb.hpp:62</a></div></div>
 <div class="ttc" id="aclass_reduced_g_b_a9a69675ed6fa35f9fc767151aec808de_html_a9a69675ed6fa35f9fc767151aec808de"><div class="ttname"><a href="class_reduced_g_b_a9a69675ed6fa35f9fc767151aec808de.html#a9a69675ed6fa35f9fc767151aec808de">ReducedGB::originalR</a></div><div class="ttdeci">const PolynomialRing * originalR</div><div class="ttdef"><b>Definition</b> <a href="reducedgb_8hpp_source.html#l00063">reducedgb.hpp:63</a></div></div>

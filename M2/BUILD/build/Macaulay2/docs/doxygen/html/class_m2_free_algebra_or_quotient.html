@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_free_algebra_or_quotient.html','','class_m2_f
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass that lifts either a <span class="tt"><a class="el" href="class_free_algebra.html" title="Free associative algebra over a coefficient ring: the non-commutative analogue of PolynomialRing.">FreeAlgebra</a></span> or a <span class="tt"><a class="el" href="class_free_algebra_quotient.html" title="Quotient of a FreeAlgebra by a Groebner basis up to a fixed degree bound.">FreeAlgebraQuotient</a></span> into the engine's <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> hierarchy.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_m2_free_algebra_8hpp_source.html">M2FreeAlgebra.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for M2FreeAlgebraOrQuotient:</div>
@@ -100,11 +103,11 @@ Inheritance diagram for M2FreeAlgebraOrQuotient:</div>
   <img src="class_m2_free_algebra_or_quotient.png" usemap="#M2FreeAlgebraOrQuotient_map" alt=""/>
   <map id="M2FreeAlgebraOrQuotient_map" name="M2FreeAlgebraOrQuotient_map">
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="87,168,251,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="87,112,251,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="87,112,251,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="87,56,251,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="87,0,251,24"/>
-<area href="class_m2_free_algebra.html" alt="M2FreeAlgebra" shape="rect" coords="0,280,164,304"/>
-<area href="class_m2_free_algebra_quotient.html" alt="M2FreeAlgebraQuotient" shape="rect" coords="174,280,338,304"/>
+<area href="class_m2_free_algebra.html" title="Concrete Ring wrapper around an owned FreeAlgebra (no quotient)." alt="M2FreeAlgebra" shape="rect" coords="0,280,164,304"/>
+<area href="class_m2_free_algebra_quotient.html" title="Concrete Ring wrapper around an owned FreeAlgebraQuotient (the quotient counterpart of M2FreeAlgebra)..." alt="M2FreeAlgebraQuotient" shape="rect" coords="174,280,338,304"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -368,8 +371,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_m2_free_algebra_8hpp_source.html#l00062">62</a> of file <a class="el" href="_m2_free_algebra_8hpp_source.html">M2FreeAlgebra.hpp</a>.</p>
+<div class="textblock"><p>Abstract <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass that lifts either a <span class="tt"><a class="el" href="class_free_algebra.html" title="Free associative algebra over a coefficient ring: the non-commutative analogue of PolynomialRing.">FreeAlgebra</a></span> or a <span class="tt"><a class="el" href="class_free_algebra_quotient.html" title="Quotient of a FreeAlgebra by a Groebner basis up to a fixed degree bound.">FreeAlgebraQuotient</a></span> into the engine's <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> hierarchy. </p>
+<p>The common base of <span class="tt"><a class="el" href="class_m2_free_algebra.html" title="Concrete Ring wrapper around an owned FreeAlgebra (no quotient).">M2FreeAlgebra</a></span> (the unquotiented case) and <span class="tt"><a class="el" href="class_m2_free_algebra_quotient.html" title="Concrete Ring wrapper around an owned FreeAlgebraQuotient (the quotient counterpart of M2FreeAlgebra)...">M2FreeAlgebraQuotient</a></span>. Provides the <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> overrides that dispatch to the underlying <span class="tt"><a class="el" href="class_m2_free_algebra_or_quotient_ac66576250262ac0cdbabee12387d075f.html#ac66576250262ac0cdbabee12387d075f">freeAlgebra()</a></span> and the type-safe cast helpers (<span class="tt"><a class="el" href="class_m2_free_algebra_or_quotient_a17d151d6307a7ee456f9a138e02cab99.html#a17d151d6307a7ee456f9a138e02cab99">toPoly</a></span> / <span class="tt"><a class="el" href="class_m2_free_algebra_or_quotient_a12b0104d0655ae4f1158d9388c134d87.html#a12b0104d0655ae4f1158d9388c134d87">fromPoly</a></span> / <span class="tt"><a class="el" href="class_m2_free_algebra_or_quotient_a73c08cfe4dfdbca5087c7df3385fdbbe.html#a73c08cfe4dfdbca5087c7df3385fdbbe">appendFromModuleMonom</a></span>) the rest of the engine uses to convert between opaque <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> handles and concrete <span class="tt">Poly*</span> values. </p>
+
+<p class="definition">Definition at line <a class="el" href="_m2_free_algebra_8hpp_source.html#l00073">73</a> of file <a class="el" href="_m2_free_algebra_8hpp_source.html">M2FreeAlgebra.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_m2_free_algebra_8hpp_source.html">M2FreeAlgebra.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="_m2_free_algebra_8cpp_source.html">M2FreeAlgebra.cpp</a></li>

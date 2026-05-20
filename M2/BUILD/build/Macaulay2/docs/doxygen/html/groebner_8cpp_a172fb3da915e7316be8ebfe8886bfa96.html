@@ -119,25 +119,25 @@ template&lt;typename PolyL&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="groebner_8cpp_source.html#l00914">914</a> of file <a class="el" href="groebner_8cpp_source.html">groebner.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  918</span>{</div>
-<div class="line"><span class="lineno">  919</span>  <span class="keywordflow">if</span> (elems.size() != numrows*numcols)</div>
-<div class="line"><span class="lineno">  920</span>    <a class="code hl_variable" href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR</a>(<span class="stringliteral">&quot;Number of elements in list does not match matrix size.&quot;</span>);</div>
-<div class="line"><span class="lineno">  921</span>  <a class="code hl_class" href="class_matrix_constructor.html">MatrixConstructor</a> mat(A-&gt;<a class="code hl_function" href="class_ring_a246965acb6f313f82aa3059a7c43091a.html#a246965acb6f313f82aa3059a7c43091a">make_FreeModule</a>(numrows), numcols);</div>
-<div class="line"><span class="lineno">  922</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; elems.size(); ++i)</div>
-<div class="line"><span class="lineno">  923</span>    {</div>
-<div class="line"><span class="lineno">  924</span>      <span class="keywordtype">int</span> curCol = i % numcols;</div>
-<div class="line"><span class="lineno">  925</span>      <span class="keywordtype">int</span> curRow = (i - curCol) / numcols;</div>
-<div class="line"><span class="lineno">  926</span>      <a class="code hl_union" href="unionring__elem.html">ring_elem</a> a = <span class="keyword">const_cast&lt;</span><a class="code hl_struct" href="struct_nterm.html">Nterm</a>*<span class="keyword">&gt;</span>(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><a class="code hl_struct" href="struct_nterm.html">Nterm</a>*<span class="keyword">&gt;</span>(elems[i]));</div>
-<div class="line"><span class="lineno">  927</span>      mat.set_entry(curRow, curCol, a);</div>
-<div class="line"><span class="lineno">  928</span>    }</div>
-<div class="line"><span class="lineno">  929</span>  mat.compute_column_degrees();</div>
-<div class="line"><span class="lineno">  930</span>  <span class="keywordflow">return</span> mat.to_matrix();</div>
-<div class="line"><span class="lineno">  931</span>}</div>
-<div class="ttc" id="aclass_matrix_constructor_html"><div class="ttname"><a href="class_matrix_constructor.html">MatrixConstructor</a></div><div class="ttdef"><b>Definition</b> <a href="matrix-con_8hpp_source.html#l00044">matrix-con.hpp:45</a></div></div>
+<p class="definition">Definition at line <a class="el" href="groebner_8cpp_source.html#l00925">925</a> of file <a class="el" href="groebner_8cpp_source.html">groebner.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  929</span>{</div>
+<div class="line"><span class="lineno">  930</span>  <span class="keywordflow">if</span> (elems.size() != numrows*numcols)</div>
+<div class="line"><span class="lineno">  931</span>    <a class="code hl_variable" href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR</a>(<span class="stringliteral">&quot;Number of elements in list does not match matrix size.&quot;</span>);</div>
+<div class="line"><span class="lineno">  932</span>  <a class="code hl_class" href="class_matrix_constructor.html">MatrixConstructor</a> mat(A-&gt;<a class="code hl_function" href="class_ring_a246965acb6f313f82aa3059a7c43091a.html#a246965acb6f313f82aa3059a7c43091a">make_FreeModule</a>(numrows), numcols);</div>
+<div class="line"><span class="lineno">  933</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0; i &lt; elems.size(); ++i)</div>
+<div class="line"><span class="lineno">  934</span>    {</div>
+<div class="line"><span class="lineno">  935</span>      <span class="keywordtype">int</span> curCol = i % numcols;</div>
+<div class="line"><span class="lineno">  936</span>      <span class="keywordtype">int</span> curRow = (i - curCol) / numcols;</div>
+<div class="line"><span class="lineno">  937</span>      <a class="code hl_union" href="unionring__elem.html">ring_elem</a> a = <span class="keyword">const_cast&lt;</span><a class="code hl_struct" href="struct_nterm.html">Nterm</a>*<span class="keyword">&gt;</span>(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><a class="code hl_struct" href="struct_nterm.html">Nterm</a>*<span class="keyword">&gt;</span>(elems[i]));</div>
+<div class="line"><span class="lineno">  938</span>      mat.set_entry(curRow, curCol, a);</div>
+<div class="line"><span class="lineno">  939</span>    }</div>
+<div class="line"><span class="lineno">  940</span>  mat.compute_column_degrees();</div>
+<div class="line"><span class="lineno">  941</span>  <span class="keywordflow">return</span> mat.to_matrix();</div>
+<div class="line"><span class="lineno">  942</span>}</div>
+<div class="ttc" id="aclass_matrix_constructor_html"><div class="ttname"><a href="class_matrix_constructor.html">MatrixConstructor</a></div><div class="ttdoc">Mutable builder used to assemble an immutable Matrix one column (or one term) at a time.</div><div class="ttdef"><b>Definition</b> <a href="matrix-con_8hpp_source.html#l00055">matrix-con.hpp:56</a></div></div>
 <div class="ttc" id="aclass_ring_a246965acb6f313f82aa3059a7c43091a_html_a246965acb6f313f82aa3059a7c43091a"><div class="ttname"><a href="class_ring_a246965acb6f313f82aa3059a7c43091a.html#a246965acb6f313f82aa3059a7c43091a">Ring::make_FreeModule</a></div><div class="ttdeci">virtual FreeModule * make_FreeModule() const</div><div class="ttdef"><b>Definition</b> <a href="ring_8cpp_source.html#l00053">ring.cpp:53</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67_html_ac9bcbe19995a8140cd4ec61773cd6e67"><div class="ttname"><a href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR</a></div><div class="ttdeci">const int ERROR</div><div class="ttdef"><b>Definition</b> <a href="m2-mem_8cpp_source.html#l00055">m2-mem.cpp:55</a></div></div>
-<div class="ttc" id="astruct_nterm_html"><div class="ttname"><a href="struct_nterm.html">Nterm</a></div><div class="ttdef"><b>Definition</b> <a href="ringelem_8hpp_source.html#l00139">ringelem.hpp:140</a></div></div>
+<div class="ttc" id="astruct_nterm_html"><div class="ttname"><a href="struct_nterm.html">Nterm</a></div><div class="ttdoc">Singly linked-list node carrying one term of a polynomial-ring element.</div><div class="ttdef"><b>Definition</b> <a href="ringelem_8hpp_source.html#l00151">ringelem.hpp:152</a></div></div>
 <div class="ttc" id="aunionring__elem_html"><div class="ttname"><a href="unionring__elem.html">ring_elem</a></div><div class="ttdef"><b>Definition</b> <a href="ringelem_8hpp_source.html#l00082">ringelem.hpp:83</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_matrix_constructor_a311858d44ddec547261944efff8a2d06.html#a311858d44ddec547261944efff8a2d06">MatrixConstructor::compute_column_degrees()</a>, <a class="el" href="m2-mem_8cpp_ac9bcbe19995a8140cd4ec61773cd6e67.html#ac9bcbe19995a8140cd4ec61773cd6e67">ERROR</a>, <a class="el" href="class_ring_a246965acb6f313f82aa3059a7c43091a.html#a246965acb6f313f82aa3059a7c43091a">Ring::make_FreeModule()</a>, <a class="el" href="factory_8cpp_a9570374e3dbc873595100dae1e584459.html#a9570374e3dbc873595100dae1e584459">Matrix</a>, <a class="el" href="class_matrix_constructor_a719118a871e65c356db8ea6ce844d6ce.html#a719118a871e65c356db8ea6ce844d6ce">MatrixConstructor::set_entry()</a>, and <a class="el" href="class_matrix_constructor_a2ff836da11f7fe8a125a7aa73ee95651.html#a2ff836da11f7fe8a125a7aa73ee95651">MatrixConstructor::to_matrix()</a>.</p>

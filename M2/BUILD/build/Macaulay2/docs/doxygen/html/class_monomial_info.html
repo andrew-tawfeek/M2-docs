@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_info.html','','class_monomial_info-memb
 </div><!--header-->
 <div class="contents">
 
+<p>Per-ring monomial layout / encoding helper used by <span class="tt"><a class="el" href="class_f4_g_b.html" title="Commutative F4 Groebner-basis driver: degree-by-degree Macaulay matrix construction plus row-reductio...">F4GB</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MonomialInfo:</div>
@@ -195,8 +198,11 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="moninfo_8hpp_source.html#l00090">90</a> of file <a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>.</p>
+<div class="textblock"><p>Per-ring monomial layout / encoding helper used by <span class="tt"><a class="el" href="class_f4_g_b.html" title="Commutative F4 Groebner-basis driver: degree-by-degree Macaulay matrix construction plus row-reductio...">F4GB</a></span>. </p>
+<p>Holds the variable count <span class="tt"><a class="el" href="class_monomial_info_a68e18bb4033baee1ab6a43913f29d3a6.html#a68e18bb4033baee1ab6a43913f29d3a6">nvars</a></span> and the encoded monomial word width <span class="tt"><a class="el" href="class_monomial_info_ab2f231b40b18b614c6d53dfb030200ab.html#ab2f231b40b18b614c6d53dfb030200ab">nslots</a></span>, plus a per-variable hash table (<span class="tt"><a class="el" href="class_monomial_info_ae64856e9d3b50e232d5b3bc19ddbd77d.html#ae64856e9d3b50e232d5b3bc19ddbd77d">hashfcn</a></span>) and mask. Encoded monomials are laid out as <span class="tt">[hashvalue, <a class="el" href="group__comp.html">Computations</a>,
+w_1, ..., w_r, e_1, ..., e_n]</span> (or with the weights at the tail, depending on convention &mdash; see in-source comments at the top of the file). Provides the operations the F4 inner loops need: <span class="tt"><a class="el" href="class_monomial_info_a0d39f02d353521b5d8eafc1caf2d63e2.html#a0d39f02d353521b5d8eafc1caf2d63e2" title="compare:">compare</a></span>, <span class="tt"><a class="el" href="class_monomial_info_a9a0816b99553107e135c0b8c27330fa3.html#a9a0816b99553107e135c0b8c27330fa3">mult</a></span>, <span class="tt"><a class="el" href="class_monomial_info_a9754b2f3986ad9aad247dd8d3a7bb387.html#a9754b2f3986ad9aad247dd8d3a7bb387">divide</a></span>, <span class="tt">lcm</span>, <span class="tt">gcd</span>, hash-with- component, plus encode / decode against actual exponent vectors. </p>
+
+<p class="definition">Definition at line <a class="el" href="moninfo_8hpp_source.html#l00103">103</a> of file <a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/f4/<a class="el" href="moninfo_8hpp_source.html">moninfo.hpp</a></li>
 <li>Macaulay2/e/f4/<a class="el" href="moninfo_8cpp_source.html">moninfo.cpp</a></li>

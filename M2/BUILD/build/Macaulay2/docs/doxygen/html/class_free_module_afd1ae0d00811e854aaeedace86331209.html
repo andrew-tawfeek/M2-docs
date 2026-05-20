@@ -103,25 +103,25 @@ $(function(){initNavTree('class_free_module_afd1ae0d00811e854aaeedace86331209.ht
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="freemod_8cpp_source.html#l00458">458</a> of file <a class="el" href="freemod_8cpp_source.html">freemod.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  459</span>{</div>
-<div class="line"><span class="lineno">  460</span>  <span class="keywordtype">int</span> i;</div>
-<div class="line"><span class="lineno">  461</span>  <span class="keywordtype">int</span> rk = <a class="code hl_function" href="class_free_module_af359cfc5802d332b199aeca8a79f2107.html#af359cfc5802d332b199aeca8a79f2107">rank</a>();</div>
-<div class="line"><span class="lineno">  462</span>  o &lt;&lt; <span class="stringliteral">&quot;free(rank &quot;</span> &lt;&lt; rk &lt;&lt; <span class="stringliteral">&quot; degrees = {&quot;</span>;</div>
-<div class="line"><span class="lineno">  463</span>  <span class="keyword">auto</span> D = <a class="code hl_variable" href="class_free_module_ab235794215e6cad6d3f0b002ccc0d4f6.html#ab235794215e6cad6d3f0b002ccc0d4f6">R</a>-&gt;degree_monoid();</div>
-<div class="line"><span class="lineno">  464</span>  <span class="keywordflow">for</span> (i = 0; i &lt; rk; i++)</div>
-<div class="line"><span class="lineno">  465</span>    {</div>
-<div class="line"><span class="lineno">  466</span>      <span class="keywordflow">if</span> (i != 0) o &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><span class="lineno">  467</span>      D-&gt;elem_text_out(o, <a class="code hl_function" href="class_free_module_a61bc243d245bec72ef2e1ea9fb42e052.html#a61bc243d245bec72ef2e1ea9fb42e052">degree</a>(i));</div>
-<div class="line"><span class="lineno">  468</span>    }</div>
-<div class="line"><span class="lineno">  469</span>  o &lt;&lt; <span class="stringliteral">&quot;}&quot;</span>;</div>
-<div class="line"><span class="lineno">  470</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_free_module_a56db415d96a3918f59b71083da5fca17.html#a56db415d96a3918f59b71083da5fca17">schreyer</a> != <span class="keyword">nullptr</span>) <a class="code hl_variable" href="class_free_module_a56db415d96a3918f59b71083da5fca17.html#a56db415d96a3918f59b71083da5fca17">schreyer</a>-&gt;text_out(o);</div>
-<div class="line"><span class="lineno">  471</span>  o &lt;&lt; <span class="charliteral">&#39;)&#39;</span>;</div>
-<div class="line"><span class="lineno">  472</span>}</div>
-<div class="ttc" id="aclass_free_module_a56db415d96a3918f59b71083da5fca17_html_a56db415d96a3918f59b71083da5fca17"><div class="ttname"><a href="class_free_module_a56db415d96a3918f59b71083da5fca17.html#a56db415d96a3918f59b71083da5fca17">FreeModule::schreyer</a></div><div class="ttdeci">SchreyerOrder * schreyer</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00058">freemod.hpp:58</a></div></div>
-<div class="ttc" id="aclass_free_module_a61bc243d245bec72ef2e1ea9fb42e052_html_a61bc243d245bec72ef2e1ea9fb42e052"><div class="ttname"><a href="class_free_module_a61bc243d245bec72ef2e1ea9fb42e052.html#a61bc243d245bec72ef2e1ea9fb42e052">FreeModule::degree</a></div><div class="ttdeci">const_monomial degree(int i) const</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00089">freemod.hpp:89</a></div></div>
-<div class="ttc" id="aclass_free_module_ab235794215e6cad6d3f0b002ccc0d4f6_html_ab235794215e6cad6d3f0b002ccc0d4f6"><div class="ttname"><a href="class_free_module_ab235794215e6cad6d3f0b002ccc0d4f6.html#ab235794215e6cad6d3f0b002ccc0d4f6">FreeModule::R</a></div><div class="ttdeci">const Ring * R</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00060">freemod.hpp:60</a></div></div>
-<div class="ttc" id="aclass_free_module_af359cfc5802d332b199aeca8a79f2107_html_af359cfc5802d332b199aeca8a79f2107"><div class="ttname"><a href="class_free_module_af359cfc5802d332b199aeca8a79f2107.html#af359cfc5802d332b199aeca8a79f2107">FreeModule::rank</a></div><div class="ttdeci">int rank() const</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00090">freemod.hpp:90</a></div></div>
+<p class="definition">Definition at line <a class="el" href="freemod_8cpp_source.html#l00469">469</a> of file <a class="el" href="freemod_8cpp_source.html">freemod.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  470</span>{</div>
+<div class="line"><span class="lineno">  471</span>  <span class="keywordtype">int</span> i;</div>
+<div class="line"><span class="lineno">  472</span>  <span class="keywordtype">int</span> rk = <a class="code hl_function" href="class_free_module_af359cfc5802d332b199aeca8a79f2107.html#af359cfc5802d332b199aeca8a79f2107">rank</a>();</div>
+<div class="line"><span class="lineno">  473</span>  o &lt;&lt; <span class="stringliteral">&quot;free(rank &quot;</span> &lt;&lt; rk &lt;&lt; <span class="stringliteral">&quot; degrees = {&quot;</span>;</div>
+<div class="line"><span class="lineno">  474</span>  <span class="keyword">auto</span> D = <a class="code hl_variable" href="class_free_module_ab235794215e6cad6d3f0b002ccc0d4f6.html#ab235794215e6cad6d3f0b002ccc0d4f6">R</a>-&gt;degree_monoid();</div>
+<div class="line"><span class="lineno">  475</span>  <span class="keywordflow">for</span> (i = 0; i &lt; rk; i++)</div>
+<div class="line"><span class="lineno">  476</span>    {</div>
+<div class="line"><span class="lineno">  477</span>      <span class="keywordflow">if</span> (i != 0) o &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><span class="lineno">  478</span>      D-&gt;elem_text_out(o, <a class="code hl_function" href="class_free_module_a61bc243d245bec72ef2e1ea9fb42e052.html#a61bc243d245bec72ef2e1ea9fb42e052">degree</a>(i));</div>
+<div class="line"><span class="lineno">  479</span>    }</div>
+<div class="line"><span class="lineno">  480</span>  o &lt;&lt; <span class="stringliteral">&quot;}&quot;</span>;</div>
+<div class="line"><span class="lineno">  481</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_free_module_a56db415d96a3918f59b71083da5fca17.html#a56db415d96a3918f59b71083da5fca17">schreyer</a> != <span class="keyword">nullptr</span>) <a class="code hl_variable" href="class_free_module_a56db415d96a3918f59b71083da5fca17.html#a56db415d96a3918f59b71083da5fca17">schreyer</a>-&gt;text_out(o);</div>
+<div class="line"><span class="lineno">  482</span>  o &lt;&lt; <span class="charliteral">&#39;)&#39;</span>;</div>
+<div class="line"><span class="lineno">  483</span>}</div>
+<div class="ttc" id="aclass_free_module_a56db415d96a3918f59b71083da5fca17_html_a56db415d96a3918f59b71083da5fca17"><div class="ttname"><a href="class_free_module_a56db415d96a3918f59b71083da5fca17.html#a56db415d96a3918f59b71083da5fca17">FreeModule::schreyer</a></div><div class="ttdeci">SchreyerOrder * schreyer</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00069">freemod.hpp:69</a></div></div>
+<div class="ttc" id="aclass_free_module_a61bc243d245bec72ef2e1ea9fb42e052_html_a61bc243d245bec72ef2e1ea9fb42e052"><div class="ttname"><a href="class_free_module_a61bc243d245bec72ef2e1ea9fb42e052.html#a61bc243d245bec72ef2e1ea9fb42e052">FreeModule::degree</a></div><div class="ttdeci">const_monomial degree(int i) const</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00100">freemod.hpp:100</a></div></div>
+<div class="ttc" id="aclass_free_module_ab235794215e6cad6d3f0b002ccc0d4f6_html_ab235794215e6cad6d3f0b002ccc0d4f6"><div class="ttname"><a href="class_free_module_ab235794215e6cad6d3f0b002ccc0d4f6.html#ab235794215e6cad6d3f0b002ccc0d4f6">FreeModule::R</a></div><div class="ttdeci">const Ring * R</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00071">freemod.hpp:71</a></div></div>
+<div class="ttc" id="aclass_free_module_af359cfc5802d332b199aeca8a79f2107_html_af359cfc5802d332b199aeca8a79f2107"><div class="ttname"><a href="class_free_module_af359cfc5802d332b199aeca8a79f2107.html#af359cfc5802d332b199aeca8a79f2107">FreeModule::rank</a></div><div class="ttdeci">int rank() const</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00101">freemod.hpp:101</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_free_module_a61bc243d245bec72ef2e1ea9fb42e052.html#a61bc243d245bec72ef2e1ea9fb42e052">degree()</a>, <a class="el" href="class_free_module_ab235794215e6cad6d3f0b002ccc0d4f6.html#ab235794215e6cad6d3f0b002ccc0d4f6">R</a>, <a class="el" href="class_free_module_af359cfc5802d332b199aeca8a79f2107.html#af359cfc5802d332b199aeca8a79f2107">rank()</a>, and <a class="el" href="class_free_module_a56db415d96a3918f59b71083da5fca17.html#a56db415d96a3918f59b71083da5fca17">schreyer</a>.</p>
 

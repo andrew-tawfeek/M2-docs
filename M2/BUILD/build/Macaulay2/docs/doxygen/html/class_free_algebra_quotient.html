@@ -92,6 +92,9 @@ $(function(){initNavTree('class_free_algebra_quotient.html','','class_free_algeb
 </div><!--header-->
 <div class="contents">
 
+<p>Quotient of a <span class="tt"><a class="el" href="class_free_algebra.html" title="Free associative algebra over a coefficient ring: the non-commutative analogue of PolynomialRing.">FreeAlgebra</a></span> by a Groebner basis up to a fixed degree bound.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_algebra_quotient_8hpp_source.html">FreeAlgebraQuotient.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FreeAlgebraQuotient:</div>
@@ -162,8 +165,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_algebra_quotient_8hpp_source.html#l00058">58</a> of file <a class="el" href="_free_algebra_quotient_8hpp_source.html">FreeAlgebraQuotient.hpp</a>.</p>
+<div class="textblock"><p>Quotient of a <span class="tt"><a class="el" href="class_free_algebra.html" title="Free associative algebra over a coefficient ring: the non-commutative analogue of PolynomialRing.">FreeAlgebra</a></span> by a Groebner basis up to a fixed degree bound. </p>
+<p>Owns the defining basis through an <span class="tt"><a class="el" href="class_n_c_groebner.html" title="One-overlap-at-a-time Groebner basis driver for the free associative algebra (the &quot;Naive&quot; companion t...">NCGroebner</a></span> and forwards the usual ring operations to <span class="tt"><a class="el" href="class_free_algebra_quotient_a8f1ed0c2b116f5c6d345007b54be40db.html#a8f1ed0c2b116f5c6d345007b54be40db">mFreeAlgebra</a></span>, then runs <span class="tt"><a class="el" href="class_free_algebra_quotient_af626b33dd255f129bdd3a3a3c071cef6.html#af626b33dd255f129bdd3a3a3c071cef6">normalizeInPlace</a></span> on the result so every output stays in canonical form modulo the relations. <span class="tt"><a class="el" href="class_free_algebra_quotient_a88e6148897c72bcb8dac6e60c9e0b57d.html#a88e6148897c72bcb8dac6e60c9e0b57d">mMaxdeg</a></span> bounds the degrees up to which the GB is reliable. Note that this class does NOT inherit from <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> &mdash; the engine uses the wrapper <span class="tt"><a class="el" href="class_m2_free_algebra.html" title="Concrete Ring wrapper around an owned FreeAlgebra (no quotient).">M2FreeAlgebra</a></span> / <span class="tt"><a class="el" href="class_m2_free_algebra_or_quotient.html" title="Abstract Ring subclass that lifts either a FreeAlgebra or a FreeAlgebraQuotient into the engine&#39;s Rin...">M2FreeAlgebraOrQuotient</a></span> to lift it into the <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> hierarchy. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_algebra_quotient_8hpp_source.html#l00071">71</a> of file <a class="el" href="_free_algebra_quotient_8hpp_source.html">FreeAlgebraQuotient.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_algebra_quotient_8hpp_source.html">FreeAlgebraQuotient.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_algebra_quotient_8cpp_source.html">FreeAlgebraQuotient.cpp</a></li>

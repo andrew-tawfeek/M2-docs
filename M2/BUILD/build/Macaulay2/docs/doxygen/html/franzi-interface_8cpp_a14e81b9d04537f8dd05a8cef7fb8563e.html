@@ -115,59 +115,59 @@ $(function(){initNavTree('franzi-interface_8cpp_a14e81b9d04537f8dd05a8cef7fb8563
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00409">409</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  410</span>{</div>
-<div class="line"><span class="lineno">  411</span>  <span class="keywordtype">int</span> nextIndex = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(F.size());</div>
-<div class="line"><span class="lineno">  412</span>  <a class="code hl_function" href="franzi-gb_8cpp_a4d0647d9345c63b8f8595c950e5d7d5f.html#a4d0647d9345c63b8f8595c950e5d7d5f">rearrangeBasis</a>(F, -1);</div>
-<div class="line"><span class="lineno">  413</span>  <a class="code hl_function" href="franzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16.html#a1a3761822c6b39b16ad02d4de6ff3f16">interreduction</a>(F);</div>
-<div class="line"><span class="lineno">  414</span>  <a class="code hl_typedef" href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a> B = <a class="code hl_function" href="franzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176.html#a129e311d03f91a67c4ed34e642c2a176">makeList</a>(F, n);</div>
-<div class="line"><span class="lineno">  415</span>  <span class="comment">// unsigned int countAddPoly = 0;</span></div>
-<div class="line"><span class="lineno">  416</span>  <span class="comment">// unsigned int numSPoly= 0;</span></div>
-<div class="line"><span class="lineno">  417</span>  <span class="keywordtype">int</span> interreductionCounter = 0;</div>
-<div class="line"><span class="lineno">  418</span>  <span class="keywordflow">while</span> (!B.empty())</div>
-<div class="line"><span class="lineno">  419</span>    {</div>
-<div class="line"><span class="lineno">  420</span>      <a class="code hl_class" href="class_pair.html">Pair</a> pair = *(B.begin());</div>
-<div class="line"><span class="lineno">  421</span>      B.erase(B.begin());</div>
-<div class="line"><span class="lineno">  422</span>      <span class="keywordflow">if</span> (<a class="code hl_function" href="franzi-gb_8cpp_a8089e5515ec6e0c72b5ced95a06e5a98.html#a8089e5515ec6e0c72b5ced95a06e5a98">isGoodPair</a>(pair, F, B, n))</div>
-<div class="line"><span class="lineno">  423</span>        {</div>
-<div class="line"><span class="lineno">  424</span>          <span class="comment">// numSPoly++;</span></div>
-<div class="line"><span class="lineno">  425</span>          <a class="code hl_class" href="class_b_r_p.html">BRP</a> S = <a class="code hl_function" href="franzi-gb_8cpp_a3594684979fc905c97144b6eb7d3caf9.html#a3594684979fc905c97144b6eb7d3caf9">sPolynomial</a>(pair, F, n);</div>
-<div class="line"><span class="lineno">  426</span>          <a class="code hl_function" href="franzi-gb_8cpp_ade743e7887924fddaf6ced548360f652.html#ade743e7887924fddaf6ced548360f652">reduce</a>(S, F);</div>
-<div class="line"><span class="lineno">  427</span>          <span class="keywordflow">if</span> (!S.<a class="code hl_function" href="class_b_r_p_a9f6b6ae3b9709c6a284b563b78b697ee.html#a9f6b6ae3b9709c6a284b563b78b697ee">isZero</a>())</div>
-<div class="line"><span class="lineno">  428</span>            {</div>
-<div class="line"><span class="lineno">  429</span>              <span class="comment">// countAddPoly++;</span></div>
-<div class="line"><span class="lineno">  430</span>              F[nextIndex] = S;</div>
-<div class="line"><span class="lineno">  431</span>              <span class="keywordflow">if</span> (interreductionCounter == 5)</div>
-<div class="line"><span class="lineno">  432</span>                {</div>
-<div class="line"><span class="lineno">  433</span>                  interreductionCounter = 0;</div>
-<div class="line"><span class="lineno">  434</span>                  <a class="code hl_function" href="franzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16.html#a1a3761822c6b39b16ad02d4de6ff3f16">interreduction</a>(F);</div>
-<div class="line"><span class="lineno">  435</span>                  B = <a class="code hl_function" href="franzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176.html#a129e311d03f91a67c4ed34e642c2a176">makeList</a>(F, n);</div>
-<div class="line"><span class="lineno">  436</span>                }</div>
-<div class="line"><span class="lineno">  437</span>              <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  438</span>                {</div>
-<div class="line"><span class="lineno">  439</span>                  interreductionCounter++;</div>
-<div class="line"><span class="lineno">  440</span>                  <a class="code hl_typedef" href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a> newList = <a class="code hl_function" href="franzi-gb_8cpp_a29ff16b6eaf37f5d2b983a2aec3b564b.html#a29ff16b6eaf37f5d2b983a2aec3b564b">makeNewPairs</a>(nextIndex, F, n);</div>
-<div class="line"><span class="lineno">  441</span>                  B.insert(newList.begin(), newList.end());</div>
-<div class="line"><span class="lineno">  442</span>                }</div>
-<div class="line"><span class="lineno">  443</span>              nextIndex++;</div>
-<div class="line"><span class="lineno">  444</span>            }</div>
-<div class="line"><span class="lineno">  445</span>        }</div>
-<div class="line"><span class="lineno">  446</span>    }</div>
-<div class="line"><span class="lineno">  447</span>  <a class="code hl_function" href="franzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16.html#a1a3761822c6b39b16ad02d4de6ff3f16">interreduction</a>(F);</div>
-<div class="line"><span class="lineno">  448</span>  <span class="comment">// cout &lt;&lt; &quot;we computed &quot; &lt;&lt; numSPoly &lt;&lt; &quot; S Polynomials and added &quot; &lt;&lt;</span></div>
-<div class="line"><span class="lineno">  449</span>  <span class="comment">// countAddPoly &lt;&lt; &quot; of them to the intermediate basis.&quot; &lt;&lt; endl;</span></div>
-<div class="line"><span class="lineno">  450</span>}</div>
+<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00430">430</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  431</span>{</div>
+<div class="line"><span class="lineno">  432</span>  <span class="keywordtype">int</span> nextIndex = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(F.size());</div>
+<div class="line"><span class="lineno">  433</span>  <a class="code hl_function" href="franzi-gb_8cpp_a4d0647d9345c63b8f8595c950e5d7d5f.html#a4d0647d9345c63b8f8595c950e5d7d5f">rearrangeBasis</a>(F, -1);</div>
+<div class="line"><span class="lineno">  434</span>  <a class="code hl_function" href="franzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16.html#a1a3761822c6b39b16ad02d4de6ff3f16">interreduction</a>(F);</div>
+<div class="line"><span class="lineno">  435</span>  <a class="code hl_typedef" href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a> B = <a class="code hl_function" href="franzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176.html#a129e311d03f91a67c4ed34e642c2a176">makeList</a>(F, n);</div>
+<div class="line"><span class="lineno">  436</span>  <span class="comment">// unsigned int countAddPoly = 0;</span></div>
+<div class="line"><span class="lineno">  437</span>  <span class="comment">// unsigned int numSPoly= 0;</span></div>
+<div class="line"><span class="lineno">  438</span>  <span class="keywordtype">int</span> interreductionCounter = 0;</div>
+<div class="line"><span class="lineno">  439</span>  <span class="keywordflow">while</span> (!B.empty())</div>
+<div class="line"><span class="lineno">  440</span>    {</div>
+<div class="line"><span class="lineno">  441</span>      <a class="code hl_class" href="class_pair.html">Pair</a> pair = *(B.begin());</div>
+<div class="line"><span class="lineno">  442</span>      B.erase(B.begin());</div>
+<div class="line"><span class="lineno">  443</span>      <span class="keywordflow">if</span> (<a class="code hl_function" href="franzi-gb_8cpp_a8089e5515ec6e0c72b5ced95a06e5a98.html#a8089e5515ec6e0c72b5ced95a06e5a98">isGoodPair</a>(pair, F, B, n))</div>
+<div class="line"><span class="lineno">  444</span>        {</div>
+<div class="line"><span class="lineno">  445</span>          <span class="comment">// numSPoly++;</span></div>
+<div class="line"><span class="lineno">  446</span>          <a class="code hl_class" href="class_b_r_p.html">BRP</a> S = <a class="code hl_function" href="franzi-gb_8cpp_a3594684979fc905c97144b6eb7d3caf9.html#a3594684979fc905c97144b6eb7d3caf9">sPolynomial</a>(pair, F, n);</div>
+<div class="line"><span class="lineno">  447</span>          <a class="code hl_function" href="franzi-gb_8cpp_ade743e7887924fddaf6ced548360f652.html#ade743e7887924fddaf6ced548360f652">reduce</a>(S, F);</div>
+<div class="line"><span class="lineno">  448</span>          <span class="keywordflow">if</span> (!S.<a class="code hl_function" href="class_b_r_p_a9f6b6ae3b9709c6a284b563b78b697ee.html#a9f6b6ae3b9709c6a284b563b78b697ee">isZero</a>())</div>
+<div class="line"><span class="lineno">  449</span>            {</div>
+<div class="line"><span class="lineno">  450</span>              <span class="comment">// countAddPoly++;</span></div>
+<div class="line"><span class="lineno">  451</span>              F[nextIndex] = S;</div>
+<div class="line"><span class="lineno">  452</span>              <span class="keywordflow">if</span> (interreductionCounter == 5)</div>
+<div class="line"><span class="lineno">  453</span>                {</div>
+<div class="line"><span class="lineno">  454</span>                  interreductionCounter = 0;</div>
+<div class="line"><span class="lineno">  455</span>                  <a class="code hl_function" href="franzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16.html#a1a3761822c6b39b16ad02d4de6ff3f16">interreduction</a>(F);</div>
+<div class="line"><span class="lineno">  456</span>                  B = <a class="code hl_function" href="franzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176.html#a129e311d03f91a67c4ed34e642c2a176">makeList</a>(F, n);</div>
+<div class="line"><span class="lineno">  457</span>                }</div>
+<div class="line"><span class="lineno">  458</span>              <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  459</span>                {</div>
+<div class="line"><span class="lineno">  460</span>                  interreductionCounter++;</div>
+<div class="line"><span class="lineno">  461</span>                  <a class="code hl_typedef" href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a> newList = <a class="code hl_function" href="franzi-gb_8cpp_a29ff16b6eaf37f5d2b983a2aec3b564b.html#a29ff16b6eaf37f5d2b983a2aec3b564b">makeNewPairs</a>(nextIndex, F, n);</div>
+<div class="line"><span class="lineno">  462</span>                  B.insert(newList.begin(), newList.end());</div>
+<div class="line"><span class="lineno">  463</span>                }</div>
+<div class="line"><span class="lineno">  464</span>              nextIndex++;</div>
+<div class="line"><span class="lineno">  465</span>            }</div>
+<div class="line"><span class="lineno">  466</span>        }</div>
+<div class="line"><span class="lineno">  467</span>    }</div>
+<div class="line"><span class="lineno">  468</span>  <a class="code hl_function" href="franzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16.html#a1a3761822c6b39b16ad02d4de6ff3f16">interreduction</a>(F);</div>
+<div class="line"><span class="lineno">  469</span>  <span class="comment">// cout &lt;&lt; &quot;we computed &quot; &lt;&lt; numSPoly &lt;&lt; &quot; S Polynomials and added &quot; &lt;&lt;</span></div>
+<div class="line"><span class="lineno">  470</span>  <span class="comment">// countAddPoly &lt;&lt; &quot; of them to the intermediate basis.&quot; &lt;&lt; endl;</span></div>
+<div class="line"><span class="lineno">  471</span>}</div>
 <div class="ttc" id="aclass_b_r_p_a9f6b6ae3b9709c6a284b563b78b697ee_html_a9f6b6ae3b9709c6a284b563b78b697ee"><div class="ttname"><a href="class_b_r_p_a9f6b6ae3b9709c6a284b563b78b697ee.html#a9f6b6ae3b9709c6a284b563b78b697ee">BRP::isZero</a></div><div class="ttdeci">bool isZero() const</div><div class="ttdef"><b>Definition</b> <a href="franzi-brp_8cpp_source.html#l00013">franzi-brp.cpp:13</a></div></div>
-<div class="ttc" id="aclass_b_r_p_html"><div class="ttname"><a href="class_b_r_p.html">BRP</a></div><div class="ttdef"><b>Definition</b> <a href="franzi-brp_8hpp_source.html#l00059">franzi-brp.hpp:60</a></div></div>
-<div class="ttc" id="aclass_pair_html"><div class="ttname"><a href="class_pair.html">Pair</a></div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00012">franzi-gb.cpp:13</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176_html_a129e311d03f91a67c4ed34e642c2a176"><div class="ttname"><a href="franzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176.html#a129e311d03f91a67c4ed34e642c2a176">makeList</a></div><div class="ttdeci">Pairs makeList(const IntermediateBasis &amp;F, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00134">franzi-gb.cpp:134</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16_html_a1a3761822c6b39b16ad02d4de6ff3f16"><div class="ttname"><a href="franzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16.html#a1a3761822c6b39b16ad02d4de6ff3f16">interreduction</a></div><div class="ttdeci">void interreduction(IntermediateBasis &amp;F)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00376">franzi-gb.cpp:376</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_a29ff16b6eaf37f5d2b983a2aec3b564b_html_a29ff16b6eaf37f5d2b983a2aec3b564b"><div class="ttname"><a href="franzi-gb_8cpp_a29ff16b6eaf37f5d2b983a2aec3b564b.html#a29ff16b6eaf37f5d2b983a2aec3b564b">makeNewPairs</a></div><div class="ttdeci">Pairs makeNewPairs(int newIndex, const IntermediateBasis &amp;F, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00160">franzi-gb.cpp:160</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_a3594684979fc905c97144b6eb7d3caf9_html_a3594684979fc905c97144b6eb7d3caf9"><div class="ttname"><a href="franzi-gb_8cpp_a3594684979fc905c97144b6eb7d3caf9.html#a3594684979fc905c97144b6eb7d3caf9">sPolynomial</a></div><div class="ttdeci">BRP sPolynomial(const Pair &amp;pair, const IntermediateBasis &amp;F, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00239">franzi-gb.cpp:239</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_a4d0647d9345c63b8f8595c950e5d7d5f_html_a4d0647d9345c63b8f8595c950e5d7d5f"><div class="ttname"><a href="franzi-gb_8cpp_a4d0647d9345c63b8f8595c950e5d7d5f.html#a4d0647d9345c63b8f8595c950e5d7d5f">rearrangeBasis</a></div><div class="ttdeci">void rearrangeBasis(IntermediateBasis &amp;F, int nextIndex)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00354">franzi-gb.cpp:354</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_a8089e5515ec6e0c72b5ced95a06e5a98_html_a8089e5515ec6e0c72b5ced95a06e5a98"><div class="ttname"><a href="franzi-gb_8cpp_a8089e5515ec6e0c72b5ced95a06e5a98.html#a8089e5515ec6e0c72b5ced95a06e5a98">isGoodPair</a></div><div class="ttdeci">bool isGoodPair(const Pair &amp;pair, const IntermediateBasis &amp;F, const Pairs &amp;B, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00192">franzi-gb.cpp:192</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62_html_a8818ff25e637ee7d384c122f52a46d62"><div class="ttname"><a href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a></div><div class="ttdeci">std::set&lt; Pair &gt; Pairs</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00090">franzi-gb.cpp:90</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_ade743e7887924fddaf6ced548360f652_html_ade743e7887924fddaf6ced548360f652"><div class="ttname"><a href="franzi-gb_8cpp_ade743e7887924fddaf6ced548360f652.html#ade743e7887924fddaf6ced548360f652">reduce</a></div><div class="ttdeci">bool reduce(BRP &amp;f, const IntermediateBasis &amp;F, const IntermediateBasis::const_iterator itF)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00333">franzi-gb.cpp:333</a></div></div>
+<div class="ttc" id="aclass_b_r_p_html"><div class="ttname"><a href="class_b_r_p.html">BRP</a></div><div class="ttdoc">Boolean (F_2-coefficient) polynomial stored as an ordered list of square-free monomials.</div><div class="ttdef"><b>Definition</b> <a href="franzi-brp_8hpp_source.html#l00070">franzi-brp.hpp:71</a></div></div>
+<div class="ttc" id="aclass_pair_html"><div class="ttname"><a href="class_pair.html">Pair</a></div><div class="ttdoc">S-pair record for the Franzi boolean Groebner basis algorithm.</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00022">franzi-gb.cpp:23</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176_html_a129e311d03f91a67c4ed34e642c2a176"><div class="ttname"><a href="franzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176.html#a129e311d03f91a67c4ed34e642c2a176">makeList</a></div><div class="ttdeci">Pairs makeList(const IntermediateBasis &amp;F, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00155">franzi-gb.cpp:155</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16_html_a1a3761822c6b39b16ad02d4de6ff3f16"><div class="ttname"><a href="franzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16.html#a1a3761822c6b39b16ad02d4de6ff3f16">interreduction</a></div><div class="ttdeci">void interreduction(IntermediateBasis &amp;F)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00397">franzi-gb.cpp:397</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_a29ff16b6eaf37f5d2b983a2aec3b564b_html_a29ff16b6eaf37f5d2b983a2aec3b564b"><div class="ttname"><a href="franzi-gb_8cpp_a29ff16b6eaf37f5d2b983a2aec3b564b.html#a29ff16b6eaf37f5d2b983a2aec3b564b">makeNewPairs</a></div><div class="ttdeci">Pairs makeNewPairs(int newIndex, const IntermediateBasis &amp;F, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00181">franzi-gb.cpp:181</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_a3594684979fc905c97144b6eb7d3caf9_html_a3594684979fc905c97144b6eb7d3caf9"><div class="ttname"><a href="franzi-gb_8cpp_a3594684979fc905c97144b6eb7d3caf9.html#a3594684979fc905c97144b6eb7d3caf9">sPolynomial</a></div><div class="ttdeci">BRP sPolynomial(const Pair &amp;pair, const IntermediateBasis &amp;F, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00260">franzi-gb.cpp:260</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_a4d0647d9345c63b8f8595c950e5d7d5f_html_a4d0647d9345c63b8f8595c950e5d7d5f"><div class="ttname"><a href="franzi-gb_8cpp_a4d0647d9345c63b8f8595c950e5d7d5f.html#a4d0647d9345c63b8f8595c950e5d7d5f">rearrangeBasis</a></div><div class="ttdeci">void rearrangeBasis(IntermediateBasis &amp;F, int nextIndex)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00375">franzi-gb.cpp:375</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_a8089e5515ec6e0c72b5ced95a06e5a98_html_a8089e5515ec6e0c72b5ced95a06e5a98"><div class="ttname"><a href="franzi-gb_8cpp_a8089e5515ec6e0c72b5ced95a06e5a98.html#a8089e5515ec6e0c72b5ced95a06e5a98">isGoodPair</a></div><div class="ttdeci">bool isGoodPair(const Pair &amp;pair, const IntermediateBasis &amp;F, const Pairs &amp;B, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00213">franzi-gb.cpp:213</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62_html_a8818ff25e637ee7d384c122f52a46d62"><div class="ttname"><a href="franzi-gb_8cpp_a8818ff25e637ee7d384c122f52a46d62.html#a8818ff25e637ee7d384c122f52a46d62">Pairs</a></div><div class="ttdeci">std::set&lt; Pair &gt; Pairs</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00100">franzi-gb.cpp:100</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_ade743e7887924fddaf6ced548360f652_html_ade743e7887924fddaf6ced548360f652"><div class="ttname"><a href="franzi-gb_8cpp_ade743e7887924fddaf6ced548360f652.html#ade743e7887924fddaf6ced548360f652">reduce</a></div><div class="ttdeci">bool reduce(BRP &amp;f, const IntermediateBasis &amp;F, const IntermediateBasis::const_iterator itF)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00354">franzi-gb.cpp:354</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="franzi-gb_8cpp_a1a3761822c6b39b16ad02d4de6ff3f16.html#a1a3761822c6b39b16ad02d4de6ff3f16">interreduction()</a>, <a class="el" href="franzi-gb_8cpp_a8089e5515ec6e0c72b5ced95a06e5a98.html#a8089e5515ec6e0c72b5ced95a06e5a98">isGoodPair()</a>, <a class="el" href="class_b_r_p_a9f6b6ae3b9709c6a284b563b78b697ee.html#a9f6b6ae3b9709c6a284b563b78b697ee">BRP::isZero()</a>, <a class="el" href="franzi-gb_8cpp_a129e311d03f91a67c4ed34e642c2a176.html#a129e311d03f91a67c4ed34e642c2a176">makeList()</a>, <a class="el" href="franzi-gb_8cpp_a29ff16b6eaf37f5d2b983a2aec3b564b.html#a29ff16b6eaf37f5d2b983a2aec3b564b">makeNewPairs()</a>, <a class="el" href="franzi-gb_8cpp_a4d0647d9345c63b8f8595c950e5d7d5f.html#a4d0647d9345c63b8f8595c950e5d7d5f">rearrangeBasis()</a>, <a class="el" href="franzi-gb_8cpp_ade743e7887924fddaf6ced548360f652.html#ade743e7887924fddaf6ced548360f652">reduce()</a>, and <a class="el" href="franzi-gb_8cpp_a3594684979fc905c97144b6eb7d3caf9.html#a3594684979fc905c97144b6eb7d3caf9">sPolynomial()</a>.</p>
 

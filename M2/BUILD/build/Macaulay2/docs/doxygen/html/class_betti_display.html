@@ -92,6 +92,9 @@ $(function(){initNavTree('class_betti_display.html','','class_betti_display-memb
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side Betti table: a <span class="tt">(degree, homological level)</span> rectangle of integers.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="betti_8hpp_source.html">betti.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -125,8 +128,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a9e32540acba0c8f23c89a90b6ed9719e" id="r_a9e32540acba0c8f23c89a90b6ed9719e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_betti_display_a9e32540acba0c8f23c89a90b6ed9719e.html#a9e32540acba0c8f23c89a90b6ed9719e">mValues</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="betti_8hpp_source.html#l00042">42</a> of file <a class="el" href="betti_8hpp_source.html">betti.hpp</a>.</p>
+<div class="textblock"><p>Engine-side Betti table: a <span class="tt">(degree, homological level)</span> rectangle of integers. </p>
+<p>Storage is a single flat <span class="tt">int* <a class="el" href="class_betti_display_a9e32540acba0c8f23c89a90b6ed9719e.html#a9e32540acba0c8f23c89a90b6ed9719e">mValues</a></span> of size <span class="tt">(<a class="el" href="class_betti_display_a4e351f240755f3271753782ff85ba9a2.html#a4e351f240755f3271753782ff85ba9a2">mHiDegree</a> - <a class="el" href="class_betti_display_ad271592291121d03014bbddc72a92e77.html#ad271592291121d03014bbddc72a92e77">mLoDegree</a> + 1) * <a class="el" href="class_betti_display_ae4a35203e348589debdc1b9dd3207d7e.html#ae4a35203e348589debdc1b9dd3207d7e">mNLevels</a></span>, indexed via <span class="tt">entry(deg, lev)</span>. The user-facing bounds (<span class="tt"><a class="el" href="class_betti_display_a238851096565ffeae79013f1ad9bf2bf.html#a238851096565ffeae79013f1ad9bf2bf">loDegree</a></span> / <span class="tt"><a class="el" href="class_betti_display_a04ac60cb0c266b3051acc3ea732824f6.html#a04ac60cb0c266b3051acc3ea732824f6">hiDegree</a></span> / <span class="tt"><a class="el" href="class_betti_display_a4ce131c03f0d8570cc4e338361c785a6.html#a4ce131c03f0d8570cc4e338361c785a6">length</a></span>) are the requested dimensions; the actual non-zero region may be tighter. <span class="tt"><a class="el" href="class_betti_display_aceb8b4e611c0194f03ec9020e485fce2.html#aceb8b4e611c0194f03ec9020e485fce2">displayBetti</a></span> / <span class="tt"><a class="el" href="class_betti_display_a1e8f6b2da5f0a6d8d46afa31cda99682.html#a1e8f6b2da5f0a6d8d46afa31cda99682">output</a></span> print in the conventional triangular layout the front end shows for <span class="tt">betti</span> queries, and <span class="tt"><a class="el" href="class_betti_display_a18ca86334cb86514d21bb301d72293c0.html#a18ca86334cb86514d21bb301d72293c0">getBetti</a></span> flattens to an <span class="tt"><a class="el" href="class_m2__arrayint.html">M2_arrayint</a></span> for the interpreter. </p>
+
+<p class="definition">Definition at line <a class="el" href="betti_8hpp_source.html#l00055">55</a> of file <a class="el" href="betti_8hpp_source.html">betti.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="betti_8hpp_source.html">betti.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="betti_8cpp_source.html">betti.cpp</a></li>

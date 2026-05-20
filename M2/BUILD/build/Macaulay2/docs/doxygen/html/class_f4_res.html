@@ -92,11 +92,15 @@ $(function(){initNavTree('class_f4_res.html','','class_f4_res-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>F4-style engine that computes one <span class="tt">(level, degree)</span> slice of a free resolution into the host <span class="tt"><a class="el" href="class_schreyer_frame.html" title="State container for the in-progress free resolution built by the F4 resolution engine.">SchreyerFrame</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-f4_8hpp_source.html">res-f4.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:Row" id="r_Row"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f4_res_1_1_row.html">Row</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">One row of the Macaulay matrix built by <span class="tt"><a class="el" href="class_f4_res_a2a5b6f1dd2e4251e29ea3fae9b2e7979.html#a2a5b6f1dd2e4251e29ea3fae9b2e7979">F4Res::construct</a></span>.  <a href="struct_f4_res_1_1_row.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -149,8 +153,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a675e98de80eeeebd70bf2b10cc440a8b" id="r_a675e98de80eeeebd70bf2b10cc440a8b"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_f4_res_a675e98de80eeeebd70bf2b10cc440a8b.html#a675e98de80eeeebd70bf2b10cc440a8b">ResColumnsSorter</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-f4_8hpp_source.html#l00064">64</a> of file <a class="el" href="res-f4_8hpp_source.html">res-f4.hpp</a>.</p>
+<div class="textblock"><p>F4-style engine that computes one <span class="tt">(level, degree)</span> slice of a free resolution into the host <span class="tt"><a class="el" href="class_schreyer_frame.html" title="State container for the in-progress free resolution built by the F4 resolution engine.">SchreyerFrame</a></span>. </p>
+<p><span class="tt">construct(lev, degree)</span> builds the Macaulay matrix whose rows are the symbolic reducers for each frame element of that <span class="tt">(level, degree)</span> cell, runs <span class="tt"><a class="el" href="class_f4_res_a1a4dc35be828da0a98fd9ab40a48408a.html#a1a4dc35be828da0a98fd9ab40a48408a">gaussReduce</a></span>, and writes the resulting syzygy polynomials back into the matching <span class="tt">FrameElement::mSyzygy</span> slots. The matrix construction (<span class="tt"><a class="el" href="class_f4_res_ad7c8abfe88f173fa72c78aeed4f9dfca.html#ad7c8abfe88f173fa72c78aeed4f9dfca">processCurrentMonomial</a></span> / <span class="tt"><a class="el" href="class_f4_res_a16a7029ca10e8a3767852bc0af94482c.html#a16a7029ca10e8a3767852bc0af94482c">processMonomialProduct</a></span> / <span class="tt"><a class="el" href="class_f4_res_abc693eb88680c6d1cf415a333adb1f67.html#abc693eb88680c6d1cf415a333adb1f67">loadRow</a></span>) and column-sorting passes (<span class="tt"><a class="el" href="class_f4_res_a1d6c6ee5f0156d2795a4d417827adb2d.html#a1d6c6ee5f0156d2795a4d417827adb2d">reorderColumns</a></span>, <span class="tt"><a class="el" href="class_f4_res_a675e98de80eeeebd70bf2b10cc440a8b.html#a675e98de80eeeebd70bf2b10cc440a8b">ResColumnsSorter</a></span> friend) live inside this class; the <span class="tt">debugOutput*</span> helpers exist for printing the partial state of the F4 matrix when investigating reduction bugs. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-f4_8hpp_source.html#l00079">79</a> of file <a class="el" href="res-f4_8hpp_source.html">res-f4.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-f4_8hpp_source.html">res-f4.hpp</a></li>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-f4_8cpp_source.html">res-f4.cpp</a></li>

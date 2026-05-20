@@ -91,6 +91,9 @@ $(function(){initNavTree('struct_f4_res_1_1_row.html','','struct_f4_res_1_1_row-
   <div class="headertitle"><div class="title">F4Res::Row Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>One row of the Macaulay matrix built by <span class="tt"><a class="el" href="class_f4_res_a2a5b6f1dd2e4251e29ea3fae9b2e7979.html#a2a5b6f1dd2e4251e29ea3fae9b2e7979">F4Res::construct</a></span>.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -103,8 +106,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a5572f26a426f3a864bf3de3b96ebb1bc" id="r_a5572f26a426f3a864bf3de3b96ebb1bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_element_array.html">ElementArray</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_f4_res_1_1_row_a5572f26a426f3a864bf3de3b96ebb1bc.html#a5572f26a426f3a864bf3de3b96ebb1bc">mCoeffs</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-f4_8hpp_source.html#l00087">87</a> of file <a class="el" href="res-f4_8hpp_source.html">res-f4.hpp</a>.</p>
+<div class="textblock"><p>One row of the Macaulay matrix built by <span class="tt"><a class="el" href="class_f4_res_a2a5b6f1dd2e4251e29ea3fae9b2e7979.html#a2a5b6f1dd2e4251e29ea3fae9b2e7979">F4Res::construct</a></span>. </p>
+<p><span class="tt"><a class="el" href="struct_f4_res_1_1_row_a87b1982ae23f691466396053e4359208.html#a87b1982ae23f691466396053e4359208">mLeadTerm</a></span> is the previous-level monomial that contributed this row, used after reduction to slot the resulting syzygy back into the right <span class="tt">FrameElement</span>. <span class="tt"><a class="el" href="struct_f4_res_1_1_row_a054426e8e80a463e98e2ad3095dd5f6a.html#a054426e8e80a463e98e2ad3095dd5f6a">mComponents</a></span> and <span class="tt"><a class="el" href="struct_f4_res_1_1_row_a5572f26a426f3a864bf3de3b96ebb1bc.html#a5572f26a426f3a864bf3de3b96ebb1bc">mCoeffs</a></span> are parallel arrays: column index and coefficient for each non-zero entry. <span class="tt"><a class="el" href="class_f4_res_abc693eb88680c6d1cf415a333adb1f67.html#abc693eb88680c6d1cf415a333adb1f67">loadRow</a></span> populates the arrays; <span class="tt"><a class="el" href="class_f4_res_a1a4dc35be828da0a98fd9ab40a48408a.html#a1a4dc35be828da0a98fd9ab40a48408a">gaussReduce</a></span> consumes them. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-f4_8hpp_source.html#l00112">112</a> of file <a class="el" href="res-f4_8hpp_source.html">res-f4.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-f4_8hpp_source.html">res-f4.hpp</a></li>
 </ul>

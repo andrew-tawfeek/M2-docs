@@ -92,6 +92,9 @@ $(function(){initNavTree('class_g_b_ring.html','','class_g_b_ring-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GBRing:</div>
@@ -100,11 +103,11 @@ Inheritance diagram for GBRing:</div>
   <img src="class_g_b_ring.png" usemap="#GBRing_map" alt=""/>
   <map id="GBRing_map" name="GBRing_map">
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="169,0,272,24"/>
-<area href="class_g_b_ring_poly.html" alt="GBRingPoly" shape="rect" coords="0,112,103,136"/>
-<area href="class_g_b_ring_skew.html" alt="GBRingSkew" shape="rect" coords="113,112,216,136"/>
-<area href="class_g_b_ring_solvable.html" alt="GBRingSolvable" shape="rect" coords="226,112,329,136"/>
-<area href="class_g_b_ring_weyl.html" alt="GBRingWeyl" shape="rect" coords="339,112,442,136"/>
-<area href="class_g_b_ring_weyl_z_z.html" alt="GBRingWeylZZ" shape="rect" coords="339,168,442,192"/>
+<area href="class_g_b_ring_poly.html" title="GBRing specialisation for ordinary commutative polynomial rings." alt="GBRingPoly" shape="rect" coords="0,112,103,136"/>
+<area href="class_g_b_ring_skew.html" title="GBRing specialisation for skew-commutative (exterior-like) polynomial rings." alt="GBRingSkew" shape="rect" coords="113,112,216,136"/>
+<area href="class_g_b_ring_solvable.html" title="GBRing specialisation for solvable polynomial algebras (PBW-style non-commutative rings whose relatio..." alt="GBRingSolvable" shape="rect" coords="226,112,329,136"/>
+<area href="class_g_b_ring_weyl.html" title="GBRing specialisation for Weyl algebras over a field." alt="GBRingWeyl" shape="rect" coords="339,112,442,136"/>
+<area href="class_g_b_ring_weyl_z_z.html" title="GBRingWeyl specialisation for Weyl algebras over ZZ." alt="GBRingWeylZZ" shape="rect" coords="339,168,442,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -229,8 +232,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a7598ca67f74908828f80c518e6b8ee53" id="r_a7598ca67f74908828f80c518e6b8ee53"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_b_ring_a7598ca67f74908828f80c518e6b8ee53.html#a7598ca67f74908828f80c518e6b8ee53">SkewPolynomialRing</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="gbring_8hpp_source.html#l00092">92</a> of file <a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>.</p>
+<div class="textblock"><p>Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations. </p>
+<p>Holds the coefficient ring, the (flattened) monoid, and the Schreyer-order machinery, and exposes the <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span> arithmetic primitives (<span class="tt"><a class="el" href="class_g_b_ring_ad185a1fa27c0b16d63710fc6bd9dee50.html#ad185a1fa27c0b16d63710fc6bd9dee50">gbvector_add_to</a></span>, <span class="tt"><a class="el" href="class_g_b_ring_a779fc5d732f3fff8c606a072efaa213f.html#a779fc5d732f3fff8c606a072efaa213f">gbvector_mult_by_term</a></span>, ...) that the GB inner loop calls millions of times. Subclasses (<span class="tt"><a class="el" href="class_g_b_ring_poly.html" title="GBRing specialisation for ordinary commutative polynomial rings.">GBRingPoly</a></span>, <span class="tt"><a class="el" href="class_g_b_ring_skew.html" title="GBRing specialisation for skew-commutative (exterior-like) polynomial rings.">GBRingSkew</a></span>, <span class="tt"><a class="el" href="class_g_b_ring_weyl.html" title="GBRing specialisation for Weyl algebras over a field.">GBRingWeyl</a></span>, <span class="tt"><a class="el" href="class_g_b_ring_weyl_z_z.html" title="GBRingWeyl specialisation for Weyl algebras over ZZ.">GBRingWeylZZ</a></span>, <span class="tt"><a class="el" href="class_g_b_ring_solvable.html" title="GBRing specialisation for solvable polynomial algebras (PBW-style non-commutative rings whose relatio...">GBRingSolvable</a></span>) override <span class="tt"><a class="el" href="class_g_b_ring_af900b5bc821a565386a962fc8699359f.html#af900b5bc821a565386a962fc8699359f">mult_by_term1</a></span> to encode ring-specific commutation rules. Built once per computation from a <span class="tt"><a class="el" href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy.">PolynomialRing</a></span> and torn down at the end. </p>
+
+<p class="definition">Definition at line <a class="el" href="gbring_8hpp_source.html#l00113">113</a> of file <a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="gbring_8cpp_source.html">gbring.cpp</a></li>

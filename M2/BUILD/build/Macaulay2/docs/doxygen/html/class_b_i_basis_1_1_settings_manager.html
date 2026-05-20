@@ -92,6 +92,9 @@ $(function(){initNavTree('class_b_i_basis_1_1_settings_manager.html','','class_b
 </div><!--header-->
 <div class="contents">
 
+<p>Process-wide singleton holding the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> monomial order and variable count.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="settings-manager_8hpp_source.html">settings-manager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -116,8 +119,10 @@ Friends</h2></td></tr>
 <tr class="memitem:ad7fd6923097b152866dce8f8c3a7a219" id="r_ad7fd6923097b152866dce8f8c3a7a219"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_b_i_basis_1_1_settings_manager_a3f6d8843ba59146e850b9f71934f0cc2.html#a3f6d8843ba59146e850b9f71934f0cc2">SettingsManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_i_basis_1_1_settings_manager_ad7fd6923097b152866dce8f8c3a7a219.html#ad7fd6923097b152866dce8f8c3a7a219">GetSettingsManager</a> ()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="settings-manager_8hpp_source.html#l00040">40</a> of file <a class="el" href="settings-manager_8hpp_source.html">settings-manager.hpp</a>.</p>
+<div class="textblock"><p>Process-wide singleton holding the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> monomial order and variable count. </p>
+<p>Hidden constructor / copy disabled &mdash; the only way to reach an instance is through the free function <span class="tt"><a class="el" href="class_b_i_basis_1_1_settings_manager_ad7fd6923097b152866dce8f8c3a7a219.html#ad7fd6923097b152866dce8f8c3a7a219">GetSettingsManager()</a></span>, which is declared a <span class="tt">friend</span>. Stores <span class="tt"><a class="el" href="class_b_i_basis_1_1_settings_manager_a24149886d9121510a1d02656ba38cf5a.html#a24149886d9121510a1d02656ba38cf5a">MonomialOrder</a></span> (<span class="tt">Lex</span> / <span class="tt">DegLex</span> / <span class="tt">DegRevLex</span>) so the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> monom subclasses can consult it before doing comparisons, and forwards <span class="tt"><a class="el" href="class_b_i_basis_1_1_settings_manager_a4099f36ad889dc0c149a2fb3992f3751.html#a4099f36ad889dc0c149a2fb3992f3751">SetNumberOfVariables</a></span> to <span class="tt"><a class="el" href="class_b_i_basis_1_1_monom.html" title="Abstract base for the BIBasis boolean-coefficient monomial types — a sorted, singly linked list of va...">Monom</a></span>'s static <span class="tt">DimIndepend</span> slot. </p>
+
+<p class="definition">Definition at line <a class="el" href="settings-manager_8hpp_source.html#l00052">52</a> of file <a class="el" href="settings-manager_8hpp_source.html">settings-manager.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/bibasis/<a class="el" href="settings-manager_8hpp_source.html">settings-manager.hpp</a></li>
 <li>Macaulay2/e/bibasis/<a class="el" href="settings-manager_8cpp_source.html">settings-manager.cpp</a></li>

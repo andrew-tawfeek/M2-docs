@@ -92,7 +92,7 @@ $(function(){initNavTree('_subset_test_8cpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>gtest coverage for <span class="tt"><a class="el" href="class_subsets.html">Subsets</a></span> &mdash; the bijection between integers and <span class="tt">k</span>-subsets of <span class="tt">{0..n-1}</span>.  
+<p>gtest coverage for <span class="tt"><a class="el" href="class_subsets.html" title="Bijective integer encoding of q-subsets of {0, ..., n-1} via binomial(a_0, 1) + binomial(a_1,...">Subsets</a></span> &mdash; the bijection between integers and <span class="tt">k</span>-subsets of <span class="tt">{0..n-1}</span>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -117,7 +117,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a304771f20f162265cb98328248883502" id="r_a304771f20f162265cb98328248883502"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_subset_test_8cpp_a304771f20f162265cb98328248883502.html#a304771f20f162265cb98328248883502">TEST</a> (<a class="el" href="class_subsets.html">Subsets</a>, encodeBoundary)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>gtest coverage for <span class="tt"><a class="el" href="class_subsets.html">Subsets</a></span> &mdash; the bijection between integers and <span class="tt">k</span>-subsets of <span class="tt">{0..n-1}</span>. </p>
+<div class="textblock"><p>gtest coverage for <span class="tt"><a class="el" href="class_subsets.html" title="Bijective integer encoding of q-subsets of {0, ..., n-1} via binomial(a_0, 1) + binomial(a_1,...">Subsets</a></span> &mdash; the bijection between integers and <span class="tt">k</span>-subsets of <span class="tt">{0..n-1}</span>. </p>
 <p>Hosts the <span class="tt">TEST(Subsets, *)</span> battery: the <span class="tt">encode1</span> ... <span class="tt">encode6</span> cases round-trip every <span class="tt">k</span>-subset through <span class="tt">Subsets::decode(i, a)</span> / <span class="tt">Subsets::encode(a)</span> for small <span class="tt">(n, k)</span> pairs (5 choose 2, 12 choose 6, ...) asserting that <span class="tt">encode(decode(i)) == i</span> for each index in the <span class="tt">C(n, k)</span> range; <span class="tt">concatenateSubsets</span>, <span class="tt">outOfRange</span>, and <span class="tt">encodeBoundary</span> cover the combining helper and the out-of-range guard rails. This encoding underpins the engine's free-resolution and Hilbert-function combinatorics, where each homological level indexes into a sparse range of subsets of variables.</p>
 <p>Companion files <span class="tt"><a class="el" href="_point_array_8cpp.html" title="gtest coverage for PointArray — NAG&#39;s epsilon-bucketed numerical-point clustering structure.">PointArray.cpp</a></span> (numerical clustering for NAG) and <span class="tt"><a class="el" href="basics-test_8cpp.html" title="Trivial harness-liveness test plus buffer / M2_arrayint round-trip coverage.">basics-test.cpp</a></span> (the harness-itself liveness check) are covered by the same <span class="tt">file-misc-tests</span> markdown.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="comb_8hpp.html" title="Subsets — combinatorial-number-system encoding of p-subsets of {0,...,n-1}.">comb.hpp</a> </dd>

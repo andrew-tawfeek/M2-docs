@@ -91,6 +91,9 @@ $(function(){initNavTree('struct_n_c_f4_1_1_row.html','','struct_n_c_f4_1_1_row-
   <div class="headertitle"><div class="title">NCF4::Row Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A materialised row of the Macaulay matrix: parallel coefficient and monomial arrays.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -99,8 +102,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a8be32d5db4a9fa3af6111b9728509a8e" id="r_a8be32d5db4a9fa3af6111b9728509a8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_range.html">Range</a>&lt; <a class="el" href="class_word.html">Word</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_c_f4_1_1_row_a8be32d5db4a9fa3af6111b9728509a8e.html#a8be32d5db4a9fa3af6111b9728509a8e">columnWords</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_n_c_f4_8hpp_source.html#l00108">108</a> of file <a class="el" href="_n_c_f4_8hpp_source.html">NCF4.hpp</a>.</p>
+<div class="textblock"><p>A materialised row of the Macaulay matrix: parallel coefficient and monomial arrays. </p>
+<p><span class="tt"><a class="el" href="struct_n_c_f4_1_1_row_a24562b772bc06a14ea89ec07154d08da.html#a24562b772bc06a14ea89ec07154d08da">coeffVector</a></span> carries the coefficients via the <span class="tt"><a class="el" href="class_vector_arithmetic.html" title="Runtime dispatcher that hides the concrete coefficient ring behind a std::variant of ConcreteVectorAr...">VectorArithmetic</a></span> abstraction. <span class="tt"><a class="el" href="struct_n_c_f4_1_1_row_a8be32d5db4a9fa3af6111b9728509a8e.html#a8be32d5db4a9fa3af6111b9728509a8e">columnWords</a></span> holds the monomial of each non-zero entry and is only valid before reduction starts; once columns are labelled, <span class="tt"><a class="el" href="struct_n_c_f4_1_1_row_ac46b8cd85502f0de6c6f0108f4fea4db.html#ac46b8cd85502f0de6c6f0108f4fea4db">columnIndices</a></span> carries the integer column indices that reduction actually uses. </p>
+
+<p class="definition">Definition at line <a class="el" href="_n_c_f4_8hpp_source.html#l00149">149</a> of file <a class="el" href="_n_c_f4_8hpp_source.html">NCF4.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_n_c_f4_8hpp_source.html">NCF4.hpp</a></li>
 </ul>

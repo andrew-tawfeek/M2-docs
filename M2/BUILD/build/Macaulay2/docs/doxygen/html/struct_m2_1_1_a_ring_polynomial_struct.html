@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_m2_1_1_a_ring_polynomial_struct.html','','struc
 </div><!--header-->
 <div class="contents">
 
+<p>Heap-allocated node of an <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower.html" title="aring-style coefficient ring for tower polynomial rings (Z/p)[x_0][x_1]...[x_{n-1}...">ARingTower</a></span> polynomial: a dense <span class="tt">degree</span>-indexed coefficient array that recurses through tower levels.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -104,8 +107,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:acf7311bf24d2395cc8493152adc8d071" id="r_acf7311bf24d2395cc8493152adc8d071"><td class="memItemLeft anonEnd" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring-tower_8hpp_source.html#l00058">58</a> of file <a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>.</p>
+<div class="textblock"><p>Heap-allocated node of an <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower.html" title="aring-style coefficient ring for tower polynomial rings (Z/p)[x_0][x_1]...[x_{n-1}...">ARingTower</a></span> polynomial: a dense <span class="tt">degree</span>-indexed coefficient array that recurses through tower levels. </p>
+<p><span class="tt"><a class="el" href="struct_m2_1_1_a_ring_polynomial_struct_a552ba3616f5b4a33fa777ade2e344eaa.html#a552ba3616f5b4a33fa777ade2e344eaa">deg</a></span> is the polynomial's degree in the current top variable and <span class="tt"><a class="el" href="struct_m2_1_1_a_ring_polynomial_struct_a8713184b110ed41dc09c92872f37275c.html#a8713184b110ed41dc09c92872f37275c">len</a></span> is the allocated capacity. The anonymous union picks the coefficient kind by depth: at the bottom level the coefficients are <span class="tt"><a class="el" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k_accaf1bd40bf4c6970206a8c1a4a71047.html#accaf1bd40bf4c6970206a8c1a4a71047">ARingZZpFFPACK::ElementType</a></span> values stored in <span class="tt"><a class="el" href="struct_m2_1_1_a_ring_polynomial_struct_ad92345b7b933d2a73d1619ac95c1580b.html#ad92345b7b933d2a73d1619ac95c1580b">coeffs</a></span>, and at higher levels each "coefficient" is itself an <span class="tt"><a class="el" href="group__polynomialrings_ga490857490c2a55400c60f9f0ff498f80.html#ga490857490c2a55400c60f9f0ff498f80">ARingPolynomial</a></span> one level down, stored in <span class="tt"><a class="el" href="struct_m2_1_1_a_ring_polynomial_struct_aa917f1eab2223cdd8c8bd21fedd58db9.html#aa917f1eab2223cdd8c8bd21fedd58db9">polys</a></span>. Accessed through <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower.html" title="aring-style coefficient ring for tower polynomial rings (Z/p)[x_0][x_1]...[x_{n-1}...">ARingTower</a></span> (the <span class="tt">aring</span>-shaped sibling of <span class="tt"><a class="el" href="class_d_ring.html" title="Single-level view of a tower-polynomial ring: a DPoly plus a fixed working level and a Tower-flavoure...">DRing</a></span> in <span class="tt"><a class="el" href="dpoly_8hpp.html" title="Native univariate polynomial arithmetic over QQ extensions and finite fields.">dpoly.hpp</a></span>), which always carries the current level so the right union arm is consulted. </p>
+
+<p class="definition">Definition at line <a class="el" href="aring-tower_8hpp_source.html#l00072">72</a> of file <a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a></li>
 </ul>

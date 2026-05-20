@@ -92,6 +92,9 @@ $(function(){initNavTree('class_basic_poly.html','','class_basic_poly-members');
 </div><!--header-->
 <div class="contents">
 
+<p>Standalone, self-contained polynomial representation independent of any engine <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> &mdash; coefficients are bare <span class="tt">mpz_class</span> (GMP integers).  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_basic_poly_8hpp_source.html">BasicPoly.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -118,8 +121,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a62c9a46760d40a4eb2bfc0bdf2b5d75c" id="r_a62c9a46760d40a4eb2bfc0bdf2b5d75c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classint.html">int</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_basic_poly_a62c9a46760d40a4eb2bfc0bdf2b5d75c.html#a62c9a46760d40a4eb2bfc0bdf2b5d75c">mMonomials</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_basic_poly_8hpp_source.html#l00046">46</a> of file <a class="el" href="_basic_poly_8hpp_source.html">BasicPoly.hpp</a>.</p>
+<div class="textblock"><p>Standalone, self-contained polynomial representation independent of any engine <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> &mdash; coefficients are bare <span class="tt">mpz_class</span> (GMP integers). </p>
+<p>Three parallel vectors: <span class="tt"><a class="el" href="class_basic_poly_ad5e6df290f9c75deda9574600ef77ad5.html#ad5e6df290f9c75deda9574600ef77ad5">mCoefficients</a></span> (<span class="tt">mpz_class</span> per term), <span class="tt"><a class="el" href="class_basic_poly_acbd02ae9564e3b122435ce126fc64b02.html#acbd02ae9564e3b122435ce126fc64b02">mComponents</a></span> (free-module component per term, all-zero when empty), and <span class="tt"><a class="el" href="class_basic_poly_a62c9a46760d40a4eb2bfc0bdf2b5d75c.html#a62c9a46760d40a4eb2bfc0bdf2b5d75c">mMonomials</a></span> (a concatenation of varpower monomials, each prefixed by its length). Used by the stream-based polynomial I/O paths (<span class="tt"><a class="el" href="_basic_poly_list_8hpp_a24fbc5f5eec7472cd3ee08f9f323741e.html#a24fbc5f5eec7472cd3ee08f9f323741e">BasicPolyList</a></span>) and as a portable interchange format when polynomials need to live outside the engine's typed <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> machinery. </p>
+
+<p class="definition">Definition at line <a class="el" href="_basic_poly_8hpp_source.html#l00059">59</a> of file <a class="el" href="_basic_poly_8hpp_source.html">BasicPoly.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_basic_poly_8hpp_source.html">BasicPoly.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="_basic_poly_8cpp_source.html">BasicPoly.cpp</a></li>

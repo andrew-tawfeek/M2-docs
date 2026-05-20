@@ -92,6 +92,9 @@ $(function(){initNavTree('class_mutable_complex.html','','class_mutable_complex-
 </div><!--header-->
 <div class="contents">
 
+<p>Sequence of <span class="tt"><a class="el" href="class_mutable_matrix.html" title="Abstract base class for mutable matrices over an arbitrary engine Ring, the in-place counterpart of t...">MutableMatrix</a></span> differentials representing an in-progress chain complex, used for engine-side minimisation / pruning.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="mutablecomplex_8hpp_source.html">mutablecomplex.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MutableComplex:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for MutableComplex:</div>
  <div class="center">
   <img src="class_mutable_complex.png" usemap="#MutableComplex_map" alt=""/>
   <map id="MutableComplex_map" name="MutableComplex_map">
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -108,6 +111,7 @@ Inheritance diagram for MutableComplex:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:iterator" id="r_iterator"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mutable_complex_1_1iterator.html">iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cursor pointing at one entry of one differential matrix in the complex: a <span class="tt">(matrix <a class="el" href="class_mutable_complex_1_1iterator_ae28b260ac53eea8f9500b6822ec43b33.html#ae28b260ac53eea8f9500b6822ec43b33">index</a>, (row, col))</span> triple.  <a href="class_mutable_complex_1_1iterator.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -162,8 +166,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="mutablecomplex_8hpp_source.html#l00050">50</a> of file <a class="el" href="mutablecomplex_8hpp_source.html">mutablecomplex.hpp</a>.</p>
+<div class="textblock"><p>Sequence of <span class="tt"><a class="el" href="class_mutable_matrix.html" title="Abstract base class for mutable matrices over an arbitrary engine Ring, the in-place counterpart of t...">MutableMatrix</a></span> differentials representing an in-progress chain complex, used for engine-side minimisation / pruning. </p>
+<p>Holds the underlying ring (<span class="tt"><a class="el" href="class_mutable_complex_aa278c6cadaf85ef858b2e990aef432dc.html#aa278c6cadaf85ef858b2e990aef432dc">mRing</a></span>), and, if applicable, its <span class="tt"><a class="el" href="class_local_ring.html" title="Engine-side localisation of a polynomial ring at a prime ideal.">LocalRing</a></span> / <span class="tt"><a class="el" href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy.">PolynomialRing</a></span> casts so <span class="tt">prune_*</span> can switch to the local-ring path when warranted. <span class="tt">mDifferential[i]</span> is the matrix from position <span class="tt">i+1</span> to position <span class="tt">i</span>, and <span class="tt"><a class="el" href="class_mutable_complex_a2313d1b55df6677b1ee59cc6a850c317.html#a2313d1b55df6677b1ee59cc6a850c317">mBetti</a></span> caches the per-position Betti numbers (matrix sizes). The pruning API (<span class="tt"><a class="el" href="class_mutable_complex_a41a88801029c2b5e920badd39ec055c8.html#a41a88801029c2b5e920badd39ec055c8">prune_unit</a></span>, <span class="tt"><a class="el" href="class_mutable_complex_af3feb2f0862fe6fa491e00adffcad92e.html#af3feb2f0862fe6fa491e00adffcad92e">prune_matrix</a></span>, <span class="tt"><a class="el" href="class_mutable_complex_a5370b0a6b767cf2c3074fa76b0fe2b75.html#a5370b0a6b767cf2c3074fa76b0fe2b75">prune_complex</a></span>) walks over <span class="tt">(matrix, row, col)</span> triples produced by the nested <span class="tt"><a class="el" href="class_mutable_complex_1_1iterator.html" title="Cursor pointing at one entry of one differential matrix in the complex: a (matrix index,...">iterator</a></span> and uses any unit entry it finds to row/column reduce the complex in place, lowering the Betti numbers while preserving the homology. </p>
+
+<p class="definition">Definition at line <a class="el" href="mutablecomplex_8hpp_source.html#l00065">65</a> of file <a class="el" href="mutablecomplex_8hpp_source.html">mutablecomplex.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="mutablecomplex_8hpp_source.html">mutablecomplex.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="mutablecomplex_8cpp_source.html">mutablecomplex.cpp</a></li>

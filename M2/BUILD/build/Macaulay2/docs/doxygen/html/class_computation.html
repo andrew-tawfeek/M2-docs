@@ -92,6 +92,9 @@ $(function(){initNavTree('class_computation.html','','class_computation-members'
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base for long-running, resumable engine computations (<span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span>, <span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span>, <span class="tt"><a class="el" href="class_mutable_complex.html" title="Sequence of MutableMatrix differentials representing an in-progress chain complex,...">MutableComplex</a></span>, <span class="tt"><a class="el" href="class_g_b_kernel_computation.html" title="Computes the kernel of a Schreyer-encoded GBMatrix and returns the syzygies in a Schreyer-compatible ...">GBKernelComputation</a></span>, ...).  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="comp_8hpp_source.html">comp.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Computation:</div>
@@ -99,13 +102,13 @@ Inheritance diagram for Computation:</div>
  <div class="center">
   <img src="class_computation.png" usemap="#Computation_map" alt=""/>
   <map id="Computation_map" name="Computation_map">
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="149,112,288,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="149,112,288,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="149,56,288,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="149,0,288,24"/>
 <area href="class_g_b_computation.html" title="base class for Groebner basis computations." alt="GBComputation" shape="rect" coords="0,224,139,248"/>
-<area href="class_g_b_kernel_computation.html" alt="GBKernelComputation" shape="rect" coords="149,224,288,248"/>
+<area href="class_g_b_kernel_computation.html" title="Computes the kernel of a Schreyer-encoded GBMatrix and returns the syzygies in a Schreyer-compatible ..." alt="GBKernelComputation" shape="rect" coords="149,224,288,248"/>
 <area href="class_resolution_computation.html" title="Base class for free resolution computation classes." alt="ResolutionComputation" shape="rect" coords="298,224,437,248"/>
-<area href="class_f4_computation.html" alt="F4Computation" shape="rect" coords="149,280,288,304"/>
+<area href="class_f4_computation.html" title="GBComputation subclass that drives an F4GB engine instance from the engine-side computation API." alt="F4Computation" shape="rect" coords="149,280,288,304"/>
 <area href="class_g_b_declared.html" title="declared Groebner bases." alt="GBDeclared" shape="rect" coords="149,336,288,360"/>
 <area href="class_g_b_proxy.html" title="handle to a GB. Should be expunged, as full functionality isn&#39;t used." alt="GBProxy" shape="rect" coords="149,392,288,416"/>
 <area href="class_g_b_walker.html" title="The generic Groebner walk algorithm. Not yet working?" alt="GBWalker" shape="rect" coords="149,448,288,472"/>
@@ -117,8 +120,8 @@ Inheritance diagram for Computation:</div>
 <area href="classbinomial_g_b__comp.html" title="Non-functional." alt="binomialGB_comp" shape="rect" coords="149,784,288,808"/>
 <area href="classgb_a.html" title="The default Groebner basis computation class." alt="gbA" shape="rect" coords="149,840,288,864"/>
 <area href="classnewf4_1_1_g_b_f4_interface.html" alt="newf4::GBF4Interface" shape="rect" coords="149,896,288,920"/>
-<area href="class_f4_res_computation.html" alt="F4ResComputation" shape="rect" coords="447,280,586,304"/>
-<area href="class_n_c_res_computation.html" alt="NCResComputation" shape="rect" coords="447,336,586,360"/>
+<area href="class_f4_res_computation.html" title="ResolutionComputation subclass that drives the F4 resolution engine (SchreyerFrame + F4Res) from the ..." alt="F4ResComputation" shape="rect" coords="447,280,586,304"/>
+<area href="class_n_c_res_computation.html" title="ResolutionComputation subclass that builds a free resolution over a FreeAlgebraQuotient (non-commutat..." alt="NCResComputation" shape="rect" coords="447,336,586,360"/>
 <area href="classgbres__comp.html" title="One of the Resolution computations, based on computing step by step." alt="gbres_comp" shape="rect" coords="447,392,586,416"/>
 <area href="classres2__comp.html" title="One of the Resolution computations, based on Schreyer and Lascala." alt="res2_comp" shape="rect" coords="447,448,586,472"/>
 <area href="classres__comp.html" title="One of the Resolution computations, based on Schreyer and Lascala." alt="res_comp" shape="rect" coords="447,504,586,528"/>
@@ -171,8 +174,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="comp_8hpp_source.html#l00054">54</a> of file <a class="el" href="comp_8hpp_source.html">comp.hpp</a>.</p>
+<div class="textblock"><p>Abstract base for long-running, resumable engine computations (<span class="tt"><a class="el" href="class_g_b_computation.html" title="base class for Groebner basis computations.">GBComputation</a></span>, <span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span>, <span class="tt"><a class="el" href="class_mutable_complex.html" title="Sequence of MutableMatrix differentials representing an in-progress chain complex,...">MutableComplex</a></span>, <span class="tt"><a class="el" href="class_g_b_kernel_computation.html" title="Computes the kernel of a Schreyer-encoded GBMatrix and returns the syzygies in a Schreyer-compatible ...">GBKernelComputation</a></span>, ...). </p>
+<p>Manages a <span class="tt"><a class="el" href="computation_8h_aed0217a90e756a9ee4da649f09850213.html#aed0217a90e756a9ee4da649f09850213">ComputationStatusCode</a></span> state machine plus a <span class="tt"><a class="el" href="struct_stop_conditions.html" title="Bundle of optional early-termination knobs the front end can attach to a long-running Computation.">StopConditions</a></span> record so callers can ask for partial progress (degree limit, basis-element limit, syzygy limit, wall-clock deadline, ...) without losing what has already been computed. Subclasses implement <span class="tt"><a class="el" href="class_computation_ab75de3b5574c52e4f020d529759cc472.html#ab75de3b5574c52e4f020d529759cc472">stop_conditions_ok()</a></span> to vet the request and <span class="tt"><a class="el" href="class_computation_a7f5c6fb2cbdb51dcc230978a54dc6867.html#a7f5c6fb2cbdb51dcc230978a54dc6867">start_computation()</a></span> to do the work; <span class="tt"><a class="el" href="class_computation_a3d43eb6c869405fa62a9b9662f1bdb1d.html#a3d43eb6c869405fa62a9b9662f1bdb1d">set_status()</a></span> is the single chokepoint that updates the visible state. </p>
+
+<p class="definition">Definition at line <a class="el" href="comp_8hpp_source.html#l00065">65</a> of file <a class="el" href="comp_8hpp_source.html">comp.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="comp_8hpp_source.html">comp.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="comp_8cpp_source.html">comp.cpp</a></li>

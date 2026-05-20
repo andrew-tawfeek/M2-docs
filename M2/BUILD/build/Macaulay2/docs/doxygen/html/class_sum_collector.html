@@ -92,6 +92,9 @@ $(function(){initNavTree('class_sum_collector.html','','class_sum_collector-memb
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract incremental accumulator that builds a <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> from many <span class="tt">add(f)</span> calls.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ring_8hpp_source.html">ring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SumCollector:</div>
@@ -100,9 +103,9 @@ Inheritance diagram for SumCollector:</div>
   <img src="class_sum_collector.png" usemap="#SumCollector_map" alt=""/>
   <map id="SumCollector_map" name="SumCollector_map">
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="199,0,388,24"/>
-<area href="class_sum_collector_default.html" alt="SumCollectorDefault" shape="rect" coords="0,112,189,136"/>
-<area href="class_sum_collector_free_algebra_heap.html" alt="SumCollectorFreeAlgebraHeap" shape="rect" coords="199,112,388,136"/>
-<area href="class_sum_collector_poly_heap.html" alt="SumCollectorPolyHeap" shape="rect" coords="398,112,587,136"/>
+<area href="class_sum_collector_default.html" title="Generic SumCollector that accumulates into a single ring_elem via repeated Ring::add_to." alt="SumCollectorDefault" shape="rect" coords="0,112,189,136"/>
+<area href="class_sum_collector_free_algebra_heap.html" title="SumCollector adapter that funnels engine-side ring_elem adds into a FreeAlgebraHeap." alt="SumCollectorFreeAlgebraHeap" shape="rect" coords="199,112,388,136"/>
+<area href="class_sum_collector_poly_heap.html" title="SumCollector implementation that funnels engine-side ring_elem additions through a polyheap (geobucke..." alt="SumCollectorPolyHeap" shape="rect" coords="398,112,587,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -126,8 +129,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ring_8hpp_source.html#l00651">651</a> of file <a class="el" href="ring_8hpp_source.html">ring.hpp</a>.</p>
+<div class="textblock"><p>Abstract incremental accumulator that builds a <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> from many <span class="tt">add(f)</span> calls. </p>
+<p>Provides a single-value <span class="tt"><a class="el" href="class_sum_collector_a80633837fdba90a2fde98b2118db0a11.html#a80633837fdba90a2fde98b2118db0a11">getValue()</a></span> entry point that finalises whatever the underlying ring decided to do with the staged summands (geobucket merge, hash deduplication, polynomial normalisation, ...). Concrete subclasses include <span class="tt"><a class="el" href="class_sum_collector_free_algebra_heap.html" title="SumCollector adapter that funnels engine-side ring_elem adds into a FreeAlgebraHeap.">SumCollectorFreeAlgebraHeap</a></span> (in <span class="tt"><a class="el" href="_free_algebra_8hpp.html" title="Free associative algebra k&lt;x_1,...,x_n&gt; over an arbitrary coefficient ring.">FreeAlgebra.hpp</a></span>) and the ring-specific implementations the engine instantiates through <span class="tt"><a class="el" href="class_ring_afdf9776b22c9fc94f2e820fc8843622f.html#afdf9776b22c9fc94f2e820fc8843622f">Ring::make_SumCollector</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="ring_8hpp_source.html#l00663">663</a> of file <a class="el" href="ring_8hpp_source.html">ring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="ring_8hpp_source.html">ring.hpp</a></li>
 </ul>

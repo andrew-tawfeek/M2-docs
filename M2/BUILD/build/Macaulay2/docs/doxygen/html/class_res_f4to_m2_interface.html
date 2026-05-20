@@ -92,6 +92,9 @@ $(function(){initNavTree('class_res_f4to_m2_interface.html','','class_res_f4to_m
 </div><!--header-->
 <div class="contents">
 
+<p>Static-method namespace bridging engine <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span> / <span class="tt">vec</span> values and the resolution engine's <span class="tt"><a class="el" href="class_res_polynomial.html" title="Polynomial type used by the F4 resolution engine: parallel coefficient vector and concatenated monomi...">ResPolynomial</a></span> representation.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-f4-m2-interface_8hpp_source.html">res-f4-m2-interface.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -108,8 +111,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a940665e4489b9d9c35aa30834cb55e36" id="r_a940665e4489b9d9c35aa30834cb55e36"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; <a class="el" href="class_matrix.html">Matrix</a> *, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_res_f4to_m2_interface_a940665e4489b9d9c35aa30834cb55e36.html#a940665e4489b9d9c35aa30834cb55e36">setDegreeZeroMap</a> (<a class="el" href="class_schreyer_frame.html">SchreyerFrame</a> &amp;C, <a class="el" href="classint.html">int</a> slanted_degree, <a class="el" href="classint.html">int</a> lev)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-f4-m2-interface_8hpp_source.html#l00045">45</a> of file <a class="el" href="res-f4-m2-interface_8hpp_source.html">res-f4-m2-interface.hpp</a>.</p>
+<div class="textblock"><p>Static-method namespace bridging engine <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span> / <span class="tt">vec</span> values and the resolution engine's <span class="tt"><a class="el" href="class_res_polynomial.html" title="Polynomial type used by the F4 resolution engine: parallel coefficient vector and concatenated monomi...">ResPolynomial</a></span> representation. </p>
+<p>Resolution-side counterpart of <span class="tt"><a class="el" href="class_f4to_m2_interface.html" title="Static-method namespace for translating between engine Matrix / vec polynomials and the F4-internal G...">F4toM2Interface</a></span>: every method is <span class="tt">static</span>. Provides <span class="tt"><a class="el" href="class_res_f4to_m2_interface_acc204e41c5b849dbddd230a5c121f070.html#acc204e41c5b849dbddd230a5c121f070">from_M2_vec</a></span> / <span class="tt"><a class="el" href="class_res_f4to_m2_interface_a415999e709aee01dbad7f071b9f0a00f.html#a415999e709aee01dbad7f071b9f0a00f">to_M2_vec</a></span> and the matrix-wide variants used by <span class="tt"><a class="el" href="class_f4_res_computation.html" title="ResolutionComputation subclass that drives the F4 resolution engine (SchreyerFrame + F4Res) from the ...">F4ResComputation</a></span> when handing input to the <span class="tt"><a class="el" href="class_schreyer_frame.html" title="State container for the in-progress free resolution built by the F4 resolution engine.">SchreyerFrame</a></span> and reading the resulting <span class="tt"><a class="el" href="class_res_polynomial.html" title="Polynomial type used by the F4 resolution engine: parallel coefficient vector and concatenated monomi...">ResPolynomial</a></span> syzygies back into engine-side <span class="tt">vec</span>s and <span class="tt">Matrix*</span>es for the front end. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-f4-m2-interface_8hpp_source.html#l00056">56</a> of file <a class="el" href="res-f4-m2-interface_8hpp_source.html">res-f4-m2-interface.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-f4-m2-interface_8hpp_source.html">res-f4-m2-interface.hpp</a></li>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-f4-m2-interface_8cpp_source.html">res-f4-m2-interface.cpp</a></li>

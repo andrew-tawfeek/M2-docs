@@ -92,6 +92,9 @@ $(function(){initNavTree('class_vector_arithmetic.html','','class_vector_arithme
 </div><!--header-->
 <div class="contents">
 
+<p>Runtime dispatcher that hides the concrete coefficient ring behind a <span class="tt">std::variant</span> of <span class="tt"><a class="el" href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a>&lt;<a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a>&gt;*</span> pointers.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -150,8 +153,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:af10dea27e715b69b5b5ea3d3f31f5197" id="r_af10dea27e715b69b5b5ea3d3f31f5197"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector_arithmetic_a09f09c19df472ed324223a33cd0b236d.html#a09f09c19df472ed324223a33cd0b236d">CVA_Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector_arithmetic_af10dea27e715b69b5b5ea3d3f31f5197.html#af10dea27e715b69b5b5ea3d3f31f5197">mConcreteVector</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_vector_arithmetic_8hpp_source.html#l00622">622</a> of file <a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>.</p>
+<div class="textblock"><p>Runtime dispatcher that hides the concrete coefficient ring behind a <span class="tt">std::variant</span> of <span class="tt"><a class="el" href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a>&lt;<a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a>&gt;*</span> pointers. </p>
+<p>Constructed from a <span class="tt">const Ring*</span>: the <span class="tt">ringID()</span> switch picks the matching <span class="tt"><a class="el" href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a>&lt;<a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a>&gt;</span> and stores it in the variant <span class="tt"><a class="el" href="class_vector_arithmetic_af10dea27e715b69b5b5ea3d3f31f5197.html#af10dea27e715b69b5b5ea3d3f31f5197">mConcreteVector</a></span>. Every arithmetic call (<span class="tt"><a class="el" href="class_vector_arithmetic_ad44548d59608838e5b4b510f80b84816.html#ad44548d59608838e5b4b510f80b84816" title="Append support /////.">pushBackOne</a></span>, <span class="tt">add</span>, <span class="tt"><a class="el" href="godbolt_test_8cpp_acb0e524578d913d164058b989f113b93.html#acb0e524578d913d164058b989f113b93">subtract</a></span>, <span class="tt">denseRowReduceByThis</span>, ...) goes through <span class="tt">std::visit</span>, so callers get one polymorphic interface that is still resolved with a tight switch instead of a virtual call. The list of supported rings is exactly the variant alternatives below &mdash; adding a new coefficient ring means extending both the variant and the constructor switch. </p>
+
+<p class="definition">Definition at line <a class="el" href="_vector_arithmetic_8hpp_source.html#l00657">657</a> of file <a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a></li>
 </ul>

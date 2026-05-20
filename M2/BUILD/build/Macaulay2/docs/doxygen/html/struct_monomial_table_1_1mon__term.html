@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_monomial_table_1_1mon__term.html','','struct_mo
 </div><!--header-->
 <div class="contents">
 
+<p>Doubly-linked-list node of a <span class="tt"><a class="el" href="class_monomial_table.html" title="Indexed table of monomials with fast &quot;find a divisor&quot; lookup, keyed by a free integer val per entry.">MonomialTable</a></span>'s per-component monomial list.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="montable_8hpp_source.html">montable.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -103,8 +106,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a177c606e116e63b6bdc90b4aad925b66" id="r_a177c606e116e63b6bdc90b4aad925b66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_monomial_table_1_1mon__term_a177c606e116e63b6bdc90b4aad925b66.html#a177c606e116e63b6bdc90b4aad925b66">_val</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="montable_8hpp_source.html#l00078">78</a> of file <a class="el" href="montable_8hpp_source.html">montable.hpp</a>.</p>
+<div class="textblock"><p>Doubly-linked-list node of a <span class="tt"><a class="el" href="class_monomial_table.html" title="Indexed table of monomials with fast &quot;find a divisor&quot; lookup, keyed by a free integer val per entry.">MonomialTable</a></span>'s per-component monomial list. </p>
+<p><span class="tt"><a class="el" href="struct_monomial_table_1_1mon__term_a669c593436853fb20e1b719ad6c3a767.html#a669c593436853fb20e1b719ad6c3a767">_lead</a></span> points to the entry's exponent vector (owned by the caller, not by the table), <span class="tt"><a class="el" href="struct_monomial_table_1_1mon__term_aec1d7f00b9b152f3ccc290221571020d.html#aec1d7f00b9b152f3ccc290221571020d">_mask</a></span> is the precomputed divisibility bitmask used to skip non-divisors during search, and <span class="tt"><a class="el" href="struct_monomial_table_1_1mon__term_a177c606e116e63b6bdc90b4aad925b66.html#a177c606e116e63b6bdc90b4aad925b66">_val</a></span> is the caller-supplied opaque index returned on a hit. </p>
+
+<p class="definition">Definition at line <a class="el" href="montable_8hpp_source.html#l00102">102</a> of file <a class="el" href="montable_8hpp_source.html">montable.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="montable_8hpp_source.html">montable.hpp</a></li>
 </ul>

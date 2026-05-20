@@ -92,6 +92,9 @@ $(function(){initNavTree('class_mutable_complex_1_1iterator.html','','class_muta
 </div><!--header-->
 <div class="contents">
 
+<p>Cursor pointing at one entry of one differential matrix in the complex: a <span class="tt">(matrix <a class="el" href="class_mutable_complex_1_1iterator_ae28b260ac53eea8f9500b6822ec43b33.html#ae28b260ac53eea8f9500b6822ec43b33">index</a>, (row, col))</span> triple.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="mutablecomplex_8hpp_source.html">mutablecomplex.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -113,8 +116,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a121f63a73419998466a6a38ed28e04b9" id="r_a121f63a73419998466a6a38ed28e04b9"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a>, <a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mutable_complex_1_1iterator_a121f63a73419998466a6a38ed28e04b9.html#a121f63a73419998466a6a38ed28e04b9">mAddr</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="mutablecomplex_8hpp_source.html#l00089">89</a> of file <a class="el" href="mutablecomplex_8hpp_source.html">mutablecomplex.hpp</a>.</p>
+<div class="textblock"><p>Cursor pointing at one entry of one differential matrix in the complex: a <span class="tt">(matrix <a class="el" href="class_mutable_complex_1_1iterator_ae28b260ac53eea8f9500b6822ec43b33.html#ae28b260ac53eea8f9500b6822ec43b33">index</a>, (row, col))</span> triple. </p>
+<p><span class="tt"><a class="el" href="class_mutable_complex_1_1iterator_a4f44ec9098b11756c098222efa3df47a.html#a4f44ec9098b11756c098222efa3df47a">mIndex</a></span> selects which <span class="tt"><a class="el" href="class_mutable_matrix.html" title="Abstract base class for mutable matrices over an arbitrary engine Ring, the in-place counterpart of t...">MutableMatrix</a></span> in <span class="tt">mDifferential</span> and <span class="tt"><a class="el" href="class_mutable_complex_1_1iterator_a121f63a73419998466a6a38ed28e04b9.html#a121f63a73419998466a6a38ed28e04b9">mAddr</a></span> selects a position inside it. The pruning API uses iterators to walk candidate unit entries; <span class="tt"><a class="el" href="class_mutable_complex_a2b18e13c697f719b68e6b634f34cab7f.html#a2b18e13c697f719b68e6b634f34cab7f">next_unit</a></span> / <span class="tt"><a class="el" href="class_mutable_complex_aad922f1e2640df08b7419163fea59916.html#aad922f1e2640df08b7419163fea59916">find_unit</a></span> advance the cursor and <span class="tt">prune_unit(it)</span> row / column reduces the complex around that entry. </p>
+
+<p class="definition">Definition at line <a class="el" href="mutablecomplex_8hpp_source.html#l00114">114</a> of file <a class="el" href="mutablecomplex_8hpp_source.html">mutablecomplex.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="mutablecomplex_8hpp_source.html">mutablecomplex.hpp</a></li>
 </ul>

@@ -115,17 +115,17 @@ template&lt;template&lt; typename &gt; class Queue&gt; </div>
 
 <p>Implements <a class="el" href="class_polynomial_heap_ac213e70a22f90f0c4348f474c81f029f.html#ac213e70a22f90f0c4348f474c81f029f">PolynomialHeap</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00466">466</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  466</span>                        {</div>
-<div class="line"><span class="lineno">  467</span>    <span class="comment">// clear the heap.  The free algebra is kept the same</span></div>
-<div class="line"><span class="lineno">  468</span>    <span class="comment">// but all other aspects are reset.  The MonomialSpace</span></div>
-<div class="line"><span class="lineno">  469</span>    <span class="comment">// has all its data freed to the arena, but is available for</span></div>
-<div class="line"><span class="lineno">  470</span>    <span class="comment">// use without any new allocations for the next computation.</span></div>
-<div class="line"><span class="lineno">  471</span>    <a class="code hl_variable" href="class_naive_dedup_polynomial_heap_a25e1b9424d1316816276309250b3cf76.html#a25e1b9424d1316816276309250b3cf76">mQueue</a>.clear();</div>
-<div class="line"><span class="lineno">  472</span>    <a class="code hl_variable" href="class_naive_dedup_polynomial_heap_a0082ceee8be8debd062fc088024196d5.html#a0082ceee8be8debd062fc088024196d5">mMonomialSpace</a>.deallocateAll();</div>
-<div class="line"><span class="lineno">  473</span>  }</div>
-<div class="ttc" id="aclass_naive_dedup_polynomial_heap_a0082ceee8be8debd062fc088024196d5_html_a0082ceee8be8debd062fc088024196d5"><div class="ttname"><a href="class_naive_dedup_polynomial_heap_a0082ceee8be8debd062fc088024196d5.html#a0082ceee8be8debd062fc088024196d5">NaiveDedupPolynomialHeap::mMonomialSpace</a></div><div class="ttdeci">MemoryBlock mMonomialSpace</div><div class="ttdef"><b>Definition</b> <a href="_n_c_reduction_8cpp_source.html#l00549">NCReduction.cpp:549</a></div></div>
-<div class="ttc" id="aclass_naive_dedup_polynomial_heap_a25e1b9424d1316816276309250b3cf76_html_a25e1b9424d1316816276309250b3cf76"><div class="ttname"><a href="class_naive_dedup_polynomial_heap_a25e1b9424d1316816276309250b3cf76.html#a25e1b9424d1316816276309250b3cf76">NaiveDedupPolynomialHeap::mQueue</a></div><div class="ttdeci">Queue&lt; NaiveDedupQueueConfiguration &gt; mQueue</div><div class="ttdef"><b>Definition</b> <a href="_n_c_reduction_8cpp_source.html#l00548">NCReduction.cpp:548</a></div></div>
+<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00511">511</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  511</span>                        {</div>
+<div class="line"><span class="lineno">  512</span>    <span class="comment">// clear the heap.  The free algebra is kept the same</span></div>
+<div class="line"><span class="lineno">  513</span>    <span class="comment">// but all other aspects are reset.  The MonomialSpace</span></div>
+<div class="line"><span class="lineno">  514</span>    <span class="comment">// has all its data freed to the arena, but is available for</span></div>
+<div class="line"><span class="lineno">  515</span>    <span class="comment">// use without any new allocations for the next computation.</span></div>
+<div class="line"><span class="lineno">  516</span>    <a class="code hl_variable" href="class_naive_dedup_polynomial_heap_a25e1b9424d1316816276309250b3cf76.html#a25e1b9424d1316816276309250b3cf76">mQueue</a>.clear();</div>
+<div class="line"><span class="lineno">  517</span>    <a class="code hl_variable" href="class_naive_dedup_polynomial_heap_a0082ceee8be8debd062fc088024196d5.html#a0082ceee8be8debd062fc088024196d5">mMonomialSpace</a>.deallocateAll();</div>
+<div class="line"><span class="lineno">  518</span>  }</div>
+<div class="ttc" id="aclass_naive_dedup_polynomial_heap_a0082ceee8be8debd062fc088024196d5_html_a0082ceee8be8debd062fc088024196d5"><div class="ttname"><a href="class_naive_dedup_polynomial_heap_a0082ceee8be8debd062fc088024196d5.html#a0082ceee8be8debd062fc088024196d5">NaiveDedupPolynomialHeap::mMonomialSpace</a></div><div class="ttdeci">MemoryBlock mMonomialSpace</div><div class="ttdef"><b>Definition</b> <a href="_n_c_reduction_8cpp_source.html#l00594">NCReduction.cpp:594</a></div></div>
+<div class="ttc" id="aclass_naive_dedup_polynomial_heap_a25e1b9424d1316816276309250b3cf76_html_a25e1b9424d1316816276309250b3cf76"><div class="ttname"><a href="class_naive_dedup_polynomial_heap_a25e1b9424d1316816276309250b3cf76.html#a25e1b9424d1316816276309250b3cf76">NaiveDedupPolynomialHeap::mQueue</a></div><div class="ttdeci">Queue&lt; NaiveDedupQueueConfiguration &gt; mQueue</div><div class="ttdef"><b>Definition</b> <a href="_n_c_reduction_8cpp_source.html#l00593">NCReduction.cpp:593</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_naive_dedup_polynomial_heap_a0082ceee8be8debd062fc088024196d5.html#a0082ceee8be8debd062fc088024196d5">mMonomialSpace</a>, and <a class="el" href="class_naive_dedup_polynomial_heap_a25e1b9424d1316816276309250b3cf76.html#a25e1b9424d1316816276309250b3cf76">mQueue</a>.</p>
 

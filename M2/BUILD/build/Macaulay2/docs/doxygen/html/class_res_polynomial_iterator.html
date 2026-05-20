@@ -92,6 +92,9 @@ $(function(){initNavTree('class_res_polynomial_iterator.html','','class_res_poly
 </div><!--header-->
 <div class="contents">
 
+<p>Forward iterator over the terms of a <span class="tt"><a class="el" href="class_res_polynomial.html" title="Polynomial type used by the F4 resolution engine: parallel coefficient vector and concatenated monomi...">ResPolynomial</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-poly-ring_8hpp_source.html">res-poly-ring.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -115,8 +118,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a59e86b8f4371ba961ad7a234b611a3f3" id="r_a59e86b8f4371ba961ad7a234b611a3f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_res_polynomial_iterator_a59e86b8f4371ba961ad7a234b611a3f3.html#a59e86b8f4371ba961ad7a234b611a3f3">operator!=</a> (const <a class="el" href="class_res_polynomial_iterator.html">ResPolynomialIterator</a> &amp;a, const <a class="el" href="class_res_polynomial_iterator.html">ResPolynomialIterator</a> &amp;b)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-poly-ring_8hpp_source.html#l00183">183</a> of file <a class="el" href="res-poly-ring_8hpp_source.html">res-poly-ring.hpp</a>.</p>
+<div class="textblock"><p>Forward iterator over the terms of a <span class="tt"><a class="el" href="class_res_polynomial.html" title="Polynomial type used by the F4 resolution engine: parallel coefficient vector and concatenated monomi...">ResPolynomial</a></span>. </p>
+<p>Carries two cursors: <span class="tt"><a class="el" href="class_res_polynomial_iterator_a2f72d3b470d010df7d05c99874a5bbaa.html#a2f72d3b470d010df7d05c99874a5bbaa">coeff_index</a></span> ticks through <span class="tt">elem.coeffs</span> one per term, and <span class="tt"><a class="el" href="class_res_polynomial_iterator_aac6f5e3b8096224ed254bd8015e82df6.html#aac6f5e3b8096224ed254bd8015e82df6">monom_index</a></span> walks the flat <span class="tt">elem.monoms</span> buffer in monomial-size strides (<span class="tt"><a class="el" href="class_res_monoid_dense_aa09dc9fc18228dbdfd07f74bf6261bff.html#aa09dc9fc18228dbdfd07f74bf6261bff">ResMonoid::monomial_size</a></span>), which is variable when monomials are not fixed-width. Equality compares the coefficient index only &mdash; the "end" iterator pins it to <span class="tt">elem.len</span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-poly-ring_8hpp_source.html#l00232">232</a> of file <a class="el" href="res-poly-ring_8hpp_source.html">res-poly-ring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-poly-ring_8hpp_source.html">res-poly-ring.hpp</a></li>
 </ul>

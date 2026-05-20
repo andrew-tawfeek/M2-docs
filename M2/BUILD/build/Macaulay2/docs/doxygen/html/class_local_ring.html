@@ -92,6 +92,9 @@ $(function(){initNavTree('class_local_ring.html','','class_local_ring-members');
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side localisation of a polynomial ring at a prime ideal.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="localring_8hpp_source.html">localring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for LocalRing:</div>
@@ -100,7 +103,7 @@ Inheritance diagram for LocalRing:</div>
   <img src="class_local_ring.png" usemap="#LocalRing_map" alt=""/>
   <map id="LocalRing_map" name="LocalRing_map">
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -390,8 +393,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="localring_8hpp_source.html#l00050">50</a> of file <a class="el" href="localring_8hpp_source.html">localring.hpp</a>.</p>
+<div class="textblock"><p>Engine-side localisation of a polynomial ring at a prime ideal. </p>
+<p>Elements are <span class="tt">local_elem*</span> pointers holding a <span class="tt">(numer, denom)</span> pair with <span class="tt">denom</span> known not to lie in the prime; <span class="tt"><a class="el" href="class_local_ring_aa1803876b3795c678ed66d8db848662f.html#aa1803876b3795c678ed66d8db848662f">is_in_prime</a></span> uses the supplied <span class="tt">GBComputation* <a class="el" href="class_local_ring_a50e1dbaec759682b1d2ef3dafcee9dea.html#a50e1dbaec759682b1d2ef3dafcee9dea">mPrime</a></span> (the Groebner basis of the prime ideal) to check membership. <span class="tt"><a class="el" href="class_local_ring_aefe76348cf9fc08d7e22838521cbc700.html#aefe76348cf9fc08d7e22838521cbc700">simplify</a></span> cancels common factors between numerator and denominator using the underlying <span class="tt"><a class="el" href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,...">PolyRing</a></span>'s <span class="tt">gcd</span>. The localisation lifts the polynomial ring's operations into the standard fraction-of-coprime-pair form. </p>
+
+<p class="definition">Definition at line <a class="el" href="localring_8hpp_source.html#l00062">62</a> of file <a class="el" href="localring_8hpp_source.html">localring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="localring_8hpp_source.html">localring.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="localring_8cpp_source.html">localring.cpp</a></li>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_matrix_constructor.html','','class_matrix_constr
 </div><!--header-->
 <div class="contents">
 
+<p>Mutable builder used to assemble an immutable <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span> one column (or one term) at a time.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="matrix-con_8hpp_source.html">matrix-con.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -123,8 +126,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:addae00d99ef00f3584e4861f22152eb0" id="r_addae00d99ef00f3584e4861f22152eb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="imonorder_8hpp_a478c7f9d1b96319cce705c05e567cc29.html#a478c7f9d1b96319cce705c05e567cc29">const_monomial</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix_constructor_addae00d99ef00f3584e4861f22152eb0.html#addae00d99ef00f3584e4861f22152eb0">deg</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="matrix-con_8hpp_source.html#l00044">44</a> of file <a class="el" href="matrix-con_8hpp_source.html">matrix-con.hpp</a>.</p>
+<div class="textblock"><p>Mutable builder used to assemble an immutable <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span> one column (or one term) at a time. </p>
+<p>Held while the matrix is in flux: tracks the target / source <span class="tt"><a class="el" href="class_free_module.html" title="Engine-side free module R^n over a Ring.">FreeModule</a></span>s, the in-progress column vectors in <span class="tt">entries</span>, a shared degree shift <span class="tt"><a class="el" href="class_matrix_constructor_addae00d99ef00f3584e4861f22152eb0.html#addae00d99ef00f3584e4861f22152eb0">deg</a></span>, and the <span class="tt"><a class="el" href="class_matrix_constructor_a6ba8ad8779ae7c3d54cc8e33df4be327.html#a6ba8ad8779ae7c3d54cc8e33df4be327">cols_frozen</a></span> flag that locks the source free module once the caller commits to a column count. <span class="tt"><a class="el" href="class_matrix_constructor_a2ff836da11f7fe8a125a7aa73ee95651.html#a2ff836da11f7fe8a125a7aa73ee95651">to_matrix()</a></span> (declared further down) snapshots the current state into a fresh <span class="tt">Matrix*</span>, after which the <span class="tt"><a class="el" href="class_matrix_constructor.html" title="Mutable builder used to assemble an immutable Matrix one column (or one term) at a time.">MatrixConstructor</a></span> can be discarded or refilled. </p>
+
+<p class="definition">Definition at line <a class="el" href="matrix-con_8hpp_source.html#l00055">55</a> of file <a class="el" href="matrix-con_8hpp_source.html">matrix-con.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="matrix-con_8hpp_source.html">matrix-con.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="matrix-con_8cpp_source.html">matrix-con.cpp</a></li>

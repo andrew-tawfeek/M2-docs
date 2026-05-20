@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_c_cmutable__struct.html','','struct_c_cmutable_
 </div><!--header-->
 <div class="contents">
 
+<p>Mutable view of a complex number as a pair of <span class="tt">mpfr_ptr</span> real and imaginary parts.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gmp-util_8h_source.html">gmp-util.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -100,8 +103,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a3d94d4ece83d6301fcdd19234be1ca62" id="r_a3d94d4ece83d6301fcdd19234be1ca62"><td class="memItemLeft" align="right" valign="top">mpfr_ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_cmutable__struct_a3d94d4ece83d6301fcdd19234be1ca62.html#a3d94d4ece83d6301fcdd19234be1ca62">im</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="gmp-util_8h_source.html#l00088">88</a> of file <a class="el" href="gmp-util_8h_source.html">gmp-util.h</a>.</p>
+<div class="textblock"><p>Mutable view of a complex number as a pair of <span class="tt">mpfr_ptr</span> real and imaginary parts. </p>
+<p>Companion to <span class="tt"><a class="el" href="struct_c_c__struct.html" title="Immutable view of a complex number as a pair of mpfr_srcptr real and imaginary parts.">CC_struct</a></span>: the <span class="tt">mpfr_ptr</span> members allow in-place MPFR arithmetic. The commented-out <span class="tt"><a class="el" href="m2-types_8h_a4c94265a164e162d16914f55bb94902c.html#a4c94265a164e162d16914f55bb94902c">gmp_CCmutable</a></span> / <span class="tt"><a class="el" href="m2-types_8h_a18e5439d68407cce7cf8b4433a93f091.html#a18e5439d68407cce7cf8b4433a93f091">gmp_CC</a></span> typedefs below show how engine pointers used to alias these structs before the macro-based layout in <span class="tt"><a class="el" href="m2-types_8h.html" title="Engine-to-interpreter type vocabulary across the C++ / .dd boundary.">m2-types.h</a></span> replaced them. </p>
+
+<p class="definition">Definition at line <a class="el" href="gmp-util_8h_source.html#l00107">107</a> of file <a class="el" href="gmp-util_8h_source.html">gmp-util.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/interface/<a class="el" href="gmp-util_8h_source.html">gmp-util.h</a></li>
 </ul>

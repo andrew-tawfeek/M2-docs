@@ -91,6 +91,9 @@ $(function(){initNavTree('struct_reduced_g_b___z_z__sorter.html','','struct_redu
   <div class="headertitle"><div class="title">ReducedGB_ZZ_sorter Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Index comparator used to permute <span class="tt"><a class="el" href="class_reduced_g_b___z_z.html" title="Computation of a reduced GB w.r.t. a term order, over ZZ.">ReducedGB_ZZ</a></span>'s <span class="tt"><a class="el" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a></span> array into canonical reduced-GB order over <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span>.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -104,8 +107,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a81ea421ea0e87fdc702ee5cf32e082a2" id="r_a81ea421ea0e87fdc702ee5cf32e082a2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_free_module.html">FreeModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_reduced_g_b___z_z__sorter_a81ea421ea0e87fdc702ee5cf32e082a2.html#a81ea421ea0e87fdc702ee5cf32e082a2">F</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="reducedgb-_z_z_8cpp_source.html#l00028">28</a> of file <a class="el" href="reducedgb-_z_z_8cpp_source.html">reducedgb-ZZ.cpp</a>.</p>
+<div class="textblock"><p>Index comparator used to permute <span class="tt"><a class="el" href="class_reduced_g_b___z_z.html" title="Computation of a reduced GB w.r.t. a term order, over ZZ.">ReducedGB_ZZ</a></span>'s <span class="tt"><a class="el" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a></span> array into canonical reduced-GB order over <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span>. </p>
+<p>Captures pointers to the <span class="tt"><a class="el" href="class_g_b_ring.html" title="Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations.">GBRing</a></span>, target <span class="tt"><a class="el" href="class_free_module.html" title="Engine-side free module R^n over a Ring.">FreeModule</a></span>, and the <span class="tt"><a class="el" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a></span> vector by reference so <span class="tt">operator()(a, b)</span> can compare <span class="tt"><a class="el" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a>[a]</span> and <span class="tt"><a class="el" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a>[b]</span> by their leading terms (with the integer-coefficient tweaks the <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span> flavour needs to break sign ties consistently). Plugged into <span class="tt">std::sort</span> on an indices vector to leave <span class="tt"><a class="el" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a></span> untouched until the final permutation is applied. </p>
+
+<p class="definition">Definition at line <a class="el" href="reducedgb-_z_z_8cpp_source.html#l00040">40</a> of file <a class="el" href="reducedgb-_z_z_8cpp_source.html">reducedgb-ZZ.cpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="reducedgb-_z_z_8cpp_source.html">reducedgb-ZZ.cpp</a></li>
 </ul>

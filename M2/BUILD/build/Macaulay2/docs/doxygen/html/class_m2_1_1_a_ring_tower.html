@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_1_1_a_ring_tower.html','','class_m2_1_1_a_rin
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt">aring</span>-style coefficient ring for tower polynomial rings <span class="tt">(Z/p)[x_0][x_1]...[x_{n-1}]</span> modulo a chain of extensions.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for M2::ARingTower:</div>
@@ -109,6 +112,7 @@ Classes</h2></td></tr>
 <tr class="memitem:Element" id="r_Element"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_tower_1_1_element.html">Element</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper class for <a class="el" href="class_m2_1_1_a_ring_tower_a0b8fb52a03094a0584d37b7741fc1dc7.html#a0b8fb52a03094a0584d37b7741fc1dc7">ElementType</a>.  <a href="class_m2_1_1_a_ring_tower_1_1_element.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ElementArray" id="r_ElementArray"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_tower_1_1_element_array.html">ElementArray</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed-size, owned array of <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower_a0b8fb52a03094a0584d37b7741fc1dc7.html#a0b8fb52a03094a0584d37b7741fc1dc7">ElementType</a></span>s for the linear-algebra templates that want a flat buffer of tower-polynomial slots.  <a href="class_m2_1_1_a_ring_tower_1_1_element_array.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -212,8 +216,10 @@ Friends</h2></td></tr>
 <tr class="memitem:abf800255cc8dfd95ddf7d140b5b627a9" id="r_abf800255cc8dfd95ddf7d140b5b627a9"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_tower_abf800255cc8dfd95ddf7d140b5b627a9.html#abf800255cc8dfd95ddf7d140b5b627a9">ARingTowerEvaluator</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring-tower_8hpp_source.html#l00076">76</a> of file <a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>.</p>
+<div class="textblock"><p><span class="tt">aring</span>-style coefficient ring for tower polynomial rings <span class="tt">(Z/p)[x_0][x_1]...[x_{n-1}]</span> modulo a chain of extensions. </p>
+<p>The <span class="tt">aring</span> analogue of <span class="tt"><a class="el" href="class_d_ring.html" title="Single-level view of a tower-polynomial ring: a DPoly plus a fixed working level and a Tower-flavoure...">DRing</a></span> (see <span class="tt"><a class="el" href="dpoly_8hpp.html" title="Native univariate polynomial arithmetic over QQ extensions and finite fields.">dpoly.hpp</a></span>): bundles a base <span class="tt"><a class="el" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k.html" title="wrapper for the FFPACK::ModularBalanced&lt;double&gt; field implementation">ARingZZpFFPACK</a></span> ring with a list of variable names and a vector of <span class="tt">extensions</span> (one tower polynomial per algebraic level, <span class="tt">nullptr</span> for transcendental). <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower_a0b8fb52a03094a0584d37b7741fc1dc7.html#a0b8fb52a03094a0584d37b7741fc1dc7">ElementType</a></span> is <span class="tt"><a class="el" href="group__polynomialrings_ga490857490c2a55400c60f9f0ff498f80.html#ga490857490c2a55400c60f9f0ff498f80">ARingPolynomial</a></span>, and the nested <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower_1_1_element.html" title="A wrapper class for ElementType.">Element</a></span> and <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower_1_1_element_array.html" title="Fixed-size, owned array of ElementTypes for the linear-algebra templates that want a flat buffer of t...">ElementArray</a></span> helpers manage the underlying heap-allocated chains. Hardcoded to <span class="tt"><a class="el" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k.html" title="wrapper for the FFPACK::ModularBalanced&lt;double&gt; field implementation">ARingZZpFFPACK</a></span> for now (TODO: template on base ring), and tagged with <span class="tt"><a class="el" href="class_m2_1_1_a_ring_tower_a3d7f4bf454b3d8de60cbc966c3533a31.html#a3d7f4bf454b3d8de60cbc966c3533a31">ringID</a> = <a class="el" href="group__rings_ga7579b18152595d75b0bce712fbd605df.html#gga7579b18152595d75b0bce712fbd605dfab5ce038494d6de705c89a252206b82ea">ring_tower_ZZp</a></span> so the engine can recognise it. </p>
+
+<p class="definition">Definition at line <a class="el" href="aring-tower_8hpp_source.html#l00103">103</a> of file <a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="aring-tower_8hpp_source.html">aring-tower.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="aring-tower_8cpp_source.html">aring-tower.cpp</a></li>

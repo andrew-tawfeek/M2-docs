@@ -92,6 +92,9 @@ $(function(){initNavTree('class_d_mat_3_01_m2_1_1_a_ring_z_zp_flint_01_4.html','
 </div><!--header-->
 <div class="contents">
 
+<p>Specialisation of <span class="tt"><a class="el" href="class_d_mat.html">DMat</a></span> for <span class="tt">ARingZZpFlint</span> matrices, backed by FLINT's <span class="tt">nmod_mat_t</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dmat-zzp-flint_8hpp_source.html">dmat-zzp-flint.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -130,8 +133,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a38f628377c19730bf5388a467ee7561a" id="r_a38f628377c19730bf5388a467ee7561a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_d_mat_3_01_m2_1_1_a_ring_z_zp_flint_01_4_a37add065efa3e82b7b33ba75e7ce5fb3.html#a37add065efa3e82b7b33ba75e7ce5fb3">ElementType</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_mat_a38f628377c19730bf5388a467ee7561a.html#a38f628377c19730bf5388a467ee7561a">mRowPointers</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dmat-zzp-flint_8hpp_source.html#l00057">57</a> of file <a class="el" href="dmat-zzp-flint_8hpp_source.html">dmat-zzp-flint.hpp</a>.</p>
+<div class="textblock"><p>Specialisation of <span class="tt"><a class="el" href="class_d_mat.html">DMat</a></span> for <span class="tt">ARingZZpFlint</span> matrices, backed by FLINT's <span class="tt">nmod_mat_t</span>. </p>
+<p>Wraps a FLINT <span class="tt">nmod_mat_t</span> and forwards every dense matrix operation to FLINT's <span class="tt">nmod_mat_*</span> routines, so the coefficient-by-coefficient arithmetic uses FLINT's optimised <span class="tt">nmod</span> primitives. RAII-clean: the constructor calls <span class="tt">nmod_mat_init</span> and the destructor calls <span class="tt">nmod_mat_clear</span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="dmat-zzp-flint_8hpp_source.html#l00067">67</a> of file <a class="el" href="dmat-zzp-flint_8hpp_source.html">dmat-zzp-flint.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="dmat-zzp-flint_8hpp_source.html">dmat-zzp-flint.hpp</a></li>
 </ul>

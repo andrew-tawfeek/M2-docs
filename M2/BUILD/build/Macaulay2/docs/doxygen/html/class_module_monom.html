@@ -92,6 +92,9 @@ $(function(){initNavTree('class_module_monom.html','','class_module_monom-member
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> extended with a module component, a stored index, and a memoised hash &mdash; the value type of <span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a></span> and friends.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -126,8 +129,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a70f498f68795adf9e348992a3e1f0e47" id="r_a70f498f68795adf9e348992a3e1f0e47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_module_monom_a70f498f68795adf9e348992a3e1f0e47.html#a70f498f68795adf9e348992a3e1f0e47">mValue</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_polynomial_8hpp_source.html#l00074">74</a> of file <a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> extended with a module component, a stored index, and a memoised hash &mdash; the value type of <span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a></span> and friends. </p>
+<p>Layout: <span class="tt">[len, value/index, hashval, <a class="el" href="group__comp.html">Computations</a>, deg, v1, ..., vr]</span>. The trailing slice <span class="tt">[len-3, deg, v1, ..., vr]</span> is exactly a <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span>. <span class="tt">value/index</span> (<span class="tt"><a class="el" href="class_module_monom_a70f498f68795adf9e348992a3e1f0e47.html#a70f498f68795adf9e348992a3e1f0e47">mValue</a>[1]</span>) is the slot the owning <span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a></span> writes its enumeration index into; <span class="tt">hashval</span> (<span class="tt"><a class="el" href="class_module_monom_a70f498f68795adf9e348992a3e1f0e47.html#a70f498f68795adf9e348992a3e1f0e47">mValue</a>[2]</span>) is lazily computed on the first <span class="tt"><a class="el" href="class_module_monom_a8c6293b379a49d62b12ae89b00891d00.html#a8c6293b379a49d62b12ae89b00891d00">hash()</a></span> call so subsequent lookups skip the work. <span class="tt"><a class="el" href="class_module_monom_a98f193e3093cc4e3d9bd1386183c2efd.html#a98f193e3093cc4e3d9bd1386183c2efd">compare()</a></span> orders by hash, then component, then descending lex (so <span class="tt">m1 &gt; m2</span> returns <span class="tt"><a class="el" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_aaf56b99cbe34023f42ce5b7878c827d8.html#aaf56b99cbe34023f42ce5b7878c827d8">LT</a></span> &mdash; intentional to keep insertion-order monomials in the conventional "lead term first" position). </p>
+
+<p class="definition">Definition at line <a class="el" href="_polynomial_8hpp_source.html#l00101">101</a> of file <a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_polynomial_8hpp_source.html">Polynomial.hpp</a></li>
 </ul>

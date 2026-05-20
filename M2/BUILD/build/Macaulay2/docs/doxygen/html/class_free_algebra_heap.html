@@ -92,6 +92,9 @@ $(function(){initNavTree('class_free_algebra_heap.html','','class_free_algebra_h
 </div><!--header-->
 <div class="contents">
 
+<p>Geobucket-style accumulator for many <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> summands in the free associative algebra.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -109,8 +112,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:acdc38c14fdd0ba7d6d158924de8e50d8" id="r_acdc38c14fdd0ba7d6d158924de8e50d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_free_algebra_heap_acdc38c14fdd0ba7d6d158924de8e50d8.html#acdc38c14fdd0ba7d6d158924de8e50d8">top_of_heap</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_algebra_8hpp_source.html#l00312">312</a> of file <a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>.</p>
+<div class="textblock"><p>Geobucket-style accumulator for many <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> summands in the free associative algebra. </p>
+<p>Maintains <span class="tt"><a class="el" href="style_8hpp_a7ad908ecb2518165a3f24d63b222140e.html#a7ad908ecb2518165a3f24d63b222140e">GEOHEAP_SIZE</a></span> size-tiered buckets; <span class="tt">add(f)</span> slots <span class="tt">f</span> into the smallest non-empty bucket it overflows and merges upward, so an O(<span class="tt">n</span>) chain of additions costs amortised O(<span class="tt">n log
+n</span>) work rather than O(<span class="tt">n^2</span>). <span class="tt"><a class="el" href="class_free_algebra_heap_a9590f32fc4ccb6c1f0e670acb2fca5dd.html#a9590f32fc4ccb6c1f0e670acb2fca5dd">value()</a></span> linearises the buckets into a single <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> and resets the heap. Used by <span class="tt">mult</span> and evaluation paths that build a polynomial as a long sum of <span class="tt">mult_by_term_left_and_right</span> contributions. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_algebra_8hpp_source.html#l00347">347</a> of file <a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_algebra_8cpp_source.html">FreeAlgebra.cpp</a></li>

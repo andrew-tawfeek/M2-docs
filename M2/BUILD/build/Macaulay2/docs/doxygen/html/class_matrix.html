@@ -92,6 +92,9 @@ $(function(){initNavTree('class_matrix.html','','class_matrix-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side matrix: a map between two free modules, stored as a column-vector list.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Matrix:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for Matrix:</div>
  <div class="center">
   <img src="class_matrix.png" usemap="#Matrix_map" alt=""/>
   <map id="Matrix_map" name="Matrix_map">
-<area href="class_engine_object.html" alt="EngineObject" shape="rect" coords="0,56,102,80"/>
+<area href="class_engine_object.html" title="Base class for engine objects that are immutable once their hash has been pinned (typically once they..." alt="EngineObject" shape="rect" coords="0,56,102,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,102,24"/>
   </map>
 </div></div>
@@ -107,7 +110,9 @@ Inheritance diagram for Matrix:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:iterator" id="r_iterator"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix_1_1iterator.html">iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reseatable iterator over the non-zero entries of one column of the matrix.  <a href="class_matrix_1_1iterator.html#details">More...</a><br /></td></tr>
 <tr class="memitem:column_5Fiterator" id="r_column_5Fiterator"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix_1_1column__iterator.html">column_iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standards-style forward iterator over the <span class="tt"><a class="el" href="structvecterm.html">vecterm</a></span>s of one column.  <a href="class_matrix_1_1column__iterator.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -229,8 +234,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a632b1ee3208e0b6f1b3d4c2d91e28817" id="r_a632b1ee3208e0b6f1b3d4c2d91e28817"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix_a632b1ee3208e0b6f1b3d4c2d91e28817.html#a632b1ee3208e0b6f1b3d4c2d91e28817">MatrixConstructor</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="matrix_8hpp_source.html#l00050">50</a> of file <a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>.</p>
+<div class="textblock"><p>Engine-side matrix: a map between two free modules, stored as a column-vector list. </p>
+<p>Holds a target <span class="tt"><a class="el" href="class_free_module.html" title="Engine-side free module R^n over a Ring.">FreeModule</a></span> (rows), a source <span class="tt"><a class="el" href="class_free_module.html" title="Engine-side free module R^n over a Ring.">FreeModule</a></span> (columns), a <span class="tt"><a class="el" href="class_matrix_a2b7b30b5db75212178d333090484e7cb.html#a2b7b30b5db75212178d333090484e7cb">mDegreeShift</a></span> element of the degree monoid, and a <span class="tt"><a class="el" href="newdelete_8hpp_a372d8395e2d40d72e37f3f32375dd58a.html#a372d8395e2d40d72e37f3f32375dd58a" title="a version of the STL vector, which allocates its backing memory with gc.">gc_vector</a>&lt;vec&gt;</span> <span class="tt"><a class="el" href="class_matrix_a3e9e8ecef430b0f391ac680c5a77df5e.html#a3e9e8ecef430b0f391ac680c5a77df5e">mEntries</a></span> where each <span class="tt">vec</span> is the sparse linked-list representation of one column. The class is immutable once exposed to the front end (its <span class="tt"><a class="el" href="class_matrix_a765e89d4d957343ad13b78302dea2b35.html#a765e89d4d957343ad13b78302dea2b35">computeHashValue</a></span> pins the hash), so all mutating construction goes through the helper <span class="tt"><a class="el" href="class_matrix_constructor.html" title="Mutable builder used to assemble an immutable Matrix one column (or one term) at a time.">MatrixConstructor</a></span>. Static <span class="tt"><a class="el" href="class_matrix_a5928ddd99cca58612541637d050d5eb1.html#a5928ddd99cca58612541637d050d5eb1">make</a></span> / <span class="tt"><a class="el" href="class_matrix_a033015928d4febbf0b4af7d646970a6f.html#a033015928d4febbf0b4af7d646970a6f">make_sparse</a></span> factories convert raw <span class="tt">engine_RawRingElementArray</span> input into a fully populated <span class="tt">Matrix*</span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="matrix_8hpp_source.html#l00062">62</a> of file <a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="det_8cpp_source.html">det.cpp</a></li>

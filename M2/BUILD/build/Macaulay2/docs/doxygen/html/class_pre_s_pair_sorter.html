@@ -92,6 +92,9 @@ $(function(){initNavTree('class_pre_s_pair_sorter.html','','class_pre_s_pair_sor
 </div><!--header-->
 <div class="contents">
 
+<p>Comparator that orders <span class="tt">pre_spair*</span> pointers by the <span class="tt">quot</span> varpower monomial of each pre-S-pair.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -112,8 +115,10 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a2304dc45b15f4aa2a86156ee21cf0751" id="r_a2304dc45b15f4aa2a86156ee21cf0751"><td class="memItemLeft" align="right" valign="top">static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pre_s_pair_sorter_a2304dc45b15f4aa2a86156ee21cf0751.html#a2304dc45b15f4aa2a86156ee21cf0751">ncmps</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="f4-types_8hpp_source.html#l00256">256</a> of file <a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>.</p>
+<div class="textblock"><p>Comparator that orders <span class="tt">pre_spair*</span> pointers by the <span class="tt">quot</span> varpower monomial of each pre-S-pair. </p>
+<p>Uses <span class="tt"><a class="el" href="class_exponent_list_a39cea8f841c34eb30580a2318ac22ec4.html#a39cea8f841c34eb30580a2318ac22ec4">varpower_monomials::compare</a></span> directly and keeps a single <span class="tt"><a class="el" href="class_pre_s_pair_sorter_a2304dc45b15f4aa2a86156ee21cf0751.html#a2304dc45b15f4aa2a86156ee21cf0751">ncmps</a></span> profiling counter. Applied during S-pair generation, before the pre-pairs are promoted to full <span class="tt"><a class="el" href="structspair.html">spair</a></span>s. </p>
+
+<p class="definition">Definition at line <a class="el" href="f4-types_8hpp_source.html#l00289">289</a> of file <a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/f4/<a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a></li>
 <li>Macaulay2/e/f4/<a class="el" href="f4-spairs_8cpp_source.html">f4-spairs.cpp</a></li>

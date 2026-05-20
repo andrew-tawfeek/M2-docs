@@ -92,6 +92,9 @@ $(function(){initNavTree('class_g_b_ring_weyl.html','','class_g_b_ring_weyl-memb
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_g_b_ring.html" title="Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations.">GBRing</a></span> specialisation for Weyl algebras over a field.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GBRingWeyl:</div>
@@ -99,9 +102,9 @@ Inheritance diagram for GBRingWeyl:</div>
  <div class="center">
   <img src="class_g_b_ring_weyl.png" usemap="#GBRingWeyl_map" alt=""/>
   <map id="GBRingWeyl_map" name="GBRingWeyl_map">
-<area href="class_g_b_ring.html" alt="GBRing" shape="rect" coords="0,56,102,80"/>
+<area href="class_g_b_ring.html" title="Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations." alt="GBRing" shape="rect" coords="0,56,102,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,102,24"/>
-<area href="class_g_b_ring_weyl_z_z.html" alt="GBRingWeylZZ" shape="rect" coords="0,168,102,192"/>
+<area href="class_g_b_ring_weyl_z_z.html" title="GBRingWeyl specialisation for Weyl algebras over ZZ." alt="GBRingWeylZZ" shape="rect" coords="0,168,102,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -227,8 +230,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a38563d2598cab5a0c18d84850bf68ad2 inherit pro_attribs_class_g_b_ring" id="r_a38563d2598cab5a0c18d84850bf68ad2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_b_ring_a38563d2598cab5a0c18d84850bf68ad2.html#a38563d2598cab5a0c18d84850bf68ad2">monom_size</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="gbring_8hpp_source.html#l00548">548</a> of file <a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_g_b_ring.html" title="Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations.">GBRing</a></span> specialisation for Weyl algebras over a field. </p>
+<p><span class="tt"><a class="el" href="class_g_b_ring_weyl_ae245dd40fbd7a5c667c3952401d32fb4.html#ae245dd40fbd7a5c667c3952401d32fb4">mult_by_term1</a></span> defers to the underlying <span class="tt"><a class="el" href="class_weyl_algebra.html" title="PolyRing subclass for Weyl algebras: polynomial rings with the [d_i, x_i] = 1 derivative-variable com...">WeylAlgebra</a></span> to apply the <span class="tt">[d, <a class="el" href="overflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2.html#aa07f992d22249e2bef61db62f71671b2">x</a>] = 1</span> commutation relations during monomial-by-term multiplication, so each multiplication may produce a sum of terms rather than a single monomial. </p>
+
+<p class="definition">Definition at line <a class="el" href="gbring_8hpp_source.html#l00585">585</a> of file <a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="gbring_8cpp_source.html">gbring.cpp</a></li>

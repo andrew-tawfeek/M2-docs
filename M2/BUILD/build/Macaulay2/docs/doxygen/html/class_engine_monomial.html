@@ -92,6 +92,9 @@ $(function(){initNavTree('class_engine_monomial.html','','class_engine_monomial-
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side immutable monomial value type wrapping a varpower- encoded exponent vector.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monomial_8hpp_source.html">monomial.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for EngineMonomial:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for EngineMonomial:</div>
  <div class="center">
   <img src="class_engine_monomial.png" usemap="#EngineMonomial_map" alt=""/>
   <map id="EngineMonomial_map" name="EngineMonomial_map">
-<area href="class_engine_object.html" alt="EngineObject" shape="rect" coords="0,56,105,80"/>
+<area href="class_engine_object.html" title="Base class for engine objects that are immutable once their hash has been pinned (typically once they..." alt="EngineObject" shape="rect" coords="0,56,105,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,105,24"/>
   </map>
 </div></div>
@@ -161,8 +164,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a4609f57de910a4f2e8553bb75a6be3c9" id="r_a4609f57de910a4f2e8553bb75a6be3c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="newdelete_8hpp_a372d8395e2d40d72e37f3f32375dd58a.html#a372d8395e2d40d72e37f3f32375dd58a">gc_vector</a>&lt; <a class="el" href="classint.html">int</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_monomial_a4609f57de910a4f2e8553bb75a6be3c9.html#a4609f57de910a4f2e8553bb75a6be3c9">val</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monomial_8hpp_source.html#l00045">45</a> of file <a class="el" href="monomial_8hpp_source.html">monomial.hpp</a>.</p>
+<div class="textblock"><p>Engine-side immutable monomial value type wrapping a varpower- encoded exponent vector. </p>
+<p>Storage is <span class="tt">[2n+1, v_1, e_1, ..., v_n, e_n]</span> (per <span class="tt"><a class="el" href="_exponent_list_8hpp.html" title="Variable-length sparse (variable, exponent) encoding of monomials.">ExponentList.hpp</a></span>): leading length, then alternating variable indices and exponents. Inherits from <span class="tt"><a class="el" href="class_engine_object.html" title="Base class for engine objects that are immutable once their hash has been pinned (typically once they...">EngineObject</a></span> so the monomial can carry a stable content-based hash once exposed to the front end. The <span class="tt">TODO</span> at the top of the file notes a planned template-based unification with the lower-level varpower routines. </p>
+
+<p class="definition">Definition at line <a class="el" href="monomial_8hpp_source.html#l00056">56</a> of file <a class="el" href="monomial_8hpp_source.html">monomial.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="monomial_8hpp_source.html">monomial.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="monomial_8cpp_source.html">monomial.cpp</a></li>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_1_1_a_ring_z_zp.html','','class_m2_1_1_a_ring
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt">aring</span>-style adapter for <span class="tt">Z/p</span> using a discrete-log (Zech) representation: every non-zero residue is its index relative to a primitive generator <span class="tt">a</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring-zzp_8hpp_source.html">aring-zzp.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for M2::ARingZZp:</div>
@@ -188,8 +191,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a68fd877f29fc94a719b64953ec46e58c" id="r_a68fd877f29fc94a719b64953ec46e58c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_z_zp_a68fd877f29fc94a719b64953ec46e58c.html#a68fd877f29fc94a719b64953ec46e58c">exp_table</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring-zzp_8hpp_source.html#l00051">51</a> of file <a class="el" href="aring-zzp_8hpp_source.html">aring-zzp.hpp</a>.</p>
+<div class="textblock"><p><span class="tt">aring</span>-style adapter for <span class="tt">Z/p</span> using a discrete-log (Zech) representation: every non-zero residue is its index relative to a primitive generator <span class="tt">a</span>. </p>
+<p>Encoding: <span class="tt">0</span> means 0, <span class="tt">p-1</span> means 1, and <span class="tt">1..p-2</span> are the exponents of <span class="tt">a^n mod <a class="el" href="class_m2_1_1_a_ring_z_zp_ad06826ceebca78f64c38be3e826033ca.html#ad06826ceebca78f64c38be3e826033ca">p</a></span> covering residues <span class="tt">2..p-1</span>. Multiplication / division collapse to integer add / sub mod <span class="tt">p-1</span> with no table hit; addition uses precomputed <span class="tt">exp</span> / <span class="tt">log</span> tables. <span class="tt"><a class="el" href="class_m2_1_1_a_ring_z_zp_a794c483fb3efe6a09e7828b8501bbb5d.html#a794c483fb3efe6a09e7828b8501bbb5d">ringID</a> = <a class="el" href="group__rings_ga7579b18152595d75b0bce712fbd605df.html#gga7579b18152595d75b0bce712fbd605dfaa14c6acc7a7d484508e17e96ddcf3a2a">ring_ZZp</a></span>. The <span class="tt">aring</span> twin of <span class="tt"><a class="el" href="class_coefficient_ring_z_zp.html" title="Discrete-log Z/p adapter that represents non-zero residues by their exponent index relative to a gene...">CoefficientRingZZp</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="aring-zzp_8hpp_source.html#l00062">62</a> of file <a class="el" href="aring-zzp_8hpp_source.html">aring-zzp.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="aring-zzp_8hpp_source.html">aring-zzp.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="aring-zzp_8cpp_source.html">aring-zzp.cpp</a></li>

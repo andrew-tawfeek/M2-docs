@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_tower_polynomial_struct.html','','struct_tower_
 </div><!--header-->
 <div class="contents">
 
+<p>Heap-allocated node of a tower polynomial: a dense <span class="tt">degree</span>-indexed coefficient array that recurses through levels.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TowerPolynomial:</div>
@@ -125,8 +128,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dpoly_8hpp_source.html#l00063">63</a> of file <a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a>.</p>
+<div class="textblock"><p>Heap-allocated node of a tower polynomial: a dense <span class="tt">degree</span>-indexed coefficient array that recurses through levels. </p>
+<p><span class="tt"><a class="el" href="struct_tower_polynomial_struct_aac31bcfd8540080d4495e9ab24fe4a67.html#aac31bcfd8540080d4495e9ab24fe4a67">deg</a></span> is the polynomial's degree in the current top variable and <span class="tt"><a class="el" href="struct_tower_polynomial_struct_aa3f1876f3e4724e082392bfc5aa0c81e.html#aa3f1876f3e4724e082392bfc5aa0c81e">len</a></span> is the allocated capacity. The <span class="tt"><a class="el" href="struct_tower_polynomial_struct_a553d754e6f8ff78b448a3b0a2e8bb1e2.html#a553d754e6f8ff78b448a3b0a2e8bb1e2">arr</a></span> union picks the coefficient kind by depth: at the bottom level the coefficients are integers mod <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span> stored in <span class="tt">arr.ints</span>, and at higher levels each "coefficient" is itself a <span class="tt">TowerPolynomial</span> one level down, stored in <span class="tt">arr.polys</span>. <a class="el" href="class_tower.html" title="Ring subclass for tower polynomial rings (Z/p)[x_0][x_1]...[x_{n-1}] modulo a chain of algebraic exte...">Tower</a> polynomials are accessed through <span class="tt"><a class="el" href="class_d_poly.html" title="Arithmetic engine for tower-polynomial rings: (Z/p)[x_0][x_1]...[x_{nvars-1}] modulo a chain of exten...">DPoly</a></span> / <span class="tt"><a class="el" href="class_d_ring.html" title="Single-level view of a tower-polynomial ring: a DPoly plus a fixed working level and a Tower-flavoure...">DRing</a></span>, which always carry the current <span class="tt">level</span> so the right union arm is consulted. </p>
+
+<p class="definition">Definition at line <a class="el" href="dpoly_8hpp_source.html#l00076">76</a> of file <a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a></li>
 </ul>

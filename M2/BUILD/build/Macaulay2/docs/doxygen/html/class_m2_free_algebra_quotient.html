@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_free_algebra_quotient.html','','class_m2_free
 </div><!--header-->
 <div class="contents">
 
+<p>Concrete <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> wrapper around an owned <span class="tt"><a class="el" href="class_free_algebra_quotient.html" title="Quotient of a FreeAlgebra by a Groebner basis up to a fixed degree bound.">FreeAlgebraQuotient</a></span> (the quotient counterpart of <span class="tt"><a class="el" href="class_m2_free_algebra.html" title="Concrete Ring wrapper around an owned FreeAlgebra (no quotient).">M2FreeAlgebra</a></span>).  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_m2_free_algebra_quotient_8hpp_source.html">M2FreeAlgebraQuotient.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for M2FreeAlgebraQuotient:</div>
@@ -99,9 +102,9 @@ Inheritance diagram for M2FreeAlgebraQuotient:</div>
  <div class="center">
   <img src="class_m2_free_algebra_quotient.png" usemap="#M2FreeAlgebraQuotient_map" alt=""/>
   <map id="M2FreeAlgebraQuotient_map" name="M2FreeAlgebraQuotient_map">
-<area href="class_m2_free_algebra_or_quotient.html" alt="M2FreeAlgebraOrQuotient" shape="rect" coords="0,224,164,248"/>
+<area href="class_m2_free_algebra_or_quotient.html" title="Abstract Ring subclass that lifts either a FreeAlgebra or a FreeAlgebraQuotient into the engine&#39;s Rin..." alt="M2FreeAlgebraOrQuotient" shape="rect" coords="0,224,164,248"/>
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,164,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,164,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,164,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,164,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,164,24"/>
   </map>
@@ -398,8 +401,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_m2_free_algebra_quotient_8hpp_source.html#l00050">50</a> of file <a class="el" href="_m2_free_algebra_quotient_8hpp_source.html">M2FreeAlgebraQuotient.hpp</a>.</p>
+<div class="textblock"><p>Concrete <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> wrapper around an owned <span class="tt"><a class="el" href="class_free_algebra_quotient.html" title="Quotient of a FreeAlgebra by a Groebner basis up to a fixed degree bound.">FreeAlgebraQuotient</a></span> (the quotient counterpart of <span class="tt"><a class="el" href="class_m2_free_algebra.html" title="Concrete Ring wrapper around an owned FreeAlgebra (no quotient).">M2FreeAlgebra</a></span>). </p>
+<p>Holds a reference to the ambient <span class="tt"><a class="el" href="class_m2_free_algebra.html" title="Concrete Ring wrapper around an owned FreeAlgebra (no quotient).">M2FreeAlgebra</a></span> plus a <span class="tt">std::unique_ptr&lt;<a class="el" href="class_free_algebra_quotient.html" title="Quotient of a FreeAlgebra by a Groebner basis up to a fixed degree bound.">FreeAlgebraQuotient</a>&gt;</span> carrying the Groebner-basis-defined quotient. <span class="tt">create(F, GB, maxdeg)</span> is the factory: it accepts the engine <span class="tt">Matrix* GB</span> of defining relations and an optional <span class="tt">maxdeg</span> cap (<span class="tt">-1</span> means compute a complete GB), wires up the underlying <span class="tt"><a class="el" href="class_free_algebra_quotient.html" title="Quotient of a FreeAlgebra by a Groebner basis up to a fixed degree bound.">FreeAlgebraQuotient</a></span>, and lifts it into the engine's <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> hierarchy. </p>
+
+<p class="definition">Definition at line <a class="el" href="_m2_free_algebra_quotient_8hpp_source.html#l00062">62</a> of file <a class="el" href="_m2_free_algebra_quotient_8hpp_source.html">M2FreeAlgebraQuotient.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_m2_free_algebra_quotient_8hpp_source.html">M2FreeAlgebraQuotient.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="_m2_free_algebra_quotient_8cpp_source.html">M2FreeAlgebraQuotient.cpp</a></li>

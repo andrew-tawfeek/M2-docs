@@ -92,6 +92,9 @@ $(function(){initNavTree('class_res_monoid_dense.html','','class_res_monoid_dens
 </div><!--header-->
 <div class="contents">
 
+<p>Dense-format <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> implementation: monomials laid out as fixed-width exponent vectors.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-moninfo-dense_8hpp_source.html">res-moninfo-dense.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -160,8 +163,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a050db3af42464bcb555462693cfa751d" id="r_a050db3af42464bcb555462693cfa751d"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_res_monoid_dense_a050db3af42464bcb555462693cfa751d.html#a050db3af42464bcb555462693cfa751d">ncalls_quotient_as_vp</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-moninfo-dense_8hpp_source.html#l00059">59</a> of file <a class="el" href="res-moninfo-dense_8hpp_source.html">res-moninfo-dense.hpp</a>.</p>
+<div class="textblock"><p>Dense-format <span class="tt"><a class="el" href="res-moninfo_8hpp_a7bc93e1c6a618d8b5a83f61057c445dd.html#a7bc93e1c6a618d8b5a83f61057c445dd">ResMonoid</a></span> implementation: monomials laid out as fixed-width exponent vectors. </p>
+<p>Each encoded monomial has <span class="tt"><a class="el" href="class_res_monoid_dense_abc7040059d3293ade8f8180640c1af5d.html#abc7040059d3293ade8f8180640c1af5d">nslots</a></span> ints: <span class="tt">[hash, <a class="el" href="group__comp.html">Computations</a>, w_1, ...,
+w_r, e_1, ..., e_n]</span>. Exponents are stored explicitly for every variable, so encode / decode are O(<span class="tt"><a class="el" href="class_res_monoid_dense_adddcc3e79aca1c92d1f515048deed888.html#adddcc3e79aca1c92d1f515048deed888">nvars</a></span>) but the monomial size is fixed at compile-time once <span class="tt"><a class="el" href="class_res_monoid_dense_adddcc3e79aca1c92d1f515048deed888.html#adddcc3e79aca1c92d1f515048deed888">nvars</a></span> is known. The dense representation wins when monomials are typically non-zero in many variables; <span class="tt"><a class="el" href="class_res_monoid_sparse.html" title="Sparse / varpower-format ResMonoid implementation: monomials laid out as length-prefixed lists of (va...">ResMonoidSparse</a></span> is the varpower-encoded alternative for sparse settings. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-moninfo-dense_8hpp_source.html#l00071">71</a> of file <a class="el" href="res-moninfo-dense_8hpp_source.html">res-moninfo-dense.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-moninfo-dense_8hpp_source.html">res-moninfo-dense.hpp</a></li>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-moninfo-dense_8cpp_source.html">res-moninfo-dense.cpp</a></li>

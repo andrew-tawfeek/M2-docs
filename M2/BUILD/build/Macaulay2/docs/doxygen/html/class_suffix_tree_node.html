@@ -92,6 +92,9 @@ $(function(){initNavTree('class_suffix_tree_node.html','','class_suffix_tree_nod
 </div><!--header-->
 <div class="contents">
 
+<p>One node of a generalised suffix tree built over the inserted non-commutative monomial patterns.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_suffix_tree_8hpp_source.html">SuffixTree.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -138,8 +141,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a6e2e2fd9444395255def7acce0e49de3" id="r_a6e2e2fd9444395255def7acce0e49de3"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_suffix_tree_node_a6e2e2fd9444395255def7acce0e49de3.html#a6e2e2fd9444395255def7acce0e49de3">operator&lt;&lt;</a> (std::ostream &amp;o, const <a class="el" href="class_suffix_tree_node.html">SuffixTreeNode</a> &amp;suffixTreeNode)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_suffix_tree_8hpp_source.html#l00058">58</a> of file <a class="el" href="_suffix_tree_8hpp_source.html">SuffixTree.hpp</a>.</p>
+<div class="textblock"><p>One node of a generalised suffix tree built over the inserted non-commutative monomial patterns. </p>
+<p>Holds its parent pointer, a <span class="tt">std::map&lt;<a class="el" href="_suffix_tree_8hpp_aedfa8385fd11881894fce29fc3023f1d.html#aedfa8385fd11881894fce29fc3023f1d">Label</a>, SuffixTreeNode*&gt;</span> of children keyed by the first symbol of each outgoing arc, the Ukkonen-style suffix link, the arc label (<span class="tt"><a class="el" href="class_suffix_tree_node_a3babba4ef6779a394ed8ca1096d3c8ea.html#a3babba4ef6779a394ed8ca1096d3c8ea">mArcLabel</a></span>), and the full path label from the root (<span class="tt"><a class="el" href="class_suffix_tree_node_a04dd38a7a76e1978d1040fa818e4ac5b.html#a04dd38a7a76e1978d1040fa818e4ac5b">mLabel</a></span>). <span class="tt"><a class="el" href="class_suffix_tree_node_a372c985983d5f74f74822d0ca407c051.html#a372c985983d5f74f74822d0ca407c051">mIsFullPattern</a></span> marks the node as corresponding to a complete inserted pattern (vs. just a suffix of one) and <span class="tt"><a class="el" href="class_suffix_tree_node_a58c77fde283da6bbc1c784491b0ebe0b.html#a58c77fde283da6bbc1c784491b0ebe0b">mPatternLeafCount</a></span> caches how many pattern leaves descend from it for fast subtree summaries. Leaves encode their pattern index as the final negative integer in <span class="tt"><a class="el" href="class_suffix_tree_node_a04dd38a7a76e1978d1040fa818e4ac5b.html#a04dd38a7a76e1978d1040fa818e4ac5b">mLabel</a></span>, decoded by <span class="tt"><a class="el" href="class_suffix_tree_node_acce18c6b65234f9c63aee549f6b5efa1.html#acce18c6b65234f9c63aee549f6b5efa1">getPatternNumber()</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_suffix_tree_8hpp_source.html#l00072">72</a> of file <a class="el" href="_suffix_tree_8hpp_source.html">SuffixTree.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_suffix_tree_8hpp_source.html">SuffixTree.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_suffix_tree_8cpp_source.html">SuffixTree.cpp</a></li>

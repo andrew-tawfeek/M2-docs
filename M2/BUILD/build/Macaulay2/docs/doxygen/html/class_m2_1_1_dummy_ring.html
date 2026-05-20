@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_1_1_dummy_ring.html','','class_m2_1_1_dummy_r
 </div><!--header-->
 <div class="contents">
 
+<p>Placeholder <span class="tt">aring</span> used as a default / fallback for code paths that need an <span class="tt"><a class="el" href="class_a_ring.html">ARing</a></span>-shaped object but no real arithmetic.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring_8hpp_source.html">aring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for M2::DummyRing:</div>
@@ -176,8 +179,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a567d47f0eb4eefde90b1bb5b122fc204" id="r_a567d47f0eb4eefde90b1bb5b122fc204"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_polynomial_ring.html">PolynomialRing</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_dummy_ring_a567d47f0eb4eefde90b1bb5b122fc204.html#a567d47f0eb4eefde90b1bb5b122fc204">mOriginalRing</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring_8hpp_source.html#l00197">197</a> of file <a class="el" href="aring_8hpp_source.html">aring.hpp</a>.</p>
+<div class="textblock"><p>Placeholder <span class="tt">aring</span> used as a default / fallback for code paths that need an <span class="tt"><a class="el" href="class_a_ring.html">ARing</a></span>-shaped object but no real arithmetic. </p>
+<p>Element type is <span class="tt">long</span> and every operation is a no-op or trivial. <span class="tt"><a class="el" href="class_m2_1_1_dummy_ring_a567d47f0eb4eefde90b1bb5b122fc204.html#a567d47f0eb4eefde90b1bb5b122fc204">mOriginalRing</a></span> carries the actual <span class="tt"><a class="el" href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy.">PolynomialRing</a></span> the dummy is standing in for so callers can still locate the "real" ring for fall-through queries. Appears as a variant alternative in <span class="tt"><a class="el" href="class_vector_arithmetic.html" title="Runtime dispatcher that hides the concrete coefficient ring behind a std::variant of ConcreteVectorAr...">VectorArithmetic</a></span>'s <span class="tt">std::variant</span> so templated code that does not understand a given ring still has a valid instantiation. </p>
+
+<p class="definition">Definition at line <a class="el" href="aring_8hpp_source.html#l00208">208</a> of file <a class="el" href="aring_8hpp_source.html">aring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="aring_8hpp_source.html">aring.hpp</a></li>
 </ul>

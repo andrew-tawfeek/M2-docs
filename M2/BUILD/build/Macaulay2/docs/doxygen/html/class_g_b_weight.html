@@ -92,6 +92,9 @@ $(function(){initNavTree('class_g_b_weight.html','','class_g_b_weight-members');
 </div><!--header-->
 <div class="contents">
 
+<p>Heuristic-weight evaluator for <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span>s, used during Groebner basis computation to drive the S-pair sugar strategy.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gbweight_8hpp_source.html">gbweight.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GBWeight:</div>
@@ -137,8 +140,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="gbweight_8hpp_source.html#l00048">48</a> of file <a class="el" href="gbweight_8hpp_source.html">gbweight.hpp</a>.</p>
+<div class="textblock"><p>Heuristic-weight evaluator for <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span>s, used during Groebner basis computation to drive the S-pair sugar strategy. </p>
+<p>Caches a per-variable weight vector (<span class="tt"><a class="el" href="class_g_b_weight_a572e12e69303925a5bcbd1546becd11c.html#a572e12e69303925a5bcbd1546becd11c">wts_</a></span>), an optional flag <span class="tt"><a class="el" href="class_g_b_weight_a5a8033f69e07efaba380729eb023a039.html#a5a8033f69e07efaba380729eb023a039">use_component_degrees_</a></span> that mixes in the target free module's component degrees, and a <span class="tt"><a class="el" href="class_g_b_weight_af450722fe8c08cb46dd35a90a29689fc.html#af450722fe8c08cb46dd35a90a29689fc">Fdegs_</a></span> table of per-component degree shifts pulled from <span class="tt"><a class="el" href="class_g_b_weight_aa60e3208bdfd851c43f2ac09f7d1a1c0.html#aa60e3208bdfd851c43f2ac09f7d1a1c0">F_</a></span>. The weight of a <span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span> is then the <span class="tt"><a class="el" href="class_g_b_weight_a572e12e69303925a5bcbd1546becd11c.html#a572e12e69303925a5bcbd1546becd11c">wts_</a></span>-weighted sum of the leading monomial's exponents plus <span class="tt"><a class="el" href="class_g_b_weight_af450722fe8c08cb46dd35a90a29689fc.html#af450722fe8c08cb46dd35a90a29689fc">Fdegs_</a>[component]</span>, computed without allocating a temporary exponent vector longer than <span class="tt"><a class="el" href="class_g_b_weight_aad8529e965f0b474884c26674b0641d3.html#aad8529e965f0b474884c26674b0641d3">exp_size</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="gbweight_8hpp_source.html#l00060">60</a> of file <a class="el" href="gbweight_8hpp_source.html">gbweight.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="gbweight_8hpp_source.html">gbweight.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="gbweight_8cpp_source.html">gbweight.cpp</a></li>

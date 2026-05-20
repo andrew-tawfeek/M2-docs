@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_collection_var_size.html','','class_mon
 </div><!--header-->
 <div class="contents">
 
+<p>Variable-size counterpart of <span class="tt"><a class="el" href="class_monomial_collection_fixed_size.html" title="Interning collection that pairs a MonomialSetFixedSize with its own MonomialMemorySpace to own monomi...">MonomialCollectionFixedSize</a></span>: pairs a <span class="tt"><a class="el" href="class_monomial_set_var_size.html" title="Hash set of interned variable-size monomials — the variable-length counterpart of MonomialSetFixedSiz...">MonomialSetVarSize</a></span> with its own <span class="tt"><a class="el" href="class_monomial_memory_space.html" title="Bump-pointer arena for monomial storage, backed by a memt::Arena.">MonomialMemorySpace</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -109,8 +112,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae17dbea2ff0677073d1ddd9f24f454f3" id="r_ae17dbea2ff0677073d1ddd9f24f454f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_monomial_memory_space.html">MonomialMemorySpace</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_collection_var_size_ae17dbea2ff0677073d1ddd9f24f454f3.html#ae17dbea2ff0677073d1ddd9f24f454f3">mMonomialMemory</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00287">287</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
+<div class="textblock"><p>Variable-size counterpart of <span class="tt"><a class="el" href="class_monomial_collection_fixed_size.html" title="Interning collection that pairs a MonomialSetFixedSize with its own MonomialMemorySpace to own monomi...">MonomialCollectionFixedSize</a></span>: pairs a <span class="tt"><a class="el" href="class_monomial_set_var_size.html" title="Hash set of interned variable-size monomials — the variable-length counterpart of MonomialSetFixedSiz...">MonomialSetVarSize</a></span> with its own <span class="tt"><a class="el" href="class_monomial_memory_space.html" title="Bump-pointer arena for monomial storage, backed by a memt::Arena.">MonomialMemorySpace</a></span>. </p>
+<p><span class="tt">findOrInsert(monom)</span> allocates <span class="tt">*monom</span> ints in the arena, copies the monomial in, attempts to intern the pointer, and pops on duplicate. Same intern-or-pop pattern as the fixed-size variant with the length read from the monomial's first int. </p>
+
+<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00344">344</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a></li>
 </ul>

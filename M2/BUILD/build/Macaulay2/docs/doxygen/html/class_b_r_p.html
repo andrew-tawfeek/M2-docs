@@ -92,6 +92,9 @@ $(function(){initNavTree('class_b_r_p.html','','class_b_r_p-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Boolean (<span class="tt">F_2</span>-coefficient) polynomial stored as an ordered list of square-free monomials.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="franzi-brp_8hpp_source.html">franzi-brp.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -130,8 +133,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a75a067aacd4243a2a893c037758ad115" id="r_a75a067aacd4243a2a893c037758ad115"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_r_p_a75a067aacd4243a2a893c037758ad115.html#a75a067aacd4243a2a893c037758ad115">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="class_b_r_p.html">BRP</a> &amp;self)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="franzi-brp_8hpp_source.html#l00059">59</a> of file <a class="el" href="franzi-brp_8hpp_source.html">franzi-brp.hpp</a>.</p>
+<div class="textblock"><p>Boolean (<span class="tt">F_2</span>-coefficient) polynomial stored as an ordered list of square-free monomials. </p>
+<p>Coefficient ring is implicit (always 1 in <span class="tt">F_2</span>); the polynomial is just the symmetric-difference sum of the listed monomials. Underlying storage is a <span class="tt"><a class="el" href="franzi-brp_8hpp_a56537b056a55673d92279fe5a33c2619.html#a56537b056a55673d92279fe5a33c2619">monomials</a></span> (<span class="tt">std::list&lt;<a class="el" href="franzi-brp_8hpp_a0b7d8b2720cde71ff864b1f7425fa486.html#a0b7d8b2720cde71ff864b1f7425fa486">brMonomial</a>&gt;</span>) kept sorted under the lex comparator declared above, so the leading term is <span class="tt">m.front()</span> and addition is a linear merge. Used by the Franzi GB code path for boolean polynomial rings. </p>
+
+<p class="definition">Definition at line <a class="el" href="franzi-brp_8hpp_source.html#l00070">70</a> of file <a class="el" href="franzi-brp_8hpp_source.html">franzi-brp.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="franzi-brp_8hpp_source.html">franzi-brp.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="franzi-brp_8cpp_source.html">franzi-brp.cpp</a></li>

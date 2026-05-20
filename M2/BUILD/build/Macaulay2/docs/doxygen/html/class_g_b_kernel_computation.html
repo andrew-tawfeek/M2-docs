@@ -92,6 +92,9 @@ $(function(){initNavTree('class_g_b_kernel_computation.html','','class_g_b_kerne
 </div><!--header-->
 <div class="contents">
 
+<p>Computes the kernel of a Schreyer-encoded <span class="tt"><a class="el" href="struct_g_b_matrix.html" title="gbvector-side matrix: a target FreeModule plus a list of gbvector* columns living in it.">GBMatrix</a></span> and returns the syzygies in a Schreyer-compatible free module.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GBKernelComputation:</div>
@@ -99,8 +102,8 @@ Inheritance diagram for GBKernelComputation:</div>
  <div class="center">
   <img src="class_g_b_kernel_computation.png" usemap="#GBKernelComputation_map" alt=""/>
   <map id="GBKernelComputation_map" name="GBKernelComputation_map">
-<area href="class_computation.html" alt="Computation" shape="rect" coords="0,168,135,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,135,136"/>
+<area href="class_computation.html" title="Abstract base for long-running, resumable engine computations (GBComputation, ResolutionComputation,..." alt="Computation" shape="rect" coords="0,168,135,192"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,135,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,135,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,135,24"/>
   </map>
@@ -184,8 +187,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a3e6f044f649095c4907660aa0c36b3a4 inherit pro_attribs_class_computation" id="r_a3e6f044f649095c4907660aa0c36b3a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_stop_conditions.html">StopConditions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_computation_a3e6f044f649095c4907660aa0c36b3a4.html#a3e6f044f649095c4907660aa0c36b3a4">stop_</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_eschreyer_8hpp_source.html#l00050">50</a> of file <a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a>.</p>
+<div class="textblock"><p>Computes the kernel of a Schreyer-encoded <span class="tt"><a class="el" href="struct_g_b_matrix.html" title="gbvector-side matrix: a target FreeModule plus a list of gbvector* columns living in it.">GBMatrix</a></span> and returns the syzygies in a Schreyer-compatible free module. </p>
+<p><span class="tt"><a class="el" href="class_g_b_kernel_computation_a3b53c4bcb44045c1762b256dad6fcf2b.html#a3b53c4bcb44045c1762b256dad6fcf2b">F</a></span> is the target free module (with Schreyer order <span class="tt"><a class="el" href="class_g_b_kernel_computation_aabc2c8422e14c4e0c246311abf2d74d4.html#aabc2c8422e14c4e0c246311abf2d74d4">SF</a></span>); <span class="tt"><a class="el" href="class_g_b_kernel_computation_a7048fdc3c9db1c7c62cde30012c1e441.html#a7048fdc3c9db1c7c62cde30012c1e441">G</a></span> is the source for the resulting syzygies (with order <span class="tt"><a class="el" href="class_g_b_kernel_computation_ad7d5c35de0a4a28c524f8990c034233f.html#ad7d5c35de0a4a28c524f8990c034233f">SG</a></span>, which must be a Schreyer order compatible with the input). The computation builds a <span class="tt"><a class="el" href="class_monomial_ideal.html" title="Engine-side monomial ideal: a decision tree of Nmi_nodes storing the (typically minimal) generators b...">MonomialIdeal</a></span> per component from the stripped GB (<span class="tt"><a class="el" href="class_g_b_kernel_computation_acb1a7e3d947c0305a2e32d4459632b9d.html#acb1a7e3d947c0305a2e32d4459632b9d">gb</a></span>), then walks new pairs (<span class="tt"><a class="el" href="class_g_b_kernel_computation_a914f7b960ac8c9d826df175ecac85595.html#a914f7b960ac8c9d826df175ecac85595">new_pairs</a></span>) and reduces them (<span class="tt"><a class="el" href="class_g_b_kernel_computation_a3a2a2b0b6636b013ae5d59ba4f227174.html#a3a2a2b0b6636b013ae5d59ba4f227174">reduce</a></span> / <span class="tt"><a class="el" href="class_g_b_kernel_computation_a5a888c8602b14b91a878000a839c7c18.html#a5a888c8602b14b91a878000a839c7c18">geo_reduce</a></span>) into syzygies stored in <span class="tt"><a class="el" href="class_g_b_kernel_computation_a63e48d385f584b3654cdcfad797ba007.html#a63e48d385f584b3654cdcfad797ba007">syzygies</a></span>. The <span class="tt"><a class="el" href="class_g_b_kernel_computation_a82a7299b2882f4c404441041a7c8bc5b.html#a82a7299b2882f4c404441041a7c8bc5b">n_ones</a></span> / <span class="tt"><a class="el" href="class_g_b_kernel_computation_a23c872b492e7ed0e1a70e066d0d07ff7.html#a23c872b492e7ed0e1a70e066d0d07ff7">n_unique</a></span> / <span class="tt"><a class="el" href="class_g_b_kernel_computation_a37f0158d20b279a15ed85bd51343255a.html#a37f0158d20b279a15ed85bd51343255a">n_others</a></span> / <span class="tt"><a class="el" href="class_g_b_kernel_computation_acfc0e977deea7bff667b59ea8a19d67b.html#acfc0e977deea7bff667b59ea8a19d67b">total_reduce_count</a></span> counters classify each reduction step for profiling. </p>
+
+<p class="definition">Definition at line <a class="el" href="_eschreyer_8hpp_source.html#l00075">75</a> of file <a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="_eschreyer_8cpp_source.html">Eschreyer.cpp</a></li>

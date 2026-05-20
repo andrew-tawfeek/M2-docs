@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_ideal_1_1_iterator.html','','class_mono
 </div><!--header-->
 <div class="contents">
 
+<p>Bidirectional forward iterator over the <span class="tt"><a class="el" href="int-bag_8hpp_a6c11c4c974bbcebff5c4b81ae6c7e62e.html#a6c11c4c974bbcebff5c4b81ae6c7e62e">Bag</a></span>s stored in a <span class="tt"><a class="el" href="class_monomial_ideal.html" title="Engine-side monomial ideal: a decision tree of Nmi_nodes storing the (typically minimal) generators b...">MonomialIdeal</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monideal_8hpp_source.html">monideal.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -125,8 +128,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a27aed9f3ea67a677964fa51de28a5824" id="r_a27aed9f3ea67a677964fa51de28a5824"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_ideal_1_1_iterator_a27aed9f3ea67a677964fa51de28a5824.html#a27aed9f3ea67a677964fa51de28a5824">operator!=</a> (const <a class="el" href="class_monomial_ideal_1_1_iterator_afce43c2f7a9219cc3f6025e574cecbd0.html#afce43c2f7a9219cc3f6025e574cecbd0">Iterator</a> &amp;a, const <a class="el" href="class_monomial_ideal_1_1_iterator_afce43c2f7a9219cc3f6025e574cecbd0.html#afce43c2f7a9219cc3f6025e574cecbd0">Iterator</a> &amp;b)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monideal_8hpp_source.html#l00185">185</a> of file <a class="el" href="monideal_8hpp_source.html">monideal.hpp</a>.</p>
+<div class="textblock"><p>Bidirectional forward iterator over the <span class="tt"><a class="el" href="int-bag_8hpp_a6c11c4c974bbcebff5c4b81ae6c7e62e.html#a6c11c4c974bbcebff5c4b81ae6c7e62e">Bag</a></span>s stored in a <span class="tt"><a class="el" href="class_monomial_ideal.html" title="Engine-side monomial ideal: a decision tree of Nmi_nodes storing the (typically minimal) generators b...">MonomialIdeal</a></span>. </p>
+<p>Walks the <span class="tt"><a class="el" href="class_nmi__node.html" title="Internal tree node of the MonomialIdeal decision tree.">Nmi_node</a></span> tree in lex order via <span class="tt"><a class="el" href="class_monomial_ideal_a0868ea8aaa7ba2e7ba38d8e115125841.html#a0868ea8aaa7ba2e7ba38d8e115125841">MonomialIdeal::next</a></span> / <span class="tt"><a class="el" href="class_monomial_ideal_af77dfe9a92b5c64c46ee2f0f2d301258.html#af77dfe9a92b5c64c46ee2f0f2d301258">prev</a></span>. <span class="tt">operator*</span> returns the <span class="tt"><a class="el" href="int-bag_8hpp_a6c11c4c974bbcebff5c4b81ae6c7e62e.html#a6c11c4c974bbcebff5c4b81ae6c7e62e">Bag</a>&amp;</span> at the current leaf; <span class="tt">operator-&gt;</span> returns the underlying pointer. Equality is by raw node-pointer comparison, so the end iterator is just the one with <span class="tt"><a class="el" href="class_monomial_ideal_1_1_iterator_acdb7c040dce0c6a3d40abb9c1e53d784.html#acdb7c040dce0c6a3d40abb9c1e53d784">mPointer</a> == nullptr</span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="monideal_8hpp_source.html#l00222">222</a> of file <a class="el" href="monideal_8hpp_source.html">monideal.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="monideal_8hpp_source.html">monideal.hpp</a></li>
 </ul>

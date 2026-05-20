@@ -91,6 +91,9 @@ $(function(){initNavTree('struct_schreyer_order__symm.html','','struct_schreyer_
   <div class="headertitle"><div class="title">SchreyerOrder_symm Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Helper functor that builds the <span class="tt"><a class="el" href="struct_schreyer_order__symm_a08b8ec4dbc587d94e059351f609a7fe5.html#a08b8ec4dbc587d94e059351f609a7fe5">n</a></span>-th symmetric power of a <span class="tt"><a class="el" href="class_schreyer_order.html" title="Per-component tie-breaker data for a Schreyer monomial order on a FreeModule.">SchreyerOrder</a></span> by walking multi-indices.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -108,8 +111,11 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a03f9730484dd993c2b0c1404b2584f9f" id="r_a03f9730484dd993c2b0c1404b2584f9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_schreyer_order__symm_a03f9730484dd993c2b0c1404b2584f9f.html#a03f9730484dd993c2b0c1404b2584f9f">symm1_next</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="schorder_8cpp_source.html#l00250">250</a> of file <a class="el" href="schorder_8cpp_source.html">schorder.cpp</a>.</p>
+<div class="textblock"><p>Helper functor that builds the <span class="tt"><a class="el" href="struct_schreyer_order__symm_a08b8ec4dbc587d94e059351f609a7fe5.html#a08b8ec4dbc587d94e059351f609a7fe5">n</a></span>-th symmetric power of a <span class="tt"><a class="el" href="class_schreyer_order.html" title="Per-component tie-breaker data for a Schreyer monomial order on a FreeModule.">SchreyerOrder</a></span> by walking multi-indices. </p>
+<p><span class="tt"><a class="el" href="class_schreyer_order.html" title="Per-component tie-breaker data for a Schreyer monomial order on a FreeModule.">SchreyerOrder</a></span> analogue of <span class="tt"><a class="el" href="struct_free_module__symm.html" title="Helper functor that builds the n-th symmetric power of a FreeModule by recursively walking multi-indi...">FreeModule_symm</a></span>: <span class="tt">symm1(lastn,
+pow)</span> walks every weakly increasing index sequence of length <span class="tt">pow</span> starting at <span class="tt">lastn</span>, accumulates each sequence's base-monomial product in <span class="tt"><a class="el" href="struct_schreyer_order__symm_aa3fcfcd4cd9ff568083100afa217f962.html#aa3fcfcd4cd9ff568083100afa217f962">symm1_base</a></span>, and appends the resulting Schreyer-order entry to <span class="tt"><a class="el" href="struct_schreyer_order__symm_aacd2bf2221b3d3c6612f3faea2bb7e1a.html#aacd2bf2221b3d3c6612f3faea2bb7e1a">symm1_result</a></span>, assigning a fresh <span class="tt">compare_num</span> via <span class="tt"><a class="el" href="struct_schreyer_order__symm_a03f9730484dd993c2b0c1404b2584f9f.html#a03f9730484dd993c2b0c1404b2584f9f">symm1_next</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="schorder_8cpp_source.html#l00261">261</a> of file <a class="el" href="schorder_8cpp_source.html">schorder.cpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="schorder_8cpp_source.html">schorder.cpp</a></li>
 </ul>

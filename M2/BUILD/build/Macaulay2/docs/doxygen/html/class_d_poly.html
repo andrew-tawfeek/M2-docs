@@ -92,6 +92,9 @@ $(function(){initNavTree('class_d_poly.html','','class_d_poly-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Arithmetic engine for tower-polynomial rings: <span class="tt">(Z/p)[x_0][x_1]...[x_{nvars-1}]</span> modulo a chain of <span class="tt"><a class="el" href="class_d_poly_a04698c503b7101aca77b17ca1f9684b8.html#a04698c503b7101aca77b17ca1f9684b8">extensions</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -189,8 +192,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a903bec832a636ccd2c95308f98c7e36d" id="r_a903bec832a636ccd2c95308f98c7e36d"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_poly_a903bec832a636ccd2c95308f98c7e36d.html#a903bec832a636ccd2c95308f98c7e36d">DPolyTraverser</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dpoly_8hpp_source.html#l00077">77</a> of file <a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a>.</p>
+<div class="textblock"><p>Arithmetic engine for tower-polynomial rings: <span class="tt">(Z/p)[x_0][x_1]...[x_{nvars-1}]</span> modulo a chain of <span class="tt"><a class="el" href="class_d_poly_a04698c503b7101aca77b17ca1f9684b8.html#a04698c503b7101aca77b17ca1f9684b8">extensions</a></span>. </p>
+<p>Holds the characteristic <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>, the number of variables, and an <span class="tt"><a class="el" href="class_d_poly_a04698c503b7101aca77b17ca1f9684b8.html#a04698c503b7101aca77b17ca1f9684b8">extensions</a></span> array &mdash; one tower-polynomial per algebraic level giving the relation that defines the next variable over the previous (<span class="tt">nullptr</span> means transcendental, captured by <span class="tt"><a class="el" href="class_d_poly_a3c7064ce06d9376c8d5a7b169525124e.html#a3c7064ce06d9376c8d5a7b169525124e">degree_of_extension</a> &lt; 0</span>). Almost every public operation (<span class="tt"><a class="el" href="class_d_poly_a97309a372254a403991876f5aa8ed4e0.html#a97309a372254a403991876f5aa8ed4e0">mult</a></span>, <span class="tt"><a class="el" href="class_d_poly_a54b91118fed030d5eed942f2f77baa70.html#a54b91118fed030d5eed942f2f77baa70">add_in_place</a></span>, <span class="tt"><a class="el" href="class_d_poly_a99e50313c740837df62a66e143430c26.html#a99e50313c740837df62a66e143430c26">gcd</a></span>, <span class="tt"><a class="el" href="class_d_poly_ad3463f909782b464bb36a92614506ab4.html#ad3463f909782b464bb36a92614506ab4">resultant</a></span>, <span class="tt"><a class="el" href="class_d_poly_a289de7ac1f07c1a5f68eea5c58d214f5.html#a289de7ac1f07c1a5f68eea5c58d214f5">pseudo_division</a></span>, ...) takes an explicit <span class="tt">level</span> argument that dispatches the recursive descent down the tower. Used by <span class="tt"><a class="el" href="class_d_ring.html" title="Single-level view of a tower-polynomial ring: a DPoly plus a fixed working level and a Tower-flavoure...">DRing</a></span>, which fixes a particular working level on top of a shared <span class="tt"><a class="el" href="class_d_poly.html" title="Arithmetic engine for tower-polynomial rings: (Z/p)[x_0][x_1]...[x_{nvars-1}] modulo a chain of exten...">DPoly</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="dpoly_8hpp_source.html#l00103">103</a> of file <a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="dpoly_8cpp_source.html">dpoly.cpp</a></li>

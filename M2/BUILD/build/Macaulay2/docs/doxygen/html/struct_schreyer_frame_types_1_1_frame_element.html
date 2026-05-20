@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_schreyer_frame_types_1_1_frame_element.html',''
 </div><!--header-->
 <div class="contents">
 
+<p>One generator within a <span class="tt"><a class="el" href="struct_schreyer_frame_1_1_level.html" title="One homological level of the frame: the FrameElements living at that level plus the Schreyer order us...">SchreyerFrame::Level</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-schreyer-frame_8hpp_source.html">res-schreyer-frame.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -109,8 +112,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a1f853a2f5ccf62bef6df4682a383f604" id="r_a1f853a2f5ccf62bef6df4682a383f604"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_res_polynomial.html">ResPolynomial</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_schreyer_frame_types_1_1_frame_element_a1f853a2f5ccf62bef6df4682a383f604.html#a1f853a2f5ccf62bef6df4682a383f604">mSyzygy</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-schreyer-frame_8hpp_source.html#l00079">79</a> of file <a class="el" href="res-schreyer-frame_8hpp_source.html">res-schreyer-frame.hpp</a>.</p>
+<div class="textblock"><p>One generator within a <span class="tt"><a class="el" href="struct_schreyer_frame_1_1_level.html" title="One homological level of the frame: the FrameElements living at that level plus the Schreyer order us...">SchreyerFrame::Level</a></span>. </p>
+<p>Carries the leading monomial (<span class="tt"><a class="el" href="struct_schreyer_frame_types_1_1_frame_element_ac4a3047f843f189cb73c865d1cb67e49.html#ac4a3047f843f189cb73c865d1cb67e49">mMonom</a></span>, which also encodes component and degree), the actual integer degree (<span class="tt"><a class="el" href="struct_schreyer_frame_types_1_1_frame_element_a9f8bc30729f060ada16103377c3f1919.html#a9f8bc30729f060ada16103377c3f1919">mDegree</a></span>, not the slanted degree), a <span class="tt">[<a class="el" href="struct_schreyer_frame_types_1_1_frame_element_af72f55bf86118a716c7b6126a304a23e.html#af72f55bf86118a716c7b6126a304a23e">mBegin</a>, <a class="el" href="struct_schreyer_frame_types_1_1_frame_element_afe3ba389ac6f02f833c8ccd365fdebf8.html#afe3ba389ac6f02f833c8ccd365fdebf8">mEnd</a>)</span> half-open range into the next level's <span class="tt">mElements</span> vector that names this generator's descendants, and the <span class="tt"><a class="el" href="struct_schreyer_frame_types_1_1_frame_element_a1f853a2f5ccf62bef6df4682a383f604.html#a1f853a2f5ccf62bef6df4682a383f604">mSyzygy</a></span> polynomial once the corresponding level has been computed. <span class="tt"><a class="el" href="struct_schreyer_frame_types_1_1_frame_element_af72f55bf86118a716c7b6126a304a23e.html#af72f55bf86118a716c7b6126a304a23e">mBegin</a> == <a class="el" href="struct_schreyer_frame_types_1_1_frame_element_afe3ba389ac6f02f833c8ccd365fdebf8.html#afe3ba389ac6f02f833c8ccd365fdebf8">mEnd</a> == -1</span> while the slice is still unknown. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-schreyer-frame_8hpp_source.html#l00090">90</a> of file <a class="el" href="res-schreyer-frame_8hpp_source.html">res-schreyer-frame.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-schreyer-frame_8hpp_source.html">res-schreyer-frame.hpp</a></li>
 </ul>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_overlap_table.html','','class_overlap_table-memb
 </div><!--header-->
 <div class="contents">
 
+<p>Per-degree FIFO queue of pending overlaps for the NC Groebner basis driver to process.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_overlap_table_8hpp_source.html">OverlapTable.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -119,8 +122,10 @@ Friends</h2></td></tr>
 <tr class="memitem:abaf0138d659b5863e9156f9fe994dbad" id="r_abaf0138d659b5863e9156f9fe994dbad"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_overlap_table_abaf0138d659b5863e9156f9fe994dbad.html#abaf0138d659b5863e9156f9fe994dbad">operator&lt;&lt;</a> (std::ostream &amp;ostr, const <a class="el" href="class_overlap_table.html">OverlapTable</a> &amp;overlapTable)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_overlap_table_8hpp_source.html#l00058">58</a> of file <a class="el" href="_overlap_table_8hpp_source.html">OverlapTable.hpp</a>.</p>
+<div class="textblock"><p>Per-degree FIFO queue of pending overlaps for the NC Groebner basis driver to process. </p>
+<p><span class="tt"><a class="el" href="_overlap_table_8hpp_a6137b15715e0fc6d08b1936ca1f48e85.html#a6137b15715e0fc6d08b1936ca1f48e85">Overlap</a> = (firstIndex, position, secondIndex, computedFlag)</span> encodes one prefix/suffix overlap of two <span class="tt"><a class="el" href="class_overlap_table_a7f1ff015855fbe347cf63b2b88a8fb0c.html#a7f1ff015855fbe347cf63b2b88a8fb0c">mPolyList</a></span> entries; the table groups entries by <span class="tt">(degree, isGenerator)</span> in a <span class="tt">std::map</span> so the driver can pull all overlaps of the current degree in one shot via <span class="tt"><a class="el" href="class_overlap_table_acf2aa58eeb01f80a33db809091f9376c.html#acf2aa58eeb01f80a33db809091f9376c">nextDegreeOverlaps</a></span>. <span class="tt"><a class="el" href="class_overlap_table_a2752843e8d338897f2e21987ac79dc3d.html#a2752843e8d338897f2e21987ac79dc3d">insert</a></span> appends (creating the bucket on demand) and <span class="tt"><a class="el" href="class_overlap_table_a2b5eb27f920422f83529b9a6fc566c9a.html#a2b5eb27f920422f83529b9a6fc566c9a">isFinished</a></span> / <span class="tt">isFinished(topDegree)</span> ask whether any pending work remains at or below a degree cap. </p>
+
+<p class="definition">Definition at line <a class="el" href="_overlap_table_8hpp_source.html#l00071">71</a> of file <a class="el" href="_overlap_table_8hpp_source.html">OverlapTable.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_overlap_table_8hpp_source.html">OverlapTable.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_overlap_table_8cpp_source.html">OverlapTable.cpp</a></li>

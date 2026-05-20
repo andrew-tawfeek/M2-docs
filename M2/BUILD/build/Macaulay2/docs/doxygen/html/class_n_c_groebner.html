@@ -92,6 +92,9 @@ $(function(){initNavTree('class_n_c_groebner.html','','class_n_c_groebner-member
 </div><!--header-->
 <div class="contents">
 
+<p>One-overlap-at-a-time Groebner basis driver for the free associative algebra (the "Naive" companion to the F4-style <span class="tt"><a class="el" href="class_n_c_f4.html" title="Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduc...">NCF4</a></span>).  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_n_c_groebner_8hpp_source.html">NCGroebner.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for NCGroebner:</div>
@@ -159,8 +162,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a5749367483c9a242c9ec9730401812e3" id="r_a5749367483c9a242c9ec9730401812e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_c_groebner_a5749367483c9a242c9ec9730401812e3.html#a5749367483c9a242c9ec9730401812e3">mHardDegreeLimit</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_n_c_groebner_8hpp_source.html#l00052">52</a> of file <a class="el" href="_n_c_groebner_8hpp_source.html">NCGroebner.hpp</a>.</p>
+<div class="textblock"><p>One-overlap-at-a-time Groebner basis driver for the free associative algebra (the "Naive" companion to the F4-style <span class="tt"><a class="el" href="class_n_c_f4.html" title="Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduc...">NCF4</a></span>). </p>
+<p>Keeps the running GB in <span class="tt"><a class="el" href="class_n_c_groebner_ab6491c0cc167222e08843b65df3aa2bd.html#ab6491c0cc167222e08843b65df3aa2bd">mGroebner</a></span> (a <span class="tt"><a class="el" href="_polynomial_8hpp_ade64611ddd0168ea1239a00cdf89d6df.html#ade64611ddd0168ea1239a00cdf89d6df">PolyList</a></span>) with per-element sugar degrees in <span class="tt"><a class="el" href="class_n_c_groebner_a0cb8997fc681eceb91caf3b2fdc51919.html#a0cb8997fc681eceb91caf3b2fdc51919">mGroebnerDegrees</a></span> (-1 marks a retired entry). <a class="el" href="_overlap_table_8hpp_a6137b15715e0fc6d08b1936ca1f48e85.html#a6137b15715e0fc6d08b1936ca1f48e85">Overlap</a> pairs are tracked in <span class="tt"><a class="el" href="class_n_c_groebner_a9655444c14c6912c19dd2542014167aa.html#a9655444c14c6912c19dd2542014167aa">mOverlapTable</a></span>; divisibility queries use <span class="tt"><a class="el" href="class_n_c_groebner_ad30e55be0c400cbc2e165000df740382.html#ad30e55be0c400cbc2e165000df740382">mWordTable</a></span> (with a commented-out <span class="tt"><a class="el" href="class_suffix_tree.html" title="Generalised suffix tree alternative to WordTable for indexing non-commutative monomials.">SuffixTree</a></span> alternative available as a swap-in). Reduction goes through the lazily owned <span class="tt"><a class="el" href="class_n_c_groebner_a1d477a13e647a0d632d3d8042f7c6d3b.html#a1d477a13e647a0d632d3d8042f7c6d3b">mHeap</a></span> (a <span class="tt"><a class="el" href="class_polynomial_heap.html" title="Abstract interface for accumulating a polynomial as a sum of (coeff, left * poly * right) contributio...">PolynomialHeap</a></span>, see <span class="tt"><a class="el" href="_n_c_reduction_8hpp.html" title="PolynomialHeap abstract interface — batched-subtraction heap for non-commutative reduction.">NCReduction.hpp</a></span>), letting the driver pick among the heap backends. </p>
+
+<p class="definition">Definition at line <a class="el" href="_n_c_groebner_8hpp_source.html#l00064">64</a> of file <a class="el" href="_n_c_groebner_8hpp_source.html">NCGroebner.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_n_c_groebner_8hpp_source.html">NCGroebner.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_n_c_groebner_8cpp_source.html">NCGroebner.cpp</a></li>

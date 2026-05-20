@@ -112,25 +112,25 @@ $(function(){initNavTree('franzi-gb_8cpp_a3a32cf3388d74be94b3317c0cd7e9488.html'
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00309">309</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  312</span>{</div>
-<div class="line"><span class="lineno">  313</span>  IntermediateBasis::const_iterator <a class="code hl_function" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a> = F.end();</div>
-<div class="line"><span class="lineno">  314</span>  <span class="keywordtype">bool</span> ret = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  315</span>  <span class="keywordflow">for</span> (IntermediateBasis::const_iterator it = F.begin();</div>
-<div class="line"><span class="lineno">  316</span>       it != <a class="code hl_function" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a> &amp;&amp; !f.<a class="code hl_function" href="class_b_r_p_a9f6b6ae3b9709c6a284b563b78b697ee.html#a9f6b6ae3b9709c6a284b563b78b697ee">isZero</a>();</div>
-<div class="line"><span class="lineno">  317</span>       ++it)</div>
-<div class="line"><span class="lineno">  318</span>    {</div>
-<div class="line"><span class="lineno">  319</span>      <span class="keywordflow">if</span> (itF != it)</div>
-<div class="line"><span class="lineno">  320</span>        {</div>
-<div class="line"><span class="lineno">  321</span>          <span class="keywordflow">if</span> (f.<a class="code hl_function" href="class_b_r_p_a12ae3cfd7f5aaaa46fb848129d71da21.html#a12ae3cfd7f5aaaa46fb848129d71da21">reduceTail</a>(it-&gt;second))</div>
-<div class="line"><span class="lineno">  322</span>            {</div>
-<div class="line"><span class="lineno">  323</span>              it = F.begin();</div>
-<div class="line"><span class="lineno">  324</span>              ret = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  325</span>            }</div>
-<div class="line"><span class="lineno">  326</span>        }</div>
-<div class="line"><span class="lineno">  327</span>    }</div>
-<div class="line"><span class="lineno">  328</span>  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><span class="lineno">  329</span>}</div>
+<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00330">330</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  333</span>{</div>
+<div class="line"><span class="lineno">  334</span>  IntermediateBasis::const_iterator <a class="code hl_function" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a> = F.end();</div>
+<div class="line"><span class="lineno">  335</span>  <span class="keywordtype">bool</span> ret = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  336</span>  <span class="keywordflow">for</span> (IntermediateBasis::const_iterator it = F.begin();</div>
+<div class="line"><span class="lineno">  337</span>       it != <a class="code hl_function" href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a> &amp;&amp; !f.<a class="code hl_function" href="class_b_r_p_a9f6b6ae3b9709c6a284b563b78b697ee.html#a9f6b6ae3b9709c6a284b563b78b697ee">isZero</a>();</div>
+<div class="line"><span class="lineno">  338</span>       ++it)</div>
+<div class="line"><span class="lineno">  339</span>    {</div>
+<div class="line"><span class="lineno">  340</span>      <span class="keywordflow">if</span> (itF != it)</div>
+<div class="line"><span class="lineno">  341</span>        {</div>
+<div class="line"><span class="lineno">  342</span>          <span class="keywordflow">if</span> (f.<a class="code hl_function" href="class_b_r_p_a12ae3cfd7f5aaaa46fb848129d71da21.html#a12ae3cfd7f5aaaa46fb848129d71da21">reduceTail</a>(it-&gt;second))</div>
+<div class="line"><span class="lineno">  343</span>            {</div>
+<div class="line"><span class="lineno">  344</span>              it = F.begin();</div>
+<div class="line"><span class="lineno">  345</span>              ret = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  346</span>            }</div>
+<div class="line"><span class="lineno">  347</span>        }</div>
+<div class="line"><span class="lineno">  348</span>    }</div>
+<div class="line"><span class="lineno">  349</span>  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><span class="lineno">  350</span>}</div>
 <div class="ttc" id="aclass_b_r_p_a12ae3cfd7f5aaaa46fb848129d71da21_html_a12ae3cfd7f5aaaa46fb848129d71da21"><div class="ttname"><a href="class_b_r_p_a12ae3cfd7f5aaaa46fb848129d71da21.html#a12ae3cfd7f5aaaa46fb848129d71da21">BRP::reduceTail</a></div><div class="ttdeci">bool reduceTail(const BRP &amp;g)</div><div class="ttdef"><b>Definition</b> <a href="franzi-brp_8cpp_source.html#l00159">franzi-brp.cpp:159</a></div></div>
 <div class="ttc" id="aclass_b_r_p_a9f6b6ae3b9709c6a284b563b78b697ee_html_a9f6b6ae3b9709c6a284b563b78b697ee"><div class="ttname"><a href="class_b_r_p_a9f6b6ae3b9709c6a284b563b78b697ee.html#a9f6b6ae3b9709c6a284b563b78b697ee">BRP::isZero</a></div><div class="ttdeci">bool isZero() const</div><div class="ttdef"><b>Definition</b> <a href="franzi-brp_8cpp_source.html#l00013">franzi-brp.cpp:13</a></div></div>
 <div class="ttc" id="aringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66_html_a9e12da0d68ca4715109c3198cbe62a66"><div class="ttname"><a href="ringelem_8cpp_a9e12da0d68ca4715109c3198cbe62a66.html#a9e12da0d68ca4715109c3198cbe62a66">end</a></div><div class="ttdeci">TermIterator&lt; Nterm &gt; end(Nterm *)</div><div class="ttdef"><b>Definition</b> <a href="ringelem_8cpp_source.html#l00005">ringelem.cpp:5</a></div></div>

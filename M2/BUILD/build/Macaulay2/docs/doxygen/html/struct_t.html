@@ -91,10 +91,14 @@ $(function(){initNavTree('struct_t.html','','struct_t-members'); });
   <div class="headertitle"><div class="title">T Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classic separate-chaining hash table used by the engine's low-level C code paths.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:binding" id="r_binding"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_1_1binding.html">binding</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singly linked-list node holding one <span class="tt">(key, value)</span> pair in a hash bucket chain.  <a href="struct_t_1_1binding.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -106,8 +110,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:adad3e68e3bfb5ff02e9d54fa83d84b28" id="r_adad3e68e3bfb5ff02e9d54fa83d84b28"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_t_1_1binding.html">T::binding</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_t_adad3e68e3bfb5ff02e9d54fa83d84b28.html#adad3e68e3bfb5ff02e9d54fa83d84b28">buckets</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00014">14</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<div class="textblock"><p>Classic separate-chaining hash table used by the engine's low-level C code paths. </p>
+<p><span class="tt"><a class="el" href="struct_t_a26e23de58526d847534987d9531aef51.html#a26e23de58526d847534987d9531aef51">size</a></span> is the bucket count and <span class="tt"><a class="el" href="struct_t_ac165cb2e47175ce65b25465d5bd8556d.html#ac165cb2e47175ce65b25465d5bd8556d">length</a></span> the live entry count; <span class="tt"><a class="el" href="struct_t_ad0c05772826e7539be987c395607788e.html#ad0c05772826e7539be987c395607788e">cmp</a></span> / <span class="tt"><a class="el" href="struct_t_ac312863f3d6a86d9b3b7390129c76334.html#ac312863f3d6a86d9b3b7390129c76334">hash</a></span> are the key comparison and hashing function pointers; <span class="tt"><a class="el" href="struct_t_a435a16de233b71e17a5186f56adea071.html#a435a16de233b71e17a5186f56adea071">timestamp</a></span> is bumped on every mutation so iterators can detect concurrent changes. <span class="tt">buckets</span> is an array of <span class="tt">binding*</span> heads, each chain holding the <span class="tt">(key, value)</span> pairs that hash to that slot. </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00026">26</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="table_8c_source.html">table.c</a></li>
 </ul>

@@ -109,29 +109,29 @@ template&lt;typename S&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_basic_poly_list_8hpp_source.html#l00108">108</a> of file <a class="el" href="_basic_poly_list_8hpp_source.html">BasicPolyList.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
-<div class="line"><span class="lineno">  110</span>  str.idealBegin(Fs.size());</div>
-<div class="line"><span class="lineno">  111</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; F : Fs)</div>
-<div class="line"><span class="lineno">  112</span>    {</div>
-<div class="line"><span class="lineno">  113</span>      str.appendPolynomialBegin(F.mCoefficients.size());</div>
-<div class="line"><span class="lineno">  114</span>      <span class="keywordtype">int</span> monomStart = 0;</div>
-<div class="line"><span class="lineno">  115</span>      <span class="keywordflow">for</span> (<span class="keyword">auto</span> i=0; i&lt;F.mCoefficients.size(); ++i)</div>
-<div class="line"><span class="lineno">  116</span>        {</div>
-<div class="line"><span class="lineno">  117</span>          <span class="keyword">auto</span> monomEnd = monomStart + F.mMonomials[monomStart];</div>
-<div class="line"><span class="lineno">  118</span>          <span class="keywordflow">if</span> (F.mComponents.empty())</div>
-<div class="line"><span class="lineno">  119</span>            str.appendTermBegin(0);</div>
-<div class="line"><span class="lineno">  120</span>          <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  121</span>            str.appendTermBegin(F.mComponents[i]);</div>
-<div class="line"><span class="lineno">  122</span>          <span class="keywordflow">for</span> (<span class="keyword">auto</span> j=monomStart+1; j&lt;monomEnd; j += 2)</div>
-<div class="line"><span class="lineno">  123</span>            str.appendExponent(F.mMonomials[j], F.mMonomials[j+1]);</div>
-<div class="line"><span class="lineno">  124</span>          str.appendTermDone(F.mCoefficients[i]);</div>
-<div class="line"><span class="lineno">  125</span>          monomStart = monomEnd;</div>
-<div class="line"><span class="lineno">  126</span>        }</div>
-<div class="line"><span class="lineno">  127</span>      str.appendPolynomialDone();</div>
-<div class="line"><span class="lineno">  128</span>    }</div>
-<div class="line"><span class="lineno">  129</span>  str.idealDone();</div>
-<div class="line"><span class="lineno">  130</span>}</div>
+<p class="definition">Definition at line <a class="el" href="_basic_poly_list_8hpp_source.html#l00121">121</a> of file <a class="el" href="_basic_poly_list_8hpp_source.html">BasicPolyList.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  122</span>{</div>
+<div class="line"><span class="lineno">  123</span>  str.idealBegin(Fs.size());</div>
+<div class="line"><span class="lineno">  124</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; F : Fs)</div>
+<div class="line"><span class="lineno">  125</span>    {</div>
+<div class="line"><span class="lineno">  126</span>      str.appendPolynomialBegin(F.mCoefficients.size());</div>
+<div class="line"><span class="lineno">  127</span>      <span class="keywordtype">int</span> monomStart = 0;</div>
+<div class="line"><span class="lineno">  128</span>      <span class="keywordflow">for</span> (<span class="keyword">auto</span> i=0; i&lt;F.mCoefficients.size(); ++i)</div>
+<div class="line"><span class="lineno">  129</span>        {</div>
+<div class="line"><span class="lineno">  130</span>          <span class="keyword">auto</span> monomEnd = monomStart + F.mMonomials[monomStart];</div>
+<div class="line"><span class="lineno">  131</span>          <span class="keywordflow">if</span> (F.mComponents.empty())</div>
+<div class="line"><span class="lineno">  132</span>            str.appendTermBegin(0);</div>
+<div class="line"><span class="lineno">  133</span>          <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  134</span>            str.appendTermBegin(F.mComponents[i]);</div>
+<div class="line"><span class="lineno">  135</span>          <span class="keywordflow">for</span> (<span class="keyword">auto</span> j=monomStart+1; j&lt;monomEnd; j += 2)</div>
+<div class="line"><span class="lineno">  136</span>            str.appendExponent(F.mMonomials[j], F.mMonomials[j+1]);</div>
+<div class="line"><span class="lineno">  137</span>          str.appendTermDone(F.mCoefficients[i]);</div>
+<div class="line"><span class="lineno">  138</span>          monomStart = monomEnd;</div>
+<div class="line"><span class="lineno">  139</span>        }</div>
+<div class="line"><span class="lineno">  140</span>      str.appendPolynomialDone();</div>
+<div class="line"><span class="lineno">  141</span>    }</div>
+<div class="line"><span class="lineno">  142</span>  str.idealDone();</div>
+<div class="line"><span class="lineno">  143</span>}</div>
 </div><!-- fragment -->
 <p class="reference">Referenced by <a class="el" href="_new_f4_test_8cpp_a5edbdfff9c79120e8062ea62cf33e349.html#a5edbdfff9c79120e8062ea62cf33e349">TEST()</a>, and <a class="el" href="_basic_poly_list_8cpp_add39902a0f08679d5ca6c53bf2f752ac.html#add39902a0f08679d5ca6c53bf2f752ac">toMatrix()</a>.</p>
 

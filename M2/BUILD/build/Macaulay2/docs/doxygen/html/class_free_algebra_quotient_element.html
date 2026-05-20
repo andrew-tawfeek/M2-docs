@@ -92,6 +92,9 @@ $(function(){initNavTree('class_free_algebra_quotient_element.html','','class_fr
 </div><!--header-->
 <div class="contents">
 
+<p>Owned <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> value paired with its <span class="tt">FreeAlgebraQuotient*</span>, providing operator-overloaded arithmetic for debugging / scripting.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_algebra_quotient_8hpp_source.html">FreeAlgebraQuotient.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -112,8 +115,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a83d9d6a23089b22bc0dfc3456975a356" id="r_a83d9d6a23089b22bc0dfc3456975a356"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_poly.html">Poly</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_free_algebra_quotient_element_a83d9d6a23089b22bc0dfc3456975a356.html#a83d9d6a23089b22bc0dfc3456975a356">mPoly</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_algebra_quotient_8hpp_source.html#l00134">134</a> of file <a class="el" href="_free_algebra_quotient_8hpp_source.html">FreeAlgebraQuotient.hpp</a>.</p>
+<div class="textblock"><p>Owned <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> value paired with its <span class="tt">FreeAlgebraQuotient*</span>, providing operator-overloaded arithmetic for debugging / scripting. </p>
+<p>Quotient counterpart of <span class="tt"><a class="el" href="class_free_algebra_element.html" title="Owned Poly value paired with its FreeAlgebra*, providing natural operator-overloaded arithmetic.">FreeAlgebraElement</a></span>: the destructor calls <span class="tt"><a class="el" href="class_free_algebra_quotient_ae5ffa4317eeb55012f0bd9dd4aa7f4fa.html#ae5ffa4317eeb55012f0bd9dd4aa7f4fa">FreeAlgebraQuotient::clear</a></span>, and the arithmetic operators feed through to the quotient's <span class="tt">add</span> / <span class="tt"><a class="el" href="godbolt_test_8cpp_acb0e524578d913d164058b989f113b93.html#acb0e524578d913d164058b989f113b93">subtract</a></span> / <span class="tt">mult</span> / ... methods so each result is automatically reduced modulo the defining ideal. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_algebra_quotient_8hpp_source.html#l00157">157</a> of file <a class="el" href="_free_algebra_quotient_8hpp_source.html">FreeAlgebraQuotient.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_algebra_quotient_8hpp_source.html">FreeAlgebraQuotient.hpp</a></li>
 </ul>

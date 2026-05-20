@@ -92,6 +92,9 @@ $(function(){initNavTree('class_lapack.html','','class_lapack-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Static-method namespace bridging the engine's <span class="tt">RR</span> / <span class="tt">CC</span> / <span class="tt">RRR</span> / <span class="tt"><a class="el" href="_n_a_g_8hpp_aac3f153b43e30e4004c50123561bb145.html#aac3f153b43e30e4004c50123561bb145">CCC</a></span> dense matrices and LAPACK / BLAS routines.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="lapack_8hpp_source.html">lapack.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -147,8 +150,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aebe1abd61e93256a3ddd1d139f8f2a9a" id="r_aebe1abd61e93256a3ddd1d139f8f2a9a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lapack_aebe1abd61e93256a3ddd1d139f8f2a9a.html#aebe1abd61e93256a3ddd1d139f8f2a9a">freeRaw</a> (__mpfr_struct *start, <a class="el" href="classint.html">int</a> size)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="lapack_8hpp_source.html#l00437">437</a> of file <a class="el" href="lapack_8hpp_source.html">lapack.hpp</a>.</p>
+<div class="textblock"><p>Static-method namespace bridging the engine's <span class="tt">RR</span> / <span class="tt">CC</span> / <span class="tt">RRR</span> / <span class="tt"><a class="el" href="_n_a_g_8hpp_aac3f153b43e30e4004c50123561bb145.html#aac3f153b43e30e4004c50123561bb145">CCC</a></span> dense matrices and LAPACK / BLAS routines. </p>
+<p>The class holds no state; every method is <span class="tt">static</span>. Bundles matrix translators (to the column-major scratch buffers LAPACK expects) plus the high-level entry points (<span class="tt"><a class="el" href="class_lapack_a75ab16a6644e5f5a89e4616df94274e1.html#a75ab16a6644e5f5a89e4616df94274e1">solve</a></span>, <span class="tt"><a class="el" href="class_lapack_a77fcd403b034e541612d107fc0c0caae.html#a77fcd403b034e541612d107fc0c0caae">LU</a></span>, <span class="tt"><a class="el" href="class_lapack_acc7f16c8f608742f8ebec42ba122866d.html#acc7f16c8f608742f8ebec42ba122866d">eigenvalues</a></span>, <span class="tt"><a class="el" href="class_lapack_a836e1ee9803a1b77c5831c4c7baf45e6.html#a836e1ee9803a1b77c5831c4c7baf45e6">eigenvectors</a></span>, <span class="tt"><a class="el" href="class_lapack_a51dbc009b28ed0339276af12349048f9.html#a51dbc009b28ed0339276af12349048f9">SVD</a></span>, <span class="tt"><a class="el" href="class_lapack_a8267ad0361541d97e08889577fe0ce2e.html#a8267ad0361541d97e08889577fe0ce2e">least_squares</a></span>, ...) that the engine exposes to the front end for numerical linear algebra over floating-point and MPFR-backed rings. </p>
+
+<p class="definition">Definition at line <a class="el" href="lapack_8hpp_source.html#l00448">448</a> of file <a class="el" href="lapack_8hpp_source.html">lapack.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="lapack_8hpp_source.html">lapack.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="lapack_8cpp_source.html">lapack.cpp</a></li>

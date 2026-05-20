@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_table_z_z.html','','class_monomial_tabl
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_monomial_table.html" title="Indexed table of monomials with fast &quot;find a divisor&quot; lookup, keyed by a free integer val per entry.">MonomialTable</a></span> analogue for monomials carrying a <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span> coefficient.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="montable_z_z_8hpp_source.html">montableZZ.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MonomialTableZZ:</div>
@@ -106,6 +109,7 @@ Inheritance diagram for MonomialTableZZ:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:mon_5Fterm" id="r_mon_5Fterm"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_monomial_table_z_z_1_1mon__term.html">mon_term</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt"><a class="el" href="struct_monomial_table_1_1mon__term.html" title="Doubly-linked-list node of a MonomialTable&#39;s per-component monomial list.">MonomialTable::mon_term</a></span> plus an <span class="tt"><a class="el" href="struct_monomial_table_z_z_1_1mon__term_a4b78dc3344300423705d7dbc380243bd.html#a4b78dc3344300423705d7dbc380243bd">_coeff</a></span> slot pointing at the entry's leading <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span> coefficient (or <span class="tt">nullptr</span> for the coefficient-blind case).  <a href="struct_monomial_table_z_z_1_1mon__term.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -155,8 +159,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:af7ded9e6c9201f3c0fd24e93efcf6b59" id="r_af7ded9e6c9201f3c0fd24e93efcf6b59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_table_z_z_af7ded9e6c9201f3c0fd24e93efcf6b59.html#af7ded9e6c9201f3c0fd24e93efcf6b59">_count</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="montable_z_z_8hpp_source.html#l00061">61</a> of file <a class="el" href="montable_z_z_8hpp_source.html">montableZZ.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_monomial_table.html" title="Indexed table of monomials with fast &quot;find a divisor&quot; lookup, keyed by a free integer val per entry.">MonomialTable</a></span> analogue for monomials carrying a <span class="tt"><a class="el" href="ringelem_8hpp_afea72c39052b53d15e7acad8d36847c1.html#afea72c39052b53d15e7acad8d36847c1">ZZ</a></span> coefficient. </p>
+<p>Used by the integer-coefficient GB code path to track lead-term divisibility together with the leading integer coefficient: when the table is consulted to reduce <span class="tt">coeff * exp</span> against an entry <span class="tt">c * lead</span>, both the exponent-divisibility test and the <span class="tt">c |
+coeff</span> integer-divisibility test are honoured. Otherwise the data structure matches <span class="tt"><a class="el" href="class_monomial_table.html" title="Indexed table of monomials with fast &quot;find a divisor&quot; lookup, keyed by a free integer val per entry.">MonomialTable</a></span>: per-component doubly-linked lists of <span class="tt"><a class="el" href="struct_monomial_table_z_z_1_1mon__term.html" title="MonomialTable::mon_term plus an _coeff slot pointing at the entry&#39;s leading ZZ coefficient (or nullpt...">mon_term</a></span>s in lex order with a <span class="tt">_mask</span>-filtered divisor lookup. </p>
+
+<p class="definition">Definition at line <a class="el" href="montable_z_z_8hpp_source.html#l00073">73</a> of file <a class="el" href="montable_z_z_8hpp_source.html">montableZZ.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="montable_z_z_8hpp_source.html">montableZZ.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="montable_z_z_8cpp_source.html">montableZZ.cpp</a></li>

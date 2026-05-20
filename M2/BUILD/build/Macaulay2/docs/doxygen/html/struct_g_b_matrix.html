@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_g_b_matrix.html','','struct_g_b_matrix-members'
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span>-side matrix: a target <span class="tt"><a class="el" href="class_free_module.html" title="Engine-side free module R^n over a Ring.">FreeModule</a></span> plus a list of <span class="tt">gbvector*</span> columns living in it.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GBMatrix:</div>
@@ -129,8 +132,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_eschreyer_8hpp_source.html#l00038">38</a> of file <a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span>-side matrix: a target <span class="tt"><a class="el" href="class_free_module.html" title="Engine-side free module R^n over a Ring.">FreeModule</a></span> plus a list of <span class="tt">gbvector*</span> columns living in it. </p>
+<p>Bridges the <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span> world (engine-side, <span class="tt">vec</span>-based) and the <span class="tt"><a class="el" href="class_g_b_ring.html" title="Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations.">GBRing</a></span> world (<span class="tt"><a class="el" href="structgbvector.html">gbvector</a></span>-based, suited to GB inner loops). Converts back and forth via the <span class="tt">Matrix*</span> constructor and <span class="tt"><a class="el" href="struct_g_b_matrix_a23b2b9f6d947a4cad8d133a130dc9074.html#a23b2b9f6d947a4cad8d133a130dc9074">to_matrix()</a></span>. <span class="tt">append(f)</span> grabs ownership of <span class="tt">f</span>. Used as the input shape for kernel / syzygy computations like <span class="tt"><a class="el" href="class_g_b_kernel_computation.html" title="Computes the kernel of a Schreyer-encoded GBMatrix and returns the syzygies in a Schreyer-compatible ...">GBKernelComputation</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_eschreyer_8hpp_source.html#l00049">49</a> of file <a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_eschreyer_8hpp_source.html">Eschreyer.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="_eschreyer_8cpp_source.html">Eschreyer.cpp</a></li>

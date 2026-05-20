@@ -92,6 +92,9 @@ $(function(){initNavTree('class_schur_sn_ring.html','','class_schur_sn_ring-memb
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_schur_ring2.html" title="Refactored Schur (symmetric-function) ring whose elements are schur_poly sums of partitions over a co...">SchurRing2</a></span> subclass implementing the symmetric-group character ring (the "Schur ring of `S_n`"), with multiplication given by inner-product convolution rather than Littlewood-Richardson.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="schur_sn_8hpp_source.html">schurSn.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SchurSnRing:</div>
@@ -99,9 +102,9 @@ Inheritance diagram for SchurSnRing:</div>
  <div class="center">
   <img src="class_schur_sn_ring.png" usemap="#SchurSnRing_map" alt=""/>
   <map id="SchurSnRing_map" name="SchurSnRing_map">
-<area href="class_schur_ring2.html" alt="SchurRing2" shape="rect" coords="0,224,133,248"/>
+<area href="class_schur_ring2.html" title="Refactored Schur (symmetric-function) ring whose elements are schur_poly sums of partitions over a co..." alt="SchurRing2" shape="rect" coords="0,224,133,248"/>
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -389,8 +392,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="schur_sn_8hpp_source.html#l00035">35</a> of file <a class="el" href="schur_sn_8hpp_source.html">schurSn.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_schur_ring2.html" title="Refactored Schur (symmetric-function) ring whose elements are schur_poly sums of partitions over a co...">SchurRing2</a></span> subclass implementing the symmetric-group character ring (the "Schur ring of `S_n`"), with multiplication given by inner-product convolution rather than Littlewood-Richardson. </p>
+<p>Overrides <span class="tt"><a class="el" href="class_schur_sn_ring_adc561df8cf7c440559bc142bc02de8ed.html#adc561df8cf7c440559bc142bc02de8ed">mult</a></span> to compute the symmetric-group analogue: the coefficient of <span class="tt">s_lambda</span> in <span class="tt">s_mu * s_nu</span> is the number of ways to decompose representations rather than the LR count. <span class="tt"><a class="el" href="class_schur_sn_ring_a03925da77b21c8849a7026b46447747a.html#a03925da77b21c8849a7026b46447747a">cast_to_SchurSnRing()</a></span> lets engine code distinguish this ring from the plain <span class="tt"><a class="el" href="class_schur_ring2.html" title="Refactored Schur (symmetric-function) ring whose elements are schur_poly sums of partitions over a co...">SchurRing2</a></span> it inherits from. </p>
+
+<p class="definition">Definition at line <a class="el" href="schur_sn_8hpp_source.html#l00046">46</a> of file <a class="el" href="schur_sn_8hpp_source.html">schurSn.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="schur_sn_8hpp_source.html">schurSn.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="schur_sn_8cpp_source.html">schurSn.cpp</a></li>

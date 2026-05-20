@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_1_1_a_ring_g_f_flint_big_1_1_element_array.ht
 </div><!--header-->
 <div class="contents">
 
+<p>Fixed-size owned array of <span class="tt">fq_nmod_struct</span> slots tied to an <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big.html" title="aring-style adapter for FLINT&#39;s polynomial-quotient representation of finite fields GF(p^n) that are ...">ARingGFFlintBig</a></span> for the matching FLINT context.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring-gf-flint-big_8hpp_source.html">aring-gf-flint-big.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -110,8 +113,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ad60c7d64bd1775ab26339762ec312db5" id="r_ad60c7d64bd1775ab26339762ec312db5"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_m2_1_1_a_ring_g_f_flint_big_ad3158d1f9c12221f68607023f6cf828a.html#ad3158d1f9c12221f68607023f6cf828a">ElementType</a>[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big_1_1_element_array_ad60c7d64bd1775ab26339762ec312db5.html#ad60c7d64bd1775ab26339762ec312db5">mData</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring-gf-flint-big_8hpp_source.html#l00122">122</a> of file <a class="el" href="aring-gf-flint-big_8hpp_source.html">aring-gf-flint-big.hpp</a>.</p>
+<div class="textblock"><p>Fixed-size owned array of <span class="tt">fq_nmod_struct</span> slots tied to an <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big.html" title="aring-style adapter for FLINT&#39;s polynomial-quotient representation of finite fields GF(p^n) that are ...">ARingGFFlintBig</a></span> for the matching FLINT context. </p>
+<p>Each slot is <span class="tt">fq_nmod_init2</span>-initialised at construction and <span class="tt">fq_nmod_clear</span>-released in the destructor, so the array owns its FLINT-side data. Used as the flat per-row buffer the dense linear-algebra templates expect. </p>
+
+<p class="definition">Definition at line <a class="el" href="aring-gf-flint-big_8hpp_source.html#l00141">141</a> of file <a class="el" href="aring-gf-flint-big_8hpp_source.html">aring-gf-flint-big.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="aring-gf-flint-big_8hpp_source.html">aring-gf-flint-big.hpp</a></li>
 </ul>

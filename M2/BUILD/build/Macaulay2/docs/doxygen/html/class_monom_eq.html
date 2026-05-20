@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monom_eq.html','','class_monom_eq-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Strict comparator on <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span>s under a <span class="tt"><a class="el" href="class_free_monoid.html" title="The free non-commutative monoid on a set of named variables, with monomial ordering and degree / weig...">FreeMonoid</a></span> order: returns true exactly when the first monomial is <em>greater than</em> the second.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -108,8 +111,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aa8a7ee91305d68b287f12dac3cb4606f" id="r_aa8a7ee91305d68b287f12dac3cb4606f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_free_monoid.html">FreeMonoid</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monom_eq_aa8a7ee91305d68b287f12dac3cb4606f.html#aa8a7ee91305d68b287f12dac3cb4606f">mMonoid</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00205">205</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
+<div class="textblock"><p>Strict comparator on <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span>s under a <span class="tt"><a class="el" href="class_free_monoid.html" title="The free non-commutative monoid on a set of named variables, with monomial ordering and degree / weig...">FreeMonoid</a></span> order: returns true exactly when the first monomial is <em>greater than</em> the second. </p>
+<p>Confusingly named ("Eq") but actually a <span class="tt">&lt;</span> swap-ready comparator for <span class="tt">std::map&lt;<a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a>, ..., <a class="el" href="class_monom_eq.html" title="Strict comparator on Monoms under a FreeMonoid order: returns true exactly when the first monomial is...">MonomEq</a>&gt;</span> (used by <span class="tt"><a class="el" href="class_map_polynomial_heap.html" title="PolynomialHeap backed by a std::map&lt;Monom, ring_elem, MonomEq&gt;, deduplicating on insert via the map&#39;s...">MapPolynomialHeap</a></span>): <span class="tt">std::map</span> requires strict-weak order so this returns <span class="tt">compare(a, b) == <a class="el" href="submodules_2mathicgb_2src_2mathicgb_2polyring_8hpp_ab89310b3f2f97e4e9415fc5a51549612.html#ab89310b3f2f97e4e9415fc5a51549612">GT</a></span>, which orders the lead term to <span class="tt">mMap.begin()</span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00237">237</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a></li>
 </ul>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_module_monom_default_config.html','','class_modu
 </div><!--header-->
 <div class="contents">
 
+<p>Current <span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a></span> configuration: exposes <span class="tt"><a class="el" href="class_module_monom_default_config_a80ac394f6cdf74921227ead9bdd730b3.html#a80ac394f6cdf74921227ead9bdd730b3">Hash</a></span> and <span class="tt"><a class="el" href="class_module_monom_default_config_ab1710698369de78731b7e526d379ba74.html#ab1710698369de78731b7e526d379ba74">Eq</a></span> as discrete member functors so the <span class="tt">unordered_set</span> can use them directly.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -109,8 +112,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a95230b6385e58a597836b8d1baced90d" id="r_a95230b6385e58a597836b8d1baced90d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_module_monom_default_config_a95230b6385e58a597836b8d1baced90d.html#a95230b6385e58a597836b8d1baced90d">mNumVars</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monomial-collection_8hpp_source.html#l00200">200</a> of file <a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>.</p>
+<div class="textblock"><p>Current <span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a></span> configuration: exposes <span class="tt"><a class="el" href="class_module_monom_default_config_a80ac394f6cdf74921227ead9bdd730b3.html#a80ac394f6cdf74921227ead9bdd730b3">Hash</a></span> and <span class="tt"><a class="el" href="class_module_monom_default_config_ab1710698369de78731b7e526d379ba74.html#ab1710698369de78731b7e526d379ba74">Eq</a></span> as discrete member functors so the <span class="tt">unordered_set</span> can use them directly. </p>
+<p>Used by the type alias <span class="tt"><a class="el" href="monomial-collection_8hpp_a3ff66fa0172547637ea18786761e8241.html#a3ff66fa0172547637ea18786761e8241">ModuleMonomialSet</a> = <a class="el" href="class_ints_set.html">IntsSet</a>&lt;<a class="el" href="class_module_monom_default_config.html" title="Current IntsSet configuration: exposes Hash and Eq as discrete member functors so the unordered_set c...">ModuleMonomDefaultConfig</a>&gt;</span>. The constructor takes the variable count for size accounting; the old single-functor <span class="tt">hash</span> / <span class="tt">keysEqual</span> / <span class="tt">display</span> interface is kept under <span class="tt">#if 0</span> for reference until the refactor lands. </p>
+
+<p class="definition">Definition at line <a class="el" href="monomial-collection_8hpp_source.html#l00239">239</a> of file <a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a></li>
 </ul>

@@ -92,7 +92,7 @@ $(function(){initNavTree('aring-_c_ci_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_ci.html">M2::ARingCCi</a></span> &mdash; certified complex intervals as Cartesian rectangles of MPFI intervals.  
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_ci.html" title="aring-style adapter for arbitrary-precision complex intervals, stored as (MPFI, MPFI) pairs.">M2::ARingCCi</a></span> &mdash; certified complex intervals as Cartesian rectangles of MPFI intervals.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;mpfi.h&gt;</code><br />
@@ -111,13 +111,14 @@ $(function(){initNavTree('aring-_c_ci_8hpp.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:M2_3A_3AARingCCi" id="r_M2_3A_3AARingCCi"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_c_ci.html">M2::ARingCCi</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">aring</span>-style adapter for arbitrary-precision complex intervals, stored as <span class="tt">(MPFI, MPFI)</span> pairs.  <a href="class_m2_1_1_a_ring_c_ci.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:M2" id="r_M2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2.html">M2</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_ci.html">M2::ARingCCi</a></span> &mdash; certified complex intervals as Cartesian rectangles of MPFI intervals. </p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_c_ci.html" title="aring-style adapter for arbitrary-precision complex intervals, stored as (MPFI, MPFI) pairs.">M2::ARingCCi</a></span> &mdash; certified complex intervals as Cartesian rectangles of MPFI intervals. </p>
 <p><span class="tt">ARingCCi</span> represents a complex value as a pair of real intervals <span class="tt">(re_interval, im_interval)</span> &mdash; i.e. a Cartesian rectangle in the complex plane. Endpoints have arbitrary MPFR precision (<span class="tt">mPrecision</span> is the class's sole stored state); the underlying interval arithmetic is MPFI. Addition is componentwise; multiplication uses the standard <span class="tt">(ac - bd) + (ad + bc) i</span> formula on the sub-intervals with MPFI's outward rounding, so the result is a certified enclosure of the true product. The rectangle representation is simple but yields overly wide enclosures under rotation; for tighter bounds the disk form would be preferable, but this file does not implement it.</p>
 <p>The class pulls in <span class="tt"><a class="el" href="aring-_r_r_r_8hpp.html" title="M2::ARingRRR — arbitrary-precision real numbers backed by MPFR.">aring-RRR.hpp</a></span>, <span class="tt"><a class="el" href="aring-_r_ri_8hpp.html" title="M2::ARingRRi — certified real intervals [a, b] with MPFR endpoints, MPFI arithmetic.">aring-RRi.hpp</a></span>, and <span class="tt"><a class="el" href="aring-_c_c_c_8hpp.html" title="M2::ARingCCC — arbitrary-precision complex numbers (pair of MPFR floats).">aring-CCC.hpp</a></span> to interoperate with their element types: <span class="tt">is_member</span> overloads accept <span class="tt">ARingRRR</span>, <span class="tt">ARingRRi</span>, and <span class="tt">ARingCCC</span> elements; <span class="tt">realPartReference</span> / <span class="tt">imaginaryPartReference</span> / <span class="tt">set_real_part</span> / <span class="tt">set_imaginary_part</span> exchange the rectangle components with <span class="tt">ARingRRi</span> values; and <span class="tt">midpoint(ARingCCC::ElementType&amp;, ...)</span> collapses an interval to its MPFR-complex midpoint. <span class="tt">IM2_Ring_CCi(prec)</span> in <span class="tt"><a class="el" href="interface_2ring_8cpp.html">interface/ring.cpp</a></span> is the M2-side factory &mdash; there is no machine-precision shortcut for the interval variant.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-_r_ri_8hpp.html" title="M2::ARingRRi — certified real intervals [a, b] with MPFR endpoints, MPFI arithmetic.">aring-RRi.hpp</a> </dd>

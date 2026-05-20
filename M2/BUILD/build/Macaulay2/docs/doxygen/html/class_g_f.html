@@ -92,6 +92,9 @@ $(function(){initNavTree('class_g_f.html','','class_g_f-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side finite field <span class="tt"><a class="el" href="class_g_f.html" title="Engine-side finite field GF(p^n) built on top of (Z/p)[t] / f(t) for a primitive element of the resul...">GF(p^n)</a></span> built on top of <span class="tt">(Z/p)[t] / f(t)</span> for a primitive element of the resulting field.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_g_f_8hpp_source.html">GF.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GF:</div>
@@ -100,7 +103,7 @@ Inheritance diagram for GF:</div>
   <img src="class_g_f.png" usemap="#GF_map" alt=""/>
   <map id="GF_map" name="GF_map">
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -391,8 +394,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_g_f_8hpp_source.html#l00043">43</a> of file <a class="el" href="_g_f_8hpp_source.html">GF.hpp</a>.</p>
+<div class="textblock"><p>Engine-side finite field <span class="tt"><a class="el" href="class_g_f.html" title="Engine-side finite field GF(p^n) built on top of (Z/p)[t] / f(t) for a primitive element of the resul...">GF(p^n)</a></span> built on top of <span class="tt">(Z/p)[t] / f(t)</span> for a primitive element of the resulting field. </p>
+<p>Represents non-zero elements by their discrete-logarithm index relative to a chosen primitive <span class="tt">primitive_element</span>: index 0 encodes 0, <span class="tt">Q-1</span> encodes 1, and index <span class="tt">n</span> encodes <span class="tt">primitive^n</span>. <span class="tt"><a class="el" href="class_g_f_a2fd1c01587efc32334b5a5c078b7049d.html#a2fd1c01587efc32334b5a5c078b7049d">_x_exponent</a></span> is the index of the original generator <span class="tt">t</span>. Multiplication / division become mod-<span class="tt">Q1</span> add / sub on indices; addition uses the precomputed <span class="tt"><a class="el" href="class_g_f_a3bae492c00959909d994e1fbcb5c0454.html#a3bae492c00959909d994e1fbcb5c0454">_one_table</a></span> to resolve <span class="tt">1 + primitive^n</span>. <span class="tt"><a class="el" href="class_g_f_a6b604f16543ec9670135deb5629d0468.html#a6b604f16543ec9670135deb5629d0468">_from_int_table</a></span> maps small integers back into indices. Falls back to <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> for cases not covered by the <span class="tt">aring</span>-style <span class="tt">ARingGFM2</span> / <span class="tt">ARingGFFlint*</span> specialisations. </p>
+
+<p class="definition">Definition at line <a class="el" href="_g_f_8hpp_source.html#l00057">57</a> of file <a class="el" href="_g_f_8hpp_source.html">GF.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_g_f_8hpp_source.html">GF.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="_g_f_8cpp_source.html">GF.cpp</a></li>

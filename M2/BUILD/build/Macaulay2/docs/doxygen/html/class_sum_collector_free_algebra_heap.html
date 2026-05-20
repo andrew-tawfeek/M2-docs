@@ -92,6 +92,9 @@ $(function(){initNavTree('class_sum_collector_free_algebra_heap.html','','class_
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls.">SumCollector</a></span> adapter that funnels engine-side <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> adds into a <span class="tt"><a class="el" href="class_free_algebra_heap.html" title="Geobucket-style accumulator for many Poly summands in the free associative algebra.">FreeAlgebraHeap</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SumCollectorFreeAlgebraHeap:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for SumCollectorFreeAlgebraHeap:</div>
  <div class="center">
   <img src="class_sum_collector_free_algebra_heap.png" usemap="#SumCollectorFreeAlgebraHeap_map" alt=""/>
   <map id="SumCollectorFreeAlgebraHeap_map" name="SumCollectorFreeAlgebraHeap_map">
-<area href="class_sum_collector.html" alt="SumCollector" shape="rect" coords="0,56,189,80"/>
+<area href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls." alt="SumCollector" shape="rect" coords="0,56,189,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,189,24"/>
   </map>
 </div></div>
@@ -131,8 +134,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_algebra_8hpp_source.html#l00331">331</a> of file <a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls.">SumCollector</a></span> adapter that funnels engine-side <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> adds into a <span class="tt"><a class="el" href="class_free_algebra_heap.html" title="Geobucket-style accumulator for many Poly summands in the free associative algebra.">FreeAlgebraHeap</a></span>. </p>
+<p>Used wherever the engine's generic <span class="tt"><a class="el" href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls.">SumCollector</a></span> interface (e.g. for <span class="tt"><a class="el" href="class_ring_map.html" title="Engine-side ring homomorphism: stores, for each source-ring variable, the target-ring element it maps...">RingMap</a></span> evaluation) needs to accumulate free-associative polynomials: each <span class="tt"><a class="el" href="class_sum_collector_free_algebra_heap_ab4f592bdf66b68982215b9b7a26b4fcf.html#ab4f592bdf66b68982215b9b7a26b4fcf">add(ring_elem f1)</a></span> casts down to <span class="tt">Poly*</span> and pushes through to <span class="tt"><a class="el" href="class_free_algebra_heap_ad203156874f08a6d875981c9ce4170cf.html#ad203156874f08a6d875981c9ce4170cf">FreeAlgebraHeap::add</a></span>, and <span class="tt"><a class="el" href="class_sum_collector_free_algebra_heap_af31b1142fb3e4403265eb1664e465b8e.html#af31b1142fb3e4403265eb1664e465b8e">getValue()</a></span> returns the linearised sum as a fresh <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_algebra_8hpp_source.html#l00377">377</a> of file <a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a></li>
 </ul>

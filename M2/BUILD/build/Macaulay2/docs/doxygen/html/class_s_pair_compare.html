@@ -92,6 +92,9 @@ $(function(){initNavTree('class_s_pair_compare.html','','class_s_pair_compare-me
 </div><!--header-->
 <div class="contents">
 
+<p>Comparator on indices into an <span class="tt"><a class="el" href="structspair.html">spair</a></span> table, ordering by sugar degree then by the larger of the two parent indices.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -104,8 +107,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a6bb2d238580f20b8f8285203d974301c" id="r_a6bb2d238580f20b8f8285203d974301c"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="structspair.html">spair</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_s_pair_compare_a6bb2d238580f20b8f8285203d974301c.html#a6bb2d238580f20b8f8285203d974301c">mSPairs</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="f4-types_8hpp_source.html#l00283">283</a> of file <a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>.</p>
+<div class="textblock"><p>Comparator on indices into an <span class="tt"><a class="el" href="structspair.html">spair</a></span> table, ordering by sugar degree then by the larger of the two parent indices. </p>
+<p>Drives the S-pair queue inside the F4 algorithm: largest sugar degree first, then largest <span class="tt">i</span>. <span class="tt">operator()(s, t)</span> returns true when <span class="tt"><a class="el" href="m2-mem_8cpp_a2fc91f4e89bc37f261db820d231da2e5.html#a2fc91f4e89bc37f261db820d231da2e5">s</a></span> should come before <span class="tt">t</span> under that order, so it's wired straight into <span class="tt">std::priority_queue</span> and friends. </p>
+
+<p class="definition">Definition at line <a class="el" href="f4-types_8hpp_source.html#l00325">325</a> of file <a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/f4/<a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a></li>
 </ul>

@@ -91,6 +91,9 @@ $(function(){initNavTree('class_matrix_sorter.html','','class_matrix_sorter-memb
   <div class="headertitle"><div class="title">MatrixSorter Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Helper that computes a column permutation for an engine <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span> by degree-then-monomial-order sort.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -114,8 +117,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a9faa13a214eba55faf1783edd4fb1722" id="r_a9faa13a214eba55faf1783edd4fb1722"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m2__arrayint.html">M2_arrayint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix_sorter_a9faa13a214eba55faf1783edd4fb1722.html#a9faa13a214eba55faf1783edd4fb1722">result</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="matrix-sort_8cpp_source.html#l00033">33</a> of file <a class="el" href="matrix-sort_8cpp_source.html">matrix-sort.cpp</a>.</p>
+<div class="textblock"><p>Helper that computes a column permutation for an engine <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span> by degree-then-monomial-order sort. </p>
+<p><span class="tt"><a class="el" href="class_matrix_sorter_a9511989822a374b2f9ed46dc9b3a962e.html#a9511989822a374b2f9ed46dc9b3a962e">deg_ascending</a></span> and <span class="tt"><a class="el" href="class_matrix_sorter_a95ea5cf327cb2c12cde9a148c7a07de6.html#a95ea5cf327cb2c12cde9a148c7a07de6">ringorder_ascending</a></span> are sign flags; the comparator first orders by <span class="tt"><a class="el" href="class_matrix_sorter_aa9e7508d3d617c1aa15560480cd1e684.html#aa9e7508d3d617c1aa15560480cd1e684">sort_degs</a>[i]</span> (the column's heuristic degree) and then breaks ties with the ring's lead-term comparison on <span class="tt"><a class="el" href="class_matrix_sorter_abbda191c1bb5fee9e3c9eb6d14bd0b96.html#abbda191c1bb5fee9e3c9eb6d14bd0b96">sort_vecs</a>[i]</span>. Indices are sorted into <span class="tt"><a class="el" href="class_matrix_sorter_a9faa13a214eba55faf1783edd4fb1722.html#a9faa13a214eba55faf1783edd4fb1722">result</a></span>, which the caller uses to permute the matrix columns. Used to implement the engine-side <span class="tt">sort</span> matrix operation. </p>
+
+<p class="definition">Definition at line <a class="el" href="matrix-sort_8cpp_source.html#l00044">44</a> of file <a class="el" href="matrix-sort_8cpp_source.html">matrix-sort.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="matrix-sort_8cpp_source.html">matrix-sort.cpp</a></li>
 </ul>

@@ -91,6 +91,9 @@ $(function(){initNavTree('class_function_pair.html','','class_function_pair-memb
   <div class="headertitle"><div class="title">FunctionPair Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Materialised <span class="tt">(<a class="el" href="class_function_pair_a4781d195fee734abf08f7e65d3e50a38.html#a4781d195fee734abf08f7e65d3e50a38">f</a>, <a class="el" href="class_function_pair_a362657a78c0393cb4619e4aeef60bc83.html#a362657a78c0393cb4619e4aeef60bc83">g</a>)</span> pair of <span class="tt"><a class="el" href="class_b_r_p.html" title="Boolean (F_2-coefficient) polynomial stored as an ordered list of square-free monomials.">BRP</a></span> polynomials referenced by a <span class="tt"><a class="el" href="class_pair.html" title="S-pair record for the Franzi boolean Groebner basis algorithm.">Pair</a></span> index record.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,8 +110,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:abb918352e86f7f3c48f3391d02f43b06" id="r_abb918352e86f7f3c48f3391d02f43b06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_b_r_p.html">BRP</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_function_pair_abb918352e86f7f3c48f3391d02f43b06.html#abb918352e86f7f3c48f3391d02f43b06">fieldpolynomial</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00093">93</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
+<div class="textblock"><p>Materialised <span class="tt">(<a class="el" href="class_function_pair_a4781d195fee734abf08f7e65d3e50a38.html#a4781d195fee734abf08f7e65d3e50a38">f</a>, <a class="el" href="class_function_pair_a362657a78c0393cb4619e4aeef60bc83.html#a362657a78c0393cb4619e4aeef60bc83">g</a>)</span> pair of <span class="tt"><a class="el" href="class_b_r_p.html" title="Boolean (F_2-coefficient) polynomial stored as an ordered list of square-free monomials.">BRP</a></span> polynomials referenced by a <span class="tt"><a class="el" href="class_pair.html" title="S-pair record for the Franzi boolean Groebner basis algorithm.">Pair</a></span> index record. </p>
+<p>Resolves the symbolic <span class="tt"><a class="el" href="class_pair.html" title="S-pair record for the Franzi boolean Groebner basis algorithm.">Pair</a></span> into pointers to the actual basis elements (<span class="tt"><a class="el" href="class_function_pair_a4781d195fee734abf08f7e65d3e50a38.html#a4781d195fee734abf08f7e65d3e50a38">f</a> = F[j]</span>, <span class="tt"><a class="el" href="class_function_pair_a362657a78c0393cb4619e4aeef60bc83.html#a362657a78c0393cb4619e4aeef60bc83">g</a> = F[i]</span>) or, when <span class="tt">i &lt; 0</span>, into the synthetic field polynomial <span class="tt">x_k^2 + x_k</span> stored in <span class="tt"><a class="el" href="class_function_pair_abb918352e86f7f3c48f3391d02f43b06.html#abb918352e86f7f3c48f3391d02f43b06">fieldpolynomial</a></span>. <span class="tt"><a class="el" href="class_function_pair_a9eab2ec1d0151fbd4f608c7d455590f3.html#a9eab2ec1d0151fbd4f608c7d455590f3">good</a></span> mirrors <span class="tt"><a class="el" href="class_pair_a55959c06cfec0d4141a7ddb2f4893354.html#a55959c06cfec0d4141a7ddb2f4893354">Pair::good</a></span> but rechecks against the current <span class="tt">F</span>. The S-polynomial reducer then operates on the resolved pointers directly. </p>
+
+<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00114">114</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a></li>
 </ul>

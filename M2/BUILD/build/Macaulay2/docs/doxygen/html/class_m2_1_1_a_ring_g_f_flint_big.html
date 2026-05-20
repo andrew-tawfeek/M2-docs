@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_1_1_a_ring_g_f_flint_big.html','','class_m2_1
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt">aring</span>-style adapter for FLINT's polynomial-quotient representation of finite fields <span class="tt"><a class="el" href="class_g_f.html" title="Engine-side finite field GF(p^n) built on top of (Z/p)[t] / f(t) for a primitive element of the resul...">GF(p^n)</a></span> that are too large for Zech tables.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring-gf-flint-big_8hpp_source.html">aring-gf-flint-big.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for M2::ARingGFFlintBig:</div>
@@ -109,6 +112,7 @@ Classes</h2></td></tr>
 <tr class="memitem:Element" id="r_Element"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big_1_1_element.html">Element</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper class for <a class="el" href="class_m2_1_1_a_ring_g_f_flint_big_ad3158d1f9c12221f68607023f6cf828a.html#ad3158d1f9c12221f68607023f6cf828a">ElementType</a>.  <a href="class_m2_1_1_a_ring_g_f_flint_big_1_1_element.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ElementArray" id="r_ElementArray"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big_1_1_element_array.html">ElementArray</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed-size owned array of <span class="tt">fq_nmod_struct</span> slots tied to an <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big.html" title="aring-style adapter for FLINT&#39;s polynomial-quotient representation of finite fields GF(p^n) that are ...">ARingGFFlintBig</a></span> for the matching FLINT context.  <a href="class_m2_1_1_a_ring_g_f_flint_big_1_1_element_array.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -195,8 +199,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring-gf-flint-big_8hpp_source.html#l00073">73</a> of file <a class="el" href="aring-gf-flint-big_8hpp_source.html">aring-gf-flint-big.hpp</a>.</p>
+<div class="textblock"><p><span class="tt">aring</span>-style adapter for FLINT's polynomial-quotient representation of finite fields <span class="tt"><a class="el" href="class_g_f.html" title="Engine-side finite field GF(p^n) built on top of (Z/p)[t] / f(t) for a primitive element of the resul...">GF(p^n)</a></span> that are too large for Zech tables. </p>
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big_ad3158d1f9c12221f68607023f6cf828a.html#ad3158d1f9c12221f68607023f6cf828a">ElementType</a></span> is <span class="tt">fq_nmod_struct</span> (an <span class="tt">nmod_poly_struct</span> modulo the defining polynomial) and every arithmetic call delegates to FLINT's <span class="tt">fq_nmod_*</span> routines through the held <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big_a05165d6734ba4aa80d207a82a4598fc4.html#a05165d6734ba4aa80d207a82a4598fc4">mContext</a></span> (<span class="tt">fq_nmod_ctx_struct*</span>). Slower per-operation than <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint.html" title="aring-style adapter for FLINT&#39;s Zech-logarithm representation of small finite fields GF(p^n).">ARingGFFlint</a></span> but unconstrained by the Zech-table size, so this is the fallback for <span class="tt"><a class="el" href="class_g_f.html" title="Engine-side finite field GF(p^n) built on top of (Z/p)[t] / f(t) for a primitive element of the resul...">GF(p^n)</a></span> once <span class="tt">p^n</span> outgrows the small-field regime. <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_big_a8e35a70cdb980d5d7890caccabcaff69.html#a8e35a70cdb980d5d7890caccabcaff69">ringID</a> = <a class="el" href="group__rings_ga7579b18152595d75b0bce712fbd605df.html#gga7579b18152595d75b0bce712fbd605dfa97624d00c9dc91dda558fac28b4fa809">ring_GFFlintBig</a></span> for <span class="tt"><a class="el" href="class_vector_arithmetic.html" title="Runtime dispatcher that hides the concrete coefficient ring behind a std::variant of ConcreteVectorAr...">VectorArithmetic</a></span> dispatch. </p>
+
+<p class="definition">Definition at line <a class="el" href="aring-gf-flint-big_8hpp_source.html#l00083">83</a> of file <a class="el" href="aring-gf-flint-big_8hpp_source.html">aring-gf-flint-big.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="aring-gf-flint-big_8hpp_source.html">aring-gf-flint-big.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="aring-gf-flint-big_8cpp_source.html">aring-gf-flint-big.cpp</a></li>

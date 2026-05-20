@@ -92,6 +92,9 @@ $(function(){initNavTree('class_module_monom_default_config_orig.html','','class
 </div><!--header-->
 <div class="contents">
 
+<p>Legacy <span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a></span> configuration that bundles hashing, equality, and a <span class="tt"><a class="el" href="class_module_monom_default_config_orig_ac16b354d5be5b1a20248a75c7c2cce83.html#ac16b354d5be5b1a20248a75c7c2cce83">display</a></span> helper into one functor object.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -113,8 +116,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:abe9942733206375cdf652570395d9150" id="r_abe9942733206375cdf652570395d9150"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_module_monom_default_config_orig_abe9942733206375cdf652570395d9150.html#abe9942733206375cdf652570395d9150">mNumVars</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monomial-collection_8hpp_source.html#l00164">164</a> of file <a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>.</p>
+<div class="textblock"><p>Legacy <span class="tt"><a class="el" href="class_ints_set.html">IntsSet</a></span> configuration that bundles hashing, equality, and a <span class="tt"><a class="el" href="class_module_monom_default_config_orig_ac16b354d5be5b1a20248a75c7c2cce83.html#ac16b354d5be5b1a20248a75c7c2cce83">display</a></span> helper into one functor object. </p>
+<p>Provides the older single-functor shape (<span class="tt">operator()(m)</span> for hash, <span class="tt">operator()(a, b)</span> for equality), with <span class="tt"><a class="el" href="class_module_monom_default_config_orig_a8fe94b3177b7b214c72b27fff2ae54af.html#a8fe94b3177b7b214c72b27fff2ae54af">keysEqual</a></span> doing a length-prefixed elementwise check that ignores the slot reserved for <span class="tt">value</span>. Superseded by <span class="tt"><a class="el" href="class_module_monom_default_config.html" title="Current IntsSet configuration: exposes Hash and Eq as discrete member functors so the unordered_set c...">ModuleMonomDefaultConfig</a></span>, which moved <span class="tt">Hash</span> and <span class="tt">Eq</span> into discrete member functors. </p>
+
+<p class="definition">Definition at line <a class="el" href="monomial-collection_8hpp_source.html#l00194">194</a> of file <a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="monomial-collection_8hpp_source.html">monomial-collection.hpp</a></li>
 </ul>

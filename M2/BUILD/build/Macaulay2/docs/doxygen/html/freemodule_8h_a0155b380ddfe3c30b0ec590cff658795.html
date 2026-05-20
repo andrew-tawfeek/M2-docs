@@ -102,14 +102,14 @@ $(function(){initNavTree('freemodule_8h_a0155b380ddfe3c30b0ec590cff658795.html',
         </tr>
       </table>
 </div><div class="memdoc">
-<p><a class="el" href="class_free_module.html">FreeModule</a> interface routines</p>
-<p>A <a class="el" href="class_free_module.html">FreeModule</a> in the engine is always over a specific ring, and is graded using the degree monoid of the ring. Monomials in a free module are ordered, either in a way determined by the ordering in the ring, or using an induced (Schreyer) monomial ordering (in the case when the ring is a polynomial ring of some sort)</p>
+<p><a class="el" href="class_free_module.html" title="Engine-side free module R^n over a Ring.">FreeModule</a> interface routines</p>
+<p>A <a class="el" href="class_free_module.html" title="Engine-side free module R^n over a Ring.">FreeModule</a> in the engine is always over a specific ring, and is graded using the degree monoid of the ring. Monomials in a free module are ordered, either in a way determined by the ordering in the ring, or using an induced (Schreyer) monomial ordering (in the case when the ring is a polynomial ring of some sort)</p>
 <p>General notes: these are immutable objects, at least once they are returned by the engine</p>
 <p>BUGS/TODO: the Schreyer orders produced by sum,tensor, symm,exterior, and submodule, ignore the current tie breaker values. Also: I might keep all freemodules for a ring unique. This is not currently done. </p>
 
 <p class="definition">Definition at line <a class="el" href="freemodule_8cpp_source.html#l00015">15</a> of file <a class="el" href="freemodule_8cpp_source.html">freemodule.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   15</span>{ <span class="keywordflow">return</span> F-&gt;<a class="code hl_function" href="class_free_module_a4d2867218464947a9455e8533f6f8e51.html#a4d2867218464947a9455e8533f6f8e51">get_ring</a>(); }</div>
-<div class="ttc" id="aclass_free_module_a4d2867218464947a9455e8533f6f8e51_html_a4d2867218464947a9455e8533f6f8e51"><div class="ttname"><a href="class_free_module_a4d2867218464947a9455e8533f6f8e51.html#a4d2867218464947a9455e8533f6f8e51">FreeModule::get_ring</a></div><div class="ttdeci">const Ring * get_ring() const</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00087">freemod.hpp:87</a></div></div>
+<div class="ttc" id="aclass_free_module_a4d2867218464947a9455e8533f6f8e51_html_a4d2867218464947a9455e8533f6f8e51"><div class="ttname"><a href="class_free_module_a4d2867218464947a9455e8533f6f8e51.html#a4d2867218464947a9455e8533f6f8e51">FreeModule::get_ring</a></div><div class="ttdeci">const Ring * get_ring() const</div><div class="ttdef"><b>Definition</b> <a href="freemod_8hpp_source.html#l00098">freemod.hpp:98</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="class_free_module_a4d2867218464947a9455e8533f6f8e51.html#a4d2867218464947a9455e8533f6f8e51">FreeModule::get_ring()</a>.</p>
 

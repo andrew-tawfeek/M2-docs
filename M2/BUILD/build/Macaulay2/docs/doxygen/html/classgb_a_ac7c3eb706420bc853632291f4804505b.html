@@ -113,17 +113,17 @@ $(function(){initNavTree('classgb_a_ac7c3eb706420bc853632291f4804505b.html','','
 
 <p>Implements <a class="el" href="class_g_b_computation_ad3084a984a768ea6fc7b097b6877656e.html#ad3084a984a768ea6fc7b097b6877656e">GBComputation</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="gb-default_8cpp_source.html#l02722">2722</a> of file <a class="el" href="gb-default_8cpp_source.html">gb-default.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 2723</span>{</div>
-<div class="line"><span class="lineno"> 2724</span>  <span class="comment">// The (non-minimal) syzygy matrix</span></div>
-<div class="line"><span class="lineno"> 2725</span>  MatrixConstructor mat(<a class="code hl_variable" href="classgb_a_a9d233579fcad54c428ec2d9c8646e53d.html#a9d233579fcad54c428ec2d9c8646e53d">_Fsyz</a>, 0);</div>
-<div class="line"><span class="lineno"> 2726</span>  <span class="keywordflow">for</span> (<a class="code hl_define" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR</a>(gbvector *)::iterator i = _syz.begin(); i != _syz.end(); i++)</div>
-<div class="line"><span class="lineno"> 2727</span>    <span class="keywordflow">if</span> (*i)</div>
-<div class="line"><span class="lineno"> 2728</span>      {</div>
-<div class="line"><span class="lineno"> 2729</span>        mat.append(<a class="code hl_variable" href="classgb_a_a2aab2584b63f6fab46c5d0d1c13f3803.html#a2aab2584b63f6fab46c5d0d1c13f3803">originalR</a>-&gt;translate_gbvector_to_vec(<a class="code hl_variable" href="classgb_a_a9d233579fcad54c428ec2d9c8646e53d.html#a9d233579fcad54c428ec2d9c8646e53d">_Fsyz</a>, *i));</div>
-<div class="line"><span class="lineno"> 2730</span>      }</div>
-<div class="line"><span class="lineno"> 2731</span>  <span class="keywordflow">return</span> mat.to_matrix();</div>
-<div class="line"><span class="lineno"> 2732</span>}</div>
+<p class="definition">Definition at line <a class="el" href="gb-default_8cpp_source.html#l02734">2734</a> of file <a class="el" href="gb-default_8cpp_source.html">gb-default.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 2735</span>{</div>
+<div class="line"><span class="lineno"> 2736</span>  <span class="comment">// The (non-minimal) syzygy matrix</span></div>
+<div class="line"><span class="lineno"> 2737</span>  MatrixConstructor mat(<a class="code hl_variable" href="classgb_a_a9d233579fcad54c428ec2d9c8646e53d.html#a9d233579fcad54c428ec2d9c8646e53d">_Fsyz</a>, 0);</div>
+<div class="line"><span class="lineno"> 2738</span>  <span class="keywordflow">for</span> (<a class="code hl_define" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR</a>(gbvector *)::iterator i = _syz.begin(); i != _syz.end(); i++)</div>
+<div class="line"><span class="lineno"> 2739</span>    <span class="keywordflow">if</span> (*i)</div>
+<div class="line"><span class="lineno"> 2740</span>      {</div>
+<div class="line"><span class="lineno"> 2741</span>        mat.append(<a class="code hl_variable" href="classgb_a_a2aab2584b63f6fab46c5d0d1c13f3803.html#a2aab2584b63f6fab46c5d0d1c13f3803">originalR</a>-&gt;translate_gbvector_to_vec(<a class="code hl_variable" href="classgb_a_a9d233579fcad54c428ec2d9c8646e53d.html#a9d233579fcad54c428ec2d9c8646e53d">_Fsyz</a>, *i));</div>
+<div class="line"><span class="lineno"> 2742</span>      }</div>
+<div class="line"><span class="lineno"> 2743</span>  <span class="keywordflow">return</span> mat.to_matrix();</div>
+<div class="line"><span class="lineno"> 2744</span>}</div>
 <div class="ttc" id="aclassgb_a_a2aab2584b63f6fab46c5d0d1c13f3803_html_a2aab2584b63f6fab46c5d0d1c13f3803"><div class="ttname"><a href="classgb_a_a2aab2584b63f6fab46c5d0d1c13f3803.html#a2aab2584b63f6fab46c5d0d1c13f3803">gbA::originalR</a></div><div class="ttdeci">const PolynomialRing * originalR</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8hpp_source.html#l00160">gb-default.hpp:160</a></div></div>
 <div class="ttc" id="aclassgb_a_a9d233579fcad54c428ec2d9c8646e53d_html_a9d233579fcad54c428ec2d9c8646e53d"><div class="ttname"><a href="classgb_a_a9d233579fcad54c428ec2d9c8646e53d.html#a9d233579fcad54c428ec2d9c8646e53d">gbA::_Fsyz</a></div><div class="ttdeci">const FreeModule * _Fsyz</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8hpp_source.html#l00168">gb-default.hpp:168</a></div></div>
 <div class="ttc" id="anewdelete_8hpp_a5eb7456054852de52b377090e128822e_html_a5eb7456054852de52b377090e128822e"><div class="ttname"><a href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR</a></div><div class="ttdeci">#define VECTOR(T)</div><div class="ttdef"><b>Definition</b> <a href="newdelete_8hpp_source.html#l00076">newdelete.hpp:76</a></div></div>

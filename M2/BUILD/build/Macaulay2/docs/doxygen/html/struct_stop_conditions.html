@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_stop_conditions.html','','struct_stop_condition
 </div><!--header-->
 <div class="contents">
 
+<p>Bundle of optional early-termination knobs the front end can attach to a long-running <span class="tt"><a class="el" href="class_computation.html" title="Abstract base for long-running, resumable engine computations (GBComputation, ResolutionComputation,...">Computation</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="computation_8h_source.html">computation.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -109,8 +112,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a675859a275966c459d1b6ec207bdedc0" id="r_a675859a275966c459d1b6ec207bdedc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m2__arrayint.html">M2_arrayint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_stop_conditions_a675859a275966c459d1b6ec207bdedc0.html#a675859a275966c459d1b6ec207bdedc0">length_limit</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="computation_8h_source.html#l00073">73</a> of file <a class="el" href="computation_8h_source.html">computation.h</a>.</p>
+<div class="textblock"><p>Bundle of optional early-termination knobs the front end can attach to a long-running <span class="tt"><a class="el" href="class_computation.html" title="Abstract base for long-running, resumable engine computations (GBComputation, ResolutionComputation,...">Computation</a></span>. </p>
+<p>Each <span class="tt">*_limit</span> is consulted by the driver after every increment of the matching counter (basis element, syzygy, S-pair, codim, subring, step); <span class="tt"><a class="el" href="struct_stop_conditions_af0eb8948eacf5b0a485d4df972cf7a6a.html#af0eb8948eacf5b0a485d4df972cf7a6a">degree_limit</a></span> / <span class="tt"><a class="el" href="struct_stop_conditions_a675859a275966c459d1b6ec207bdedc0.html#a675859a275966c459d1b6ec207bdedc0">length_limit</a></span> cap the homological / degree reach for GB and resolution computations; <span class="tt"><a class="el" href="struct_stop_conditions_a4f98deea5d00fb093caf441434e7a92b.html#a4f98deea5d00fb093caf441434e7a92b">always_stop</a></span> short-circuits everything; <span class="tt"><a class="el" href="struct_stop_conditions_a72f79e5aedb5b8c85fb4286dda419994.html#a72f79e5aedb5b8c85fb4286dda419994">just_min_gens</a></span> asks the driver to halt as soon as a minimal generating set is available. <span class="tt"><a class="el" href="m2-types_8h_a7070aa7b07cda16d387ba6be4bd917fa.html#a7070aa7b07cda16d387ba6be4bd917fa">M2_bool</a></span> flags gate which limits are active. </p>
+
+<p class="definition">Definition at line <a class="el" href="computation_8h_source.html#l00085">85</a> of file <a class="el" href="computation_8h_source.html">computation.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/interface/<a class="el" href="computation_8h_source.html">computation.h</a></li>
 </ul>

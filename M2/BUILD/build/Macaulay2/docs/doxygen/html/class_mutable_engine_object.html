@@ -92,6 +92,9 @@ $(function(){initNavTree('class_mutable_engine_object.html','','class_mutable_en
 </div><!--header-->
 <div class="contents">
 
+<p>Base class for engine objects that may mutate, so their hash must be identity-based rather than content-based.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="hash_8hpp_source.html">hash.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MutableEngineObject:</div>
@@ -102,16 +105,16 @@ Inheritance diagram for MutableEngineObject:</div>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,135,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,135,24"/>
 <area href="class_s_l_p.html" alt="SLP&lt; ComplexField &gt;" shape="rect" coords="145,168,280,192"/>
-<area href="class_computation.html" alt="Computation" shape="rect" coords="145,224,280,248"/>
-<area href="class_homotopy.html" alt="Homotopy" shape="rect" coords="145,280,280,304"/>
-<area href="class_m2_homotopy.html" alt="M2Homotopy" shape="rect" coords="145,336,280,360"/>
-<area href="class_m2_point_array.html" alt="M2PointArray" shape="rect" coords="145,392,280,416"/>
-<area href="class_m2_s_l_evaluator.html" alt="M2SLEvaluator" shape="rect" coords="145,448,280,472"/>
-<area href="class_m2_s_l_program.html" alt="M2SLProgram" shape="rect" coords="145,504,280,528"/>
-<area href="class_monoid.html" alt="Monoid" shape="rect" coords="145,560,280,584"/>
-<area href="class_mutable_complex.html" alt="MutableComplex" shape="rect" coords="145,616,280,640"/>
-<area href="class_mutable_matrix.html" alt="MutableMatrix" shape="rect" coords="145,672,280,696"/>
-<area href="class_path_tracker.html" alt="PathTracker" shape="rect" coords="145,728,280,752"/>
+<area href="class_computation.html" title="Abstract base for long-running, resumable engine computations (GBComputation, ResolutionComputation,..." alt="Computation" shape="rect" coords="145,224,280,248"/>
+<area href="class_homotopy.html" title="Abstract base for the predictor-corrector path-tracker hierarchy." alt="Homotopy" shape="rect" coords="145,280,280,304"/>
+<area href="class_m2_homotopy.html" title="MutableEngineObject wrapper that owns a Homotopy via unique_ptr." alt="M2Homotopy" shape="rect" coords="145,336,280,360"/>
+<area href="class_m2_point_array.html" title="MutableEngineObject wrapper that owns a PointArray via unique_ptr." alt="M2PointArray" shape="rect" coords="145,392,280,416"/>
+<area href="class_m2_s_l_evaluator.html" title="MutableEngineObject wrapper holding a raw SLEvaluator*." alt="M2SLEvaluator" shape="rect" coords="145,448,280,472"/>
+<area href="class_m2_s_l_program.html" title="MutableEngineObject wrapper that owns an SLProgram via unique_ptr." alt="M2SLProgram" shape="rect" coords="145,504,280,528"/>
+<area href="class_monoid.html" title="Engine-side commutative monomial monoid: variable names, ordering, multidegree machinery,..." alt="Monoid" shape="rect" coords="145,560,280,584"/>
+<area href="class_mutable_complex.html" title="Sequence of MutableMatrix differentials representing an in-progress chain complex,..." alt="MutableComplex" shape="rect" coords="145,616,280,640"/>
+<area href="class_mutable_matrix.html" title="Abstract base class for mutable matrices over an arbitrary engine Ring, the in-place counterpart of t..." alt="MutableMatrix" shape="rect" coords="145,672,280,696"/>
+<area href="class_path_tracker.html" title="Numerical homotopy-continuation path tracker for systems of polynomial equations." alt="PathTracker" shape="rect" coords="145,728,280,752"/>
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="145,784,280,808"/>
 <area href="class_s_l_p.html" alt="SLP&lt; Field &gt;" shape="rect" coords="145,840,280,864"/>
 <area href="classhilb__comp.html" title="Computation of Hilbert functions." alt="hilb_comp" shape="rect" coords="145,896,280,920"/>
@@ -148,8 +151,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="hash_8hpp_source.html#l00068">68</a> of file <a class="el" href="hash_8hpp_source.html">hash.hpp</a>.</p>
+<div class="textblock"><p>Base class for engine objects that may mutate, so their hash must be identity-based rather than content-based. </p>
+<p>Pulls a fresh integer from the static counter <span class="tt"><a class="el" href="class_mutable_engine_object_ab065530f5d879cbf4c5aa8978a2ad369.html#ab065530f5d879cbf4c5aa8978a2ad369">mNextMutableHashValue</a></span> at construction and keeps it for the object's whole lifetime, so even after mutation <span class="tt"><a class="el" href="class_mutable_engine_object_ac1b947c41e24e71d14a66a9c4db5cf83.html#ac1b947c41e24e71d14a66a9c4db5cf83">hash()</a></span> still returns the same value. Inherits from <span class="tt"><a class="el" href="classour__gc__cleanup.html">our_gc_cleanup</a></span> so the GC can run a destructor when the object becomes unreachable (mutable objects often need to free non-GC resources). </p>
+
+<p class="definition">Definition at line <a class="el" href="hash_8hpp_source.html#l00091">91</a> of file <a class="el" href="hash_8hpp_source.html">hash.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="hash_8hpp_source.html">hash.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="engine_8cpp_source.html">engine.cpp</a></li>

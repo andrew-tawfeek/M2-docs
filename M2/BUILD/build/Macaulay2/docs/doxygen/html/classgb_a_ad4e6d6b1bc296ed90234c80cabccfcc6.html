@@ -111,62 +111,62 @@ $(function(){initNavTree('classgb_a_ad4e6d6b1bc296ed90234c80cabccfcc6.html','','
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gb-default_8cpp_source.html#l01040">1040</a> of file <a class="el" href="gb-default_8cpp_source.html">gb-default.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1043</span>{</div>
-<div class="line"><span class="lineno"> 1044</span>  <a class="code hl_struct" href="structgb_a_1_1spair.html">spair</a> *<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list;</div>
-<div class="line"><span class="lineno"> 1045</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>)</div>
-<div class="line"><span class="lineno"> 1046</span>    {</div>
-<div class="line"><span class="lineno"> 1047</span>      <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
-<div class="line"><span class="lineno"> 1048</span>    }</div>
-<div class="line"><span class="lineno"> 1049</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1050</span>    {</div>
-<div class="line"><span class="lineno"> 1051</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_deferred_list.next != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno"> 1052</span>        {</div>
-<div class="line"><span class="lineno"> 1053</span>          <span class="keywordflow">if</span> (<a class="code hl_variable" href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a> &gt;= 4)</div>
-<div class="line"><span class="lineno"> 1054</span>            {</div>
-<div class="line"><span class="lineno"> 1055</span>              <a class="code hl_function" href="text-io_8cpp_a50bad2957f4c4b58ef08be4006017467.html#a50bad2957f4c4b58ef08be4006017467">emit_line</a>(<span class="stringliteral">&quot;considering deferred pairs: &quot;</span>);</div>
-<div class="line"><span class="lineno"> 1056</span>            }</div>
-<div class="line"><span class="lineno"> 1057</span>          <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_deferred_list.next;</div>
-<div class="line"><span class="lineno"> 1058</span>          <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_deferred_list.next = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno"> 1059</span>          <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_last_deferred = &amp;<a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_deferred_list;</div>
-<div class="line"><span class="lineno"> 1060</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list;</div>
-<div class="line"><span class="lineno"> 1061</span>          <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
-<div class="line"><span class="lineno"> 1062</span>        }</div>
-<div class="line"><span class="lineno"> 1063</span>      <span class="keywordflow">else</span></div>
+<p class="definition">Definition at line <a class="el" href="gb-default_8cpp_source.html#l01052">1052</a> of file <a class="el" href="gb-default_8cpp_source.html">gb-default.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1055</span>{</div>
+<div class="line"><span class="lineno"> 1056</span>  <a class="code hl_struct" href="structgb_a_1_1spair.html">spair</a> *<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list;</div>
+<div class="line"><span class="lineno"> 1057</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>)</div>
+<div class="line"><span class="lineno"> 1058</span>    {</div>
+<div class="line"><span class="lineno"> 1059</span>      <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
+<div class="line"><span class="lineno"> 1060</span>    }</div>
+<div class="line"><span class="lineno"> 1061</span>  <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1062</span>    {</div>
+<div class="line"><span class="lineno"> 1063</span>      <span class="keywordflow">if</span> (<a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_deferred_list.next != <span class="keyword">nullptr</span>)</div>
 <div class="line"><span class="lineno"> 1064</span>        {</div>
-<div class="line"><span class="lineno"> 1065</span>          <span class="comment">// Now do the same for generators</span></div>
-<div class="line"><span class="lineno"> 1066</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list;</div>
-<div class="line"><span class="lineno"> 1067</span>          <span class="keywordflow">if</span> (<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>)</div>
-<div class="line"><span class="lineno"> 1068</span>            {</div>
-<div class="line"><span class="lineno"> 1069</span>              <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
-<div class="line"><span class="lineno"> 1070</span>            }</div>
-<div class="line"><span class="lineno"> 1071</span>          <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1072</span>            {</div>
-<div class="line"><span class="lineno"> 1073</span>              <span class="keywordflow">if</span> (<a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_deferred_list.next != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno"> 1074</span>                {</div>
-<div class="line"><span class="lineno"> 1075</span>                  <span class="keywordflow">if</span> (<a class="code hl_variable" href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a> &gt;= 4)</div>
-<div class="line"><span class="lineno"> 1076</span>                    {</div>
-<div class="line"><span class="lineno"> 1077</span>                      <a class="code hl_function" href="text-io_8cpp_a50bad2957f4c4b58ef08be4006017467.html#a50bad2957f4c4b58ef08be4006017467">emit_line</a>(<span class="stringliteral">&quot;  deferred gen pairs: &quot;</span>);</div>
-<div class="line"><span class="lineno"> 1078</span>                    }</div>
-<div class="line"><span class="lineno"> 1079</span>                  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_deferred_list.next;</div>
-<div class="line"><span class="lineno"> 1080</span>                  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_deferred_list.next = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno"> 1081</span>                  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_last_deferred = &amp;<a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_deferred_list;</div>
-<div class="line"><span class="lineno"> 1082</span>                  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list;</div>
-<div class="line"><span class="lineno"> 1083</span>                  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
-<div class="line"><span class="lineno"> 1084</span>                }</div>
-<div class="line"><span class="lineno"> 1085</span>              <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1086</span>                <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno"> 1087</span>            }</div>
-<div class="line"><span class="lineno"> 1088</span>        }</div>
-<div class="line"><span class="lineno"> 1089</span>    }</div>
-<div class="line"><span class="lineno"> 1090</span> </div>
-<div class="line"><span class="lineno"> 1091</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno"> 1092</span>  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;nelems--;</div>
-<div class="line"><span class="lineno"> 1093</span>  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;n_in_degree--;</div>
-<div class="line"><span class="lineno"> 1094</span>  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;n_computed++;</div>
-<div class="line"><span class="lineno"> 1095</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;type == <a class="code hl_enumvalue" href="classgb_a_aedd89f6427d510198ec5b4bb752117df.html#aedd89f6427d510198ec5b4bb752117dfa6e11c02c5d28b4723c6555536795b8ca">SPAIR::SPAIR_GEN</a>) <a class="code hl_variable" href="classgb_a_a12a1e3cae8986e0a0c8626febb63d18f.html#a12a1e3cae8986e0a0c8626febb63d18f">n_gens_left</a>--;</div>
-<div class="line"><span class="lineno"> 1096</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
-<div class="line"><span class="lineno"> 1097</span>}</div>
+<div class="line"><span class="lineno"> 1065</span>          <span class="keywordflow">if</span> (<a class="code hl_variable" href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a> &gt;= 4)</div>
+<div class="line"><span class="lineno"> 1066</span>            {</div>
+<div class="line"><span class="lineno"> 1067</span>              <a class="code hl_function" href="text-io_8cpp_a50bad2957f4c4b58ef08be4006017467.html#a50bad2957f4c4b58ef08be4006017467">emit_line</a>(<span class="stringliteral">&quot;considering deferred pairs: &quot;</span>);</div>
+<div class="line"><span class="lineno"> 1068</span>            }</div>
+<div class="line"><span class="lineno"> 1069</span>          <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_deferred_list.next;</div>
+<div class="line"><span class="lineno"> 1070</span>          <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_deferred_list.next = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno"> 1071</span>          <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_last_deferred = &amp;<a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_deferred_list;</div>
+<div class="line"><span class="lineno"> 1072</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list;</div>
+<div class="line"><span class="lineno"> 1073</span>          <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;spair_list = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
+<div class="line"><span class="lineno"> 1074</span>        }</div>
+<div class="line"><span class="lineno"> 1075</span>      <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1076</span>        {</div>
+<div class="line"><span class="lineno"> 1077</span>          <span class="comment">// Now do the same for generators</span></div>
+<div class="line"><span class="lineno"> 1078</span>          <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list;</div>
+<div class="line"><span class="lineno"> 1079</span>          <span class="keywordflow">if</span> (<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>)</div>
+<div class="line"><span class="lineno"> 1080</span>            {</div>
+<div class="line"><span class="lineno"> 1081</span>              <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
+<div class="line"><span class="lineno"> 1082</span>            }</div>
+<div class="line"><span class="lineno"> 1083</span>          <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1084</span>            {</div>
+<div class="line"><span class="lineno"> 1085</span>              <span class="keywordflow">if</span> (<a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_deferred_list.next != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno"> 1086</span>                {</div>
+<div class="line"><span class="lineno"> 1087</span>                  <span class="keywordflow">if</span> (<a class="code hl_variable" href="m2-types_8cpp_aa0f82116567de78d2d8d5cee3a26eebc.html#aa0f82116567de78d2d8d5cee3a26eebc">M2_gbTrace</a> &gt;= 4)</div>
+<div class="line"><span class="lineno"> 1088</span>                    {</div>
+<div class="line"><span class="lineno"> 1089</span>                      <a class="code hl_function" href="text-io_8cpp_a50bad2957f4c4b58ef08be4006017467.html#a50bad2957f4c4b58ef08be4006017467">emit_line</a>(<span class="stringliteral">&quot;  deferred gen pairs: &quot;</span>);</div>
+<div class="line"><span class="lineno"> 1090</span>                    }</div>
+<div class="line"><span class="lineno"> 1091</span>                  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_deferred_list.next;</div>
+<div class="line"><span class="lineno"> 1092</span>                  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_deferred_list.next = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno"> 1093</span>                  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_last_deferred = &amp;<a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_deferred_list;</div>
+<div class="line"><span class="lineno"> 1094</span>                  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list;</div>
+<div class="line"><span class="lineno"> 1095</span>                  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;gen_list = <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next;</div>
+<div class="line"><span class="lineno"> 1096</span>                }</div>
+<div class="line"><span class="lineno"> 1097</span>              <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1098</span>                <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno"> 1099</span>            }</div>
+<div class="line"><span class="lineno"> 1100</span>        }</div>
+<div class="line"><span class="lineno"> 1101</span>    }</div>
+<div class="line"><span class="lineno"> 1102</span> </div>
+<div class="line"><span class="lineno"> 1103</span>  <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;next = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno"> 1104</span>  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;nelems--;</div>
+<div class="line"><span class="lineno"> 1105</span>  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;n_in_degree--;</div>
+<div class="line"><span class="lineno"> 1106</span>  <a class="code hl_variable" href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">S</a>-&gt;n_computed++;</div>
+<div class="line"><span class="lineno"> 1107</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>-&gt;type == <a class="code hl_enumvalue" href="classgb_a_aedd89f6427d510198ec5b4bb752117df.html#aedd89f6427d510198ec5b4bb752117dfa6e11c02c5d28b4723c6555536795b8ca">SPAIR::SPAIR_GEN</a>) <a class="code hl_variable" href="classgb_a_a12a1e3cae8986e0a0c8626febb63d18f.html#a12a1e3cae8986e0a0c8626febb63d18f">n_gens_left</a>--;</div>
+<div class="line"><span class="lineno"> 1108</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
+<div class="line"><span class="lineno"> 1109</span>}</div>
 <div class="ttc" id="aclassgb_a_a12a1e3cae8986e0a0c8626febb63d18f_html_a12a1e3cae8986e0a0c8626febb63d18f"><div class="ttname"><a href="classgb_a_a12a1e3cae8986e0a0c8626febb63d18f.html#a12a1e3cae8986e0a0c8626febb63d18f">gbA::n_gens_left</a></div><div class="ttdeci">int n_gens_left</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8hpp_source.html#l00234">gb-default.hpp:234</a></div></div>
 <div class="ttc" id="aclassgb_a_ac2f871b6502e2f160bf299906e3811d5_html_ac2f871b6502e2f160bf299906e3811d5"><div class="ttname"><a href="classgb_a_ac2f871b6502e2f160bf299906e3811d5.html#ac2f871b6502e2f160bf299906e3811d5">gbA::S</a></div><div class="ttdeci">SPairSet * S</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8hpp_source.html#l00190">gb-default.hpp:190</a></div></div>
 <div class="ttc" id="aclassgb_a_aedd89f6427d510198ec5b4bb752117df_html_aedd89f6427d510198ec5b4bb752117dfa6e11c02c5d28b4723c6555536795b8ca"><div class="ttname"><a href="classgb_a_aedd89f6427d510198ec5b4bb752117df.html#aedd89f6427d510198ec5b4bb752117dfa6e11c02c5d28b4723c6555536795b8ca">gbA::SPAIR_GEN</a></div><div class="ttdeci">@ SPAIR_GEN</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8hpp_source.html#l00096">gb-default.hpp:96</a></div></div>

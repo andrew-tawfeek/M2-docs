@@ -92,6 +92,9 @@ $(function(){initNavTree('class_g_b_sorter.html','','class_g_b_sorter-members');
 </div><!--header-->
 <div class="contents">
 
+<p>Comparator that orders indices into the current GB array (<span class="tt"><a class="el" href="f4-types_8hpp_a2e9f3698c99ce95a0e99361e755bce3c.html#a2e9f3698c99ce95a0e99361e755bce3c">gb_array</a></span>) by each <span class="tt"><a class="el" href="structgbelem.html">gbelem</a></span>'s leading monomial, in increasing order.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -120,8 +123,10 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a9bc7d687dfacb8aa524f83b98c58f7f1" id="r_a9bc7d687dfacb8aa524f83b98c58f7f1"><td class="memItemLeft" align="right" valign="top">static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_b_sorter_a9bc7d687dfacb8aa524f83b98c58f7f1.html#a9bc7d687dfacb8aa524f83b98c58f7f1">ncmps0</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="f4-types_8hpp_source.html#l00215">215</a> of file <a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>.</p>
+<div class="textblock"><p>Comparator that orders indices into the current GB array (<span class="tt"><a class="el" href="f4-types_8hpp_a2e9f3698c99ce95a0e99361e755bce3c.html#a2e9f3698c99ce95a0e99361e755bce3c">gb_array</a></span>) by each <span class="tt"><a class="el" href="structgbelem.html">gbelem</a></span>'s leading monomial, in increasing order. </p>
+<p><span class="tt">operator()</span> returns true when <span class="tt"><a class="el" href="class_g_b_sorter_a68f7f6c3a4cb24ad42e2811cc90301a9.html#a68f7f6c3a4cb24ad42e2811cc90301a9">gb</a>[a]</span>'s leading monomial is strictly less than <span class="tt"><a class="el" href="class_g_b_sorter_a68f7f6c3a4cb24ad42e2811cc90301a9.html#a68f7f6c3a4cb24ad42e2811cc90301a9">gb</a>[b]</span>'s under <span class="tt"><a class="el" href="class_monomial_info_a0d39f02d353521b5d8eafc1caf2d63e2.html#a0d39f02d353521b5d8eafc1caf2d63e2" title="compare:">MonomialInfo::compare</a></span>. Like <span class="tt"><a class="el" href="class_columns_sorter.html" title="Comparator that orders Macaulay-matrix column indices by the monomial each column represents,...">ColumnsSorter</a></span> it keeps <span class="tt"><a class="el" href="class_g_b_sorter_ac73cfe8e093af9de81aa3e229158c44e.html#ac73cfe8e093af9de81aa3e229158c44e">ncmps</a></span> / <span class="tt"><a class="el" href="class_g_b_sorter_a9bc7d687dfacb8aa524f83b98c58f7f1.html#a9bc7d687dfacb8aa524f83b98c58f7f1">ncmps0</a></span> profiling counters. </p>
+
+<p class="definition">Definition at line <a class="el" href="f4-types_8hpp_source.html#l00240">240</a> of file <a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/f4/<a class="el" href="f4-types_8hpp_source.html">f4-types.hpp</a></li>
 </ul>

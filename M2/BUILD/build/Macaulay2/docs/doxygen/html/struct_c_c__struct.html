@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_c_c__struct.html','','struct_c_c__struct-member
 </div><!--header-->
 <div class="contents">
 
+<p>Immutable view of a complex number as a pair of <span class="tt">mpfr_srcptr</span> real and imaginary parts.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gmp-util_8h_source.html">gmp-util.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -100,8 +103,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a8a57a1602b32a19d12dea6cbd805fdf0" id="r_a8a57a1602b32a19d12dea6cbd805fdf0"><td class="memItemLeft" align="right" valign="top">mpfr_srcptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_c__struct_a8a57a1602b32a19d12dea6cbd805fdf0.html#a8a57a1602b32a19d12dea6cbd805fdf0">im</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="gmp-util_8h_source.html#l00083">83</a> of file <a class="el" href="gmp-util_8h_source.html">gmp-util.h</a>.</p>
+<div class="textblock"><p>Immutable view of a complex number as a pair of <span class="tt">mpfr_srcptr</span> real and imaginary parts. </p>
+<p>Read-only twin of <span class="tt"><a class="el" href="struct_c_cmutable__struct.html" title="Mutable view of a complex number as a pair of mpfr_ptr real and imaginary parts.">CCmutable_struct</a></span>: the <span class="tt">mpfr_srcptr</span> members forbid in-place mutation. Used by engine code that needs to pass an MPFR complex number by reference without allowing the callee to change it. </p>
+
+<p class="definition">Definition at line <a class="el" href="gmp-util_8h_source.html#l00092">92</a> of file <a class="el" href="gmp-util_8h_source.html">gmp-util.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/interface/<a class="el" href="gmp-util_8h_source.html">gmp-util.h</a></li>
 </ul>

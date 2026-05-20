@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_1_1_a_ring_z_zp_flint.html','','class_m2_1_1_
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt">aring</span>-style adapter for <span class="tt">Z/p</span> with <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span> a word-size prime, backed by FLINT's <span class="tt">nmod_*</span> routines.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring-zzp-flint_8hpp_source.html">aring-zzp-flint.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for M2::ARingZZpFlint:</div>
@@ -180,8 +183,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a19323c74a0d62c100b8fb94d60311411" id="r_a19323c74a0d62c100b8fb94d60311411"><td class="memItemLeft" align="right" valign="top">mp_limb_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_z_zp_flint_a19323c74a0d62c100b8fb94d60311411.html#a19323c74a0d62c100b8fb94d60311411">mGenerator</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring-zzp-flint_8hpp_source.html#l00065">65</a> of file <a class="el" href="aring-zzp-flint_8hpp_source.html">aring-zzp-flint.hpp</a>.</p>
+<div class="textblock"><p><span class="tt">aring</span>-style adapter for <span class="tt">Z/p</span> with <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span> a word-size prime, backed by FLINT's <span class="tt">nmod_*</span> routines. </p>
+<p>Elements are residues in <span class="tt">0..p-1</span>. The largest supported prime is the largest prime below <span class="tt">2^64</span>, so this covers basically every prime that fits in a single <span class="tt">mp_limb_t</span>. <span class="tt"><a class="el" href="class_m2_1_1_a_ring_z_zp_flint_a26b2fc009b59a00c4451ce85ca89c59e.html#a26b2fc009b59a00c4451ce85ca89c59e">ringID</a> =
+<a class="el" href="group__rings_ga7579b18152595d75b0bce712fbd605df.html#gga7579b18152595d75b0bce712fbd605dfa563acd29970350e52723553dc1f90a4e">ring_ZZpFlint</a></span>. Used wherever <span class="tt"><a class="el" href="class_coefficient_ring_z_zp.html" title="Discrete-log Z/p adapter that represents non-zero residues by their exponent index relative to a gene...">CoefficientRingZZp</a></span> would be too slow at the high end of the small-prime range, or when FLINT's batched <span class="tt">nmod</span> primitives buy the inner loop. </p>
+
+<p class="definition">Definition at line <a class="el" href="aring-zzp-flint_8hpp_source.html#l00075">75</a> of file <a class="el" href="aring-zzp-flint_8hpp_source.html">aring-zzp-flint.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="aring-zzp-flint_8hpp_source.html">aring-zzp-flint.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="aring-zzp-flint_8cpp_source.html">aring-zzp-flint.cpp</a></li>

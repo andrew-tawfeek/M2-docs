@@ -92,6 +92,9 @@ $(function(){initNavTree('class_polynomial_heap.html','','class_polynomial_heap-
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract interface for accumulating a polynomial as a sum of <span class="tt">(coeff, left * poly * right)</span> contributions in the free algebra.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_n_c_reduction_8hpp_source.html">NCReduction.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PolynomialHeap:</div>
@@ -100,11 +103,11 @@ Inheritance diagram for PolynomialHeap:</div>
   <img src="class_polynomial_heap.png" usemap="#PolynomialHeap_map" alt=""/>
   <map id="PolynomialHeap_map" name="PolynomialHeap_map">
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="490,0,725,24"/>
-<area href="class_map_polynomial_heap.html" alt="MapPolynomialHeap" shape="rect" coords="0,112,235,136"/>
+<area href="class_map_polynomial_heap.html" title="PolynomialHeap backed by a std::map&lt;Monom, ring_elem, MonomEq&gt;, deduplicating on insert via the map&#39;s..." alt="MapPolynomialHeap" shape="rect" coords="0,112,235,136"/>
 <area href="class_naive_dedup_polynomial_heap.html" alt="NaiveDedupPolynomialHeap&lt; Queue &gt;" shape="rect" coords="245,112,480,136"/>
 <area href="class_naive_polynomial_heap.html" alt="NaivePolynomialHeap&lt; Queue &gt;" shape="rect" coords="490,112,725,136"/>
-<area href="class_priority_queue_polynomial_heap.html" alt="PriorityQueuePolynomialHeap" shape="rect" coords="735,112,970,136"/>
-<area href="class_trivial_polynomial_heap.html" alt="TrivialPolynomialHeap" shape="rect" coords="980,112,1215,136"/>
+<area href="class_priority_queue_polynomial_heap.html" title="PolynomialHeap backed by a std::priority_queue of (Monom, ring_elem) entries, with deduplication done..." alt="PriorityQueuePolynomialHeap" shape="rect" coords="735,112,970,136"/>
+<area href="class_trivial_polynomial_heap.html" title="Baseline PolynomialHeap implementation that simply accumulates the pending sum in a single Poly and w..." alt="TrivialPolynomialHeap" shape="rect" coords="980,112,1215,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -134,8 +137,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8hpp_source.html#l00045">45</a> of file <a class="el" href="_n_c_reduction_8hpp_source.html">NCReduction.hpp</a>.</p>
+<div class="textblock"><p>Abstract interface for accumulating a polynomial as a sum of <span class="tt">(coeff, left * poly * right)</span> contributions in the free algebra. </p>
+<p>The standard "geobucket"-shaped API used by <span class="tt"><a class="el" href="class_n_c_groebner.html" title="One-overlap-at-a-time Groebner basis driver for the free associative algebra (the &quot;Naive&quot; companion t...">NCGroebner</a></span> / <span class="tt"><a class="el" href="class_n_c_f4.html" title="Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduc...">NCF4</a></span> reduction loops: <span class="tt"><a class="el" href="class_polynomial_heap_af4c187f2289d9351aa0eae34ffb59ff2.html#af4c187f2289d9351aa0eae34ffb59ff2">addPolynomial</a></span> slots a new contribution in, <span class="tt"><a class="el" href="class_polynomial_heap_a83c60fa2685f2cebc01fd35d7ba4528a.html#a83c60fa2685f2cebc01fd35d7ba4528a">isZero</a></span> collapses the heap until either a non-zero lead term is available or the heap is genuinely empty, <span class="tt"><a class="el" href="class_polynomial_heap_a89b00f6fe26727dfe9a932d3113ea091.html#a89b00f6fe26727dfe9a932d3113ea091">viewLeadTerm</a></span> / <span class="tt"><a class="el" href="class_polynomial_heap_a1a78c3f79d20c92047c3490a97ab9535.html#a1a78c3f79d20c92047c3490a97ab9535">removeLeadTerm</a></span> walk the result, and <span class="tt"><a class="el" href="class_polynomial_heap_a9ce26f0d81792fc6109a1c207a161a2e.html#a9ce26f0d81792fc6109a1c207a161a2e">value()</a></span> materialises everything into a <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span>. Concrete subclasses (<span class="tt"><a class="el" href="class_trivial_polynomial_heap.html" title="Baseline PolynomialHeap implementation that simply accumulates the pending sum in a single Poly and w...">TrivialPolynomialHeap</a></span>, <span class="tt"><a class="el" href="class_map_polynomial_heap.html" title="PolynomialHeap backed by a std::map&lt;Monom, ring_elem, MonomEq&gt;, deduplicating on insert via the map&#39;s...">MapPolynomialHeap</a></span>, <span class="tt"><a class="el" href="class_priority_queue_polynomial_heap.html" title="PolynomialHeap backed by a std::priority_queue of (Monom, ring_elem) entries, with deduplication done...">PriorityQueuePolynomialHeap</a></span>, the geobucket-backed <span class="tt"><a class="el" href="class_naive_polynomial_heap.html">NaivePolynomialHeap</a>&lt;Queue&gt;</span>) live in <span class="tt"><a class="el" href="_n_c_reduction_8cpp.html">NCReduction.cpp</a></span> and make different storage / deduplication trade-offs. </p>
+
+<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8hpp_source.html#l00060">60</a> of file <a class="el" href="_n_c_reduction_8hpp_source.html">NCReduction.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_n_c_reduction_8hpp_source.html">NCReduction.hpp</a></li>
 </ul>

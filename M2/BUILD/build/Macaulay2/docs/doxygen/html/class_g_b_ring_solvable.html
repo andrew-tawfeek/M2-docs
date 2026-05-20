@@ -92,6 +92,9 @@ $(function(){initNavTree('class_g_b_ring_solvable.html','','class_g_b_ring_solva
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_g_b_ring.html" title="Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations.">GBRing</a></span> specialisation for solvable polynomial algebras (PBW-style non-commutative rings whose relations have the form <span class="tt">x_j * x_i = c_ij * x_i * x_j + lower-order terms</span>).  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GBRingSolvable:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for GBRingSolvable:</div>
  <div class="center">
   <img src="class_g_b_ring_solvable.png" usemap="#GBRingSolvable_map" alt=""/>
   <map id="GBRingSolvable_map" name="GBRingSolvable_map">
-<area href="class_g_b_ring.html" alt="GBRing" shape="rect" coords="0,56,103,80"/>
+<area href="class_g_b_ring.html" title="Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations." alt="GBRing" shape="rect" coords="0,56,103,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,103,24"/>
   </map>
 </div></div>
@@ -226,8 +229,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a38563d2598cab5a0c18d84850bf68ad2 inherit pro_attribs_class_g_b_ring" id="r_a38563d2598cab5a0c18d84850bf68ad2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="m2-mem_8h_afb0843d0fb27ea1b89117293f9a01605.html#afb0843d0fb27ea1b89117293f9a01605">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_b_ring_a38563d2598cab5a0c18d84850bf68ad2.html#a38563d2598cab5a0c18d84850bf68ad2">monom_size</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="gbring_8hpp_source.html#l00593">593</a> of file <a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_g_b_ring.html" title="Polynomial-ring view tuned for the inner loop of classical Buchberger Groebner-basis computations.">GBRing</a></span> specialisation for solvable polynomial algebras (PBW-style non-commutative rings whose relations have the form <span class="tt">x_j * x_i = c_ij * x_i * x_j + lower-order terms</span>). </p>
+<p><span class="tt"><a class="el" href="class_g_b_ring_solvable_a530ad8d9eb1777f18d6d4e8732ec1a00.html#a530ad8d9eb1777f18d6d4e8732ec1a00">mult_by_term1</a></span> consults the associated <span class="tt"><a class="el" href="class_solvable_algebra.html" title="PolyRing subclass for solvable polynomial algebras (PBW-type non-commutative rings where each pair of...">SolvableAlgebra</a></span> to expand the lower-order correction terms whenever a monomial multiplication crosses a non-commuting pair. </p>
+
+<p class="definition">Definition at line <a class="el" href="gbring_8hpp_source.html#l00654">654</a> of file <a class="el" href="gbring_8hpp_source.html">gbring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="gbring_8hpp_source.html">gbring.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="gbring_8cpp_source.html">gbring.cpp</a></li>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_d_mat_lin_alg_3_01_m2_1_1_a_ring_z_zp_flint_01_4
 </div><!--header-->
 <div class="contents">
 
+<p>Specialisation of <span class="tt"><a class="el" href="class_d_mat_lin_alg.html">DMatLinAlg</a></span> for <span class="tt">ARingZZpFlint</span> dense matrices, routing rank / determinant / kernel / solve / inverse calls to FLINT's <span class="tt">nmod_mat_*</span> routines.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dmat-lu-zzp-flint_8hpp_source.html">dmat-lu-zzp-flint.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -125,8 +128,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a23dd6a3496d57f9fef54b4432b297dd1" id="r_a23dd6a3496d57f9fef54b4432b297dd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_d_mat_l_uin_place.html">DMatLUinPlace</a>&lt; <a class="el" href="class_m2_1_1_a_ring_z_zp_flint.html">M2::ARingZZpFlint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_mat_lin_alg_a23dd6a3496d57f9fef54b4432b297dd1.html#a23dd6a3496d57f9fef54b4432b297dd1">mLUObject</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dmat-lu-zzp-flint_8hpp_source.html#l00044">44</a> of file <a class="el" href="dmat-lu-zzp-flint_8hpp_source.html">dmat-lu-zzp-flint.hpp</a>.</p>
+<div class="textblock"><p>Specialisation of <span class="tt"><a class="el" href="class_d_mat_lin_alg.html">DMatLinAlg</a></span> for <span class="tt">ARingZZpFlint</span> dense matrices, routing rank / determinant / kernel / solve / inverse calls to FLINT's <span class="tt">nmod_mat_*</span> routines. </p>
+<p><span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;ARingZZpFlint&gt;</span> already wraps an <span class="tt">nmod_mat_t</span>, so the linear-algebra layer just hands the underlying FLINT matrix to the right <span class="tt">nmod_mat_*</span> entry point and converts the result back. Gives word-prime <span class="tt">Z/p</span> matrices the same FLINT speed-up the FFPACK specialisation provides for primes that fit in a FFPACK word. </p>
+
+<p class="definition">Definition at line <a class="el" href="dmat-lu-zzp-flint_8hpp_source.html#l00056">56</a> of file <a class="el" href="dmat-lu-zzp-flint_8hpp_source.html">dmat-lu-zzp-flint.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="dmat-lu-zzp-flint_8hpp_source.html">dmat-lu-zzp-flint.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="dmat-lu_8hpp_source.html">dmat-lu.hpp</a></li>

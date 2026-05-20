@@ -92,6 +92,9 @@ $(function(){initNavTree('class_d_mat_lin_alg_3_01_m2_1_1_a_ring_z_zp_f_f_p_a_c_
 </div><!--header-->
 <div class="contents">
 
+<p>Specialisation of <span class="tt"><a class="el" href="class_d_mat_lin_alg.html">DMatLinAlg</a></span> for <span class="tt">ARingZZpFFPACK</span> dense matrices, delegating rank / determinant / kernel / solve / inverse to the FFPACK library's tuned <span class="tt">Z/p</span> routines.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dmat-lu-zzp-ffpack_8hpp_source.html">dmat-lu-zzp-ffpack.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -125,8 +128,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a23dd6a3496d57f9fef54b4432b297dd1" id="r_a23dd6a3496d57f9fef54b4432b297dd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_d_mat_l_uin_place.html">DMatLUinPlace</a>&lt; <a class="el" href="class_m2_1_1_a_ring_z_zp_f_f_p_a_c_k.html">M2::ARingZZpFFPACK</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_mat_lin_alg_a23dd6a3496d57f9fef54b4432b297dd1.html#a23dd6a3496d57f9fef54b4432b297dd1">mLUObject</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dmat-lu-zzp-ffpack_8hpp_source.html#l00057">57</a> of file <a class="el" href="dmat-lu-zzp-ffpack_8hpp_source.html">dmat-lu-zzp-ffpack.hpp</a>.</p>
+<div class="textblock"><p>Specialisation of <span class="tt"><a class="el" href="class_d_mat_lin_alg.html">DMatLinAlg</a></span> for <span class="tt">ARingZZpFFPACK</span> dense matrices, delegating rank / determinant / kernel / solve / inverse to the FFPACK library's tuned <span class="tt">Z/p</span> routines. </p>
+<p>FFPACK gives near-BLAS speed for dense linear algebra over <span class="tt">Z/p</span> by laying entries out as native floats. The specialisation forwards each query through the <span class="tt"><a class="el" href="namespaceffpack_interface.html">ffpackInterface</a></span> shims declared just above and returns the result as a fresh <span class="tt"><a class="el" href="class_d_mat.html">DMat</a>&lt;ARingZZpFFPACK&gt;</span>. The preferred backend for primes that fit comfortably in a single-precision float. </p>
+
+<p class="definition">Definition at line <a class="el" href="dmat-lu-zzp-ffpack_8hpp_source.html#l00069">69</a> of file <a class="el" href="dmat-lu-zzp-ffpack_8hpp_source.html">dmat-lu-zzp-ffpack.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="dmat-lu-zzp-ffpack_8hpp_source.html">dmat-lu-zzp-ffpack.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="dmat-lu_8hpp_source.html">dmat-lu.hpp</a></li>

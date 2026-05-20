@@ -92,6 +92,9 @@ $(function(){initNavTree('class_f4_res_computation.html','','class_f4_res_comput
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> subclass that drives the F4 resolution engine (<span class="tt"><a class="el" href="class_schreyer_frame.html" title="State container for the in-progress free resolution built by the F4 resolution engine.">SchreyerFrame</a></span> + <span class="tt"><a class="el" href="class_f4_res.html" title="F4-style engine that computes one (level, degree) slice of a free resolution into the host SchreyerFr...">F4Res</a></span>) from the engine-side API.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="res-f4-computation_8hpp_source.html">res-f4-computation.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for F4ResComputation:</div>
@@ -100,8 +103,8 @@ Inheritance diagram for F4ResComputation:</div>
   <img src="class_f4_res_computation.png" usemap="#F4ResComputation_map" alt=""/>
   <map id="F4ResComputation_map" name="F4ResComputation_map">
 <area href="class_resolution_computation.html" title="Base class for free resolution computation classes." alt="ResolutionComputation" shape="rect" coords="0,224,139,248"/>
-<area href="class_computation.html" alt="Computation" shape="rect" coords="0,168,139,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,139,136"/>
+<area href="class_computation.html" title="Abstract base for long-running, resumable engine computations (GBComputation, ResolutionComputation,..." alt="Computation" shape="rect" coords="0,168,139,192"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,139,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,139,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,139,24"/>
   </map>
@@ -182,8 +185,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a3e6f044f649095c4907660aa0c36b3a4 inherit pro_attribs_class_computation" id="r_a3e6f044f649095c4907660aa0c36b3a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_stop_conditions.html">StopConditions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_computation_a3e6f044f649095c4907660aa0c36b3a4.html#a3e6f044f649095c4907660aa0c36b3a4">stop_</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="res-f4-computation_8hpp_source.html#l00054">54</a> of file <a class="el" href="res-f4-computation_8hpp_source.html">res-f4-computation.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> subclass that drives the F4 resolution engine (<span class="tt"><a class="el" href="class_schreyer_frame.html" title="State container for the in-progress free resolution built by the F4 resolution engine.">SchreyerFrame</a></span> + <span class="tt"><a class="el" href="class_f4_res.html" title="F4-style engine that computes one (level, degree) slice of a free resolution into the host SchreyerFr...">F4Res</a></span>) from the engine-side API. </p>
+<p>Constructor is private; the free function <span class="tt"><a class="el" href="class_f4_res_computation_a9c3580d6511ef6ce8b3e1bffa07c7b57.html#a9c3580d6511ef6ce8b3e1bffa07c7b57">createF4Res</a></span> (declared friend) instantiates it from a GB-presented input matrix plus a <span class="tt">max_level</span> cap, thread count, and degree-parallel flag. Owns the underlying <span class="tt"><a class="el" href="class_res_poly_ring.html" title="The polynomial-ring view the F4 resolution engine reduces against: coefficient arithmetic plus the en...">ResPolyRing</a></span> and the <span class="tt"><a class="el" href="class_schreyer_frame.html" title="State container for the in-progress free resolution built by the F4 resolution engine.">SchreyerFrame</a></span> that holds the in-progress resolution. The standard <span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> driver loop walks the frame <span class="tt">(level, slanted_degree)</span> cell by cell, calling into <span class="tt"><a class="el" href="class_f4_res.html" title="F4-style engine that computes one (level, degree) slice of a free resolution into the host SchreyerFr...">F4Res</a></span> to build and reduce the Macaulay matrix at each. </p>
+
+<p class="definition">Definition at line <a class="el" href="res-f4-computation_8hpp_source.html#l00067">67</a> of file <a class="el" href="res-f4-computation_8hpp_source.html">res-f4-computation.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-f4-computation_8hpp_source.html">res-f4-computation.hpp</a></li>
 <li>Macaulay2/e/schreyer-resolution/<a class="el" href="res-f4-computation_8cpp_source.html">res-f4-computation.cpp</a></li>

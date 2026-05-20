@@ -91,6 +91,9 @@ $(function(){initNavTree('class_symm_matrix.html','','class_symm_matrix-members'
   <div class="headertitle"><div class="title">SymmMatrix Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Helper that builds the <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>-th symmetric power of a 1-by-<span class="tt">n</span> matrix.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -111,8 +114,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a22b86e1d398b02ee9bc5cd5c33adbc92" id="r_a22b86e1d398b02ee9bc5cd5c33adbc92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix_constructor.html">MatrixConstructor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_symm_matrix_a22b86e1d398b02ee9bc5cd5c33adbc92.html#a22b86e1d398b02ee9bc5cd5c33adbc92">result</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="matrix-symm_8cpp_source.html#l00039">39</a> of file <a class="el" href="matrix-symm_8cpp_source.html">matrix-symm.cpp</a>.</p>
+<div class="textblock"><p>Helper that builds the <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span>-th symmetric power of a 1-by-<span class="tt">n</span> matrix. </p>
+<p>Invoked through the static <span class="tt">symmetricPower(m, p)</span> entry point, which validates that the input has exactly one row and then runs the recursive multi-index walker. Each resulting column corresponds to a multiset of <span class="tt"><a class="el" href="godbolt_test_8cpp_a533391314665d6bf1b5575e9a9cd8552.html#a533391314665d6bf1b5575e9a9cd8552">p</a></span> columns of <span class="tt"><a class="el" href="class_symm_matrix_a47f9a5f00f8d57138585e883bfb20c18.html#a47f9a5f00f8d57138585e883bfb20c18">m</a></span> whose entries are multiplied together &mdash; the standard symmetric-power-of-a- matrix construction. Used to implement the engine-side <span class="tt"><a class="el" href="class_symm_matrix_a09dff20e6c2d0d3d0e34667a82fd4731.html#a09dff20e6c2d0d3d0e34667a82fd4731">symmetricPower</a></span> matrix operation. </p>
+
+<p class="definition">Definition at line <a class="el" href="matrix-symm_8cpp_source.html#l00051">51</a> of file <a class="el" href="matrix-symm_8cpp_source.html">matrix-symm.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="matrix-symm_8cpp_source.html">matrix-symm.cpp</a></li>
 </ul>

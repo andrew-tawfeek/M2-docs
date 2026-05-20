@@ -120,35 +120,35 @@ $(function(){initNavTree('class_reduced_g_b___z_z_af44320ef62dbd6c7260a3c113bc41
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reducedgb-_z_z_8cpp_source.html#l00102">102</a> of file <a class="el" href="reducedgb-_z_z_8cpp_source.html">reducedgb-ZZ.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  105</span>{</div>
-<div class="line"><span class="lineno">  106</span>  <span class="keywordtype">int</span> w = <a class="code hl_variable" href="class_reduced_g_b___z_z_a4b7ec256f9f20d4da4fb638ee19fac77.html#a4b7ec256f9f20d4da4fb638ee19fac77">T</a>-&gt;find_smallest_coeff_divisor(exp, comp);  <span class="comment">// gives smallest coeff</span></div>
-<div class="line"><span class="lineno">  107</span>  <span class="keywordtype">int</span> r = -1;</div>
-<div class="line"><span class="lineno">  108</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_reduced_g_b___z_z_a11e45024cbb3b78c52644b8a792a5c06.html#a11e45024cbb3b78c52644b8a792a5c06">ringtableZZ</a>) r = <a class="code hl_variable" href="class_reduced_g_b___z_z_a11e45024cbb3b78c52644b8a792a5c06.html#a11e45024cbb3b78c52644b8a792a5c06">ringtableZZ</a>-&gt;find_smallest_coeff_divisor(exp, 1);</div>
-<div class="line"><span class="lineno">  109</span> </div>
-<div class="line"><span class="lineno">  110</span>  <span class="keywordflow">if</span> (r &lt; 0)</div>
-<div class="line"><span class="lineno">  111</span>    {</div>
-<div class="line"><span class="lineno">  112</span>      <span class="keywordflow">if</span> (w &lt; 0) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2afa73a797a9287cf6e98799ca4c1e642b">DIVISOR_NONE</a>;</div>
-<div class="line"><span class="lineno">  113</span>      result_loc = w;</div>
-<div class="line"><span class="lineno">  114</span>      <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2ae4de9955255ca2d73016246eb4fc6067">DIVISOR_MODULE</a>;</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-<div class="line"><span class="lineno">  116</span>  <span class="comment">// r &gt;= 0</span></div>
-<div class="line"><span class="lineno">  117</span>  <span class="keywordflow">if</span> (w &lt; 0)</div>
-<div class="line"><span class="lineno">  118</span>    {</div>
-<div class="line"><span class="lineno">  119</span>      result_loc = r;</div>
-<div class="line"><span class="lineno">  120</span>      <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2a5405c5d33a36885c187a208338f8d6a0">DIVISOR_RING</a>;</div>
-<div class="line"><span class="lineno">  121</span>    }</div>
-<div class="line"><span class="lineno">  122</span>  <span class="comment">// r &gt;= 0, w &gt;= 0</span></div>
-<div class="line"><span class="lineno">  123</span>  mpz_srcptr rc = <a class="code hl_variable" href="class_reduced_g_b_a9a69675ed6fa35f9fc767151aec808de.html#a9a69675ed6fa35f9fc767151aec808de">originalR</a>-&gt;quotient_gbvector(r)-&gt;coeff.get_mpz();</div>
-<div class="line"><span class="lineno">  124</span>  mpz_srcptr wc = polys[w].f-&gt;coeff.get_mpz();</div>
-<div class="line"><span class="lineno">  125</span>  <span class="keywordflow">if</span> (mpz_cmpabs(rc, wc) &gt; 0)</div>
-<div class="line"><span class="lineno">  126</span>    {</div>
-<div class="line"><span class="lineno">  127</span>      result_loc = w;</div>
-<div class="line"><span class="lineno">  128</span>      <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2ae4de9955255ca2d73016246eb4fc6067">DIVISOR_MODULE</a>;</div>
-<div class="line"><span class="lineno">  129</span>    }</div>
-<div class="line"><span class="lineno">  130</span>  result_loc = r;</div>
-<div class="line"><span class="lineno">  131</span>  <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2a5405c5d33a36885c187a208338f8d6a0">DIVISOR_RING</a>;</div>
-<div class="line"><span class="lineno">  132</span>}</div>
+<p class="definition">Definition at line <a class="el" href="reducedgb-_z_z_8cpp_source.html#l00114">114</a> of file <a class="el" href="reducedgb-_z_z_8cpp_source.html">reducedgb-ZZ.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>{</div>
+<div class="line"><span class="lineno">  118</span>  <span class="keywordtype">int</span> w = <a class="code hl_variable" href="class_reduced_g_b___z_z_a4b7ec256f9f20d4da4fb638ee19fac77.html#a4b7ec256f9f20d4da4fb638ee19fac77">T</a>-&gt;find_smallest_coeff_divisor(exp, comp);  <span class="comment">// gives smallest coeff</span></div>
+<div class="line"><span class="lineno">  119</span>  <span class="keywordtype">int</span> r = -1;</div>
+<div class="line"><span class="lineno">  120</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_reduced_g_b___z_z_a11e45024cbb3b78c52644b8a792a5c06.html#a11e45024cbb3b78c52644b8a792a5c06">ringtableZZ</a>) r = <a class="code hl_variable" href="class_reduced_g_b___z_z_a11e45024cbb3b78c52644b8a792a5c06.html#a11e45024cbb3b78c52644b8a792a5c06">ringtableZZ</a>-&gt;find_smallest_coeff_divisor(exp, 1);</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>  <span class="keywordflow">if</span> (r &lt; 0)</div>
+<div class="line"><span class="lineno">  123</span>    {</div>
+<div class="line"><span class="lineno">  124</span>      <span class="keywordflow">if</span> (w &lt; 0) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2afa73a797a9287cf6e98799ca4c1e642b">DIVISOR_NONE</a>;</div>
+<div class="line"><span class="lineno">  125</span>      result_loc = w;</div>
+<div class="line"><span class="lineno">  126</span>      <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2ae4de9955255ca2d73016246eb4fc6067">DIVISOR_MODULE</a>;</div>
+<div class="line"><span class="lineno">  127</span>    }</div>
+<div class="line"><span class="lineno">  128</span>  <span class="comment">// r &gt;= 0</span></div>
+<div class="line"><span class="lineno">  129</span>  <span class="keywordflow">if</span> (w &lt; 0)</div>
+<div class="line"><span class="lineno">  130</span>    {</div>
+<div class="line"><span class="lineno">  131</span>      result_loc = r;</div>
+<div class="line"><span class="lineno">  132</span>      <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2a5405c5d33a36885c187a208338f8d6a0">DIVISOR_RING</a>;</div>
+<div class="line"><span class="lineno">  133</span>    }</div>
+<div class="line"><span class="lineno">  134</span>  <span class="comment">// r &gt;= 0, w &gt;= 0</span></div>
+<div class="line"><span class="lineno">  135</span>  mpz_srcptr rc = <a class="code hl_variable" href="class_reduced_g_b_a9a69675ed6fa35f9fc767151aec808de.html#a9a69675ed6fa35f9fc767151aec808de">originalR</a>-&gt;quotient_gbvector(r)-&gt;coeff.get_mpz();</div>
+<div class="line"><span class="lineno">  136</span>  mpz_srcptr wc = polys[w].f-&gt;coeff.get_mpz();</div>
+<div class="line"><span class="lineno">  137</span>  <span class="keywordflow">if</span> (mpz_cmpabs(rc, wc) &gt; 0)</div>
+<div class="line"><span class="lineno">  138</span>    {</div>
+<div class="line"><span class="lineno">  139</span>      result_loc = w;</div>
+<div class="line"><span class="lineno">  140</span>      <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2ae4de9955255ca2d73016246eb4fc6067">DIVISOR_MODULE</a>;</div>
+<div class="line"><span class="lineno">  141</span>    }</div>
+<div class="line"><span class="lineno">  142</span>  result_loc = r;</div>
+<div class="line"><span class="lineno">  143</span>  <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2a5405c5d33a36885c187a208338f8d6a0">DIVISOR_RING</a>;</div>
+<div class="line"><span class="lineno">  144</span>}</div>
 <div class="ttc" id="aclass_reduced_g_b___z_z_a11e45024cbb3b78c52644b8a792a5c06_html_a11e45024cbb3b78c52644b8a792a5c06"><div class="ttname"><a href="class_reduced_g_b___z_z_a11e45024cbb3b78c52644b8a792a5c06.html#a11e45024cbb3b78c52644b8a792a5c06">ReducedGB_ZZ::ringtableZZ</a></div><div class="ttdeci">const MonomialTableZZ * ringtableZZ</div><div class="ttdef"><b>Definition</b> <a href="reducedgb-_z_z_8hpp_source.html#l00023">reducedgb-ZZ.hpp:23</a></div></div>
 <div class="ttc" id="aclass_reduced_g_b___z_z_a4b7ec256f9f20d4da4fb638ee19fac77_html_a4b7ec256f9f20d4da4fb638ee19fac77"><div class="ttname"><a href="class_reduced_g_b___z_z_a4b7ec256f9f20d4da4fb638ee19fac77.html#a4b7ec256f9f20d4da4fb638ee19fac77">ReducedGB_ZZ::T</a></div><div class="ttdeci">MonomialTableZZ * T</div><div class="ttdef"><b>Definition</b> <a href="reducedgb-_z_z_8hpp_source.html#l00022">reducedgb-ZZ.hpp:22</a></div></div>
 <div class="ttc" id="aclass_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2_html_aacdaeb9eb38a0703b0a19bd6e211c5b2a5405c5d33a36885c187a208338f8d6a0"><div class="ttname"><a href="class_reduced_g_b___z_z_aacdaeb9eb38a0703b0a19bd6e211c5b2.html#aacdaeb9eb38a0703b0a19bd6e211c5b2a5405c5d33a36885c187a208338f8d6a0">ReducedGB_ZZ::DIVISOR_RING</a></div><div class="ttdeci">@ DIVISOR_RING</div><div class="ttdef"><b>Definition</b> <a href="reducedgb-_z_z_8hpp_source.html#l00020">reducedgb-ZZ.hpp:20</a></div></div>

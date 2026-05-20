@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monom_hash_equal.html','','class_monom_hash_equa
 </div><!--header-->
 <div class="contents">
 
+<p>Equality functor on <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> (or <span class="tt"><a class="el" href="class_word.html" title="Non-owning view of a non-commutative word: [begin, end) of int variable indices.">Word</a></span>), the <span class="tt">KeyEqual</span> companion of <span class="tt"><a class="el" href="class_monom_hash.html" title="Hash functor on Monom (or Word) suitable for std::unordered_map / std::unordered_set.">MonomHash</a></span> for <span class="tt">std::unordered_map&lt;<a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a>, ...&gt;</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -109,8 +112,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a9b4a555a41d48e1a5ebef52239006ed8" id="r_a9b4a555a41d48e1a5ebef52239006ed8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_free_monoid.html">FreeMonoid</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monom_hash_equal_a9b4a555a41d48e1a5ebef52239006ed8.html#a9b4a555a41d48e1a5ebef52239006ed8">mMonoid</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00242">242</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
+<div class="textblock"><p>Equality functor on <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> (or <span class="tt"><a class="el" href="class_word.html" title="Non-owning view of a non-commutative word: [begin, end) of int variable indices.">Word</a></span>), the <span class="tt">KeyEqual</span> companion of <span class="tt"><a class="el" href="class_monom_hash.html" title="Hash functor on Monom (or Word) suitable for std::unordered_map / std::unordered_set.">MonomHash</a></span> for <span class="tt">std::unordered_map&lt;<a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a>, ...&gt;</span>. </p>
+<p>The <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> overload delegates to <span class="tt"><a class="el" href="class_free_monoid_a08103c830d5ab83087e1bb322bb08d4c.html#a08103c830d5ab83087e1bb322bb08d4c">FreeMonoid::isEqual</a></span> so the functor needs the monoid pointer (default-constructed instances hold <span class="tt">nullptr</span> &mdash; callers must rebind before use). The <span class="tt"><a class="el" href="class_word.html" title="Non-owning view of a non-commutative word: [begin, end) of int variable indices.">Word</a></span> overload is a <span class="tt">std::equal</span> over the two iterator ranges and does not consult the monoid. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_monoid_8hpp_source.html#l00293">293</a> of file <a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_monoid_8hpp_source.html">FreeMonoid.hpp</a></li>
 </ul>

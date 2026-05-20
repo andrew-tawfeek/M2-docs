@@ -140,7 +140,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class <a class="el" href="struct_t.html">T</a>&gt;<br />
-class MonomialMap&lt; T &gt;</div><p>A concurrent hash map from monomials to <a class="el" href="struct_t.html">T</a>. This map can resize itself if there are too few buckets compared to entries.</p>
+class MonomialMap&lt; T &gt;</div><p>A concurrent hash map from monomials to <a class="el" href="struct_t.html" title="Classic separate-chaining hash table used by the engine&#39;s low-level C code paths.">T</a>. This map can resize itself if there are too few buckets compared to entries.</p>
 <p>Queries are supported through a <a class="el" href="class_monomial_map_1_1_reader.html">MonomialMap::Reader</a> object. On resize all previous readers are subject to permanent spurious misses - querying clients need to grab a fresh reader to confirm misses. Grabbing a reader incurs synchronization so do not do it for every query.</p>
 <p>External synchronization with writers is required if spurious misses are not acceptable. There are no spurious hits. If misses are very rare then reads can be done with minimal overhead by following this pattern:</p>
 <p>1) grab a reader X 2) perform queries on X until done or there is a miss 3) replace X with a fresh reader 4) go to 2 if the miss is now a hit 5) grab a lock shared with all writers 6) perform the query again - a miss is now guaranteed to be accurate 7) release the lock after the processing of the miss is done and go to 2</p>

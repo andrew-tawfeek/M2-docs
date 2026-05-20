@@ -149,7 +149,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class <a class="el" href="struct_t.html">T</a>&gt;<br />
-class FixedSizeMonomialMap&lt; T &gt;</div><p>Concurrent hashtable mapping from monomials to <a class="el" href="struct_t.html">T</a> with a fixed number of buckets. Lookups are lockless while insertions grab a lock.</p>
+class FixedSizeMonomialMap&lt; T &gt;</div><p>Concurrent hashtable mapping from monomials to <a class="el" href="struct_t.html" title="Classic separate-chaining hash table used by the engine&#39;s low-level C code paths.">T</a> with a fixed number of buckets. Lookups are lockless while insertions grab a lock.</p>
 <p>There is no limitation on the number of entries that can be inserted, but performance will suffer if the ratio of elements to buckets gets high.</p>
 <p>You can insert new values but you cannot change the value that an already-inserted value maps to. It is possible to clear the table but this operation is not safe for concurrency. </p>
 

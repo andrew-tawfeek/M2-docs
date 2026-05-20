@@ -112,22 +112,22 @@ $(function(){initNavTree('res-tasking-example_8cpp_a06121d20ab039fd82a9a4685b74b
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="res-tasking-example_8cpp_source.html#l00066">66</a> of file <a class="el" href="res-tasking-example_8cpp_source.html">res-tasking-example.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
-<div class="line"><span class="lineno">   68</span>  <span class="keywordflow">return</span> std::make_shared&lt;Node&gt;(<a class="code hl_variable" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a>,</div>
-<div class="line"><span class="lineno">   69</span>                                [lev, sldeg](<span class="keyword">const</span> tbb::flow::continue_msg &amp;msg)</div>
-<div class="line"><span class="lineno">   70</span>                                {</div>
-<div class="line"><span class="lineno">   71</span>                  <span class="keywordtype">int</span> sleepTime = <a class="code hl_function" href="res-tasking-example_8cpp_a09dc72342eb15fc42d237547ad7ef057.html#a09dc72342eb15fc42d237547ad7ef057">uni</a>(<a class="code hl_function" href="res-tasking-example_8cpp_adf7de668fd10266afe331f579a8178ee.html#adf7de668fd10266afe331f579a8178ee">rng</a>);</div>
-<div class="line"><span class="lineno">   72</span>                                  std::this_thread::sleep_for(std::chrono::milliseconds(sleepTime));;</div>
-<div class="line"><span class="lineno">   73</span>                  std::lock_guard&lt;std::mutex&gt; guard(<a class="code hl_variable" href="res-tasking-example_8cpp_a0a0faabdb84971a0a12bec397e68c35c.html#a0a0faabdb84971a0a12bec397e68c35c">myMutex</a>);</div>
-<div class="line"><span class="lineno">   74</span>                                  std::cout &lt;&lt; <span class="stringliteral">&quot;computed lev=&quot;</span> &lt;&lt; lev &lt;&lt; <span class="stringliteral">&quot; sldeg=&quot;</span></div>
-<div class="line"><span class="lineno">   75</span>                                            &lt;&lt; sldeg &lt;&lt; <span class="stringliteral">&quot; sum=&quot;</span> &lt;&lt; lev + sldeg</div>
-<div class="line"><span class="lineno">   76</span>                        &lt;&lt; <span class="stringliteral">&quot; sleep time=&quot;</span> &lt;&lt; sleepTime &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   77</span>                                  <span class="keywordflow">return</span> msg;</div>
-<div class="line"><span class="lineno">   78</span>                                });</div>
-<div class="line"><span class="lineno">   79</span>}</div>
+<p class="definition">Definition at line <a class="el" href="res-tasking-example_8cpp_source.html#l00077">77</a> of file <a class="el" href="res-tasking-example_8cpp_source.html">res-tasking-example.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>  <span class="keywordflow">return</span> std::make_shared&lt;Node&gt;(<a class="code hl_variable" href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a>,</div>
+<div class="line"><span class="lineno">   80</span>                                [lev, sldeg](<span class="keyword">const</span> tbb::flow::continue_msg &amp;msg)</div>
+<div class="line"><span class="lineno">   81</span>                                {</div>
+<div class="line"><span class="lineno">   82</span>                  <span class="keywordtype">int</span> sleepTime = <a class="code hl_function" href="res-tasking-example_8cpp_a09dc72342eb15fc42d237547ad7ef057.html#a09dc72342eb15fc42d237547ad7ef057">uni</a>(<a class="code hl_function" href="res-tasking-example_8cpp_adf7de668fd10266afe331f579a8178ee.html#adf7de668fd10266afe331f579a8178ee">rng</a>);</div>
+<div class="line"><span class="lineno">   83</span>                                  std::this_thread::sleep_for(std::chrono::milliseconds(sleepTime));;</div>
+<div class="line"><span class="lineno">   84</span>                  std::lock_guard&lt;std::mutex&gt; guard(<a class="code hl_variable" href="res-tasking-example_8cpp_a0a0faabdb84971a0a12bec397e68c35c.html#a0a0faabdb84971a0a12bec397e68c35c">myMutex</a>);</div>
+<div class="line"><span class="lineno">   85</span>                                  std::cout &lt;&lt; <span class="stringliteral">&quot;computed lev=&quot;</span> &lt;&lt; lev &lt;&lt; <span class="stringliteral">&quot; sldeg=&quot;</span></div>
+<div class="line"><span class="lineno">   86</span>                                            &lt;&lt; sldeg &lt;&lt; <span class="stringliteral">&quot; sum=&quot;</span> &lt;&lt; lev + sldeg</div>
+<div class="line"><span class="lineno">   87</span>                        &lt;&lt; <span class="stringliteral">&quot; sleep time=&quot;</span> &lt;&lt; sleepTime &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   88</span>                                  <span class="keywordflow">return</span> msg;</div>
+<div class="line"><span class="lineno">   89</span>                                });</div>
+<div class="line"><span class="lineno">   90</span>}</div>
 <div class="ttc" id="ares-tasking-example_8cpp_a09dc72342eb15fc42d237547ad7ef057_html_a09dc72342eb15fc42d237547ad7ef057"><div class="ttname"><a href="res-tasking-example_8cpp_a09dc72342eb15fc42d237547ad7ef057.html#a09dc72342eb15fc42d237547ad7ef057">uni</a></div><div class="ttdeci">std::uniform_int_distribution&lt; int &gt; uni(250, 1000)</div></div>
-<div class="ttc" id="ares-tasking-example_8cpp_a0a0faabdb84971a0a12bec397e68c35c_html_a0a0faabdb84971a0a12bec397e68c35c"><div class="ttname"><a href="res-tasking-example_8cpp_a0a0faabdb84971a0a12bec397e68c35c.html#a0a0faabdb84971a0a12bec397e68c35c">myMutex</a></div><div class="ttdeci">std::mutex myMutex</div><div class="ttdef"><b>Definition</b> <a href="res-tasking-example_8cpp_source.html#l00059">res-tasking-example.cpp:59</a></div></div>
+<div class="ttc" id="ares-tasking-example_8cpp_a0a0faabdb84971a0a12bec397e68c35c_html_a0a0faabdb84971a0a12bec397e68c35c"><div class="ttname"><a href="res-tasking-example_8cpp_a0a0faabdb84971a0a12bec397e68c35c.html#a0a0faabdb84971a0a12bec397e68c35c">myMutex</a></div><div class="ttdeci">std::mutex myMutex</div><div class="ttdef"><b>Definition</b> <a href="res-tasking-example_8cpp_source.html#l00070">res-tasking-example.cpp:70</a></div></div>
 <div class="ttc" id="ares-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903_html_acc0eea0b8cd2df09e6f3c2bade95a903"><div class="ttname"><a href="res-tasking-example_8cpp_acc0eea0b8cd2df09e6f3c2bade95a903.html#acc0eea0b8cd2df09e6f3c2bade95a903">G</a></div><div class="ttdeci">tbb::flow::graph G</div><div class="ttdef"><b>Definition</b> <a href="res-tasking-example_8cpp_source.html#l00044">res-tasking-example.cpp:44</a></div></div>
 <div class="ttc" id="ares-tasking-example_8cpp_adf7de668fd10266afe331f579a8178ee_html_adf7de668fd10266afe331f579a8178ee"><div class="ttname"><a href="res-tasking-example_8cpp_adf7de668fd10266afe331f579a8178ee.html#adf7de668fd10266afe331f579a8178ee">rng</a></div><div class="ttdeci">std::mt19937 rng(rd())</div></div>
 </div><!-- fragment -->

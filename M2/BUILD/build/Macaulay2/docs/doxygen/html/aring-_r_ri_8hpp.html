@@ -92,7 +92,7 @@ $(function(){initNavTree('aring-_r_ri_8hpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_r_ri.html">M2::ARingRRi</a></span> &mdash; certified real intervals <span class="tt">[a, b]</span> with MPFR endpoints, MPFI arithmetic.  
+<p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_r_ri.html" title="aring-style adapter for arbitrary-precision real intervals, backed by MPFI.">M2::ARingRRi</a></span> &mdash; certified real intervals <span class="tt">[a, b]</span> with MPFR endpoints, MPFI arithmetic.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;mpfi.h&gt;</code><br />
@@ -108,13 +108,14 @@ $(function(){initNavTree('aring-_r_ri_8hpp.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:M2_3A_3AARingRRi" id="r_M2_3A_3AARingRRi"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_r_ri.html">M2::ARingRRi</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">aring</span>-style adapter for arbitrary-precision real intervals, backed by MPFI.  <a href="class_m2_1_1_a_ring_r_ri.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:M2" id="r_M2"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_m2.html">M2</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_r_ri.html">M2::ARingRRi</a></span> &mdash; certified real intervals <span class="tt">[a, b]</span> with MPFR endpoints, MPFI arithmetic. </p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_m2_1_1_a_ring_r_ri.html" title="aring-style adapter for arbitrary-precision real intervals, backed by MPFI.">M2::ARingRRi</a></span> &mdash; certified real intervals <span class="tt">[a, b]</span> with MPFR endpoints, MPFI arithmetic. </p>
 <p><span class="tt">ARingRRi</span> represents a real value as a closed interval <span class="tt">[a, b]</span> whose endpoints are MPFR floats and whose enclosure is guaranteed to contain the mathematical result. The class is a <span class="tt">SimpleARing&lt;ARingRRi&gt;</span> whose element type is <span class="tt">__mpfi_struct</span>; the only stored state on the class is <span class="tt">mPrecision</span>, the per-endpoint mantissa bit width. Arithmetic routes through MPFI (<span class="tt">mpfi_add</span>, <span class="tt">mpfi_sub</span>, <span class="tt">mpfi_mul</span>, <span class="tt">mpfi_div</span>, <span class="tt">mpfi_abs</span>, <span class="tt">mpfi_mul_si</span>, ...), so outward rounding is handled automatically: <span class="tt">[a,b] + [c,d] -&gt; [a+c, b+d]</span> widened to the next representable bounds, and analogous sign-cased formulas for multiplication and division.</p>
 <p>Distinct precisions form distinct rings. The class pulls in <span class="tt"><a class="el" href="aring-_r_r_r_8hpp.html" title="M2::ARingRRR — arbitrary-precision real numbers backed by MPFR.">aring-RRR.hpp</a></span> so its interop helpers can exchange data with MPFR-precision reals: <span class="tt">is_member</span>, <span class="tt">midpoint</span>, <span class="tt">diameter</span>, <span class="tt">left</span>, and <span class="tt">right</span> accept or produce <span class="tt">ARingRRR::ElementType</span> values. The M2-side factory <span class="tt">IM2_Ring_RRi(prec)</span> in <span class="tt"><a class="el" href="interface_2ring_8cpp.html">interface/ring.cpp</a></span> always returns <span class="tt">ConcreteRing&lt;ARingRRi&gt;(prec)</span> &mdash; there is no hardware-precision shortcut for the interval variant. The complex counterpart is <span class="tt">ARingCCi</span>.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="aring-_r_r_r_8hpp.html" title="M2::ARingRRR — arbitrary-precision real numbers backed by MPFR.">aring-RRR.hpp</a> </dd>

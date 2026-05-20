@@ -92,6 +92,9 @@ $(function(){initNavTree('class_b_i_basis_1_1_fast_allocator.html','','class_b_i
 </div><!--header-->
 <div class="contents">
 
+<p>Slab allocator handing out fixed-size blocks for one <a class="el" href="namespace_b_i_basis.html">BIBasis</a> type per instance.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="allocator_8hpp_source.html">allocator.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -113,8 +116,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:adf9baa3723c271eb4963bf2c3ae9bc65" id="r_adf9baa3723c271eb4963bf2c3ae9bc65"><td class="memItemLeft" align="right" valign="top">void **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_i_basis_1_1_fast_allocator_adf9baa3723c271eb4963bf2c3ae9bc65.html#adf9baa3723c271eb4963bf2c3ae9bc65">FreeBlock</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="allocator_8hpp_source.html#l00040">40</a> of file <a class="el" href="allocator_8hpp_source.html">allocator.hpp</a>.</p>
+<div class="textblock"><p>Slab allocator handing out fixed-size blocks for one <a class="el" href="namespace_b_i_basis.html">BIBasis</a> type per instance. </p>
+<p>Allocates <span class="tt"><a class="el" href="class_b_i_basis_1_1_fast_allocator_a0c8ddde9a1607694d37947eced4954ec.html#a0c8ddde9a1607694d37947eced4954ec">MemoryPageSize</a></span>-byte pages from the system heap and carves each page into <span class="tt"><a class="el" href="class_b_i_basis_1_1_fast_allocator_aff61cdc80b4912891d274b693358d176.html#aff61cdc80b4912891d274b693358d176">TSize</a></span>-byte cells (typically the size of one <span class="tt">VarsListNode</span> or <span class="tt"><a class="el" href="class_b_i_basis_1_1_monom_d_l.html" title="Monom specialisation that orders monomials by degree, then by lex on the variable list (DegLex).">MonomDL</a></span> etc.). Free cells are threaded into a <span class="tt"><a class="el" href="class_b_i_basis_1_1_fast_allocator_adf9baa3723c271eb4963bf2c3ae9bc65.html#adf9baa3723c271eb4963bf2c3ae9bc65">FreeBlock</a></span> LIFO so <span class="tt"><a class="el" href="class_b_i_basis_1_1_fast_allocator_a67c8e5eb0731cdfe5373971f6737ed03.html#a67c8e5eb0731cdfe5373971f6737ed03">Allocate()</a></span> / <span class="tt">Free(p)</span> are O(1) and avoid hitting <span class="tt">malloc</span> on the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> inner loop. <span class="tt"><a class="el" href="class_b_i_basis_1_1_fast_allocator_a6f693eca1a57a46541f47058ea501b81.html#a6f693eca1a57a46541f47058ea501b81">ExpandMemory()</a></span> grabs a fresh page when the free list is empty. </p>
+
+<p class="definition">Definition at line <a class="el" href="allocator_8hpp_source.html#l00052">52</a> of file <a class="el" href="allocator_8hpp_source.html">allocator.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/bibasis/<a class="el" href="allocator_8hpp_source.html">allocator.hpp</a></li>
 <li>Macaulay2/e/bibasis/<a class="el" href="allocator_8cpp_source.html">allocator.cpp</a></li>

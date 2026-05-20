@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_hash_and_eq_fixed_size.html','','class_
 </div><!--header-->
 <div class="contents">
 
+<p>Combined hash + equality functor for fixed-size monomials, plugged into the <span class="tt">std::unordered_set</span> inside <span class="tt"><a class="el" href="class_monomial_set_fixed_size.html">MonomialSetFixedSize</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -105,8 +108,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a33f65ab02e4839b495335487e6fc07b8" id="r_a33f65ab02e4839b495335487e6fc07b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_hash_and_eq_fixed_size_a33f65ab02e4839b495335487e6fc07b8.html#a33f65ab02e4839b495335487e6fc07b8">mMonomialSize</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00101">101</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
+<div class="textblock"><p>Combined hash + equality functor for fixed-size monomials, plugged into the <span class="tt">std::unordered_set</span> inside <span class="tt"><a class="el" href="class_monomial_set_fixed_size.html">MonomialSetFixedSize</a></span>. </p>
+<p>Equality is <span class="tt">std::equal</span> over <span class="tt"><a class="el" href="class_monomial_hash_and_eq_fixed_size_a33f65ab02e4839b495335487e6fc07b8.html#a33f65ab02e4839b495335487e6fc07b8">mMonomialSize</a></span> ints; the hash is a <span class="tt">TODO</span> stub that returns 0 (so the underlying hash set degenerates to a single bucket and falls back on the equality comparator). </p>
+
+<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00120">120</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a></li>
 </ul>

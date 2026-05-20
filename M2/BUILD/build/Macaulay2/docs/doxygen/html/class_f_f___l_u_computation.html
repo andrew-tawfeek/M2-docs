@@ -92,6 +92,9 @@ $(function(){initNavTree('class_f_f___l_u_computation.html','','class_f_f___l_u_
 </div><!--header-->
 <div class="contents">
 
+<p>LU decomposition over a domain using fraction-free Gaussian elimination.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="fractionfree_l_u_8hpp_source.html">fractionfreeLU.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -118,8 +121,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a19795363f26ee0c62fc6309df97eea12" id="r_a19795363f26ee0c62fc6309df97eea12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_f_f___l_u_computation_a19795363f26ee0c62fc6309df97eea12.html#a19795363f26ee0c62fc6309df97eea12">pivot</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="fractionfree_l_u_8hpp_source.html#l00037">37</a> of file <a class="el" href="fractionfree_l_u_8hpp_source.html">fractionfreeLU.hpp</a>.</p>
+<div class="textblock"><p>LU decomposition over a domain using fraction-free Gaussian elimination. </p>
+<p>The classical Bareiss-style algorithm: at each step, the new entry is <span class="tt">(<a class="el" href="class_f_f___l_u_computation_a19795363f26ee0c62fc6309df97eea12.html#a19795363f26ee0c62fc6309df97eea12">pivot</a> * a - factor * b) / <a class="el" href="class_f_f___l_u_computation_ac174cbd611fd3e4dd891e52e6d9d9012.html#ac174cbd611fd3e4dd891e52e6d9d9012">lastpivot</a></span>, where the division is exact because the ring is a domain. Tracks <span class="tt"><a class="el" href="class_f_f___l_u_computation_a77a34a616112102f7b19111554d3490a.html#a77a34a616112102f7b19111554d3490a">col_perm</a></span> for the column permutation and <span class="tt"><a class="el" href="class_f_f___l_u_computation_a0e8a35c803e107598a3a2318f4192292.html#a0e8a35c803e107598a3a2318f4192292">need_div</a>[i]</span> for which columns still need the trailing division. Used by the engine wherever an integer-coefficient LU is needed without introducing fractions. </p>
+
+<p class="definition">Definition at line <a class="el" href="fractionfree_l_u_8hpp_source.html#l00049">49</a> of file <a class="el" href="fractionfree_l_u_8hpp_source.html">fractionfreeLU.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="fractionfree_l_u_8hpp_source.html">fractionfreeLU.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="fractionfree_l_u_8cpp_source.html">fractionfreeLU.cpp</a></li>

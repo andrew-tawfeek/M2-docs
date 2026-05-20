@@ -92,6 +92,9 @@ $(function(){initNavTree('class_n_c_res_computation.html','','class_n_c_res_comp
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> subclass that builds a free resolution over a <span class="tt"><a class="el" href="class_free_algebra_quotient.html" title="Quotient of a FreeAlgebra by a Groebner basis up to a fixed degree bound.">FreeAlgebraQuotient</a></span> (non-commutative).  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="nc-res-computation_8hpp_source.html">nc-res-computation.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for NCResComputation:</div>
@@ -100,8 +103,8 @@ Inheritance diagram for NCResComputation:</div>
   <img src="class_n_c_res_computation.png" usemap="#NCResComputation_map" alt=""/>
   <map id="NCResComputation_map" name="NCResComputation_map">
 <area href="class_resolution_computation.html" title="Base class for free resolution computation classes." alt="ResolutionComputation" shape="rect" coords="0,224,139,248"/>
-<area href="class_computation.html" alt="Computation" shape="rect" coords="0,168,139,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,139,136"/>
+<area href="class_computation.html" title="Abstract base for long-running, resumable engine computations (GBComputation, ResolutionComputation,..." alt="Computation" shape="rect" coords="0,168,139,192"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,139,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,139,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,139,24"/>
   </map>
@@ -175,8 +178,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a3e6f044f649095c4907660aa0c36b3a4 inherit pro_attribs_class_computation" id="r_a3e6f044f649095c4907660aa0c36b3a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_stop_conditions.html">StopConditions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_computation_a3e6f044f649095c4907660aa0c36b3a4.html#a3e6f044f649095c4907660aa0c36b3a4">stop_</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="nc-res-computation_8hpp_source.html#l00055">55</a> of file <a class="el" href="nc-res-computation_8hpp_source.html">nc-res-computation.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> subclass that builds a free resolution over a <span class="tt"><a class="el" href="class_free_algebra_quotient.html" title="Quotient of a FreeAlgebra by a Groebner basis up to a fixed degree bound.">FreeAlgebraQuotient</a></span> (non-commutative). </p>
+<p>Constructor is private; the free function <span class="tt"><a class="el" href="class_n_c_res_computation_aa7f3fe8975d89da55a633e8072fdd7b1.html#aa7f3fe8975d89da55a633e8072fdd7b1">createNCRes</a></span> (declared friend) instantiates the computation from a GB-presented quotient matrix, a <span class="tt">max_level</span> cap on homological degree, and a strategy flag. The class then plugs into the engine's standard <span class="tt"><a class="el" href="class_resolution_computation.html" title="Base class for free resolution computation classes.">ResolutionComputation</a></span> driver loop (<span class="tt"><a class="el" href="class_n_c_res_computation_aa500dad1e29dd8bdf70a2fd49cf12331.html#aa500dad1e29dd8bdf70a2fd49cf12331">start_computation</a></span>, partial-progress accessors, etc.) so non-commutative resolutions look the same to front-end callers as the commutative ones. </p>
+
+<p class="definition">Definition at line <a class="el" href="nc-res-computation_8hpp_source.html#l00067">67</a> of file <a class="el" href="nc-res-computation_8hpp_source.html">nc-res-computation.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCResolutions/<a class="el" href="nc-res-computation_8hpp_source.html">nc-res-computation.hpp</a></li>
 <li>Macaulay2/e/NCResolutions/<a class="el" href="nc-res-computation_8cpp_source.html">nc-res-computation.cpp</a></li>

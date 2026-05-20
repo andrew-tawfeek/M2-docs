@@ -92,6 +92,9 @@ $(function(){initNavTree('class_basic_poly_list_stream_collector.html','','class
 </div><!--header-->
 <div class="contents">
 
+<p>Streaming consumer that builds a <span class="tt"><a class="el" href="_basic_poly_list_8hpp_a24fbc5f5eec7472cd3ee08f9f323741e.html#a24fbc5f5eec7472cd3ee08f9f323741e">BasicPolyList</a></span> from per-term callbacks, matching the mathicgb / mgb stream interface.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_basic_poly_list_8hpp_source.html">BasicPolyList.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -130,8 +133,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8996e5d9f972717d87836f46c33682de" id="r_a8996e5d9f972717d87836f46c33682de"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_basic_poly_list_stream_collector_a8996e5d9f972717d87836f46c33682de.html#a8996e5d9f972717d87836f46c33682de">mSizeEntryInMonomial</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_basic_poly_list_8hpp_source.html#l00058">58</a> of file <a class="el" href="_basic_poly_list_8hpp_source.html">BasicPolyList.hpp</a>.</p>
+<div class="textblock"><p>Streaming consumer that builds a <span class="tt"><a class="el" href="_basic_poly_list_8hpp_a24fbc5f5eec7472cd3ee08f9f323741e.html#a24fbc5f5eec7472cd3ee08f9f323741e">BasicPolyList</a></span> from per-term callbacks, matching the mathicgb / mgb stream interface. </p>
+<p>Receives <span class="tt"><a class="el" href="class_basic_poly_list_stream_collector_ad431a81a8076f2945b148b132531ba1a.html#ad431a81a8076f2945b148b132531ba1a">appendPolynomialBegin</a> / <a class="el" href="class_basic_poly_list_stream_collector_aeb0983b25516b4dcc149a29202b7984a.html#aeb0983b25516b4dcc149a29202b7984a">appendTermBegin</a> /
+<a class="el" href="class_basic_poly_list_stream_collector_a73b8c5248c74aacc6a35a2c4c39c14ad.html#a73b8c5248c74aacc6a35a2c4c39c14ad">appendExponent</a> / <a class="el" href="class_basic_poly_list_stream_collector_a175fc67386541e3d75deda1ae56000e9.html#a175fc67386541e3d75deda1ae56000e9">appendTermDone</a> / <a class="el" href="class_basic_poly_list_stream_collector_a6b0ff259b7c3d891af9693c172d76d90.html#a6b0ff259b7c3d891af9693c172d76d90">appendPolynomialDone</a></span> calls from a polynomial producer (typically the mathicgb stream parser) and assembles the result into <span class="tt"><a class="el" href="class_basic_poly_list_stream_collector_a15b6d66a77bd2622331b46b7ea2863b3.html#a15b6d66a77bd2622331b46b7ea2863b3">mValue</a></span>. Stores the declared modulus, variable count, and component count so the caller can ask the collector to echo them back even though the <span class="tt"><a class="el" href="class_basic_poly.html" title="Standalone, self-contained polynomial representation independent of any engine Ring — coefficients ar...">BasicPoly</a></span> representation itself does not use them. Used for portable polynomial I/O outside the typed <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> machinery. </p>
+
+<p class="definition">Definition at line <a class="el" href="_basic_poly_list_8hpp_source.html#l00071">71</a> of file <a class="el" href="_basic_poly_list_8hpp_source.html">BasicPolyList.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_basic_poly_list_8hpp_source.html">BasicPolyList.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="_basic_poly_list_8cpp_source.html">BasicPolyList.cpp</a></li>

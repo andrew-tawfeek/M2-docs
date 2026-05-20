@@ -130,56 +130,56 @@ $(function(){initNavTree('classgb_a_a312fb22f974205255c3399701718a273.html','','
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gb-default_8cpp_source.html#l01592">1592</a> of file <a class="el" href="gb-default_8cpp_source.html">gb-default.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1597</span>{</div>
-<div class="line"><span class="lineno"> 1598</span>  <span class="comment">// Get all of the term divisors.</span></div>
-<div class="line"><span class="lineno"> 1599</span>  <span class="comment">// Choose one with the smallest gap.</span></div>
-<div class="line"><span class="lineno"> 1600</span>  <span class="keywordtype">int</span> i, gap, newgap, egap;</div>
-<div class="line"><span class="lineno"> 1601</span>  <span class="keywordtype">int</span> n = 0;</div>
-<div class="line"><span class="lineno"> 1602</span> </div>
-<div class="line"><span class="lineno"> 1603</span>  (void) c;</div>
-<div class="line"><span class="lineno"> 1604</span>  <a class="code hl_define" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR</a>(MonomialTableZZ::mon_term *) divisors;</div>
-<div class="line"><span class="lineno"> 1605</span>  egap = degf - <a class="code hl_variable" href="classgb_a_a9a10ed7a4baae69dd294fea9284a2ea9.html#a9a10ed7a4baae69dd294fea9284a2ea9">weightInfo_</a>-&gt;exponents_weight(e, <a class="code hl_variable" href="overflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2.html#aa07f992d22249e2bef61db62f71671b2">x</a>);</div>
-<div class="line"><span class="lineno"> 1606</span> </div>
-<div class="line"><span class="lineno"> 1607</span>  <span class="comment">/* First search for ring divisors */</span></div>
-<div class="line"><span class="lineno"> 1608</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classgb_a_aed249da60f0553b3b2106ad4b615dcf9.html#aed249da60f0553b3b2106ad4b615dcf9">ringtableZZ</a>)</div>
-<div class="line"><span class="lineno"> 1609</span>    n += <a class="code hl_variable" href="classgb_a_aed249da60f0553b3b2106ad4b615dcf9.html#aed249da60f0553b3b2106ad4b615dcf9">ringtableZZ</a>-&gt;find_monomial_divisors(-1, e, 1, &amp;divisors);</div>
-<div class="line"><span class="lineno"> 1610</span> </div>
-<div class="line"><span class="lineno"> 1611</span>  <span class="comment">/* Next search for GB divisors */</span></div>
-<div class="line"><span class="lineno"> 1612</span>  n += <a class="code hl_variable" href="classgb_a_a64e0b4da999198f48169a1673abaf744.html#a64e0b4da999198f48169a1673abaf744">lookupZZ</a>-&gt;find_monomial_divisors(-1, e, <a class="code hl_variable" href="overflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2.html#aa07f992d22249e2bef61db62f71671b2">x</a>, &amp;divisors);</div>
-<div class="line"><span class="lineno"> 1613</span> </div>
-<div class="line"><span class="lineno"> 1614</span>  <span class="comment">/* Now find the minimal gap value */</span></div>
-<div class="line"><span class="lineno"> 1615</span>  <span class="keywordflow">if</span> (n == 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno"> 1616</span>  <span class="keywordtype">int</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = divisors[0]-&gt;_val;</div>
-<div class="line"><span class="lineno"> 1617</span>  <a class="code hl_struct" href="structgb_a_1_1gbelem.html">gbelem</a> *tg = <a class="code hl_function" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a>[<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>];</div>
-<div class="line"><span class="lineno"> 1618</span>  gap = tg-&gt;gap - egap;</div>
-<div class="line"><span class="lineno"> 1619</span>  <span class="keywordflow">if</span> (gap &lt;= 0)</div>
-<div class="line"><span class="lineno"> 1620</span>    gap = 0;</div>
-<div class="line"><span class="lineno"> 1621</span>  <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno"> 1622</span>    <span class="keywordflow">for</span> (i = 1; i &lt; n; i++)</div>
-<div class="line"><span class="lineno"> 1623</span>      {</div>
-<div class="line"><span class="lineno"> 1624</span>        <span class="keywordtype">int</span> new_val = divisors[i]-&gt;_val;</div>
-<div class="line"><span class="lineno"> 1625</span>        tg = <a class="code hl_function" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a>[new_val];</div>
-<div class="line"><span class="lineno"> 1626</span>        newgap = tg-&gt;gap - egap;</div>
-<div class="line"><span class="lineno"> 1627</span>        <span class="keywordflow">if</span> (newgap &lt;= 0)</div>
-<div class="line"><span class="lineno"> 1628</span>          {</div>
-<div class="line"><span class="lineno"> 1629</span>            gap = 0;</div>
-<div class="line"><span class="lineno"> 1630</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = new_val;</div>
-<div class="line"><span class="lineno"> 1631</span>            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno"> 1632</span>          }</div>
-<div class="line"><span class="lineno"> 1633</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newgap &lt; gap)</div>
-<div class="line"><span class="lineno"> 1634</span>          {</div>
-<div class="line"><span class="lineno"> 1635</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = new_val;</div>
-<div class="line"><span class="lineno"> 1636</span>            gap = newgap;</div>
-<div class="line"><span class="lineno"> 1637</span>          }</div>
-<div class="line"><span class="lineno"> 1638</span>      }</div>
-<div class="line"><span class="lineno"> 1639</span>  result_gap = gap;</div>
-<div class="line"><span class="lineno"> 1640</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
-<div class="line"><span class="lineno"> 1641</span>}</div>
+<p class="definition">Definition at line <a class="el" href="gb-default_8cpp_source.html#l01604">1604</a> of file <a class="el" href="gb-default_8cpp_source.html">gb-default.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1609</span>{</div>
+<div class="line"><span class="lineno"> 1610</span>  <span class="comment">// Get all of the term divisors.</span></div>
+<div class="line"><span class="lineno"> 1611</span>  <span class="comment">// Choose one with the smallest gap.</span></div>
+<div class="line"><span class="lineno"> 1612</span>  <span class="keywordtype">int</span> i, gap, newgap, egap;</div>
+<div class="line"><span class="lineno"> 1613</span>  <span class="keywordtype">int</span> n = 0;</div>
+<div class="line"><span class="lineno"> 1614</span> </div>
+<div class="line"><span class="lineno"> 1615</span>  (void) c;</div>
+<div class="line"><span class="lineno"> 1616</span>  <a class="code hl_define" href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR</a>(MonomialTableZZ::mon_term *) divisors;</div>
+<div class="line"><span class="lineno"> 1617</span>  egap = degf - <a class="code hl_variable" href="classgb_a_a9a10ed7a4baae69dd294fea9284a2ea9.html#a9a10ed7a4baae69dd294fea9284a2ea9">weightInfo_</a>-&gt;exponents_weight(e, <a class="code hl_variable" href="overflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2.html#aa07f992d22249e2bef61db62f71671b2">x</a>);</div>
+<div class="line"><span class="lineno"> 1618</span> </div>
+<div class="line"><span class="lineno"> 1619</span>  <span class="comment">/* First search for ring divisors */</span></div>
+<div class="line"><span class="lineno"> 1620</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classgb_a_aed249da60f0553b3b2106ad4b615dcf9.html#aed249da60f0553b3b2106ad4b615dcf9">ringtableZZ</a>)</div>
+<div class="line"><span class="lineno"> 1621</span>    n += <a class="code hl_variable" href="classgb_a_aed249da60f0553b3b2106ad4b615dcf9.html#aed249da60f0553b3b2106ad4b615dcf9">ringtableZZ</a>-&gt;find_monomial_divisors(-1, e, 1, &amp;divisors);</div>
+<div class="line"><span class="lineno"> 1622</span> </div>
+<div class="line"><span class="lineno"> 1623</span>  <span class="comment">/* Next search for GB divisors */</span></div>
+<div class="line"><span class="lineno"> 1624</span>  n += <a class="code hl_variable" href="classgb_a_a64e0b4da999198f48169a1673abaf744.html#a64e0b4da999198f48169a1673abaf744">lookupZZ</a>-&gt;find_monomial_divisors(-1, e, <a class="code hl_variable" href="overflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2.html#aa07f992d22249e2bef61db62f71671b2">x</a>, &amp;divisors);</div>
+<div class="line"><span class="lineno"> 1625</span> </div>
+<div class="line"><span class="lineno"> 1626</span>  <span class="comment">/* Now find the minimal gap value */</span></div>
+<div class="line"><span class="lineno"> 1627</span>  <span class="keywordflow">if</span> (n == 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno"> 1628</span>  <span class="keywordtype">int</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = divisors[0]-&gt;_val;</div>
+<div class="line"><span class="lineno"> 1629</span>  <a class="code hl_struct" href="structgb_a_1_1gbelem.html">gbelem</a> *tg = <a class="code hl_function" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a>[<a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>];</div>
+<div class="line"><span class="lineno"> 1630</span>  gap = tg-&gt;gap - egap;</div>
+<div class="line"><span class="lineno"> 1631</span>  <span class="keywordflow">if</span> (gap &lt;= 0)</div>
+<div class="line"><span class="lineno"> 1632</span>    gap = 0;</div>
+<div class="line"><span class="lineno"> 1633</span>  <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno"> 1634</span>    <span class="keywordflow">for</span> (i = 1; i &lt; n; i++)</div>
+<div class="line"><span class="lineno"> 1635</span>      {</div>
+<div class="line"><span class="lineno"> 1636</span>        <span class="keywordtype">int</span> new_val = divisors[i]-&gt;_val;</div>
+<div class="line"><span class="lineno"> 1637</span>        tg = <a class="code hl_function" href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a>[new_val];</div>
+<div class="line"><span class="lineno"> 1638</span>        newgap = tg-&gt;gap - egap;</div>
+<div class="line"><span class="lineno"> 1639</span>        <span class="keywordflow">if</span> (newgap &lt;= 0)</div>
+<div class="line"><span class="lineno"> 1640</span>          {</div>
+<div class="line"><span class="lineno"> 1641</span>            gap = 0;</div>
+<div class="line"><span class="lineno"> 1642</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = new_val;</div>
+<div class="line"><span class="lineno"> 1643</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno"> 1644</span>          }</div>
+<div class="line"><span class="lineno"> 1645</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (newgap &lt; gap)</div>
+<div class="line"><span class="lineno"> 1646</span>          {</div>
+<div class="line"><span class="lineno"> 1647</span>            <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a> = new_val;</div>
+<div class="line"><span class="lineno"> 1648</span>            gap = newgap;</div>
+<div class="line"><span class="lineno"> 1649</span>          }</div>
+<div class="line"><span class="lineno"> 1650</span>      }</div>
+<div class="line"><span class="lineno"> 1651</span>  result_gap = gap;</div>
+<div class="line"><span class="lineno"> 1652</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a>;</div>
+<div class="line"><span class="lineno"> 1653</span>}</div>
 <div class="ttc" id="aclassgb_a_a64e0b4da999198f48169a1673abaf744_html_a64e0b4da999198f48169a1673abaf744"><div class="ttname"><a href="classgb_a_a64e0b4da999198f48169a1673abaf744.html#a64e0b4da999198f48169a1673abaf744">gbA::lookupZZ</a></div><div class="ttdeci">MonomialTableZZ * lookupZZ</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8hpp_source.html#l00188">gb-default.hpp:188</a></div></div>
 <div class="ttc" id="aclassgb_a_a9a10ed7a4baae69dd294fea9284a2ea9_html_a9a10ed7a4baae69dd294fea9284a2ea9"><div class="ttname"><a href="classgb_a_a9a10ed7a4baae69dd294fea9284a2ea9.html#a9a10ed7a4baae69dd294fea9284a2ea9">gbA::weightInfo_</a></div><div class="ttdeci">const GBWeight * weightInfo_</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8hpp_source.html#l00162">gb-default.hpp:162</a></div></div>
 <div class="ttc" id="aclassgb_a_aed249da60f0553b3b2106ad4b615dcf9_html_aed249da60f0553b3b2106ad4b615dcf9"><div class="ttname"><a href="classgb_a_aed249da60f0553b3b2106ad4b615dcf9.html#aed249da60f0553b3b2106ad4b615dcf9">gbA::ringtableZZ</a></div><div class="ttdeci">const MonomialTableZZ * ringtableZZ</div><div class="ttdef"><b>Definition</b> <a href="gb-default_8hpp_source.html#l00185">gb-default.hpp:185</a></div></div>
-<div class="ttc" id="afranzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e_html_a14e81b9d04537f8dd05a8cef7fb8563e"><div class="ttname"><a href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a></div><div class="ttdeci">void gb(IntermediateBasis &amp;F, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00409">franzi-gb.cpp:409</a></div></div>
+<div class="ttc" id="afranzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e_html_a14e81b9d04537f8dd05a8cef7fb8563e"><div class="ttname"><a href="franzi-gb_8cpp_a14e81b9d04537f8dd05a8cef7fb8563e.html#a14e81b9d04537f8dd05a8cef7fb8563e">gb</a></div><div class="ttdeci">void gb(IntermediateBasis &amp;F, int n)</div><div class="ttdef"><b>Definition</b> <a href="franzi-gb_8cpp_source.html#l00430">franzi-gb.cpp:430</a></div></div>
 <div class="ttc" id="am2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b_html_aeace12b3a5c753d4ece1a0e89acb729b"><div class="ttname"><a href="m2-mem_8cpp_aeace12b3a5c753d4ece1a0e89acb729b.html#aeace12b3a5c753d4ece1a0e89acb729b">result</a></div><div class="ttdeci">VALGRIND_MAKE_MEM_DEFINED &amp; result(result)</div></div>
 <div class="ttc" id="anewdelete_8hpp_a5eb7456054852de52b377090e128822e_html_a5eb7456054852de52b377090e128822e"><div class="ttname"><a href="newdelete_8hpp_a5eb7456054852de52b377090e128822e.html#a5eb7456054852de52b377090e128822e">VECTOR</a></div><div class="ttdeci">#define VECTOR(T)</div><div class="ttdef"><b>Definition</b> <a href="newdelete_8hpp_source.html#l00076">newdelete.hpp:76</a></div></div>
 <div class="ttc" id="aoverflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2_html_aa07f992d22249e2bef61db62f71671b2"><div class="ttname"><a href="overflow-test_8cpp_aa07f992d22249e2bef61db62f71671b2.html#aa07f992d22249e2bef61db62f71671b2">x</a></div><div class="ttdeci">volatile int x</div><div class="ttdef"><b>Definition</b> <a href="overflow-test_8cpp_source.html#l00066">overflow-test.cpp:66</a></div></div>

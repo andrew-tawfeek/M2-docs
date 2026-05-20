@@ -92,6 +92,9 @@ $(function(){initNavTree('class_vector_arithmetic_stats.html','','class_vector_a
 </div><!--header-->
 <div class="contents">
 
+<p>Lightweight counter attached to a <span class="tt"><a class="el" href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a>&lt;<a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a>&gt;</span> for tracking how many coefficient additions a reduction performed.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -105,8 +108,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a503dec8bdd70431022f762098f5c1aa2" id="r_a503dec8bdd70431022f762098f5c1aa2"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector_arithmetic_stats_a503dec8bdd70431022f762098f5c1aa2.html#a503dec8bdd70431022f762098f5c1aa2">mNumAdditions</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_vector_arithmetic_8hpp_source.html#l00103">103</a> of file <a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>.</p>
+<div class="textblock"><p>Lightweight counter attached to a <span class="tt"><a class="el" href="class_concrete_vector_arithmetic.html">ConcreteVectorArithmetic</a>&lt;<a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a>&gt;</span> for tracking how many coefficient additions a reduction performed. </p>
+<p>The <span class="tt"><a class="el" href="class_vector_arithmetic_stats_a503dec8bdd70431022f762098f5c1aa2.html#a503dec8bdd70431022f762098f5c1aa2">mNumAdditions</a></span> counter is <span class="tt">mutable</span> so that it can be incremented from within <span class="tt">const</span> arithmetic methods. <span class="tt"><a class="el" href="class_vector_arithmetic_stats_a5d0444d9756ec843543f39b07c1bf7c4.html#a5d0444d9756ec843543f39b07c1bf7c4">numAdditions()</a></span> reports the running total. Plugged into the F4 / GB code paths via <span class="tt">VectorArithmetic::numAdditions()</span> for profiling. </p>
+
+<p class="definition">Definition at line <a class="el" href="_vector_arithmetic_8hpp_source.html#l00124">124</a> of file <a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_vector_arithmetic_8hpp_source.html">VectorArithmetic.hpp</a></li>
 </ul>

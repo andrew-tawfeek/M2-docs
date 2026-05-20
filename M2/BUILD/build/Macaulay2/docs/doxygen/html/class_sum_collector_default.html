@@ -91,13 +91,16 @@ $(function(){initNavTree('class_sum_collector_default.html','','class_sum_collec
   <div class="headertitle"><div class="title">SumCollectorDefault Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Generic <span class="tt"><a class="el" href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls.">SumCollector</a></span> that accumulates into a single <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> via repeated <span class="tt"><a class="el" href="class_ring_acf98d2d1f7fd61fd52af3c0a17d9d225.html#acf98d2d1f7fd61fd52af3c0a17d9d225">Ring::add_to</a></span>.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for SumCollectorDefault:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_sum_collector_default.png" usemap="#SumCollectorDefault_map" alt=""/>
   <map id="SumCollectorDefault_map" name="SumCollectorDefault_map">
-<area href="class_sum_collector.html" alt="SumCollector" shape="rect" coords="0,56,127,80"/>
+<area href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls." alt="SumCollector" shape="rect" coords="0,56,127,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,127,24"/>
   </map>
 </div></div>
@@ -130,8 +133,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ring_8cpp_source.html#l00458">458</a> of file <a class="el" href="ring_8cpp_source.html">ring.cpp</a>.</p>
+<div class="textblock"><p>Generic <span class="tt"><a class="el" href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls.">SumCollector</a></span> that accumulates into a single <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> via repeated <span class="tt"><a class="el" href="class_ring_acf98d2d1f7fd61fd52af3c0a17d9d225.html#acf98d2d1f7fd61fd52af3c0a17d9d225">Ring::add_to</a></span>. </p>
+<p>Used as the fallback when a <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> does not override <span class="tt">make_SumCollector()</span> to install a faster (geobucket / heap) implementation. <span class="tt"><a class="el" href="class_sum_collector_default_af93d829f5a2bfc99497621ec73e987e0.html#af93d829f5a2bfc99497621ec73e987e0">getValue()</a></span> returns the running total and resets <span class="tt"><a class="el" href="class_sum_collector_default_a23778841f5043139f8806443621a76c8.html#a23778841f5043139f8806443621a76c8">result</a></span> to zero so the collector can be reused. </p>
+
+<p class="definition">Definition at line <a class="el" href="ring_8cpp_source.html#l00467">467</a> of file <a class="el" href="ring_8cpp_source.html">ring.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="ring_8cpp_source.html">ring.cpp</a></li>
 </ul>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_skew_polynomial_ring.html','','class_skew_polyno
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,...">PolyRing</a></span> subclass for skew-commutative (exterior-style) polynomial rings: the listed <span class="tt">skewvars</span> anticommute among themselves and square to zero.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="skewpoly_8hpp_source.html">skewpoly.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SkewPolynomialRing:</div>
@@ -99,11 +102,11 @@ Inheritance diagram for SkewPolynomialRing:</div>
  <div class="center">
   <img src="class_skew_polynomial_ring.png" usemap="#SkewPolynomialRing_map" alt=""/>
   <map id="SkewPolynomialRing_map" name="SkewPolynomialRing_map">
-<area href="class_poly_ring.html" alt="PolyRing" shape="rect" coords="0,336,133,360"/>
-<area href="class_poly_ring_flat.html" alt="PolyRingFlat" shape="rect" coords="0,280,133,304"/>
-<area href="class_polynomial_ring.html" alt="PolynomialRing" shape="rect" coords="0,224,133,248"/>
+<area href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,..." alt="PolyRing" shape="rect" coords="0,336,133,360"/>
+<area href="class_poly_ring_flat.html" title="PolynomialRing subclass whose elements are represented as a single flat Nterm* linked list (no fracti..." alt="PolyRingFlat" shape="rect" coords="0,280,133,304"/>
+<area href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy." alt="PolynomialRing" shape="rect" coords="0,224,133,248"/>
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -598,8 +601,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afbab9c9478e0282305e36122324e5613 inherit pro_static_attribs_class_poly_ring" id="r_afbab9c9478e0282305e36122324e5613"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_poly_ring.html">PolyRing</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_poly_ring_afbab9c9478e0282305e36122324e5613.html#afbab9c9478e0282305e36122324e5613">trivial_poly_ring</a> = nullptr</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="skewpoly_8hpp_source.html#l00044">44</a> of file <a class="el" href="skewpoly_8hpp_source.html">skewpoly.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,...">PolyRing</a></span> subclass for skew-commutative (exterior-style) polynomial rings: the listed <span class="tt">skewvars</span> anticommute among themselves and square to zero. </p>
+<p>Constructed via <span class="tt">create(K, M, skewvars)</span> &mdash; <span class="tt">skewvars</span> is the array of variable indices that participate in the anti-commutation. The data needed to apply the sign changes lives in a <span class="tt"><a class="el" href="class_skew_multiplication.html" title="Sign-rule helper used by every ring that has a skew-commutative subset of variables (exterior factor,...">SkewMultiplication</a></span> instance attached to the underlying ring; the <span class="tt"><a class="el" href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,...">PolyRing</a></span> virtuals are overridden to consult it during monomial multiplication. </p>
+
+<p class="definition">Definition at line <a class="el" href="skewpoly_8hpp_source.html#l00056">56</a> of file <a class="el" href="skewpoly_8hpp_source.html">skewpoly.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="skewpoly_8hpp_source.html">skewpoly.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="skewpoly_8cpp_source.html">skewpoly.cpp</a></li>

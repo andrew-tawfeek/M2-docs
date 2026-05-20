@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_s_l_program.html','','class_m2_s_l_program-me
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte...">MutableEngineObject</a></span> wrapper that owns an <span class="tt"><a class="el" href="class_s_l_program.html" title="A straight-line program: a directed acyclic graph of arithmetic gates over a fixed list of inputs and...">SLProgram</a></span> via <span class="tt">unique_ptr</span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for M2SLProgram:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for M2SLProgram:</div>
  <div class="center">
   <img src="class_m2_s_l_program.png" usemap="#M2SLProgram_map" alt=""/>
   <map id="M2SLProgram_map" name="M2SLProgram_map">
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -134,8 +137,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_s_l_p-defs_8hpp_source.html#l00052">52</a> of file <a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte...">MutableEngineObject</a></span> wrapper that owns an <span class="tt"><a class="el" href="class_s_l_program.html" title="A straight-line program: a directed acyclic graph of arithmetic gates over a fixed list of inputs and...">SLProgram</a></span> via <span class="tt">unique_ptr</span>. </p>
+<p>Exposes the unwrapped DAG through <span class="tt"><a class="el" href="class_m2_s_l_program_a1005118ac05ff326296ea86f3994d46c.html#a1005118ac05ff326296ea86f3994d46c">value()</a></span> so engine code that holds an <span class="tt">M2SLProgram*</span> can reach the actual program without leaking its concrete type to interpreter callers. </p>
+
+<p class="definition">Definition at line <a class="el" href="_s_l_p-defs_8hpp_source.html#l00059">59</a> of file <a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a></li>
 </ul>

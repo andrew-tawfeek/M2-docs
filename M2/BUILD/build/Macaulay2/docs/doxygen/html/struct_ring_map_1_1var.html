@@ -91,6 +91,9 @@ $(function(){initNavTree('struct_ring_map_1_1var.html','','struct_ring_map_1_1va
   <div class="headertitle"><div class="title">RingMap::var Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Per-source-variable image record: a factored representation of the target-ring element that variable maps to.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for RingMap::var:</div>
 <div class="dyncontent">
@@ -124,8 +127,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ringmap_8hpp_source.html#l00044">44</a> of file <a class="el" href="ringmap_8hpp_source.html">ringmap.hpp</a>.</p>
+<div class="textblock"><p>Per-source-variable image record: a factored representation of the target-ring element that variable maps to. </p>
+<p>The image is <span class="tt"><a class="el" href="struct_ring_map_1_1var_ae5f4f5e9b0138ee49bd3ea321ebd83a1.html#ae5f4f5e9b0138ee49bd3ea321ebd83a1">coeff</a> * <a class="el" href="struct_ring_map_1_1var_ab5ebc70aae92ce7df61aac25ebd0ab83.html#ab5ebc70aae92ce7df61aac25ebd0ab83">monom</a> * <a class="el" href="struct_ring_map_1_1var_a5a86595b55297fc11526c71a6e828ff4.html#a5a86595b55297fc11526c71a6e828ff4">bigelem</a></span>. Three independent <span class="tt">is_one</span> flags let the evaluator skip whichever factors are trivially 1, and <span class="tt"><a class="el" href="struct_ring_map_1_1var_a75b1fb95158d8c5bad8637d20072200c.html#a75b1fb95158d8c5bad8637d20072200c">is_zero</a></span> short-circuits the whole multiplication when the variable maps to 0. </p>
+
+<p class="definition">Definition at line <a class="el" href="ringmap_8hpp_source.html#l00066">66</a> of file <a class="el" href="ringmap_8hpp_source.html">ringmap.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="ringmap_8hpp_source.html">ringmap.hpp</a></li>
 </ul>

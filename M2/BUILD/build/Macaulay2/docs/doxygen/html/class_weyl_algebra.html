@@ -92,6 +92,9 @@ $(function(){initNavTree('class_weyl_algebra.html','','class_weyl_algebra-member
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,...">PolyRing</a></span> subclass for Weyl algebras: polynomial rings with the <span class="tt">[d_i, x_i] = 1</span> derivative-variable commutation relations.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="weylalg_8hpp_source.html">weylalg.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for WeylAlgebra:</div>
@@ -99,11 +102,11 @@ Inheritance diagram for WeylAlgebra:</div>
  <div class="center">
   <img src="class_weyl_algebra.png" usemap="#WeylAlgebra_map" alt=""/>
   <map id="WeylAlgebra_map" name="WeylAlgebra_map">
-<area href="class_poly_ring.html" alt="PolyRing" shape="rect" coords="0,336,133,360"/>
-<area href="class_poly_ring_flat.html" alt="PolyRingFlat" shape="rect" coords="0,280,133,304"/>
-<area href="class_polynomial_ring.html" alt="PolynomialRing" shape="rect" coords="0,224,133,248"/>
+<area href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,..." alt="PolyRing" shape="rect" coords="0,336,133,360"/>
+<area href="class_poly_ring_flat.html" title="PolynomialRing subclass whose elements are represented as a single flat Nterm* linked list (no fracti..." alt="PolyRingFlat" shape="rect" coords="0,280,133,304"/>
+<area href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy." alt="PolynomialRing" shape="rect" coords="0,224,133,248"/>
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -626,8 +629,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afbab9c9478e0282305e36122324e5613 inherit pro_static_attribs_class_poly_ring" id="r_afbab9c9478e0282305e36122324e5613"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_poly_ring.html">PolyRing</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_poly_ring_afbab9c9478e0282305e36122324e5613.html#afbab9c9478e0282305e36122324e5613">trivial_poly_ring</a> = nullptr</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="weylalg_8hpp_source.html#l00043">43</a> of file <a class="el" href="weylalg_8hpp_source.html">weylalg.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,...">PolyRing</a></span> subclass for Weyl algebras: polynomial rings with the <span class="tt">[d_i, x_i] = 1</span> derivative-variable commutation relations. </p>
+<p>Tracks a <span class="tt"><a class="el" href="class_weyl_algebra_a39db0889b6eaaeb383aaa5d651768066.html#a39db0889b6eaaeb383aaa5d651768066">_derivative</a>[i]</span> / <span class="tt"><a class="el" href="class_weyl_algebra_aa995c550222cdac58afed80712a41e67.html#aa995c550222cdac58afed80712a41e67">_commutative</a>[i]</span> index pair so the ring knows which variables are partial derivatives and which are the variables they differentiate. Optional homogeneous mode (<span class="tt"><a class="el" href="class_weyl_algebra_a961c8d9ee7bf6c6ad1aea1a84893e95d.html#a961c8d9ee7bf6c6ad1aea1a84893e95d">_homogeneous_weyl_algebra</a></span>) adds an extra homogenising variable <span class="tt"><a class="el" href="class_weyl_algebra_a5d81da57d07fb97b80eb514e9eaef03b.html#a5d81da57d07fb97b80eb514e9eaef03b">_homog_var</a></span> used to keep degrees compatible across commutator expansions. The static <span class="tt"><a class="el" href="class_weyl_algebra_ab30f6c030636a156351bf010fda24b30.html#ab30f6c030636a156351bf010fda24b30">binomtable</a></span> / <span class="tt"><a class="el" href="class_weyl_algebra_af1f27c4f20e41e9de1d6a65f437e01f5.html#af1f27c4f20e41e9de1d6a65f437e01f5">diffcoeffstable</a></span> cache binomial coefficients and derivative-coefficient products used by term-by-term multiplication. </p>
+
+<p class="definition">Definition at line <a class="el" href="weylalg_8hpp_source.html#l00056">56</a> of file <a class="el" href="weylalg_8hpp_source.html">weylalg.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="weylalg_8hpp_source.html">weylalg.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="weylalg_8cpp_source.html">weylalg.cpp</a></li>

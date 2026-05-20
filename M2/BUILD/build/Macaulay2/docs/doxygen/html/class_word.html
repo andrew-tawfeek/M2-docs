@@ -92,6 +92,9 @@ $(function(){initNavTree('class_word.html','','class_word-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Non-owning view of a non-commutative word: <span class="tt">[<a class="el" href="class_word_a20e33cf76cae20a1b09c6419d6f71ad2.html#a20e33cf76cae20a1b09c6419d6f71ad2">begin</a>, <a class="el" href="class_word_a57a3bd2eb17ecc840adc2236a9cfb157.html#a57a3bd2eb17ecc840adc2236a9cfb157">end</a>)</span> of <span class="tt"><a class="el" href="classint.html">int</a></span> variable indices.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_word_8hpp_source.html">Word.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -113,8 +116,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a41988b1f6413e08d2d9d986016f80188" id="r_a41988b1f6413e08d2d9d986016f80188"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classint.html">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_a41988b1f6413e08d2d9d986016f80188.html#a41988b1f6413e08d2d9d986016f80188">mSize</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_word_8hpp_source.html#l00040">40</a> of file <a class="el" href="_word_8hpp_source.html">Word.hpp</a>.</p>
+<div class="textblock"><p>Non-owning view of a non-commutative word: <span class="tt">[<a class="el" href="class_word_a20e33cf76cae20a1b09c6419d6f71ad2.html#a20e33cf76cae20a1b09c6419d6f71ad2">begin</a>, <a class="el" href="class_word_a57a3bd2eb17ecc840adc2236a9cfb157.html#a57a3bd2eb17ecc840adc2236a9cfb157">end</a>)</span> of <span class="tt"><a class="el" href="classint.html">int</a></span> variable indices. </p>
+<p>Stores three pointers / lengths (<span class="tt"><a class="el" href="class_word_a6b3128c4ff711018aa7c260c32f15e0b.html#a6b3128c4ff711018aa7c260c32f15e0b">mBegin</a></span>, <span class="tt"><a class="el" href="class_word_a5428e2e40693dbb68b45d20ce164bc90.html#a5428e2e40693dbb68b45d20ce164bc90">mEnd</a></span>, <span class="tt"><a class="el" href="class_word_a41988b1f6413e08d2d9d986016f80188.html#a41988b1f6413e08d2d9d986016f80188">mSize</a></span>) into an externally owned buffer (typically a <span class="tt"><a class="el" href="class_memory_block.html" title="Thin RAII wrapper around memtailor::Arena providing bump-pointer array allocation with optional mutex...">MemoryBlock</a></span> arena in <span class="tt"><a class="el" href="class_n_c_f4.html" title="Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduc...">NCF4</a></span>). The view is cheap to copy and pass around but the caller must keep the backing buffer alive for the <span class="tt"><a class="el" href="class_word.html" title="Non-owning view of a non-commutative word: [begin, end) of int variable indices.">Word</a></span>'s lifetime. Equality is elementwise; iteration goes through <span class="tt"><a class="el" href="class_word_a20e33cf76cae20a1b09c6419d6f71ad2.html#a20e33cf76cae20a1b09c6419d6f71ad2">begin()</a></span> / <span class="tt"><a class="el" href="class_word_a57a3bd2eb17ecc840adc2236a9cfb157.html#a57a3bd2eb17ecc840adc2236a9cfb157">end()</a></span> / <span class="tt">operator[]</span>. </p>
+
+<p class="definition">Definition at line <a class="el" href="_word_8hpp_source.html#l00051">51</a> of file <a class="el" href="_word_8hpp_source.html">Word.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_word_8hpp_source.html">Word.hpp</a></li>
 </ul>

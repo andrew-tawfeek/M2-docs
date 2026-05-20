@@ -92,6 +92,9 @@ $(function(){initNavTree('class_free_algebra_element.html','','class_free_algebr
 </div><!--header-->
 <div class="contents">
 
+<p>Owned <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> value paired with its <span class="tt">FreeAlgebra*</span>, providing natural operator-overloaded arithmetic.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -115,8 +118,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a55f78a125008db05dac2657c986618e6" id="r_a55f78a125008db05dac2657c986618e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_poly.html">Poly</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_free_algebra_element_a55f78a125008db05dac2657c986618e6.html#a55f78a125008db05dac2657c986618e6">mPoly</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_algebra_8hpp_source.html#l00240">240</a> of file <a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>.</p>
+<div class="textblock"><p>Owned <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> value paired with its <span class="tt">FreeAlgebra*</span>, providing natural operator-overloaded arithmetic. </p>
+<p>Debugging / scripting convenience: wraps a <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> so the algebra pointer is implicit and <span class="tt">+</span>, <span class="tt">-</span>, <span class="tt">*</span>, unary <span class="tt">-</span>, and <span class="tt">^n</span> (power) can be written directly. The destructor calls <span class="tt"><a class="el" href="class_free_algebra_a48da1b9447ee94cd049989ae16f19a9f.html#a48da1b9447ee94cd049989ae16f19a9f">FreeAlgebra::clear</a></span>, so callers do not have to manage the underlying <span class="tt"><a class="el" href="class_poly.html" title="Stores a polynomial.">Poly</a></span> lifetime. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_algebra_8hpp_source.html#l00263">263</a> of file <a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a></li>
 </ul>

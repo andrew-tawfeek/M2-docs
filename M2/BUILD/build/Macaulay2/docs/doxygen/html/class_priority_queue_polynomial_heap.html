@@ -91,13 +91,16 @@ $(function(){initNavTree('class_priority_queue_polynomial_heap.html','','class_p
   <div class="headertitle"><div class="title">PriorityQueuePolynomialHeap Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_polynomial_heap.html" title="Abstract interface for accumulating a polynomial as a sum of (coeff, left * poly * right) contributio...">PolynomialHeap</a></span> backed by a <span class="tt">std::priority_queue</span> of <span class="tt">(<a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a>, <a class="el" href="unionring__elem.html">ring_elem</a>)</span> entries, with deduplication done lazily on lead-term extraction.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for PriorityQueuePolynomialHeap:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_priority_queue_polynomial_heap.png" usemap="#PriorityQueuePolynomialHeap_map" alt=""/>
   <map id="PriorityQueuePolynomialHeap_map" name="PriorityQueuePolynomialHeap_map">
-<area href="class_polynomial_heap.html" alt="PolynomialHeap" shape="rect" coords="0,56,182,80"/>
+<area href="class_polynomial_heap.html" title="Abstract interface for accumulating a polynomial as a sum of (coeff, left * poly * right) contributio..." alt="PolynomialHeap" shape="rect" coords="0,56,182,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,182,24"/>
   </map>
 </div></div>
@@ -148,8 +151,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00870">870</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_polynomial_heap.html" title="Abstract interface for accumulating a polynomial as a sum of (coeff, left * poly * right) contributio...">PolynomialHeap</a></span> backed by a <span class="tt">std::priority_queue</span> of <span class="tt">(<a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a>, <a class="el" href="unionring__elem.html">ring_elem</a>)</span> entries, with deduplication done lazily on lead-term extraction. </p>
+<p>Insertions copy each <span class="tt"><a class="el" href="struct_monom.html" title="Non-owning view onto a [length, degree, v1, v2, ..., vn] packed monomial in some externally managed b...">Monom</a></span> into <span class="tt"><a class="el" href="class_priority_queue_polynomial_heap_ae5a0fd2b3aabdb54d4513f2dc5355e36.html#ae5a0fd2b3aabdb54d4513f2dc5355e36">mMonomialSpace</a></span> (a <span class="tt"><a class="el" href="class_memory_block.html" title="Thin RAII wrapper around memtailor::Arena providing bump-pointer array allocation with optional mutex...">MemoryBlock</a></span> arena) and push the entry onto the queue. <span class="tt"><a class="el" href="class_priority_queue_polynomial_heap_a4a6131099741d5edf1f774b798dec18c.html#a4a6131099741d5edf1f774b798dec18c">isZero()</a></span> pops the top entry and keeps summing in any subsequent entries with the same monomial until either a smaller monomial appears (giving the next lead term, cached in <span class="tt"><a class="el" href="class_priority_queue_polynomial_heap_a069ed8b9f0a563ebe113bc1bef6447a6.html#a069ed8b9f0a563ebe113bc1bef6447a6">mLeadTerm</a></span>) or the running coefficient becomes zero (in which case the loop continues). The cached <span class="tt"><a class="el" href="class_priority_queue_polynomial_heap_a069ed8b9f0a563ebe113bc1bef6447a6.html#a069ed8b9f0a563ebe113bc1bef6447a6">mLeadTerm</a></span> is pushed back onto the queue on the next <span class="tt"><a class="el" href="class_priority_queue_polynomial_heap_a2f9a6802f6edcef9129f8e5e9c5f0593.html#a2f9a6802f6edcef9129f8e5e9c5f0593">addPolynomial</a></span> call. </p>
+
+<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00950">950</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a></li>
 </ul>

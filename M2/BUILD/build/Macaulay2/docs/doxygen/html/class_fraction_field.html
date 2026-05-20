@@ -92,6 +92,9 @@ $(function(){initNavTree('class_fraction_field.html','','class_fraction_field-me
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side fraction field of a polynomial domain <span class="tt"><a class="el" href="class_fraction_field_a8b5c2297018537f8497ed6ea72b4f49f.html#a8b5c2297018537f8497ed6ea72b4f49f">R_</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="frac_8hpp_source.html">frac.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FractionField:</div>
@@ -100,7 +103,7 @@ Inheritance diagram for FractionField:</div>
   <img src="class_fraction_field.png" usemap="#FractionField_map" alt=""/>
   <map id="FractionField_map" name="FractionField_map">
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -392,8 +395,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="frac_8hpp_source.html#l00045">45</a> of file <a class="el" href="frac_8hpp_source.html">frac.hpp</a>.</p>
+<div class="textblock"><p>Engine-side fraction field of a polynomial domain <span class="tt"><a class="el" href="class_fraction_field_a8b5c2297018537f8497ed6ea72b4f49f.html#a8b5c2297018537f8497ed6ea72b4f49f">R_</a></span>. </p>
+<p>Elements are <span class="tt">frac_elem*</span> pointers carrying a <span class="tt">(numer, denom)</span> pair, with <span class="tt"><a class="el" href="class_fraction_field_a7e0bb0da2c18133c5026023be412c618.html#a7e0bb0da2c18133c5026023be412c618">simplify</a></span> keeping them in lowest terms whenever possible. <span class="tt"><a class="el" href="class_fraction_field_a894cd40a3d725c7388e6605b63831820.html#a894cd40a3d725c7388e6605b63831820">use_gcd_simplify</a></span> opts into a <span class="tt">gcd</span>-based simplification path that is only valid for <span class="tt">frac(ZZ[xs])</span> and <span class="tt">frac(ZZ/p[xs])</span>; other fraction fields use a lighter cancellation strategy until the engine's fraction representation gets flattened (the in-source comment notes this is a planned refactor). </p>
+
+<p class="definition">Definition at line <a class="el" href="frac_8hpp_source.html#l00057">57</a> of file <a class="el" href="frac_8hpp_source.html">frac.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="frac_8hpp_source.html">frac.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="frac_8cpp_source.html">frac.cpp</a></li>

@@ -92,6 +92,9 @@ $(function(){initNavTree('struct_homotopy_algorithm.html','','struct_homotopy_al
 </div><!--header-->
 <div class="contents">
 
+<p>Traits class mapping a coefficient ring <span class="tt">RT</span> to its preferred homotopy algorithm tag.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -100,8 +103,10 @@ Public Types</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename RT&gt;<br />
-struct HomotopyAlgorithm&lt; RT &gt;</div>
-<p class="definition">Definition at line <a class="el" href="_s_l_p-defs_8hpp_source.html#l00122">122</a> of file <a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>.</p>
+struct HomotopyAlgorithm&lt; RT &gt;</div><p>Traits class mapping a coefficient ring <span class="tt">RT</span> to its preferred homotopy algorithm tag. </p>
+<p>The primary template selects <span class="tt"><a class="el" href="class_trivial_homotopy_algorithm.html" title="Tag type selecting the no-op homotopy algorithm.">TrivialHomotopyAlgorithm</a></span>; explicit specialisations override that choice for specific numeric rings. <span class="tt"><a class="el" href="class_s_l_evaluator_concrete.html">SLEvaluatorConcrete</a>&lt;RT&gt;::createHomotopy</span> consults <span class="tt"><a class="el" href="struct_homotopy_algorithm.html" title="Traits class mapping a coefficient ring RT to its preferred homotopy algorithm tag.">HomotopyAlgorithm</a>&lt;RT&gt;::<a class="el" href="struct_homotopy_algorithm_ad1316d26e694b98666c7971fc9a58d18.html#ad1316d26e694b98666c7971fc9a58d18">Algorithm</a></span> to pick the right <span class="tt"><a class="el" href="class_homotopy_concrete.html">HomotopyConcrete</a></span> specialisation. </p>
+
+<p class="definition">Definition at line <a class="el" href="_s_l_p-defs_8hpp_source.html#l00181">181</a> of file <a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_s_l_p-defs_8hpp_source.html">SLP-defs.hpp</a></li>
 </ul>

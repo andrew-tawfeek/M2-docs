@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_1_1_a_ring_g_f_m2.html','','class_m2_1_1_a_ri
 </div><!--header-->
 <div class="contents">
 
+<p>Pure-M2 (no-FLINT) <span class="tt">aring</span>-style adapter for <span class="tt"><a class="el" href="class_g_f.html" title="Engine-side finite field GF(p^n) built on top of (Z/p)[t] / f(t) for a primitive element of the resul...">GF(p^n)</a></span>, using a discrete-log encoding plus an M2-side primitive table.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring-m2-gf_8hpp_source.html">aring-m2-gf.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for M2::ARingGFM2:</div>
@@ -184,8 +187,11 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aaa049cb6d074cc0702a691766283f9e0" id="r_aaa049cb6d074cc0702a691766283f9e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m2_1_1_galois_field_table.html">GaloisFieldTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_g_f_m2_aaa049cb6d074cc0702a691766283f9e0.html#aaa049cb6d074cc0702a691766283f9e0">mGF</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring-m2-gf_8hpp_source.html#l00110">110</a> of file <a class="el" href="aring-m2-gf_8hpp_source.html">aring-m2-gf.hpp</a>.</p>
+<div class="textblock"><p>Pure-M2 (no-FLINT) <span class="tt">aring</span>-style adapter for <span class="tt"><a class="el" href="class_g_f.html" title="Engine-side finite field GF(p^n) built on top of (Z/p)[t] / f(t) for a primitive element of the resul...">GF(p^n)</a></span>, using a discrete-log encoding plus an M2-side primitive table. </p>
+<p>Backed by an <span class="tt">M2GFTable</span> (the file's other class) that owns the <span class="tt">[exp, log, one_table, primitive_element]</span> machinery for the specific extension. Elements are <span class="tt"><a class="el" href="classint.html">int</a></span> indices; multiplication and division are integer add / sub mod <span class="tt">p^n - 1</span>. <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_m2_ae632daeb12a10e888164238dcc80f4ab.html#ae632daeb12a10e888164238dcc80f4ab">ringID</a> =
+<a class="el" href="group__rings_ga7579b18152595d75b0bce712fbd605df.html#gga7579b18152595d75b0bce712fbd605dfa25e0d626c3446375b3224d16814ce8b4">ring_GFM2</a></span>. Selected when FLINT's <span class="tt">ARingGFFlint*</span> rings are unavailable or undesirable (e.g. when reproducing legacy behaviour matters). </p>
+
+<p class="definition">Definition at line <a class="el" href="aring-m2-gf_8hpp_source.html#l00120">120</a> of file <a class="el" href="aring-m2-gf_8hpp_source.html">aring-m2-gf.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="aring-m2-gf_8hpp_source.html">aring-m2-gf.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="aring-m2-gf_8cpp_source.html">aring-m2-gf.cpp</a></li>

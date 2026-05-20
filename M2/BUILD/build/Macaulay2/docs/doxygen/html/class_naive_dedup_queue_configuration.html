@@ -91,6 +91,9 @@ $(function(){initNavTree('class_naive_dedup_queue_configuration.html','','class_
   <div class="headertitle"><div class="title">NaiveDedupQueueConfiguration Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Variant of <span class="tt"><a class="el" href="class_naive_queue_configuration.html" title="mathic::Geobucket configuration whose Entry is a (Monom, ring_elem) pair compared by the FreeMonoid o...">NaiveQueueConfiguration</a></span> with deduplication enabled: <span class="tt">deduplicate(a, b)</span> sums the coefficients of two equal monomials.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -130,8 +133,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a81422c7d3e48bf6f4c4d40902381c381" id="r_a81422c7d3e48bf6f4c4d40902381c381"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_free_algebra.html">FreeAlgebra</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_naive_dedup_queue_configuration_a81422c7d3e48bf6f4c4d40902381c381.html#a81422c7d3e48bf6f4c4d40902381c381">mRing</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00259">259</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
+<div class="textblock"><p>Variant of <span class="tt"><a class="el" href="class_naive_queue_configuration.html" title="mathic::Geobucket configuration whose Entry is a (Monom, ring_elem) pair compared by the FreeMonoid o...">NaiveQueueConfiguration</a></span> with deduplication enabled: <span class="tt">deduplicate(a, b)</span> sums the coefficients of two equal monomials. </p>
+<p>Lets the underlying geobucket collapse like terms eagerly instead of deferring the addition until lead-term extraction. Combined with <span class="tt"><a class="el" href="class_naive_polynomial_heap.html">NaivePolynomialHeap</a>&lt;Queue&gt;</span> to compare the two strategies. </p>
+
+<p class="definition">Definition at line <a class="el" href="_n_c_reduction_8cpp_source.html#l00304">304</a> of file <a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_n_c_reduction_8cpp_source.html">NCReduction.cpp</a></li>
 </ul>

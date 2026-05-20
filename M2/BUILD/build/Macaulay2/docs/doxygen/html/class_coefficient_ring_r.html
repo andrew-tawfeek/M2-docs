@@ -92,12 +92,17 @@ $(function(){initNavTree('class_coefficient_ring_r.html','','class_coefficient_r
 </div><!--header-->
 <div class="contents">
 
+<p>Generic <span class="tt">CoefficientRing</span> adapter that wraps an arbitrary <span class="tt">const Ring*</span> and forwards every operation to it.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:Element" id="r_Element"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_coefficient_ring_r_1_1_element.html">Element</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managed scalar value: an <span class="tt"><a class="el" href="class_m2_1_1_element_impl.html" title="A base class for Element.">M2::ElementImpl</a>&lt;<a class="el" href="unionring__elem.html">ring_elem</a>&gt;</span> that initialises itself through the parent <span class="tt"><a class="el" href="class_coefficient_ring_r.html" title="Generic CoefficientRing adapter that wraps an arbitrary const Ring* and forwards every operation to i...">CoefficientRingR</a></span>.  <a href="class_coefficient_ring_r_1_1_element.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ElementArray" id="r_ElementArray"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_coefficient_ring_r_1_1_element_array.html">ElementArray</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed-size, owned array of <span class="tt"><a class="el" href="class_coefficient_ring_r_a6bcaa5a3c7d169e85c912a77509ae6a6.html#a6bcaa5a3c7d169e85c912a77509ae6a6">ElementType</a></span>s for the linear-algebra templates that want a flat buffer they can <span class="tt">operator[]</span> into.  <a href="class_coefficient_ring_r_1_1_element_array.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -138,8 +143,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a6939e55c37adde8de8f97b984363c44d" id="r_a6939e55c37adde8de8f97b984363c44d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_ring.html">Ring</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_coefficient_ring_r_a6939e55c37adde8de8f97b984363c44d.html#a6939e55c37adde8de8f97b984363c44d">R</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="coeffrings_8hpp_source.html#l00227">227</a> of file <a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a>.</p>
+<div class="textblock"><p>Generic <span class="tt">CoefficientRing</span> adapter that wraps an arbitrary <span class="tt">const Ring*</span> and forwards every operation to it. </p>
+<p>The catch-all implementation used wherever code expects the <span class="tt">CoefficientRing</span> operation surface but talks to a ring without a faster specialisation. All <span class="tt"><a class="el" href="class_coefficient_ring_r_ae6ac9430457679f855af6398e2c50199.html#ae6ac9430457679f855af6398e2c50199">add</a></span> / <span class="tt"><a class="el" href="class_coefficient_ring_r_afb17bcf04fc7d90c7226798b8ad443bf.html#afb17bcf04fc7d90c7226798b8ad443bf">mult</a></span> / <span class="tt"><a class="el" href="class_coefficient_ring_r_aa82da8d26da8b5baad1b352c5d1a367f.html#aa82da8d26da8b5baad1b352c5d1a367f">subtract</a></span> / <span class="tt"><a class="el" href="class_coefficient_ring_r_aef37cea92f29b30b3ed678b65cc3db6a.html#aef37cea92f29b30b3ed678b65cc3db6a">invert</a></span> calls delegate to the corresponding <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> virtual methods on <span class="tt"><a class="el" href="class_coefficient_ring_r_a6939e55c37adde8de8f97b984363c44d.html#a6939e55c37adde8de8f97b984363c44d">R</a></span>, and <span class="tt"><a class="el" href="class_coefficient_ring_r_1_1_element.html" title="Managed scalar value: an M2::ElementImpl&lt;ring_elem&gt; that initialises itself through the parent Coeffi...">Element</a></span> / <span class="tt"><a class="el" href="class_coefficient_ring_r_1_1_element_array.html" title="Fixed-size, owned array of ElementTypes for the linear-algebra templates that want a flat buffer they...">ElementArray</a></span> (defined nested here) supply the value-semantics wrappers the templated linear algebra code expects. </p>
+
+<p class="definition">Definition at line <a class="el" href="coeffrings_8hpp_source.html#l00251">251</a> of file <a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="coeffrings_8hpp_source.html">coeffrings.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="coeffrings_8cpp_source.html">coeffrings.cpp</a></li>

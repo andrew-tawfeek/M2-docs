@@ -92,6 +92,9 @@ $(function(){initNavTree('class_ring_map.html','','class_ring_map-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side ring homomorphism: stores, for each source-ring variable, the target-ring element it maps to.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ringmap_8hpp_source.html">ringmap.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for RingMap:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for RingMap:</div>
  <div class="center">
   <img src="class_ring_map.png" usemap="#RingMap_map" alt=""/>
   <map id="RingMap_map" name="RingMap_map">
-<area href="class_engine_object.html" alt="EngineObject" shape="rect" coords="0,56,102,80"/>
+<area href="class_engine_object.html" title="Base class for engine objects that are immutable once their hash has been pinned (typically once they..." alt="EngineObject" shape="rect" coords="0,56,102,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,102,24"/>
   </map>
 </div></div>
@@ -107,6 +110,7 @@ Inheritance diagram for RingMap:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:var" id="r_var"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ring_map_1_1var.html">var</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-source-variable image record: a factored representation of the target-ring element that variable maps to.  <a href="struct_ring_map_1_1var.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -155,8 +159,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:acd19ab60613780262ba572b792996cb3" id="r_acd19ab60613780262ba572b792996cb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_ring_map_1_1var.html">var</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_map_acd19ab60613780262ba572b792996cb3.html#acd19ab60613780262ba572b792996cb3">_elem</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ringmap_8hpp_source.html#l00042">42</a> of file <a class="el" href="ringmap_8hpp_source.html">ringmap.hpp</a>.</p>
+<div class="textblock"><p>Engine-side ring homomorphism: stores, for each source-ring variable, the target-ring element it maps to. </p>
+<p>Built from a row matrix of target-ring elements (<span class="tt">make(m)</span>): the <span class="tt">i</span>-th column gives the image of the <span class="tt">i</span>-th source variable, kept in pre-factored form as <span class="tt">coeff * monom * bigelem</span>. The <span class="tt"><a class="el" href="class_ring_map_a824188b2d1925c550494e7275b649322.html#a824188b2d1925c550494e7275b649322">is_monomial</a></span> flag records whether every variable maps to a single term, enabling a fast monomial-by-monomial evaluation path. <span class="tt"><a class="el" href="class_ring_map_a5aac483e1de1c0b1333dccdc89a1a275.html#a5aac483e1de1c0b1333dccdc89a1a275">R</a></span> / <span class="tt"><a class="el" href="class_ring_map_ab2750d146c8e85e408a62d12293845bc.html#ab2750d146c8e85e408a62d12293845bc">P</a></span> / <span class="tt"><a class="el" href="class_ring_map_a6723eb0668fdda69809e24e023147223.html#a6723eb0668fdda69809e24e023147223">K</a></span> / <span class="tt"><a class="el" href="class_ring_map_a24401b48e1bb06849c0c426020d84fa1.html#a24401b48e1bb06849c0c426020d84fa1">M</a></span> cache the target ring (and its polynomial / coefficient / monoid layers, when present) so <span class="tt">evaluate</span> can dispatch without re-querying. </p>
+
+<p class="definition">Definition at line <a class="el" href="ringmap_8hpp_source.html#l00055">55</a> of file <a class="el" href="ringmap_8hpp_source.html">ringmap.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="ringmap_8hpp_source.html">ringmap.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="ringmap_8cpp_source.html">ringmap.cpp</a></li>

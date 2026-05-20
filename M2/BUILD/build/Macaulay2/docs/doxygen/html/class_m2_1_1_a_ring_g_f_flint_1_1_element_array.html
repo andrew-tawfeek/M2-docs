@@ -92,6 +92,9 @@ $(function(){initNavTree('class_m2_1_1_a_ring_g_f_flint_1_1_element_array.html',
 </div><!--header-->
 <div class="contents">
 
+<p>Fixed-size owned array of <span class="tt">fq_zech_struct</span> slots tied to an <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint.html" title="aring-style adapter for FLINT&#39;s Zech-logarithm representation of small finite fields GF(p^n).">ARingGFFlint</a></span> for the matching FLINT context.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="aring-gf-flint_8hpp_source.html">aring-gf-flint.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -110,8 +113,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:affba9b4a64196d42061242700f2a86e5" id="r_affba9b4a64196d42061242700f2a86e5"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_m2_1_1_a_ring_g_f_flint_a1d6793f12ba7ff455e9e90348f303393.html#a1d6793f12ba7ff455e9e90348f303393">ElementType</a>[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m2_1_1_a_ring_g_f_flint_1_1_element_array_affba9b4a64196d42061242700f2a86e5.html#affba9b4a64196d42061242700f2a86e5">mData</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="aring-gf-flint_8hpp_source.html#l00111">111</a> of file <a class="el" href="aring-gf-flint_8hpp_source.html">aring-gf-flint.hpp</a>.</p>
+<div class="textblock"><p>Fixed-size owned array of <span class="tt">fq_zech_struct</span> slots tied to an <span class="tt"><a class="el" href="class_m2_1_1_a_ring_g_f_flint.html" title="aring-style adapter for FLINT&#39;s Zech-logarithm representation of small finite fields GF(p^n).">ARingGFFlint</a></span> for the matching FLINT context. </p>
+<p>Each slot is <span class="tt">fq_zech_init2</span>-initialised at construction and <span class="tt">fq_zech_clear</span>-released in the destructor, so the array owns its FLINT-side data. Used as the flat per-row buffer the dense linear-algebra templates expect. </p>
+
+<p class="definition">Definition at line <a class="el" href="aring-gf-flint_8hpp_source.html#l00132">132</a> of file <a class="el" href="aring-gf-flint_8hpp_source.html">aring-gf-flint.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="aring-gf-flint_8hpp_source.html">aring-gf-flint.hpp</a></li>
 </ul>

@@ -91,13 +91,16 @@ $(function(){initNavTree('class_sum_collector_poly_heap.html','','class_sum_coll
   <div class="headertitle"><div class="title">SumCollectorPolyHeap Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><span class="tt"><a class="el" href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls.">SumCollector</a></span> implementation that funnels engine-side <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> additions through a <span class="tt"><a class="el" href="classpolyheap.html">polyheap</a></span> (geobucket).  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for SumCollectorPolyHeap:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_sum_collector_poly_heap.png" usemap="#SumCollectorPolyHeap_map" alt=""/>
   <map id="SumCollectorPolyHeap_map" name="SumCollectorPolyHeap_map">
-<area href="class_sum_collector.html" alt="SumCollector" shape="rect" coords="0,56,142,80"/>
+<area href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls." alt="SumCollector" shape="rect" coords="0,56,142,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,142,24"/>
   </map>
 </div></div>
@@ -129,8 +132,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_macaulay2_2e_2polyring_8cpp_source.html#l00185">185</a> of file <a class="el" href="_macaulay2_2e_2polyring_8cpp_source.html">polyring.cpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_sum_collector.html" title="Abstract incremental accumulator that builds a ring_elem from many add(f) calls.">SumCollector</a></span> implementation that funnels engine-side <span class="tt"><a class="el" href="unionring__elem.html">ring_elem</a></span> additions through a <span class="tt"><a class="el" href="classpolyheap.html">polyheap</a></span> (geobucket). </p>
+<p>Constructed with the target <span class="tt">PolynomialRing*</span>; each <span class="tt">add(f)</span> inserts into the heap and <span class="tt"><a class="el" href="class_sum_collector_poly_heap_aaf8912b20d670213905d87f4dc97ea41.html#aaf8912b20d670213905d87f4dc97ea41">getValue()</a></span> merges all buckets into a single polynomial. Used as the per-call accumulator returned by <span class="tt"><a class="el" href="class_polynomial_ring_a92d6c96e465c8f0268e7b6b51ced9e63.html#a92d6c96e465c8f0268e7b6b51ced9e63">PolynomialRing::make_SumCollector</a></span> so callers that build a polynomial as a long sum (e.g. ring-map evaluation) avoid quadratic merge cost. </p>
+
+<p class="definition">Definition at line <a class="el" href="_macaulay2_2e_2polyring_8cpp_source.html#l00196">196</a> of file <a class="el" href="_macaulay2_2e_2polyring_8cpp_source.html">polyring.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="_macaulay2_2e_2polyring_8cpp_source.html">polyring.cpp</a></li>
 </ul>

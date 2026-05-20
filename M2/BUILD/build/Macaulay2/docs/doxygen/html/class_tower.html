@@ -92,6 +92,9 @@ $(function(){initNavTree('class_tower.html','','class_tower-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass for tower polynomial rings <span class="tt">(Z/p)[x_0][x_1]...[x_{n-1}]</span> modulo a chain of algebraic extensions.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="tower_8hpp_source.html">tower.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Tower:</div>
@@ -100,7 +103,7 @@ Inheritance diagram for Tower:</div>
   <img src="class_tower.png" usemap="#Tower_map" alt=""/>
   <map id="Tower_map" name="Tower_map">
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -389,8 +392,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a565bd372dea4814e6d775012e45de005 inherit pro_attribs_class_ring" id="r_a565bd372dea4814e6d775012e45de005"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionring__elem.html">ring_elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ring_a565bd372dea4814e6d775012e45de005.html#a565bd372dea4814e6d775012e45de005">minus_oneV</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="tower_8hpp_source.html#l00042">42</a> of file <a class="el" href="tower_8hpp_source.html">tower.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> subclass for tower polynomial rings <span class="tt">(Z/p)[x_0][x_1]...[x_{n-1}]</span> modulo a chain of algebraic extensions. </p>
+<p>Owns a <span class="tt">DRing*</span> (defined in <span class="tt"><a class="el" href="dpoly_8hpp.html" title="Native univariate polynomial arithmetic over QQ extensions and finite fields.">dpoly.hpp</a></span>) that does the actual tower-polynomial arithmetic, and lifts it into the engine's <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span> hierarchy. <span class="tt"><a class="el" href="class_tower_a586375a39e6817983339b36225379da0.html#a586375a39e6817983339b36225379da0">level</a></span> is the working tower level and <span class="tt"><a class="el" href="class_tower_a87b59b2b15188eaef1327e892ab2b79a.html#a87b59b2b15188eaef1327e892ab2b79a">nvars</a></span> the variable count; <span class="tt"><a class="el" href="class_tower_a9e5dd0b8bffad01165be708d59dcd972.html#a9e5dd0b8bffad01165be708d59dcd972">names</a></span> carries the textual variable names for display. Built via <span class="tt">create(charac, names, extensions)</span> &mdash; <span class="tt">extensions[i]</span> is the defining polynomial of the <span class="tt">i</span>-th variable over the lower variables (or zero for transcendental). </p>
+
+<p class="definition">Definition at line <a class="el" href="tower_8hpp_source.html#l00054">54</a> of file <a class="el" href="tower_8hpp_source.html">tower.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="tower_8hpp_source.html">tower.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="tower_8cpp_source.html">tower.cpp</a></li>

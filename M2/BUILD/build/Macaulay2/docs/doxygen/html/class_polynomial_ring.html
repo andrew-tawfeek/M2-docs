@@ -92,6 +92,9 @@ $(function(){initNavTree('class_polynomial_ring.html','','class_polynomial_ring-
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base for the engine's polynomial-ring hierarchy.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PolynomialRing:</div>
@@ -100,16 +103,16 @@ Inheritance diagram for PolynomialRing:</div>
   <img src="class_polynomial_ring.png" usemap="#PolynomialRing_map" alt=""/>
   <map id="PolynomialRing_map" name="PolynomialRing_map">
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="286,168,419,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="286,112,419,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="286,112,419,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="286,56,419,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="286,0,419,24"/>
-<area href="class_poly_ring_flat.html" alt="PolyRingFlat" shape="rect" coords="286,280,419,304"/>
-<area href="class_poly_ring.html" alt="PolyRing" shape="rect" coords="214,336,347,360"/>
-<area href="class_poly_ring_quotient.html" alt="PolyRingQuotient" shape="rect" coords="357,336,490,360"/>
-<area href="class_schur_ring.html" alt="SchurRing" shape="rect" coords="0,392,133,416"/>
-<area href="class_skew_polynomial_ring.html" alt="SkewPolynomialRing" shape="rect" coords="143,392,276,416"/>
-<area href="class_solvable_algebra.html" alt="SolvableAlgebra" shape="rect" coords="286,392,419,416"/>
-<area href="class_weyl_algebra.html" alt="WeylAlgebra" shape="rect" coords="429,392,562,416"/>
+<area href="class_poly_ring_flat.html" title="PolynomialRing subclass whose elements are represented as a single flat Nterm* linked list (no fracti..." alt="PolyRingFlat" shape="rect" coords="286,280,419,304"/>
+<area href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,..." alt="PolyRing" shape="rect" coords="214,336,347,360"/>
+<area href="class_poly_ring_quotient.html" title="PolyRingFlat subclass for quotients R / I of a polynomial ring by an ideal." alt="PolyRingQuotient" shape="rect" coords="357,336,490,360"/>
+<area href="class_schur_ring.html" title="PolyRing subclass implementing the Schur (symmetric-function) ring whose monomials are partitions and..." alt="SchurRing" shape="rect" coords="0,392,133,416"/>
+<area href="class_skew_polynomial_ring.html" title="PolyRing subclass for skew-commutative (exterior-style) polynomial rings: the listed skewvars anticom..." alt="SkewPolynomialRing" shape="rect" coords="143,392,276,416"/>
+<area href="class_solvable_algebra.html" title="PolyRing subclass for solvable polynomial algebras (PBW-type non-commutative rings where each pair of..." alt="SolvableAlgebra" shape="rect" coords="286,392,419,416"/>
+<area href="class_weyl_algebra.html" title="PolyRing subclass for Weyl algebras: polynomial rings with the [d_i, x_i] = 1 derivative-variable com..." alt="WeylAlgebra" shape="rect" coords="429,392,562,416"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -458,8 +461,10 @@ Additional Inherited Members</h2></td></tr>
  }</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html#l00078">78</a> of file <a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a>.</p>
+<div class="textblock"><p>Abstract base for the engine's polynomial-ring hierarchy. </p>
+<p>Adds polynomial-specific state (graded flag, skew / Weyl / solvable flags and their auxiliary data, coefficient-type kind, optional quotient info via <span class="tt">QRingInfo*</span>) on top of <span class="tt"><a class="el" href="class_ring.html" title="xxx xxx xxx">Ring</a></span>, and exposes the operation surface &mdash; <span class="tt"><a class="el" href="class_polynomial_ring_aa34398b2a25b97461debd3217c21b79f.html#aa34398b2a25b97461debd3217c21b79f">numerator</a></span> / <span class="tt">denominator</span>, <span class="tt">lead_*</span>, <span class="tt"><a class="el" href="class_polynomial_ring_a5424cc913ebf01bf02748ac88f1cb6cb.html#a5424cc913ebf01bf02748ac88f1cb6cb">homogenize</a></span>, <span class="tt"><a class="el" href="class_polynomial_ring_a39a1176f5d9226dad5982e377bffff38.html#a39a1176f5d9226dad5982e377bffff38">var</a></span>, <span class="tt">diff_term</span>, GB hooks, ... &mdash; that the rest of the engine calls without caring whether the underlying value is stored as a flat <span class="tt">Nterm*</span> (<span class="tt"><a class="el" href="class_poly_ring_flat.html" title="PolynomialRing subclass whose elements are represented as a single flat Nterm* linked list (no fracti...">PolyRingFlat</a></span>), as a fraction (<span class="tt">PolyRingFraction</span>), or as a quotient (<span class="tt"><a class="el" href="class_poly_ring_quotient.html" title="PolyRingFlat subclass for quotients R / I of a polynomial ring by an ideal.">PolyRingQuotient</a></span>). Concrete classes pick their representation and override the virtual methods accordingly. </p>
+
+<p class="definition">Definition at line <a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html#l00091">91</a> of file <a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="_macaulay2_2e_2polyring_8hpp_source.html">polyring.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="_macaulay2_2e_2polyring_8cpp_source.html">polyring.cpp</a></li>

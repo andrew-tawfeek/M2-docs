@@ -91,6 +91,9 @@ $(function(){initNavTree('class_pair.html','','class_pair-members'); });
   <div class="headertitle"><div class="title">Pair Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>S-pair record for the Franzi boolean Groebner basis algorithm.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -108,8 +111,10 @@ Friends</h2></td></tr>
 <tr class="memitem:af0423f8c9aba97457ca380e60b549cf6" id="r_af0423f8c9aba97457ca380e60b549cf6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pair_af0423f8c9aba97457ca380e60b549cf6.html#af0423f8c9aba97457ca380e60b549cf6">operator&lt;</a> (const <a class="el" href="class_pair.html">Pair</a> &amp;pair1, const <a class="el" href="class_pair.html">Pair</a> &amp;pair2)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00012">12</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
+<div class="textblock"><p>S-pair record for the Franzi boolean Groebner basis algorithm. </p>
+<p>Carries the two basis-element indices <span class="tt"><a class="el" href="class_pair_a174e8c0f0ff85f24f98253a134c085d1.html#a174e8c0f0ff85f24f98253a134c085d1">i</a>, <a class="el" href="class_pair_a5cc7c357fa4c81c5760aa8e07d68918d.html#a5cc7c357fa4c81c5760aa8e07d68918d">j</a></span> (a negative <span class="tt"><a class="el" href="class_pair_a174e8c0f0ff85f24f98253a134c085d1.html#a174e8c0f0ff85f24f98253a134c085d1">i</a> = -k</span> means the field polynomial <span class="tt">x_k^2 + x_k</span> is being paired against <span class="tt">F[<a class="el" href="class_pair_a5cc7c357fa4c81c5760aa8e07d68918d.html#a5cc7c357fa4c81c5760aa8e07d68918d">j</a>]</span>), the precomputed lead-term <span class="tt"><a class="el" href="class_pair_affb8bd419fe581fdb84ae0d545fce302.html#affb8bd419fe581fdb84ae0d545fce302">lcm</a></span>, and a <span class="tt"><a class="el" href="class_pair_a55959c06cfec0d4141a7ddb2f4893354.html#a55959c06cfec0d4141a7ddb2f4893354">good</a></span> flag set false if either parent has been retired from <span class="tt">F</span>. Ordered first by <span class="tt"><a class="el" href="class_pair_affb8bd419fe581fdb84ae0d545fce302.html#affb8bd419fe581fdb84ae0d545fce302">lcm</a></span> (lex), then by <span class="tt"><a class="el" href="class_pair_a5cc7c357fa4c81c5760aa8e07d68918d.html#a5cc7c357fa4c81c5760aa8e07d68918d">j</a></span>, then by <span class="tt"><a class="el" href="class_pair_a174e8c0f0ff85f24f98253a134c085d1.html#a174e8c0f0ff85f24f98253a134c085d1">i</a></span>, so the enclosing <span class="tt">std::set&lt;<a class="el" href="class_pair.html" title="S-pair record for the Franzi boolean Groebner basis algorithm.">Pair</a>&gt;</span> queue pops the smallest pair next. </p>
+
+<p class="definition">Definition at line <a class="el" href="franzi-gb_8cpp_source.html#l00022">22</a> of file <a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="franzi-gb_8cpp_source.html">franzi-gb.cpp</a></li>
 </ul>

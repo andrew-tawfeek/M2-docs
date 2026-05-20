@@ -92,6 +92,9 @@ $(function(){initNavTree('class_hilbert_controller.html','','class_hilbert_contr
 </div><!--header-->
 <div class="contents">
 
+<p>Hilbert-function-driven early termination helper used by <span class="tt"><a class="el" href="class_f4_g_b.html" title="Commutative F4 Groebner-basis driver: degree-by-degree Macaulay matrix construction plus row-reductio...">F4GB</a></span> to skip degrees the user-supplied Hilbert series predicts hold no new basis elements.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="hilb-fcn_8hpp_source.html">hilb-fcn.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for HilbertController:</div>
@@ -140,8 +143,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="hilb-fcn_8hpp_source.html#l00039">39</a> of file <a class="el" href="hilb-fcn_8hpp_source.html">hilb-fcn.hpp</a>.</p>
+<div class="textblock"><p>Hilbert-function-driven early termination helper used by <span class="tt"><a class="el" href="class_f4_g_b.html" title="Commutative F4 Groebner-basis driver: degree-by-degree Macaulay matrix construction plus row-reductio...">F4GB</a></span> to skip degrees the user-supplied Hilbert series predicts hold no new basis elements. </p>
+<p>Constructed with the source <span class="tt"><a class="el" href="class_free_module.html" title="Engine-side free module R^n over a Ring.">FreeModule</a></span> and a <span class="tt">RingElement* hf</span> encoding the expected Hilbert series. <span class="tt">setDegree(d)</span> advances the controller to degree <span class="tt">d</span> and exposes <span class="tt"><a class="el" href="class_hilbert_controller_a3de0f9d41005478725628b0c9d4f7e8a.html#a3de0f9d41005478725628b0c9d4f7e8a">nRemainingExpected()</a></span>, the number of basis-element insertions the series still predicts at that degree. <span class="tt">addMonomial(a, comp)</span> is called for each newly minimal monomial and decrements the count; when the count hits zero the driver can skip the rest of the degree. </p>
+
+<p class="definition">Definition at line <a class="el" href="hilb-fcn_8hpp_source.html#l00052">52</a> of file <a class="el" href="hilb-fcn_8hpp_source.html">hilb-fcn.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/f4/<a class="el" href="hilb-fcn_8hpp_source.html">hilb-fcn.hpp</a></li>
 <li>Macaulay2/e/f4/<a class="el" href="hilb-fcn_8cpp_source.html">hilb-fcn.cpp</a></li>

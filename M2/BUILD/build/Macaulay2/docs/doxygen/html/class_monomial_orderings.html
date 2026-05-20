@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_orderings.html','','class_monomial_orde
 </div><!--header-->
 <div class="contents">
 
+<p>Static-method namespace of constructors for the front-end <span class="tt"><a class="el" href="struct_monomial_ordering.html" title="Front-end-side description of a monomial ordering as a list of mon_part blocks.">MonomialOrdering</a></span> value type.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monordering_8hpp_source.html">monordering.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -117,8 +120,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a12d7d77b74e7e00294a448a18472f57e" id="r_a12d7d77b74e7e00294a448a18472f57e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_monomial_ordering.html">MonomialOrdering</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_orderings_a12d7d77b74e7e00294a448a18472f57e.html#a12d7d77b74e7e00294a448a18472f57e">GRevLex</a> (const std::vector&lt; <a class="el" href="classint.html">int</a> &gt; &amp;wts, <a class="el" href="classint.html">int</a> packing)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monordering_8hpp_source.html#l00040">40</a> of file <a class="el" href="monordering_8hpp_source.html">monordering.hpp</a>.</p>
+<div class="textblock"><p>Static-method namespace of constructors for the front-end <span class="tt"><a class="el" href="struct_monomial_ordering.html" title="Front-end-side description of a monomial ordering as a list of mon_part blocks.">MonomialOrdering</a></span> value type. </p>
+<p>Holds no state &mdash; every method is <span class="tt">static</span>. Provides factories for the standard monomial orders (<span class="tt"><a class="el" href="class_monomial_orderings_ab700dfacdf5317b25b7670c4232527a8.html#ab700dfacdf5317b25b7670c4232527a8">Lex</a></span>, <span class="tt"><a class="el" href="class_monomial_orderings_a603e630de63149b99d5c4f599fa7b1df.html#a603e630de63149b99d5c4f599fa7b1df">GRevLex</a></span>, <span class="tt"><a class="el" href="class_monomial_orderings_ad75e90cd11f5f436f5c6588ec4cfd4f0.html#ad75e90cd11f5f436f5c6588ec4cfd4f0">RevLex</a></span>, <span class="tt"><a class="el" href="class_monomial_orderings_a167bb8dc2dd397a80f998ea0d038ba32.html#a167bb8dc2dd397a80f998ea0d038ba32">Weights</a></span>, <span class="tt">Position</span>, ...), variants with 2-byte and 4-byte exponent packings (<span class="tt"><a class="el" href="class_monomial_orderings_a30d724f14e27c8a7b43e6da2d845cec5.html#a30d724f14e27c8a7b43e6da2d845cec5">Lex2</a></span> / <span class="tt"><a class="el" href="class_monomial_orderings_a2d5c8afdd48b157ff811126d85513abd.html#a2d5c8afdd48b157ff811126d85513abd">Lex4</a></span>, <span class="tt"><a class="el" href="class_monomial_orderings_a095c9057cb5b961499b84bbc771ea842.html#a095c9057cb5b961499b84bbc771ea842">GRevLex2</a></span> / <span class="tt"><a class="el" href="class_monomial_orderings_a9a5d7d75ef6fd16b96ec638995657323.html#a9a5d7d75ef6fd16b96ec638995657323">GRevLex4</a></span>), weighted forms, plus the combinators <span class="tt"><a class="el" href="class_monomial_orderings_aeac24bb39d682a1ae9b85e7a40d903a2.html#aeac24bb39d682a1ae9b85e7a40d903a2">join</a></span> (lex-of-blocks) and <span class="tt"><a class="el" href="class_monomial_orderings_ab6124c3acdc7d20b5c5ba484d615f14a.html#ab6124c3acdc7d20b5c5ba484d615f14a">product</a></span> (tensor-product order). <span class="tt">toString(mo)</span> renders a <span class="tt">MonomialOrdering*</span> back to its <a class="el" href="namespace_m2.html">M2</a> source form. </p>
+
+<p class="definition">Definition at line <a class="el" href="monordering_8hpp_source.html#l00052">52</a> of file <a class="el" href="monordering_8hpp_source.html">monordering.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="monordering_8hpp_source.html">monordering.hpp</a></li>
 <li>Macaulay2/e/interface/<a class="el" href="monomial-ordering_8cpp_source.html">monomial-ordering.cpp</a></li>

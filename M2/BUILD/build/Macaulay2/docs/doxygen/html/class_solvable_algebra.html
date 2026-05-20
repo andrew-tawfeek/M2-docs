@@ -92,6 +92,9 @@ $(function(){initNavTree('class_solvable_algebra.html','','class_solvable_algebr
 </div><!--header-->
 <div class="contents">
 
+<p><span class="tt"><a class="el" href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,...">PolyRing</a></span> subclass for solvable polynomial algebras (PBW-type non-commutative rings where each pair of non-commuting variables satisfies a relation of the form <span class="tt">x_j x_i = c_ij x_i x_j + lower</span>).  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="solvable_8hpp_source.html">solvable.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SolvableAlgebra:</div>
@@ -99,11 +102,11 @@ Inheritance diagram for SolvableAlgebra:</div>
  <div class="center">
   <img src="class_solvable_algebra.png" usemap="#SolvableAlgebra_map" alt=""/>
   <map id="SolvableAlgebra_map" name="SolvableAlgebra_map">
-<area href="class_poly_ring.html" alt="PolyRing" shape="rect" coords="0,336,133,360"/>
-<area href="class_poly_ring_flat.html" alt="PolyRingFlat" shape="rect" coords="0,280,133,304"/>
-<area href="class_polynomial_ring.html" alt="PolynomialRing" shape="rect" coords="0,224,133,248"/>
+<area href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,..." alt="PolyRing" shape="rect" coords="0,336,133,360"/>
+<area href="class_poly_ring_flat.html" title="PolynomialRing subclass whose elements are represented as a single flat Nterm* linked list (no fracti..." alt="PolyRingFlat" shape="rect" coords="0,280,133,304"/>
+<area href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy." alt="PolynomialRing" shape="rect" coords="0,224,133,248"/>
 <area href="class_ring.html" title="xxx xxx xxx" alt="Ring" shape="rect" coords="0,168,133,192"/>
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -602,8 +605,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afbab9c9478e0282305e36122324e5613 inherit pro_static_attribs_class_poly_ring" id="r_afbab9c9478e0282305e36122324e5613"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_poly_ring.html">PolyRing</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_poly_ring_afbab9c9478e0282305e36122324e5613.html#afbab9c9478e0282305e36122324e5613">trivial_poly_ring</a> = nullptr</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="solvable_8hpp_source.html#l00040">40</a> of file <a class="el" href="solvable_8hpp_source.html">solvable.hpp</a>.</p>
+<div class="textblock"><p><span class="tt"><a class="el" href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,...">PolyRing</a></span> subclass for solvable polynomial algebras (PBW-type non-commutative rings where each pair of non-commuting variables satisfies a relation of the form <span class="tt">x_j x_i = c_ij x_i x_j + lower</span>). </p>
+<p><span class="tt"><a class="el" href="class_solvable_algebra_acad72e4053f0199f621b27f72698b60a.html#acad72e4053f0199f621b27f72698b60a">Q_</a></span> is the matrix of <span class="tt">lower</span> correction terms indexed by variable pairs &mdash; when <span class="tt">mult_by_term1</span> would normally commute <span class="tt">x_j</span> past <span class="tt">x_i</span>, the engine looks up <span class="tt"><a class="el" href="class_solvable_algebra_acad72e4053f0199f621b27f72698b60a.html#acad72e4053f0199f621b27f72698b60a">Q_</a></span> to add in the lower-order polynomial that the relation demands. Constructed via <span class="tt">create(R, Q)</span> so the relations can be validated against the ambient <span class="tt"><a class="el" href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy.">PolynomialRing</a></span> before the new ring is exposed. </p>
+
+<p class="definition">Definition at line <a class="el" href="solvable_8hpp_source.html#l00052">52</a> of file <a class="el" href="solvable_8hpp_source.html">solvable.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="solvable_8hpp_source.html">solvable.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="solvable_8cpp_source.html">solvable.cpp</a></li>

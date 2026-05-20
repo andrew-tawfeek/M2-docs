@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_hash_and_eq_var_size.html','','class_mo
 </div><!--header-->
 <div class="contents">
 
+<p>Combined hash + equality functor for variable-size monomials, plugged into the <span class="tt">std::unordered_set</span> inside <span class="tt"><a class="el" href="class_monomial_set_var_size.html" title="Hash set of interned variable-size monomials — the variable-length counterpart of MonomialSetFixedSiz...">MonomialSetVarSize</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -101,8 +104,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a248cb5acbab14af3279cac22c97df4f0" id="r_a248cb5acbab14af3279cac22c97df4f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_hash_and_eq_var_size_a248cb5acbab14af3279cac22c97df4f0.html#a248cb5acbab14af3279cac22c97df4f0">operator()</a> (const <a class="el" href="classint.html">int</a> *a, const <a class="el" href="classint.html">int</a> *b) const</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00126">126</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
+<div class="textblock"><p>Combined hash + equality functor for variable-size monomials, plugged into the <span class="tt">std::unordered_set</span> inside <span class="tt"><a class="el" href="class_monomial_set_var_size.html" title="Hash set of interned variable-size monomials — the variable-length counterpart of MonomialSetFixedSiz...">MonomialSetVarSize</a></span>. </p>
+<p>Reads the leading int of each monomial as its length, then compares the two ranges with <span class="tt">std::equal</span>. The hash is the same <span class="tt">TODO</span> stub that returns 0 as in the fixed-size variant. </p>
+
+<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00153">153</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a></li>
 </ul>

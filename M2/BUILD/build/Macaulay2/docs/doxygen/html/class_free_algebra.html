@@ -92,6 +92,9 @@ $(function(){initNavTree('class_free_algebra.html','','class_free_algebra-member
 </div><!--header-->
 <div class="contents">
 
+<p>Free associative algebra over a coefficient ring: the non-commutative analogue of <span class="tt"><a class="el" href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy.">PolynomialRing</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FreeAlgebra:</div>
@@ -188,8 +191,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aad172bc52bc4834ea28cf05e9bbd11c9" id="r_aad172bc52bc4834ea28cf05e9bbd11c9"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_free_monoid.html">FreeMonoid</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_free_algebra_aad172bc52bc4834ea28cf05e9bbd11c9.html#aad172bc52bc4834ea28cf05e9bbd11c9">mMonoid</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_free_algebra_8hpp_source.html#l00051">51</a> of file <a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>.</p>
+<div class="textblock"><p>Free associative algebra over a coefficient ring: the non-commutative analogue of <span class="tt"><a class="el" href="class_polynomial_ring.html" title="Abstract base for the engine&#39;s polynomial-ring hierarchy.">PolynomialRing</a></span>. </p>
+<p>Bundles the coefficient ring with a <span class="tt"><a class="el" href="class_free_monoid.html" title="The free non-commutative monoid on a set of named variables, with monomial ordering and degree / weig...">FreeMonoid</a></span> of words on the generators and exposes the operation surface the non-commutative arithmetic / Groebner stack (<span class="tt"><a class="el" href="class_n_c_groebner.html" title="One-overlap-at-a-time Groebner basis driver for the free associative algebra (the &quot;Naive&quot; companion t...">NCGroebner</a></span>, <span class="tt"><a class="el" href="class_n_c_f4.html" title="Non-commutative F4 Groebner-basis driver: builds a per-degree Macaulay matrix from overlaps and reduc...">NCF4</a></span>) reduces against: <span class="tt"><a class="el" href="class_free_algebra_a98333c6cf6b7f4c10921cf0307015bff.html#a98333c6cf6b7f4c10921cf0307015bff">from_word</a></span>, <span class="tt"><a class="el" href="class_free_algebra_a071f2f7069022fa5c7b8d2d574aa4853.html#a071f2f7069022fa5c7b8d2d574aa4853">add</a></span>, <span class="tt"><a class="el" href="class_free_algebra_a12e7c8f87c5382bd808552fc08d5fef7.html#a12e7c8f87c5382bd808552fc08d5fef7">subtract</a></span>, <span class="tt"><a class="el" href="class_free_algebra_a3ac84662e7baa3f878082d76c8c1d497.html#a3ac84662e7baa3f878082d76c8c1d497">mult</a></span>, <span class="tt"><a class="el" href="class_free_algebra_a96ee0b556866779dc5f3c1feef864e09.html#a96ee0b556866779dc5f3c1feef864e09">mult_by_term_left_and_right</a></span>, <span class="tt"><a class="el" href="class_free_algebra_a0d70e2b8d8242784380688472e0d9d68.html#a0d70e2b8d8242784380688472e0d9d68">power</a></span>, and the lead-term accessors. Created through the static <span class="tt"><a class="el" href="class_free_algebra_a8e487ea6c24f2c8d497362d7bd2cd309.html#a8e487ea6c24f2c8d497362d7bd2cd309">create()</a></span> factory from a coefficient ring plus the variable names, degrees, weight vectors, and heft vector; the constructor itself is private. </p>
+
+<p class="definition">Definition at line <a class="el" href="_free_algebra_8hpp_source.html#l00064">64</a> of file <a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_algebra_8hpp_source.html">FreeAlgebra.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_free_algebra_8cpp_source.html">FreeAlgebra.cpp</a></li>

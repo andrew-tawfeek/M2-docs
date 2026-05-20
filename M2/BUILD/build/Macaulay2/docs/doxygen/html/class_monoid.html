@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monoid.html','','class_monoid-members'); });
 </div><!--header-->
 <div class="contents">
 
+<p>Engine-side commutative monomial monoid: variable names, ordering, multidegree machinery, and monomial encoding/decoding.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monoid_8hpp_source.html">monoid.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Monoid:</div>
@@ -99,7 +102,7 @@ Inheritance diagram for Monoid:</div>
  <div class="center">
   <img src="class_monoid.png" usemap="#Monoid_map" alt=""/>
   <map id="Monoid_map" name="Monoid_map">
-<area href="class_mutable_engine_object.html" alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
+<area href="class_mutable_engine_object.html" title="Base class for engine objects that may mutate, so their hash must be identity-based rather than conte..." alt="MutableEngineObject" shape="rect" coords="0,112,133,136"/>
 <area href="classour__gc__cleanup.html" alt="our_gc_cleanup" shape="rect" coords="0,56,133,80"/>
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,133,24"/>
   </map>
@@ -254,8 +257,10 @@ Static Private Attributes</h2></td></tr>
 <tr class="memdesc:ae147911e0cbfd4314731b165fb2f7540"><td class="mdescLeft">&#160;</td><td class="mdescRight">the trivial monoid  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monoid_8hpp_source.html#l00070">70</a> of file <a class="el" href="monoid_8hpp_source.html">monoid.hpp</a>.</p>
+<div class="textblock"><p>Engine-side commutative monomial monoid: variable names, ordering, multidegree machinery, and monomial encoding/decoding. </p>
+<p>Owns the front-end <span class="tt">MonomialOrdering* <a class="el" href="class_monoid_a9879292a1cff798d63220a1995827560.html#a9879292a1cff798d63220a1995827560" title="the monomial ordering of the variables">mo_</a></span> plus its compiled <span class="tt">MonomialOrder* <a class="el" href="class_monoid_af0dcb55588123777db9ad0ac1eb7d225.html#af0dcb55588123777db9ad0ac1eb7d225">monorder_</a></span> form, the variable count and names, the per-variable multidegrees, the heft vector, and (recursively) a <span class="tt"><a class="el" href="class_monoid_a403badc25a41a1d21bcf4ab9e23893a9.html#a403badc25a41a1d21bcf4ab9e23893a9">mDegreeMonoid</a></span> describing how degrees themselves are structured. Exposes the operations rings reduce against (<span class="tt"><a class="el" href="class_monoid_ac6c092c8e8afa4ab22276f88def6c2bf.html#ac6c092c8e8afa4ab22276f88def6c2bf">mult</a></span>, <span class="tt"><a class="el" href="class_monoid_ad2a80b0729868f0b3659b76b99544fd1.html#ad2a80b0729868f0b3659b76b99544fd1">divide</a></span>, <span class="tt"><a class="el" href="class_monoid_a20b09ceb0610a8d0c2e57ca17c025f0c.html#a20b09ceb0610a8d0c2e57ca17c025f0c">lcm</a></span>, <span class="tt"><a class="el" href="class_monoid_a09dbbbc0d0b60aa63f19b1a3a2c7ec27.html#a09dbbbc0d0b60aa63f19b1a3a2c7ec27">gcd</a></span>, <span class="tt"><a class="el" href="class_monoid_a85091ad699cd882228ad2cdab4e6439e.html#a85091ad699cd882228ad2cdab4e6439e">compare</a></span>, <span class="tt"><a class="el" href="class_monoid_a657eb759a40ad53e4c3c2bb92295c3ca.html#a657eb759a40ad53e4c3c2bb92295c3ca">is_one</a></span>, plus encode / decode between exponent vectors and packed monomial words). The commutative counterpart of <span class="tt"><a class="el" href="class_free_monoid.html" title="The free non-commutative monoid on a set of named variables, with monomial ordering and degree / weig...">FreeMonoid</a></span> in the NC stack. </p>
+
+<p class="definition">Definition at line <a class="el" href="monoid_8hpp_source.html#l00084">84</a> of file <a class="el" href="monoid_8hpp_source.html">monoid.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="monoid_8hpp_source.html">monoid.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="monoid_8cpp_source.html">monoid.cpp</a></li>

@@ -92,6 +92,9 @@ $(function(){initNavTree('class_word_with_data_table.html','','class_word_with_d
 </div><!--header-->
 <div class="contents">
 
+<p>Variant of <span class="tt"><a class="el" href="class_word_table.html" title="Index of Words (non-commutative monomials) with subword, prefix/suffix, and overlap lookup used by th...">WordTable</a></span> where each stored monomial carries an additional ecart-degree datum that gates subword matches.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_word_table_8hpp_source.html">WordTable.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -131,8 +134,10 @@ Friends</h2></td></tr>
 <tr class="memitem:a00f3cf98a85053e6cf07e7502c2ba657" id="r_a00f3cf98a85053e6cf07e7502c2ba657"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_word_with_data_table_a00f3cf98a85053e6cf07e7502c2ba657.html#a00f3cf98a85053e6cf07e7502c2ba657">operator&lt;&lt;</a> (std::ostream &amp;o, const <a class="el" href="class_word_with_data_table.html">WordWithDataTable</a> &amp;wordWithDataTable)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_word_table_8hpp_source.html#l00161">161</a> of file <a class="el" href="_word_table_8hpp_source.html">WordTable.hpp</a>.</p>
+<div class="textblock"><p>Variant of <span class="tt"><a class="el" href="class_word_table.html" title="Index of Words (non-commutative monomials) with subword, prefix/suffix, and overlap lookup used by th...">WordTable</a></span> where each stored monomial carries an additional ecart-degree datum that gates subword matches. </p>
+<p>Same skeleton as <span class="tt"><a class="el" href="class_word_table.html" title="Index of Words (non-commutative monomials) with subword, prefix/suffix, and overlap lookup used by th...">WordTable</a></span> (parallel <span class="tt"><a class="el" href="class_word_with_data_table_af22e4b8aa22ebaefb109a9972b4d96ff.html#af22e4b8aa22ebaefb109a9972b4d96ff">mMonomials</a></span> / <span class="tt"><a class="el" href="class_word_with_data_table_a606679ac3904cfa30eadd49899c32510.html#a606679ac3904cfa30eadd49899c32510">mIndices</a></span> with -1 marking retired entries), but <span class="tt"><a class="el" href="class_word_with_data_table_a18978a08954516e567a7f34d57272997.html#a18978a08954516e567a7f34d57272997">subword</a></span> queries take an ecart degree into account, skipping entries whose ecart is larger than the query's. Used by the GB code paths that need ecart-aware reduction (typically inhomogeneous problems with sugar / ecart strategies). </p>
+
+<p class="definition">Definition at line <a class="el" href="_word_table_8hpp_source.html#l00186">186</a> of file <a class="el" href="_word_table_8hpp_source.html">WordTable.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_word_table_8hpp_source.html">WordTable.hpp</a></li>
 <li>Macaulay2/e/NCAlgebras/<a class="el" href="_word_table_8cpp_source.html">WordTable.cpp</a></li>

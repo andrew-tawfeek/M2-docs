@@ -92,6 +92,9 @@ $(function(){initNavTree('class_monomial_set_var_size.html','','class_monomial_s
 </div><!--header-->
 <div class="contents">
 
+<p>Hash set of interned variable-size monomials &mdash; the variable-length counterpart of <span class="tt"><a class="el" href="class_monomial_set_fixed_size.html">MonomialSetFixedSize</a></span>.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -109,8 +112,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ac2e495a9ea37e43353319ded89afb0d1" id="r_ac2e495a9ea37e43353319ded89afb0d1"><td class="memItemLeft" align="right" valign="top">std::unordered_set&lt; const <a class="el" href="classint.html">int</a> *, <a class="el" href="class_monomial_hash_and_eq_var_size.html">MonomialHashAndEqVarSize</a>, <a class="el" href="class_monomial_hash_and_eq_var_size.html">MonomialHashAndEqVarSize</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monomial_set_var_size_ac2e495a9ea37e43353319ded89afb0d1.html#ac2e495a9ea37e43353319ded89afb0d1">mHash</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00191">191</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
+<div class="textblock"><p>Hash set of interned variable-size monomials &mdash; the variable-length counterpart of <span class="tt"><a class="el" href="class_monomial_set_fixed_size.html">MonomialSetFixedSize</a></span>. </p>
+<p>Each monomial is a contiguous range <span class="tt">[m, m + *m)</span> where the leading int is the length, so the set itself stores only <span class="tt">const int*</span> pointers; the storage is owned by the caller (typically a <span class="tt"><a class="el" href="class_monomial_memory_space.html" title="Bump-pointer arena for monomial storage, backed by a memt::Arena.">MonomialMemorySpace</a></span>). <span class="tt"><a class="el" href="class_monomial_set_var_size_ab42353083cc023b53387e1a6b9999df1.html#ab42353083cc023b53387e1a6b9999df1">findOrInsert</a></span> returns the canonical pointer plus a flag indicating whether a new entry was created. </p>
+
+<p class="definition">Definition at line <a class="el" href="monomial-sets_8hpp_source.html#l00228">228</a> of file <a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="monomial-sets_8hpp_source.html">monomial-sets.hpp</a></li>
 </ul>

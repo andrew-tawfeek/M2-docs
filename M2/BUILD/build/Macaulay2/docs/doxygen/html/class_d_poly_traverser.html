@@ -92,6 +92,9 @@ $(function(){initNavTree('class_d_poly_traverser.html','','class_d_poly_traverse
 </div><!--header-->
 <div class="contents">
 
+<p>Visitor base class that walks every term of a <span class="tt">TowerPolynomial</span>, calling <span class="tt">viewTerm(coeff, exponents)</span> once per leaf.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DPolyTraverser:</div>
@@ -100,7 +103,7 @@ Inheritance diagram for DPolyTraverser:</div>
   <img src="class_d_poly_traverser.png" usemap="#DPolyTraverser_map" alt=""/>
   <map id="DPolyTraverser_map" name="DPolyTraverser_map">
 <area href="structour__new__delete.html" alt="our_new_delete" shape="rect" coords="0,0,102,24"/>
-<area href="class_tower_evaluator.html" alt="TowerEvaluator" shape="rect" coords="0,112,102,136"/>
+<area href="class_tower_evaluator.html" title="DPolyTraverser subclass that evaluates a tower polynomial under a RingMap." alt="TowerEvaluator" shape="rect" coords="0,112,102,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -135,8 +138,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afab4c8d83fd2bd59db3be7b1f5354eae inherit pub_static_methods_structour__new__delete" id="r_afab4c8d83fd2bd59db3be7b1f5354eae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structour__new__delete_afab4c8d83fd2bd59db3be7b1f5354eae.html#afab4c8d83fd2bd59db3be7b1f5354eae">operator delete[]</a> (void *obj, void *existing_memory)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dpoly_8hpp_source.html#l00406">406</a> of file <a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a>.</p>
+<div class="textblock"><p>Visitor base class that walks every term of a <span class="tt">TowerPolynomial</span>, calling <span class="tt">viewTerm(coeff, exponents)</span> once per leaf. </p>
+<p>Subclasses override <span class="tt"><a class="el" href="class_d_poly_traverser_abbf39a17cbb1d00c6dfb26b567571985.html#abbf39a17cbb1d00c6dfb26b567571985">viewTerm</a></span> to consume terms (e.g. to convert a tower polynomial to engine <span class="tt"><a class="el" href="struct_nterm.html" title="Singly linked-list node carrying one term of a polynomial-ring element.">Nterm</a></span>s for display or for matrix construction). <span class="tt">traverse(f)</span> does the depth-first descent and stops as soon as <span class="tt"><a class="el" href="class_d_poly_traverser_abbf39a17cbb1d00c6dfb26b567571985.html#abbf39a17cbb1d00c6dfb26b567571985">viewTerm</a></span> returns false. Holds a <span class="tt">const DPoly*</span> so the same traverser can be used against several polynomials in the same ring without rebuilding. </p>
+
+<p class="definition">Definition at line <a class="el" href="dpoly_8hpp_source.html#l00452">452</a> of file <a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="dpoly_8hpp_source.html">dpoly.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="dpoly_8cpp_source.html">dpoly.cpp</a></li>

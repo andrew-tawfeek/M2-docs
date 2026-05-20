@@ -92,6 +92,11 @@ $(function(){initNavTree('class_matrix_stream.html','','class_matrix_stream-memb
 </div><!--header-->
 <div class="contents">
 
+<p>Streaming consumer that builds an engine <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span> from the mathicgb-style stream callbacks (<span class="tt"><a class="el" href="class_matrix_stream_a321c2d084a57b5bececd2db7fa200b17.html#a321c2d084a57b5bececd2db7fa200b17">idealBegin</a> /
+<a class="el" href="class_matrix_stream_ad1acdb5a4926e1f71d6a07f7b854f324.html#ad1acdb5a4926e1f71d6a07f7b854f324">appendPolynomialBegin</a> / <a class="el" href="class_matrix_stream_a85e010ca099e743a96c8cced525d45d6.html#a85e010ca099e743a96c8cced525d45d6">appendTermBegin</a> / <a class="el" href="class_matrix_stream_a8813edf125ed43990031230df55aab19.html#a8813edf125ed43990031230df55aab19">appendExponent</a> /
+<a class="el" href="class_matrix_stream_a3ed6df1491ee2ea227ba4f9dd8fb115e.html#a3ed6df1491ee2ea227ba4f9dd8fb115e">appendTermDone</a> / <a class="el" href="class_matrix_stream_ae8f4fa465280f24d8198136d57da76b9.html#ae8f4fa465280f24d8198136d57da76b9">appendPolynomialDone</a> / <a class="el" href="class_matrix_stream_a360a3ad94a0ad3df31ac93d48c15b55a.html#a360a3ad94a0ad3df31ac93d48c15b55a">idealDone</a></span>).  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="matrix-stream_8hpp_source.html">matrix-stream.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -130,8 +135,12 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:adc8a3f775ac700ff27537a9fd20c03da" id="r_adc8a3f775ac700ff27537a9fd20c03da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_nterm.html">Nterm</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix_stream_adc8a3f775ac700ff27537a9fd20c03da.html#adc8a3f775ac700ff27537a9fd20c03da">mLastTerms</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="matrix-stream_8hpp_source.html#l00072">72</a> of file <a class="el" href="matrix-stream_8hpp_source.html">matrix-stream.hpp</a>.</p>
+<div class="textblock"><p>Streaming consumer that builds an engine <span class="tt"><a class="el" href="class_matrix.html" title="Engine-side matrix: a map between two free modules, stored as a column-vector list.">Matrix</a></span> from the mathicgb-style stream callbacks (<span class="tt"><a class="el" href="class_matrix_stream_a321c2d084a57b5bececd2db7fa200b17.html#a321c2d084a57b5bececd2db7fa200b17">idealBegin</a> /
+<a class="el" href="class_matrix_stream_ad1acdb5a4926e1f71d6a07f7b854f324.html#ad1acdb5a4926e1f71d6a07f7b854f324">appendPolynomialBegin</a> / <a class="el" href="class_matrix_stream_a85e010ca099e743a96c8cced525d45d6.html#a85e010ca099e743a96c8cced525d45d6">appendTermBegin</a> / <a class="el" href="class_matrix_stream_a8813edf125ed43990031230df55aab19.html#a8813edf125ed43990031230df55aab19">appendExponent</a> /
+<a class="el" href="class_matrix_stream_a3ed6df1491ee2ea227ba4f9dd8fb115e.html#a3ed6df1491ee2ea227ba4f9dd8fb115e">appendTermDone</a> / <a class="el" href="class_matrix_stream_ae8f4fa465280f24d8198136d57da76b9.html#ae8f4fa465280f24d8198136d57da76b9">appendPolynomialDone</a> / <a class="el" href="class_matrix_stream_a360a3ad94a0ad3df31ac93d48c15b55a.html#a360a3ad94a0ad3df31ac93d48c15b55a">idealDone</a></span>). </p>
+<p>Mirrors the <span class="tt"><a class="el" href="class_basic_poly_list_stream_collector.html" title="Streaming consumer that builds a BasicPolyList from per-term callbacks, matching the mathicgb / mgb s...">BasicPolyListStreamCollector</a></span> shape but produces a proper engine <span class="tt">Matrix*</span> over a <span class="tt"><a class="el" href="class_poly_ring.html" title="Concrete PolyRingFlat subclass implementing ordinary commutative polynomial rings K[x_1,...">PolyRing</a></span> instead of a portable <span class="tt"><a class="el" href="_basic_poly_list_8hpp_a24fbc5f5eec7472cd3ee08f9f323741e.html#a24fbc5f5eec7472cd3ee08f9f323741e">BasicPolyList</a></span>. Used as the bridge between mathicgb's stream input and the engine's typed matrices &mdash; <span class="tt"><a class="el" href="class_matrix_stream_aea27949d7fc72a95165364bddf465b66.html#aea27949d7fc72a95165364bddf465b66">value()</a></span> returns <span class="tt">nullptr</span> until <span class="tt"><a class="el" href="class_matrix_stream_a360a3ad94a0ad3df31ac93d48c15b55a.html#a360a3ad94a0ad3df31ac93d48c15b55a">idealDone()</a></span> is called. </p>
+
+<p class="definition">Definition at line <a class="el" href="matrix-stream_8hpp_source.html#l00084">84</a> of file <a class="el" href="matrix-stream_8hpp_source.html">matrix-stream.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/<a class="el" href="matrix-stream_8hpp_source.html">matrix-stream.hpp</a></li>
 <li>Macaulay2/e/<a class="el" href="matrix-stream_8cpp_source.html">matrix-stream.cpp</a></li>

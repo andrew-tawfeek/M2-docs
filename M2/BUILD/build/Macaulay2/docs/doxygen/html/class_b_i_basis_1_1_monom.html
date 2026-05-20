@@ -92,6 +92,9 @@ $(function(){initNavTree('class_b_i_basis_1_1_monom.html','','class_b_i_basis_1_
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base for the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> boolean-coefficient monomial types &mdash; a sorted, singly linked list of variable indices.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="monom_8hpp_source.html">monom.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BIBasis::Monom:</div>
@@ -99,15 +102,16 @@ Inheritance diagram for BIBasis::Monom:</div>
  <div class="center">
   <img src="class_b_i_basis_1_1_monom.png" usemap="#BIBasis_3A_3AMonom_map" alt=""/>
   <map id="BIBasis_3A_3AMonom_map" name="BIBasis_3A_3AMonom_map">
-<area href="class_b_i_basis_1_1_monom_d_l.html" alt="BIBasis::MonomDL" shape="rect" coords="0,56,124,80"/>
-<area href="class_b_i_basis_1_1_monom_d_r_l.html" alt="BIBasis::MonomDRL" shape="rect" coords="134,56,258,80"/>
-<area href="class_b_i_basis_1_1_monom_lex.html" alt="BIBasis::MonomLex" shape="rect" coords="268,56,392,80"/>
+<area href="class_b_i_basis_1_1_monom_d_l.html" title="Monom specialisation that orders monomials by degree, then by lex on the variable list (DegLex)." alt="BIBasis::MonomDL" shape="rect" coords="0,56,124,80"/>
+<area href="class_b_i_basis_1_1_monom_d_r_l.html" title="Monom specialisation that orders monomials by degree, then by reverse-lex on the variable list (DegRe..." alt="BIBasis::MonomDRL" shape="rect" coords="134,56,258,80"/>
+<area href="class_b_i_basis_1_1_monom_lex.html" title="Monom specialisation that orders monomials by pure lex on their sorted variable lists." alt="BIBasis::MonomLex" shape="rect" coords="268,56,392,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:VarsListNode" id="r_VarsListNode"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html">VarsListNode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singly linked-list node of a <span class="tt"><a class="el" href="class_b_i_basis_1_1_monom.html" title="Abstract base for the BIBasis boolean-coefficient monomial types — a sorted, singly linked list of va...">Monom</a></span>'s variable list, with a per-class slab allocator.  <a href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -147,8 +151,10 @@ Static Protected Attributes</h2></td></tr>
 <tr class="memitem:acff85e49a80fdf847a56b998c04e99b7" id="r_acff85e49a80fdf847a56b998c04e99b7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_b_i_basis_1_1_monom_a58ad9c3f9581a148624bb3c304add06d.html#a58ad9c3f9581a148624bb3c304add06d">Integer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_i_basis_1_1_monom_acff85e49a80fdf847a56b998c04e99b7.html#acff85e49a80fdf847a56b998c04e99b7">DimIndepend</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="monom_8hpp_source.html#l00051">51</a> of file <a class="el" href="monom_8hpp_source.html">monom.hpp</a>.</p>
+<div class="textblock"><p>Abstract base for the <a class="el" href="namespace_b_i_basis.html">BIBasis</a> boolean-coefficient monomial types &mdash; a sorted, singly linked list of variable indices. </p>
+<p><span class="tt"><a class="el" href="class_b_i_basis_1_1_monom_a58ad9c3f9581a148624bb3c304add06d.html#a58ad9c3f9581a148624bb3c304add06d">Integer</a></span> is a 16-bit type because <a class="el" href="namespace_b_i_basis.html">BIBasis</a> caps the number of variables (<span class="tt"><a class="el" href="class_b_i_basis_1_1_monom_acff85e49a80fdf847a56b998c04e99b7.html#acff85e49a80fdf847a56b998c04e99b7">DimIndepend</a></span>) at 32k. Subclasses (<span class="tt"><a class="el" href="class_b_i_basis_1_1_monom_lex.html" title="Monom specialisation that orders monomials by pure lex on their sorted variable lists.">MonomLex</a></span>, <span class="tt"><a class="el" href="class_b_i_basis_1_1_monom_d_l.html" title="Monom specialisation that orders monomials by degree, then by lex on the variable list (DegLex).">MonomDL</a></span>, <span class="tt"><a class="el" href="class_b_i_basis_1_1_monom_d_r_l.html" title="Monom specialisation that orders monomials by degree, then by reverse-lex on the variable list (DegRe...">MonomDRL</a></span>) implement the comparison for their respective monomial orders; the storage layout is shared in this base. Memory comes from a per-<span class="tt"><a class="el" href="struct_b_i_basis_1_1_monom_1_1_vars_list_node.html" title="Singly linked-list node of a Monom&#39;s variable list, with a per-class slab allocator.">VarsListNode</a></span> <span class="tt"><a class="el" href="class_b_i_basis_1_1_fast_allocator.html" title="Slab allocator handing out fixed-size blocks for one BIBasis type per instance.">FastAllocator</a></span>, so list insertion is bump-pointer cheap. <span class="tt"><a class="el" href="class_b_i_basis_1_1_monom_aa0046595752d9d293c84b9146bc701e0.html#aa0046595752d9d293c84b9146bc701e0">TotalDegree</a></span> caches the sum of exponents for fast degree lookups; in this boolean (square-free) setting that equals the list length. </p>
+
+<p class="definition">Definition at line <a class="el" href="monom_8hpp_source.html#l00065">65</a> of file <a class="el" href="monom_8hpp_source.html">monom.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>Macaulay2/e/bibasis/<a class="el" href="monom_8hpp_source.html">monom.hpp</a></li>
 <li>Macaulay2/e/bibasis/<a class="el" href="monom_8cpp_source.html">monom.cpp</a></li>

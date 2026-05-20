@@ -91,6 +91,9 @@ $(function(){initNavTree('class_k_basis.html','','class_k_basis-members'); });
   <div class="headertitle"><div class="title">KBasis Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Enumerates a k-basis (degree-graded monomial basis) of a module, a finite module's entire basis, or the basis of a map between modules.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -148,8 +151,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a85ef8ac6fbe2669256c010344eec8d1f" id="r_a85ef8ac6fbe2669256c010344eec8d1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbool.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_k_basis_a85ef8ac6fbe2669256c010344eec8d1f.html#a85ef8ac6fbe2669256c010344eec8d1f">kb_error</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="matrix-kbasis_8cpp_source.html#l00053">53</a> of file <a class="el" href="matrix-kbasis_8cpp_source.html">matrix-kbasis.cpp</a>.</p>
+<div class="textblock"><p>Enumerates a k-basis (degree-graded monomial basis) of a module, a finite module's entire basis, or the basis of a map between modules. </p>
+<p><span class="tt"><a class="el" href="class_k_basis_a87477caef42f22ae02a5653fe88104ef.html#a87477caef42f22ae02a5653fe88104ef">computation_type</a></span> picks the mode (<span class="tt"><a class="el" href="class_k_basis_a841eb2ca9ddb97e77baad78933328810.html#a841eb2ca9ddb97e77baad78933328810a7bb79c2a83fb1184c10126cc4df874c6">KB_SINGLE</a></span> for a fixed degree, <span class="tt"><a class="el" href="class_k_basis_a841eb2ca9ddb97e77baad78933328810.html#a841eb2ca9ddb97e77baad78933328810a56ec47500db8730d74f5d229ea3050b9">KB_MULTI</a></span> for a degree range, <span class="tt"><a class="el" href="class_k_basis_a841eb2ca9ddb97e77baad78933328810.html#a841eb2ca9ddb97e77baad78933328810a6ac99810d7899655c8b5885049b7d1f5">KB_FULL</a></span> for the whole finite-dimensional basis). The result is accumulated in <span class="tt"><a class="el" href="class_k_basis_a4f002a743fefc570df8e4aa5c26ff82f.html#a4f002a743fefc570df8e4aa5c26ff82f">mat</a></span> (a <span class="tt"><a class="el" href="class_matrix_constructor.html" title="Mutable builder used to assemble an immutable Matrix one column (or one term) at a time.">MatrixConstructor</a></span>); the recursive <span class="tt">do_kbasis</span> worker walks variable / degree combinations against the polynomial ring's monoid and emits one column per basis monomial. </p>
+
+<p class="definition">Definition at line <a class="el" href="matrix-kbasis_8cpp_source.html#l00065">65</a> of file <a class="el" href="matrix-kbasis_8cpp_source.html">matrix-kbasis.cpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="matrix-kbasis_8cpp_source.html">matrix-kbasis.cpp</a></li>
 </ul>

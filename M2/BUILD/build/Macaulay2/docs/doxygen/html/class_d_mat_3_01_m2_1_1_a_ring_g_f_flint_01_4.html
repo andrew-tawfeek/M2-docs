@@ -92,6 +92,9 @@ $(function(){initNavTree('class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_01_4.html',''
 </div><!--header-->
 <div class="contents">
 
+<p>Specialisation of <span class="tt"><a class="el" href="class_d_mat.html">DMat</a></span> for <span class="tt">ARingGFFlint</span> matrices, backed by FLINT's <span class="tt"><a class="el" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_01_4_a5f2e230f7dcb49eaaf30df66da5f24a6.html#a5f2e230f7dcb49eaaf30df66da5f24a6">fq_zech_mat</a></span> (Zech-log) routines.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="dmat-gf-flint_8hpp_source.html">dmat-gf-flint.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -129,8 +132,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a38f628377c19730bf5388a467ee7561a" id="r_a38f628377c19730bf5388a467ee7561a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_01_4_a47ee155f830e89431bac4cbbc642028f.html#a47ee155f830e89431bac4cbbc642028f">ElementType</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_mat_a38f628377c19730bf5388a467ee7561a.html#a38f628377c19730bf5388a467ee7561a">mRowPointers</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="dmat-gf-flint_8hpp_source.html#l00059">59</a> of file <a class="el" href="dmat-gf-flint_8hpp_source.html">dmat-gf-flint.hpp</a>.</p>
+<div class="textblock"><p>Specialisation of <span class="tt"><a class="el" href="class_d_mat.html">DMat</a></span> for <span class="tt">ARingGFFlint</span> matrices, backed by FLINT's <span class="tt"><a class="el" href="class_d_mat_3_01_m2_1_1_a_ring_g_f_flint_01_4_a5f2e230f7dcb49eaaf30df66da5f24a6.html#a5f2e230f7dcb49eaaf30df66da5f24a6">fq_zech_mat</a></span> (Zech-log) routines. </p>
+<p>Matrices over <span class="tt"><a class="el" href="class_g_f.html" title="Engine-side finite field GF(p^n) built on top of (Z/p)[t] / f(t) for a primitive element of the resul...">GF(p^n)</a></span> for small-field cases: stores entries in FLINT's discrete-log encoding and delegates linear-algebra primitives to the matching <span class="tt">fq_zech_mat_*</span> functions. The Zech tables make addition cheap, so this is the preferred dense <span class="tt"><a class="el" href="class_g_f.html" title="Engine-side finite field GF(p^n) built on top of (Z/p)[t] / f(t) for a primitive element of the resul...">GF(p^n)</a></span> backend for small fields. </p>
+
+<p class="definition">Definition at line <a class="el" href="dmat-gf-flint_8hpp_source.html#l00069">69</a> of file <a class="el" href="dmat-gf-flint_8hpp_source.html">dmat-gf-flint.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="dmat-gf-flint_8hpp_source.html">dmat-gf-flint.hpp</a></li>
 </ul>

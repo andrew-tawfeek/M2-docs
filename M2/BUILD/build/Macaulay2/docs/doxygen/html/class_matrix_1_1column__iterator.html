@@ -92,6 +92,9 @@ $(function(){initNavTree('class_matrix_1_1column__iterator.html','','class_matri
 </div><!--header-->
 <div class="contents">
 
+<p>Standards-style forward iterator over the <span class="tt"><a class="el" href="structvecterm.html">vecterm</a></span>s of one column.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -107,8 +110,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ad106daf626a989ae26920ff13e44196e" id="r_ad106daf626a989ae26920ff13e44196e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structvecterm.html">vecterm</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix_1_1column__iterator_ad106daf626a989ae26920ff13e44196e.html#ad106daf626a989ae26920ff13e44196e">v</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="matrix_8hpp_source.html#l00295">295</a> of file <a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>.</p>
+<div class="textblock"><p>Standards-style forward iterator over the <span class="tt"><a class="el" href="structvecterm.html">vecterm</a></span>s of one column. </p>
+<p>Simpler companion to <span class="tt"><a class="el" href="class_matrix_1_1iterator.html" title="Reseatable iterator over the non-zero entries of one column of the matrix.">iterator</a></span>: holds a raw <span class="tt">const vecterm*</span> cursor, increments it with <span class="tt">operator++</span>, dereferences with <span class="tt">operator*</span>, and ends at <span class="tt">nullptr</span>. Suitable for range-for over a single column's terms. </p>
+
+<p class="definition">Definition at line <a class="el" href="matrix_8hpp_source.html#l00325">325</a> of file <a class="el" href="matrix_8hpp_source.html">matrix.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>Macaulay2/e/<a class="el" href="matrix_8hpp_source.html">matrix.hpp</a></li>
 </ul>
