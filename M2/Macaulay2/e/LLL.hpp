@@ -36,6 +36,16 @@
 #include "mat.hpp"
 #include "relem.hpp"
 
+/**
+ * @brief Static-method namespace for the LLL lattice-basis reduction
+ * algorithm operating on a `MutableMatrix`.
+ *
+ * @details Holds no state --- every method is `static` --- and implements
+ * the standard Lovasz / REDI / SWAPI primitives that the engine's
+ * LLL driver calls. Works over rings where the comparison
+ * threshold `alphaTop / alphaBottom` can be evaluated (typically
+ * `QQ` or `ZZ` with a rational alpha).
+ */
 class LLLoperations
 {
   static bool checkThreshold(ring_elem num, ring_elem den);

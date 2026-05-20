@@ -47,6 +47,19 @@
 #include "f4/moninfo.hpp"            // for MonomialInfo (ptr only), packed_...
 #include "f4/varpower-monomial.hpp"  // for varpower_word
 
+/**
+ * @brief S-pair scheduling queue used by `F4GB`: collects pairs, deduplicates
+ * them, and hands out the next degree's worth on demand.
+ *
+ * @details Pre-S-pairs are built from each newly inserted GB element and
+ * slotted into the working pool. `make_spair` promotes a
+ * `pre_spair` into a full `spair` with its LCM and sugar degree.
+ * A `std::priority_queue` ordered by `SPairCompare` keeps the
+ * next degree at the top. `MemoryBlock`s back the monomial
+ * storage so pair construction stays bump-pointer cheap, and the
+ * held `mtbb::task_arena&` lets the queue share the scheduler
+ * `F4GB` uses for Gauss elimination.
+ */
 class F4SPairSet
 {
  private:

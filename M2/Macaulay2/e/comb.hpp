@@ -55,6 +55,17 @@
 
 typedef std::vector<size_t> Subset;
 
+/**
+ * @brief Bijective integer encoding of `q`-subsets of `{0, ..., n-1}` via
+ * `binomial(a_0, 1) + binomial(a_1, 2) + ... + binomial(a_{q-1}, q)`.
+ *
+ * @details Constructed with maximum bounds `(n, p)`; supports encoding and
+ * decoding of `q`-subsets for all `q <= p`. The encoding does not
+ * depend on `n`, so the same index space scales as the underlying
+ * set grows. Throws if a result would not fit in `size_t`. Used
+ * wherever the engine enumerates exterior-style subsets without
+ * allocating an explicit table.
+ */
 class Subsets
 {
  public:

@@ -35,6 +35,18 @@
 
 #include "gbring.hpp"
 
+/**
+ * @brief Interreduces a list of `gbvector*`s in place so that no element's
+ * leading term divides any other element's terms.
+ *
+ * @details Owns a `GBRing*` and a target `FreeModule*` plus the working set
+ * `G` (a vector of `gbvector*`). `cancelLT(f, g)` reduces the
+ * leading term of `f` by `g` until they no longer divide;
+ * `reduceTail(f, g)` does the same to tail terms; the public
+ * driver iterates these calls across the whole list. Used as the
+ * cleanup pass after a GB computation finishes, before the result
+ * is handed back to the front end.
+ */
 class Interreducer
 {
   GBRing *R;

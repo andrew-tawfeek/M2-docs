@@ -47,6 +47,18 @@ struct local_elem
   ring_elem denom;
 };
 
+/**
+ * @brief Engine-side localisation of a polynomial ring at a prime ideal.
+ *
+ * @details Elements are `local_elem*` pointers holding a `(numer, denom)`
+ * pair with `denom` known not to lie in the prime; `is_in_prime`
+ * uses the supplied `GBComputation* mPrime` (the Groebner basis
+ * of the prime ideal) to check membership. `simplify` cancels
+ * common factors between numerator and denominator using the
+ * underlying `PolyRing`'s `gcd`. The localisation lifts the
+ * polynomial ring's operations into the standard
+ * fraction-of-coprime-pair form.
+ */
 class LocalRing : public Ring
 {
  private:

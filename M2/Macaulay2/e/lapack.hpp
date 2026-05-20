@@ -434,6 +434,17 @@ void cblas_zgemm(
 };
 
 
+/**
+ * @brief Static-method namespace bridging the engine's `RR` / `CC` / `RRR`
+ * / `CCC` dense matrices and LAPACK / BLAS routines.
+ *
+ * @details The class holds no state; every method is `static`. Bundles
+ * matrix translators (to the column-major scratch buffers LAPACK
+ * expects) plus the high-level entry points (`solve`, `LU`,
+ * `eigenvalues`, `eigenvectors`, `SVD`, `least_squares`, ...)
+ * that the engine exposes to the front end for numerical linear
+ * algebra over floating-point and MPFR-backed rings.
+ */
 class Lapack
 {
  public:

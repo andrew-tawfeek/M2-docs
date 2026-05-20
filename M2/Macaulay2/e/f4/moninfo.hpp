@@ -87,6 +87,19 @@ typedef const monomial_word *const_packed_monomial;
 // or is it:
 // [hashvalue comp e1 e2 ... en -wr ... -w1]
 
+/**
+ * @brief Per-ring monomial layout / encoding helper used by `F4GB`.
+ *
+ * @details Holds the variable count `nvars` and the encoded monomial word
+ * width `nslots`, plus a per-variable hash table (`hashfcn`) and
+ * mask. Encoded monomials are laid out as `[hashvalue, comp,
+ * w_1, ..., w_r, e_1, ..., e_n]` (or with the weights at the
+ * tail, depending on convention --- see in-source comments at the
+ * top of the file). Provides the operations the F4 inner loops
+ * need: `compare`, `mult`, `divide`, `lcm`, `gcd`, hash-with-
+ * component, plus encode / decode against actual exponent
+ * vectors.
+ */
 class MonomialInfo : public our_new_delete
 {
   int nvars;

@@ -52,6 +52,19 @@ class RingElement;
 class VectorArithmetic;
 class buffer;
 
+/**
+ * @brief `GBComputation` subclass that drives an `F4GB` engine instance
+ * from the engine-side computation API.
+ *
+ * @details Owns the `F4GB`, the source `PolynomialRing`, the `FreeModule`
+ * the GB lives in, and the optional `RingElement*` Hilbert
+ * function used for early termination. Implements
+ * `start_computation` / `stop_conditions_ok` /
+ * `complete_thru_degree` by delegating to `F4GB`'s
+ * degree-by-degree driver, and exposes the standard
+ * `get_matrix` / `get_gb` / `get_change` / `get_syzygies`
+ * accessors the front end polls when done.
+ */
 class F4Computation : public GBComputation
 {
   // Interface to the F4 linear algebra GB computation

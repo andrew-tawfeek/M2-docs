@@ -36,6 +36,19 @@ class MatrixConstructor;
 class PolynomialRing;
 class RingElement;
 
+/**
+ * @brief Hilbert-function-driven early termination helper used by `F4GB`
+ * to skip degrees the user-supplied Hilbert series predicts hold no
+ * new basis elements.
+ *
+ * @details Constructed with the source `FreeModule` and a `RingElement* hf`
+ * encoding the expected Hilbert series. `setDegree(d)` advances
+ * the controller to degree `d` and exposes `nRemainingExpected()`,
+ * the number of basis-element insertions the series still
+ * predicts at that degree. `addMonomial(a, comp)` is called for
+ * each newly minimal monomial and decrements the count; when the
+ * count hits zero the driver can skip the rest of the degree.
+ */
 class HilbertController : public our_new_delete
 {
  public:

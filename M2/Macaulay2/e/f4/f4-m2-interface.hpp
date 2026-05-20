@@ -45,6 +45,16 @@ class Matrix;
 class MonomialInfo;
 class MutableMatrix;
 
+/**
+ * @brief Static-method namespace for translating between engine `Matrix` /
+ * `vec` polynomials and the F4-internal `GBF4Polynomial` form.
+ *
+ * @details Every method is `static` --- the class holds no state. It bundles
+ * the conversion glue (`poly_set_degrees`, `to_M2_vec`,
+ * `from_M2_vec`, matrix-wide variants) that `F4Computation` uses
+ * when handing input to `F4GB` and reading its output back into
+ * the engine's `Matrix` / `MutableMatrix` types.
+ */
 class F4toM2Interface
 {
  public:
