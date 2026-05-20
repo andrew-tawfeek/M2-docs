@@ -10,14 +10,19 @@
  * Declares `EngineMonomial`, the `EngineObject` subclass that
  * stores one monomial as a varpower-encoded `gc_vector<int>` in
  * the standard `[2n + 1, v_1, e_1, ..., v_n, e_n]` layout
- * inherited from `ExponentList.hpp`. Constructors accept a
- * variable/exponent pair, a varpower array, an `M2_arrayint`, or
- * a `std::vector<int>`; the no-argument constructor is private
- * because it leaves the value invalid until a varpower routine
- * populates it. The class is the M2-level `Monomial` --- a
- * different beast from the encoded monomials packed into a
- * `Monoid`'s inner-loop layout and from the `ExponentVector` /
- * `ExponentList` storage layer.
+ * inherited from `ExponentList.hpp`. All five constructors
+ * (no-arg, `(int, int)`, `(const int *vp)`, `(M2_arrayint)`,
+ * `(const std::vector<int>&)`) are class-private; public
+ * construction goes through the four static `make(...)` factory
+ * overloads that mirror the parameterised constructors. Beyond
+ * construction, the class exposes monomial arithmetic
+ * (`operator*` / `operator/`, `power`, `lcm`, `gcd`, `radical`,
+ * `erase`, `monsyz`), predicates (`is_one`, `is_equal`, `divides`,
+ * `compare`, `simple_degree`), and serialisation (`text_out`,
+ * `to_arrayint`, `ints()` for the raw buffer). The class is the
+ * M2-level `Monomial` --- a different beast from the encoded
+ * monomials packed into a `Monoid`'s inner-loop layout and from
+ * the `ExponentVector` / `ExponentList` storage layer.
  *
  * The header's long-standing reversal note matters in the
  * non-commutative case: the M2 front-end reverses the
