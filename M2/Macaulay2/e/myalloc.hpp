@@ -12,11 +12,13 @@
  * `mHighWater`) and the `StatsAllocator` wrapper that bumps
  * those counters on every allocation / deallocation. The class
  * is intentionally minimal: counters are static so per-type
- * statistics share a collector, there is no locking
- * (single-threaded only), and some configurations skip the
- * actual `free` to make double-free detection cheap. It is for
- * debugging and benchmarking only --- not safe in any path the
- * supervisor parallelises.
+ * statistics share a collector, and there is no locking on the
+ * counter increments (the in-source comment is explicit: "not
+ * thread safe"). `StatsAllocator::allocate` / `deallocate` log
+ * the size, then call straight through to `::operator new` /
+ * `::operator delete`; there is no free-skipping debug mode.
+ * It is for debugging and benchmarking only --- not safe in any
+ * path the supervisor parallelises.
  *
  * Production allocations route through `newdelete.hpp`'s
  * `our_new_delete` (Boehm GC). The legacy `mem.hpp` size-class
