@@ -76,6 +76,17 @@ typedef int ComponentIndex;  // index into f4 matrices over kk.  These tend to
 // will ever be > 2billion, but probably...
 
 namespace SchreyerFrameTypes {
+/**
+ * @brief One generator within a `SchreyerFrame::Level`.
+ *
+ * @details Carries the leading monomial (`mMonom`, which also encodes
+ * component and degree), the actual integer degree (`mDegree`, not
+ * the slanted degree), a `[mBegin, mEnd)` half-open range into the
+ * next level's `mElements` vector that names this generator's
+ * descendants, and the `mSyzygy` polynomial once the corresponding
+ * level has been computed. `mBegin == mEnd == -1` while the slice is
+ * still unknown.
+ */
 struct FrameElement
 {
   res_packed_monomial mMonom;  // has component, degree too
@@ -96,6 +107,16 @@ struct FrameElement
   }
 };
 
+/**
+ * @brief Lightweight `(varpower_monomial, degree)` pair used during the
+ * pre-sort phase that feeds `SchreyerFrame::insertLevelZero` /
+ * `insertLevelOne`.
+ *
+ * @details Smaller than a full `FrameElement` --- no descendant slice, no
+ * syzygy polynomial --- so the resolution engine can collect and
+ * sort the prospective generators before deciding their final
+ * `component_index` ordering in the frame.
+ */
 struct PreElement
 {
   res_varpower_monomial vp;
@@ -103,6 +124,23 @@ struct PreElement
 };
 };
 
+/**
+ * @brief State container for the in-progress free resolution built by the
+ * F4 resolution engine.
+ *
+ * @details Organises the resolution as a vector of `Level`s indexed by
+ * homological degree; each level holds a vector of `FrameElement`s
+ * plus its `ResSchreyerOrder` for tie-breaking. The frame is grown
+ * incrementally: callers `insertLevelZero` / `insertLevelOne` /
+ * `insertBasic` to add generators, `endLevel` to finalise descendant
+ * slices, and `computeNextLevel` / `computeFrame` to push the
+ * computation forward. `F4Res` reads off the frame to build the
+ * Macaulay matrix for the next level, and `minimalBettiNumbers`
+ * produces a `BettiDisplay` directly from the level shapes without
+ * revisiting source polynomials. When built with TBB, the
+ * `DependencyGraph` is a friend so per-`(level, slanted_degree)` work
+ * cells can be scheduled in parallel.
+ */
 class SchreyerFrame
 {
  public:
@@ -189,11 +227,26 @@ class SchreyerFrame
                                    int length_limit);
 
  private:
+  /**
+   * @brief One homological level of the frame: the `FrameElement`s living at
+   * that level plus the Schreyer order used to break ties among them.
+   *
+   * @details `mElements` is indexed by `component_index`. `mSchreyerOrder`
+   * carries the per-level data that the next level's monomial order
+   * needs to inherit.
+   */
   struct Level
   {
     std::vector<FrameElement> mElements;
     ResSchreyerOrder mSchreyerOrder;
   };
+  /**
+   * @brief The full frame: a vector of `Level`s indexed by homological degree.
+   *
+   * @details The only state held by the enclosing `SchreyerFrame` --- all the
+   * accessors (`level`, `schreyerOrder`, `degree`, ...) reach into
+   * `mLevels` through this single struct.
+   */
   struct Frame
   {
     std::vector<Level> mLevels;
