@@ -53,6 +53,16 @@ class DMat;
 // Dense matrices using Flint...
 ////////////////////////////////////////////////////
 
+/**
+ * @brief Specialisation of `DMat` for `ARingZZ` matrices, backed by FLINT's
+ * `fmpz_mat_t`.
+ *
+ * @details Wraps an `fmpz_mat_t` and dispatches all dense arithmetic to
+ * FLINT's `fmpz_mat_*` routines. The class header warns that
+ * instances must not be exposed to the front end --- the `fmpz_t`
+ * coefficients are allocated by FLINT, not GC-managed, so the
+ * front-end GC could free them out from under the wrapper.
+ */
 template <>
 class DMat<M2::ARingZZ>
 // Warning: objects of this class should *not* go to the front end.

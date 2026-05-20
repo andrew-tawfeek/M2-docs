@@ -50,6 +50,16 @@
 template <typename ACoeffRing>
 class DMat;
 
+/**
+ * @brief Specialisation of `DMat` for `ARingGFFlintBig` matrices, backed by
+ * FLINT's `fq_nmod_mat_t`.
+ *
+ * @details Big-field counterpart of `DMat<ARingGFFlint>`: for `GF(p^n)`
+ * extensions too large for Zech tables, entries are stored as
+ * `fq_nmod` (polynomial-quotient) values and operations dispatch
+ * to `fq_nmod_mat_*` routines. Slower per-op than the Zech
+ * specialisation but unconstrained by field size.
+ */
 /////////////////////////////////////////////////////////////////
 // Flint: use fq_nmod_mat for implementation of dense matrices //
 /////////////////////////////////////////////////////////////////

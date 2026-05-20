@@ -53,6 +53,16 @@ class DMat;
 // Flint: use nmod_mat for implementation of dense matrices //
 //////////////////////////////////////////////////////////////
 
+/**
+ * @brief Specialisation of `DMat` for `ARingZZpFlint` matrices, backed by
+ * FLINT's `nmod_mat_t`.
+ *
+ * @details Wraps a FLINT `nmod_mat_t` and forwards every dense matrix
+ * operation to FLINT's `nmod_mat_*` routines, so the
+ * coefficient-by-coefficient arithmetic uses FLINT's optimised
+ * `nmod` primitives. RAII-clean: the constructor calls
+ * `nmod_mat_init` and the destructor calls `nmod_mat_clear`.
+ */
 template <>
 class DMat<M2::ARingZZpFlint>
 {

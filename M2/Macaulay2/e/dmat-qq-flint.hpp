@@ -54,6 +54,17 @@ class DMat;
 // Dense matrices for Flint type M2::ARingQQFlint //
 ////////////////////////////////////////////////////
 
+/**
+ * @brief Specialisation of `DMat` for `ARingQQFlint` matrices, backed by
+ * FLINT's `fmpq_mat_t`.
+ *
+ * @details Rational counterpart of `DMat<ARingZZ>`: wraps an `fmpq_mat_t`
+ * and forwards every dense matrix operation to FLINT's
+ * `fmpq_mat_*` routines. Same front-end caveat as the integer
+ * specialisation --- the `fmpz_t` parts of the rationals are
+ * outside the M2 GC's awareness, so instances of this class
+ * stay internal.
+ */
 // Warning: objects of this class should *not* go to the front end.
 // fmpz_t's might be garbage collected out from under you...
 template <>

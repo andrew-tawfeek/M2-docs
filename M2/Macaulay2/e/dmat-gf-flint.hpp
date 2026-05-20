@@ -52,6 +52,16 @@
 template <typename ACoeffRing>
 class DMat;
 
+/**
+ * @brief Specialisation of `DMat` for `ARingGFFlint` matrices, backed by
+ * FLINT's `fq_zech_mat` (Zech-log) routines.
+ *
+ * @details Matrices over `GF(p^n)` for small-field cases: stores entries
+ * in FLINT's discrete-log encoding and delegates linear-algebra
+ * primitives to the matching `fq_zech_mat_*` functions. The Zech
+ * tables make addition cheap, so this is the preferred dense
+ * `GF(p^n)` backend for small fields.
+ */
 /////////////////////////////////////////////////////////////////
 // Flint: use fq_nmod_mat for implementation of dense matrices //
 /////////////////////////////////////////////////////////////////

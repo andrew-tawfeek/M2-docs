@@ -40,6 +40,18 @@
 // ZZpFlint //////////
 //////////////////////
 
+/**
+ * @brief Specialisation of `DMatLinAlg` for `ARingZZpFlint` dense matrices,
+ * routing rank / determinant / kernel / solve / inverse calls to
+ * FLINT's `nmod_mat_*` routines.
+ *
+ * @details `DMat<ARingZZpFlint>` already wraps an `nmod_mat_t`, so the
+ * linear-algebra layer just hands the underlying FLINT matrix to
+ * the right `nmod_mat_*` entry point and converts the result
+ * back. Gives word-prime `Z/p` matrices the same FLINT speed-up
+ * the FFPACK specialisation provides for primes that fit in a
+ * FFPACK word.
+ */
 template <>
 class DMatLinAlg<M2::ARingZZpFlint>
 {

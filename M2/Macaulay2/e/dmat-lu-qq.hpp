@@ -36,6 +36,17 @@
 
 #include "dmat-qq-interface-flint.hpp"
 
+/**
+ * @brief Specialisation of `DMatLinAlg` for `ARingQQ` dense matrices,
+ * routing every linear-algebra query (rank, determinant, kernel,
+ * inverse, solve) through FLINT's `fmpq_mat_*` routines.
+ *
+ * @details Constructs `FlintQQMat` translations on demand (via
+ * `dmat-qq-interface-flint.hpp`), runs the corresponding FLINT
+ * call, and converts the result back into `DMat<ARingQQ>`. Saves
+ * the engine from having to re-implement Bareiss-style rational
+ * elimination on top of GMP rationals.
+ */
 template <>
 class DMatLinAlg<M2::ARingQQ>
 {

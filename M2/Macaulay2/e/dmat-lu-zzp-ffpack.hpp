@@ -53,6 +53,18 @@ size_t nullSpace(const DMatZZpFFPACK& A, DMatZZpFFPACK& result_nullspace);
 
 };  // namespace ffpackInterface
 
+/**
+ * @brief Specialisation of `DMatLinAlg` for `ARingZZpFFPACK` dense matrices,
+ * delegating rank / determinant / kernel / solve / inverse to the
+ * FFPACK library's tuned `Z/p` routines.
+ *
+ * @details FFPACK gives near-BLAS speed for dense linear algebra over `Z/p`
+ * by laying entries out as native floats. The specialisation
+ * forwards each query through the `ffpackInterface` shims
+ * declared just above and returns the result as a fresh
+ * `DMat<ARingZZpFFPACK>`. The preferred backend for primes that
+ * fit comfortably in a single-precision float.
+ */
 template <>
 class DMatLinAlg<M2::ARingZZpFFPACK>
 {
