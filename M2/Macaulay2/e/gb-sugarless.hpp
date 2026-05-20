@@ -19,11 +19,15 @@
  * default.
  *
  * It plugs into the same `GBComputation` interface as the rest
- * of the GB strategy family and is reachable through M2's
- * `Strategy =>` argument. The homogeneous specialisation
- * (`gb-homog2.hpp`), the toric variant (`gb-toric.hpp`), and the
- * Groebner walk (`gb-walk.hpp`) cover the remaining
- * non-default paths.
+ * of the GB strategy family and is reached through `comp-gb.cpp`'s
+ * `algorithm == 4` case (the `Algorithm =>` argument on the
+ * M2 side; the separate `Strategy =>` argument is passed through
+ * to the constructor but does not select between subclasses).
+ * The homogeneous specialisation (`gb-homog2.hpp`, `algorithm == 5`),
+ * the toric variant (`gb-toric.hpp`, `== 7`), the legacy F4
+ * (`== 6`), the new F4 (`== 9`), and the Groebner walk
+ * (`gb-walk.hpp`) cover the remaining non-default paths; the
+ * fall-through is `gbA` from `gb-default.hpp`.
  *
  * @see gb-default.hpp
  * @see comp-gb.hpp
