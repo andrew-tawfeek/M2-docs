@@ -37,6 +37,18 @@
 
 namespace BIBasis
 {
+    /**
+     * @brief Process-wide singleton holding the BIBasis monomial order and
+     * variable count.
+     *
+     * @details Hidden constructor / copy disabled --- the only way to reach
+     * an instance is through the free function `GetSettingsManager()`,
+     * which is declared a `friend`. Stores `MonomialOrder`
+     * (`Lex` / `DegLex` / `DegRevLex`) so the BIBasis monom
+     * subclasses can consult it before doing comparisons, and
+     * forwards `SetNumberOfVariables` to `Monom`'s static
+     * `DimIndepend` slot.
+     */
     class SettingsManager
     {
     private:

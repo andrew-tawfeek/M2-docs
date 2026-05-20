@@ -42,6 +42,16 @@
 
 namespace BIBasis
 {
+    /**
+     * @brief `Monom` specialisation that orders monomials by degree, then
+     * by lex on the variable list (DegLex).
+     *
+     * @details Inherits `Monom`'s sorted-linked-list storage and adds a
+     * per-class `FastAllocator` plus a `Next` link so collections
+     * of `MonomDL`s can also be chained in BIBasis's working
+     * lists. `operator<` / comparison overloads (declared in the
+     * .cpp) implement the DegLex order.
+     */
     class MonomDL : public Monom
     {
     private:

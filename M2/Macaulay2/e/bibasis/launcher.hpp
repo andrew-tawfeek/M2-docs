@@ -41,6 +41,18 @@
 
 namespace BIBasis
 {
+    /**
+     * @brief Top-level entry point that runs a BIBasis (boolean involutive)
+     * computation on an engine `Matrix` and returns the result as a
+     * `Matrix`.
+     *
+     * @details `GetBIBasisMatrix(matrix, toGroebner)` validates the input
+     * via `CheckMatrix`, dispatches to the involutive solver
+     * configured through `SettingsManager`, and converts the
+     * resulting set of monomials back into a `Matrix`. The
+     * `toGroebner` flag selects between the involutive basis (0)
+     * and its derived Groebner basis (1).
+     */
     class Launcher
     {
     public:

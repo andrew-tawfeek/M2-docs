@@ -37,6 +37,18 @@
 
 namespace BIBasis
 {
+    /**
+     * @brief Slab allocator handing out fixed-size blocks for one BIBasis
+     * type per instance.
+     *
+     * @details Allocates `MemoryPageSize`-byte pages from the system heap
+     * and carves each page into `TSize`-byte cells (typically the
+     * size of one `VarsListNode` or `MonomDL` etc.). Free cells are
+     * threaded into a `FreeBlock` LIFO so `Allocate()` /
+     * `Free(p)` are O(1) and avoid hitting `malloc` on the BIBasis
+     * inner loop. `ExpandMemory()` grabs a fresh page when the
+     * free list is empty.
+     */
     class FastAllocator
     {
     private:

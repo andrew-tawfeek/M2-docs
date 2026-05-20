@@ -43,6 +43,15 @@
 
 namespace BIBasis
 {
+    /**
+     * @brief `Monom` specialisation that orders monomials by degree, then
+     * by reverse-lex on the variable list (DegRevLex).
+     *
+     * @details Same layout as `MonomDL` --- a `Monom` plus a per-class
+     * `FastAllocator` and a `Next` chaining pointer --- but with
+     * the comparison overloads implementing DegRevLex instead of
+     * DegLex.
+     */
     class MonomDRL : public Monom
     {
     private:

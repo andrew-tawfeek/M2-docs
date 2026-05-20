@@ -46,6 +46,15 @@
 
 namespace BIBasis
 {
+    /**
+     * @brief `Monom` specialisation that orders monomials by pure lex on
+     * their sorted variable lists.
+     *
+     * @details Same layout as `MonomDL` / `MonomDRL` --- a `Monom` plus a
+     * per-class `FastAllocator` and a `Next` chaining pointer ---
+     * but with lex comparison so the first differing variable
+     * decides the order.
+     */
     class MonomLex : public Monom
     {
     private:
