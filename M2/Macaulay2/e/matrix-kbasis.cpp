@@ -50,6 +50,18 @@
 #include "style.hpp"            // for EQ
 #include "util.hpp"             // for M2_arrayint_to_stdvector
 
+/**
+ * @brief Enumerates a k-basis (degree-graded monomial basis) of a module,
+ * a finite module's entire basis, or the basis of a map between
+ * modules.
+ *
+ * @details `computation_type` picks the mode (`KB_SINGLE` for a fixed
+ * degree, `KB_MULTI` for a degree range, `KB_FULL` for the whole
+ * finite-dimensional basis). The result is accumulated in `mat`
+ * (a `MatrixConstructor`); the recursive `do_kbasis` worker
+ * walks variable / degree combinations against the polynomial
+ * ring's monoid and emits one column per basis monomial.
+ */
 class KBasis
 {
   // A class for construction of

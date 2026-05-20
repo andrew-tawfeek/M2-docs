@@ -36,6 +36,18 @@
 #include "matrix.hpp"
 #include "matrix-con.hpp"
 
+/**
+ * @brief Helper that builds the `p`-th symmetric power of a 1-by-`n`
+ * matrix.
+ *
+ * @details Invoked through the static `symmetricPower(m, p)` entry point,
+ * which validates that the input has exactly one row and then
+ * runs the recursive multi-index walker. Each resulting column
+ * corresponds to a multiset of `p` columns of `m` whose entries
+ * are multiplied together --- the standard symmetric-power-of-a-
+ * matrix construction. Used to implement the engine-side
+ * `symmetricPower` matrix operation.
+ */
 class SymmMatrix
 {
  public:

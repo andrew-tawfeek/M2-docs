@@ -80,6 +80,18 @@ typedef struct mon_part_rec_
   int *wts;
 } * mon_part;
 
+/**
+ * @brief Front-end-side description of a monomial ordering as a list of
+ * `mon_part` blocks.
+ *
+ * @details `_hash` caches the front-end hash so order objects can be
+ * compared and deduplicated cheaply; `len` is the number of
+ * blocks; `array[1]` is a C99 flexible-array tail holding the
+ * `len` ordered blocks (`Lex`, `GRevLex`, `Weights`, `Position`,
+ * ...). Built by the `MonomialOrderings::*` factories
+ * (`monordering.hpp`) and compiled into the engine-side
+ * `MonomialOrder_rec` (`imonorder.hpp`) via `monomialOrderMake`.
+ */
 struct MonomialOrdering
 {
   unsigned int _hash;

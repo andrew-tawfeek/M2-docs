@@ -70,6 +70,18 @@ enum ComputationStatusCode {
   COMP_OVERFLOWED = 18,         /* overflowed */
 };
 
+/**
+ * @brief Bundle of optional early-termination knobs the front end can
+ * attach to a long-running `Computation`.
+ *
+ * @details Each `*_limit` is consulted by the driver after every increment
+ * of the matching counter (basis element, syzygy, S-pair, codim,
+ * subring, step); `degree_limit` / `length_limit` cap the
+ * homological / degree reach for GB and resolution computations;
+ * `always_stop` short-circuits everything; `just_min_gens` asks
+ * the driver to halt as soon as a minimal generating set is
+ * available. `M2_bool` flags gate which limits are active.
+ */
 struct StopConditions
 {
   M2_bool always_stop;

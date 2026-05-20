@@ -30,6 +30,17 @@
 
 #include "matrix.hpp"
 
+/**
+ * @brief Helper that computes a column permutation for an engine `Matrix`
+ * by degree-then-monomial-order sort.
+ *
+ * @details `deg_ascending` and `ringorder_ascending` are sign flags; the
+ * comparator first orders by `sort_degs[i]` (the column's
+ * heuristic degree) and then breaks ties with the ring's lead-term
+ * comparison on `sort_vecs[i]`. Indices are sorted into `result`,
+ * which the caller uses to permute the matrix columns. Used to
+ * implement the engine-side `sort` matrix operation.
+ */
 class MatrixSorter
 {
   const Ring *R;

@@ -56,6 +56,17 @@ struct lex
 typedef std::list<brMonomial> monomials;
 typedef std::set<brMonomial, lex> monomials_set;
 
+/**
+ * @brief Boolean (`F_2`-coefficient) polynomial stored as an ordered list of
+ * square-free monomials.
+ *
+ * @details Coefficient ring is implicit (always 1 in `F_2`); the polynomial
+ * is just the symmetric-difference sum of the listed monomials.
+ * Underlying storage is a `monomials` (`std::list<brMonomial>`)
+ * kept sorted under the lex comparator declared above, so the
+ * leading term is `m.front()` and addition is a linear merge.
+ * Used by the Franzi GB code path for boolean polynomial rings.
+ */
 class BRP
 {
   friend std::ostream &operator<<(std::ostream &out, const BRP &self)
