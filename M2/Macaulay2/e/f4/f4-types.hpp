@@ -91,7 +91,15 @@ enum class SPairType {
   // later we would also like GCDZZ, Ring, Skew to handle those cases as well
 };
 
-struct GBF4Polynomial 
+/**
+ * @brief Compact polynomial layout used inside the F4 GB engine.
+ *
+ * @details `len` is the number of terms, `coeffs` is the parallel
+ * `ElementArray` of coefficients, and `monoms` is a flat buffer of
+ * `monomial_word`s with every term's monomial laid out contiguously.
+ * Owned by an enclosing memory block; no destructor needed.
+ */
+struct GBF4Polynomial
 {
   int len;
   ElementArray coeffs;
@@ -170,6 +178,15 @@ struct coefficient_matrix
 typedef int (MonomialInfo::*CompareFunction)(const monomial_word *,
                                              const monomial_word *) const;
 
+/**
+ * @brief Comparator that orders Macaulay-matrix column indices by the
+ * monomial each column represents, using the ambient `MonomialInfo`.
+ *
+ * @details Fed to `std::sort` so the F4 matrix builder can put the columns
+ * into the monoid's order before reduction. Keeps two static
+ * counters (`ncmps`, `ncmps0`) to let profiling code report how
+ * many comparisons the sort took.
+ */
 class ColumnsSorter
 {
  public:
@@ -212,6 +229,14 @@ class ColumnsSorter
   ~ColumnsSorter() {}
 };
 
+/**
+ * @brief Comparator that orders indices into the current GB array (`gb_array`)
+ * by each `gbelem`'s leading monomial, in increasing order.
+ *
+ * @details `operator()` returns true when `gb[a]`'s leading monomial is
+ * strictly less than `gb[b]`'s under `MonomialInfo::compare`. Like
+ * `ColumnsSorter` it keeps `ncmps` / `ncmps0` profiling counters.
+ */
 class GBSorter
 {
  public:
@@ -253,6 +278,14 @@ class GBSorter
   ~GBSorter() {}
 };
 
+/**
+ * @brief Comparator that orders `pre_spair*` pointers by the `quot`
+ * varpower monomial of each pre-S-pair.
+ *
+ * @details Uses `varpower_monomials::compare` directly and keeps a single
+ * `ncmps` profiling counter. Applied during S-pair generation,
+ * before the pre-pairs are promoted to full `spair`s.
+ */
 class PreSPairSorter
 {
  public:
@@ -280,6 +313,15 @@ class PreSPairSorter
   ~PreSPairSorter() {}
 };
 
+/**
+ * @brief Comparator on indices into an `spair` table, ordering by sugar
+ * degree then by the larger of the two parent indices.
+ *
+ * @details Drives the S-pair queue inside the F4 algorithm: largest sugar
+ * degree first, then largest `i`. `operator()(s, t)` returns true
+ * when `s` should come before `t` under that order, so it's wired
+ * straight into `std::priority_queue` and friends.
+ */
 class SPairCompare
 {
 public:
