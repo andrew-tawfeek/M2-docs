@@ -20,8 +20,9 @@
  * setup --- a tensor ring `T`, a poly ring `S`, three `RingMap`s
  * (`inclusionAmbient`, `fullSubstitution`, `substitutionInclusion`),
  * and two GBs (`gbI` for the subalgebra ideal, `gbReductionIdeal`
- * for the reduction ideal) --- and are the variant
- * `interface/groebner.cpp::rawSubduct1` calls.
+ * for the reduction ideal) --- and are what
+ * `interface/groebner.cpp::rawSubduction1` dispatches to (the
+ * single-ring `rawSubduction` calls the four-arg `subduct`).
  *
  * The header flags itself as "not currently functional" --- the
  * in-engine helpers stop short of a complete SAGBI driver, and
