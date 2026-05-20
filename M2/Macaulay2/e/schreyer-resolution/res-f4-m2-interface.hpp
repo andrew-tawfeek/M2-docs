@@ -42,6 +42,17 @@ class SchreyerFrame;
 class ResPolynomial;
 template <typename ACoeffRing> class DMat;
 
+/**
+ * @brief Static-method namespace bridging engine `Matrix` / `vec` values
+ * and the resolution engine's `ResPolynomial` representation.
+ *
+ * @details Resolution-side counterpart of `F4toM2Interface`: every method
+ * is `static`. Provides `from_M2_vec` / `to_M2_vec` and the
+ * matrix-wide variants used by `F4ResComputation` when handing
+ * input to the `SchreyerFrame` and reading the resulting
+ * `ResPolynomial` syzygies back into engine-side `vec`s and
+ * `Matrix*`es for the front end.
+ */
 class ResF4toM2Interface
 {
  public:

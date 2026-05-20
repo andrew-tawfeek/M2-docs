@@ -44,6 +44,17 @@ using NodePtr = std::shared_ptr<Node>;
 tbb::flow::graph G;
 std::vector<std::vector<NodePtr>> nodes; // nodes[lev][sldeg] is that particular node.
 
+/**
+ * @brief Scratch task descriptor used by the standalone TBB
+ * dependency-graph example.
+ *
+ * @details Pairs a `(level, slanted_degree)` cell with the half-open range
+ * of cells it depends on (`firstDependency` .. `lastDependency`)
+ * plus a `computationStatus` slot the example sets when the cell
+ * fires. The file is illustrative scaffolding for the parallel
+ * Schreyer-resolution scheduler, not part of the live engine
+ * code path.
+ */
 struct OurNode {
    int lev;
    int sldeg;

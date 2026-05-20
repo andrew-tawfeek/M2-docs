@@ -67,6 +67,16 @@
 // d. v1 v2 ... vd
 // where d = length-2
 // v1 >= v2 >= ... >= vd >= 0 are indices of variables.
+/**
+ * @brief Sparse / varpower-format `ResMonoid` implementation: monomials laid
+ * out as length-prefixed lists of `(variable, exponent)` pairs.
+ *
+ * @details Each encoded monomial has variable width: `[length, hash, comp,
+ * w_1, ..., w_r, v_1, e_1, ..., v_d, e_d]`. Encode / decode walk
+ * only the non-zero variables, so the representation wins when
+ * monomials are typically supported in a small subset of
+ * variables; the dense counterpart is `ResMonoidDense`.
+ */
 // or, maybe also have degree before this, and other weight values...
 // SO, general form:
 // [length, hashval, component, w1, ..., wr, v, ..., vd]

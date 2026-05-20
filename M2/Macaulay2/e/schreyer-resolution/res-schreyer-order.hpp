@@ -40,6 +40,18 @@
 #include "schreyer-resolution/res-monomial-types.hpp"  // for component_index
 #include <vector>                                      // for vector
 
+/**
+ * @brief Per-level Schreyer-order data attached to a `SchreyerFrame::Level`.
+ *
+ * @details `mTotalMonom[i]` is the "total monomial" used as the comparison
+ * key for the `i`-th frame element at this level: the underlying
+ * monomial pre-multiplied by the parent-level base monomial.
+ * `mTieBreaker[i]` carries the per-element tiebreaker (typically
+ * the parent's `component_index`) so equal total monomials still
+ * have a deterministic order. Together they form the inherited
+ * data the next level's monomial order needs to behave
+ * consistently across the resolution.
+ */
 struct ResSchreyerOrder
 {
   std::vector<res_packed_monomial> mTotalMonom;

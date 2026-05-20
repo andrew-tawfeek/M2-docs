@@ -51,6 +51,19 @@
 
 class SchreyerFrame;
 
+/**
+ * @brief `ResolutionComputation` subclass that drives the F4 resolution
+ * engine (`SchreyerFrame` + `F4Res`) from the engine-side API.
+ *
+ * @details Constructor is private; the free function `createF4Res` (declared
+ * friend) instantiates it from a GB-presented input matrix plus
+ * a `max_level` cap, thread count, and degree-parallel flag.
+ * Owns the underlying `ResPolyRing` and the `SchreyerFrame` that
+ * holds the in-progress resolution. The standard
+ * `ResolutionComputation` driver loop walks the frame
+ * `(level, slanted_degree)` cell by cell, calling into `F4Res`
+ * to build and reduce the Macaulay matrix at each.
+ */
 class F4ResComputation : public ResolutionComputation
 {
  private:

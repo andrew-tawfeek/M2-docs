@@ -56,6 +56,18 @@
 #include "schreyer-resolution/res-monomial-types.hpp"
 #include "skew.hpp"  // for SkewMultiplication
 
+/**
+ * @brief Dense-format `ResMonoid` implementation: monomials laid out as
+ * fixed-width exponent vectors.
+ *
+ * @details Each encoded monomial has `nslots` ints: `[hash, comp, w_1, ...,
+ * w_r, e_1, ..., e_n]`. Exponents are stored explicitly for
+ * every variable, so encode / decode are O(`nvars`) but the
+ * monomial size is fixed at compile-time once `nvars` is known.
+ * The dense representation wins when monomials are typically
+ * non-zero in many variables; `ResMonoidSparse` is the
+ * varpower-encoded alternative for sparse settings.
+ */
 class ResMonoidDense
 {
   int nvars;
