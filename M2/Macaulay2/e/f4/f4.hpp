@@ -130,6 +130,22 @@ class VectorArithmetic;
 
 /////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @brief Commutative F4 Groebner-basis driver: degree-by-degree Macaulay
+ * matrix construction plus row-reduction over a coefficient ring.
+ *
+ * @details Holds the running GB (`mGroebnerBasis`), the original generators
+ * (`mGenerators`), and the monomial lookup table for divisor
+ * search. Each degree, the driver picks up the pending S-pairs,
+ * builds a `coefficient_matrix` (`mat`) whose rows are S-pair
+ * reductions plus their tail-reducers and whose columns are the
+ * distinct monomials appearing, sorts the columns under the
+ * `MonomialInfo` order, and row-reduces via `mVectorArithmetic`.
+ * Optional `HilbertController *hilbert` skips reductions whose
+ * result the Hilbert function predicts to be zero. Tracks a wide
+ * set of timing / counter statistics (`clock_sort_columns`,
+ * `mGaussTime`, `n_pairs_computed`, ...) for the benchmark hooks.
+ */
 class F4GB : public our_new_delete
 {
   // Basic required information
@@ -181,6 +197,17 @@ class F4GB : public our_new_delete
   double mInsertGBTime;
   clock_t clock_make_matrix;
 
+  /**
+   * @brief Per-degree counters describing the shape and density of the
+   * Macaulay matrix that `F4GB` just built.
+   *
+   * @details The matrix is conceptually split into a (top-left) pivot block
+   * and a (bottom-right) non-pivot block; `mTopAndLeft`, `mBottom`,
+   * and `mRight` count the row / column dimensions of the pivot
+   * and remaining blocks. The per-block entry counts (`mAEntries`,
+   * `mBEntries`, ...) feed the F4 diagnostics that report matrix
+   * fill rates and reduction work.
+   */
   struct MacaulayMatrixStats
   {
   public:
@@ -188,7 +215,7 @@ class F4GB : public our_new_delete
     long mTopAndLeft = 0;
     long mBottom = 0;
     long mRight = 0;
-    
+
     // #entries
     long mAEntries = 0; // but not the diagonals?
     long mBEntries = 0;
