@@ -47,6 +47,17 @@ class GBMatrix;
 // an include file under mingw32 defines a macro with the name FreeModule:
 #undef FreeModule
 
+/**
+ * @brief Engine-side free module `R^n` over a `Ring`.
+ *
+ * @details Holds the underlying `Ring*` plus a `components` vector with the
+ * multi-degree of each generator; optionally carries a
+ * `SchreyerOrder*` that pins the per-component tie-breaker data
+ * used when the free module participates in a Schreyer
+ * resolution. Constructed only through `Ring`-side factory paths
+ * (the constructor is private) so the engine can guarantee the
+ * ring / degree pair is consistent before any vectors live in it.
+ */
 class FreeModule : public EngineObject
 {
   friend class Ring;

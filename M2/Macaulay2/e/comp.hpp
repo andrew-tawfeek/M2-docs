@@ -48,9 +48,20 @@ class ResolutionComputation;
 class buffer;
 
 /**
-    @ingroup computations
-*/
-
+ * @brief Abstract base for long-running, resumable engine computations
+ * (`GBComputation`, `ResolutionComputation`, `MutableComplex`,
+ * `GBKernelComputation`, ...).
+ *
+ * @details Manages a `ComputationStatusCode` state machine plus a
+ * `StopConditions` record so callers can ask for partial progress
+ * (degree limit, basis-element limit, syzygy limit, wall-clock
+ * deadline, ...) without losing what has already been computed.
+ * Subclasses implement `stop_conditions_ok()` to vet the request
+ * and `start_computation()` to do the work; `set_status()` is the
+ * single chokepoint that updates the visible state.
+ *
+ * @ingroup computations
+ */
 class Computation : public MutableEngineObject
 {
  private:

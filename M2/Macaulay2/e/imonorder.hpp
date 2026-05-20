@@ -53,6 +53,20 @@ struct mo_block
   deg_t *weights;
 };
 
+/**
+ * @brief Internal compiled form of a monomial ordering, derived from a
+ * front-end `MonomialOrdering` by `monomialOrderMake`.
+ *
+ * @details Holds the variable count (`nvars`), the encoded monomial word
+ * width (`nslots`), the ordered list of `mo_block`s that make up
+ * the order, the per-variable heuristic degree vector (`degs`),
+ * and a `is_laurent[i]` flag per variable. `component_up` plus
+ * the `*_before_component` slot counts decide where the
+ * component slot sits in the encoded monomial. The companion
+ * encode / decode functions translate between actual exponent
+ * vectors and the packed monomial words the engine uses for fast
+ * comparisons.
+ */
 struct MonomialOrder_rec
 {
   int nvars;

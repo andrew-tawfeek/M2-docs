@@ -36,6 +36,19 @@
 #include <iostream>           // for operator<<, endl, basic_ostream, cout
 #include <utility>            // for pair
 
+/**
+ * @brief Thin RAII wrapper around `memtailor::Arena` providing bump-pointer
+ * array allocation with optional mutex protection.
+ *
+ * @details Heap-allocates the underlying `memt::Arena` so the wrapper has
+ * a stable address (the `std::move` overloads are kept commented
+ * out as a reminder that move semantics aren't currently
+ * supported). `allocateArray<T>(n)` hands out a `[begin, end)`
+ * pair pulled from the arena; `safeAllocateArray` does the same
+ * under a caller-supplied mutex for use from `NCF4` /
+ * `NCGroebner` worker threads. The arena is reset by destruction;
+ * individual frees are not supported by design.
+ */
 class MemoryBlock
 {
 public:

@@ -43,6 +43,19 @@
 #include <unordered_map>
 #include <gmpxx.h>
 
+/**
+ * @brief Standalone, self-contained polynomial representation independent
+ * of any engine `Ring` --- coefficients are bare `mpz_class`
+ * (GMP integers).
+ *
+ * @details Three parallel vectors: `mCoefficients` (`mpz_class` per term),
+ * `mComponents` (free-module component per term, all-zero when
+ * empty), and `mMonomials` (a concatenation of varpower monomials,
+ * each prefixed by its length). Used by the stream-based polynomial
+ * I/O paths (`BasicPolyList`) and as a portable interchange format
+ * when polynomials need to live outside the engine's typed `Ring`
+ * machinery.
+ */
 class BasicPoly
 {
 public:

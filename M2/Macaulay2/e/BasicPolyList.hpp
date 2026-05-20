@@ -55,6 +55,19 @@ using BasicPolyList = std::vector<BasicPoly>;
 
 long bytesUsed(const BasicPolyList& F);
 
+/**
+ * @brief Streaming consumer that builds a `BasicPolyList` from per-term
+ * callbacks, matching the mathicgb / mgb stream interface.
+ *
+ * @details Receives `appendPolynomialBegin / appendTermBegin /
+ * appendExponent / appendTermDone / appendPolynomialDone` calls
+ * from a polynomial producer (typically the mathicgb stream
+ * parser) and assembles the result into `mValue`. Stores the
+ * declared modulus, variable count, and component count so the
+ * caller can ask the collector to echo them back even though the
+ * `BasicPoly` representation itself does not use them. Used for
+ * portable polynomial I/O outside the typed `Ring` machinery.
+ */
 class BasicPolyListStreamCollector
 {
 public:

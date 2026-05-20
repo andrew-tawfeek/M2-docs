@@ -34,6 +34,18 @@
 
 #include "mat.hpp"
 
+/**
+ * @brief LU decomposition over a domain using fraction-free Gaussian
+ * elimination.
+ *
+ * @details The classical Bareiss-style algorithm: at each step, the new
+ * entry is `(pivot * a - factor * b) / lastpivot`, where the
+ * division is exact because the ring is a domain. Tracks
+ * `col_perm` for the column permutation and `need_div[i]` for
+ * which columns still need the trailing division. Used by the
+ * engine wherever an integer-coefficient LU is needed without
+ * introducing fractions.
+ */
 class FF_LUComputation
 {
   // This is a class encapsulating the LU decomposition

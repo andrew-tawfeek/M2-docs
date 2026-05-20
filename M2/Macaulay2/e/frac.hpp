@@ -42,6 +42,18 @@ struct frac_elem
   ring_elem denom;
 };
 
+/**
+ * @brief Engine-side fraction field of a polynomial domain `R_`.
+ *
+ * @details Elements are `frac_elem*` pointers carrying a `(numer, denom)`
+ * pair, with `simplify` keeping them in lowest terms whenever
+ * possible. `use_gcd_simplify` opts into a `gcd`-based
+ * simplification path that is only valid for `frac(ZZ[xs])` and
+ * `frac(ZZ/p[xs])`; other fraction fields use a lighter
+ * cancellation strategy until the engine's fraction representation
+ * gets flattened (the in-source comment notes this is a planned
+ * refactor).
+ */
 class FractionField : public Ring
 {
   const PolyRingFlat *R_;  // Base ring.  Assumed to be a domain.

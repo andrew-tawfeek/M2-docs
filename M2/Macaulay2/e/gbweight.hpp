@@ -45,6 +45,18 @@ class FreeModule;
 class GBRing;
 class gbvector;
 
+/**
+ * @brief Heuristic-weight evaluator for `gbvector`s, used during Groebner
+ * basis computation to drive the S-pair sugar strategy.
+ *
+ * @details Caches a per-variable weight vector (`wts_`), an optional flag
+ * `use_component_degrees_` that mixes in the target free module's
+ * component degrees, and a `Fdegs_` table of per-component degree
+ * shifts pulled from `F_`. The weight of a `gbvector` is then the
+ * `wts_`-weighted sum of the leading monomial's exponents plus
+ * `Fdegs_[component]`, computed without allocating a temporary
+ * exponent vector longer than `exp_size`.
+ */
 class GBWeight : public our_new_delete
 // A class to compute the "heuristic weight" of elements
 // Mainly for use with Groebner basis computation
