@@ -39,8 +39,30 @@
 class RingElement;
 class Matrix;
 
+/**
+ * @brief Engine-side ring homomorphism: stores, for each source-ring
+ * variable, the target-ring element it maps to.
+ *
+ * @details Built from a row matrix of target-ring elements (`make(m)`): the
+ * `i`-th column gives the image of the `i`-th source variable, kept
+ * in pre-factored form as `coeff * monom * bigelem`. The
+ * `is_monomial` flag records whether every variable maps to a
+ * single term, enabling a fast monomial-by-monomial evaluation
+ * path. `R` / `P` / `K` / `M` cache the target ring (and its
+ * polynomial / coefficient / monoid layers, when present) so
+ * `evaluate` can dispatch without re-querying.
+ */
 class RingMap : public EngineObject
 {
+  /**
+   * @brief Per-source-variable image record: a factored representation of
+   * the target-ring element that variable maps to.
+   *
+   * @details The image is `coeff * monom * bigelem`. Three independent
+   * `is_one` flags let the evaluator skip whichever factors are
+   * trivially 1, and `is_zero` short-circuits the whole multiplication
+   * when the variable maps to 0.
+   */
   struct var : public our_new_delete
   {
     bool is_zero;  // Does this variable map to 0?
