@@ -136,6 +136,14 @@ void printHashTableState(const T& cont)
 // stores elements of type T*: points to a contiguous list of integers, first one is the length.
 // these are removed, when the hash table is removed.  Hash value is also stored.
 
+/**
+ * @brief Strict-weak-order comparator on `ModuleMonom`, used by
+ * `IntsSet::sort` to reorder the insertion-ordered `mElements` list.
+ *
+ * @details Defers to `ModuleMonom::compare` and treats anything `<= EQ` as
+ * "less than", so equal monomials get a stable position from
+ * `std::sort`'s tiebreaker rather than from this comparator.
+ */
 class ModuleMonomLessThan
 {
 public:
@@ -145,6 +153,12 @@ public:
     return cmp <= EQ;
   }
 };
+/**
+ * @brief Hash functor on `ModuleMonom`, forwarding to `ModuleMonom::hash`.
+ *
+ * @details Plugged into the `std::unordered_set<ModuleMonom, ...>` inside
+ * `IntsSet` as the `Hash` policy.
+ */
 class ModuleMonomHash
 {
 public:
@@ -153,6 +167,12 @@ public:
     return m.hash();
   }
 };
+/**
+ * @brief Equality functor on `ModuleMonom`, forwarding to `operator==`.
+ *
+ * @details Plugged into the `std::unordered_set<ModuleMonom, ...>` inside
+ * `IntsSet` as the `KeyEqual` policy.
+ */
 class ModuleMonomEq
 {
 public:
@@ -161,6 +181,16 @@ public:
     return a == b;
   }
 };
+/**
+ * @brief Legacy `IntsSet` configuration that bundles hashing, equality, and
+ * a `display` helper into one functor object.
+ *
+ * @details Provides the older single-functor shape (`operator()(m)` for hash,
+ * `operator()(a, b)` for equality), with `keysEqual` doing a
+ * length-prefixed elementwise check that ignores the slot reserved
+ * for `value`. Superseded by `ModuleMonomDefaultConfig`, which moved
+ * `Hash` and `Eq` into discrete member functors.
+ */
 class ModuleMonomDefaultConfigOrig
 {
 public:
@@ -197,6 +227,15 @@ private:
   int mNumVars;
 };
 
+/**
+ * @brief Current `IntsSet` configuration: exposes `Hash` and `Eq` as discrete
+ * member functors so the `unordered_set` can use them directly.
+ *
+ * @details Used by the type alias `ModuleMonomialSet = IntsSet<ModuleMonomDefaultConfig>`.
+ * The constructor takes the variable count for size accounting; the
+ * old single-functor `hash` / `keysEqual` / `display` interface
+ * is kept under `#if 0` for reference until the refactor lands.
+ */
 class ModuleMonomDefaultConfig
 {
 public:
